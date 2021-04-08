@@ -1,0 +1,2 @@
+*.jpg -crlf -diff -merge
+*.png -crlf -diff -merge
