@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to 某春雨的后花园's documentation!
+某春雨的后花园
 ==========================================
 
 .. toctree::
@@ -12,9 +12,9 @@ Welcome to 某春雨的后花园's documentation!
 
 
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
