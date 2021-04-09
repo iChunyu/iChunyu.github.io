@@ -95,7 +95,7 @@ Sphinx 的安装与配置
 GitHub 源码托管
 ------------------------------------------
 
-代码托管涉及到 `Git`_ 的使用，基本规则可以参考我之前在公众号整理的一篇 `Git版本控制`_ 。这里我们只需要在 GitHub 建立仓库，例如本仓库名为 ``sphinx-doc`` 。然后在 Sphinx 项目目录下运行以下命令即可。
+代码托管涉及到 `Git`_ 的使用，基本规则可以参考 :doc:`learn_git` 。这里我们只需要在 GitHub 建立仓库，例如本仓库名为 ``sphinx-doc`` 。然后在 Sphinx 项目目录下运行以下命令即可。
 
 .. code-block:: bash
 
@@ -117,7 +117,6 @@ GitHub 源码托管
 #. 将当前分支推送到远程分支。
 
 .. _Git: https://git-scm.com/
-.. _Git版本控制: https://mp.weixin.qq.com/s/MpQWqukFFBhJnD15VaD-2w
 
 
 OK，代码已经提交到远程仓库了，不信的小朋友可以打开 GitHub 验证一下。
