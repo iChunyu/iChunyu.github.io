@@ -7,3 +7,4 @@
 
    build_garden
    learn_git
+   kalman_filter
