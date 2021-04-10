@@ -11,6 +11,10 @@
    :caption: 目录
    
    misc/index
+   control/index
+   demo/index
+   dsp/index
+   latex/index
 
 .. Indices and tables
 .. ==================
