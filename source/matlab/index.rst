@@ -1,8 +1,9 @@
-控制系统应用示例
+MATLAB 使用技巧
 ==========================================
 
 .. toctree::
    :maxdepth: 1
    :caption: 目录
 
-   bangbangcontrol
+   function
+   symbolic

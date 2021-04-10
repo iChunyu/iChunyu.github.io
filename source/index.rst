@@ -15,6 +15,7 @@
    demo/index
    dsp/index
    latex/index
+   matlab/index
 
 .. Indices and tables
 .. ==================
