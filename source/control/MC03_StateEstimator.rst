@@ -153,7 +153,7 @@
 
 
    \begin{align}
-   \bf{\dot{\hat{x}}}_b &= {{A}_{bb}}{{{\bf{\hat x}}}_b} + \left( {{A_{ba}}{x_a} + {{B}_b}u} \right) + {{L}_b}\left[ {\left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right) - {{A}_{ab}}{{{\bf{\hat x}}}_b}} \right] \\
+   \dot{\hat{\mathbf{x}}}_b &= {{A}_{bb}}{{{\bf{\hat x}}}_b} + \left( {{A_{ba}}{x_a} + {{B}_b}u} \right) + {{L}_b}\left[ {\left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right) - {{A}_{ab}}{{{\bf{\hat x}}}_b}} \right] \\
    &= \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right){{{\bf{\hat x}}}_b} + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u + {{L}_b}\dot y
    \end{align}
 
@@ -162,7 +162,7 @@
 .. math::
 
 
-   {{\bf{\dot{\hat{x}} }}_c} = \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right)\left( {{{\bf{x}}_c} + {{L}_b}y} \right) + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u
+  \dot{\hat{\mathbf{x}}}_c = \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right)\left( {{{\bf{x}}_c} + {{L}_b}y} \right) + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u
 
 至此，推导出降维状态估计器的可实现的形式。对于本文所提及的弹簧-质量-阻尼系统，其降维状态估计器结构如下图所示：
 
