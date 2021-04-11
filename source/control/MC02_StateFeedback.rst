@@ -13,12 +13,12 @@
 
 通常情况下 :math:`D=0` 。
 
-如果系统矩阵 :math:`\mathbf{A}` 存在正实部的特征值而导致系统不稳定，或是系统虽然稳定但性能不满足需求，可以通过反馈控制来改变系统特性。现代控制理论采用的状态反馈区别于经典控制中利用输出和参考信号的误差进行反馈，其根据系统的状态来计算控制信号，对于线性系统，反馈信号可表述为 :math:`u = -{\mathbf{Kx} }` ，此时系统的动态响应变为
+如果系统矩阵 :math:`A` 存在正实部的特征值而导致系统不稳定，或是系统虽然稳定但性能不满足需求，可以通过反馈控制来改变系统特性。现代控制理论采用的状态反馈区别于经典控制中利用输出和参考信号的误差进行反馈，其根据系统的状态来计算控制信号，对于线性系统，反馈信号可表述为 :math:`u = -K{\mathbf{x}}` ，此时系统的动态响应变为
 
 .. math::
-    \dot{\mathbf{x}} = \left( \mathbf{A}-\mathbf{BK} \right) \mathbf{x} 
+    \dot{\mathbf{x}} = \left( A-BK \right) \mathbf{x} 
 
-因此，只要我们合理设计反馈增益 :math:`\mathbf{K}` ，使得 :math:`\mathbf{A}-\mathbf{BK}` 的特征值（对应传递函数的极点）均分布在复平面的左半平面，即可实现系统的稳定。
+因此，只要我们合理设计反馈增益 :math:`K` ，使得 :math:`A-BK` 的特征值（对应传递函数的极点）均分布在复平面的左半平面，即可实现系统的稳定。
 
 常用的系统极点的配置方法有主导极点法和LQR设计法，下面用一些例子来介绍反馈增益的设计方法。
 
@@ -33,17 +33,17 @@
 
 .. math::
    \begin{gathered}
-     {\mathbf{A}} = \begin{bmatrix}
+     {A} = \begin{bmatrix}
      0&2&0&0&0 \\ 
      { - 0.1}&{ - 0.35}&{0.1}&{0.1}&{0.75} \\ 
      0&0&0&2&0 \\ 
      {0.4}&{0.4}&{ - 0.4}&{ - 1.4}&0 \\ 
      0&{ - 0.03}&0&0&{ - 1} 
    \end{bmatrix} \\
-     {\mathbf{B}} = {\left[ {\begin{array}{*{20}{r}}
+     {B} = {\left[ {\begin{array}{*{20}{r}}
      1&0&0&0&0 
    \end{array}} \right]^T} \hfill \\
-     {\mathbf{C}} = \left[ {\begin{array}{*{20}{r}}
+     {C} = \left[ {\begin{array}{*{20}{r}}
      1&0&0&0&0 
    \end{array}} \right] \hfill \\
    \end{gathered}
@@ -65,7 +65,7 @@
    极点移动的距离越大，意味着反馈增益越大，即需要的能量越大。
 
 
-通过极点配置，反馈后系统矩阵 :math:`\mathbf{A}-\mathbf{BK}`
+通过极点配置，反馈后系统矩阵 :math:`A-BK`
 的特征值为：:math:`[-0.5 \pm 0.866j,\,-3.99,\,-4,\,-4.01]` 。进而可以得到系统响应为（输出按20s处的值进行了归一化以便于对比）：
 
 .. figure:: figures/mc02b.png
@@ -77,30 +77,30 @@
 LQR设计法
 --------------------------------------------
 
-LQR设计旨在寻找合适 :math:`\mathbf{K}` 的使得下面的积分取得最小值
+LQR设计旨在寻找合适 :math:`K` 的使得下面的积分取得最小值
 
 .. math::
-   {\mathcal{J} } = \int_0^\infty  { { {\mathbf{x} }^T}{\mathbf{Qx + } }{ {\mathbf{u} }^T}{\mathbf{Ru} } } \,\mathrm{d} t
+   {\mathcal{J} } = \int_0^\infty  { { {\mathbf{x} }^T}Q{\mathbf{x  } }+{ {\mathbf{u} }^T}R{\mathbf{u} } } \,\mathrm{d} t
 
-其中， :math:`\mathbf{Q}` 和 :math:`\mathbf{R}` 的选取是相对“任意”的，初次设计时，可以将其选择为对角矩阵，并令各对角元素为允许误差平方的导数，即：
+其中， :math:`Q` 和 :math:`R` 的选取是相对“任意”的，初次设计时，可以将其选择为对角矩阵，并令各对角元素为允许误差平方的导数，即：
 
 .. math::
    {Q_{ii} } = \frac{1}{ {\max (x_i^2)} },\quad {\text{ } }{R_{ii} } = \frac{1}{ {\max (u_i^2)} }
 
-选定 :math:`\mathbf{Q}` 和 :math:`\mathbf{R}` 后，利用MATLAB函数 ``lqr`` 即可完成设计。
+选定 :math:`Q` 和 :math:`R` 后，利用MATLAB函数 ``lqr`` 即可完成设计。
 
-这里，我们令 :math:`\mathbf{R}=1` ，采用两种 :math:`\mathbf{Q}` 进行设计对比，结果如下图所示
+这里，我们令 :math:`R=1` ，采用两种 :math:`Q` 进行设计对比，结果如下图所示
 
 .. math::
    \begin{gathered}
-      {{\mathbf{Q}}_1} = \begin{bmatrix}
+      {{Q}_1} = \begin{bmatrix}
       {25}&0&0&0&0 \\ 
       0&{25}&0&0&0 \\ 
       0&0&{25}&0&0 \\ 
       0&0&0&{25}&0 \\ 
       0&0&0&0&{25} 
    \end{bmatrix} \\
-      {{\mathbf{Q}}_2} = \begin{bmatrix}
+      {{Q}_2} = \begin{bmatrix}
       4&0&0&0&0 \\ 
       0&{100}&0&0&0 \\ 
       0&0&4&0&0 \\ 
