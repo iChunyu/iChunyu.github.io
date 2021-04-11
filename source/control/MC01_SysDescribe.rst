@@ -16,7 +16,7 @@
 由于系统是由元件构成的，而元件的特性通常满足一定的（微分）方程，考虑元件之间的约束后，系统的本质就可以看作是微分方程。以经典的弹簧-质量-阻尼系统为例，如下图所示。
 
 .. figure:: figures/mc01.jpg
-   :figwidth: 70%
+   :figwidth: 50%
    :align: center
 
 
@@ -33,15 +33,11 @@
 综合元件特性与相互联系后，该系统的微分方程为：
 
 .. math::
-
-
    m \ddot{x} + c \dot{x} + k x = F
 
 更一般地，设系统的输入为 :math:`u` ，输出为 :math:`y` ，线性系统的微分方程通常可表示为：
 
 .. math::
-
-
    y^{(n)} + a_{n-1} y^{(n-1)} + ...+a_1 y' + a_0 = b_m u^{(m)} + b_{m-1} u^{(m-1)} + ...+b_1 u' + b_0 
 
 对于实际的系统，上式通常有 :math:`m \le n` 。
@@ -55,23 +51,17 @@
 对于线性微分方程，可以通过所谓的拉普拉斯变换将其转化为频域表达式，拉普拉斯变换的定义为：
 
 .. math::
-
-
    X(s) = \int_{-\infty}^{\infty} x(t) \mathrm{e}^{st}\, \mathrm{d}t
 
 根据定义，对系统的微分方程两边同时进行拉普拉斯变换，有：
 
 .. math::
-
-
    \left( s^{n} + a_{n-1} s^{n-1} + ...+a_1 s + a_0 \right) Y(s)
        = \left( b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0 \right) U(s)
 
 如此做，系统的微分方程在形式上变成了关于复变量 :math:`s` 的代数方程，称系统输出的拉普拉斯变换与输入的拉普拉斯变换之比为传递函数，记为 :math:`H(s)` ，由上式可得：
 
 .. math::
-
-
    H(s) = \frac{b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0}{s^{n} + a_{n-1} s^{n-1} + ...+a_1 s + a_0}
 
 
@@ -82,7 +72,6 @@
 系统的微分方程阶数通常较高而不便于分析，状态空间的思想在于引入状态变量，将一个高阶微分方程转化为多个一阶微分方程。对于线性微分方程，状态变量的数量等于输出变量的最高微分阶数 :math:`n` ，从技巧上通常可以取输出及其 :math:`n-1` 次导数作为状态变量。以上述弹簧-质量-阻尼系统为例，输出最高阶数为2，因此需要选择两个状态变量。选取第一个状态变量为输出，即 :math:`x_1 = x` ，第二个状态变量为输出的一阶导数，即 :math:`x_2=\dot{x}` ，于是有：
 
 .. math::
-
    \left\{
    \begin{aligned}
        \dot{x}_1 &= x_2 \\
@@ -94,40 +83,36 @@
 不失一般性地，将上述表达写成矩阵的形式为：
 
 .. math::
+   \left\{
+   \begin{aligned}
+   \dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
+   y &= C \mathbf{x} + Du
+   \end{aligned}
+   \right.
 
-
-   \left\{ {\begin{array}{*{20}{c}}
-   {{\dot{\bf x}} = A{\bf{x}} + Bu}\\
-   {y = C{\bf{x}} + Du}
-   \end{array}} \right.
 
 其中， :math:`\mathbf{x}` 为系统的状态变量， :math:`A` 称为系统矩阵， :math:`B` 为输入矩阵， :math:`C` 为输出矩阵， :math:`D` 为直接传输矩阵且通常 :math:`D=0` 。就本例而言：
 
 .. math::
 
-   A = \left[ {\begin{array}{*{20}{c}}
-   0&1\\
-   { - \frac{k}{m}}&{ - \frac{c}{m}}
-   \end{array}} \right],
+   A = \begin{bmatrix}
+   0 & 1\\
+   - \frac{k}{m} & - \frac{c}{m}
+   \end{bmatrix},
    \quad
-   B = \left[ {\begin{array}{*{20}{c}}
-   0\\
-   {\frac{1}{m}}
-   \end{array}} \right],
+   B = \begin{bmatrix} 0 \\ \frac{1}{m} \end{bmatrix},
    \quad
-   C = \left[ {\begin{array}{*{20}{c}}
-   1&0
-   \end{array}} \right]
+   C = \begin{bmatrix} 1 & 0 \end{bmatrix}
 
 需要说明的是，系统的微分方程和传递函数表达式都是唯一的，而状态空间却不是唯一的，这是由于状态变量的选择不唯一。状态空间有几种标准的形式，将在以后进行讨论。除此之外，状态空间表达并不局限于线性时不变系统，它跟微分方程一样广泛适用于各种系统的描述，状态空间更一般的形式如下，暂不做过多讨论。
 
 .. math::
-
-
-   \left\{ {\begin{array}{*{20}{c}}
-   {{\dot{\bf x}} = f({\bf{x}},{\bf{u}},t)}\\
-   {y = h({\bf{x}},{\bf{u}},t)}
-   \end{array}} \right.
+   \left\{ 
+   \begin{aligned}
+   \dot{\mathbf{x}} &= f(\mathbf{x},\mathbf{u},t)  \\
+   y &= h(\mathbf{x},\mathbf{u},t)  \\
+   \end{aligned}
+   \right.
 
 
 
@@ -146,32 +131,28 @@
 设系统的状态空间方程为：
 
 .. math::
-
-
-   \left\{ {\begin{array}{*{20}{l}}
-   {{\dot{\bf x}} = A{\bf{x}} + B\mathbf{u}}\\
-   {y = C{\bf{x}} }
-   \end{array}} \right.
+   \left\{
+   \begin{aligned}
+   \dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
+   y &= C \mathbf{x}
+   \end{aligned}
+   \right.
 
 设辅助状态变量 :math:`\mathbf{z}` 满足线性变换 :math:`\mathbf{x}=P\mathbf{z}` （ :math:`P` 为常矩阵），带入第一个方程，有：
 
 .. math::
-
-
    P\dot{\mathbf{z}}=AP\mathbf{z}+B\mathbf{u}
    \Rightarrow \dot{\mathbf{z}}=P^{-1}AP\mathbf{z}+P^{-1}B\mathbf{u}
 
 选取合适的变换矩阵 :math:`P` 使得 :math:`P^{-1}AP` 为矩阵 :math:`A` 的相似变换，即 :math:`P^{-1}AP` 为特征值对角矩阵：
 
 .. math::
-
-
-   {P^{ - 1}}AP = \left[ {\begin{array}{*{20}{c}}
-   {{\lambda _1}}&{}&{}&{}\\
-   {}&{{\lambda _2}}&{}&{}\\
+   P^{-1}AP = \begin{bmatrix}
+   {{\lambda_1}}&{}&{}&{}\\
+   {}&{{\lambda_2}}&{}&{}\\
    {}&{}& \ddots &{}\\
-   {}&{}&{}&{{\lambda _n}}
-   \end{array}} \right]
+   {}&{}&{}&{{\lambda_n}}
+   \end{bmatrix}
 
 如此做，关于辅助状态变量 :math:`\mathbf{z}` 的微分方程组解耦为独立的一阶微分方程：
 
@@ -197,5 +178,5 @@
 
 
 .. 
-    本文档由 ``pandoc`` 将原始 Markdown 文件转为 reStructuredText。
-    2021-04-11
+   Converted from ``Markdown`` to ``reStructuredText`` using pandoc
+   Last edited by iChunyu on 2021-04-11
