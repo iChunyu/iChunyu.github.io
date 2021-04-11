@@ -145,6 +145,8 @@ LQR设计旨在寻找合适 :math:`K` 的使得下面的积分取得最小值
 #. G. F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. Upper Saddle River, NJ, USA: Prentice Hall Press, 2014.
 
 
+另请参阅： `状态反馈仿真测试 <https://github.com/iChunyu/LearnCtrlSys/blob/master/ModernControl/note1_StateFeedback.mlx>`_
+
 .. 
    Converted from ``Markdown`` to ``reStructuredText`` using pandoc
    Last edited by iChunyu on 2021-04-11

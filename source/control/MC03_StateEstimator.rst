@@ -188,6 +188,9 @@
 
 #. G. F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. Upper SaddleRiver, NJ, USA: Prentice Hall Press, 2014.
 
+
+另请参阅： `状态估计仿真测试 <https://github.com/iChunyu/LearnCtrlSys/blob/master/ModernControl/note2_StateEstimator.mlx>`_
+
 .. 
    Converted from ``Markdown`` to ``reStructuredText`` using pandoc
    Last edited by iChunyu on 2021-04-11

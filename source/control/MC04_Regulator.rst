@@ -119,7 +119,7 @@
 
 #. G. F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. Upper Saddle River, NJ, USA: Prentice Hall Press, 2014.
 
-
+另请参阅： `调节器设计仿真测试 <https://github.com/iChunyu/LearnCtrlSys/blob/master/ModernControl/note3_RegulatorDesign.mlx>`_
 
 .. 
    Converted from ``Markdown`` to ``reStructuredText`` using pandoc
