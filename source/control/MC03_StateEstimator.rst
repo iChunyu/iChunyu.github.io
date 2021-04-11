@@ -43,7 +43,7 @@
 于是，只要合理设计 :math:`L` 令 :math:`\left( A - LC \right)` 所有特征值的实部均小于零即可使状态估计误差收敛到零，即状态估计值趋近于真是状态。
 
 
-状态估计器 :math:`L` 的设计与状态反馈 :math:`\mathbf{K}` 的设计完全相同，考察数学关系：
+状态估计器 :math:`L` 的设计与状态反馈 :math:`K` 的设计完全相同，考察数学关系：
 
 .. math::
 
@@ -129,12 +129,12 @@
 .. math::
     \dot{\mathbf{x}}_b = {{A}_{bb}}{{\mathbf{x}}_b} + \left( {{A_{ba}}{x_a} + {{ B}_b}u} \right)
 
-将 :math:`\dot {x}_a` 换为输出的导数 :math:`\dot{y}` ，改写系统的输出方程：
+将 :math:`\dot{x}_a` 换为输出的导数 :math:`\dot{y}` ，改写系统的输出方程：
 
 .. math::
 
 
-   \left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right) = {{A}_{ab}}{{\mathbf{x}}_b}
+   \left( {\dot{y} - {A_{aa}}{x_a} - {B_a}u} \right) = {{A}_{ab}}{{\mathbf{x}}_b}
 
 由上面两个式子，对比标准的状态空间方程，显然有以下转换关系：
 
@@ -152,10 +152,10 @@
 .. math::
 
 
-   \begin{align}
+   \begin{aligned}
    \dot{\hat{\mathbf{x}}}_b &= {{A}_{bb}}{{{\bf{\hat x}}}_b} + \left( {{A_{ba}}{x_a} + {{B}_b}u} \right) + {{L}_b}\left[ {\left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right) - {{A}_{ab}}{{{\bf{\hat x}}}_b}} \right] \\
    &= \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right){{{\bf{\hat x}}}_b} + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u + {{L}_b}\dot y
-   \end{align}
+   \end{aligned}
 
 由此初步完成了降维估计器的构造，设计的目标只需令 :math:`{{{A}_{bb}} - {{L}_b}{{A}_{ab}}}` 的所有特征值实部为负。需要注意的是，上式中包含输出的导数 :math:`\dot{y}` ，实际中微分是不容易实现的，且容易放大高频噪声，应当避免这一项的存在。于是需要进一步构造辅助变量 :math:`{{\mathbf{x}}_c} = {{{\mathbf{\hat x}}}_b} - {L}_by` ，则上式改为：
 
