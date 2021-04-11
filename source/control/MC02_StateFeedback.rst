@@ -139,6 +139,12 @@ LQR设计旨在寻找合适 :math:`K` 的使得下面的积分取得最小值
    K = lqr(A,B,Q,R);
 
 
+参考资料
+--------------------------------------------------
+
+#. G. F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. Upper Saddle River, NJ, USA: Prentice Hall Press, 2014.
+
+
 .. 
    Converted from ``Markdown`` to ``reStructuredText`` using pandoc
    Last edited by iChunyu on 2021-04-11
