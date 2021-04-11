@@ -110,3 +110,7 @@
 
 #. `DR_CAN 卡尔曼增益超详细推导 <https://www.bilibili.com/video/BV1hC4y1b7K7>`_ .
 #. \R. Faragher, “Understanding the Basis of the Kalman Filter Via a Simple and Intuitive Derivation,” IEEE Signal Processing Magazine, vol. 29, no. 5, pp. 128–132, Sep. 2012, doi: 10.1109/MSP.2012.2203621.
+
+
+
+.. Last edited by iChunyu on 2021-04-11
