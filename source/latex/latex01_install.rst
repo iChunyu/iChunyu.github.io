@@ -1,7 +1,7 @@
 安装与配置
 ==========================================
 
-LaTeX 是一款开源排版软件，区别于Word的所见即所得，使用 LaTeX 编写文档更像是编写代码，需要经过编译才能生成 pdf 格式的文档。初学者可能会止步于这种代码式的文档编写方法，但随着使用的熟练，在科技报告、论文方面，其至少在下面几个方面碾压 Word ：
+LaTeX 是一款开源排版软件，区别于Word的所见即所得，使用 LaTeX 编写文档更像是编写代码，需要经过编译才能生成 ``.pdf`` 格式的文档。初学者可能会止步于这种代码式的文档编写方法，但随着使用的熟练，在科技报告、论文方面，其至少在下面几个方面碾压 Word ：
 
 -  数学公式支持：  LaTeX 天然支持数学公式，而 Word 内置的公式编辑器一般不好用，通常需借助软件 Mathtype ；
 -  文献引用支持：  LaTeX 天然支持文献引用，并提供了常见各种期刊标准样式，而 Word 内置的参考文献录入麻烦，常需借助文献管理软件如 `Zotero <https://www.zotero.org/>`_ 、`Endnote <https://endnote.com/>`_ 等；
@@ -140,7 +140,7 @@ Hello World
        Hello World !               % 打个招呼：你好世界
    \end{document}                  % 不难预料：正文在这里结束
 
-使用 TeXstudio 的小伙伴可以点击“运行并查看”，使用 VS Code 的小伙伴可以仅使用 ``xelatex`` 编译，喜欢命令行的猛士也可以在当前目录下运行命令 ``xelatex HelloWorld.tex`` ，最后，我们打开编译生成的同名 pdf 文件，就可以看到以下效果，是不是非常神奇呢？
+使用 TeXstudio 的小伙伴可以点击“运行并查看”，使用 VS Code 的小伙伴可以仅使用 ``xelatex`` 编译，喜欢命令行的猛士也可以在当前目录下运行命令 ``xelatex HelloWorld.tex`` ，最后，我们打开编译生成的同名 ``.pdf`` 文件，就可以看到以下效果，是不是非常神奇呢？
 
 .. figure:: figures/latex01.png
     :figwidth: 90%
@@ -149,4 +149,4 @@ Hello World
 
 .. 
    Converted from ``Markdown`` to ``reStructuredText`` using pandoc
-   Last edited by iChunyu on 2021-04-11
+   Last edited by iChunyu on 2021-04-13
