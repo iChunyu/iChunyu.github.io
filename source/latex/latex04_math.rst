@@ -73,7 +73,7 @@
         = 1-2\sin^2 x
     \end{gather}
 
- .. figure:: figurs/latex04a.png
+.. figure:: figures/latex04a.png
     :figwidth: 90%
     :align: center
 
@@ -93,7 +93,7 @@
         \end{gathered}
     \end{equation}
 
- .. figure:: figures/latex04b.png
+.. figure:: figures/latex04b.png
     :figwidth: 90%
     :align: center
 
@@ -111,7 +111,7 @@
         &= 1-2\sin^2 x
     \end{align}
 
- .. figure:: figures/latex04c.png
+.. figure:: figures/latex04c.png
     :figwidth: 90%
     :align: center
 
@@ -127,7 +127,7 @@
         \end{aligned}
     \end{align}
 
- .. figure:: figures/latex04d.png
+.. figure:: figures/latex04d.png
     :figwidth: 90%
     :align: center
 
@@ -161,7 +161,7 @@
         = ad-bc
     \end{align}
 
- .. figure:: figures/latex04e.png
+.. figure:: figures/latex04e.png
     :figwidth: 90%
     :align: center
 
