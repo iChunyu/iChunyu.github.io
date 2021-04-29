@@ -130,7 +130,6 @@
     \crefname{equation}{式}{式}
     \crefname{table}{表}{表}
     \crefname{figure}{图}{图}
-    \crefname{section}{式}{式}
     \crefformat{section}{\!第~#2#1#3~节\!}                  % 使用 \! 取消命令前后的空格
     \crefformat{subsection}{\!第~#2#1#3~小节\!}
 
