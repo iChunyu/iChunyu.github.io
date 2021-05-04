@@ -8,4 +8,3 @@
    build_garden
    reStructuredText
    learn_git
-   kalman_filter
