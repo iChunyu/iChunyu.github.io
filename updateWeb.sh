@@ -4,8 +4,11 @@ make html
 
 # switch branch and update pages
 git switch gh-pages
-cp -rn build/html/ docs/
-git add .
+rm -r docs/
+cp -r build/html/ docs/
+touch docs/.nojekyll
+
+git add docs/
 git commit -m 'Update GitHub Pages'
 git push
 
