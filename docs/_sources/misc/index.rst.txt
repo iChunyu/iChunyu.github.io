@@ -8,3 +8,4 @@
    build_garden
    reStructuredText
    learn_git
+   git_tricks
