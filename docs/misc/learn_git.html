@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Git 版本控制 &mdash; 某春雨的后花园  文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="控制理论学习记录" href="../control/index.html" />
+    <link rel="prev" title="reStructuredText 入门" href="reStructuredText.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">杂乱的技能树</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Git 版本控制</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">工作区、暂存区和版本库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">分支与开发流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Git初步使用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../control/index.html">控制理论学习记录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demo/index.html">控制系统应用示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dsp/index.html">数字信号处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">某春雨的后花园</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">杂乱的技能树</a> &raquo;</li>
+        
+      <li>Git 版本控制</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/misc/learn_git.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="git">
+<h1>Git 版本控制<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h1>
+<p>这位同学，你是否曾因为误删文件而懊恼不已？是否对文件编辑数次后不如原版而悔不当初？不用担心，当你有了版本控制的习惯之后，这些问题都将不再困扰你。</p>
+<p>所谓版本控制，实际上就是阶段性备份。习惯比较好的同学，在进行文档修改时会创建副本，这样，当修改后的版本不好，或者出错、误删，都可以用备份好的副本来继续工作，这就是最简单的版本控制。这种“人肉”版本控制的优点显然是简单，只要有好习惯就可以，不需要使用额外的工具。但是缺点也是显而易见的，一方面是随着修改次数的增加，副本会越来越多使得文件夹显得非常凌乱；另一方面，当需要以前的版本时，仅从副本的文件名很难获得足够的信息来精确定位所需的版本。</p>
+<p>为了更好地进行版本控制，可以使用专业的版本控制软件，而 <a class="reference external" href="https://git-scm.com/">Git</a> 是一个不错的选择。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。</p>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>工作区、暂存区和版本库<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在正式介绍Git之前，首先简要说明三个相关的概念：</p>
+<ul class="simple">
+<li><p><strong>工作区</strong> ：是能够看到的目录，例如 <code class="docutils literal notranslate"><span class="pre">~/LearnGit/</span></code> ；</p></li>
+<li><p><strong>暂存区</strong> ：用于临时保存工作区的修改，一般不可见；</p></li>
+<li><p><strong>版本库</strong> ：有时候也叫仓库，是工作目录下的 <code class="docutils literal notranslate"><span class="pre">.git/</span></code> 隐藏文件夹，一般不可见。</p></li>
+</ul>
+<p>工作区的文件被改动后，需要先提交到暂存区，暂存区所记录的修改通常需要提供一定的注释或说明才能提交到版本库。一旦文件提交到了版本库，Git 就会生成一个哈希值来标识当前版本。这种哈希值由40位16进制的字符组成，形如 <code class="docutils literal notranslate"><span class="pre">78b6157cdbc031530c24b003fd72d283fab30d44</span></code> 。通常情况下哈希值差异很大，在不引起矛盾的情况下，我们可以只使用哈希值的前几位来表示相应的版本。</p>
+<p>文件提交到版本库后就可以为所欲为了，下面的一系列图片将会帮助理解Git的开发流程。</p>
+</div>
+<div class="section" id="id3">
+<h2>分支与开发流程<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>假设工作过程中对文件进行了各种修改，并提交到仓库，提交历史将如下图所示：</p>
+<div class="figure align-center" id="id6" style="width: 80%">
+<img alt="../_images/git1.png" src="../_images/git1.png" />
+<p class="caption"><span class="caption-text">Git 提交历史</span><a class="headerlink" href="#id6" title="永久链接至图片">¶</a></p>
+</div>
+<p>其中，蓝色的方块代表一次提交，其值就是该提交的哈希值前几位。由于Git储存数据的方式，新的提交会指向旧的提交，因而也将较新的提交称为“上游“，对应将之前的提交称为”下游“，蓝色方块串起来的提交历史就是一个分支。图中标有 <code class="docutils literal notranslate"><span class="pre">master</span></code> 字样的黄色方块就是分支默认的名字，其实际上是一个指针，指向分支的最新提交。在 Git 中，一个分支就是一个指针，反过来，一个普通的指针就对应一个分支。标有 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 字样的红色方块是一个特殊的指针，它只能指向分支，也就是说，它是指针的指针。 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 的位置决定了当前工作目录显示的是哪个提交，也决定了新的提交会在哪个分支。</p>
+<p>为了进一步说明 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 的影响，假设在 <code class="docutils literal notranslate"><span class="pre">97bbf1b</span></code> 位置出新建了一个名叫 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 的指针，并让 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 移动到 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 的位置，如下图所示。</p>
+<div class="figure align-center" id="id7" style="width: 80%">
+<img alt="../_images/git2.png" src="../_images/git2.png" />
+<p class="caption"><span class="caption-text">Git 创建分支</span><a class="headerlink" href="#id7" title="永久链接至图片">¶</a></p>
+</div>
+<p>此时如果你观察工作目录，你会惊奇地发现”穿越“到了过去：工作目录的样子跟当时 <code class="docutils literal notranslate"><span class="pre">97bbf1b</span></code> 提交时候的样子一模一样，后面新的修改不见了、添加的文件不见了、删除的文件复活了。但是如果把 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 分支重新移动到 <code class="docutils literal notranslate"><span class="pre">master</span></code> 的位置，工作空间又会变成 <code class="docutils literal notranslate"><span class="pre">1e08a24</span></code> 的样子，各种修改又回来了。可见，文件提交到版本库后不会丢失，而工作空间显示的文件结构由 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 所指向的分支决定。</p>
+<p><code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 还决定新的提交的位置。为了理解这个，可以打一个非常有意思的比方：把文件的提交，或者说仓库的向上游的扩展看作是修路，那么 <code class="docutils literal notranslate"><span class="pre">master</span></code> 就代表一个没有包工头的施工队，而 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 就是包工头。包工头带领哪个施工队，工程就会在那个施工队的后面延续。而当有多个施工队时，其他的施工队就处于窝工状态。考察下面这种情况，当 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 指向 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 分支时，当修改的文件提交后，仓库是在 <code class="docutils literal notranslate"><span class="pre">A</span></code> 处延续还是在 <code class="docutils literal notranslate"><span class="pre">B</span></code> 处呢？</p>
+<div class="figure align-center" id="id8" style="width: 80%">
+<img alt="../_images/git3.png" src="../_images/git3.png" />
+<p class="caption"><span class="caption-text">在分支上创建提交</span><a class="headerlink" href="#id8" title="永久链接至图片">¶</a></p>
+</div>
+<p>答案是在 <code class="docutils literal notranslate"><span class="pre">B</span></code> 处延续。进一步，由于产生了新的提交，而前面提到代表分支的指针指向最新的提交，又有 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 指向分支的指针，我们就可以得到这样的结论：新的提交产生后，分支指针和 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 指针将同时移动，指向最新的提交。例如在 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 分支上又做了两次修改，整个历史将如下图所示：</p>
+<div class="figure align-center" id="id9" style="width: 80%">
+<img alt="../_images/git4.png" src="../_images/git4.png" />
+<p class="caption"><span class="caption-text">Git 分支历史</span><a class="headerlink" href="#id9" title="永久链接至图片">¶</a></p>
+</div>
+<p>可以看到开发进程在 <code class="docutils literal notranslate"><span class="pre">97bbf1b</span></code> 处分叉，这也印证了”分支“名字的由来。</p>
+<p>在不同分支上进行不同的修改，而后将修改以某种方式整合到主分支上，称之为分支的合并。例如，将上述 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 分支的提交合并到 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支后，整个提交历史如下图所示：</p>
+<div class="figure align-center" id="id10" style="width: 80%">
+<img alt="../_images/git5.png" src="../_images/git5.png" />
+<p class="caption"><span class="caption-text">Git 分支合并</span><a class="headerlink" href="#id10" title="永久链接至图片">¶</a></p>
+</div>
+<p>刚刚提到”主分支“，实际上 Git 中的分支都是平权的，不存在所谓的主分支，只是习惯上会将默认的 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支看作主分支。Git 的分支非常适合团队协作，例如，在 <code class="docutils literal notranslate"><span class="pre">97bbf1b</span></code> 处新建多个分支分配给团队的各个小组：<code class="docutils literal notranslate"><span class="pre">dev</span></code> 分支进行进一步开发、 <code class="docutils literal notranslate"><span class="pre">doc</span></code> 分支进行帮助和说明文档的编写、 <code class="docutils literal notranslate"><span class="pre">debug</span></code> 分支进行详细的调试等，一轮进行完成后合并到 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支，并由此重新生成各个分支进行下一轮开发。</p>
+<p>下面简要介绍部分常用命令的使用，当然 Git 的使用不局限于命令行，已有很多的图形界面程序可以使 Git 操作通过点击鼠标完成。</p>
+</div>
+<div class="section" id="id4">
+<h2>Git初步使用<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>对于Windows系统，从 <a class="reference external" href="https://git-scm.com/">Git官方网站</a> 下载安装包之后，直接双击即可实现Git的安装，一路基本都采用默认设置即可。在安装过程中会出现下面这样选择默认编辑器的页面，由于默认的 vim 编辑器对新手不友好，可以根据习惯另外选择（可能需要另外安装）。</p>
+<div class="figure align-center" id="id11" style="width: 80%">
+<img alt="../_images/git0.png" src="../_images/git0.png" />
+<p class="caption"><span class="caption-text">Git 在 Windows 系统安装时选择默认编辑器</span><a class="headerlink" href="#id11" title="永久链接至图片">¶</a></p>
+</div>
+<p>安装完成后，在桌面或者资源浏览器内右键会有 <strong>Git Bash Here</strong> 的选项，我们打开它进行初始化设置。</p>
+<p>初始化设置主要是设置用户名和邮箱，分别运行以下两个命令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.name &lt;username&gt;
+git config --global user.email &lt;emailaddress&gt;
+</pre></div>
+</div>
+<p>其中 <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> 内部的命令由用户自己指定，输入时不需要输入尖括号。后面再介绍命令使用时也将采用这种表述。</p>
+<p>这两条命令运行后不会出现任何可见的效果，因为 Git 认为简单的最好，而最简单的莫过于什么都不显示了~</p>
+<p>为了使用 Git 进行版本控制，需要将工作目录进行初始化，在工作目录下右键点击 <strong>Git Bash Here</strong> ，输入如下命令即可：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git init
+</pre></div>
+</div>
+<p>将文件添加到暂存区、再将暂存区所记录的修改提交到版本库，依次使用以下命令（ <code class="docutils literal notranslate"><span class="pre">#</span></code> 是 Git 的注释符）：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add &lt;filename&gt;      <span class="c1"># 将工作区修改到暂存区</span>
+git commit              <span class="c1"># 将暂存区修改提交到版本库</span>
+</pre></div>
+</div>
+<p>若需要将工作目录下的所有修改或新增的文件添加到暂存区，可以使用 <code class="docutils literal notranslate"><span class="pre">.</span></code> 来代替所有的文件名。提交到版本库时，Git 会根据安装时设置的默认编辑器弹出编辑界面，在其中编写此次提交的备注，保存并关闭后即完成了 <code class="docutils literal notranslate"><span class="pre">commit</span></code> 命令。编写备注中， <code class="docutils literal notranslate"><span class="pre">#</span></code> 开头的行将作为注释忽略。一般情况下第一行简要说明此次修改的内容，空一行之后从第三行对此次修改进行详细说明，以便后期需要版本回退时精确定位回退的版本。</p>
+<p>初始化仓库时会自从创建名为 <code class="docutils literal notranslate"><span class="pre">master</span></code> 的分支，若需要创建分支，可以使用这个命令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git branch &lt;branchname&gt; <span class="o">[</span>&lt;hash&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<p>上面的中括号表示可选参数，用于指定新分支所指向的提交（用哈希值表示），当留空时默认为当前所在的提交。</p>
+<p>移动 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 所指向的分支，可以使用 <code class="docutils literal notranslate"><span class="pre">switch</span></code> 命令，如下：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git switch &lt;branchname&gt;
+</pre></div>
+</div>
+<p>将某分支合并到当前分支，采用如下命令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git merge &lt;branchname&gt;
+</pre></div>
+</div>
+<p>合并时，若某文件在两个分支不相同，Git 会提示存在冲突，并尝试进行差异对比。所有冲突解决之后会要求编写备注以产生新的提交。</p>
+<p>使用时经常需要查看Git当前的状态，或者查看当前分支的整个开发历史，可以使用以下命令：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status          <span class="c1"># 查看当前状态</span>
+git log             <span class="c1"># 查看当前分支的历史提交</span>
+</pre></div>
+</div>
+<p>当历史太多又想掌握全部状态时，可以使用带参数的 <code class="docutils literal notranslate"><span class="pre">log</span></code> 命令，如本人常用以下命令查看整个仓库最近20次的提交：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git log --all --oneline --graph --decorate -20
+</pre></div>
+</div>
+<p>而为了简化这个命令，将整个命令取个别名：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global alias.logs <span class="s1">&#39;--all --oneline --graph --decorate -20&#39;</span>
+</pre></div>
+</div>
+<p>以后就可以用 <code class="docutils literal notranslate"><span class="pre">logs</span></code> 这个别名查看 Git 最近20次提交的历史。</p>
+<p>最后，整理常用命令的示意图，希望对大家有所帮助。</p>
+<div class="figure align-center" id="id12" style="width: 80%">
+<img alt="../_images/gitcmd.png" src="../_images/gitcmd.png" />
+<p class="caption"><span class="caption-text">Git 常用命令示意图</span><a class="headerlink" href="#id12" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../control/index.html" class="btn btn-neutral float-right" title="控制理论学习记录" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="reStructuredText.html" class="btn btn-neutral float-left" title="reStructuredText 入门" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, 大春雨.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

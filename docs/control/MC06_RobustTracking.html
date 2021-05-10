@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>现代控制基础（6）：鲁棒跟踪控制 &mdash; 某春雨的后花园  文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="控制系统应用示例" href="../demo/index.html" />
+    <link rel="prev" title="现代控制基础（5）：参考的引入" href="MC05_Reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">控制理论学习记录</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">现代控制基础（6）：鲁棒跟踪控制</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">扩展控制律</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">扩展状态估计器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../demo/index.html">控制系统应用示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dsp/index.html">数字信号处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">某春雨的后花园</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">控制理论学习记录</a> &raquo;</li>
+        
+      <li>现代控制基础（6）：鲁棒跟踪控制</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/control/MC06_RobustTracking.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>现代控制基础（6）：鲁棒跟踪控制<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>参考信号引入的方法广泛适用于各种参考信号，如果参考信号的特征（微分方程）是已知的，还可以采用所谓的鲁棒跟踪控制进一步提高系统对该类信号的跟踪能力。</p>
+<p>假设输入的参考信号满足微分方程</p>
+<div class="math notranslate nohighlight">
+\[\ddot{r} + \alpha_1 \dot{r} +\alpha_0 r = 0\]</div>
+<p>这里以二阶信号为例，实际的参考信号并不必须为二阶，只要找到能够描述该参考信号的微分方程即可。例如如果参考信号为 <span class="math notranslate nohighlight">\(\omega_1\)</span> 和 <span class="math notranslate nohighlight">\(\omega_2\)</span> 两个正弦信号的叠加，它的微分方程可选为</p>
+<div class="math notranslate nohighlight">
+\[r^{(4)}+(\omega_1^2+\omega_2^2)r^{(2)} + \omega_1^2\omega_2^2 =0\]</div>
+<p>可以用下面两种方法其一实现鲁棒跟踪控制。</p>
+<div class="section" id="id2">
+<h2>扩展控制律<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>设被控对象的状态空间表述为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left\{ {\begin{array}{*{20}{l}}
+  {{\mathbf{\dot x}} = {A\mathbf{x}} + {B}u} \\
+  {y = {C\mathbf{x}} }
+\end{array}} \right.\end{split}\]</div>
+<p>定义跟踪误差 <span class="math notranslate nohighlight">\(e=y-r\)</span> 。将其代入参考信号的微分方程，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+  \ddot e + {\alpha _1}\dot e + {\alpha _0}e &amp;= \ddot y + {\alpha _1}\dot y + {\alpha _0}y \\
+   &amp;= {C}\left( {\ddot{\mathbf{x}} + {\alpha_1}\dot{\mathbf{x}} + {\alpha _0}{\mathbf{x}}} \right) \\
+   &amp;= {C\mathbf{\xi }} \\
+\end{aligned}\end{split}\]</div>
+<p>这里定义了 <span class="math notranslate nohighlight">\(\xi={\ddot{\mathbf{x}} + {\alpha_1}\dot{\mathbf{x}} + {\alpha _0}{\mathbf{x}}}\)</span> ，考察它的动态，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\dot{\xi} &amp;= \frac{\mathrm{d}}{\mathrm{d}t} \left( \ddot{\mathbf{x}} + \alpha_1 \dot{\mathbf{x}} +\alpha_0 \mathbf{x}\right) \\
+&amp;= \frac{\mathrm{d}^2}{\mathrm{d}t^2}  \dot{\mathbf{x}} + \alpha_1 \frac{\mathrm{d}}{\mathrm{d}t} \dot{\mathbf{x}} + \dot{\mathbf{x}} \\
+&amp;=A\left( \ddot{\mathbf{x}} + \alpha_1 \dot{\mathbf{x}} +\alpha_0 \mathbf{x}\right)
++ B \left( \ddot{u} + \alpha_1 \dot{u} +\alpha_0 u\right) \\
+&amp;= A \xi + B \mu
+\end{aligned}\end{split}\]</div>
+<p>同样补充定义了 <span class="math notranslate nohighlight">\(\mu  = \ddot u + \alpha \dot u + \alpha_0 u\)</span> 。</p>
+<p>综上，利用误差和扩展的状态量构造误差空间（Error Space）</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf{\dot z}} = {{ A}_z}{\bf{z}} + {{B}_z}\mu =
+\left[ {\begin{array}{*{20}{c}}
+0&amp;1&amp;{0}\\\
+{ - {\alpha _0}}&amp;{ - {\alpha _1}}&amp;{C}\\\
+{0}&amp;{0}&amp;{ A}
+\end{array}} \right]
+\left[
+\begin{array}{c}
+e \\ \dot{e} \\ \xi
+\end{array} \right]
++ \left[ {\begin{array}{*{20}{c}}
+0\\\
+0\\\
+{B}
+\end{array}} \right] \mu\end{split}\]</div>
+<p>取状态反馈为 <span class="math notranslate nohighlight">\(\mu = - {{K}_z}{\bf{z}} = - \left[ {\begin{array}{*{20}{c}} {{K_{e0}}}&amp;{{K_{e1}}}&amp;{{{K}_x}} \end{array}} \right]\bf{z}\)</span> ，当上述误差收敛时，由于跟踪误差为零，系统的输出将跟随输入。</p>
+<p>为了实现上述控制器，需要从 <span class="math notranslate nohighlight">\(\mu\)</span> 中求解系统输入 <span class="math notranslate nohighlight">\(u\)</span> ，这可以从 <span class="math notranslate nohighlight">\(\mu\)</span> 的定义中获得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gathered}
+  \ddot u + {\alpha _1}\dot u + {\alpha _0}u =  - {{K}_z}{\mathbf{z}} =  - {K_{e0}}e - {K_{e1}}\dot e - {K}_x\left( \ddot{\mathbf{x}} + {\alpha _1}\dot{\mathbf{x}} + {\alpha _0}{\mathbf{x}} \right) \\
+   \Updownarrow  \\
+  \frac{{{{\text{d}}^2}}}{{{\text{d}}{t^2}}}\left( {u + {{K}_x}{\mathbf{x}}} \right) + {\alpha _1}\frac{{\text{d}}}{{{\text{d}}t}}\left( {u + {{K}_x}{\mathbf{x}}} \right) + {\alpha _0}\left( {u + {{K}_x}{\mathbf{x}}} \right) =  - {K_{e0}}e - {K_{e1}}\dot e \\
+   \Downarrow  \\
+  e \to u + {{K}_x}{\mathbf{x}}:\quad H(s) =  - \frac{{{K_{e1}}s + {K_{e0}}}}{{{s^2} + {\alpha _1}s + {\alpha _0}}} \\
+\end{gathered}\end{split}\]</div>
+<p>利用微分方程的实现手段（传递函数或状态空间的标准实现），根据 <span class="math notranslate nohighlight">\(e\)</span> 求解 <span class="math notranslate nohighlight">\(u + {{K}_x}{\mathbf{x}}\)</span> ，然后与 <span class="math notranslate nohighlight">\({{K}_x}{\mathbf{x}}\)</span> 相减即可得到系统的输入信号 <span class="math notranslate nohighlight">\(u\)</span> 。</p>
+<p>这种方法可以看作是对控制律的扩展，而状态估计器与一般的估计器并无大异，可以将这种方法命名为扩展控制律，其结构如下图所示。</p>
+<div class="figure align-center" style="width: 80%">
+<img alt="../_images/mc06a.png" src="../_images/mc06a.png" />
+</div>
+</div>
+<div class="section" id="id3">
+<h2>扩展状态估计器<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>既然控制律可以利用已知的参考信号动态进行扩展，那么状态估计器也应当能够扩展。我们可以这样想：如果系统的输出与参考之间存在误差，说明系统的输入端存在没有被完全抵消的扰动 <span class="math notranslate nohighlight">\(\rho\)</span> ，如果能够对这个扰动进行估计，令 <span class="math notranslate nohighlight">\(u=-K\mathbf{x}-\rho\)</span> 就可以在控制器的输出端抵消这个扰动，从而减小跟踪误差。</p>
+<p>从系统的输出向输入看，表现为各微分的组合，当参考信号 <span class="math notranslate nohighlight">\(r\)</span> 满足某个微分方程时， <span class="math notranslate nohighlight">\(\rho\)</span> 也一定会满足该微分方程，在本例中</p>
+<div class="math notranslate nohighlight">
+\[\ddot{\rho} + \alpha_1 \dot{\rho} +\alpha_0 \rho = 0\]</div>
+<p>类似扩展控制律，将扰动和系统状态合一起作为扩展状态，状态空间可表述为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left\{ {\begin{array}{*{20}{l}}
+  {{\mathbf{\dot{z}}} = {{A}_z}{\mathbf{z}} + {{B}_z}u = \left[ {\begin{array}{*{20}{c}}
+  0&amp;1&amp;{\mathbf{0}} \\
+  { - {\alpha _0}}&amp;{ - {\alpha _1}}&amp;{\mathbf{0}} \\
+  {B}&amp;{\mathbf{0}}&amp;{A}
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+  \rho  \\
+  {\dot{\rho} } \\
+  {\mathbf{x}}
+\end{array}} \right] + \left[ {\begin{array}{*{20}{c}}
+  0 \\
+  0 \\
+  {B}
+\end{array}} \right]u{\quad}} \\
+  {y = {{C}_z}{\mathbf{z}} = \left[ {\begin{array}{*{20}{c}}
+  0&amp;0&amp;{C}
+\end{array}} \right]{\mathbf{z}}}
+\end{array}} \right.\end{split}\]</div>
+<p>其对应的扩展状态估计器为</p>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{\hat{z}}} = {{A}_z}{\mathbf{z}} + {{B}_z}u + {L}_z\left( {y - {{C}_z}{\mathbf{z}}} \right)\]</div>
+<p>利用 <span class="math notranslate nohighlight">\({{A}_z} - {{L}_z}{{C}_z}\)</span> 的特征值设计使扩展状态估计器稳定，最后用 <span class="math notranslate nohighlight">\(u=-K\hat{\mathbf{x}} - \hat{\rho}\)</span> 即可完成整个控制器设计。本例中的闭环框图如下，状态估计器相对于普通的状态估计器增加了对扰动的建模，因此称为扩展状态估计器。</p>
+<div class="figure align-center" style="width: 80%">
+<img alt="../_images/mc06b.png" src="../_images/mc06b.png" />
+</div>
+</div>
+<div class="section" id="id4">
+<h2>参考资料<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><ol class="upperalpha simple" start="7">
+<li><ol class="upperalpha simple" start="6">
+<li><p>Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. Upper Saddle River, NJ, USA: Prentice Hall Press, 2014.</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>另请参阅： <a class="reference external" href="https://github.com/iChunyu/LearnCtrlSys/blob/master/ModernControl/note5_RobustTracking.mlx">鲁棒跟踪仿真测试</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../demo/index.html" class="btn btn-neutral float-right" title="控制系统应用示例" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="MC05_Reference.html" class="btn btn-neutral float-left" title="现代控制基础（5）：参考的引入" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, 大春雨.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

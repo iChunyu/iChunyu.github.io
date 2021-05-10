@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>符号计算 &mdash; 某春雨的后花园  文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="编写函数" href="function.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../control/index.html">控制理论学习记录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../demo/index.html">控制系统应用示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dsp/index.html">数字信号处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">MATLAB 使用技巧</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="function.html">编写函数</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">符号计算</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">定义符号变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">符号计算举例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">输出计算结果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">某春雨的后花园</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">MATLAB 使用技巧</a> &raquo;</li>
+        
+      <li>符号计算</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/matlab/symbolic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>符号计算<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用MATLAB的符号计算工具包辅助完成。</p>
+<div class="section" id="id2">
+<h2>定义符号变量<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在进行符号计算之前，需要提前定义符号变量，这可以通过函数 <code class="docutils literal notranslate"><span class="pre">sym</span></code> 和 <code class="docutils literal notranslate"><span class="pre">syms</span></code> 来完成。其中， <code class="docutils literal notranslate"><span class="pre">syms</span></code> 常用来批量定义符号变量，例如下面的第一行代码就同时定义了 <span class="math notranslate nohighlight">\(x\)</span> 、 <span class="math notranslate nohighlight">\(y\)</span> 、 <span class="math notranslate nohighlight">\(z\)</span> 三个符号变量，各符号变量之间用空格分开。</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">x</span><span class="w"> </span><span class="s">y</span><span class="w"> </span><span class="s">z</span><span class="w"></span>
+</pre></div>
+</div>
+<p>利用 <code class="docutils literal notranslate"><span class="pre">syms</span></code> 所定义的符号变量，其变量名与符号相同。若想为符号另外指定变量名，可采用 <code class="docutils literal notranslate"><span class="pre">sym</span></code> 的方式进行，如：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega_0&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">rs1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_i_s&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">rs2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_i__i_s&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">Vprms</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;V_p_rms&#39;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>在声明符号名时（单引号里边的字符串），下划线可以看作特殊的分隔符。单个下划线后面的字符表示下标，这与LaTeX相似，并且可以多次采用单下划线对下标进行分割，这会在最后导出LaTeX代码时自动插入逗号。类似地，若想为符号名加上标，可以连用两个下划线，其后的字符表示上标。例如上面所定义的四个符号变量分别代表以下符号：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>符号变量</p></th>
+<th class="head"><p>符号名</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>w0</p></td>
+<td><p><span class="math notranslate nohighlight">\(\omega _{0}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>rs1</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{i,s}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>rs2</p></td>
+<td><p><span class="math notranslate nohighlight">\(r_{i,s}^{i}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Vprms</p></td>
+<td><p><span class="math notranslate nohighlight">\(V_{p,\mathrm{rms}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>使用下划线为符号指定下标和上标时，上标或下标的声明顺序无关紧要，即无所谓先用连续下划线指定上标还是先用单下划线指定下标，甚至上下标交叉指定都不影响符号名。但分割指定多个上下标时，符号名下标的顺序与变量名声明时的顺序一致。例如上面 <span class="math notranslate nohighlight">\(r_{i,s}^{i}\)</span> 的定义，下标先指定的是 <span class="math notranslate nohighlight">\(i\)</span> ，因此符号名的下标中 <span class="math notranslate nohighlight">\(i\)</span> 在前。这一点对一些表示相对关系的符号中至关重要。</p>
+<p>除此之外， <code class="docutils literal notranslate"><span class="pre">sym</span></code> 还可以指定符号变量的维度，MATLAB会自动补充索引，如下：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;r&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="p">]);</span><span class="w">         </span><span class="c">% r = [ r1, r2, r3 ]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>一般情况下，MATLAB会自动地将符号名末尾的数字标识为下标，但也可以在定义变量名时候可以特殊地用 <code class="docutils literal notranslate"><span class="pre">%d</span></code> 显式指定索引出现的位置，如</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_%d&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="p">]);</span><span class="w">     </span><span class="c">% 行向量，索引指定为下标</span><span class="w"></span>
+<span class="n">r2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;r__%d&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="p">]);</span><span class="w">    </span><span class="c">% 行向量，索引指定为上标</span><span class="w"></span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;A_%d__%d&#39;</span><span class="p">,[</span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="p">]);</span><span class="w">  </span><span class="c">% 矩阵，行列索引分别为下标和上标</span><span class="w"></span>
+</pre></div>
+</div>
+<p>定义完符号变量后，我们还可以使用 <code class="docutils literal notranslate"><span class="pre">assume</span></code> 命令对变量进行约束，例如我们可以对符号变量 <code class="docutils literal notranslate"><span class="pre">x</span></code> 进行如下设置</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>约束条件</p></th>
+<th class="head"><p>命令</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>实数</p></td>
+<td><p>assume(x,‘real’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>有理数</p></td>
+<td><p>assume(x,‘rational’)</p></td>
+</tr>
+<tr class="row-even"><td><p>正数</p></td>
+<td><p>assume(x,‘positive’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>正整数</p></td>
+<td><p>assume(x,{‘positive’,‘integer’})</p></td>
+</tr>
+<tr class="row-even"><td><p>小于  -1 或大于 1</p></td>
+<td><p>assume(x&lt;-1 | x&gt;1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>2~10 之间的整数</p></td>
+<td><p>assume(in(x,‘integer’) &amp; x&gt;2 &amp; x&lt;10 )</p></td>
+</tr>
+<tr class="row-even"><td><p>不是整数</p></td>
+<td><p>assume(~in(z,‘integer’))</p></td>
+</tr>
+<tr class="row-odd"><td><p>不为零</p></td>
+<td><p>assume(x ~= 0)</p></td>
+</tr>
+<tr class="row-even"><td><p>偶数</p></td>
+<td><p>assume(x/2,‘integer’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>奇数</p></td>
+<td><p>assume((x-1)/2,‘integer’)</p></td>
+</tr>
+<tr class="row-even"><td><p>大于 0 且小于 <span class="math notranslate nohighlight">\(2\pi\)</span></p></td>
+<td><p>assume(x&gt;0 &amp; x&lt;2*pi)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\pi\)</span> 的整数倍</p></td>
+<td><p>assume(x/pi,‘integer’)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>符号计算举例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>我们以计算微分方程为例展示符号计算的一般步骤。假设待求解的微分方程为弹簧-质量-阻尼系统动力学方程：</p>
+<div class="math notranslate nohighlight">
+\[\ddot x + 2 \xi \omega_0 \dot x + \omega_0^2 = sin(\omega t)\]</div>
+<p>设初始位移为 <span class="math notranslate nohighlight">\(x_0\)</span> ，初速度为 <span class="math notranslate nohighlight">\(v_0\)</span> ，求解位移响应 <span class="math notranslate nohighlight">\(x(t)\)</span> 。</p>
+<p>我们可以采用以下代码：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% 定义符号变量</span><span class="w"></span>
+<span class="n">syms</span><span class="w"> </span><span class="s">x(t)</span><span class="w"> </span><span class="s">xi</span><span class="w"> </span><span class="s">x0</span><span class="w"> </span><span class="s">v0</span><span class="w"> </span><span class="s">t</span><span class="w"></span>
+<span class="n">ain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;a_in&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span><span class="w">   </span><span class="c">% 定义变量的同时引入约束</span><span class="w"></span>
+<span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">w0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega_0&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="c">% 引入阻尼比约束</span><span class="w"></span>
+<span class="n">assume</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="n">assume</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="n">assume</span><span class="p">(</span><span class="n">xi</span><span class="o">&lt;</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">xi</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+
+<span class="c">% 构造微分方程</span><span class="w"></span>
+<span class="n">dx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diff</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w">               </span><span class="c">% 需要单独定义一阶导数才能引入初速度约束</span><span class="w"></span>
+<span class="n">d2x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="nb">eq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">d2x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">xi</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">dx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">w0</span>^<span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ain</span><span class="p">;</span><span class="w"></span>
+<span class="nb">disp</span><span class="p">(</span><span class="nb">eq</span><span class="p">)</span><span class="w"></span>
+
+<span class="c">% 求解微分方程</span><span class="w"></span>
+<span class="n">S</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">dsolve</span><span class="p">(</span><span class="nb">eq</span><span class="p">,[</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">dx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="n">v0</span><span class="p">]);</span><span class="w"></span>
+<span class="n">S</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">simplify</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>最后解得</p>
+<div class="math notranslate nohighlight">
+\[\frac{a_{\mathrm{in}}}{{\omega _{0}}^2}-\frac{a_{\mathrm{in}}\,{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\cos\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)}{{\omega _{0}}^2}-\frac{{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\sin\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)\,\left(a_{\mathrm{in}}\,\xi -\omega _{0}\,v_{0}\right)}{{\omega _{0}}^2\,\sqrt{1-\xi }\,\sqrt{\xi +1}}\]</div>
+</div>
+<div class="section" id="id4">
+<h2>输出计算结果<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>如果采用MATLAB的实时脚本运行上面的代码，MATLAB将会自动将公式转化为LaTeX公式，如下图所示：</p>
+<div class="figure align-center" style="width: 90%">
+<img alt="../_images/symbolic.png" src="../_images/symbolic.png" />
+</div>
+<p>更一般地，我们更希望将计算结果转化为LaTeX代码，通过MathType或LaTeX整合到文档中，这时可以使用 <code class="docutils literal notranslate"><span class="pre">latex</span></code> ，如：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">latex</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">ans</span><span class="w"> </span><span class="p">=</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&#39;\frac{a_{\mathrm{in}}}{{\omega _{0}}^2}-\frac{a_{\mathrm{in}}\,{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\cos\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)}{{\omega _{0}}^2}-\frac{{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\sin\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)\,\left(a_{\mathrm{in}}\,\xi -\omega _{0}\,v_{0}\right)}{{\omega _{0}}^2\,\sqrt{1-\xi }\,\sqrt{\xi +1}}&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>如果大家仔细观察MATLAB转换的LaTeX代码，会发现它对希腊字母进行了识别和转换，对字符串下标也进行了识别并利用 <code class="docutils literal notranslate"><span class="pre">\mathrm{}</span></code> 将其转化为正体。如果再仔细一些，自然对数的底 <span class="math notranslate nohighlight">\(\mathrm{e}\)</span> 也是正体。可见MATLAB对这种细节的处理非常到位。</p>
+<p>生成的代码较长时，可以使用 <code class="docutils literal notranslate"><span class="pre">clipboard</span></code> 命令将结果直接复制到系统剪切板中：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">texCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">latex</span><span class="p">(</span><span class="n">S</span><span class="p">);</span><span class="w"></span>
+<span class="nb">clipboard</span><span class="p">(</span><span class="s">&#39;copy&#39;</span><span class="p">,</span><span class="n">texCode</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="function.html" class="btn btn-neutral float-left" title="编写函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2021, 大春雨.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
