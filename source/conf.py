@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = '某春雨的后花园'
+project = '大春雨的后花园'
 copyright = '2021, 大春雨'
 author = '大春雨'
 
@@ -27,9 +27,7 @@ author = '大春雨'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-    'sphinx.ext.mathjax',
-    'sphinxemoji.sphinxemoji']
+extensions = ['sphinx.ext.mathjax']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
