@@ -432,7 +432,7 @@ Inkscape
     python setup.py --pdflatex-executable=/usr/local/texlive/2021/bin/x86_64-linux/pdflatex --xelatex-executable=/usr/local/texlive/2021/bin/x86_64-linux/xelatex --lualatex-executable=/usr/local/texlive/2021/bin/x86_64-linux/lualatex
 
 
-TexText 扩展可以自己补充宏包，设置文件通常在 ``~/.config/inkscape/extensions/textext/default_packages.tex`` 。一般我会使用以下宏包：
+可以编辑 ``~/.config/inkscape/extensions/textext/default_packages.tex`` 对 TexText 宏包进行设置。一般我会使用以下宏包：
 
 .. code-block:: LaTeX
 

@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
 
   
   
@@ -34,6 +35,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script src="../_static/translations.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -383,7 +386,7 @@ export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py --pdflatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/pdflatex --xelatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/xelatex --lualatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/lualatex
 </pre></div>
 </div>
-<p>TexText 扩展可以自己补充宏包，设置文件通常在 <code class="docutils literal notranslate"><span class="pre">~/.config/inkscape/extensions/textext/default_packages.tex</span></code> 。一般我会使用以下宏包：</p>
+<p>可以编辑 <code class="docutils literal notranslate"><span class="pre">~/.config/inkscape/extensions/textext/default_packages.tex</span></code> 对 TexText 宏包进行设置。一般我会使用以下宏包：</p>
 <div class="highlight-LaTeX notranslate"><div class="highlight"><pre><span></span><span class="k">\usepackage</span><span class="nb">{</span>metalogo<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
 <span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
