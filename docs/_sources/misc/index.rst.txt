@@ -9,3 +9,4 @@
    reStructuredText
    learn_git
    git_tricks
+   install_manjaro
