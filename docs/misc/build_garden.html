@@ -95,6 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id3">Sphinx 的安装与配置</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">GitHub 源码托管</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">Read the Docs 网站部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github-pages">GitHub Pages 网站部署</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reStructuredText.html">reStructuredText 入门</a></li>
@@ -241,7 +242,7 @@
 <span class="nb">echo</span> <span class="s2">&quot;build/&quot;</span> &gt; .gitignore
 git add .
 git commit -m <span class="s1">&#39;Initial commit&#39;</span>
-git remote add origin git@github.com:iChunyu/sphinx-doc.git
+git remote add origin git@github.com:iChunyu/iChunyu.github.io.git
 git push -u origin master
 </pre></div>
 </div>
@@ -254,14 +255,21 @@ git push -u origin master
 <li><p>添加远程分支，注意自己远程分支的地址；</p></li>
 <li><p>将当前分支推送到远程分支。</p></li>
 </ol>
-<p>OK，代码已经提交到远程仓库了，不信的小朋友可以打开 GitHub 验证一下。</p>
 </div>
 <div class="section" id="id5">
 <h2>Read the Docs 网站部署<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>注册并登录 Read the Docs ，与发现有个 <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">a</span> <span class="pre">Project</span></code> 按钮，点之。根据提示与 GitHub 绑定，然后会刷新出仓库列表，选择保存 Sphinx 项目的仓库，然后根据提示进行设置，完成导入即可。</p>
 <p>在 Read the Docs 导入项目之后，会在相应的 GitHub 仓库部署一个钩子。这个钩子的功能就是检测该仓库的提交，每当有新的提交， Read the Docs 将会根据最新的仓库重新编译 Sphinx 项目，并部署在项目所设置的网站上。</p>
 <p>这样以来就基本配置好了，剩下的只要依据 <a class="reference external" href="http://www.pythondoc.com/sphinx/index.html">reStructuredText</a> 的规则编写文档即可。当然，Sphinx 也可以通过插件提供 Markdown 支持，但是我喜新厌旧，就不多介绍了。</p>
-<p>本来还想写写这个文档的编写，一想，源码都开源到了 <a class="reference external" href="https://github.com/iChunyu/sphinx-doc">GitHub 仓库</a> ，有兴趣的还是自己去看吧，我偷懒去了~</p>
+</div>
+<div class="section" id="github-pages">
+<h2>GitHub Pages 网站部署<a class="headerlink" href="#github-pages" title="永久链接至标题">¶</a></h2>
+<p>生成的静态网站还可以直接由 GitHub Pages 进行托管，但需要遵循相关规则：</p>
+<ol class="arabic simple">
+<li><p>生成的静态网站所有内容都要放置在根目录 <code class="docutils literal notranslate"><span class="pre">docs/</span></code> 文件夹下： <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">build/html/*</span> <span class="pre">docs/</span></code>；</p></li>
+<li><p>在根目录和 <code class="docutils literal notranslate"><span class="pre">docs/</span></code> 下添加 <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> 文件以取消 nojekyll 支持： <code class="docutils literal notranslate"><span class="pre">tuoch</span> <span class="pre">.nojekyll</span></code>；</p></li>
+<li><p>在 GitHub 仓库设置的 Pages 选项中修改文件夹为 <code class="docutils literal notranslate"><span class="pre">docs/</span></code> 。</p></li>
+</ol>
 </div>
 </div>
 

@@ -103,7 +103,7 @@ GitHub 源码托管
    echo "build/" > .gitignore
    git add .
    git commit -m 'Initial commit'
-   git remote add origin git@github.com:iChunyu/sphinx-doc.git
+   git remote add origin git@github.com:iChunyu/iChunyu.github.io.git
    git push -u origin master
 
 
@@ -119,9 +119,6 @@ GitHub 源码托管
 .. _Git: https://git-scm.com/
 
 
-OK，代码已经提交到远程仓库了，不信的小朋友可以打开 GitHub 验证一下。
-
-
 
 Read the Docs 网站部署
 ------------------------------------------
@@ -135,7 +132,19 @@ Read the Docs 网站部署
 这样以来就基本配置好了，剩下的只要依据 `reStructuredText <http://www.pythondoc.com/sphinx/index.html>`_ 的规则编写文档即可。当然，Sphinx 也可以通过插件提供 Markdown 支持，但是我喜新厌旧，就不多介绍了。
 
 
-本来还想写写这个文档的编写，一想，源码都开源到了 `GitHub 仓库 <https://github.com/iChunyu/sphinx-doc>`_ ，有兴趣的还是自己去看吧，我偷懒去了~
+
+GitHub Pages 网站部署
+------------------------------------------
+
+生成的静态网站还可以直接由 GitHub Pages 进行托管，但需要遵循相关规则：
+
+#. 生成的静态网站所有内容都要放置在根目录 ``docs/`` 文件夹下： ``cp -r build/html/* docs/``；
+#. 在根目录和 ``docs/`` 下添加 ``.nojekyll`` 文件以取消 nojekyll 支持： ``tuoch .nojekyll``；
+#. 在 GitHub 仓库设置的 Pages 选项中修改文件夹为 ``docs/`` 。
 
 
-.. Last edited by iChunyu on 2021-04-11
+
+
+
+.. iChunyu, 2021-05-12, update GitHub pages
+.. iChunyu, 2021-04-11, write the doc
