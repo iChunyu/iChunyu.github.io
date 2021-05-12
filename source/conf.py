@@ -15,12 +15,6 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 
-# Requirements: (pip intall)
-#           sphinx
-#           sphinx_rtd_theme
-#           sphinx_copybutton
-
-
 
 # -- Project information -----------------------------------------------------
 
