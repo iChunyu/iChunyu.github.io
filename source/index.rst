@@ -21,15 +21,14 @@
 ----
 
 .. toctree::
-   :maxdepth: 2
-   :caption: 目录
-   
-   misc/index
-   control/index
-   demo/index
-   dsp/index
-   latex/index
-   matlab/index
+    :maxdepth: 2
+    :caption: 目录
+    
+    misc/index
+    control/index
+    dsp/index
+    latex/index
+    matlab/index
 
 .. Indices and tables
 .. ==================
