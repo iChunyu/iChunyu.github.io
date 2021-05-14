@@ -15,3 +15,5 @@
     MC04_Regulator
     MC05_Reference
     MC06_RobustTracking
+
+    demo_BangBangCtrl
