@@ -11,7 +11,7 @@ Git 使用技巧
 清空历史提交
 -----------------------------------------
 
-随着提交越来越多，仓库体积也会越来越大。对于个人维护的项目，如果想要清理过去所有提交以减小仓库体积，可以使用下面这种简单粗暴的方法 [#clear-commits]_
+随着提交越来越多，仓库体积也会越来越大。对于个人维护的项目，如果想要清理过去所有提交以减小仓库体积，可以使用下面这种 `简单粗暴的方法 <https://zhuanlan.zhihu.com/p/73029640>`_ ：
 
 #. 创建孤立分支并将当前提交的文件检出到新分支： ``git checkout --orphan <newBranch>``
 #. 添加所有文件： ``git add .``
@@ -20,15 +20,25 @@ Git 使用技巧
 #. 重命名新分支： ``git branch -m master``
 #. 强制提交到远程分支： ``git push -f origin master``
 
-.. hint::
+.. warning::
     这种方法简单粗暴，会不可恢复地删除过往历史，在执行该操作前请做好备份。
 
 
-参考资料
+
+提取特定版本的文件
 -----------------------------------------
 
-.. [#clear-commits] `Git 删除历史 Commit <https://zhuanlan.zhihu.com/p/73029640>`_
+可以采取下面的命令将特定版本中的某个文件提取出来，并写入到一个新文件中：
+
+.. code-block:: bash
+
+    git show <comment-id>:<filename> > <newfilename>        # 用法
+    git show 7926ba:spdoc.rst > spdoc.temp.rst              # 示例
+
+
+.. note::
+    需要准确知道待提取的文件在对应版本下的名字。对文件夹内的文件，应当以相对路径的形式给出。
 
 
 
-.. Last edited by iChunyu on 2021-05-10
+.. Last edited by iChunyu on 2021-05-17
