@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="welcome.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="311.04665"
+     inkscape:cy="346.45886"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:snap-center="true"
+     inkscape:object-paths="true"
+     inkscape:snap-bbox="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#26a269;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       d="m 66.074524,87.007126 c -0.942266,2.879103 0.05854,5.001722 0.05854,5.001722"
+       id="path891" />
+    <text
+       xml:space="preserve"
+       style="font-size:8.46667px;line-height:1.25;font-family:'Noto Sans CJK SC';-inkscape-font-specification:'Noto Sans CJK SC';text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="43.082077"
+       y="53.999599"
+       id="text835"><tspan
+         sodipodi:role="line"
+         x="43.082077"
+         y="53.999599"
+         style="font-size:8.46667px;stroke-width:0.264583"
+         id="tspan839">Welcome  to</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.46667px;line-height:1.25;font-family:'Noto Sans CJK SC';-inkscape-font-specification:'Noto Sans CJK SC';text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="39.898617"
+       y="65.008736"
+       id="text851"><tspan
+         sodipodi:role="line"
+         x="39.898617"
+         y="65.008736"
+         style="font-size:8.46667px;stroke-width:0.264583"
+         id="tspan849">SpringGarden</tspan></text>
+    <g
+       id="g881">
+      <rect
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#b5835a;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+         id="rect877"
+         width="5.9085584"
+         height="31.816036"
+         x="136.13535"
+         y="60.19281" />
+      <ellipse
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#26a269;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+         id="path873"
+         cx="138.9444"
+         cy="60.19281"
+         rx="11.321447"
+         ry="14.23447" />
+    </g>
+    <g
+       id="g887"
+       transform="matrix(0.52847636,0,0,0.53033663,44.655111,43.213185)"
+       style="stroke-width:1.88892">
+      <rect
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#b5835a;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.472227;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+         id="rect883"
+         width="5.9085584"
+         height="31.816036"
+         x="136.13535"
+         y="60.19281" />
+      <ellipse
+         style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#26a269;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.472227;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+         id="ellipse885"
+         cx="138.9444"
+         cy="60.19281"
+         rx="11.321447"
+         ry="14.23447" />
+    </g>
+    <circle
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#99c1f1;fill-opacity:1;fill-rule:evenodd;stroke:#99c1f1;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       id="path889"
+       cx="103.7025"
+       cy="34.378433"
+       r="0.53128201"
+       transform="rotate(34.44553)" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#26a269;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       d="m 69.139545,86.496277 c -2.101025,2.816415 -1.775977,5.512571 -1.775977,5.512571"
+       id="path900" />
+    <ellipse
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#99c1f1;fill-opacity:1;fill-rule:evenodd;stroke:#99c1f1;stroke-width:0.250003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       id="circle902"
+       cx="110.68793"
+       cy="-2.5330391"
+       transform="matrix(0.60634722,0.7952,-0.79912765,0.60116137,0,0)"
+       rx="0.61627412"
+       ry="0.61740363" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#26a269;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       d="m 71.113641,85.772353 c 1.182152,3.598189 -0.09138,6.236495 -0.09138,6.236495"
+       id="path904" />
+    <ellipse
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#99c1f1;fill-opacity:1;fill-rule:evenodd;stroke:#99c1f1;stroke-width:0.250015;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       id="ellipse906"
+       cx="-9.8303585"
+       cy="110.8369"
+       transform="matrix(-0.8315286,0.55548194,0.56785614,0.82312782,0,0)"
+       rx="0.66785991"
+       ry="0.66684246" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       d="M 38.454875,92.008848 H 164.22308"
+       id="path871" />
+  </g>
+</svg>

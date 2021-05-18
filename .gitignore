@@ -2,3 +2,6 @@ build/
 source/_build/
 unGit/
 .vscode/
+
+*presenter.sozi.html
+*.soze.json

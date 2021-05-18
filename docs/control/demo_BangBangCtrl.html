@@ -104,7 +104,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">相图与砰砰控制</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#phase-portrait">相图（Phase Portrait）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">砰砰控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">参考资料</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参考资料</a></li>
 </ul>
 </li>
 </ul>
@@ -206,7 +206,7 @@
 <div class="figure align-center" style="width: 60%">
 <img alt="../_images/bangbangctrl02.png" src="../_images/bangbangctrl02.png" />
 </div>
-<p>图中，蓝色曲线代表在某状态处施加正向最大控制量时系统状态的轨迹，其由第四象限拐向第一象限；红色曲线为施加负向最大控制量时状态的轨迹，由第二象限拐向第三象限。可见，存在一个临界的曲线，如图中绿色曲线所示，当初始状态在该曲线上方时，只要施加负向控制量可使状态回到绿色曲线，反之只要施加正向控制量即可回到绿色曲线。因此这个绿色的曲线就是控制信号的切换曲线 <a class="footnote-reference brackets" href="#fraklin" id="id4">1</a> 。</p>
+<p>图中，蓝色曲线代表在某状态处施加正向最大控制量时系统状态的轨迹，其由第四象限拐向第一象限；红色曲线为施加负向最大控制量时状态的轨迹，由第二象限拐向第三象限。可见，存在一个临界的曲线，如图中绿色曲线所示，当初始状态在该曲线上方时，只要施加负向控制量可使状态回到绿色曲线，反之只要施加正向控制量即可回到绿色曲线。因此这个绿色的曲线就是控制信号的切换曲线。</p>
 <p>临界曲线的解析式分别对应从原点处分别按 <span class="math notranslate nohighlight">\(u = \pm u_{\rm max} = \pm 1\)</span> 施加控制所形成的状态轨迹，其表达式为</p>
 <div class="math notranslate nohighlight">
 \[x_1 + \frac{x_2 |x_2|}{2u_{\rm max}} = 0\]</div>
@@ -221,7 +221,7 @@
 <div class="figure align-center" style="width: 90%">
 <img alt="../_images/bangbangctrl04.png" src="../_images/bangbangctrl04.png" />
 </div>
-<p>砰砰控制的高频颤振使其在实际应用中受到限制，为了解决这个问题，韩京清老师基于离散时间模型对控制信号进行了改进，提出了如下算法 <a class="footnote-reference brackets" href="#fhan" id="id5">2</a> 。</p>
+<p>砰砰控制的高频颤振使其在实际应用中受到限制，为了解决这个问题，韩京清老师基于离散时间模型对控制信号进行了改进，提出了如下算法：</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathrm{fhan} = \left\{
     \begin{aligned}
@@ -240,21 +240,18 @@
 <img alt="../_images/bangbangctrl05.png" src="../_images/bangbangctrl05.png" />
 </div>
 </div>
-<div class="section" id="id6">
-<h2>参考资料<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
-<dl class="footnote brackets">
-<dt class="label" id="fraklin"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
-<dd><ol class="upperalpha simple" start="7">
+<div class="section" id="id4">
+<h2>参考资料<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><ol class="upperalpha simple" start="7">
 <li><ol class="upperalpha simple" start="6">
 <li><p>Franklin, J. D. Powell, A. Emami-Naeini. Feedback Control of Dynamic Systems. 7th ed. 2014. p673-676.</p></li>
 </ol>
 </li>
 </ol>
-</dd>
-<dt class="label" id="fhan"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
-<dd><p>韩京清, 自抗扰控制技术: 估计补偿不确定因素的控制技术. 国防工业出版社. 2008. p107.</p>
-</dd>
-</dl>
+</li>
+<li><p>韩京清, 自抗扰控制技术: 估计补偿不确定因素的控制技术. 国防工业出版社. 2008. p107.</p></li>
+</ol>
 </div>
 </div>
 
