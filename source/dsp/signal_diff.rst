@@ -34,7 +34,7 @@
 可见数值差分与理想微分 :math:`s` 的传递函数存在差异，只有采样率远大于被微分信号的频率时才可以用差分代替微分。
 
 
-除此之外，在 Nyquist 采样定理的约束下，及 :math:`f < \frac{1}{2} f_s` 下，数值差分的幅频响应是单调递增的，这意味着信号中的高频噪声会被数值差分所放大，很容易导致时域的微分信号淹没在高频噪声之中。
+除此之外，在 Nyquist 采样定理的约束，即 :math:`f < \frac{1}{2} f_s` 条件下，数值差分的幅频响应是单调递增的，这意味着信号中的高频噪声会被数值差分所放大，很容易导致时域的微分信号淹没在高频噪声之中。
 
 
 为了说明数值差分对噪声的放大，考察下面的信号：左图橙色曲线为理想的单频信号，蓝色曲线引入了白噪声并将其假设为实际采集到的信号，采样率设置为 :math:`f_s = 200 \, \text{Hz}` 。右图中蓝色曲线是数值差分的结果，可见微分信号完全淹没在高频噪声之中，单独的数值差分难以直接使用；配合低通滤波后的输出为橙色曲线所示，可以看到微分信号；理想的微分信号如绿色曲线所示。
@@ -149,3 +149,75 @@
 
 
 .. Last edited by iChunyu on 2021-05-25
+
+
+.. 嘿，彩蛋环节：附自编跟踪微分器的 MATLAB 函数：
+.. （开头的两个点是 reStructuredText 的注释符号，复制代码后记得删除哟）
+
+.. % Tracking differentiator to process data
+.. % [du,uo] = trackdiff(ui,fs,fc,N)
+.. %    ui --- input data
+.. %    fs --- sample frequency (Hz)
+.. %    fc --- filter bandwidth (Hz)
+.. %    N  --- filter factor, generally h = N*Ts
+.. %    du --- differential data
+.. %    uo --- low-pass filtered data
+
+.. % XiaoCY 2021-05-17
+
+.. %% main
+.. function varargout = trackdiff(varargin)
+    
+..     narginchk(3,4)
+..     nargoutchk(1,2)
+    
+..     switch nargin
+..         case 3
+..             ui = varargin{1};
+..             Ts = 1/varargin{2};
+..             fc = varargin{3};
+..             h = Ts;
+..         case 4
+..             ui = varargin{1};
+..             Ts = 1/varargin{2};         % Ts = 1/fs
+..             fc = varargin{3};
+..             h = Ts*varargin{4};         % h = n*Ts
+..     end
+..     r = (2*pi*fc/1.44)^2;               % approximation: wc = 1.14*sqrt(r)
+..     d = r*h^2;
+    
+..     [nRow,nCol] = size(ui);
+..     if nRow == 1 && nCol~=1
+..        ui = ui';
+..        nRow = nCol;
+..        nCol = 1;
+..     end
+..     [x1,x2] = deal(zeros(1,nCol));
+..     [uo,du] = deal(nan(nRow,nCol));
+    
+..     for k = 1:nRow
+..         % fhan: p107, E.q.(2.7.24)
+..         a0 = h*x2;
+..         y = x1-ui(k,:)+a0;
+..         a1 = sqrt(d.*(d+8*abs(y)));
+..         a2 = a0+sign(y).*(a1-d)/2;
+..         sy = (sign(y+d)-sign(y-d))/2;
+..         a = (a0+y-a2).*sy+a2;
+..         sa = (sign(a+d)-sign(a-d))/2;
+..         fhan = -r*(a/d-sign(a)).*sa-r*sign(a);
+        
+..         x2 = x2+fhan*Ts;
+..         x1 = x1+x2*Ts;
+        
+..         du(k,:) = x2;
+..         uo(k,:) = x1;
+..     end
+    
+..     switch nargout
+..         case 1
+..             varargout{1} = du;
+..         case 2
+..             varargout{1} = du;
+..             varargout{2} = uo;
+..     end
+.. end

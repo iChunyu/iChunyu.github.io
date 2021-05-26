@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
 
   
@@ -32,13 +34,14 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
         <script src="../_static/translations.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -74,7 +77,7 @@
           
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="在文档中搜索" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -165,7 +168,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/dsp/signal_diff.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/dsp/signal_diff.rst.txt" rel="nofollow"> 查看页面源码</a>
           
         
       </li>
@@ -199,7 +202,7 @@
     &amp;= f_s \sin 2\pi\frac{f}{f_s} \approx 2\pi f = \left| s \right| \quad  (f \ll f_s)
 \end{aligned}\end{split}\]</div>
 <p>可见数值差分与理想微分 <span class="math notranslate nohighlight">\(s\)</span> 的传递函数存在差异，只有采样率远大于被微分信号的频率时才可以用差分代替微分。</p>
-<p>除此之外，在 Nyquist 采样定理的约束下，及 <span class="math notranslate nohighlight">\(f &lt; \frac{1}{2} f_s\)</span> 下，数值差分的幅频响应是单调递增的，这意味着信号中的高频噪声会被数值差分所放大，很容易导致时域的微分信号淹没在高频噪声之中。</p>
+<p>除此之外，在 Nyquist 采样定理的约束，即 <span class="math notranslate nohighlight">\(f &lt; \frac{1}{2} f_s\)</span> 条件下，数值差分的幅频响应是单调递增的，这意味着信号中的高频噪声会被数值差分所放大，很容易导致时域的微分信号淹没在高频噪声之中。</p>
 <p>为了说明数值差分对噪声的放大，考察下面的信号：左图橙色曲线为理想的单频信号，蓝色曲线引入了白噪声并将其假设为实际采集到的信号，采样率设置为 <span class="math notranslate nohighlight">\(f_s = 200 \, \text{Hz}\)</span> 。右图中蓝色曲线是数值差分的结果，可见微分信号完全淹没在高频噪声之中，单独的数值差分难以直接使用；配合低通滤波后的输出为橙色曲线所示，可以看到微分信号；理想的微分信号如绿色曲线所示。</p>
 <div class="figure align-center" style="width: 100%">
 <img alt="../_images/diff01.png" src="../_images/diff01.png" />
@@ -269,8 +272,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../latex/index.html" class="btn btn-neutral float-right" title="LaTeX 学习记录" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="kalman_filter.html" class="btn btn-neutral float-left" title="卡尔曼滤波" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../latex/index.html" class="btn btn-neutral float-right" title="LaTeX 学习记录" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="kalman_filter.html" class="btn btn-neutral float-left" title="卡尔曼滤波" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
     </div>
 
   <hr/>
@@ -284,11 +287,11 @@
     
     
     
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
     
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发. 
 
 </footer>
         </div>
