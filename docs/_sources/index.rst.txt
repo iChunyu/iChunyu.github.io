@@ -3,7 +3,7 @@
 
 .. raw:: html
 
-    <iframe src="_static/welcome.sozi.html" width="100%" frameborder="0" marginwidth="0" height="300">
+    <iframe src="_static/welcome.sozi.html" width="100%" frameborder="0" height="400pt">
         My Sozi presentation should play here.
     </iframe>
 
