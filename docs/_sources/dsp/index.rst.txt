@@ -10,3 +10,4 @@
 
     kalman_filter
     signal_diff
+    filter_design
