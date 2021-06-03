@@ -103,6 +103,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Git 使用技巧</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">清空历史提交</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">提取特定版本的文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#http">保存 HTTP 帐号密码</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="install_manjaro.html">Manjaro 安装记录</a></li>
@@ -211,6 +212,13 @@ git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1"># �
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p>需要准确知道待提取的文件在对应版本下的名字。对文件夹内的文件，应当以相对路径的形式给出。</p>
+</div>
+</div>
+<div class="section" id="http">
+<h2>保存 HTTP 帐号密码<a class="headerlink" href="#http" title="永久链接至标题">¶</a></h2>
+<p>如果使用 HTTP 的方式克隆仓库，在每次提交代码到远程仓库时都需要提供帐号和密码，这无疑是个繁琐的操作。为了将密码保存在本地，可以使用 <a class="reference external" href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8#_credential_caching">储存凭证</a> 的功能：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global credential.helper store
+</pre></div>
 </div>
 </div>
 </div>

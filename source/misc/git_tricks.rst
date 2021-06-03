@@ -40,5 +40,11 @@ Git 使用技巧
     需要准确知道待提取的文件在对应版本下的名字。对文件夹内的文件，应当以相对路径的形式给出。
 
 
+保存 HTTP 帐号密码
+-----------------------------------------
 
-.. Last edited by iChunyu on 2021-05-17
+如果使用 HTTP 的方式克隆仓库，在每次提交代码到远程仓库时都需要提供帐号和密码，这无疑是个繁琐的操作。为了将密码保存在本地，可以使用 `储存凭证 <https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8#_credential_caching>`_ 的功能：
+
+.. code-block:: bash
+
+    git config --global credential.helper store
