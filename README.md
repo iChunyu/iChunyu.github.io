@@ -1,13 +1,7 @@
-# 某春雨的后花园
+<h2> <img src="https://emojis.slackmojis.com/emojis/images/1613285697/12806/meow_attention.png?1613285697" width="30" /> 嗨，你好！ </h2>
 
-嘿，恭喜你找到了我 [后花园](https://ichunyu.readthedocs.io/zh_CN/latest/) 的源码。老实说关于这个仓库是否公开我还犹豫了一下，但是转念一想，我写的东西还没到值得被剽窃的水平，倒不如把源码公开，接受大家的指正。请不要吝啬你的建议或意见，欢迎提交 [Issue](https://github.com/iChunyu/sphinx-doc/issues) 或在 [讨论区](https://github.com/iChunyu/sphinx-doc/discussions) 留言。
+这里是大春雨的后花园，由之前的公众号迁移过来。
 
+如果有什么问题我能帮助你，或者你有什么新的想法、意见或建议，请不要吝啬 [新建 Issue](https://github.com/iChunyu/iChunyu.github.io/issues/new) 来进行讨论。
 
-## 为什么叫后花园？
-
-我之前是学土木的，土木嘛，没事就喜欢修修建建。想着“后宫佳丽三千人……“。咳咳，修个后花园也还是挺不错的。
-
-
-## 后花园的目标？
-
-随便学学，随便记记，偶尔查查。总之就是没有目标。
+这个博客我也同时部署在了 [Read the Docs](https://springgarden.readthedocs.io/zh_CN/latest/) 作为备份，同时它也自动生成了 [PDF](https://springgarden.readthedocs.io/_/downloads/zh_CN/latest/pdf/) 文件以供下载，但排版……我就不管了哈哈。
