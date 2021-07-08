@@ -1,112 +1,126 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="现代控制基础（2）：状态反馈" href="MC02_StateFeedback.html" /><link rel="prev" title="控制理论学习记录" href="index.html" />
 
-
-<!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>现代控制基础（1）：系统的描述 &mdash; 某春雨的后花园  文档</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/mystyle.css" type="text/css" />
-
-  
-  
-    <link rel="shortcut icon" href="../_static/misaka.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
+        <title>现代控制基础（1）：系统的描述 - 某春雨的后花园</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
+  <body dir="">
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
 
-    
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="现代控制基础（2）：状态反馈" href="MC02_StateFeedback.html" />
-    <link rel="prev" title="控制理论学习记录" href="index.html" /> 
-</head>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
-<body class="wy-body-for-nav">
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
 
-          
-            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="在文档中搜索" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">目录</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">控制理论学习记录</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">现代控制基础（1）：系统的描述</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">系统的微分方程</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">系统的传递函数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">系统的状态空间</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">三种描述的对比</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">状态空间方程的求解</a></li>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/learn_git.html">Git 版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/git_tricks.html">Git 使用技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/install_manjaro.html">Manjaro 安装记录</a></li>
 </ul>
 </li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">控制理论学习记录</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">现代控制基础（1）：系统的描述</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
@@ -116,79 +130,41 @@
 <li class="toctree-l2"><a class="reference internal" href="integrator_antiwindup.html">抗饱和积分</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../dsp/index.html">数字信号处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex01_install.html">安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex02_document.html">编写文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex03_float.html">使用图表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex04_math.html">数学公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/function.html">编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/symbolic.html">符号计算</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">某春雨的后花园</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">控制理论学习记录</a> &raquo;</li>
-        
-      <li>现代控制基础（1）：系统的描述</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/control/MC01_SysDescribe.rst.txt" rel="nofollow"> 查看页面源码</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="id1">
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="id1">
 <h1>现代控制基础（1）：系统的描述<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>系统泛指一群有关联的元件组成，根据某种规则运作，能够完成个别元件不能单独完成的工作的整体。系统本质上由 <strong>微分方程</strong> 描述，对于线性系统，可采用拉普拉斯变换获取其 <strong>传递函数</strong> 从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的 <strong>状态空间</strong> 描述。</p>
 <p>本文介绍系统的三种描述方法，如无特别说明，本系列都将以线性时不变系统（LTI System）为主要讨论对象。</p>
@@ -196,7 +172,7 @@
 <h2>系统的微分方程<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>由于系统是由元件构成的，而元件的特性通常满足一定的（微分）方程，考虑元件之间的约束后，系统的本质就可以看作是微分方程。以经典的弹簧-质量-阻尼系统为例，如下图所示。</p>
 <div class="figure align-center" style="width: 50%">
-<img alt="../_images/mc01.jpg" src="../_images/mc01.jpg" />
+<img alt="../_images/mc01.jpg" src="../_images/mc01.jpg"/>
 </div>
 <p>该系统由弹簧、阻尼器、质量三个元件构成，三个元件的特性分别由以下方程进行描述：</p>
 <ul class="simple">
@@ -206,46 +182,46 @@
 </ul>
 <p>元件与输入之间的联系可以考虑为质量块力的合成： <span class="math notranslate nohighlight">\(F_m = F+F_k+F_c\)</span></p>
 <p>综合元件特性与相互联系后，该系统的微分方程为：</p>
-<div class="math notranslate nohighlight">
-\[m \ddot{x} + c \dot{x} + k x = F\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[m \ddot{x} + c \dot{x} + k x = F\]</div></div>
 <p>更一般地，设系统的输入为 <span class="math notranslate nohighlight">\(u\)</span> ，输出为 <span class="math notranslate nohighlight">\(y\)</span> ，线性系统的微分方程通常可表示为：</p>
-<div class="math notranslate nohighlight">
-\[y^{(n)} + a_{n-1} y^{(n-1)} + ...+a_1 y' + a_0 = b_m u^{(m)} + b_{m-1} u^{(m-1)} + ...+b_1 u' + b_0\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[y^{(n)} + a_{n-1} y^{(n-1)} + ...+a_1 y' + a_0 = b_m u^{(m)} + b_{m-1} u^{(m-1)} + ...+b_1 u' + b_0\]</div></div>
 <p>对于实际的系统，上式通常有 <span class="math notranslate nohighlight">\(m \le n\)</span> 。</p>
 </div>
 <div class="section" id="id3">
 <h2>系统的传递函数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>对于线性微分方程，可以通过所谓的拉普拉斯变换将其转化为频域表达式，拉普拉斯变换的定义为：</p>
-<div class="math notranslate nohighlight">
-\[X(s) = \int_{-\infty}^{\infty} x(t) \mathrm{e}^{st}\, \mathrm{d}t\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[X(s) = \int_{-\infty}^{\infty} x(t) \mathrm{e}^{st}\, \mathrm{d}t\]</div></div>
 <p>根据定义，对系统的微分方程两边同时进行拉普拉斯变换，有：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\left( s^{n} + a_{n-1} s^{n-1} + ...+a_1 s + a_0 \right) Y(s)
-    = \left( b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0 \right) U(s)\]</div>
+    = \left( b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0 \right) U(s)\]</div></div>
 <p>如此做，系统的微分方程在形式上变成了关于复变量 <span class="math notranslate nohighlight">\(s\)</span> 的代数方程，称系统输出的拉普拉斯变换与输入的拉普拉斯变换之比为传递函数，记为 <span class="math notranslate nohighlight">\(H(s)\)</span> ，由上式可得：</p>
-<div class="math notranslate nohighlight">
-\[H(s) = \frac{b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0}{s^{n} + a_{n-1} s^{n-1} + ...+a_1 s + a_0}\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[H(s) = \frac{b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0}{s^{n} + a_{n-1} s^{n-1} + ...+a_1 s + a_0}\]</div></div>
 </div>
 <div class="section" id="id4">
 <h2>系统的状态空间<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>系统的微分方程阶数通常较高而不便于分析，状态空间的思想在于引入状态变量，将一个高阶微分方程转化为多个一阶微分方程。对于线性微分方程，状态变量的数量等于输出变量的最高微分阶数 <span class="math notranslate nohighlight">\(n\)</span> ，从技巧上通常可以取输出及其 <span class="math notranslate nohighlight">\(n-1\)</span> 次导数作为状态变量。以上述弹簧-质量-阻尼系统为例，输出最高阶数为2，因此需要选择两个状态变量。选取第一个状态变量为输出，即 <span class="math notranslate nohighlight">\(x_1 = x\)</span> ，第二个状态变量为输出的一阶导数，即 <span class="math notranslate nohighlight">\(x_2=\dot{x}\)</span> ，于是有：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{
 \begin{aligned}
     \dot{x}_1 &amp;= x_2 \\
     \dot{x}_2 &amp;= -\frac{k}{m} x_1 -\frac{c}{m}x_2 + \frac{F}{m}
 \end{aligned}
-\right.\end{split}\]</div>
+\right.\end{split}\]</div></div>
 <p>不失一般性地，将上述表达写成矩阵的形式为：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{
 \begin{aligned}
 \dot{\mathbf{x}} &amp;= A \mathbf{x} + Bu  \\
 y &amp;= C \mathbf{x} + Du
 \end{aligned}
-\right.\end{split}\]</div>
+\right.\end{split}\]</div></div>
 <p>其中， <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> 为系统的状态变量， <span class="math notranslate nohighlight">\(A\)</span> 称为系统矩阵， <span class="math notranslate nohighlight">\(B\)</span> 为输入矩阵， <span class="math notranslate nohighlight">\(C\)</span> 为输出矩阵， <span class="math notranslate nohighlight">\(D\)</span> 为直接传输矩阵且通常 <span class="math notranslate nohighlight">\(D=0\)</span> 。就本例而言：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}A = \begin{bmatrix}
 0 &amp; 1\\
 - \frac{k}{m} &amp; - \frac{c}{m}
@@ -253,15 +229,15 @@ y &amp;= C \mathbf{x} + Du
 \quad
 B = \begin{bmatrix} 0 \\ \frac{1}{m} \end{bmatrix},
 \quad
-C = \begin{bmatrix} 1 &amp; 0 \end{bmatrix}\end{split}\]</div>
+C = \begin{bmatrix} 1 &amp; 0 \end{bmatrix}\end{split}\]</div></div>
 <p>需要说明的是，系统的微分方程和传递函数表达式都是唯一的，而状态空间却不是唯一的，这是由于状态变量的选择不唯一。状态空间有几种标准的形式，将在以后进行讨论。除此之外，状态空间表达并不局限于线性时不变系统，它跟微分方程一样广泛适用于各种系统的描述，状态空间更一般的形式如下，暂不做过多讨论。</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{
 \begin{aligned}
 \dot{\mathbf{x}} &amp;= f(\mathbf{x},\mathbf{u},t)  \\
 y &amp;= h(\mathbf{x},\mathbf{u},t)  \\
 \end{aligned}
-\right.\end{split}\]</div>
+\right.\end{split}\]</div></div>
 </div>
 <div class="section" id="id5">
 <h2>三种描述的对比<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
@@ -270,29 +246,29 @@ y &amp;= h(\mathbf{x},\mathbf{u},t)  \\
 <div class="section" id="id6">
 <h2>状态空间方程的求解<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>设系统的状态空间方程为：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{
 \begin{aligned}
 \dot{\mathbf{x}} &amp;= A \mathbf{x} + Bu  \\
 y &amp;= C \mathbf{x}
 \end{aligned}
-\right.\end{split}\]</div>
+\right.\end{split}\]</div></div>
 <p>设辅助状态变量 <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> 满足线性变换 <span class="math notranslate nohighlight">\(\mathbf{x}=P\mathbf{z}\)</span> （ <span class="math notranslate nohighlight">\(P\)</span> 为常矩阵），带入第一个方程，有：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[P\dot{\mathbf{z}}=AP\mathbf{z}+B\mathbf{u}
-\Rightarrow \dot{\mathbf{z}}=P^{-1}AP\mathbf{z}+P^{-1}B\mathbf{u}\]</div>
+\Rightarrow \dot{\mathbf{z}}=P^{-1}AP\mathbf{z}+P^{-1}B\mathbf{u}\]</div></div>
 <p>选取合适的变换矩阵 <span class="math notranslate nohighlight">\(P\)</span> 使得 <span class="math notranslate nohighlight">\(P^{-1}AP\)</span> 为矩阵 <span class="math notranslate nohighlight">\(A\)</span> 的相似变换，即 <span class="math notranslate nohighlight">\(P^{-1}AP\)</span> 为特征值对角矩阵：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}P^{-1}AP = \begin{bmatrix}
 {{\lambda_1}}&amp;{}&amp;{}&amp;{}\\
 {}&amp;{{\lambda_2}}&amp;{}&amp;{}\\
 {}&amp;{}&amp; \ddots &amp;{}\\
 {}&amp;{}&amp;{}&amp;{{\lambda_n}}
-\end{bmatrix}\end{split}\]</div>
+\end{bmatrix}\end{split}\]</div></div>
 <p>如此做，关于辅助状态变量 <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> 的微分方程组解耦为独立的一阶微分方程：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\dot{z}_i = \lambda_i z_i + \tilde{u}_i
-\Rightarrow z_i(t) = C_i \mathrm(e)^{\lambda_i t} + \tilde{z}_i(t)\]</div>
+\Rightarrow z_i(t) = C_i \mathrm(e)^{\lambda_i t} + \tilde{z}_i(t)\]</div></div>
 <p>其中， <span class="math notranslate nohighlight">\(\tilde{u}_i\)</span> 表示 <span class="math notranslate nohighlight">\(P^{-1}B\mathbf{u}\)</span> 的第 <span class="math notranslate nohighlight">\(i\)</span> 的分量，其对应的特解为 <span class="math notranslate nohighlight">\(\tilde{z}_i(t)\)</span> 。最后带回 <span class="math notranslate nohighlight">\(\mathbf{x}=P\mathbf{z}\)</span> 即可得到原状态变量，进而带入输出矩阵解得输出。</p>
 <p>由微分方程的解可以看出，若系统矩阵 <span class="math notranslate nohighlight">\(A\)</span> 存在某特征值 <span class="math notranslate nohighlight">\(\lambda_i\)</span> 大于零，根据微分方程的通解，系统将存在某一状态量随时间趋于无穷，在实际系统中将是输出饱和，于是说该系统是不稳定的。若系统矩阵的特征值的实部均小于零，通解将收敛到零（若存在虚部，则是震荡收敛），意味着状态变量的初值将收敛，系统的输出由输入控制，称系统是（渐进）稳定的。特别地，若系统的特征值小于等于零，等于零的特征值将对应于某状态的等幅震荡，由于不会导致系统输出发散，因而也可以说系统是（临界）稳定的。对于实际工作的系统，都应当满足渐进稳定。</p>
 <div class="admonition note">
@@ -303,54 +279,86 @@ y &amp;= C \mathbf{x}
 </div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="MC02_StateFeedback.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">现代控制基础（2）：状态反馈</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">控制理论学习记录</div>
+                
+              </div>
+            </a>
+        </div>
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="MC02_StateFeedback.html" class="btn btn-neutral float-right" title="现代控制基础（2）：状态反馈" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="控制理论学习记录" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/control/MC01_SysDescribe.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">现代控制基础（1）：系统的描述</a><ul>
+<li><a class="reference internal" href="#id2">系统的微分方程</a></li>
+<li><a class="reference internal" href="#id3">系统的传递函数</a></li>
+<li><a class="reference internal" href="#id4">系统的状态空间</a></li>
+<li><a class="reference internal" href="#id5">三种描述的对比</a></li>
+<li><a class="reference internal" href="#id6">状态空间方程的求解</a></li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; 版权所有 2021, 大春雨.
-
-    </p>
-  </div>
-    
-    
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-    <p xmlns:cc="http://creativecommons.org/ns#" > 本站采用 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"> CC BY 4.0 </a> 许可协议，转载请注明出处。</p> 
-
-
-</footer>
+          </div>
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

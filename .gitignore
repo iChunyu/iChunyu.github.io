@@ -2,6 +2,7 @@ build/
 source/_build/
 unGit/
 .vscode/
+__pycache__/
 
 *presenter.sozi.html
 *.sozi.json

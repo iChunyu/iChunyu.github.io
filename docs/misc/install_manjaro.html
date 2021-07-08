@@ -1,206 +1,173 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="控制理论学习记录" href="../control/index.html" /><link rel="prev" title="Git 使用技巧" href="git_tricks.html" />
 
-
-<!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Manjaro 安装记录 &mdash; 某春雨的后花园  文档</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/mystyle.css" type="text/css" />
-
-  
-  
-    <link rel="shortcut icon" href="../_static/misaka.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
+        <title>Manjaro 安装记录 - 某春雨的后花园</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
+  <body dir="">
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
 
-    
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="控制理论学习记录" href="../control/index.html" />
-    <link rel="prev" title="Git 使用技巧" href="git_tricks.html" /> 
-</head>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
-<body class="wy-body-for-nav">
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
 
-          
-            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="在文档中搜索" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">目录</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">杂乱的技能树</a><ul class="current">
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">杂乱的技能树</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="build_garden.html">后花园建成记</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reStructuredText.html">reStructuredText 入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_git.html">Git 版本控制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_tricks.html">Git 使用技巧</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Manjaro 安装记录</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">安装系统</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">更换镜像源</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">安装软件</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#vim">Vim</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">中文输入法</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qq">微信 QQ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#matlab">MATLAB</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tex-live">TeX Live</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#inkscape">Inkscape</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#flameshot">Flameshot</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Manjaro 安装记录</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">系统设置</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id12">高分辨率屏幕缩放</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fn">Fn 键设置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grub">GRUB 基本设置</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../control/index.html">控制理论学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/demo_BangBangCtrl.html">相图与砰砰控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex01_install.html">安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex02_document.html">编写文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex03_float.html">使用图表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex04_math.html">数学公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/function.html">编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/symbolic.html">符号计算</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../control/index.html">控制理论学习记录</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dsp/index.html">数字信号处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a></li>
-</ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">某春雨的后花园</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">杂乱的技能树</a> &raquo;</li>
-        
-      <li>Manjaro 安装记录</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/misc/install_manjaro.rst.txt" rel="nofollow"> 查看页面源码</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="manjaro">
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="manjaro">
 <h1>Manjaro 安装记录<a class="headerlink" href="#manjaro" title="永久链接至标题">¶</a></h1>
 <p>早就听闻过 Linux 的大名，一直想装一个玩一玩。折腾过 Debian 系列的 <a class="reference external" href="https://www.deepin.org/">deepin</a> 、<a class="reference external" href="https://ubuntu.com/">Ubuntu</a> 和它的衍生版 <a class="reference external" href="https://pop.system76.com/">Pop!_OS</a> ，都被各种各样的问题劝退，一度重新装回 Windows。直到某次看到有人安利 Arch 系的 <a class="reference external" href="https://manjaro.org/">Manjaro</a> ，抱着最后试一试的心态装上，没想到一直沿用至今。对我自己来说，Manjaro 无疑是最省事省心的 Linux 发行版了，将其安装过程记录于此。</p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="id2">
 <h2>安装系统<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>Manjaro 的系统镜像可以从官网下载，为了提高下载速度，可以从国内镜像站下载，例如我自己常用的 <a class="reference external" href="https://mirrors.tuna.tsinghua.edu.cn/">清华大学开源软件镜像站</a> 。Manjaro 有 XFCE、KDE、GNOME 三种官方桌面可供选择，而社区提供更多其他桌面环境。我自己使用的是 KDE 版本。</p>
@@ -215,7 +182,7 @@
 </div>
 <p>准备好启动盘后，重启电脑，从U盘进入系统，顺着安装引导进行安装即可。</p>
 <div class="figure align-center" style="width: 80%">
-<img alt="../_images/manjaro.png" src="../_images/manjaro.png" />
+<img alt="../_images/manjaro.png" src="../_images/manjaro.png"/>
 </div>
 </div>
 <div class="section" id="id4">
@@ -233,7 +200,7 @@
 <h2>安装软件<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>Manjaro 系统包管理的命令是 <code class="docutils literal notranslate"><span class="pre">pacman</span></code> ，为了使用强大的 AUR （Arch User Repository），可以安装并使用 <code class="docutils literal notranslate"><span class="pre">yay</span></code> 对软件进行管理：</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo pacman -S yay                                          <span class="c1"># 安装 yay</span>
-yay --aururl <span class="s2">&quot;https://aur.tuna.tsinghua.edu.cn&quot;</span> --save      <span class="c1"># 设置 AUR 镜像站</span>
+yay --aururl <span class="s2">"https://aur.tuna.tsinghua.edu.cn"</span> --save      <span class="c1"># 设置 AUR 镜像站</span>
 </pre></div>
 </div>
 <p>此后 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pacman</span></code> 命令可以用 <code class="docutils literal notranslate"><span class="pre">yay</span></code> 代替了。绝大部分常用软件都可以不加额外配置地使用 <code class="docutils literal notranslate"><span class="pre">yay</span> <span class="pre">-S</span></code> 进行安装，是不是非常方便呢：</p>
@@ -352,7 +319,7 @@ Categories=Development;MATLAB;
 <li><p>在 MATLAB 中新建启动脚本： <code class="docutils literal notranslate"><span class="pre">edit(fullfile(userpath,'startup.m'))</span></code> ；</p></li>
 <li><p>在启动脚本中添加以下内容，其中 <code class="docutils literal notranslate"><span class="pre">/usr/lib/</span></code> 是第一步搜索到的路径：</p></li>
 </ol>
-<div class="highlight-MATLAB notranslate"><div class="highlight"><pre><span></span><span class="nb">setenv</span><span class="p">(</span><span class="s">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;/usr/lib/:&#39;</span><span class="p">,</span><span class="nb">getenv</span><span class="p">(</span><span class="s">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">)]);</span><span class="w"></span>
+<div class="highlight-MATLAB notranslate"><div class="highlight"><pre><span></span><span class="nb">setenv</span><span class="p">(</span><span class="s">'LD_LIBRARY_PATH'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">'/usr/lib/:'</span><span class="p">,</span><span class="nb">getenv</span><span class="p">(</span><span class="s">'LD_LIBRARY_PATH'</span><span class="p">)]);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>对于高分辨率屏幕，MATLAB 界面的字体显得略小，可在 MATLAB 命令行中进行调整：</p>
@@ -444,54 +411,98 @@ GRUB_TIMEOUT_STYLE=hidden       # 样式：hidden 或 menu
 </div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../control/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">控制理论学习记录</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="git_tricks.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Git 使用技巧</div>
+                
+              </div>
+            </a>
+        </div>
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../control/index.html" class="btn btn-neutral float-right" title="控制理论学习记录" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="git_tricks.html" class="btn btn-neutral float-left" title="Git 使用技巧" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/misc/install_manjaro.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Manjaro 安装记录</a><ul>
+<li><a class="reference internal" href="#id2">安装系统</a></li>
+<li><a class="reference internal" href="#id4">更换镜像源</a></li>
+<li><a class="reference internal" href="#id5">安装软件</a><ul>
+<li><a class="reference internal" href="#vim">Vim</a></li>
+<li><a class="reference internal" href="#id7">中文输入法</a></li>
+<li><a class="reference internal" href="#qq">微信 QQ</a></li>
+<li><a class="reference internal" href="#matlab">MATLAB</a></li>
+<li><a class="reference internal" href="#tex-live">TeX Live</a></li>
+<li><a class="reference internal" href="#inkscape">Inkscape</a></li>
+<li><a class="reference internal" href="#flameshot">Flameshot</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">系统设置</a><ul>
+<li><a class="reference internal" href="#id12">高分辨率屏幕缩放</a></li>
+<li><a class="reference internal" href="#fn">Fn 键设置</a></li>
+<li><a class="reference internal" href="#grub">GRUB 基本设置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; 版权所有 2021, 大春雨.
-
-    </p>
-  </div>
-    
-    
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-    <p xmlns:cc="http://creativecommons.org/ns#" > 本站采用 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"> CC BY 4.0 </a> 许可协议，转载请注明出处。</p> 
-
-
-</footer>
+          </div>
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

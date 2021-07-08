@@ -1,207 +1,185 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="抗饱和积分" href="integrator_antiwindup.html" /><link rel="prev" title="现代控制基础（6）：鲁棒跟踪控制" href="MC06_RobustTracking.html" />
 
-
-<!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>相图与砰砰控制 &mdash; 某春雨的后花园  文档</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/mystyle.css" type="text/css" />
-
-  
-  
-    <link rel="shortcut icon" href="../_static/misaka.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
+        <title>相图与砰砰控制 - 某春雨的后花园</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
+  <body dir="">
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
 
-    
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="抗饱和积分" href="integrator_antiwindup.html" />
-    <link rel="prev" title="现代控制基础（6）：鲁棒跟踪控制" href="MC06_RobustTracking.html" /> 
-</head>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
-<body class="wy-body-for-nav">
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
 
-          
-            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="在文档中搜索" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">目录</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">控制理论学习记录</a><ul class="current">
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/learn_git.html">Git 版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/git_tricks.html">Git 使用技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/install_manjaro.html">Manjaro 安装记录</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">控制理论学习记录</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">相图与砰砰控制</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#phase-portrait">相图（Phase Portrait）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">砰砰控制</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">参考资料</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">相图与砰砰控制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="integrator_antiwindup.html">抗饱和积分</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../dsp/index.html">数字信号处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex01_install.html">安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex02_document.html">编写文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex03_float.html">使用图表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex04_math.html">数学公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/function.html">编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/symbolic.html">符号计算</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">某春雨的后花园</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">控制理论学习记录</a> &raquo;</li>
-        
-      <li>相图与砰砰控制</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/control/demo_BangBangCtrl.rst.txt" rel="nofollow"> 查看页面源码</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="id1">
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="id1">
 <h1>相图与砰砰控制<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>思考这么一个问题：已知起点和目标位置的距离以及运动允许的最大加速度，如何在尽可能短的时间内到达目标且速度为零？显然，应当全力向目标位置加速，并在 <em>适当的时刻</em> 全力减速，使得速度减至零的时候恰好停留到目标位置。这实际上是控制中中所说的最速控制，对于二阶系统，为了确定改变的控制命令的 <em>适当的时刻</em> ，可以借助相图来完成。</p>
 <div class="section" id="phase-portrait">
 <h2>相图（Phase Portrait）<a class="headerlink" href="#phase-portrait" title="永久链接至标题">¶</a></h2>
 <p>相图也称相轨迹，是以各状态为坐标，由状态轨迹绘制而成的图。例如，质量为 <span class="math notranslate nohighlight">\(m\)</span> ，刚度为 <span class="math notranslate nohighlight">\(K\)</span> 弹簧的状态空间方程为</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{
 \begin{aligned}
     \dot{x}_1 &amp;= x_2 \\
     \dot{x}_2 &amp;= -\frac{K}{m} x_1 + \frac{1}{m} F
 \end{aligned}
-\right.\end{split}\]</div>
+\right.\end{split}\]</div></div>
 <p>当外力 <span class="math notranslate nohighlight">\(F=0\)</span> ，弹簧从某一初始位置自由释放时，质量块会在平衡位置来回震荡，其相图如下图所示</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/bangbangctrl01.png" src="../_images/bangbangctrl01.png" />
+<img alt="../_images/bangbangctrl01.png" src="../_images/bangbangctrl01.png"/>
 </div>
 <p>相图表示了系统状态随时间的发展趋势，在分析系统动态时非常有用。此外，bilibili 的 up 主 DR_CAN 在他的一期视频里<a class="reference external" href="https://www.bilibili.com/video/BV1ex411g7t3">利用相图分析了爱情</a>，很有意思，有兴趣的朋友可以看一下。</p>
 </div>
@@ -209,25 +187,25 @@
 <h2>砰砰控制<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>砰砰控制（Bang Bang Control）又称开关控制，它的控制信号非正即负，与开头提到的要么加速要么减速，因而也称为最速控制。以二阶系统为例，为了确定控制信号（加速度）变号的时刻，考察系统在 <span class="math notranslate nohighlight">\(u=u_{\rm max}\)</span> 和 <span class="math notranslate nohighlight">\(u=-u_{\rm max}\)</span> 时的相图，如下图所示（设 <span class="math notranslate nohighlight">\(u_{\rm max}=1\)</span> ）</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/bangbangctrl02.png" src="../_images/bangbangctrl02.png" />
+<img alt="../_images/bangbangctrl02.png" src="../_images/bangbangctrl02.png"/>
 </div>
 <p>图中，蓝色曲线代表在某状态处施加正向最大控制量时系统状态的轨迹，其由第四象限拐向第一象限；红色曲线为施加负向最大控制量时状态的轨迹，由第二象限拐向第三象限。可见，存在一个临界的曲线，如图中绿色曲线所示，当初始状态在该曲线上方时，只要施加负向控制量可使状态回到绿色曲线，反之只要施加正向控制量即可回到绿色曲线。因此这个绿色的曲线就是控制信号的切换曲线。</p>
 <p>临界曲线的解析式分别对应从原点处分别按 <span class="math notranslate nohighlight">\(u = \pm u_{\rm max} = \pm 1\)</span> 施加控制所形成的状态轨迹，其表达式为</p>
-<div class="math notranslate nohighlight">
-\[x_1 + \frac{x_2 |x_2|}{2u_{\rm max}} = 0\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[x_1 + \frac{x_2 |x_2|}{2u_{\rm max}} = 0\]</div></div>
 <p>因而控制信号可根据当前状态来确定</p>
-<div class="math notranslate nohighlight">
-\[u = -u_{\rm max} \operatorname{sign}\left( x_1 + \frac{x_2 |x_2|}{2u_{\rm max}} \right)\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[u = -u_{\rm max} \operatorname{sign}\left( x_1 + \frac{x_2 |x_2|}{2u_{\rm max}} \right)\]</div></div>
 <p>设系统初始状态 <span class="math notranslate nohighlight">\(x_1=-2,\, x_2=3\)</span> ，控制过程的状态轨迹如下图紫色曲线所示</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/bangbangctrl03.png" src="../_images/bangbangctrl03.png" />
+<img alt="../_images/bangbangctrl03.png" src="../_images/bangbangctrl03.png"/>
 </div>
 <p>理想情况下，控制信号 <span class="math notranslate nohighlight">\(u\)</span> 最多只需要一次切换就能达到控制效果，而实际的数字控制器中，离散状态的时间间隔限制了状态不可能正好达到相图的原点，状态轨迹会在原点附近出现高频“颤振”，如下图所示。相应地，控制信号不断进行正负切换，就像乒乓球来回碰撞，砰砰控制也因此得名。</p>
 <div class="figure align-center" style="width: 90%">
-<img alt="../_images/bangbangctrl04.png" src="../_images/bangbangctrl04.png" />
+<img alt="../_images/bangbangctrl04.png" src="../_images/bangbangctrl04.png"/>
 </div>
 <p>砰砰控制的高频颤振使其在实际应用中受到限制，为了解决这个问题，韩京清老师基于离散时间模型对控制信号进行了改进，提出了如下算法：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\mathrm{fhan} = \left\{
     \begin{aligned}
         &amp; a_0 = h x_2   \\
@@ -239,10 +217,10 @@
         &amp; a = \left( a_0 + y - a_2 \right) s_y + a_2 \\
         &amp; s_a = \frac{1}{2} \left[  \operatorname{sign}\left( a+d \right) - \operatorname{sign}\left( a-d\right)\right] \\
         &amp; \mathrm{fhan} = -r \left[ \frac{a}{d} - \operatorname{sign}\left( a \right)\right] s_a - r \operatorname{sign}\left( a \right)
-    \end{aligned}\right.\end{split}\]</div>
+    \end{aligned}\right.\end{split}\]</div></div>
 <p>式中， <span class="math notranslate nohighlight">\(r=u_{\rm max}\)</span> 为控制器输出的最大控制信号，值越大响应越快，闭环的带宽也越大。 <span class="math notranslate nohighlight">\(h\)</span> 为采样时间，实际使用时可取独立于 <span class="math notranslate nohighlight">\(h\)</span> 的变量 <span class="math notranslate nohighlight">\(h_0 =n h\)</span> 以抑制高频噪声，即 <span class="math notranslate nohighlight">\(u = \operatorname{fhan}\left( x_1, \, x_2, \, r, \, h_0 \right)\)</span> 。采用这种算法，砰砰控制不再出现高频颤振，如下图所示。</p>
 <div class="figure align-center" style="width: 90%">
-<img alt="../_images/bangbangctrl05.png" src="../_images/bangbangctrl05.png" />
+<img alt="../_images/bangbangctrl05.png" src="../_images/bangbangctrl05.png"/>
 </div>
 </div>
 <div class="section" id="id4">
@@ -260,54 +238,84 @@
 </div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="integrator_antiwindup.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">抗饱和积分</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="MC06_RobustTracking.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">现代控制基础（6）：鲁棒跟踪控制</div>
+                
+              </div>
+            </a>
+        </div>
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="integrator_antiwindup.html" class="btn btn-neutral float-right" title="抗饱和积分" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="MC06_RobustTracking.html" class="btn btn-neutral float-left" title="现代控制基础（6）：鲁棒跟踪控制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/control/demo_BangBangCtrl.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">相图与砰砰控制</a><ul>
+<li><a class="reference internal" href="#phase-portrait">相图（Phase Portrait）</a></li>
+<li><a class="reference internal" href="#id3">砰砰控制</a></li>
+<li><a class="reference internal" href="#id4">参考资料</a></li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; 版权所有 2021, 大春雨.
-
-    </p>
-  </div>
-    
-    
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-    <p xmlns:cc="http://creativecommons.org/ns#" > 本站采用 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"> CC BY 4.0 </a> 许可协议，转载请注明出处。</p> 
-
-
-</footer>
+          </div>
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

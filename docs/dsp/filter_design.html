@@ -1,192 +1,173 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="LPSD 功率谱估计" href="lpsd.html" /><link rel="prev" title="信号的微分" href="signal_diff.html" />
 
-
-<!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>信号的滤波 &mdash; 某春雨的后花园  文档</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/mystyle.css" type="text/css" />
-
-  
-  
-    <link rel="shortcut icon" href="../_static/misaka.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
+        <title>信号的滤波 - 某春雨的后花园</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
+  <body dir="">
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
 
-    
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="LPSD 功率谱估计" href="lpsd.html" />
-    <link rel="prev" title="信号的微分" href="signal_diff.html" /> 
-</head>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
-<body class="wy-body-for-nav">
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
 
-          
-            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="在文档中搜索" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">目录</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../control/index.html">控制理论学习记录</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">数字信号处理</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="kalman_filter.html">卡尔曼滤波</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signal_diff.html">信号的微分</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">信号的滤波</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">滤波器的参数及分类</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#iir">IIR 滤波器设计</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fir">FIR 滤波器设计</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">零相位滤波</a></li>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/learn_git.html">Git 版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/git_tricks.html">Git 使用技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/install_manjaro.html">Manjaro 安装记录</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../control/index.html">控制理论学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/demo_BangBangCtrl.html">相图与砰砰控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">数字信号处理</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">信号的滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lpsd.html">LPSD 功率谱估计</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex01_install.html">安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex02_document.html">编写文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex03_float.html">使用图表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex04_math.html">数学公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/function.html">编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/symbolic.html">符号计算</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">某春雨的后花园</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">数字信号处理</a> &raquo;</li>
-        
-      <li>信号的滤波</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/dsp/filter_design.rst.txt" rel="nofollow"> 查看页面源码</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="id1">
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="id1">
 <h1>信号的滤波<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>我们在 <a class="reference internal" href="../control/MC01_SysDescribe.html"><span class="doc">现代控制基础（1）：系统的描述</span></a> 曾提到过线性系统的传递函数，其意味着系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有特定的函数对常用的线性滤波器进行设计，本文将简要介绍这些函数及其用法，不会对滤波器设计细节做过多的讨论。</p>
-<hr class="docutils" />
+<hr class="docutils"/>
 <div class="section" id="id2">
 <h2>滤波器的参数及分类<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>滤波器的性能通常以其幅频响应为评估依据，主要包括以下四个参数：</p>
@@ -198,23 +179,23 @@
 </ul>
 <p>以低通滤波器为例，上述四个参数可以用下图来表示</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/filter01.png" src="../_images/filter01.png" />
+<img alt="../_images/filter01.png" src="../_images/filter01.png"/>
 </div>
 <p>在对延时比较敏感的实时系统中，还需要讨论滤波器的群延时，其定义为相频响应的负导数，即</p>
-<div class="math notranslate nohighlight">
-\[\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}\]</div></div>
 <p>根据滤波器实现方法的不同，可以将其分为模拟滤波器和数字滤波器，前者用于处理连续信号，主要通过模拟电路实现，以拉普拉斯变换为主要的分析工具；后者则用于处理采样后的离散信号，可以部署在各种数字器件，以 <span class="math notranslate nohighlight">\(z\)</span> 变换为主要分析工具。</p>
 <p>依据冲击响应还可以将滤波器分为无限脉冲响应（IIR）和有限脉冲响应（FIR），从时域上看，两者的区别在于滤波器的冲击响应是否在有限时间内收敛到 <span class="math notranslate nohighlight">\(0\)</span> ；从频域上看，IIR 滤波器的传递函数具有至少一个极点（传递函数的分母包含 <span class="math notranslate nohighlight">\(s\)</span> 或 <span class="math notranslate nohighlight">\(z^{-1}\)</span> ），而 FIR 滤波器不具有极点，因此也称其为纯零点滤波器。</p>
 </div>
 <div class="section" id="iir">
 <h2>IIR 滤波器设计<a class="headerlink" href="#iir" title="永久链接至标题">¶</a></h2>
 <p>常用的 IIR 滤波器有巴特沃斯滤波器、切比雪夫 I 型滤波器、切比雪夫 II 型滤波器和椭圆滤波器。为了精确指定滤波器特性，先使用函数计算滤波器的阶数和带宽，然后再对滤波器系数进行设计。在 MATLAB 中，相应的设计函数如下表所示。</p>
-<table class="docutils align-center" id="id4" style="width: 80%">
+<div class="table-wrapper"><table class="docutils align-center" id="id4" style="width: 80%">
 <caption><span class="caption-text">IIR 模拟滤波器设计 MATLAB 函数</span><a class="headerlink" href="#id4" title="永久链接至表格">¶</a></caption>
 <colgroup>
-<col style="width: 23%" />
-<col style="width: 42%" />
-<col style="width: 35%" />
+<col style="width: 23%"/>
+<col style="width: 42%"/>
+<col style="width: 35%"/>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>滤波器</p></th>
@@ -240,12 +221,12 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">[b,a]</span> <span class="pre">=</span> <span class="pre">ellip(n,Rp,Rs,Wn,'s')</span></code></p></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>上表中， <code class="docutils literal notranslate"><span class="pre">'s'</span></code> 选项对应的是模拟滤波器，这时 <code class="docutils literal notranslate"><span class="pre">Wp</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Ws</span></code> 的单位都是 <span class="math notranslate nohighlight">\(\rm rad/s\)</span> ， <code class="docutils literal notranslate"><span class="pre">Rp</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Rs</span></code> 的单位均为 <span class="math notranslate nohighlight">\(\rm dB\)</span> 。对于数字滤波器，调用函数时应当取消 <code class="docutils literal notranslate"><span class="pre">'s'</span></code> 选项，并且频率采用归一化的数字频率。</p>
 <p>对于 Python 用户， <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code> 提供了同名的函数，使用方法基本一致，但 <code class="docutils literal notranslate"><span class="pre">'s'</span></code> 选项应更换为关键字参数 <code class="docutils literal notranslate"><span class="pre">analog=True</span></code> 。</p>
 <p>以 <code class="docutils literal notranslate"><span class="pre">Wp=1</span></code> ， <code class="docutils literal notranslate"><span class="pre">Ws=3</span></code> ， <code class="docutils literal notranslate"><span class="pre">Rp=1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Rs=40</span></code> 为例设计模拟滤波器，幅频响应如下图所示</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/filter02.png" src="../_images/filter02.png" />
+<img alt="../_images/filter02.png" src="../_images/filter02.png"/>
 </div>
 <p>可见，在相同需求下：
 - 巴特沃斯滤波器通带平坦，阻带无纹波，但阶数最高；
@@ -278,61 +259,92 @@
 <p>从感性上看，第一次滤波是从前往后滤，因此向后引入了延时；第二次滤波是从后往前滤，向前引入的相同的“延时”。由于采用的是完全相同的滤波器，因而延时可以完全抵消。</p>
 <p>为了使用滤波器，在 MATLAB 中可以使用 <code class="docutils literal notranslate"><span class="pre">filter(b,a,x)</span></code> 进行滤波，也可以使用 <code class="docutils literal notranslate"><span class="pre">filtfilt(b,a,x)</span></code> 进行零相位滤波。在Python中，这两个函数分别对应于 <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">lfilter</span></code> 和 <code class="docutils literal notranslate"><span class="pre">filtfilt</span></code> 。下图给出同一个滤波器使用两种滤波方法对带噪声的正弦信号滤波后的结果。</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/filter03.png" src="../_images/filter03.png" />
+<img alt="../_images/filter03.png" src="../_images/filter03.png"/>
 </div>
 <p>一般的滤波方法引入了可见的延时，而零相位滤波器没有引入明显延时。此外，相同滤波器下，零相位滤波器的输出结果更光滑，这是因为它对数据进行了两次滤波，其增益特性将是一次滤波的平方。需要注意的是，一般的滤波只在数据的开始阶段存在过渡过程，而零相位滤波在数据两端都有过渡过程。为了消除这些过渡过程，可以使用自适应技术提前对数据进行一定程度的预测。</p>
 <p>零相位滤波是在数据采集完成之后才能进行的操作，不能实时处理，这也就是所谓“非因果系统”的实际含义。对于实时系统，只能通过其他的手段对延时进行补偿。</p>
 </div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="lpsd.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">LPSD 功率谱估计</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="signal_diff.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">信号的微分</div>
+                
+              </div>
+            </a>
+        </div>
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="lpsd.html" class="btn btn-neutral float-right" title="LPSD 功率谱估计" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="signal_diff.html" class="btn btn-neutral float-left" title="信号的微分" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/dsp/filter_design.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">信号的滤波</a><ul>
+<li><a class="reference internal" href="#id2">滤波器的参数及分类</a></li>
+<li><a class="reference internal" href="#iir">IIR 滤波器设计</a></li>
+<li><a class="reference internal" href="#fir">FIR 滤波器设计</a></li>
+<li><a class="reference internal" href="#id3">零相位滤波</a></li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; 版权所有 2021, 大春雨.
-
-    </p>
-  </div>
-    
-    
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-    <p xmlns:cc="http://creativecommons.org/ns#" > 本站采用 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"> CC BY 4.0 </a> 许可协议，转载请注明出处。</p> 
-
-
-</footer>
+          </div>
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

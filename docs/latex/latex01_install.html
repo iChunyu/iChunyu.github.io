@@ -1,188 +1,170 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="编写文档" href="latex02_document.html" /><link rel="prev" title="LaTeX 学习记录" href="index.html" />
 
-
-<!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>安装与配置 &mdash; 某春雨的后花园  文档</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/mystyle.css" type="text/css" />
-
-  
-  
-    <link rel="shortcut icon" href="../_static/misaka.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
+        <title>安装与配置 - 某春雨的后花园</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
+  <body dir="">
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
 
-    
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="编写文档" href="latex02_document.html" />
-    <link rel="prev" title="LaTeX 学习记录" href="index.html" /> 
-</head>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
-<body class="wy-body-for-nav">
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
 
-          
-            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="在文档中搜索" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">目录</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../control/index.html">控制理论学习记录</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../dsp/index.html">数字信号处理</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">LaTeX 学习记录</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">安装与配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">安装</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">配置</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#hello-world">Hello World</a></li>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/learn_git.html">Git 版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/git_tricks.html">Git 使用技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/install_manjaro.html">Manjaro 安装记录</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../control/index.html">控制理论学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/demo_BangBangCtrl.html">相图与砰砰控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">LaTeX 学习记录</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">安装与配置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="latex02_document.html">编写文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="latex03_float.html">使用图表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="latex04_math.html">数学公式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="latex05_autocite.html">自动化引用</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/function.html">编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/symbolic.html">符号计算</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">某春雨的后花园</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">LaTeX 学习记录</a> &raquo;</li>
-        
-      <li>安装与配置</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/latex/latex01_install.rst.txt" rel="nofollow"> 查看页面源码</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="id1">
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="id1">
 <h1>安装与配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>LaTeX 是一款开源排版软件，区别于Word的所见即所得，使用 LaTeX 编写文档更像是编写代码，需要经过编译才能生成 <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> 格式的文档。初学者可能会止步于这种代码式的文档编写方法，但随着使用的熟练，在科技报告、论文方面，其至少在下面几个方面碾压 Word ：</p>
 <ul class="simple">
@@ -214,70 +196,70 @@
 <h2>配置<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>如本文开头所示，使用 LaTeX 编写文档更像是编写程序，为此，我们还需要一个友好的编写代码环境（当然，你完全可以用记事本之类的软件，取决于个人爱好）。比如可以使用 <a class="reference external" href="texstudio.sourceforge.net/">TeXstudio</a> 作为编辑器，这款软件对新手非常友好，基本上不需要进行特别的配置。对于我们需要编写中文文档的，只需要将编译器改为 <code class="docutils literal notranslate"><span class="pre">xelatex</span></code> 即可。</p>
 <p>另一个好看的编辑器莫过于 VS Code 了，我们仅需要安装插件 <code class="docutils literal notranslate"><span class="pre">LaTeX</span> <span class="pre">Workshop</span></code> ，并在设置中引入如下配置即可：</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;latex-workshop.view.pdf.viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;tab&quot;</span><span class="p">,</span>
-<span class="nt">&quot;latex-workshop.latex.tools&quot;</span><span class="p">:</span> <span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"latex-workshop.view.pdf.viewer"</span><span class="p">:</span> <span class="s2">"tab"</span><span class="p">,</span>
+<span class="nt">"latex-workshop.latex.tools"</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;xelatex&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;xelatex&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;-synctex=1&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;-interaction=nonstopmode&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;-file-line-error&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;%DOCFILE%&quot;</span>
+        <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"xelatex"</span><span class="p">,</span>
+        <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"xelatex"</span><span class="p">,</span>
+        <span class="nt">"args"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"-synctex=1"</span><span class="p">,</span>
+            <span class="s2">"-interaction=nonstopmode"</span><span class="p">,</span>
+            <span class="s2">"-file-line-error"</span><span class="p">,</span>
+            <span class="s2">"%DOCFILE%"</span>
         <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;-synctex=1&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;-interaction=nonstopmode&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;-file-line-error&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;%DOCFILE%&quot;</span>
+        <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"pdflatex"</span><span class="p">,</span>
+        <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"pdflatex"</span><span class="p">,</span>
+        <span class="nt">"args"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"-synctex=1"</span><span class="p">,</span>
+            <span class="s2">"-interaction=nonstopmode"</span><span class="p">,</span>
+            <span class="s2">"-file-line-error"</span><span class="p">,</span>
+            <span class="s2">"%DOCFILE%"</span>
         <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bibtex&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;bibtex&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;%DOCFILE%&quot;</span>
+        <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"bibtex"</span><span class="p">,</span>
+        <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"bibtex"</span><span class="p">,</span>
+        <span class="nt">"args"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"%DOCFILE%"</span>
         <span class="p">]</span>
     <span class="p">}</span>
 <span class="p">],</span>
-<span class="nt">&quot;latex-workshop.latex.recipes&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="nt">"latex-workshop.latex.recipes"</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;xelatex&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;tools&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;xelatex&quot;</span>
+        <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"xelatex"</span><span class="p">,</span>
+        <span class="nt">"tools"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"xelatex"</span>
         <span class="p">],</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;tools&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;pdflatex&quot;</span>
+        <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"pdflatex"</span><span class="p">,</span>
+        <span class="nt">"tools"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"pdflatex"</span>
         <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;xe-&gt;bib-&gt;xe-&gt;xe&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;tools&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;xelatex&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;bibtex&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;xelatex&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;xelatex&quot;</span>
+        <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"xe-&gt;bib-&gt;xe-&gt;xe"</span><span class="p">,</span>
+        <span class="nt">"tools"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"xelatex"</span><span class="p">,</span>
+            <span class="s2">"bibtex"</span><span class="p">,</span>
+            <span class="s2">"xelatex"</span><span class="p">,</span>
+            <span class="s2">"xelatex"</span>
         <span class="p">]</span>
     <span class="p">},</span>
     <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;pdf-&gt;bib-&gt;pdf-&gt;pdf&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;tools&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;bibtex&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pdflatex&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pdflatex&quot;</span>
+        <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"pdf-&gt;bib-&gt;pdf-&gt;pdf"</span><span class="p">,</span>
+        <span class="nt">"tools"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"pdflatex"</span><span class="p">,</span>
+            <span class="s2">"bibtex"</span><span class="p">,</span>
+            <span class="s2">"pdflatex"</span><span class="p">,</span>
+            <span class="s2">"pdflatex"</span>
         <span class="p">]</span>
     <span class="p">}</span>
 <span class="p">],</span>
-<span class="nt">&quot;latex-workshop.bibtex-format.tab&quot;</span><span class="p">:</span> <span class="s2">&quot;4 spaces&quot;</span><span class="p">,</span>
-<span class="nt">&quot;latex-workshop.latex.autoBuild.run&quot;</span> <span class="p">:</span> <span class="s2">&quot;never&quot;</span>
+<span class="nt">"latex-workshop.bibtex-format.tab"</span><span class="p">:</span> <span class="s2">"4 spaces"</span><span class="p">,</span>
+<span class="nt">"latex-workshop.latex.autoBuild.run"</span> <span class="p">:</span> <span class="s2">"never"</span>
 </pre></div>
 </div>
 </div>
@@ -307,59 +289,88 @@
 </div>
 <p>使用 TeXstudio 的小伙伴可以点击“运行并查看”，使用 VS Code 的小伙伴可以仅使用 <code class="docutils literal notranslate"><span class="pre">xelatex</span></code> 编译，喜欢命令行的猛士也可以在当前目录下运行命令 <code class="docutils literal notranslate"><span class="pre">xelatex</span> <span class="pre">HelloWorld.tex</span></code> ，最后，我们打开编译生成的同名 <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> 文件，就可以看到以下效果，是不是非常神奇呢？</p>
 <div class="figure align-center" style="width: 90%">
-<img alt="../_images/latex01.png" src="../_images/latex01.png" />
+<img alt="../_images/latex01.png" src="../_images/latex01.png"/>
 </div>
 </div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="latex02_document.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">编写文档</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">LaTeX 学习记录</div>
+                
+              </div>
+            </a>
+        </div>
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="latex02_document.html" class="btn btn-neutral float-right" title="编写文档" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="LaTeX 学习记录" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/latex/latex01_install.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">安装与配置</a><ul>
+<li><a class="reference internal" href="#id2">安装</a></li>
+<li><a class="reference internal" href="#id4">配置</a></li>
+<li><a class="reference internal" href="#hello-world">Hello World</a></li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; 版权所有 2021, 大春雨.
-
-    </p>
-  </div>
-    
-    
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-    <p xmlns:cc="http://creativecommons.org/ns#" > 本站采用 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"> CC BY 4.0 </a> 许可协议，转载请注明出处。</p> 
-
-
-</footer>
+          </div>
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

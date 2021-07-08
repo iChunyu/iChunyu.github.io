@@ -1,112 +1,128 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="现代控制基础（4）：调节器设计" href="MC04_Regulator.html" /><link rel="prev" title="现代控制基础（2）：状态反馈" href="MC02_StateFeedback.html" />
 
-
-<!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>现代控制基础（3）：状态估计器 &mdash; 某春雨的后花园  文档</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/mystyle.css" type="text/css" />
-
-  
-  
-    <link rel="shortcut icon" href="../_static/misaka.ico"/>
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
+        <title>现代控制基础（3）：状态估计器 - 某春雨的后花园</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/clipboard.min.js"></script>
-        <script src="../_static/copybutton.js"></script>
-        <script src="../_static/translations.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
+  <body dir="">
     
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
 
-    
-    <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="现代控制基础（4）：调节器设计" href="MC04_Regulator.html" />
-    <link rel="prev" title="现代控制基础（2）：状态反馈" href="MC02_StateFeedback.html" /> 
-</head>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
-<body class="wy-body-for-nav">
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
 
-          
-            <a href="../index.html" class="icon icon-home"> 某春雨的后花园
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="在文档中搜索" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">目录</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">控制理论学习记录</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">现代控制基础（3）：状态估计器</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">全维状态估计器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">降维状态估计器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">参考资料</a></li>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/learn_git.html">Git 版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/git_tricks.html">Git 使用技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/install_manjaro.html">Manjaro 安装记录</a></li>
 </ul>
 </li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">控制理论学习记录</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">现代控制基础（3）：状态估计器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
@@ -114,114 +130,76 @@
 <li class="toctree-l2"><a class="reference internal" href="integrator_antiwindup.html">抗饱和积分</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../dsp/index.html">数字信号处理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex01_install.html">安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex02_document.html">编写文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex03_float.html">使用图表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex04_math.html">数学公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/function.html">编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/symbolic.html">符号计算</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">某春雨的后花园</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">控制理论学习记录</a> &raquo;</li>
-        
-      <li>现代控制基础（3）：状态估计器</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="../_sources/control/MC03_StateEstimator.rst.txt" rel="nofollow"> 查看页面源码</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="id1">
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="id1">
 <h1>现代控制基础（3）：状态估计器<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>前面讨论了利用系统状态进行反馈的方法，而可知的信息只有被控对象输入的控制信号 <span class="math notranslate nohighlight">\(u\)</span> 和传感器测得的输出 <span class="math notranslate nohighlight">\(y\)</span> ，因此需要所谓的状态估计器对系统的状态进行估计。</p>
 <div class="section" id="id2">
 <h2>全维状态估计器<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>设线性时不变被控对象的状态空间表述为：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{
 \begin{aligned}
 \dot{\mathbf{x}} &amp;= A \mathbf{x} + Bu  \\
 y &amp;= C \mathbf{x}
 \end{aligned}
-\right.\end{split}\]</div>
+\right.\end{split}\]</div></div>
 <p>据此，构建相同的理论模型：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{
 \begin{aligned}
 \dot{\hat{\mathbf{x}}} &amp;= A \hat{\mathbf{x}} + Bu  \\
 \hat{y} &amp;= C \hat{\mathbf{x}}
 \end{aligned}
-\right.\end{split}\]</div>
+\right.\end{split}\]</div></div>
 <p>在该理论模型中，带帽子的变量（如 <span class="math notranslate nohighlight">\(\hat{x}\)</span> ）表示估计值。由于是理论模型，其所有信息都可以通过计算机获得。理论模型和被控对象输入相同的 <span class="math notranslate nohighlight">\(u\)</span> 时，原则上两者的响应相同，因而状态和输出都应当相同。然而实际上，由于被控对象和理论模型初始状态的偏差、理论模型的建模误差、被控对象的额外扰动、传感器的测量噪声等因素的影响，实际输出和理论输出并不相同，因而状态也不相同。</p>
 <p><strong>When in trouble, use feedback</strong> 。为了解决模型之间的差异，遵循这个控制的金科玉律，对理论模型引入反馈进行矫正，令：</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{\dot{\hat{x}}} = A\hat{\mathbf{x}} + { B}u + {L}\left( {y - \hat y} \right)\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\mathbf{\dot{\hat{x}}} = A\hat{\mathbf{x}} + { B}u + {L}\left( {y - \hat y} \right)\]</div></div>
 <p>此时状态的估计误差 <span class="math notranslate nohighlight">\({\mathbf{\tilde x}} = {\mathbf{x}} - {\mathbf{\hat{x}}}\)</span> 满足：</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{\dot{\tilde{x}}} = \left( A - LC \right) \mathbf{\tilde{x}}\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\mathbf{\dot{\tilde{x}}} = \left( A - LC \right) \mathbf{\tilde{x}}\]</div></div>
 <p>于是，只要合理设计 <span class="math notranslate nohighlight">\(L\)</span> 令 <span class="math notranslate nohighlight">\(\left( A - LC \right)\)</span> 所有特征值的实部均小于零即可使状态估计误差收敛到零，即状态估计值趋近于真是状态。</p>
 <p>状态估计器 <span class="math notranslate nohighlight">\(L\)</span> 的设计与状态反馈 <span class="math notranslate nohighlight">\(K\)</span> 的设计完全相同，考察数学关系：</p>
-<div class="math notranslate nohighlight">
-\[\left| {{A} - {LC}} \right| = \left| {{{\left( {{A} - {LC}} \right)}^T}} \right| = \left| {{{A}^T} - {{C}^T}{{L}^T}} \right| \leftarrow \left| A - BK \right|\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\left| {{A} - {LC}} \right| = \left| {{{\left( {{A} - {LC}} \right)}^T}} \right| = \left| {{{A}^T} - {{C}^T}{{L}^T}} \right| \leftarrow \left| A - BK \right|\]</div></div>
 <p>即：状态观测器与控制律之间存在对偶关系，设计时只需分别将 <span class="math notranslate nohighlight">\(A\)</span> 、 <span class="math notranslate nohighlight">\(C\)</span> 、 <span class="math notranslate nohighlight">\(L\)</span> 置后采用与状态反馈相同的方法进行极点配置（特征值设计）。</p>
 <p>下面给出一个全维状态估计器的例子。</p>
 <p>设弹簧-质量-阻尼系统的状态空间为：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{
 \begin{aligned}
 \dot{\mathbf{x}} &amp;= \begin{bmatrix}
@@ -235,14 +213,14 @@ y &amp;= \begin{bmatrix}
 1 &amp; 0
 \end{bmatrix}\mathbf{x}\
 \end{aligned}
-\right.\end{split}\]</div>
+\right.\end{split}\]</div></div>
 <p>其中， <span class="math notranslate nohighlight">\(\omega_n=1 {\rm  rad/s,  } \zeta=0.3\)</span> ，基于Simulink搭建被控对象如图所示</p>
 <div class="figure align-center" style="width: 80%">
-<img alt="../_images/mc03a.png" src="../_images/mc03a.png" />
+<img alt="../_images/mc03a.png" src="../_images/mc03a.png"/>
 </div>
 <p>为了状态估计能够快速收敛，设的阻尼系数 <span class="math notranslate nohighlight">\(\zeta=0.7\)</span> ，对应极点为 <span class="math notranslate nohighlight">\(-0.70\pm0.71j\)</span> ，进而 <span class="math notranslate nohighlight">\(L=\left[0.80,\, -0.48\right]\)</span> 。带入仿真，观察状态的实际值和估计值如下图所示：</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/mc03b.png" src="../_images/mc03b.png" />
+<img alt="../_images/mc03b.png" src="../_images/mc03b.png"/>
 </div>
 <p>第一个子图实线为真实状态，虚线为状态估计值，可见两者在大约5s后趋于一致。第二个子图则表示两个状态的估计误差，同样可以反应状态估计值的误差随时间收敛到零，状态估计值趋于真实值。</p>
 </div>
@@ -250,7 +228,7 @@ y &amp;= \begin{bmatrix}
 <h2>降维状态估计器<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>上面介绍的状态估计器称之为全维状态估计器，因为它对系统的所有状态都进行了估计。然而，在一些情况下，系统的输出就是系统的某一个状态，能否直接利用这个状态，仅对其他状态进行估计呢？这时就需要用降维状态估计器。</p>
 <p>以单输入单输出系统（SISO，Single Input Sigle Output）为例，将其状态空间方程拆解为：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{ {\begin{array}{*{20}{l}}
   {\left[ {\begin{array}{*{20}{c}}
   {{{\dot x}_a}} \\
@@ -271,40 +249,40 @@ y &amp;= \begin{bmatrix}
   {{x_a}} \\
   {{{\mathbf{x}}_b}}
 \end{array}} \right]}
-\end{array}} \right.\end{split}\]</div>
+\end{array}} \right.\end{split}\]</div></div>
 <p>系统的输出就是状态量 <span class="math notranslate nohighlight">\(x_a\)</span> ，需要进行估计的状态为 <span class="math notranslate nohighlight">\(\mathbf{x}_b\)</span> 。</p>
 <p>为了实现降维，需要对原始的状态空间方程进行改造，构造新的系统，使其状态变量有且仅有 <span class="math notranslate nohighlight">\(\mathbf{x}_b\)</span> 。</p>
 <p>首先从 <span class="math notranslate nohighlight">\(\dot{\mathbf{x}}_b\)</span> 的方程中寻找新的系统输入方程：</p>
-<div class="math notranslate nohighlight">
-\[\dot{\mathbf{x}}_b = {{A}_{bb}}{{\mathbf{x}}_b} + \left( {{A_{ba}}{x_a} + {{ B}_b}u} \right)\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\dot{\mathbf{x}}_b = {{A}_{bb}}{{\mathbf{x}}_b} + \left( {{A_{ba}}{x_a} + {{ B}_b}u} \right)\]</div></div>
 <p>将 <span class="math notranslate nohighlight">\(\dot{x}_a\)</span> 换为输出的导数 <span class="math notranslate nohighlight">\(\dot{y}\)</span> ，改写系统的输出方程：</p>
-<div class="math notranslate nohighlight">
-\[\left( {\dot{y} - {A_{aa}}{x_a} - {B_a}u} \right) = {{A}_{ab}}{{\mathbf{x}}_b}\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\left( {\dot{y} - {A_{aa}}{x_a} - {B_a}u} \right) = {{A}_{ab}}{{\mathbf{x}}_b}\]</div></div>
 <p>由上面两个式子，对比标准的状态空间方程，显然有以下转换关系：</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\left\{ \begin{array}{l}
 {\bf{x}} \to {{\bf{x}}_b}\\
 {A} \to {{A}_{bb}}\\
 {B}u \to \left( {{A_{ba}}{x_a} + {{B}_b}u} \right)\\
 C \to {{A}_{ab}}\\
 y \to \left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right)
-\end{array} \right.\end{split}\]</div>
+\end{array} \right.\end{split}\]</div></div>
 <p>根据全维状态估计器的设计方法，对这个转换后的”新系统“进行状态估计器设计，有</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
 \dot{\hat{\mathbf{x}}}_b &amp;= {{A}_{bb}}{{{\bf{\hat x}}}_b} + \left( {{A_{ba}}{x_a} + {{B}_b}u} \right) + {{L}_b}\left[ {\left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right) - {{A}_{ab}}{{{\bf{\hat x}}}_b}} \right] \\
 &amp;= \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right){{{\bf{\hat x}}}_b} + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u + {{L}_b}\dot y
-\end{aligned}\end{split}\]</div>
+\end{aligned}\end{split}\]</div></div>
 <p>由此初步完成了降维估计器的构造，设计的目标只需令 <span class="math notranslate nohighlight">\({{{A}_{bb}} - {{L}_b}{{A}_{ab}}}\)</span> 的所有特征值实部为负。需要注意的是，上式中包含输出的导数 <span class="math notranslate nohighlight">\(\dot{y}\)</span> ，实际中微分是不容易实现的，且容易放大高频噪声，应当避免这一项的存在。于是需要进一步构造辅助变量 <span class="math notranslate nohighlight">\({{\mathbf{x}}_c} = {{{\mathbf{\hat x}}}_b} - {L}_by\)</span> ，则上式改为：</p>
-<div class="math notranslate nohighlight">
-\[\dot{\hat{\mathbf{x}}}_c = \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right)\left( {{{\bf{x}}_c} + {{L}_b}y} \right) + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\dot{\hat{\mathbf{x}}}_c = \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right)\left( {{{\bf{x}}_c} + {{L}_b}y} \right) + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u\]</div></div>
 <p>至此，推导出降维状态估计器的可实现的形式。对于本文所提及的弹簧-质量-阻尼系统，其降维状态估计器结构如下图所示：</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/mc03c.png" src="../_images/mc03c.png" />
+<img alt="../_images/mc03c.png" src="../_images/mc03c.png"/>
 </div>
 <p>对降维状态估计器进行参数设计，之后得到该估计器的响应如图：</p>
 <div class="figure align-center" style="width: 60%">
-<img alt="../_images/mc03d.png" src="../_images/mc03d.png" />
+<img alt="../_images/mc03d.png" src="../_images/mc03d.png"/>
 </div>
 <p>该降维状态估计器仅对状态量 <span class="math notranslate nohighlight">\(x_2\)</span> 进行估计，可见在8s左右估计的误差已收敛到合适的范围，随着时间的增长，状态估计误差收敛于零，状态估计值收敛于真实值。</p>
 <div class="admonition note">
@@ -327,54 +305,84 @@ y \to \left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right)
 </div>
 </div>
 
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="MC04_Regulator.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">现代控制基础（4）：调节器设计</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="MC02_StateFeedback.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">现代控制基础（2）：状态反馈</div>
+                
+              </div>
+            </a>
+        </div>
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="MC04_Regulator.html" class="btn btn-neutral float-right" title="现代控制基础（4）：调节器设计" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="MC02_StateFeedback.html" class="btn btn-neutral float-left" title="现代控制基础（2）：状态反馈" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/control/MC03_StateEstimator.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">现代控制基础（3）：状态估计器</a><ul>
+<li><a class="reference internal" href="#id2">全维状态估计器</a></li>
+<li><a class="reference internal" href="#id3">降维状态估计器</a></li>
+<li><a class="reference internal" href="#id4">参考资料</a></li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; 版权所有 2021, 大春雨.
-
-    </p>
-  </div>
-    
-    
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
-    <p xmlns:cc="http://creativecommons.org/ns#" > 本站采用 <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:21px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"> CC BY 4.0 </a> 许可协议，转载请注明出处。</p> 
-
-
-</footer>
+          </div>
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>
