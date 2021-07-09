@@ -1,3 +1,4 @@
 furo
 jieba
 sphinx_copybutton
+manim
