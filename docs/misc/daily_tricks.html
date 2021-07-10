@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="reStructuredText 入门" href="reStructuredText.html" /><link rel="prev" title="杂乱的技能树" href="index.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="控制理论学习记录" href="../control/index.html" /><link rel="prev" title="Manjaro 安装记录" href="install_manjaro.html" />
 
     <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
-        <title>后花园建成记 - 某春雨的后花园</title>
+        <title>每日小技巧 - 某春雨的后花园</title>
       <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
     <link rel="stylesheet" href="../_static/pygments.css">
     
@@ -112,12 +112,12 @@
 </form><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">杂乱的技能树</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_garden.html">后花园建成记</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reStructuredText.html">reStructuredText 入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learn_git.html">Git 版本控制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_tricks.html">Git 使用技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install_manjaro.html">Manjaro 安装记录</a></li>
-<li class="toctree-l2"><a class="reference internal" href="daily_tricks.html">每日小技巧</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">每日小技巧</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../control/index.html">控制理论学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -166,97 +166,21 @@
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
         <div class="section" id="id1">
-<h1>后花园建成记<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>某年某月某日，某春雨的后花园建成，以此文记录。</p>
-<hr class="docutils"/>
-<div class="section" id="id2">
-<h2>概述<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>这个在线托管的文档由 <a class="reference external" href="https://www.sphinx-doc.org/zh_CN/master/">Sphinx</a> 编译而成，源代码托管于我自己的 <a class="reference external" href="https://github.com/iChunyu">GitHub</a> 仓库，生成的静态网站部署在 <a class="reference external" href="https://readthedocs.org/">Read the Docs</a> 。以这种方式建立网站的主要步骤为：</p>
-<ul class="simple">
-<li><p>安装并初始化 Sphinx 项目；</p></li>
-<li><p>在 GitHub 建立文档源码托管仓库；</p></li>
-<li><p>从 Read the Docs 导入 Sphinx 项目。</p></li>
-</ul>
-</div>
-<div class="section" id="id3">
-<h2>Sphinx 的安装与配置<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>在 Linux 系统上，可以通过以下命令安装 Sphinx:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install sphinx sphinx_rtd_theme
+<h1>每日小技巧<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>每天更新一个小技巧（也许吧）。</p>
+<div class="section" id="inkscape">
+<h2>Inkscape 批量导出图片<a class="headerlink" href="#inkscape" title="永久链接至标题">¶</a></h2>
+<p>之前用 Inkscape 画了很多矢量图，今天想把它们转成位图，一个一个打开再导出太麻烦了，于是想到 Inkscape 的命令行操作，果然有这个命令。结合 Python，可以轻松实现批量导出：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="c1"># 图片之前另存了 PDF，以此为例</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'.pdf'</span><span class="p">:</span>
+        <span class="n">bash_command</span> <span class="o">=</span> <span class="s1">'inkscape '</span> <span class="o">+</span> <span class="n">file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span><span class="sa">r</span><span class="s1">'\ '</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' --export-type=png --export-dpi=600'</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">bash_command</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>其中 <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> 是主程序， <code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code> 则是本站所使用的主题。</p>
-<p>新建文件夹用于存放 Sphinx 文档的源码。在该文件夹打开终端后，运行 <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> 以快速创建 Sphinx 工程。依次会出现以下提示：</p>
-<ol class="arabic">
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">Separate</span> <span class="pre">source</span> <span class="pre">and</span> <span class="pre">build</span> <span class="pre">directories</span> <span class="pre">(y/n)</span> <span class="pre">[n]:</span></code></p>
-<p>是否将源码和编译后的文件分开？为了更好地管理文件，最好将它们分开，输入 <code class="docutils literal notranslate"><span class="pre">y</span></code> 以确认；</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">Project</span> <span class="pre">name:</span></code></p>
-<p>根据自己的爱好给项目起个名字吧，我的嘛，就叫“某春雨的后花园”；</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">Author</span> <span class="pre">name(s):</span></code></p>
-<p>作者的名字，喜欢用真名或者笔名都可以，我就叫大春雨吧；</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">Project</span> <span class="pre">release</span> <span class="pre">[]:</span></code></p>
-<p>项目的发行版本？直接回车跳过吧！</p>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">Project</span> <span class="pre">language</span> <span class="pre">[en]:</span></code></p>
-<p>项目的语言默认是英文，而我想使用简体中文，于是输入 <code class="docutils literal notranslate"><span class="pre">zh_CN</span></code> ，回车，搞定！</p>
-</li>
-</ol>
-<p>项目初始化之后，文件夹将具有以下结构：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./
-├── build/
-├── make.bat
-├── Makefile
-└── source/
-   ├── conf.py
-   ├── index.rst
-   ├── _static/
-   └── _templates/
-</pre></div>
-</div>
-<p>初始话的文件夹为空，这时只需要在该项目的根目录下运行 <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> 就可以生成最基本的静态页面样板，生成的结果可以在 <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code> 中查看。</p>
-<p>默认的主题似乎不是很好看的样子，那我们就在 <code class="docutils literal notranslate"><span class="pre">source/conf.py</span></code> 中进行修改吧，大概在第 54 行，改！</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">'sphinx_rtd_theme'</span>
-</pre></div>
-</div>
-<p>至此，基本的设置就完成了。</p>
-</div>
-<div class="section" id="id4">
-<h2>GitHub 源码托管<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p>代码托管涉及到 <a class="reference external" href="https://git-scm.com/">Git</a> 的使用，基本规则可以参考 <a class="reference internal" href="learn_git.html"><span class="doc">Git 版本控制</span></a> 。这里我们只需要在 GitHub 建立仓库，例如本仓库名为 <code class="docutils literal notranslate"><span class="pre">sphinx-doc</span></code> 。然后在 Sphinx 项目目录下运行以下命令即可。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git init
-<span class="nb">echo</span> <span class="s2">"build/"</span> &gt; .gitignore
-git add .
-git commit -m <span class="s1">'Initial commit'</span>
-git remote add origin git@github.com:iChunyu/iChunyu.github.io.git
-git push -u origin master
-</pre></div>
-</div>
-<p>上述各条命令的功能简述如下：</p>
-<ol class="arabic simple">
-<li><p>初始化 Git 仓库；</p></li>
-<li><p>设置 Git 忽略 <code class="docutils literal notranslate"><span class="pre">build/</span></code> 文件夹；</p></li>
-<li><p>将所有文件保存到暂存区；</p></li>
-<li><p>将暂存区文件提交到 Git 仓库；</p></li>
-<li><p>添加远程分支，注意自己远程分支的地址；</p></li>
-<li><p>将当前分支推送到远程分支。</p></li>
-</ol>
-</div>
-<div class="section" id="id5">
-<h2>Read the Docs 网站部署<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
-<p>注册并登录 Read the Docs ，与发现有个 <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">a</span> <span class="pre">Project</span></code> 按钮，点之。根据提示与 GitHub 绑定，然后会刷新出仓库列表，选择保存 Sphinx 项目的仓库，然后根据提示进行设置，完成导入即可。</p>
-<p>在 Read the Docs 导入项目之后，会在相应的 GitHub 仓库部署一个钩子。这个钩子的功能就是检测该仓库的提交，每当有新的提交， Read the Docs 将会根据最新的仓库重新编译 Sphinx 项目，并部署在项目所设置的网站上。</p>
-<p>这样以来就基本配置好了，剩下的只要依据 <a class="reference external" href="http://www.pythondoc.com/sphinx/index.html">reStructuredText</a> 的规则编写文档即可。当然，Sphinx 也可以通过插件提供 Markdown 支持，但是我喜新厌旧，就不多介绍了。</p>
-</div>
-<div class="section" id="github-pages">
-<h2>GitHub Pages 网站部署<a class="headerlink" href="#github-pages" title="永久链接至标题">¶</a></h2>
-<p>生成的静态网站还可以直接由 GitHub Pages 进行托管，但需要遵循相关规则：</p>
-<ol class="arabic simple">
-<li><p>生成的静态网站所有内容都要放置在根目录 <code class="docutils literal notranslate"><span class="pre">docs/</span></code> 文件夹下： <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">build/html/*</span> <span class="pre">docs/</span></code>；</p></li>
-<li><p>在根目录和 <code class="docutils literal notranslate"><span class="pre">docs/</span></code> 下添加 <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> 文件以取消 nojekyll 支持： <code class="docutils literal notranslate"><span class="pre">tuoch</span> <span class="pre">.nojekyll</span></code>；</p></li>
-<li><p>在 GitHub 仓库设置的 Pages 选项中修改文件夹为 <code class="docutils literal notranslate"><span class="pre">docs/</span></code> 。</p></li>
-</ol>
 </div>
 </div>
 
@@ -264,23 +188,23 @@ git push -u origin master
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="reStructuredText.html">
+          <a class="next-page" href="../control/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">reStructuredText 入门</div>
+                <div class="title">控制理论学习记录</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="install_manjaro.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">杂乱的技能树</div>
+                <div class="title">Manjaro 安装记录</div>
                 
               </div>
             </a>
@@ -294,7 +218,7 @@ git push -u origin master
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="../_sources/misc/build_garden.rst.txt"
+            <a class="muted-link" href="../_sources/misc/daily_tricks.rst.txt"
                rel="nofollow">
               显示源代码
             </a>
@@ -314,12 +238,8 @@ git push -u origin master
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">后花园建成记</a><ul>
-<li><a class="reference internal" href="#id2">概述</a></li>
-<li><a class="reference internal" href="#id3">Sphinx 的安装与配置</a></li>
-<li><a class="reference internal" href="#id4">GitHub 源码托管</a></li>
-<li><a class="reference internal" href="#id5">Read the Docs 网站部署</a></li>
-<li><a class="reference internal" href="#github-pages">GitHub Pages 网站部署</a></li>
+<li><a class="reference internal" href="#">每日小技巧</a><ul>
+<li><a class="reference internal" href="#inkscape">Inkscape 批量导出图片</a></li>
 </ul>
 </li>
 </ul>

@@ -7,7 +7,6 @@
 
 .. toctree::
     :maxdepth: 1
-    :caption: 目录
 
     MC01_SysDescribe
     MC02_StateFeedback

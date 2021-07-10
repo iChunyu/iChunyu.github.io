@@ -401,7 +401,7 @@ KDE 桌面环境下，MATLAB 中右键 “Open Current Folder in File Manager”
 TeX Live
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-下载 TeX Live 的镜像文件，挂载后使用 ``sodu ./install-tl`` 即可安装。安装完成后需要在 ``~/.bashrc`` 中设置路径：
+下载 TeX Live 的镜像文件，挂载后使用 ``sudo ./install-tl`` 即可安装。安装完成后需要在 ``~/.bashrc`` 中设置路径：
 
 .. code-block:: text
 

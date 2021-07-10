@@ -6,7 +6,6 @@ LaTeX 学习记录
 
 .. toctree::
     :maxdepth: 1
-    :caption: 目录
 
     latex01_install
     latex02_document
