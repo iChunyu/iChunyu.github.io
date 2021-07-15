@@ -21,6 +21,7 @@
     dsp/index
     latex/index
     matlab/index
+    blender/index
 
 
 ----
