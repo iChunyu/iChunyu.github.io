@@ -4,9 +4,10 @@
 .. toctree::
    :maxdepth: 1
 
+   daily_tricks
    build_garden
    reStructuredText
    learn_git
    git_tricks
    install_manjaro
-   daily_tricks
+   intro_zotero

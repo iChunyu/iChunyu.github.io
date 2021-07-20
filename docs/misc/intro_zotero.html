@@ -1,0 +1,389 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="控制理论学习记录" href="../control/index.html" /><link rel="prev" title="Manjaro 安装记录" href="install_manjaro.html" />
+
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.1.1, furo 2021.07.05.beta38"/>
+        <title>Zotero 文献管理 - 某春雨的后花园</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">杂乱的技能树</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="daily_tricks.html">每日小技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_git.html">Git 版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_tricks.html">Git 使用技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_manjaro.html">Manjaro 安装记录</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Zotero 文献管理</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../control/index.html">控制理论学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/demo_BangBangCtrl.html">相图与砰砰控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex01_install.html">安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex02_document.html">编写文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex03_float.html">使用图表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex04_math.html">数学公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/function.html">编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/symbolic.html">符号计算</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="zotero">
+<h1>Zotero 文献管理<a class="headerlink" href="#zotero" title="永久链接至标题">¶</a></h1>
+<p>说到文献管理软件，大家可能或多或少听说过 <a class="reference external" href="https://endnote.com/">EndNote</a> 或 <a class="reference external" href="http://www.inoteexpress.com/">NoteExpress</a> ，这里再跟大家分享 <a class="reference external" href="https://www.zotero.org/">Zotero</a>，旨在提供一个新的选择，分享开源的强大。这篇文章主要介绍文献管理软件 Zotero 的基本用法，包括：添加题录、获取原文、文献引用、文档整理和数据同步。为了增强数据同步功能，本文还将对坚果云进行补充介绍。</p>
+<hr class="docutils"/>
+<div class="section" id="id2">
+<h2>Zotero 基本用法<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>安装<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>从 <a class="reference external" href="https://www.zotero.org/">Zotero官网</a> 下载安装包可轻松完成安装，下载界面会识别当前浏览器并推荐相应的插件，同样，点击并安装该插件。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/zotero01.png" src="../_images/zotero01.png"/>
+</div>
+<p>安装完成后打开 Zotero，其界面大概可以分为三部分：左侧是用户自定义的文件夹，中部是当前文件夹下收录的题录，右侧则是选中的题录的详细信息。</p>
+<div class="figure align-center" style="width: 90%">
+<img alt="../_images/zotero02.png" src="../_images/zotero02.png"/>
+</div>
+<p>对于 Windows 用户，Zotero 安装时会自动添加 Microsoft Word 插件，在 Word 界面的顶部应当能够看到多出的 Zotero 菜单栏。如果没有，可在 Zotero 的设置中依次找到 <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">→</span> <span class="pre">Preferences</span> <span class="pre">→</span> <span class="pre">Cite</span> <span class="pre">→</span> <span class="pre">Word</span> <span class="pre">Processors</span></code> 并重新安装插件即可。</p>
+<div class="figure align-center" style="width: 90%">
+<img alt="../_images/zotero03.png" src="../_images/zotero03.png"/>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>添加题录<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>为了管理文献，首先需要将文献的题录添加到 Zotero 数据库中，我们可以采用三种方法。首先自然是手动输入，在 Zotero 主界面上部点击绿色圆圈的加号，选择题录的类型（书籍、学位论文、期刊文献等等）即可创建空题录，并在右侧手动输入相关信息即可完成录入，这种无疑是比较麻烦的方法，写在前面自然也是当作炮灰，抛砖引玉。</p>
+<p>添加题录的第二种方法就是从文件或剪切板板导入。几乎所有的文献检索网站都支持将文献题录导出，以学校图书馆搜索结果为例，搜索文献并点击引用时，可以将文献题录导出到不同格式（令人惊讶的是居然有标准 Zotero 格式），实际上任意下载一种格式都可以从 Zotero 中正确导入。例如下载 BibTex 格式，将会得到一个 <code class="docutils literal notranslate"><span class="pre">.bib</span></code> 文件。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/zotero04.png" src="../_images/zotero04.png"/>
+</div>
+<p>在 Zotero 主界面找到 <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">→</span> <span class="pre">Import...</span></code> ，然后选择刚才下载的 <code class="docutils literal notranslate"><span class="pre">.bib</span></code> 文件即可完成导入。可能会有小伙伴觉得使用这种方法一个一个地下载题录再导入很不方便，实际上很多文献检索网站都有批量导出的功能：只要将看中的文献进行标记（不同的网站提示可能不一样，例如有的可以在前面打勾，有的提供“Save Item”选项），然后批量导出，进而可以批量导入到 Zotero 。</p>
+<p>如果觉得这样依然比较麻烦，那么第三种方法就是使用之前安装的浏览器插件进行全自动收录。打开文献的网站后，Zotero 的浏览器插件会自动进行识别，识别成功后图标会发生相应改变，例如期刊文献的图标如下图所示。点击插件，选择题录保存的文件夹，点击 Done 即可。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/zotero05.png" src="../_images/zotero05.png"/>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>该功能在本地使用时需要提前打开 Zotero 软件，或者从插件登陆在线帐号，否则无法顺利导入题录。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>获取原文<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>如果在导入题录的时候使用的是浏览器插件，且相应的文献通过正常渠道可以免费下载，那么稍等一会儿，你会看到 Zotero 能够自动下载文献并与题录关联，是不是非常棒呢！</p>
+<p>如果相关的文献在正常渠道不可以免费下载，那么很遗憾 Zotero 将不会自动下载。假如学校购买了相应数据库，可以手动下载后右键点击题录添加附件将文献原文与题录进行关联。</p>
+<p>如果文献在正常渠道不免费，学校又没有买，那只得采用一点非正常渠道咯： <a class="reference external" href="https://sci-hub.se/">SciHub</a> 。为了使用SciHub，你需要知道文献的身份证，即所谓的 DOI，其通常是以 <code class="docutils literal notranslate"><span class="pre">10.</span></code> 开头的字符串，如 <code class="docutils literal notranslate"><span class="pre">10.1088/0264-9381/33/3/035010</span></code> ，一般在文献检索网站都有该信息。得到 DOI 后，我们就可以在 SciHub 进行下载。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>作为文献收录最全的非正常渠道，SciHub 为科研人员提供了免费的文献，因此也受到官方的封杀。但更多的人认为知识不应当受到限制，因而 SciHub 通过不断更换域名得以维持。例如本文写成时可用的域名为 <a class="reference external" href="https://sci-hub.se/">https://sci-hub.se/</a> 。</p>
+</div>
+<p>Zotero 作为开源软件，获取 DOI 这种事情麻烦但又常见的事情，当然可以有插件来解决：使用 <a class="reference external" href="https://github.com/bwiernik/zotero-shortdoi">Zotero-ShortDOI</a> 获取文献 DOI，然后利用 <a class="reference external" href="https://github.com/ethanwillis/zotero-scihub">Zotero-SciHub</a> 即可获得原文，而这只需要两次鼠标的右键即可完成。</p>
+<p>在 Zotero 中安装插件也非常简单：下载相关 <code class="docutils literal notranslate"><span class="pre">.xpi</span></code> 文件，在主界面的 <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">→</span> <span class="pre">Add-ons</span></code> 点击齿轮选择从文件安装插件，然后重启软件即可。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/zotero06.png" src="../_images/zotero06.png"/>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>有些浏览器在点击 <code class="docutils literal notranslate"><span class="pre">.xpi</span></code> 文件的链接后不会自动下载，右键该链接并选择“链接保存为…”即可。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>文献引用<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>Zotero 对 Word 的支持使得文献引用非常简单，只需要在 Word 中点击 <code class="docutils literal notranslate"><span class="pre">Zotero</span> <span class="pre">→</span> <span class="pre">Add/Edit</span> <span class="pre">Citation</span></code> ，第一次使用时会提示选择样式，这里不得不再夸一下 Zotero 极为丰富的样式库。例如我们标准格式是由 GB/T7714 规定的，点击添加，并在新弹出的对话框稍作搜索即可下载标准的引用样式，选择即可。以后需要修改样式时可以从 <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">→</span> <span class="pre">Preferences</span> <span class="pre">→</span> <span class="pre">Cite</span> <span class="pre">→</span> <span class="pre">Styles</span></code> 重新设置。</p>
+<div class="figure align-center" style="width: 90%">
+<img alt="../_images/zotero07.png" src="../_images/zotero07.png"/>
+</div>
+<p>选择好样式之后，软件会自动调出题录数据库，选择题录并回车即可。默认视图下仅有一个搜索框可以根据文献的名字进行搜索，但也可选择经典视图打开题录数据库进行手动选择。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/zotero08.png" src="../_images/zotero08.png"/>
+</div>
+<p>使用 Zotero 插件进行文献引用时，不需要在意操作的先后顺序，Zotero 能够根据引文在文中出现的先后顺序自动对编号进行修改。当文章写完后，在 Word 点击 <code class="docutils literal notranslate"><span class="pre">Zotero</span> <span class="pre">→</span> <span class="pre">Add/Edit</span> <span class="pre">Bibliography</span></code> 即可自动生成参考文献列表，如下图所示。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/zotero09.png" src="../_images/zotero09.png"/>
+</div>
+<p>可以看出，文献引用的格式大体上是正确的，但是对多语言支持并不是很好，表现在英文文献作者较多时应当用“et al”，而不能用“等”。进一步，参考文献列表的字体与 Word 的使用有关，可能出现字体大小不对的情况，这都要求我们对参考文献进行手动修改。</p>
+<p>手动修改文献列表前建议先对文档进行备份。从 Word 点击 <code class="docutils literal notranslate"><span class="pre">Zotero</span> <span class="pre">→</span> <span class="pre">Unlink</span> <span class="pre">Citations</span></code> ，断开参考文献列表与文献编号的关联（在 EndNote 中称之为格式化，这将使得新插入的参考文献重新从 1 开始编号，因此务必确认参考文献已经全部引用），这样就可以将参考文献列表变成文本，进行修改。</p>
+<p>关于参考文献引用，LaTeX 的 <a class="reference external" href="https://www.ctan.org/pkg/gbt7714">gbt7714 宏包</a> 提供了非常好的多语言支持，这里稍微秀一下，相关用法可以参考 LaTeX 的学习记录： <a class="reference internal" href="../latex/latex05_autocite.html"><span class="doc">自动化引用</span></a> 。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/zotero10.png" src="../_images/zotero10.png"/>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>文档整理<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>Zotero 自动下载的文献原文默认储存在其数据路径下，并以一些奇怪的文件夹名称进行归类，不利于文献的集中管理。为了将文献原文汇总到一个文件夹，可以使用 <a class="reference external" href="http://zotfile.com/">ZotFile</a> 插件：它能够跟踪某个文件夹下新增的文件，并将该文件剪切到另一个文件夹，同时进行自定义格式的重命名。因此，我们需要告诉它 Zotero 的默认储存目录，然后让它将该文件夹下新增的文件（自动下载的文献原文）剪切到自定义的文件夹中。应当注意的是，这样做虽然能够完成文件的转移，但是会导致 Zotero 中打开题录附件时出现“附件不存在”的错误，因此还需要进一步将 Zotero 附件的默认位置改为 ZotFile 的目标文件夹。</p>
+<div class="figure align-center" style="width: 90%">
+<img alt="../_images/zotero11.png" src="../_images/zotero11.png"/>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>数据同步<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>注册并登录 Zotero 即可自动同步自身数据文件夹下的数据。根据 <a class="reference external" href="https://www.zotero.org/support/sync">Zotero 同步规则</a> ，题录和笔记（Zotero 内置的笔记功能）内容不限空间，附件（主要是文献原文）仅提供 300M 免费空间。为了突破附件空间的限制，我们可以选择付费，也可以通过 WebDAV 来进行容量扩展。截止到这个文章最后修改，国内支持 WebDAV 功能的网盘只有坚果云。大家无须叹气，我保证坚果云和 Zotero 一样好用！</p>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>坚果云的安装与配置<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<p><a class="reference external" href="https://www.jianguoyun.com/">坚果云</a> 是一个面向协同合作的云盘，它支持自动同步和版本控制等功能。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>我决定不花精力写太多关于坚果云其他功能的介绍，除非坚果云能够把这一波广告费发给我，哼！</p>
+</div>
+<div class="section" id="id13">
+<h3>安装与使用<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>从 <a class="reference external" href="https://www.jianguoyun.com/">坚果云官网</a> 下载安装包后双击安装即可，注册账号之类的东西我想应该不必多少。对于个人用户，免费账户完全够用，并且值得称赞的是，坚果云没有广告！</p>
+<p>安装好坚果云之后，我们只需要右键某个文件夹选择坚果云同步即可，如此做，该文件下的文件都能自动同步到坚果云服务器，因此将这个文件夹成为同步文件夹。</p>
+<p>与其他网盘不同的是，在联网状态下，坚果云同步文件夹的内容会实时更新以保持与服务器一致。可以将该文件夹共享给团队进行协同工作。协同工作时，为避免冲突，当一个人在修改某一文件时，该文件将会被锁定，其他人不可编辑。当由于网络延迟或断网使得多人编辑的同一文档出现冲突时，坚果云会有冲突提醒，并能够调用差异对比工具辅助进行冲突解决。</p>
+<p>同步文件夹下的文件修改后会形成多个版本，用户可以随时提取之前的版本。因此，勒索病毒什么的完全就不用担心，因为同步到了云端，即使当前版本被加密，从云端重新下载最近的版本即可。也就是说，版本控制确保了损失的最小化。</p>
+<div class="figure align-center" style="width: 50%">
+<img alt="../_images/zotero12.png" src="../_images/zotero12.png"/>
+</div>
+<p>下面我们将重点回到使用坚果云扩展 Zotero 的同步功能，可以采用两种方法： WebDAV 同步和直接同步。</p>
+</div>
+<div class="section" id="webdav-zotero">
+<h3>使用 WebDAV 同步 Zotero 附件<a class="headerlink" href="#webdav-zotero" title="永久链接至标题">¶</a></h3>
+<p>坚果云提供了提供了 WebDAV 接口，那么我们就可以利用坚果云对数据进行同步。从网页进入坚果云的个人账户设置，在安全选项中的第三方软件管理可以看到坚果云服务器地址。点击添加应用，写好备注即可生成第三方接口的密码（有时候叫做授权码）。</p>
+<div class="figure align-center" style="width: 90%">
+<img alt="../_images/zotero13.png" src="../_images/zotero13.png"/>
+</div>
+<p>然后打开 Zotero，点击 <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">→</span> <span class="pre">Preferences</span> <span class="pre">→</span> <span class="pre">Sync</span></code> ，将文件同步选项改为 WebDAV，输入坚果云提供的服务器地址，用户账号和刚才生成的第三方接口密码即可。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/zotero14.png" src="../_images/zotero14.png"/>
+</div>
+<p>我在 Zotero 配置坚果云服务器时添加了 <code class="docutils literal notranslate"><span class="pre">/WebDAV</span></code> ，这就创建了单独的文件夹以管理坚果云的 WebDAV 服务，以免与自己的其他文件混淆。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>在这种方案下，如果使用 ZotFile 将附件剪切到了其他文件夹，则无法同步附件。也就是说，这种方案配置简单，但是与 ZotFile 对文件集中管理的思路不太一致。</p>
+</div>
+</div>
+<div class="section" id="zotfile-zotero">
+<h3>结合 ZotFile 同步 Zotero 附件<a class="headerlink" href="#zotfile-zotero" title="永久链接至标题">¶</a></h3>
+<p>上面提到了 ZotFile 管理文献原文时将文献移动到了指定的文件夹，直接用坚果云同步这个文件夹不就可以了嘛：右键收录文献的文件夹，点击“使用坚果云同步”即可。</p>
+<p>综上所述，如果你想图简单而不在意文献原文的汇总整理，那么就不需要使用 ZotFile 插件，直接采用坚果云 WebDAV 接口进行同步；如果你有一定的强迫症并愿意折腾，那么就可以使用 ZotFile 转移文献原文后用坚果云的同步文件夹进行同步。</p>
+</div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../control/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">控制理论学习记录</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="install_manjaro.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Manjaro 安装记录</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/misc/intro_zotero.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Zotero 文献管理</a><ul>
+<li><a class="reference internal" href="#id2">Zotero 基本用法</a><ul>
+<li><a class="reference internal" href="#id3">安装</a></li>
+<li><a class="reference internal" href="#id5">添加题录</a></li>
+<li><a class="reference internal" href="#id6">获取原文</a></li>
+<li><a class="reference internal" href="#id7">文献引用</a></li>
+<li><a class="reference internal" href="#id8">文档整理</a></li>
+<li><a class="reference internal" href="#id9">数据同步</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">坚果云的安装与配置</a><ul>
+<li><a class="reference internal" href="#id13">安装与使用</a></li>
+<li><a class="reference internal" href="#webdav-zotero">使用 WebDAV 同步 Zotero 附件</a></li>
+<li><a class="reference internal" href="#zotfile-zotero">结合 ZotFile 同步 Zotero 附件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    </body>
+</html>
