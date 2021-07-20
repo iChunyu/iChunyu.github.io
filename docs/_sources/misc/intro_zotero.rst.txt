@@ -2,7 +2,7 @@ Zotero 文献管理
 =============================================
 
 
-说到文献管理软件，大家可能或多或少听说过 `EndNote <https://endnote.com/>`_ 或 `NoteExpress <http://www.inoteexpress.com/>`_ ，这里再跟大家分享 `Zotero <https://www.zotero.org/>`_，旨在提供一个新的选择，分享开源的强大。这篇文章主要介绍文献管理软件 Zotero 的基本用法，包括：添加题录、获取原文、文献引用、文档整理和数据同步。为了增强数据同步功能，本文还将对坚果云进行补充介绍。
+说到文献管理软件，大家可能或多或少听说过 `EndNote <https://endnote.com/>`_ 或 `NoteExpress <http://www.inoteexpress.com/>`_ ，这里再跟大家分享 `Zotero <https://www.zotero.org/>`_，旨在提供一个新的选择，分享开源的强大。这篇文章主要介绍文献管理软件 Zotero 的基本用法，包括：添加题录、获取原文、添加笔记、文献引用、文档整理和数据同步。为了增强数据同步功能，本文还将对坚果云进行补充介绍。
 
 
 --------
@@ -90,6 +90,18 @@ Zotero 作为开源软件，获取 DOI 这种事情麻烦但又常见的事情�
 .. hint::
 
     有些浏览器在点击 ``.xpi`` 文件的链接后不会自动下载，右键该链接并选择“链接保存为...”即可。
+
+
+添加笔记
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+右键题录可以为题录添加笔记，也可以从上部添加笔记的按钮中添加独立笔记。然而 Zotero 自带的笔记功能不支持 Markdown 语法，为了对此功能进行扩充，可以使用 `MarkdownHere <https://github.com/adam-p/markdown-here>`_ 插件。我不打算展开介绍 `Markdown 教程 <https://www.runoob.com/markdown/md-tutorial.html>`_ ，附以超链接供大家参考。
+
+使用 Markdown 语法编写好笔记后，点击 ``File → Markdown Toggle`` 即可进行渲染。需要说明的是，如果重新编辑笔记，需要再次点击 ``Markdown Toggle`` 回到文本模式，编辑完成后重新渲染，否则该功能不会正常工作。
+
+.. figure:: figures/zotero15.png
+    :align: center
+    :figwidth: 90%
 
 
 文献引用

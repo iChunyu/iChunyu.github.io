@@ -166,7 +166,7 @@
         </label>
         <div class="section" id="zotero">
 <h1>Zotero 文献管理<a class="headerlink" href="#zotero" title="永久链接至标题">¶</a></h1>
-<p>说到文献管理软件，大家可能或多或少听说过 <a class="reference external" href="https://endnote.com/">EndNote</a> 或 <a class="reference external" href="http://www.inoteexpress.com/">NoteExpress</a> ，这里再跟大家分享 <a class="reference external" href="https://www.zotero.org/">Zotero</a>，旨在提供一个新的选择，分享开源的强大。这篇文章主要介绍文献管理软件 Zotero 的基本用法，包括：添加题录、获取原文、文献引用、文档整理和数据同步。为了增强数据同步功能，本文还将对坚果云进行补充介绍。</p>
+<p>说到文献管理软件，大家可能或多或少听说过 <a class="reference external" href="https://endnote.com/">EndNote</a> 或 <a class="reference external" href="http://www.inoteexpress.com/">NoteExpress</a> ，这里再跟大家分享 <a class="reference external" href="https://www.zotero.org/">Zotero</a>，旨在提供一个新的选择，分享开源的强大。这篇文章主要介绍文献管理软件 Zotero 的基本用法，包括：添加题录、获取原文、添加笔记、文献引用、文档整理和数据同步。为了增强数据同步功能，本文还将对坚果云进行补充介绍。</p>
 <hr class="docutils"/>
 <div class="section" id="id2">
 <h2>Zotero 基本用法<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
@@ -222,7 +222,15 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h3>文献引用<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<h3>添加笔记<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>右键题录可以为题录添加笔记，也可以从上部添加笔记的按钮中添加独立笔记。然而 Zotero 自带的笔记功能不支持 Markdown 语法，为了对此功能进行扩充，可以使用 <a class="reference external" href="https://github.com/adam-p/markdown-here">MarkdownHere</a> 插件。我不打算展开介绍 <a class="reference external" href="https://www.runoob.com/markdown/md-tutorial.html">Markdown 教程</a> ，附以超链接供大家参考。</p>
+<p>使用 Markdown 语法编写好笔记后，点击 <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">→</span> <span class="pre">Markdown</span> <span class="pre">Toggle</span></code> 即可进行渲染。需要说明的是，如果重新编辑笔记，需要再次点击 <code class="docutils literal notranslate"><span class="pre">Markdown</span> <span class="pre">Toggle</span></code> 回到文本模式，编辑完成后重新渲染，否则该功能不会正常工作。</p>
+<div class="figure align-center" style="width: 90%">
+<img alt="../_images/zotero15.png" src="../_images/zotero15.png"/>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>文献引用<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <p>Zotero 对 Word 的支持使得文献引用非常简单，只需要在 Word 中点击 <code class="docutils literal notranslate"><span class="pre">Zotero</span> <span class="pre">→</span> <span class="pre">Add/Edit</span> <span class="pre">Citation</span></code> ，第一次使用时会提示选择样式，这里不得不再夸一下 Zotero 极为丰富的样式库。例如我们标准格式是由 GB/T7714 规定的，点击添加，并在新弹出的对话框稍作搜索即可下载标准的引用样式，选择即可。以后需要修改样式时可以从 <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">→</span> <span class="pre">Preferences</span> <span class="pre">→</span> <span class="pre">Cite</span> <span class="pre">→</span> <span class="pre">Styles</span></code> 重新设置。</p>
 <div class="figure align-center" style="width: 90%">
 <img alt="../_images/zotero07.png" src="../_images/zotero07.png"/>
@@ -242,27 +250,27 @@
 <img alt="../_images/zotero10.png" src="../_images/zotero10.png"/>
 </div>
 </div>
-<div class="section" id="id8">
-<h3>文档整理<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id9">
+<h3>文档整理<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <p>Zotero 自动下载的文献原文默认储存在其数据路径下，并以一些奇怪的文件夹名称进行归类，不利于文献的集中管理。为了将文献原文汇总到一个文件夹，可以使用 <a class="reference external" href="http://zotfile.com/">ZotFile</a> 插件：它能够跟踪某个文件夹下新增的文件，并将该文件剪切到另一个文件夹，同时进行自定义格式的重命名。因此，我们需要告诉它 Zotero 的默认储存目录，然后让它将该文件夹下新增的文件（自动下载的文献原文）剪切到自定义的文件夹中。应当注意的是，这样做虽然能够完成文件的转移，但是会导致 Zotero 中打开题录附件时出现“附件不存在”的错误，因此还需要进一步将 Zotero 附件的默认位置改为 ZotFile 的目标文件夹。</p>
 <div class="figure align-center" style="width: 90%">
 <img alt="../_images/zotero11.png" src="../_images/zotero11.png"/>
 </div>
 </div>
-<div class="section" id="id9">
-<h3>数据同步<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id10">
+<h3>数据同步<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>注册并登录 Zotero 即可自动同步自身数据文件夹下的数据。根据 <a class="reference external" href="https://www.zotero.org/support/sync">Zotero 同步规则</a> ，题录和笔记（Zotero 内置的笔记功能）内容不限空间，附件（主要是文献原文）仅提供 300M 免费空间。为了突破附件空间的限制，我们可以选择付费，也可以通过 WebDAV 来进行容量扩展。截止到这个文章最后修改，国内支持 WebDAV 功能的网盘只有坚果云。大家无须叹气，我保证坚果云和 Zotero 一样好用！</p>
 </div>
 </div>
-<div class="section" id="id11">
-<h2>坚果云的安装与配置<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id12">
+<h2>坚果云的安装与配置<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <p><a class="reference external" href="https://www.jianguoyun.com/">坚果云</a> 是一个面向协同合作的云盘，它支持自动同步和版本控制等功能。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <p>我决定不花精力写太多关于坚果云其他功能的介绍，除非坚果云能够把这一波广告费发给我，哼！</p>
 </div>
-<div class="section" id="id13">
-<h3>安装与使用<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id14">
+<h3>安装与使用<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>从 <a class="reference external" href="https://www.jianguoyun.com/">坚果云官网</a> 下载安装包后双击安装即可，注册账号之类的东西我想应该不必多少。对于个人用户，免费账户完全够用，并且值得称赞的是，坚果云没有广告！</p>
 <p>安装好坚果云之后，我们只需要右键某个文件夹选择坚果云同步即可，如此做，该文件下的文件都能自动同步到坚果云服务器，因此将这个文件夹成为同步文件夹。</p>
 <p>与其他网盘不同的是，在联网状态下，坚果云同步文件夹的内容会实时更新以保持与服务器一致。可以将该文件夹共享给团队进行协同工作。协同工作时，为避免冲突，当一个人在修改某一文件时，该文件将会被锁定，其他人不可编辑。当由于网络延迟或断网使得多人编辑的同一文档出现冲突时，坚果云会有冲突提醒，并能够调用差异对比工具辅助进行冲突解决。</p>
@@ -355,13 +363,14 @@
 <li><a class="reference internal" href="#id3">安装</a></li>
 <li><a class="reference internal" href="#id5">添加题录</a></li>
 <li><a class="reference internal" href="#id6">获取原文</a></li>
-<li><a class="reference internal" href="#id7">文献引用</a></li>
-<li><a class="reference internal" href="#id8">文档整理</a></li>
-<li><a class="reference internal" href="#id9">数据同步</a></li>
+<li><a class="reference internal" href="#id7">添加笔记</a></li>
+<li><a class="reference internal" href="#id8">文献引用</a></li>
+<li><a class="reference internal" href="#id9">文档整理</a></li>
+<li><a class="reference internal" href="#id10">数据同步</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id11">坚果云的安装与配置</a><ul>
-<li><a class="reference internal" href="#id13">安装与使用</a></li>
+<li><a class="reference internal" href="#id12">坚果云的安装与配置</a><ul>
+<li><a class="reference internal" href="#id14">安装与使用</a></li>
 <li><a class="reference internal" href="#webdav-zotero">使用 WebDAV 同步 Zotero 附件</a></li>
 <li><a class="reference internal" href="#zotfile-zotero">结合 ZotFile 同步 Zotero 附件</a></li>
 </ul>
