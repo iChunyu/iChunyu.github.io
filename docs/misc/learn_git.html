@@ -2,7 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="Git 使用技巧" href="git_tricks.html" /><link rel="prev" title="reStructuredText 入门" href="reStructuredText.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="Manjaro 安装记录" href="install_manjaro.html" /><link rel="prev" title="reStructuredText 入门" href="reStructuredText.html" />
 
     <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
         <title>Git 版本控制 - 某春雨的后花园</title>
@@ -116,7 +116,6 @@
 <li class="toctree-l2"><a class="reference internal" href="build_garden.html">后花园建成记</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reStructuredText.html">reStructuredText 入门</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Git 版本控制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_tricks.html">Git 使用技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install_manjaro.html">Manjaro 安装记录</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_zotero.html">Zotero 文献管理</a></li>
 </ul>
@@ -172,7 +171,10 @@
 <p>为了更好地进行版本控制，可以使用专业的版本控制软件，而 <a class="reference external" href="https://git-scm.com/">Git</a> 是一个不错的选择。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。</p>
 <hr class="docutils"/>
 <div class="section" id="id2">
-<h2>工作区、暂存区和版本库<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2>Git 基本概念<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>在使用 Git 之前首先介绍一些基本概念，或许会对理解 Git 的工作流程有所帮助。</p>
+<div class="section" id="id3">
+<h3>工作区、暂存区和版本库<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <p>在正式介绍Git之前，首先简要说明三个相关的概念：</p>
 <ul class="simple">
 <li><p><strong>工作区</strong> ：是能够看到的目录，例如 <code class="docutils literal notranslate"><span class="pre">~/LearnGit/</span></code> ；</p></li>
@@ -182,45 +184,46 @@
 <p>工作区的文件被改动后，需要先提交到暂存区，暂存区所记录的修改通常需要提供一定的注释或说明才能提交到版本库。一旦文件提交到了版本库，Git 就会生成一个哈希值来标识当前版本。这种哈希值由40位16进制的字符组成，形如 <code class="docutils literal notranslate"><span class="pre">78b6157cdbc031530c24b003fd72d283fab30d44</span></code> 。通常情况下哈希值差异很大，在不引起矛盾的情况下，我们可以只使用哈希值的前几位来表示相应的版本。</p>
 <p>文件提交到版本库后就可以为所欲为了，下面的一系列图片将会帮助理解Git的开发流程。</p>
 </div>
-<div class="section" id="id3">
-<h2>分支与开发流程<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h3>分支与开发流程<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>假设工作过程中对文件进行了各种修改，并提交到仓库，提交历史将如下图所示：</p>
-<div class="figure align-center" id="id6" style="width: 80%">
+<div class="figure align-center" id="id12" style="width: 80%">
 <img alt="../_images/git1.png" src="../_images/git1.png"/>
-<p class="caption"><span class="caption-text">Git 提交历史</span><a class="headerlink" href="#id6" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">Git 提交历史</span><a class="headerlink" href="#id12" title="永久链接至图片">¶</a></p>
 </div>
 <p>其中，蓝色的方块代表一次提交，其值就是该提交的哈希值前几位。由于Git储存数据的方式，新的提交会指向旧的提交，因而也将较新的提交称为“上游“，对应将之前的提交称为”下游“，蓝色方块串起来的提交历史就是一个分支。图中标有 <code class="docutils literal notranslate"><span class="pre">master</span></code> 字样的黄色方块就是分支默认的名字，其实际上是一个指针，指向分支的最新提交。在 Git 中，一个分支就是一个指针，反过来，一个普通的指针就对应一个分支。标有 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 字样的红色方块是一个特殊的指针，它只能指向分支，也就是说，它是指针的指针。 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 的位置决定了当前工作目录显示的是哪个提交，也决定了新的提交会在哪个分支。</p>
 <p>为了进一步说明 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 的影响，假设在 <code class="docutils literal notranslate"><span class="pre">97bbf1b</span></code> 位置出新建了一个名叫 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 的指针，并让 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 移动到 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 的位置，如下图所示。</p>
-<div class="figure align-center" id="id7" style="width: 80%">
+<div class="figure align-center" id="id13" style="width: 80%">
 <img alt="../_images/git2.png" src="../_images/git2.png"/>
-<p class="caption"><span class="caption-text">Git 创建分支</span><a class="headerlink" href="#id7" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">Git 创建分支</span><a class="headerlink" href="#id13" title="永久链接至图片">¶</a></p>
 </div>
 <p>此时如果你观察工作目录，你会惊奇地发现”穿越“到了过去：工作目录的样子跟当时 <code class="docutils literal notranslate"><span class="pre">97bbf1b</span></code> 提交时候的样子一模一样，后面新的修改不见了、添加的文件不见了、删除的文件复活了。但是如果把 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 分支重新移动到 <code class="docutils literal notranslate"><span class="pre">master</span></code> 的位置，工作空间又会变成 <code class="docutils literal notranslate"><span class="pre">1e08a24</span></code> 的样子，各种修改又回来了。可见，文件提交到版本库后不会丢失，而工作空间显示的文件结构由 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 所指向的分支决定。</p>
 <p><code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 还决定新的提交的位置。为了理解这个，可以打一个非常有意思的比方：把文件的提交，或者说仓库的向上游的扩展看作是修路，那么 <code class="docutils literal notranslate"><span class="pre">master</span></code> 就代表一个没有包工头的施工队，而 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 就是包工头。包工头带领哪个施工队，工程就会在那个施工队的后面延续。而当有多个施工队时，其他的施工队就处于窝工状态。考察下面这种情况，当 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 指向 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 分支时，当修改的文件提交后，仓库是在 <code class="docutils literal notranslate"><span class="pre">A</span></code> 处延续还是在 <code class="docutils literal notranslate"><span class="pre">B</span></code> 处呢？</p>
-<div class="figure align-center" id="id8" style="width: 80%">
+<div class="figure align-center" id="id14" style="width: 80%">
 <img alt="../_images/git3.png" src="../_images/git3.png"/>
-<p class="caption"><span class="caption-text">在分支上创建提交</span><a class="headerlink" href="#id8" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">在分支上创建提交</span><a class="headerlink" href="#id14" title="永久链接至图片">¶</a></p>
 </div>
 <p>答案是在 <code class="docutils literal notranslate"><span class="pre">B</span></code> 处延续。进一步，由于产生了新的提交，而前面提到代表分支的指针指向最新的提交，又有 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 指向分支的指针，我们就可以得到这样的结论：新的提交产生后，分支指针和 <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 指针将同时移动，指向最新的提交。例如在 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 分支上又做了两次修改，整个历史将如下图所示：</p>
-<div class="figure align-center" id="id9" style="width: 80%">
+<div class="figure align-center" id="id15" style="width: 80%">
 <img alt="../_images/git4.png" src="../_images/git4.png"/>
-<p class="caption"><span class="caption-text">Git 分支历史</span><a class="headerlink" href="#id9" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">Git 分支历史</span><a class="headerlink" href="#id15" title="永久链接至图片">¶</a></p>
 </div>
 <p>可以看到开发进程在 <code class="docutils literal notranslate"><span class="pre">97bbf1b</span></code> 处分叉，这也印证了”分支“名字的由来。</p>
 <p>在不同分支上进行不同的修改，而后将修改以某种方式整合到主分支上，称之为分支的合并。例如，将上述 <code class="docutils literal notranslate"><span class="pre">dev</span></code> 分支的提交合并到 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支后，整个提交历史如下图所示：</p>
-<div class="figure align-center" id="id10" style="width: 80%">
+<div class="figure align-center" id="id16" style="width: 80%">
 <img alt="../_images/git5.png" src="../_images/git5.png"/>
-<p class="caption"><span class="caption-text">Git 分支合并</span><a class="headerlink" href="#id10" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">Git 分支合并</span><a class="headerlink" href="#id16" title="永久链接至图片">¶</a></p>
 </div>
 <p>刚刚提到”主分支“，实际上 Git 中的分支都是平权的，不存在所谓的主分支，只是习惯上会将默认的 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支看作主分支。Git 的分支非常适合团队协作，例如，在 <code class="docutils literal notranslate"><span class="pre">97bbf1b</span></code> 处新建多个分支分配给团队的各个小组：<code class="docutils literal notranslate"><span class="pre">dev</span></code> 分支进行进一步开发、 <code class="docutils literal notranslate"><span class="pre">doc</span></code> 分支进行帮助和说明文档的编写、 <code class="docutils literal notranslate"><span class="pre">debug</span></code> 分支进行详细的调试等，一轮进行完成后合并到 <code class="docutils literal notranslate"><span class="pre">master</span></code> 分支，并由此重新生成各个分支进行下一轮开发。</p>
 <p>下面简要介绍部分常用命令的使用，当然 Git 的使用不局限于命令行，已有很多的图形界面程序可以使 Git 操作通过点击鼠标完成。</p>
 </div>
-<div class="section" id="id4">
-<h2>Git初步使用<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p>对于Windows系统，从 <a class="reference external" href="https://git-scm.com/">Git官方网站</a> 下载安装包之后，直接双击即可实现Git的安装，一路基本都采用默认设置即可。在安装过程中会出现下面这样选择默认编辑器的页面，由于默认的 vim 编辑器对新手不友好，可以根据习惯另外选择（可能需要另外安装）。</p>
-<div class="figure align-center" id="id11" style="width: 80%">
+</div>
+<div class="section" id="id5">
+<h2>使用示例<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>对于 Windows 系统，从 <a class="reference external" href="https://git-scm.com/">Git官方网站</a> 下载安装包之后，直接双击即可实现Git的安装，一路基本都采用默认设置即可。在安装过程中会出现下面这样选择默认编辑器的页面，由于默认的 vim 编辑器对新手不友好，可以根据习惯另外选择（可能需要另外安装）。</p>
+<div class="figure align-center" id="id17" style="width: 80%">
 <img alt="../_images/git0.png" src="../_images/git0.png"/>
-<p class="caption"><span class="caption-text">Git 在 Windows 系统安装时选择默认编辑器</span><a class="headerlink" href="#id11" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">Git 在 Windows 系统安装时选择默认编辑器</span><a class="headerlink" href="#id17" title="永久链接至图片">¶</a></p>
 </div>
 <p>安装完成后，在桌面或者资源浏览器内右键会有 <strong>Git Bash Here</strong> 的选项，我们打开它进行初始化设置。</p>
 <p>初始化设置主要是设置用户名和邮箱，分别运行以下两个命令：</p>
@@ -269,9 +272,48 @@ git log             <span class="c1"># 查看当前分支的历史提交</span>
 </div>
 <p>以后就可以用 <code class="docutils literal notranslate"><span class="pre">logs</span></code> 这个别名查看 Git 最近20次提交的历史。</p>
 <p>最后，整理常用命令的示意图，希望对大家有所帮助。</p>
-<div class="figure align-center" id="id12" style="width: 80%">
+<div class="figure align-center" id="id18" style="width: 80%">
 <img alt="../_images/gitcmd.png" src="../_images/gitcmd.png"/>
-<p class="caption"><span class="caption-text">Git 常用命令示意图</span><a class="headerlink" href="#id12" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">Git 常用命令示意图</span><a class="headerlink" href="#id18" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Git 使用技巧<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>收集一些 Git 的使用技巧，看到了就随手记下来，或有用或没用，不定时更新。</p>
+<div class="section" id="id8">
+<h3>清空历史提交<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>随着提交越来越多，仓库体积也会越来越大。对于个人维护的项目，如果想要清理过去所有提交以减小仓库体积，可以使用下面这种 <a class="reference external" href="https://zhuanlan.zhihu.com/p/73029640">简单粗暴的方法</a> ：</p>
+<ol class="arabic simple">
+<li><p>创建孤立分支并将当前提交的文件检出到新分支： <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">--orphan</span> <span class="pre">&lt;newBranch&gt;</span></code></p></li>
+<li><p>添加所有文件： <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code></p></li>
+<li><p>提交更改： <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code></p></li>
+<li><p>删除原分支： <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-D</span> <span class="pre">master</span></code></p></li>
+<li><p>重命名新分支： <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-m</span> <span class="pre">master</span></code></p></li>
+<li><p>强制提交到远程分支： <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-f</span> <span class="pre">origin</span> <span class="pre">master</span></code></p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>这种方法简单粗暴，会不可恢复地删除过往历史，在执行该操作前请做好备份。</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>提取特定版本的文件<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>可以采取下面的命令将特定版本中的某个文件提取出来，并写入到一个新文件中：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git show &lt;comment-id&gt;:&lt;filename&gt; &gt; &lt;newfilename&gt;        <span class="c1"># 用法</span>
+git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1"># 示例</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>需要准确知道待提取的文件在对应版本下的名字。对文件夹内的文件，应当以相对路径的形式给出。</p>
+</div>
+</div>
+<div class="section" id="http">
+<h3>保存 HTTP 帐号密码<a class="headerlink" href="#http" title="永久链接至标题">¶</a></h3>
+<p>如果使用 HTTP 的方式克隆仓库，在每次提交代码到远程仓库时都需要提供帐号和密码，这无疑是个繁琐的操作。为了将密码保存在本地，可以使用 <a class="reference external" href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8#_credential_caching">储存凭证</a> 的功能：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global credential.helper store
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -280,12 +322,12 @@ git log             <span class="c1"># 查看当前分支的历史提交</span>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="git_tricks.html">
+          <a class="next-page" href="install_manjaro.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Git 使用技巧</div>
+                <div class="title">Manjaro 安装记录</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -331,9 +373,18 @@ git log             <span class="c1"># 查看当前分支的历史提交</span>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Git 版本控制</a><ul>
-<li><a class="reference internal" href="#id2">工作区、暂存区和版本库</a></li>
-<li><a class="reference internal" href="#id3">分支与开发流程</a></li>
-<li><a class="reference internal" href="#id4">Git初步使用</a></li>
+<li><a class="reference internal" href="#id2">Git 基本概念</a><ul>
+<li><a class="reference internal" href="#id3">工作区、暂存区和版本库</a></li>
+<li><a class="reference internal" href="#id4">分支与开发流程</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">使用示例</a></li>
+<li><a class="reference internal" href="#id7">Git 使用技巧</a><ul>
+<li><a class="reference internal" href="#id8">清空历史提交</a></li>
+<li><a class="reference internal" href="#id10">提取特定版本的文件</a></li>
+<li><a class="reference internal" href="#http">保存 HTTP 帐号密码</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

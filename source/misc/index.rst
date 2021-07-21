@@ -8,6 +8,5 @@
    build_garden
    reStructuredText
    learn_git
-   git_tricks
    install_manjaro
    intro_zotero
