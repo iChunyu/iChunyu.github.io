@@ -45,3 +45,22 @@ Linux 测试 U 盘读写速度
 
     # 测试读取
     time dd if=/run/media/xiaocy/xiaocy/test.tmp of=/dev/null bs=4k
+
+
+CSGO 绑定跳投
+------------------------------------------
+
+在 CSGO 文件夹 ``<CSGO-root-path>/csgo/cfg/`` 内新建 ``keybind.cfg`` 文件，并输入以下内容
+
+.. code-block::
+
+    alias +jumpthrow"+jump;-attack;-attack2";
+    alias -jumpthrow -jump;
+    bind t +jumpthrow; 
+
+
+每次运行 CSGO 时，按 ``~`` 键打开控制台，执行 ``exec keybind`` 即可。使用跳投时先点鼠标左键，然后按 ``t`` 即可。
+
+.. note::
+
+    控制台执行的命令 ``keybind`` 即为创建的 ``.cfg`` 文件名，可根据自己喜好修改；绑定的跳投键为上述代码第三行的第二个参数，也可以自行修改。

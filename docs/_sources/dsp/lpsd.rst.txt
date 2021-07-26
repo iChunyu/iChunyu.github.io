@@ -17,7 +17,7 @@ Analysis），该工具包中内置一种对数频率点功率谱估计算法，
 
     X(k) = \sum\limits_{n = 0}^{N - 1} {x(n){e^{ - i\frac{ {2\pi} } {N}nk}}}
 
-然后利用 Parseval 等式即可获得功率谱
+然后利用 Wiener–Khinchin 定理即可获得功率谱
 
 .. math::
 
