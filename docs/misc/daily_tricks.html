@@ -4,12 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="后花园建成记" href="build_garden.html" /><link rel="prev" title="杂乱的技能树" href="index.html" />
 
-    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.1.1, furo 2021.07.05.beta38"/>
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
         <title>每日小技巧 - 某春雨的后花园</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css" />
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
     
 
 
@@ -38,7 +36,11 @@
   --color-code-foreground: #d0d0d0;
   
   }
-</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css"></head>
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
   <body dir="">
     
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -150,7 +152,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">版权声明</span></p>
+<p class="caption"><span class="caption-text">版权声明</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../LICENSE.html">LICENSE</a></li>
 </ul>
@@ -218,6 +220,11 @@
 <p>控制台执行的命令 <code class="docutils literal notranslate"><span class="pre">keybind</span></code> 即为创建的 <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> 文件名，可根据自己喜好修改；绑定的跳投键为上述代码第三行的第二个参数，也可以自行修改。</p>
 </div>
 </div>
+<div class="section" id="vim">
+<h2>Vim 中文输入法问题<a class="headerlink" href="#vim" title="永久链接至标题">¶</a></h2>
+<p>当使用 Vim 编辑中文文本时，在切换插入模式和普通模式时需要频繁切换输入法，为此可以使用 <a class="reference external" href="https://github.com/lilydjwg/fcitx.vim">fcitx.vim</a> 插件自动化解决这个问题。</p>
+<p>对于 Manjaro 系统，也可以从 AUR 中一键安装该插件： <code class="docutils literal notranslate"><span class="pre">yay</span> <span class="pre">-S</span> <span class="pre">vim-fcitx</span></code> 。在命令行使用时，切换模式会存在延时，进一步可以在 <code class="docutils literal notranslate"><span class="pre">~/.vimrc</span></code> 配置文件中引入 <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">ttimeoutlen=100</span></code> 而将其设置为较小值。</p>
+</div>
 </div>
 
       </article>
@@ -279,6 +286,7 @@
 <li><a class="reference internal" href="#linux-usb">Linux 查看 USB 接口</a></li>
 <li><a class="reference internal" href="#linux-u">Linux 测试 U 盘读写速度</a></li>
 <li><a class="reference internal" href="#csgo">CSGO 绑定跳投</a></li>
+<li><a class="reference internal" href="#vim">Vim 中文输入法问题</a></li>
 </ul>
 </li>
 </ul>
@@ -290,13 +298,14 @@
       
     </aside>
   </main>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/main.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/translations.js"></script>
-    </body>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>

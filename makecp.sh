@@ -2,5 +2,5 @@
 rm -r build/
 make html
 
-cp -ru build/html/* docs/
+cp -r build/html/* docs/
 touch docs/.nojekyll
