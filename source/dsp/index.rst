@@ -11,3 +11,4 @@
     signal_diff
     filter_design
     lpsd
+    generate_noise

@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="卡尔曼滤波" href="kalman_filter.html" /><link rel="prev" title="抗饱和积分" href="../control/integrator_antiwindup.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="LaTeX 学习记录" href="../latex/index.html" /><link rel="prev" title="LPSD 功率谱估计" href="lpsd.html" />
 
     <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
-        <title>数字信号处理 - 某春雨的后花园</title>
+        <title>产生任意谱密度的噪声 - 某春雨的后花园</title>
       <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
     <link rel="stylesheet" href="../_static/pygments.css">
     
@@ -92,7 +92,7 @@
       <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
     </div>
     <div class="header-right">
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
@@ -131,12 +131,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">数字信号处理</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">数字信号处理</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="kalman_filter.html">卡尔曼滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="signal_diff.html">信号的微分</a></li>
 <li class="toctree-l2"><a class="reference internal" href="filter_design.html">信号的滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lpsd.html">LPSD 功率谱估计</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generate_noise.html">产生任意谱密度的噪声</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">产生任意谱密度的噪声</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -167,20 +167,73 @@
   <main class="main">
     <div class="content">
       <article role="main">
-        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
         <div class="section" id="id1">
-<h1>数字信号处理<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p><a class="reference external" href="https://github.com/iChunyu/signal-process-demo">Can you filter a cup of coffee with a Kalman Filter?</a></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="kalman_filter.html">卡尔曼滤波</a></li>
-<li class="toctree-l1"><a class="reference internal" href="signal_diff.html">信号的微分</a></li>
-<li class="toctree-l1"><a class="reference internal" href="filter_design.html">信号的滤波</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lpsd.html">LPSD 功率谱估计</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generate_noise.html">产生任意谱密度的噪声</a></li>
+<h1>产生任意谱密度的噪声<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>在系统仿真中通常使用噪声滤波器对白噪声进行塑形，从而验证色噪声对系统性能的影响。然而通常滤波器的阶次是整数，难以实现诸如 <span class="math notranslate nohighlight">\(1/f^\alpha \, (0&lt; \alpha &lt;2)\)</span> 分数阶次的粉红噪声。我们当然可以用高阶滤波器在特定频段内对分数阶幅频特性进行逼近，再对白噪声塑形。除此之外，我们还可以先利用傅立叶逆变换把噪声造出来，然后引入模型进行仿真。</p>
+<p>下面我们来看看如何制造噪声。</p>
+<hr class="docutils"/>
+<div class="section" id="id2">
+<h2>基本原理<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>制造噪声的基本思路为：</p>
+<ol class="arabic simple">
+<li><p>根据给定的功率谱密度计算噪声在正频率部分的频谱；</p></li>
+<li><p>产生随机相位，构造噪声完整频谱；</p></li>
+<li><p>利用傅立叶逆变换计算噪声时域序列。</p></li>
+</ol>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>功率谱密度（PSD, Power Spectrum Density）的严格表述是信号自相关函数的傅立叶变换，其单位为 <span class="math notranslate nohighlight">\(\mathrm{*^2/Hz}\)</span> 。然而习惯上使用时通常对齐进行开方运算，因而有了 <span class="math notranslate nohighlight">\(\mathrm{*/\sqrt{Hz}}\)</span> 这种看起来很奇怪的单位。为了避免这种混淆， <a class="reference external" href="https://www.elisascience.org/ltpda/">LTPDA</a> 将开方后的功率谱称为 ASD（Amplitudy Spectrum Density）。在本文中，如无特别说明，功率谱均指 ASD 。</p>
+</div>
+<p>考虑单边 ASD 与傅立叶变换的频谱之间的关系为：</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\mathrm{ASD}(k) = \sqrt{\frac{2}{N f_s}} \left| X(k) \right|\]</div></div>
+<p>为了计算 <span class="math notranslate nohighlight">\(\left|X(k)\right|\)</span> ，需要各频点的谱密度。在傅立叶变换中，频率点的构造应当把握以下两个原则：</p>
+<ul class="simple">
+<li><p>频率从 0 Hz 开始，最大不超过采样率 <span class="math notranslate nohighlight">\(f_s\)</span> ；</p></li>
+<li><p>频率分辨率为 <span class="math notranslate nohighlight">\(f_s/N\)</span> ，其中 <span class="math notranslate nohighlight">\(N\)</span> 为采样点数。</p></li>
 </ul>
+<p>由于傅立叶变换具有周期性，因而 <span class="math notranslate nohighlight">\((f_s/2,\, f_s)\)</span> 与 <span class="math notranslate nohighlight">\((-f_s/2,\,0)\)</span> 的频谱相同，习惯上称其为负频率部分。由于具有共轭对称性，构造频率点时只需要构造正频率部分。在 MATLAB 中可以使用以下命令：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="nb">floor</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">'*</span><span class="n">fs</span><span class="o">/</span><span class="n">N</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>然后根据给定的 ASD 解析式即可计算正频率点频谱的模。</p>
+<p>构造随机相位可以使用 <code class="docutils literal notranslate"><span class="pre">randn</span></code> 命令，然后利用复数的指数表达 <span class="math notranslate nohighlight">\(X(k) = \left|X(k)\right| \mathrm{e}^{j\phi(k)}\)</span> 计算频谱的复数形式。为了构造完整的频谱，在利用共轭对称性时应当注意数据点的奇偶性：</p>
+<ul class="simple">
+<li><p>当 <span class="math notranslate nohighlight">\(N\)</span> 为奇数时： 频率点不包含 <span class="math notranslate nohighlight">\(f_s/2\)</span> ，直接将前面计算的正频率部分除了第一个 0 Hz 点之外的部分倒序共轭，并拼凑在原序列之后即可；</p></li>
+<li><p>当 <span class="math notranslate nohighlight">\(N\)</span> 为偶数时： 频率点包含 <span class="math notranslate nohighlight">\(f_s/2\)</span> ，共轭对称时要去除第一个 0 Hz 和最后一个 <span class="math notranslate nohighlight">\(f_s/2\)</span> 的点，并拼凑在原序列之后。</p></li>
+</ul>
+<p>构造完整频谱之后，使用 <code class="docutils literal notranslate"><span class="pre">ifft</span></code> 即可获得噪声的时域序列。应当注意的是，由于数值误差的存在， <code class="docutils literal notranslate"><span class="pre">ifft</span></code> 的输出存在很小的虚部，这是只需用 <code class="docutils literal notranslate"><span class="pre">real</span></code> 取其实部即可。</p>
+</div>
+<div class="section" id="id3">
+<h2>噪声测试<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>首先根据以下形式的 ASD 生成 <span class="math notranslate nohighlight">\(1/f\)</span> 噪声：</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\mathrm{ASD}(f) = \frac{0.05}{\sqrt{f}} + 1\]</div></div>
+<p>产生的噪声如下图所示，可以看出时域基本具有随机信号的特性，且 ASD 与目标基本一致，初步判定噪声满足频域形状的需求。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/gennoise01.png" src="../_images/gennoise01.png"/>
+</div>
+<p>平稳随机噪声的特性应当不随时间改变，因此不同时间段的噪声应当具有相同的特性。为此，对生成的数据进行分段作谱（分段之间允许部分重叠），结果如下图所示，生成的噪声也能够满足平稳随机的要求。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/gennoise02.png" src="../_images/gennoise02.png"/>
+</div>
+<p>最后验证噪声的相关性：一方面自相关可以体现噪声各个时段内的相关性，理想情况下不同时段相关性为 0 ；另一方面使用相同设置生成另一组噪声，两组噪声之间应该相互独立，相关系数应当为 0 。测试结果如下图，可见满足需求。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/gennoise03.png" src="../_images/gennoise03.png"/>
+</div>
+<p>针对生成的噪声还可以进行更加严格的相关性测试，但这超出了我自己的需求，就不再过多赘述。最后展示一个频域为正弦的噪声示例（给大家看看什么叫秀，狗头保命）。</p>
+<div class="figure align-center" style="width: 70%">
+<img alt="../_images/gennoise04.png" src="../_images/gennoise04.png"/>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>参考资料<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><p>宋知用. MATLAB 数字信号处理 85 个实用案例精讲: 入门到进阶. 北京航空航天大学出版社, 2016.</p></li>
+</ol>
 </div>
 </div>
 
@@ -188,23 +241,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="kalman_filter.html">
+          <a class="next-page" href="../latex/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">卡尔曼滤波</div>
+                <div class="title">LaTeX 学习记录</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../control/integrator_antiwindup.html">
+          <a class="prev-page" href="lpsd.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">抗饱和积分</div>
+                <div class="title">LPSD 功率谱估计</div>
                 
               </div>
             </a>
@@ -218,7 +271,7 @@
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="../_sources/dsp/index.rst.txt"
+            <a class="muted-link" href="../_sources/dsp/generate_noise.rst.txt"
                rel="nofollow">
               显示源代码
             </a>
@@ -226,8 +279,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">产生任意谱密度的噪声</a><ul>
+<li><a class="reference internal" href="#id2">基本原理</a></li>
+<li><a class="reference internal" href="#id3">噪声测试</a></li>
+<li><a class="reference internal" href="#id4">参考资料</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -241,5 +315,6 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>
