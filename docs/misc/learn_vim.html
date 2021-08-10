@@ -1,0 +1,487 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="控制理论学习记录" href="../control/index.html" /><link rel="prev" title="Zotero 文献管理" href="intro_zotero.html" />
+
+    <link rel="shortcut icon" href="../_static/misaka.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
+        <title>Vim 简介 - 某春雨的后花园</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">杂乱的技能树</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="daily_tricks.html">每日小技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_git.html">Git 版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_manjaro.html">Manjaro 安装记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_zotero.html">Zotero 文献管理</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Vim 简介</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../control/index.html">控制理论学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/demo_BangBangCtrl.html">相图与砰砰控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/generate_noise.html">产生任意谱密度的噪声</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex01_install.html">安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex02_document.html">编写文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex03_float.html">使用图表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex04_math.html">数学公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../matlab/index.html">MATLAB 使用技巧</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/function.html">编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../matlab/symbolic.html">符号计算</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">版权声明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="vim">
+<h1>Vim 简介<a class="headerlink" href="#vim" title="永久链接至标题">¶</a></h1>
+<p>最近有兴趣折腾了一下 <a class="reference external" href="https://www.vim.org/">Vim</a> ，不免对这个上古神器的强大感到震撼。这篇文章简要记录下基本操作，只能说是冰山一角。</p>
+<hr class="docutils"/>
+<div class="section" id="id2">
+<h2>认识 Vim 基本模式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>Vim 有三种基本模式：普通模式、插入模式和命令行模式。普通模式是打开 Vim 之后的默认模式，也是进行模式转换的桥梁。在普通模式下，可以进行常规的浏览、替换、删除、粘贴等命令；在普通模式下按 <kbd class="kbd docutils literal notranslate">i</kbd> 即可切换到插入模式，这种模式与常规的文本编辑器相同，可以自由添加、修改、删除文本内容；按 <kbd class="kbd docutils literal notranslate">Esc</kbd> 可以从插入模式切换回普通模式，再次键入 <kbd class="kbd docutils literal notranslate">:</kbd> 会切换到命令行模式。这种模式支持各种命令的使用，在我看来也是 Vim 的强大之处所在。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>Vim 命令对大小写敏感，因此在使用 Vim 时务必确保大写锁定处于关闭状态。通常情况下，大家会建议将键盘的 <kbd class="kbd docutils literal notranslate">Caps Lock</kbd> 键重新映射为 <kbd class="kbd docutils literal notranslate">Esc</kbd> ，对于 Manjaro 系统，可以通过系统设置中的键盘的高级选项进行修改，非常方便。</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>当本文提及大写的命令如 <kbd class="kbd docutils literal notranslate">A</kbd> 时，实际上是指 <kbd class="kbd docutils literal notranslate">Shift</kbd> + <kbd class="kbd docutils literal notranslate">a</kbd> 的组合键。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>退出 Vim<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>网络上流传有这么一个段子：“问：如何产生随机字符串？答：让新手退出 Vim。“</p>
+<p>退出 Vim 首先要确保处于普通模式，如果不是很确定，可以多按几次 <kbd class="kbd docutils literal notranslate">Esc</kbd> 。然后输入 <code class="docutils literal notranslate"><span class="pre">:quit</span></code> 即可退出 Vim。这个命令可以这样来看，首先键入的 <kbd class="kbd docutils literal notranslate">:</kbd> 使 Vim 进入到命令行模式，而 <code class="docutils literal notranslate"><span class="pre">quit</span></code> 就是执行的命令。</p>
+<p>可以猜想，如果只是写入文档而不退出（一般编辑器下的”保存“按钮），应当执行 <code class="docutils literal notranslate"><span class="pre">:write</span></code> ；如果想看某个命令的帮助文档，应该会涉及 <code class="docutils literal notranslate"><span class="pre">:help</span></code> 命令，实际上的确如此。在普通模式下输入 <code class="docutils literal notranslate"><span class="pre">:help</span> <span class="pre">quit</span></code> 就可以看到相应的帮助文档，其中 <code class="docutils literal notranslate"><span class="pre">:q[uit]</span></code> 的中括号部分表示可以省略。因此 :<code class="docutils literal notranslate"><span class="pre">quit</span></code> 可以简写为 <code class="docutils literal notranslate"><span class="pre">:q</span></code> 。</p>
+<p>如果文档进行了改动，直接运行 <code class="docutils literal notranslate"><span class="pre">:q</span></code> 会抛出警告，这时需要写入后退出，或者不保存退出。汇总这些相关的命令，如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:q</span></code> — 退出 Vim （关闭文档）；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:w</span></code> — 写入（保存）文档但不退出；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:wq</span></code> — 保存并关闭当前文档；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:q!</span></code> — 忽略所有更改并关闭当前文档。</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>移动光标<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>移动光标需要在普通模式下进行，用于浏览文档或为编辑做准备。</p>
+<div class="section" id="id5">
+<h3>基本移动<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>普通模式下，光标移动可以通过以下按键实现：</p>
+<ul class="simple">
+<li><p><kbd class="kbd docutils literal notranslate">h</kbd> — 左移一个字符；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">j</kbd> — 下移一行；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">k</kbd> — 上已一行；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">l</kbd> — 右移一个字符；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">0</kbd> — 移动到本行开头；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">$</kbd> — 移动到本行末尾；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">g</kbd><kbd class="kbd docutils literal notranslate">g</kbd> — 移动到文档首行开头；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">G</kbd> — 移动到文档最后一行开头。</p></li>
+</ul>
+<p>Vim 的命令在执行前可以指定重复次数，例如下移15行可以使用 <code class="docutils literal notranslate"><span class="pre">15j</span></code> 来完成。特别地，在 <kbd class="kbd docutils literal notranslate">G</kbd> 之前指定数字可以跳转到指定行。为了在 Vim 中显示行号，可以在普通模式下执行 <code class="docutils literal notranslate"><span class="pre">:set</span> <span class="pre">number</span></code> 。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>当文档单行内容过长而 Vim 的 <code class="docutils literal notranslate"><span class="pre">wrap</span></code> 设置被启用（默认启用）时，过长的文字会在屏幕内自动换行，但这并不是真正的换行。Vim 默认的 <code class="docutils literal notranslate"><span class="pre">j</span></code> 命令是对实际行进行操作，遇到这种情况时难免会出乎我们的期望，因此可以使用 <code class="docutils literal notranslate"><span class="pre">gj</span></code> 和 <code class="docutils literal notranslate"><span class="pre">gk</span></code> 进行屏幕行的跳转。</p>
+</div>
+<p>为了默认使用屏幕行的跳转，我们会将 <code class="docutils literal notranslate"><span class="pre">j</span></code> 与 <code class="docutils literal notranslate"><span class="pre">gj</span></code> 的功能互换，可以在配置文件 <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> 中添加以下内容：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>基于单词的移动<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>比普通模式更快地，Vim 可以基于单词进行移动，主要命令如下：</p>
+<ul class="simple">
+<li><p><kbd class="kbd docutils literal notranslate">w</kbd> — 移动到下一个单词开头（word）；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">e</kbd> — 移动到当前单词结尾（end）；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">b</kbd> — 向前移动到单词开头（backward）；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">g</kbd><kbd class="kbd docutils literal notranslate">e</kbd> — 向前移动到单词结尾；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">W</kbd> — 移动到下一个字符串开头；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">E</kbd> — 移动到下一个字符串结尾；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">B</kbd> — 向前移动到字符串开头；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">g</kbd><kbd class="kbd docutils literal notranslate">E</kbd> — 向前移动到字符串结尾。</p></li>
+</ul>
+<p>对比可以发现，小写命令针对单词，而大写命令针对的是字符串，两者的区别在于对特殊字符的处理方式：单词认为 <code class="docutils literal notranslate"><span class="pre">‘</span></code> 是单词之间的分割，而字符串则严格以空格作为分割。例如 <code class="docutils literal notranslate"><span class="pre">let's</span> <span class="pre">go</span></code> 这个短语会被 Vim 解读成4个单词或2个字符串。</p>
+</div>
+<div class="section" id="id7">
+<h3>基于查找的移动<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>Vim 可以使用 <kbd class="kbd docutils literal notranslate">f</kbd> 对行内的单个字符进行查找，结合 <kbd class="kbd docutils literal notranslate">;</kbd> 向后继续查找，当跳转过头时使用 <kbd class="kbd docutils literal notranslate">,</kbd> 向前查找。同样，也可以使用 <kbd class="kbd docutils literal notranslate">/</kbd> 对字符串进行查找，使用 <kbd class="kbd docutils literal notranslate">n</kbd> 或 <kbd class="kbd docutils literal notranslate">N</kbd> 分别向后、向前继续查找。</p>
+<p>我们用下面的一个例子来对比各种移动光标的方法：</p>
+<p>假设现在光标处于这段话的开头，现在希望将光标跳转到 <code class="docutils literal notranslate"><span class="pre">over</span></code> 的开头，有这么几种做法：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wwwww</span></code> — 所见即所得，只要不觉得麻烦就可以达到效果；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5w</span></code> — 与上一个命令等价，虽然按键少了，但需要一定的计算；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fo;;</span></code> — 首先 <code class="docutils literal notranslate"><span class="pre">fo</span></code> 指定了对字符 <code class="docutils literal notranslate"><span class="pre">o</span></code> 的查找，光标跳转到 <code class="docutils literal notranslate"><span class="pre">brown</span></code> 的中间，然后继续查找两次达成目标；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fvh</span></code> — 对 <code class="docutils literal notranslate"><span class="pre">v</span></code> 进行查找，然后向左移动一个字符；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/over&lt;Enter&gt;</span></code> — 对字符串 <code class="docutils literal notranslate"><span class="pre">over</span></code> 进行查找并跳转（其中 <code class="docutils literal notranslate"><span class="pre">&lt;Enter&gt;</span></code> 表示按回车键）。</p></li>
+</ul>
+<p>对比这几种方法，第一种最直观，但是当句子特别长时跳转很慢；第二种虽然看起来简单，但数数的功夫容易得不偿失，也很少使用；第三种方法应该说是最常用也是最容易被人接受的，当句子较长时能够获得比较快的跳转速度；第四种是第三种的高阶用法，查找不常出现的字符以提高跳转速度；最后一种单次使用时输入较为复杂，通常结合替换使用。</p>
+</div>
+<div class="section" id="id8">
+<h3>其他跳转方法<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p><kbd class="kbd docutils literal notranslate">%</kbd> 可以用于配对符号之间的跳转，例如在 <code class="docutils literal notranslate"><span class="pre">(</span></code> 处按 <kbd class="kbd docutils literal notranslate">%</kbd> 可以跳转到相应的 <code class="docutils literal notranslate"><span class="pre">)</span></code> ，这个功能特别适合对代码进行检查。</p>
+<p><kbd class="kbd docutils literal notranslate">m</kbd> 和 <kbd class="kbd docutils literal notranslate">`</kbd> 构成标记（mark）——跳转对。例如， <code class="docutils literal notranslate"><span class="pre">ma</span></code> 将当前位置标记为 <code class="docutils literal notranslate"><span class="pre">a</span></code> ，普通模式下使用 <code class="docutils literal notranslate"><span class="pre">`a</span></code> 就可以跳转到刚刚标记的位置。需要说明的是，标记只能是单个字符，并且区分大小写；单个文档可以存在多个标记。</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>选定范围<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>类比于英语中动词可以分为及物动词和不及物动词，Vim 中有些命令可以直接执行，例如 <kbd class="kbd docutils literal notranslate">j</kbd> 就是下移一行；也有些命令需要指定作用范围，这里我们以删除命令 <kbd class="kbd docutils literal notranslate">d</kbd> （delete）为例进行说明。</p>
+<p>为了执行删除操作，按下 <kbd class="kbd docutils literal notranslate">d</kbd> 之后还应当给定删除范围。前面介绍跳转的时候说过 <kbd class="kbd docutils literal notranslate">w</kbd> 是从当前位置到下一个单词开头，确切地表明了范围。因此 <code class="docutils literal notranslate"><span class="pre">dw</span></code> 就是从当前位置删除到下一个单词的开头。类似地， <code class="docutils literal notranslate"><span class="pre">d2w</span></code> 就是从当前位置删除到后面第三个单词的开头（删除两个单词）、 <code class="docutils literal notranslate"><span class="pre">d$</span></code> 从当前位置删除到本行结尾。</p>
+<p>如果光标处于某个想删除的单词的中间，而使用 <code class="docutils literal notranslate"><span class="pre">dw</span></code> 删除时，光标之前部分不会被删除。为此，Vim 还提供了 <kbd class="kbd docutils literal notranslate">a</kbd> 和 <kbd class="kbd docutils literal notranslate">i</kbd> 这两个修饰词（可以理解为 around 和 inside）来进一步修饰范围， <kbd class="kbd docutils literal notranslate">a</kbd> 可以将选区扩展到光标两边，包括限定词； <kbd class="kbd docutils literal notranslate">i</kbd> 将选区扩展到两边，但是不包括限定词。例如， <code class="docutils literal notranslate"><span class="pre">daw</span></code> 将删除整个单词以及后面的一个空格，不管光标处于单词的哪个位置。使用 <kbd class="kbd docutils literal notranslate">a</kbd> 或 <kbd class="kbd docutils literal notranslate">i</kbd> 进行修饰时，除了使用 <kbd class="kbd docutils literal notranslate">w</kbd> 设定范围外，还可以使用配对符号进行扩展。例如，当光标处于某一对括号内部任意位置，使用 <code class="docutils literal notranslate"><span class="pre">da)</span></code> 可以删除整个括号内的内容，并连同括号一起删除。</p>
+<p>特别地，Vim 的一些命令重复按两次表示对当前行进行操作，如 <code class="docutils literal notranslate"><span class="pre">dd</span></code> 为删除当前行。</p>
+<p>除了使用命令划定范围外，与普通编辑器相同，可以先选定范围再执行操作。按 <kbd class="kbd docutils literal notranslate">v</kbd> 进入 Vim 的可视模式（visual mode），然后再利用前面介绍的各种跳转命令，可以发现光标遍历的位置高亮，这时候再执行 <kbd class="kbd docutils literal notranslate">d</kbd> 即可删除高亮选区。特别地， <kbd class="kbd docutils literal notranslate">V</kbd> 直接对整行进行选取。</p>
+<p>组合键 <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">v</kbd> 在 Vim 中不再是粘贴，在普通模式下使用该组合键可以进入 Vim 的块选取模式，对应通常编辑器的列编辑功能，能够同时对多行进行相同的修改。</p>
+</div>
+<div class="section" id="id10">
+<h2>编辑文档<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h3>在普通模式进行少量修改<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>在普通模式下可以对文档进行部分删除和简单的替换工作，常用有：</p>
+<ul class="simple">
+<li><p><kbd class="kbd docutils literal notranslate">x</kbd> — 删除当前字符；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">r</kbd> — 使用另一个字符替换当前字符（replace），例如 <code class="docutils literal notranslate"><span class="pre">re</span></code> 是将光标下的字符替换为 <code class="docutils literal notranslate"><span class="pre">e</span></code> ；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">d</kbd> — 删除操作，在上面已经讨论，不再赘述；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">.</kbd> — 重复上一次操作。</p></li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h3>从插入模式编辑文档<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>编辑文档最主要的方式是进入编辑模式，像普通编辑器一样编辑文档。Vim 提供以下基本的方式进入插入模式：</p>
+<ul class="simple">
+<li><p><kbd class="kbd docutils literal notranslate">i</kbd> — 从当前光标之前进入插入模式（insert）；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">I</kbd> — 从当前行（或可选模式下的选区）之前进入插入模式；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">a</kbd> — 从当前光标之后进入插入模式（append）；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">A</kbd> — 从当前行（或可选模式下的选区）之后进入插入模式；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">o</kbd> — 向下插入新行并进入插入模式；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">O</kbd> — 向上插入新行并进入插入模式；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">s</kbd> — 删除当前字符并进入插入模式；</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">S</kbd> — 删除当前行并进入插入模式。</p></li>
+</ul>
+<p>Vim 还可以使用 <kbd class="kbd docutils literal notranslate">c</kbd> 命令进行更改（change），例如 <code class="docutils literal notranslate"><span class="pre">caw</span></code> 表示删除当前的单词并进入插入模式。这种方法在修改程序时非常有效，例如修改字符串变量 <code class="docutils literal notranslate"><span class="pre">sys_name</span> <span class="pre">=</span> <span class="pre">"Windows</span> <span class="pre">10"</span></code> 时，将光标移至双引号内部任意位置，使用 <code class="docutils literal notranslate"><span class="pre">ci"</span></code> 即可删除字符串变量的值并进行修改。</p>
+</div>
+<div class="section" id="id13">
+<h3>搜索与替换<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>前面介绍了 <kbd class="kbd docutils literal notranslate">/</kbd> 进行搜索，而替换则需要结合命令行 <code class="docutils literal notranslate"><span class="pre">:s</span></code> 实现（substitute）,例如将 <code class="docutils literal notranslate"><span class="pre">old</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">new</span></code> ，有以下几种不同的方式：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:s/old/new</span></code> — 从光标之后对当前行进行搜索，将第一个 <code class="docutils literal notranslate"><span class="pre">old</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">new</span></code> ；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:s/old/new/g</span></code> — 从光标之后对当前行进行搜索，将所有 <code class="docutils literal notranslate"><span class="pre">old</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">new</span></code> ；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:%s/old/new/g</span></code> — 对全文进行搜索，将所有 <code class="docutils literal notranslate"><span class="pre">old</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">new</span></code> ；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:%s/old/new/gc</span></code> — 对全文进行搜索，将所有 <code class="docutils literal notranslate"><span class="pre">old</span></code> 替换为 <code class="docutils literal notranslate"><span class="pre">new</span></code> ，并在执行前进行确认。</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>进行简单的计算<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>在普通模式使用组合键 <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">a</kbd> 可以对光标下的数字加一，而使用 <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">x</kbd> 则进行减一操作。当光标不处于数字上，Vim 会自动从光标之后搜索当前行的第一个数字，执行相应操作。同样地，这种方式可以指定次数运行，例如 <code class="docutils literal notranslate"><span class="pre">10&lt;Ctrl&gt;a</span></code> 是将当前数字加 10 。</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>应当注意，<kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">a</kbd> 和 <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">x</kbd> 都是针对单词的操作，因此小数将以小数点分界，作为两个整数来对待。</p>
+<p>如果数字以 0 开头，Vim 默认将其解释为八进制，因此对 007 进行 <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl&gt;a</span></code> 命令后，得到的是 010 而不是 008。为了只使用十进制，可以在配置文件 <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> 中添加 <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">nrformats=</span></code> 进行设置。</p>
+</div>
+<p>在插入模式中，可以使用 <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">r</kbd> + <kbd class="kbd docutils literal notranslate">=</kbd> 触发计算功能，输入计算表达式后，按 <kbd class="kbd docutils literal notranslate">Enter</kbd> 即可将计算结果输出到当前位置。例如 <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl&gt;r=1+1&lt;Enter&gt;</span></code> 将会输入 2 。</p>
+</div>
+</div>
+<div class="section" id="id15">
+<h2>寄存器简介<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
+<p>Vim 提供多种寄存器，用于储存复制或删除的内容。寄存器可以通过 <kbd class="kbd docutils literal notranslate">"</kbd> 进行引用，有以下几种常见寄存器：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[a-z]</span></code> — 有名寄存器，用于各种自定义内容；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">"</span></code> — 无名寄存器，不指定寄存器时默认使用该寄存器；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> — 复制专用寄存器（书里这么写的，我也不知道为啥要起这个名字，实际上复制不一定非要用这个）；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code> — 系统剪切板，用于系统级的复制粘贴；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_</span></code> — 黑洞寄存器，所有在这里的东西都丢失，彻彻底底地删除；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> — 表达式寄存器，可以用于计算；</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%</span></code> — 当前文件名。</p></li>
+</ul>
+<p>还有一些其他寄存器，这里不多赘述。</p>
+<div class="section" id="id16">
+<h3>复制与粘贴<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>以复制粘贴这个经典的例子来介绍寄存器的使用。</p>
+<p>复制可以使用 <kbd class="kbd docutils literal notranslate">y</kbd> 来实现（yank），而粘贴使用 <kbd class="kbd docutils literal notranslate">p</kbd> 完成（paste）。复制时需要指定范围，可以用限定词来指定，如 <code class="docutils literal notranslate"><span class="pre">yaw</span></code> 为复制当前单词；也可以用可视模式进行选择。 <kbd class="kbd docutils literal notranslate">p</kbd> 默认将内容粘贴在光标之后（Vim 会自动判断是否换行），也可用 <kbd class="kbd docutils literal notranslate">P</kbd> 粘贴在之前，或使用可视模式进行选择替换。特别地， <code class="docutils literal notranslate"><span class="pre">yy</span></code> 将对当前行进行复制。</p>
+<p>上面这种直接复制的方法没有指定寄存器，默认使用无名寄存器 <code class="docutils literal notranslate"><span class="pre">"</span></code> ,即 <code class="docutils literal notranslate"><span class="pre">yy</span></code> 命令等价于 <code class="docutils literal notranslate"><span class="pre">""yy</span></code> （第一个 <code class="docutils literal notranslate"><span class="pre">"</span></code> 表示使用寄存器，第二个 <code class="docutils literal notranslate"><span class="pre">"</span></code> 表示使用无名寄存器）。使用无名寄存器容易导致复制的内容丢失，我们看下面一个例子：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1) 使用 `yy` 命令复制本行；
+2) 使用 `dd` 命令删除本行；
+3）尝试在此使用 `p` 命令将第一行内容粘贴到本行之下。
+</pre></div>
+</div>
+<p>如果按照上面的提示做，会发现最后粘贴的是第二行的内容。这是因为第二行使用 <code class="docutils literal notranslate"><span class="pre">dd</span></code> 删除的内容并没有真正的删除，而是以剪切的方式储存在寄存器内，而前面的 <code class="docutils literal notranslate"><span class="pre">yy</span></code> 和这里的 <code class="docutils literal notranslate"><span class="pre">dd</span></code> 均没有显式指定寄存器，所有都使用的是无名寄存器。无名寄存器第一次复制的内容被第二次删除的内容覆盖，因此粘贴时读取的无名寄存器是第二行内容。</p>
+<p>为此，可以改变操作顺序，如先删除，后复制。也可以使用显式指定其他寄存器以避免内容覆盖，例如可以使用 <code class="docutils literal notranslate"><span class="pre">"0yy</span></code> 和 <code class="docutils literal notranslate"><span class="pre">"0p</span></code> 进行复制粘贴；或者可以将删除内容放置到其他寄存器如 <code class="docutils literal notranslate"><span class="pre">"_dd</span></code> 。</p>
+<p>可以同时使用多个寄存器，例如复制帐号和密码时，可以使用 <code class="docutils literal notranslate"><span class="pre">"ay</span></code> 将帐号复制到寄存器 <code class="docutils literal notranslate"><span class="pre">a</span></code> ，而使用 <code class="docutils literal notranslate"><span class="pre">“by</span></code> 将密码复制到寄存器 <code class="docutils literal notranslate"><span class="pre">b</span></code> 。粘贴分别使用 <code class="docutils literal notranslate"><span class="pre">"ap</span></code> 和 <code class="docutils literal notranslate"><span class="pre">"bp</span></code> 即可。</p>
+<p>上述的粘贴是在普通模式进行，为了在插入模式直接读取寄存器内容，可以使用 <kbd class="kbd docutils literal notranslate">Ctrl</kbd> + <kbd class="kbd docutils literal notranslate">r</kbd> 组合键，指定寄存器后即可将内容粘贴到正文。</p>
+<p>忘记寄存器内容时，可以使用 <code class="docutils literal notranslate"><span class="pre">:reg</span></code> 命令进行查看。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>前面提到的 <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl&gt;r=</span></code> 实际上是读取 <code class="docutils literal notranslate"><span class="pre">=</span></code> 寄存器的内容，可以认为这是 <code class="docutils literal notranslate"><span class="pre">=</span></code> 寄存器特殊的用法。</p>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>宏的录制与回放<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>寄存器中还可以保存命令（宏），并在特定的时候执行（回放）。普通模式下按 <kbd class="kbd docutils literal notranslate">q</kbd> 并指定寄存器即可开启宏的录制，再次按 <kbd class="kbd docutils literal notranslate">q</kbd> 即停止录制。在使用寄存器内保存的宏时，使用 <kbd class="kbd docutils literal notranslate">@</kbd> 和寄存器名即可。</p>
+<p>例如我在编辑本文时，为了使用如 <kbd class="kbd docutils literal notranslate">Enter</kbd> 这样的键盘样式，需要输入指令 <code class="docutils literal notranslate"><span class="pre">:kbd:`Enter`</span></code> ，因此我可以录制一个宏，自动在单词两边分别添加 <code class="docutils literal notranslate"><span class="pre">:kbd:`</span></code> 和 <code class="docutils literal notranslate"><span class="pre">`</span></code> 。假如我将这个宏录制到寄存器 <code class="docutils literal notranslate"><span class="pre">k</span></code> ，具体步骤如下：</p>
+<ol class="arabic simple">
+<li><p>普通模式下将光标移动到需要添加键盘样式的单词处；</p></li>
+<li><p>键入 <code class="docutils literal notranslate"><span class="pre">qk</span></code> 开始录制宏，并指定将宏录制到有名寄存器 <code class="docutils literal notranslate"><span class="pre">k</span></code> ；</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">ciw</span></code> 删除当前单词并保留两边的空格（reStructuredText 需要空格对命令进行分割），进入插入模式；</p></li>
+<li><p>在插入模式中输入 <code class="docutils literal notranslate"><span class="pre">:kbd:`&lt;Ctrl&gt;r"`</span></code> ，其中 <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl&gt;r"</span></code> 读取了无名寄存器的内容，即上一步删除的单词；</p></li>
+<li><p>按 <kbd class="kbd docutils literal notranslate">Esc</kbd> 返回普通模式，按 <kbd class="kbd docutils literal notranslate">q</kbd> 停止录制。</p></li>
+</ol>
+<p>如此做，只需要在另一个需要添加键盘样式的单词处使用 <code class="docutils literal notranslate"><span class="pre">@k</span></code> 即可调用宏。</p>
+<p>使用 <kbd class="kbd docutils literal notranslate">@</kbd> 回放宏的时候，也可以像普通命令一样指定次数。一个经典的例子就是在各行前面添加行号，需要结合一定的脚步，使用以下方式实现：</p>
+<ol class="arabic simple">
+<li><p>在命令行运行 <code class="docutils literal notranslate"><span class="pre">:let</span> <span class="pre">i=1</span></code> 设定行号初值，并将光标移动到需要编号的那一行；</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">qq</span></code> 开始录制宏，并将其录制到寄存器 <code class="docutils literal notranslate"><span class="pre">q</span></code> ；</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">I&lt;Ctrl&gt;r=i&lt;Enter&gt;)</span></code> 将变量 <code class="docutils literal notranslate"><span class="pre">i</span></code> 的值插入到行的最前面，并添加 <code class="docutils literal notranslate"><span class="pre">)</span></code> 进行修饰；</p></li>
+<li><p>按 <kbd class="kbd docutils literal notranslate">Esc</kbd> 回到普通模式，运行 <code class="docutils literal notranslate"><span class="pre">:let</span> <span class="pre">i+=1</span></code> 进行递归，然后按 <kbd class="kbd docutils literal notranslate">j</kbd> 换行；</p></li>
+<li><p>按 <kbd class="kbd docutils literal notranslate">q</kbd> 停止宏录制，然后使用 <code class="docutils literal notranslate"><span class="pre">22@q</span></code> 将宏重复 22 次 （ <kbd class="kbd docutils literal notranslate">2</kbd> 与 <kbd class="kbd docutils literal notranslate">@</kbd> 在同一个键位，用起来方便而已）。</p></li>
+</ol>
+<p>当行数不足以满足指定的重复次数时，Vim 会自动停止回放宏，因此无需担心指定次数不准确的问题。</p>
+</div>
+</div>
+<div class="section" id="id18">
+<h2>参考资料<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><p>NEIL D. Vim实用技巧. 杨源, 车文隆, 译. 人民邮电出版社, 2014.</p></li>
+</ol>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../control/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">控制理论学习记录</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="intro_zotero.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Zotero 文献管理</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/misc/learn_vim.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Vim 简介</a><ul>
+<li><a class="reference internal" href="#id2">认识 Vim 基本模式</a></li>
+<li><a class="reference internal" href="#id3">退出 Vim</a></li>
+<li><a class="reference internal" href="#id4">移动光标</a><ul>
+<li><a class="reference internal" href="#id5">基本移动</a></li>
+<li><a class="reference internal" href="#id6">基于单词的移动</a></li>
+<li><a class="reference internal" href="#id7">基于查找的移动</a></li>
+<li><a class="reference internal" href="#id8">其他跳转方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">选定范围</a></li>
+<li><a class="reference internal" href="#id10">编辑文档</a><ul>
+<li><a class="reference internal" href="#id11">在普通模式进行少量修改</a></li>
+<li><a class="reference internal" href="#id12">从插入模式编辑文档</a></li>
+<li><a class="reference internal" href="#id13">搜索与替换</a></li>
+<li><a class="reference internal" href="#id14">进行简单的计算</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id15">寄存器简介</a><ul>
+<li><a class="reference internal" href="#id16">复制与粘贴</a></li>
+<li><a class="reference internal" href="#id17">宏的录制与回放</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">参考资料</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

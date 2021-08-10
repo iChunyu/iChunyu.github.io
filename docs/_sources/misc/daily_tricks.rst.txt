@@ -73,3 +73,13 @@ Vim 中文输入法问题
 
 对于 Manjaro 系统，也可以从 AUR 中一键安装该插件： ``yay -S vim-fcitx`` 。在命令行使用时，切换模式会存在延时，进一步可以在 ``~/.vimrc`` 配置文件中引入 ``set ttimeoutlen=100`` 而将其设置为较小值。
 
+Linux 终端补全忽略大小写
+------------------------------------------
+
+在家目录下创建 ``.inputrc`` 并写入：
+
+.. code-block:: text
+
+    set completion-ignore-case on
+
+然后重启终端即可。

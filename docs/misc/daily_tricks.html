@@ -118,6 +118,7 @@
 <li class="toctree-l2"><a class="reference internal" href="learn_git.html">Git 版本控制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install_manjaro.html">Manjaro 安装记录</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro_zotero.html">Zotero 文献管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_vim.html">Vim 简介</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../control/index.html">控制理论学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -226,6 +227,14 @@
 <p>当使用 Vim 编辑中文文本时，在切换插入模式和普通模式时需要频繁切换输入法，为此可以使用 <a class="reference external" href="https://github.com/lilydjwg/fcitx.vim">fcitx.vim</a> 插件自动化解决这个问题。</p>
 <p>对于 Manjaro 系统，也可以从 AUR 中一键安装该插件： <code class="docutils literal notranslate"><span class="pre">yay</span> <span class="pre">-S</span> <span class="pre">vim-fcitx</span></code> 。在命令行使用时，切换模式会存在延时，进一步可以在 <code class="docutils literal notranslate"><span class="pre">~/.vimrc</span></code> 配置文件中引入 <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">ttimeoutlen=100</span></code> 而将其设置为较小值。</p>
 </div>
+<div class="section" id="linux">
+<h2>Linux 终端补全忽略大小写<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h2>
+<p>在家目录下创建 <code class="docutils literal notranslate"><span class="pre">.inputrc</span></code> 并写入：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>set completion-ignore-case on
+</pre></div>
+</div>
+<p>然后重启终端即可。</p>
+</div>
 </div>
 
       </article>
@@ -288,6 +297,7 @@
 <li><a class="reference internal" href="#linux-u">Linux 测试 U 盘读写速度</a></li>
 <li><a class="reference internal" href="#csgo">CSGO 绑定跳投</a></li>
 <li><a class="reference internal" href="#vim">Vim 中文输入法问题</a></li>
+<li><a class="reference internal" href="#linux">Linux 终端补全忽略大小写</a></li>
 </ul>
 </li>
 </ul>
