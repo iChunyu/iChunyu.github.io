@@ -66,6 +66,6 @@ html_theme = 'furo'
 
 html_static_path = ['_static']
 
-html_favicon = '_static/misaka.ico'
+html_favicon = '_static/favicon.ico'
 
 html_title = r'某春雨的后花园'
