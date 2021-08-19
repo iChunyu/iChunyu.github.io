@@ -1,28 +1,35 @@
 某春雨的后花园
 ==============================================
 
-嗨，欢迎来到我的后花园。
+嗨，你好，吃了吗？
 
-我是华中科技大学的一名在读研究生，主要研究航天器的无拖曳控制，经常会写写代码、跑跑仿真什么的。本人爱好折腾，这也是这个博客出现的原因。我会在这里不定时分享一些学习记录，如果对你有所帮助，那就让我们共同进步；如果你发现了我的错误，也非常欢迎与我讨论。
+这是某春雨自己的博客，这段话是出现在博客首页的不知所措的开场白。你或许能够由此作出一些推断：
 
-- 考虑给我发个 `邮件 <mailto:chunyu2018@foxmail.com>`_ ？
-- 或者在 `GitHub <https://github.com/iChunyu/iChunyu.github.io>`_ 留个言？ 
+- 俗套的开头和辞不达义的表达 —— 可别是个社恐吧；
+- 简陋的界面和单调枯燥的配色 —— 应该是个理工男；
+- 奇怪的对齐和必须凑整的列表 —— 这该死的强迫症。 
 
+唔，先来看看吧。
 
 ----
-
-来看看这里都有些什么玩意儿吧。
 
 .. toctree::
     :maxdepth: 2
     
-    misc/index
     control/index
     dsp/index
     latex/index
+    misc/index
 
 .. toctree::
     :caption: 版权声明
     :hidden:
 
     CC BY 4.0 <http://creativecommons.org/licenses/by/4.0/>
+
+----
+
+这个家伙也许会搞错什么东西，如果被你发现了，请不要吝啬你的想法或建议；如果你有兴趣与我讨论，也非常欢迎通过下面的方式与我联系：
+
+- 电子邮箱： `chunyu2018@foxmail.com <mailto:chunyu2018@foxmail.com>`_ 
+- GitHub 仓库： `https://github.com/iChunyu/iChunyu.github.io <https://github.com/iChunyu/iChunyu.github.io>`_ 
