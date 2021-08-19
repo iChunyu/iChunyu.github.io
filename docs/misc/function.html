@@ -1,0 +1,414 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="MATLAB 符号计算" href="symbolic.html" /><link rel="prev" title="Vim 简介" href="learn_vim.html" />
+
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
+        <title>MATLAB 编写函数 - 某春雨的后花园</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=ee12cdd73c4bbac24afec78d92c4afd7c2d8ea7f"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">某春雨的后花园</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">某春雨的后花园</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=搜索 name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">杂乱的技能树</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="daily_tricks.html">每日小技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_garden.html">后花园建成记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reStructuredText.html">reStructuredText 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_git.html">Git 版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install_manjaro.html">Manjaro 安装记录</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro_zotero.html">Zotero 文献管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn_vim.html">Vim 简介</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">MATLAB 编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic.html">MATLAB 符号计算</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../control/index.html">控制理论学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC01_SysDescribe.html">现代控制基础（1）：系统的描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC02_StateFeedback.html">现代控制基础（2）：状态反馈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC03_StateEstimator.html">现代控制基础（3）：状态估计器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC04_Regulator.html">现代控制基础（4）：调节器设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/kalman_filter.html">卡尔曼滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/demo_BangBangCtrl.html">相图与砰砰控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dsp/generate_noise.html">产生任意谱密度的噪声</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../latex/index.html">LaTeX 学习记录</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex01_install.html">安装与配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex02_document.html">编写文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex03_float.html">使用图表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex04_math.html">数学公式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">版权声明</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="matlab">
+<h1>MATLAB 编写函数<a class="headerlink" href="#matlab" title="永久链接至标题">¶</a></h1>
+<p>编写程序的时候会经常用到相似的代码片段，为了使代码整洁，可以将这些代码片段封装为函数使用。</p>
+<div class="section" id="id1">
+<h2>匿名函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>匿名函数适用于一些简短操作的封装，常用于对一些较长的数学表达式进行封装。下面给出了定义匿名函数的一般方法。</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>可以看到，匿名函数的定义与 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 这种形式相似，我们只需要用 <code class="docutils literal notranslate"><span class="pre">@</span></code> 和括号给定自变量，然后给出表达式，即可定义名为 <code class="docutils literal notranslate"><span class="pre">f</span></code> 的匿名函数。匿名函数必须在使用前进行定义。应当注意的是，有时为了向量化计算，在平方或乘除运算中通常采用加点的运算。</p>
+<p>匿名函数还支持多元函数，这种情况下只需要在 <code class="docutils literal notranslate"><span class="pre">@(x)</span></code> 中增加变量即可，例如 <code class="docutils literal notranslate"><span class="pre">@(x1,x2,x3)</span></code> 。</p>
+<p>在老版本中，与匿名函数非常相似的是内联函数，然而得知它在MATLAB以后的版本中将被移除，所以就不介绍了。</p>
+<div class="figure align-center" style="width: 80%">
+<img alt="../_images/function.jpg" src="../_images/function.jpg"/>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>函数<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>由于内联函数过于简单，且只在脚本内生效，即无法调用另一个独立脚本中定义的匿名函数。为了使函数能够进行更复杂的操作，且能够被多个脚本所调用，我们需要用 <code class="docutils literal notranslate"><span class="pre">function</span></code> 开头定义一个独立的 <code class="docutils literal notranslate"><span class="pre">.m</span></code> 文件。</p>
+<p>函数的格式一般如下所示，例子中 <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> 里边的内容仅为说明，不是代码。</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% 函数作用的简单说明</span><span class="w"></span>
+<span class="c">% 输入输出变量的基本说明</span><span class="w"></span>
+
+<span class="c">% 作者和修改日期</span><span class="w"></span>
+
+<span class="c">%% 主函数</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span>[y1,y2,y3]<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">simplefcn</span><span class="p">(</span>x1,x2,x3<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span><span class="w"></span>
+<span class="w">   </span><span class="n">y1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">y2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">y3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+<p>由于函数的通用性，共同工作的小伙伴们会经常分享一些好用的函数。因此，用 <code class="docutils literal notranslate"><span class="pre">%</span></code> 写好注释是一件非常重要的事情。MATLAB官方模板中将函数说明写在 <code class="docutils literal notranslate"><span class="pre">function</span></code> 紧接着的下一行，然而更实用的情况是写在文件的最前面，同时我们可以用 <code class="docutils literal notranslate"><span class="pre">%%</span></code> 对代码进行分节，使可读性更强。</p>
+<p>注释是不参与代码计算的，因此上面这个例子中，函数真正开始于 <code class="docutils literal notranslate"><span class="pre">function</span></code> 。然后分别给出输出、函数名和输入参数。当有多个输出时，只需用中括号和逗号构成输出向量即可。</p>
+<p>函数编写完成后，将其另存为单独的m文件，这时需要文件名与函数名相同。在上面的例子中，对应的函数文件名为应当为 <code class="docutils literal notranslate"><span class="pre">simplefcn.m</span></code> 。</p>
+<p>同各种其他编程一样，在未申明全局变量的情况下，函数体内的变量与函数外的变量相互独立。这就是说函数内的变量如果与脚本中的变量名字相同，他们并不会相互影响。同时，函数在计算结束后，其内部的变量都会在内存中清除，所以在函数内部计算过程中任何有用的变量都应当考虑将其输出。</p>
+<p>有时候我们确实需要像函数一样封装一个较为复杂的代码，但是我们只需要这段代码对当前文件有用，其他文件无法对它进行调用。这时我们只需要将函数写在脚本的内部，更多情况下是写在脚本的末尾。一个简单的例子如下所示。</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% 脚本说明</span><span class="w"></span>
+<span class="c">% 作者和修改日期</span><span class="w"></span>
+
+<span class="c">%% 主代码</span><span class="w"></span>
+<span class="o">&lt;</span>某些操作<span class="o">&gt;</span><span class="w"></span>
+
+<span class="c">%% 子函数1</span><span class="w"></span>
+<span class="c">% 函数说明</span><span class="w"></span>
+<span class="c">% 变量说明</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">subfcn1</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="c">%% 子函数2</span><span class="w"></span>
+<span class="c">% 函数说明</span><span class="w"></span>
+<span class="c">% 变量说明</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">subfcn2</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+<p>同样地，建议将注释写完整并放在前面显眼的位置。例子中， <code class="docutils literal notranslate"><span class="pre">subfcn1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">subfcn2</span></code> 是两个子函数，其只在脚本内有效。子函数不仅适用于脚本文件，在大型函数的定义中也可将一些小函数编写成子函数，从而提高代码的可读性。</p>
+<blockquote>
+<div><p>MATLAB中函数文件以 <code class="docutils literal notranslate"><span class="pre">function</span></code> 开头的m文件，除此以外的m文件均可视为脚本。两者的不同之处在于函数可以有输入输出变量，且函数内的变量具有独立的变量空间。而脚本虽然能被其他脚本所调用，但不能提供输入参数，且脚本内的变量共享工作空间。例如两个脚本中都有 <code class="docutils literal notranslate"><span class="pre">x</span></code> 这个变量，那么 <code class="docutils literal notranslate"><span class="pre">x</span></code> 的值就会受两个脚本控制，有时会因为变量被覆盖而使计算与预期不符。这也是为什么建议将通用的算法写成函数而非脚本，</p>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>函数的重载<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>从前面的介绍中可以看到，定义函数时需要给定输入、输出变量的数目，那么问题就来了：如果不确定有多少输入输出，允许函数内使用一定的默认值，或者当给定不同数量的输入、输出时函数进行不同的操作，要怎么做呢？可能有人会说，重新定义相应的函数就可以了。这确实是一种办法，但会使函数文件过多而显得冗余。这时就需要用到函数的重载。</p>
+<p>在MATLAB中可利用关键字 <code class="docutils literal notranslate"><span class="pre">varargin</span></code> 作为输入，用 <code class="docutils literal notranslate"><span class="pre">varargout</span></code> 作为输出来代替可变数量的输入输出(variable-length input/output argument list)。同时，用 <code class="docutils literal notranslate"><span class="pre">nargin</span></code> 和 <code class="docutils literal notranslate"><span class="pre">nargout</span></code> 来获取输入和输出变量的数量。结合 <code class="docutils literal notranslate"><span class="pre">if</span></code> 或 <code class="docutils literal notranslate"><span class="pre">switch</span></code> 语句即可实现函数的重载。进一步，可使用函数 <code class="docutils literal notranslate"><span class="pre">narginchk</span></code> 和 <code class="docutils literal notranslate"><span class="pre">nargoutchk</span></code> 来限制输入输出变量的数量，但是这两个函数在较老的MATLAB版本中不存在。</p>
+<p>这样一来，我们可以给出更加通用的函数定义模板：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% 函数说明</span><span class="w"></span>
+<span class="c">% 变量说明</span><span class="w"></span>
+
+<span class="c">% 作者和修改日期</span><span class="w"></span>
+
+<span class="c">%% 主函数</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span>varargout<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span>varargin<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c">% 解析输入变量</span><span class="w"></span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nb">nargin</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span>导入输入变量默认值<span class="o">&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span>变量1<span class="o">&gt;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span>其他变量取默认值<span class="o">&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="k">otherwise</span><span class="w"></span>
+<span class="w">            </span><span class="nb">error</span><span class="p">(</span><span class="s">'无效输入'</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+
+<span class="w">    </span><span class="c">% 函数主体</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c">% 解析输出变量</span><span class="w"></span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nb">nargout</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span>定义不同数量输出时的操作<span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="c">%% 子函数1</span><span class="w"></span>
+<span class="c">% 函数说明</span><span class="w"></span>
+<span class="c">% 变量说明</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">subfcn1</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+
+<span class="c">%% 子函数2</span><span class="w"></span>
+<span class="c">% 函数说明</span><span class="w"></span>
+<span class="c">% 变量说明</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">subfcn2</span><span class="p">(</span>x<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+<p>一般来说，主函数采用可变输入输出以增强通用性，而子函数由于只在文件内部有效，可采用简单的模式。上面以存在两个子函数的情况为例，实际使用时并不一定完全如此。</p>
+</div>
+<div class="section" id="id4">
+<h2>其他函数用法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>MATLAB的函数中还有一些其他的“高级”用法，鉴于使用较少且本人也并不常用，这里仅作提醒，有兴趣的伙伴们可以自行学习。</p>
+<ul class="simple">
+<li><p>从工作空间获取变量</p></li>
+</ul>
+<p>为了与函数内的变量进行交互，常用的方式是在函数内外采用 <code class="docutils literal notranslate"><span class="pre">global</span></code> 申明全局变量，从而实现参数传递。</p>
+<p>如果仅仅想获取工作区变量而不对其进行操作的话，可采用 <code class="docutils literal notranslate"><span class="pre">evalin</span></code> 函数，例如，为了在函数内部获取工作区名为 <code class="docutils literal notranslate"><span class="pre">x</span></code> 变量的值，可使用以下代码：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">evalin</span><span class="p">(</span><span class="s">'base'</span><span class="p">,</span><span class="s">'x'</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>这样就实现了在不定义全局变量时，从工作空间向函数内部单向传递参数的功能。应当注意，虽然函数内的变量名为 <code class="docutils literal notranslate"><span class="pre">x</span></code> ，但由于不是全局变量，其与外部工作空间的 <code class="docutils literal notranslate"><span class="pre">x</span></code> 相互独立，除利用该函数传递数值外，互不干扰。</p>
+<ul class="simple">
+<li><p>带参数的输入</p></li>
+</ul>
+<p>熟悉MATLAB的小伙伴或许知道有些函数可以像面向对象编程那样输入“属性值”，最经典的例子莫过于绘图函数的调用：</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">'LineWidth'</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">'LineStyle'</span><span class="p">,</span><span class="s">'--'</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>上面在调用绘图函数时还额外指定了线宽和线型。像这样的输入，我们应当如何定义函数呢？</p>
+<p>答案是： <code class="docutils literal notranslate"><span class="pre">inputParser</span></code> 。</p>
+<p>这个功能的使用稍微复杂一些，平时如果规范编程的话也不常用，所以这里直接给出MATLAB的官方示例，有兴趣的小伙伴可自行学习。</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>a<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">findArea</span><span class="p">(</span>width,varargin<span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">defaultHeight</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">defaultUnits</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'inches'</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">defaultShape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'rectangle'</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">expectedShapes</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="s">'square'</span><span class="p">,</span><span class="s">'rectangle'</span><span class="p">,</span><span class="s">'parallelogram'</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">inputParser</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">validScalarPosNum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nb">isnumeric</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">isscalar</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">addRequired</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">'width'</span><span class="p">,</span><span class="n">validScalarPosNum</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">addOptional</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">'height'</span><span class="p">,</span><span class="n">defaultHeight</span><span class="p">,</span><span class="n">validScalarPosNum</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">addParameter</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">'units'</span><span class="p">,</span><span class="n">defaultUnits</span><span class="p">,@</span><span class="nb">isstring</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">addParameter</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">'shape'</span><span class="p">,</span><span class="n">defaultShape</span><span class="p">,</span><span class="k">...</span><span class="w"></span>
+<span class="w">                 </span><span class="p">@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nb">any</span><span class="p">(</span><span class="nb">validatestring</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">expectedShapes</span><span class="p">)));</span><span class="w"></span>
+<span class="w">   </span><span class="n">parse</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="nb">width</span><span class="p">,</span><span class="nb">varargin</span><span class="p">{:});</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">width</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">height</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="symbolic.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">MATLAB 符号计算</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="learn_vim.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Vim 简介</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, 大春雨
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/misc/function.rst.txt"
+               rel="nofollow">
+              显示源代码
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            目录
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">MATLAB 编写函数</a><ul>
+<li><a class="reference internal" href="#id1">匿名函数</a></li>
+<li><a class="reference internal" href="#id2">函数</a></li>
+<li><a class="reference internal" href="#id3">函数的重载</a></li>
+<li><a class="reference internal" href="#id4">其他函数用法</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

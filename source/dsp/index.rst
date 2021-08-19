@@ -7,7 +7,6 @@
 .. toctree::
     :maxdepth: 1
     
-    kalman_filter
     signal_diff
     filter_design
     lpsd

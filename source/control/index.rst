@@ -15,5 +15,6 @@
     MC05_Reference
     MC06_RobustTracking
 
+    kalman_filter
     demo_BangBangCtrl
     integrator_antiwindup

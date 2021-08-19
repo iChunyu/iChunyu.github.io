@@ -20,7 +20,6 @@
     control/index
     dsp/index
     latex/index
-    matlab/index
 
 .. toctree::
     :caption: 版权声明

@@ -4,3 +4,5 @@ make html
 
 cp -r build/html/* docs/
 touch docs/.nojekyll
+
+firefox docs/index.html
