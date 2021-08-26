@@ -1,4 +1,4 @@
-每日小技巧
+日常小技巧
 ==========================================
 
 每天更新一个小技巧（也许吧）。
@@ -83,3 +83,32 @@ Linux 终端补全忽略大小写
     set completion-ignore-case on
 
 然后重启终端即可。
+
+
+VSCodeVim 配置
+------------------------------------------
+
+为了自动切换中英文输入法，在配置文件中添加以下设置（适用于 ``fcitx5`` 框架）：
+
+.. code-block:: text
+
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "1",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx5-remote",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx5-remote -t {im}",
+
+
+添加以下配置可以重新将 ``j`` 和 ``k`` 映射为 ``gj`` 和 ``gk`` ：
+
+.. code-block:: text 
+
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        }
+    ]
