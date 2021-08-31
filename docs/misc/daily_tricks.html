@@ -255,6 +255,14 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="id2">
+<h2>Linux 解压时中文乱码<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>使用附带 <code class="docutils literal notranslate"><span class="pre">-O</span> <span class="pre">cp936</span></code> 选项的 <code class="docutils literal notranslate"><span class="pre">unzip</span></code> 命令即可。需要注意，某些发行版的 <code class="docutils literal notranslate"><span class="pre">unzip</span></code> 不提供 <code class="docutils literal notranslate"><span class="pre">-O</span></code> 选项，需要安装 <code class="docutils literal notranslate"><span class="pre">unzip-iconv</span></code> 。</p>
+<p>解压示例：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip -O cp936 中文解压包.zip
+</pre></div>
+</div>
+</div>
 </div>
 
       </article>
@@ -319,6 +327,7 @@
 <li><a class="reference internal" href="#vim">Vim 中文输入法问题</a></li>
 <li><a class="reference internal" href="#linux">Linux 终端补全忽略大小写</a></li>
 <li><a class="reference internal" href="#vscodevim">VSCodeVim 配置</a></li>
+<li><a class="reference internal" href="#id2">Linux 解压时中文乱码</a></li>
 </ul>
 </li>
 </ul>
