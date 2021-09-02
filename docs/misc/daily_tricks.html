@@ -263,6 +263,21 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="linux-swap">
+<h2>Linux 增加 Swap 分区大小<a class="headerlink" href="#linux-swap" title="永久链接至标题">¶</a></h2>
+<p>使用 Linux 做计算时如果内存不够用，可以使用 Swap 空间将部分硬盘当作内存使用。如果 Swap 空间不够，可以使用以下方法进行扩容（需要管理员权限运行）：</p>
+<ol class="arabic simple">
+<li><p>查看当前 Swap 空间大小： <code class="docutils literal notranslate"><span class="pre">free</span></code></p></li>
+<li><p>创建空文件用做 Swap 空间： <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dd</span> <span class="pre">if=/dev/zero</span> <span class="pre">of=/swapfile</span> <span class="pre">bs=1M</span> <span class="pre">count=4096</span></code> （创建了 4 GB 空间）</p></li>
+<li><p>将上一部创建的文件指定为 Swap 空间： <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mkswap</span> <span class="pre">/swapfile</span></code></p></li>
+<li><p>启用交换空间： <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">swapon</span> <span class="pre">/swapfile</span></code></p></li>
+<li><p>查看当前 Swap 空间大小： <code class="docutils literal notranslate"><span class="pre">free</span></code></p></li>
+</ol>
+<p>以上方法用于临时性地扩容，如果想要永久设置，设置 <code class="docutils literal notranslate"><span class="pre">swapfile</span></code> 开机时自动挂载即可：编辑 <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> ，在最后一行加入：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/swapfile           swap        swap        0   0
+</pre></div>
+</div>
+</div>
 </div>
 
       </article>
@@ -328,6 +343,7 @@
 <li><a class="reference internal" href="#linux">Linux 终端补全忽略大小写</a></li>
 <li><a class="reference internal" href="#vscodevim">VSCodeVim 配置</a></li>
 <li><a class="reference internal" href="#id2">Linux 解压时中文乱码</a></li>
+<li><a class="reference internal" href="#linux-swap">Linux 增加 Swap 分区大小</a></li>
 </ul>
 </li>
 </ul>

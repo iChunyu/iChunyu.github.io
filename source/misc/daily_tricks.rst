@@ -124,3 +124,22 @@ Linux 解压时中文乱码
 .. code-block:: bash
     
     unzip -O cp936 中文解压包.zip
+
+
+
+Linux 增加 Swap 分区大小
+------------------------------------------
+
+使用 Linux 做计算时如果内存不够用，可以使用 Swap 空间将部分硬盘当作内存使用。如果 Swap 空间不够，可以使用以下方法进行扩容（需要管理员权限运行）：
+
+#. 查看当前 Swap 空间大小： ``free``
+#. 创建空文件用做 Swap 空间： ``sudo dd if=/dev/zero of=/swapfile bs=1M count=4096`` （创建了 4 GB 空间）
+#. 将上一部创建的文件指定为 Swap 空间： ``sudo mkswap /swapfile`` 
+#. 启用交换空间： ``sudo swapon /swapfile``
+#. 查看当前 Swap 空间大小： ``free`` 
+
+以上方法用于临时性地扩容，如果想要永久设置，设置 ``swapfile`` 开机时自动挂载即可：编辑 ``/etc/fstab`` ，在最后一行加入：
+
+.. code-block:: text
+
+    /swapfile           swap        swap        0   0
