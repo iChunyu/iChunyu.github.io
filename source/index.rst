@@ -8,10 +8,10 @@
 .. toctree::
     :maxdepth: 2
     
+    misc/index
     control/index
     dsp/index
     latex/index
-    misc/index
 
 .. toctree::
     :caption: 版权声明
