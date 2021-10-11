@@ -278,6 +278,33 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="id3">
+<h2>Linux 定时任务<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>定时任务可以使用 <code class="docutils literal notranslate"><span class="pre">crontab</span></code> 实现，常用的命令有：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>crontab -l          <span class="c1"># 查看定时任务</span>
+crontab -e          <span class="c1"># 编辑定时任务</span>
+crontab -r          <span class="c1"># 删除所有任务</span>
+</pre></div>
+</div>
+<p>新建定时任务只需要按时间加命令的形式给出，由空格进行分割，其中时间由五个数字构成，分别是：分、时、日、月、周，并支持以下操作符</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> — 所有可行取值</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> — 指定重复周期</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> — 指定时间范围</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">,</span></code> — 离散时间序列</p></li>
+</ul>
+<p>例如：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* * * * * myTask                            # 每分钟运行一次 myTask
+0 * * * * myTask                            # 每小时整点运行一次 myTask
+30 8 * * 1-5 myTask                         # 每周一到周五的 8:30 运行 myTask
+0 7-21/3 * * * myTask                       # 7 点到 21 点每 3 小时运行一次 myTask
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>为了确保定时任务生效，还需要启动相应的服务。在 manjaro 系统中，使用 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">cronie.service</span></code> 可以开启服务，相应的将 <code class="docutils literal notranslate"><span class="pre">start</span></code> 选项改为 <code class="docutils literal notranslate"><span class="pre">enable</span></code> 可以设置自动启动； <code class="docutils literal notranslate"><span class="pre">stop</span></code> 可以关闭服务， <code class="docutils literal notranslate"><span class="pre">status</span></code> 查看当前服务状态。</p>
+</div>
+</div>
 </div>
 
       </article>
@@ -344,6 +371,7 @@
 <li><a class="reference internal" href="#vscodevim">VSCodeVim 配置</a></li>
 <li><a class="reference internal" href="#id2">Linux 解压时中文乱码</a></li>
 <li><a class="reference internal" href="#linux-swap">Linux 增加 Swap 分区大小</a></li>
+<li><a class="reference internal" href="#id3">Linux 定时任务</a></li>
 </ul>
 </li>
 </ul>

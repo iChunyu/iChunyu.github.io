@@ -143,3 +143,42 @@ Linux 增加 Swap 分区大小
 .. code-block:: text
 
     /swapfile           swap        swap        0   0
+
+
+
+Linux 定时任务
+------------------------------------------
+
+定时任务可以使用 ``crontab`` 实现，常用的命令有：
+
+
+.. code-block:: bash
+
+    crontab -l          # 查看定时任务
+    crontab -e          # 编辑定时任务
+    crontab -r          # 删除所有任务
+
+
+新建定时任务只需要按时间加命令的形式给出，由空格进行分割，其中时间由五个数字构成，分别是：分、时、日、月、周，并支持以下操作符
+
+- ``*`` --- 所有可行取值
+- ``/`` --- 指定重复周期
+- ``-`` --- 指定时间范围
+- ``,`` --- 离散时间序列
+
+
+例如：
+
+.. code-block:: text
+
+    * * * * * myTask                            # 每分钟运行一次 myTask
+    0 * * * * myTask                            # 每小时整点运行一次 myTask
+    30 8 * * 1-5 myTask                         # 每周一到周五的 8:30 运行 myTask
+    0 7-21/3 * * * myTask                       # 7 点到 21 点每 3 小时运行一次 myTask
+
+
+.. note::
+
+    为了确保定时任务生效，还需要启动相应的服务。在 manjaro 系统中，使用 ``sudo systemctl start cronie.service`` 可以开启服务，相应的将 ``start`` 选项改为 ``enable`` 可以设置自动启动； ``stop`` 可以关闭服务， ``status`` 查看当前服务状态。
+
+.. 20 * * * * export DISPLAY=:0 && python pythontest.py
