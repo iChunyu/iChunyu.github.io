@@ -182,3 +182,9 @@ Linux 定时任务
     为了确保定时任务生效，还需要启动相应的服务。在 manjaro 系统中，使用 ``sudo systemctl start cronie.service`` 可以开启服务，相应的将 ``start`` 选项改为 ``enable`` 可以设置自动启动； ``stop`` 可以关闭服务， ``status`` 查看当前服务状态。
 
 .. 20 * * * * export DISPLAY=:0 && python pythontest.py
+
+
+Linux WPS 高分辨率屏幕显示模糊
+------------------------------------------
+
+编辑启动文件，在执行命令前增加 ``env QT_SCREEN_SCALE_FACTORS=1`` 即可。

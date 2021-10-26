@@ -305,6 +305,10 @@ crontab -r          <span class="c1"># 删除所有任务</span>
 <p>为了确保定时任务生效，还需要启动相应的服务。在 manjaro 系统中，使用 <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">cronie.service</span></code> 可以开启服务，相应的将 <code class="docutils literal notranslate"><span class="pre">start</span></code> 选项改为 <code class="docutils literal notranslate"><span class="pre">enable</span></code> 可以设置自动启动； <code class="docutils literal notranslate"><span class="pre">stop</span></code> 可以关闭服务， <code class="docutils literal notranslate"><span class="pre">status</span></code> 查看当前服务状态。</p>
 </div>
 </div>
+<div class="section" id="linux-wps">
+<h2>Linux WPS 高分辨率屏幕显示模糊<a class="headerlink" href="#linux-wps" title="永久链接至标题">¶</a></h2>
+<p>编辑启动文件，在执行命令前增加 <code class="docutils literal notranslate"><span class="pre">env</span> <span class="pre">QT_SCREEN_SCALE_FACTORS=1</span></code> 即可。</p>
+</div>
 </div>
 
       </article>
@@ -372,6 +376,7 @@ crontab -r          <span class="c1"># 删除所有任务</span>
 <li><a class="reference internal" href="#id2">Linux 解压时中文乱码</a></li>
 <li><a class="reference internal" href="#linux-swap">Linux 增加 Swap 分区大小</a></li>
 <li><a class="reference internal" href="#id3">Linux 定时任务</a></li>
+<li><a class="reference internal" href="#linux-wps">Linux WPS 高分辨率屏幕显示模糊</a></li>
 </ul>
 </li>
 </ul>
