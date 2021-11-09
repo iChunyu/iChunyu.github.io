@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="prev" title="编写函数" href="function.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="prev" title="MATLAB 编写函数" href="function.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
-        <title>符号计算 - 某春雨的后花园</title>
+        <title>MATLAB 符号计算 - 某春雨的后花园</title>
       <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
     <link rel="stylesheet" href="../_static/pygments.css">
     
@@ -112,7 +112,7 @@
 </form><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../misc/daily_tricks.html">每日小技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/daily_tricks.html">日常小技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc/build_garden.html">后花园建成记</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc/reStructuredText.html">reStructuredText 入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc/learn_git.html">Git 版本控制</a></li>
@@ -129,11 +129,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../control/MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../control/MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../control/demo_BangBangCtrl.html">相图与砰砰控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MPC_basic.html">模型预测控制简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/kalman_filter.html">卡尔曼滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
@@ -148,9 +149,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">MATLAB 使用技巧</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="function.html">编写函数</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">符号计算</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">好玩的 MATLAB</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="function.html">MATLAB 编写函数</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">MATLAB 符号计算</a></li>
 </ul>
 </li>
 </ul>
@@ -171,11 +172,11 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="id1">
-<h1>符号计算<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+        <div class="section" id="matlab">
+<h1>MATLAB 符号计算<a class="headerlink" href="#matlab" title="永久链接至标题">¶</a></h1>
 <p>理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用MATLAB的符号计算工具包辅助完成。</p>
-<div class="section" id="id2">
-<h2>定义符号变量<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id1">
+<h2>定义符号变量<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>在进行符号计算之前，需要提前定义符号变量，这可以通过函数 <code class="docutils literal notranslate"><span class="pre">sym</span></code> 和 <code class="docutils literal notranslate"><span class="pre">syms</span></code> 来完成。其中， <code class="docutils literal notranslate"><span class="pre">syms</span></code> 常用来批量定义符号变量，例如下面的第一行代码就同时定义了 <span class="math notranslate nohighlight">\(x\)</span> 、 <span class="math notranslate nohighlight">\(y\)</span> 、 <span class="math notranslate nohighlight">\(z\)</span> 三个符号变量，各符号变量之间用空格分开。</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span><span class="w"> </span><span class="s">x</span><span class="w"> </span><span class="s">y</span><span class="w"> </span><span class="s">z</span><span class="w"></span>
 </pre></div>
@@ -275,8 +276,8 @@
 </tbody>
 </table></div>
 </div>
-<div class="section" id="id3">
-<h2>符号计算举例<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h2>符号计算举例<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>我们以计算微分方程为例展示符号计算的一般步骤。假设待求解的微分方程为弹簧-质量-阻尼系统动力学方程：</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\ddot x + 2 \xi \omega_0 \dot x + \omega_0^2 = sin(\omega t)\]</div></div>
@@ -308,8 +309,8 @@
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\frac{a_{\mathrm{in}}}{{\omega _{0}}^2}-\frac{a_{\mathrm{in}}\,{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\cos\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)}{{\omega _{0}}^2}-\frac{{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\sin\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)\,\left(a_{\mathrm{in}}\,\xi -\omega _{0}\,v_{0}\right)}{{\omega _{0}}^2\,\sqrt{1-\xi }\,\sqrt{\xi +1}}\]</div></div>
 </div>
-<div class="section" id="id4">
-<h2>输出计算结果<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2>输出计算结果<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>如果采用MATLAB的实时脚本运行上面的代码，MATLAB将会自动将公式转化为LaTeX公式，如下图所示：</p>
 <div class="figure align-center" style="width: 90%">
 <img alt="../_images/symbolic.png" src="../_images/symbolic.png"/>
@@ -343,7 +344,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">编写函数</div>
+                <div class="title">MATLAB 编写函数</div>
                 
               </div>
             </a>
@@ -377,10 +378,10 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">符号计算</a><ul>
-<li><a class="reference internal" href="#id2">定义符号变量</a></li>
-<li><a class="reference internal" href="#id3">符号计算举例</a></li>
-<li><a class="reference internal" href="#id4">输出计算结果</a></li>
+<li><a class="reference internal" href="#">MATLAB 符号计算</a><ul>
+<li><a class="reference internal" href="#id1">定义符号变量</a></li>
+<li><a class="reference internal" href="#id2">符号计算举例</a></li>
+<li><a class="reference internal" href="#id3">输出计算结果</a></li>
 </ul>
 </li>
 </ul>

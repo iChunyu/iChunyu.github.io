@@ -11,5 +11,3 @@
     install_manjaro
     intro_zotero
     learn_vim
-    function
-    symbolic

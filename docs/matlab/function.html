@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="符号计算" href="symbolic.html" /><link rel="prev" title="MATLAB 使用技巧" href="index.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="MATLAB 符号计算" href="symbolic.html" /><link rel="prev" title="好玩的 MATLAB" href="index.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.0.3, furo 2021.06.18.beta36"/>
-        <title>编写函数 - 某春雨的后花园</title>
+        <title>MATLAB 编写函数 - 某春雨的后花园</title>
       <link rel="stylesheet" href="../_static/styles/furo.css?digest=9b17055c4366e8b2949c66d6a9d8b0efe4dbaa60">
     <link rel="stylesheet" href="../_static/pygments.css">
     
@@ -112,7 +112,7 @@
 </form><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">杂乱的技能树</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../misc/daily_tricks.html">每日小技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/daily_tricks.html">日常小技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc/build_garden.html">后花园建成记</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc/reStructuredText.html">reStructuredText 入门</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc/learn_git.html">Git 版本控制</a></li>
@@ -129,11 +129,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../control/MC05_Reference.html">现代控制基础（5）：参考的引入</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../control/MC06_RobustTracking.html">现代控制基础（6）：鲁棒跟踪控制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../control/demo_BangBangCtrl.html">相图与砰砰控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/MPC_basic.html">模型预测控制简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/kalman_filter.html">卡尔曼滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../control/integrator_antiwindup.html">抗饱和积分</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../dsp/index.html">数字信号处理</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../dsp/kalman_filter.html">卡尔曼滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dsp/signal_diff.html">信号的微分</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dsp/filter_design.html">信号的滤波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dsp/lpsd.html">LPSD 功率谱估计</a></li>
@@ -148,9 +149,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../latex/latex05_autocite.html">自动化引用</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">MATLAB 使用技巧</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">编写函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="symbolic.html">符号计算</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">好玩的 MATLAB</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">MATLAB 编写函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic.html">MATLAB 符号计算</a></li>
 </ul>
 </li>
 </ul>
@@ -171,11 +172,11 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="id1">
-<h1>编写函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+        <div class="section" id="matlab">
+<h1>MATLAB 编写函数<a class="headerlink" href="#matlab" title="永久链接至标题">¶</a></h1>
 <p>编写程序的时候会经常用到相似的代码片段，为了使代码整洁，可以将这些代码片段封装为函数使用。</p>
-<div class="section" id="id2">
-<h2>匿名函数<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id1">
+<h2>匿名函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>匿名函数适用于一些简短操作的封装，常用于对一些较长的数学表达式进行封装。下面给出了定义匿名函数的一般方法。</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">);</span><span class="w"></span>
 </pre></div>
@@ -187,8 +188,8 @@
 <img alt="../_images/function.jpg" src="../_images/function.jpg"/>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>函数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h2>函数<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>由于内联函数过于简单，且只在脚本内生效，即无法调用另一个独立脚本中定义的匿名函数。为了使函数能够进行更复杂的操作，且能够被多个脚本所调用，我们需要用 <code class="docutils literal notranslate"><span class="pre">function</span></code> 开头定义一个独立的 <code class="docutils literal notranslate"><span class="pre">.m</span></code> 文件。</p>
 <p>函数的格式一般如下所示，例子中 <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> 里边的内容仅为说明，不是代码。</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% 函数作用的简单说明</span><span class="w"></span>
@@ -238,8 +239,8 @@
 <div><p>MATLAB中函数文件以 <code class="docutils literal notranslate"><span class="pre">function</span></code> 开头的m文件，除此以外的m文件均可视为脚本。两者的不同之处在于函数可以有输入输出变量，且函数内的变量具有独立的变量空间。而脚本虽然能被其他脚本所调用，但不能提供输入参数，且脚本内的变量共享工作空间。例如两个脚本中都有 <code class="docutils literal notranslate"><span class="pre">x</span></code> 这个变量，那么 <code class="docutils literal notranslate"><span class="pre">x</span></code> 的值就会受两个脚本控制，有时会因为变量被覆盖而使计算与预期不符。这也是为什么建议将通用的算法写成函数而非脚本，</p>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h2>函数的重载<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2>函数的重载<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>从前面的介绍中可以看到，定义函数时需要给定输入、输出变量的数目，那么问题就来了：如果不确定有多少输入输出，允许函数内使用一定的默认值，或者当给定不同数量的输入、输出时函数进行不同的操作，要怎么做呢？可能有人会说，重新定义相应的函数就可以了。这确实是一种办法，但会使函数文件过多而显得冗余。这时就需要用到函数的重载。</p>
 <p>在MATLAB中可利用关键字 <code class="docutils literal notranslate"><span class="pre">varargin</span></code> 作为输入，用 <code class="docutils literal notranslate"><span class="pre">varargout</span></code> 作为输出来代替可变数量的输入输出(variable-length input/output argument list)。同时，用 <code class="docutils literal notranslate"><span class="pre">nargin</span></code> 和 <code class="docutils literal notranslate"><span class="pre">nargout</span></code> 来获取输入和输出变量的数量。结合 <code class="docutils literal notranslate"><span class="pre">if</span></code> 或 <code class="docutils literal notranslate"><span class="pre">switch</span></code> 语句即可实现函数的重载。进一步，可使用函数 <code class="docutils literal notranslate"><span class="pre">narginchk</span></code> 和 <code class="docutils literal notranslate"><span class="pre">nargoutchk</span></code> 来限制输入输出变量的数量，但是这两个函数在较老的MATLAB版本中不存在。</p>
 <p>这样一来，我们可以给出更加通用的函数定义模板：</p>
@@ -289,8 +290,8 @@
 </div>
 <p>一般来说，主函数采用可变输入输出以增强通用性，而子函数由于只在文件内部有效，可采用简单的模式。上面以存在两个子函数的情况为例，实际使用时并不一定完全如此。</p>
 </div>
-<div class="section" id="id5">
-<h2>其他函数用法<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h2>其他函数用法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>MATLAB的函数中还有一些其他的“高级”用法，鉴于使用较少且本人也并不常用，这里仅作提醒，有兴趣的伙伴们可以自行学习。</p>
 <ul class="simple">
 <li><p>从工作空间获取变量</p></li>
@@ -342,7 +343,7 @@
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">符号计算</div>
+                <div class="title">MATLAB 符号计算</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -353,7 +354,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">MATLAB 使用技巧</div>
+                <div class="title">好玩的 MATLAB</div>
                 
               </div>
             </a>
@@ -387,11 +388,11 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">编写函数</a><ul>
-<li><a class="reference internal" href="#id2">匿名函数</a></li>
-<li><a class="reference internal" href="#id3">函数</a></li>
-<li><a class="reference internal" href="#id4">函数的重载</a></li>
-<li><a class="reference internal" href="#id5">其他函数用法</a></li>
+<li><a class="reference internal" href="#">MATLAB 编写函数</a><ul>
+<li><a class="reference internal" href="#id1">匿名函数</a></li>
+<li><a class="reference internal" href="#id2">函数</a></li>
+<li><a class="reference internal" href="#id3">函数的重载</a></li>
+<li><a class="reference internal" href="#id4">其他函数用法</a></li>
 </ul>
 </li>
 </ul>
