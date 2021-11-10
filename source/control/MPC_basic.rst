@@ -77,7 +77,7 @@ DR_CAN 在他的视频中更新了模型预测控制（MPC, Model Predictive Con
         &\vdots \\
         x(k+N|k) &= A^N x(k) + \sum_{i=0}^{N-1} A^{N-1-i}B u(k+i|k)
     \end{aligned}
-
+    
 
 用矩阵可以将上述 :math:`N+1` 个方程表示为
 
@@ -100,6 +100,10 @@ DR_CAN 在他的视频中更新了模型预测控制（MPC, Model Predictive Con
     \end{bmatrix}}_{\mathbf{U}(k)}
 
 
+.. note::
+    形式上这里有 :math:`N+1` 个方程 ，但应当注意状态量 :math:`x` 可以是 :math:`n` 维的，因此实际上有 :math:`n(N+1)` 个方程。
+
+    
 即有 :math:`\mathbf{X}(k) = Mx(k) + C\mathbf{U}(k)` 。如此做，代价函数可以表示为
 
 .. math::
@@ -138,7 +142,7 @@ DR_CAN 在他的视频中更新了模型预测控制（MPC, Model Predictive Con
     \end{aligned}
 
 
-优化的对象为 :math:`\mathbf{U}(k)`$` 。注意代价函数的最后一项 :math:`x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k)` 为常数，不影响优化结果，可以不做考虑。与二次规划的标准形式相比，代价函数存在二倍关系，应当注意 :math:`H` 和 :math:`f^\mathrm{T}` 的选择。最后使用 MATLAB ``quadprog`` 进行优化计算即可获得 :math:`\mathbf{U}(k)$` 。
+优化的对象为 :math:`\mathbf{U}(k)` 。注意代价函数的最后一项 :math:`x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k)` 为常数，不影响优化结果，可以不做考虑。与二次规划的标准形式相比，代价函数存在二倍关系，应当注意 :math:`H` 和 :math:`f^\mathrm{T}` 的选择。最后使用 MATLAB ``quadprog`` 进行优化计算即可获得 :math:`\mathbf{U}(k)` 。
 
 
 我在 `GitHub <https://github.com/iChunyu/LearnCtrlSys/tree/main/ModelPredictiveControl>`_ 上传了一个简单的 MPC 例子，欢迎留言、讨论。

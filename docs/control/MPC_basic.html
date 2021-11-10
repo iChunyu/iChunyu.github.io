@@ -240,6 +240,10 @@
         \underbrace{\begin{bmatrix}
             u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N-1|k)
 \end{bmatrix}}_{\mathbf{U}(k)}\end{split}\]</div></div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>形式上这里有 <span class="math notranslate nohighlight">\(N+1\)</span> 个方程 ，但应当注意状态量 <span class="math notranslate nohighlight">\(x\)</span> 可以是 <span class="math notranslate nohighlight">\(n\)</span> 维的，因此实际上有 <span class="math notranslate nohighlight">\(n(N+1)\)</span> 个方程。</p>
+</div>
 <p>即有 <span class="math notranslate nohighlight">\(\mathbf{X}(k) = Mx(k) + C\mathbf{U}(k)\)</span> 。如此做，代价函数可以表示为</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -275,7 +279,7 @@
         + \mathbf{U}^\mathbf{T}(k) C^\mathbf{T} \bar{Q} M x(k) + \mathbf{U}^\mathbf{T}(k) C^\mathbf{T} \bar{Q} C \mathbf{U}(k) + \mathbf{U}^\mathrm{T}(k)\bar{R}\mathbf{U}(k) \\
     &amp;= \mathbf{U}^\mathrm{T}(k) \underbrace{\left(C^\mathbf{T} \bar{Q} C + \bar{R}\right)}_{H} \mathbf{U}(k) + 2 \underbrace{x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} C }_{f^\mathrm{T}} \mathbf{U}(k) +  x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k)
 \end{aligned}\end{split}\]</div></div>
-<p>优化的对象为 <span class="math notranslate nohighlight">\(\mathbf{U}(k)\)</span> 。注意代价函数的最后一项 <span class="math notranslate nohighlight">\(x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k)\)</span> 为常数，不影响优化结果，可以不做考虑。与二次规划的标准形式相比，代价函数存在二倍关系，应当注意 <span class="math notranslate nohighlight">\(H\)</span> 和 <span class="math notranslate nohighlight">\(f^\mathrm{T}\)</span> 的选择。最后使用 MATLAB <code class="docutils literal notranslate"><span class="pre">quadprog</span></code> 进行优化计算即可获得 <span class="math notranslate nohighlight">\(\mathbf{U}(k)$\)</span> 。</p>
+<p>优化的对象为 <span class="math notranslate nohighlight">\(\mathbf{U}(k)\)</span> 。注意代价函数的最后一项 <span class="math notranslate nohighlight">\(x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k)\)</span> 为常数，不影响优化结果，可以不做考虑。与二次规划的标准形式相比，代价函数存在二倍关系，应当注意 <span class="math notranslate nohighlight">\(H\)</span> 和 <span class="math notranslate nohighlight">\(f^\mathrm{T}\)</span> 的选择。最后使用 MATLAB <code class="docutils literal notranslate"><span class="pre">quadprog</span></code> 进行优化计算即可获得 <span class="math notranslate nohighlight">\(\mathbf{U}(k)\)</span> 。</p>
 <p>我在 <a class="reference external" href="https://github.com/iChunyu/LearnCtrlSys/tree/main/ModelPredictiveControl">GitHub</a> 上传了一个简单的 MPC 例子，欢迎留言、讨论。</p>
 </div>
 <div class="section" id="id4">
