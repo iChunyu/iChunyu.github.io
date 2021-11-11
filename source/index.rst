@@ -18,7 +18,7 @@
     :caption: 版权声明
     :hidden:
 
-    CC BY 4.0 <http://creativecommons.org/licenses/by/4.0/>
+    CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0/>
 
 ----
 
