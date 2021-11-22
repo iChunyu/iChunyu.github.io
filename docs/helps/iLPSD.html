@@ -230,7 +230,7 @@
         <article role="main">
           <div class="section" id="ilpsd">
 <h1><code class="docutils literal notranslate"><span class="pre">iLPSD</span></code> ：功率谱估计<a class="headerlink" href="#ilpsd" title="永久链接至标题">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">iLPSD</span></code> 根据对数频率点功率谱估计算法进行功率谱估计。</p>
+<p>构造对数均匀的频率点进行功率谱密度估计。</p>
 <div class="section" id="id1">
 <h2>使用说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iLPSD</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">fs</span><span class="p">)</span>
@@ -240,141 +240,97 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><dl class="simple">
-<dt>输入</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> — 输入数据，向量或矩阵。当输入为矩阵时，对每列数据分别进行功率谱估计；</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fs</span></code> — 采样率（<span class="math notranslate nohighlight">\(\rm Hz\)</span>），为标量。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iLPSD(data,fs)</span></code> 计算数据的功率谱密度并绘图。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iLPSD(data,fs,Name,Value)</span></code> 计算数据功率谱并绘图，并使用键值对参数进行额外设置。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">iLPSD(data,fs,_)</span></code> 当有一个输出时，绘图并输出图形句柄。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[pxx,f]</span> <span class="pre">=</span> <span class="pre">iLPSD(data,fs,_)</span></code> 当有两个输出时，分别输出功率谱密度和相应的频率。</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>键-值参数</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">Jdes</span></code> — 期望的频率点数，默认为 1000；</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kdes</span></code> — 期望的分段次数，默认为 100；</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ksai</span></code> — 分段数据重叠率，默认为 0.5；</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">win</span></code> — 窗函数的函数句柄，默认为 <code class="docutils literal notranslate"><span class="pre">@hann</span></code>。</p></li>
-<li><p>支持使用其他控制绘图的键值对，如 <code class="docutils literal notranslate"><span class="pre">LineWidth</span></code> 等。</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>输出</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">h</span></code> — 功率谱密度的曲线句柄，当且仅当函数只有一个输出时输出该变量；</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pxx</span></code> — 单边功率谱密度（<span class="math notranslate nohighlight">\(\rm *^2/Hz\)</span>），当输入数据 <code class="docutils literal notranslate"><span class="pre">data</span></code> 为矩阵时， <code class="docutils literal notranslate"><span class="pre">pxx</span></code> 的每列对应输入数据每列的单边功率谱密度；</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">f</span></code> — 单边功率谱密度对应的频率点（<span class="math notranslate nohighlight">\(\rm Hz\)</span>）。</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-<div class="admonition hint">
-<p class="admonition-title">提示</p>
-<p>若使用自定义窗函数，确保窗函数仅接受（窗长）一个参数输入，且输出的窗函数值为列向量。</p>
-</div>
 </div>
 <hr class="docutils"/>
 <div class="section" id="id2">
-<h2>算法说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>LPSD（Logarithmic frequency axis Power Spectral Density）算法的基本思想是采用对数分布的频率点，由于此时频率点的差值不是定值，即 DFT 的频率分辨率随频率点变化，因而在求取每个频率点对应的功率谱密度时应当对原始数据进行不同的分段。这就是说，LPSD 算法的每个频率点对应于不同分段次数下 Welch 算法中的相应点。</p>
-<div class="section" id="id3">
-<h3>对数频率的选取<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
-<p>记采集到的离散数据为 <span class="math notranslate nohighlight">\(x(n),n=0,1,2...N-1\)</span> ，采样率为 <span class="math notranslate nohighlight">\(f_s\)</span> 。假设希望计算 <span class="math notranslate nohighlight">\(J_{\rm des}\)</span> 个点，其中第 <span class="math notranslate nohighlight">\(j\)</span> 个点对应的频率为 <span class="math notranslate nohighlight">\(f(j)\)</span> 、功率谱密度为 <span class="math notranslate nohighlight">\(P(j)\)</span> 、频率分辨率为 <span class="math notranslate nohighlight">\(r(j)=f(j+1)-f(j)\)</span> 。应当注意的是，这里的频率分辨率是指计算DFT的频率点之间的间隔，更一般的说法应当是栅栏效应。有限长数据的频率分辨率实际由DTFT定义，与数据的时间长度互为导数，本文中称之为最小分辨率。在LPSD算法中不能采用 <code class="docutils literal notranslate"><span class="pre">logspace</span></code> 生成对数分布的频率点，因为数值计算的频率间隔不应当小于最小分辨率 <span class="math notranslate nohighlight">\(r_{\rm min}\)</span> ，否则这种计算是没有意义的。</p>
-<div class="figure align-center" style="width: 60%">
-<img alt="../_images/lpsd011.jpg" src="../_images/lpsd011.jpg"/>
+<h2>输入参数<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="data">
+<h3>data<a class="headerlink" href="#data" title="永久链接至标题">¶</a></h3>
+<p>原始数据，向量或矩阵：</p>
+<ul class="simple">
+<li><p>为向量时，直接计算功率谱密度；</p></li>
+<li><p>为矩阵时，按列计算功率谱密度。</p></li>
+</ul>
 </div>
-<p>为了计算频率点，首先考察严格对数均匀的频率点应当满足</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\log f(j + 1) - \log f(j) = C\]</div></div>
-<p>其中C为常数。频率范围受分辨率和采样率的影响，取</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-  f(1) &amp;= {r_{\rm min}} = \frac{{{f_s}}}{N} \\
-  f({J_{\rm des}}) &amp;= {f_{\rm max}} = \frac{{{f_s}}}{2}
-\end{aligned}\end{split}\]</div></div>
-<p>再令</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[g=\log f_{\rm max}- \log r_{\rm min}=\log \frac{N}{2}\]</div></div>
-<p>可以得到第 <span class="math notranslate nohighlight">\(j\)</span> 个点的频率和频率分辨率分别为</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-  f(j) &amp;= {r_{\rm min}} \times {10^{\frac{{j - 1}}{{{J_{\rm des}} - 1}}g}} \\
-  {r_0}(j) &amp;= f(j)({10^{\frac{g}{{{J_{\rm des}} - 1}}}} - 1)
-\end{aligned}\end{split}\]</div></div>
-<p>为了使低频段到高频段的频率分辨率变化较连续，对中频段对应的频率分辨率进行调整，为此，引入分段次数期望值 <span class="math notranslate nohighlight">\(K_{\rm des}\)</span> （其典型值为100），在分段重叠率为 <span class="math notranslate nohighlight">\(\xi\)</span> 时满足</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[({K_{\rm des}} - 1)(1 - \xi ){L_{\rm avg}} + {L_{\rm avg}} = N\]</div></div>
-<p>此时对应的频率分辨率为</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[r_{\rm avg}=\frac{f_s}{L_{\rm avg}}=\frac{f_s}{N}\left[ (K_{\rm des}-1)(1-\xi) +1 \right]\]</div></div>
-<p>根据分辨率限制和算法需求，我们需要对频率分辨率进行调整，如下</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}r'(j) = \left\{ \begin{aligned}
-     &amp; r_0(j) &amp;,&amp;\quad r_0(j) \le r_{\rm avg} \\
-     &amp; \sqrt{r_0(j) \cdot r_{\rm avg}} &amp;,&amp;\quad r_0(j) &lt; r_{\rm avg} \, \text{and} \, \sqrt{r_0(j) \cdot r_{\rm avg}} &gt; r_{\rm min} \\
-     &amp; r_{\rm min} &amp;,&amp;\quad \text{else}
-\end{aligned} \right.\end{split}\]</div></div>
-<p>除此之外，为了保证依据频率分辨率分段的数据长度为整数，频率分辨率还应当做进一步调整</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[L(j) = \left\lfloor {\frac{{{f_s}}}{{r'(j)}}} \right\rfloor  \quad
-r(j) = \frac{{{f_s}}}{{L(j)}}\]</div></div>
-<p>其中，符号 <span class="math notranslate nohighlight">\(\left\lfloor \right\rfloor\)</span> 表示向下取整。</p>
-<p>综上所述，对数频率的选取算法为：以 <span class="math notranslate nohighlight">\(f(1)=r_{\rm min}\)</span> 为起点，根据频率和 <span class="math notranslate nohighlight">\(J_{\rm des}\)</span> 求解分辨率 <span class="math notranslate nohighlight">\(r_0(j)\)</span> ，并根据要求对分辨率进行调整，得到 <span class="math notranslate nohighlight">\(r(j)\)</span> ，接着利用 <span class="math notranslate nohighlight">\(f(j+1)=f(j)+r(j)\)</span> 进行迭代。当计算的频率达到奈奎斯特频率即可停止迭代。值得注意的是，由于对频率分辨率进行了修正，获得的频率点并不是严格的对数分布，同时也会导致实际获得的频率点 <span class="math notranslate nohighlight">\(J\)</span> 与期望的点数 <span class="math notranslate nohighlight">\(J_{\rm des}\)</span> 并不相等。</p>
+<div class="section" id="fs">
+<h3>fs<a class="headerlink" href="#fs" title="永久链接至标题">¶</a></h3>
+<p>数据采样率，以 <span class="math notranslate nohighlight">\(\mathrm{Hz}\)</span> 为单位，标量。</p>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="id3">
+<h2>键值对参数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="jdes">
+<h3>Jdes<a class="headerlink" href="#jdes" title="永久链接至标题">¶</a></h3>
+<p>期望的频率点数，为整数，默认值为 1000。</p>
+<p>该参数用于控制 LPSD 算法输出的频率点数，值越大则计算功率谱密度所采用的频率点数越多、结果越趋近于周期图法。应当注意：LPSD 在构造对数均匀的频率点时，根据频率分辨率对频点进行了修正，所以实际用于计算的频率点会小于 <code class="docutils literal notranslate"><span class="pre">Jdes</span></code> 设定值，实际计算的频率点也不是严格呈现对数均匀。频率点修正采用了迭代算法，所以无法准确设置频率点数。</p>
+</div>
+<div class="section" id="kdes">
+<h3>Kdes<a class="headerlink" href="#kdes" title="永久链接至标题">¶</a></h3>
+<p>期望的分段次数，为整数，默认值为 100。</p>
+<p>该参数用于控制 LPSD 算法中期望的分段次数，用于控制中频段的频率点修正，一般可不做修改。</p>
+</div>
+<div class="section" id="ksai">
+<h3>ksai<a class="headerlink" href="#ksai" title="永久链接至标题">¶</a></h3>
+<p>分段数据的重叠率，0~1 之间标量，默认值为 0.5。</p>
+<p>这个参数本来应该名为 <cite>xi</cite> （希腊字母 <span class="math notranslate nohighlight">\(\xi\)</span>），这里继承了高中最喜欢的数学老师的口音，权且算是彩蛋吧哈哈。</p>
+</div>
+<div class="section" id="win">
+<h3>win<a class="headerlink" href="#win" title="永久链接至标题">¶</a></h3>
+<p>功率谱估计所用的窗函数，为函数句柄或匿名函数，默认为汗宁窗 <code class="docutils literal notranslate"><span class="pre">@hann</span></code> 。</p>
+<p>如果使用其他窗函数，可以使用 <code class="docutils literal notranslate"><span class="pre">@</span></code> 声明函数句柄，如 <code class="docutils literal notranslate"><span class="pre">@hamming</span></code> 使用海明窗。采用这种方式可支持自定义函数，要求自定义窗函数仅接收窗长作为输入参数，输出相应的窗值序列，且输出为列向量。</p>
 </div>
 <div class="section" id="id4">
-<h3>数据的分段处理<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<p>对于第 <span class="math notranslate nohighlight">\(j\)</span> 个频率点，由前可知其频率分辨率为 <span class="math notranslate nohighlight">\(r(j)\)</span> ，分段后的每段数据长度为 <span class="math notranslate nohighlight">\(L(j)\)</span> 。为了减小窗函数导致的数据不等权，允许分段之间存在一定的重叠率 <span class="math notranslate nohighlight">\(\xi\)</span> ，数据分段如下图所示。</p>
-<div class="figure align-center" style="width: 60%">
-<img alt="../_images/lpsd021.jpg" src="../_images/lpsd021.jpg"/>
+<h3>其他绘图控制<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>本函数支持其他绘图控制参数，如 <code class="docutils literal notranslate"><span class="pre">LineWidth</span></code> 、 <code class="docutils literal notranslate"><span class="pre">LineStyle</span></code> 等，详见 <a class="reference external" href="https://ww2.mathworks.cn/help/matlab/ref/plot.html?lang=en">plot 帮助文档</a> 。</p>
 </div>
-<p>由图可知，每段数据未重叠部分长度为</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[D(j) = (1 - \xi ) \cdot L(j)\]</div></div>
-<p>因而分段次数为</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[K(j) = \left\lfloor {\frac{N - L(j)} {D(j) + 1} } \right\rfloor\]</div></div>
-<p>针对每段数据，我们可以选择利用 <code class="docutils literal notranslate"><span class="pre">mean</span></code> 函数求取数据平均值后予以扣除，或利用 <code class="docutils literal notranslate"><span class="pre">detrend</span></code> 函数直接去除数据中线性漂移。以扣除平均值为例，第 <span class="math notranslate nohighlight">\(j\)</span> 个频率点的第 <span class="math notranslate nohighlight">\(k\)</span> 段数据平均值为</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[a(j,k) = \frac{1}{L(j)}\sum\limits_{l = 1}^{L(j)} {x\left( {D(j) \cdot (k - 1) + l} \right)}\]</div></div>
-<p>将该段数据扣除平均值后，以相同长度的窗函数 <span class="math notranslate nohighlight">\(w(j,l)\)</span> 对数据段进行加窗，得到预处理的数据段</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[G(j,k,l) = \left[ {x\left( {D(j) \cdot (k - 1) + l} \right) - a(j,k)} \right] \cdot w(j,l), \quad
-l = 1,2,3...L(j)\]</div></div>
-<p>然后对 <span class="math notranslate nohighlight">\(G(j,k,l)\)</span> 进行离散傅里叶变换</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[A(j,k) = \sum\limits_{l = 1}^{L(j)} G(j,k,l) \cdot e^{ - 2\pi i\frac{m(j)}{L(j)}l}\]</div></div>
-<p>应当注意的是 <span class="math notranslate nohighlight">\(G(j,k,l)\)</span> 中 <span class="math notranslate nohighlight">\(j\)</span> 表示频率点、 <span class="math notranslate nohighlight">\(k\)</span> 表示分段、 <span class="math notranslate nohighlight">\(l\)</span> 代表数据在分段内的位置，因此 <span class="math notranslate nohighlight">\(l\)</span> 对应傅里叶变换的时间变量。严格来说，上式是离散傅里叶变换第 <span class="math notranslate nohighlight">\(m(j)\)</span> 个点的值。其中</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[m(j)=\frac{f(j)}{r(j)}\]</div></div>
-<p>在FFT算法中， <span class="math notranslate nohighlight">\(m(j)\)</span> 应当是整数，而此处不一定满足该要求，故LPSD算法不能利用FFT进行加速，这是该算法耗时较长的原因之一。对 <span class="math notranslate nohighlight">\(m(j)\)</span> 的具体讨论详见文献，此处不作赘述。</p>
-<p>在进行以上操作后，我们得到了第 <span class="math notranslate nohighlight">\(j\)</span> 个频率点对应的 <span class="math notranslate nohighlight">\(K(j)\)</span> 段数据DFT的 <span class="math notranslate nohighlight">\(K(j)\)</span> 个单点值，对这些值进行算数平均，根据Parseval等式可得谱密度为</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[P(j) = \frac{C}{K(j)}\sum\limits_{k = 1}^{K(j)} { { {\left| {A(j,k)} \right|}^2} }\]</div></div>
-<p>其中 <span class="math notranslate nohighlight">\(C\)</span> 为归一化系数，由下一节进行讨论。</p>
 </div>
+<hr class="docutils"/>
 <div class="section" id="id5">
-<h3>功率谱的归一化<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
-<p>功率谱的归一化系数与窗函数相关，而窗函数可根据不同需求进行不同的选择。对于任意窗函数 <span class="math notranslate nohighlight">\(w(j,l)\)</span> ，做如下定义</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-  {S_1}(j) &amp;= \sum\limits_{l = 1}^{L(j)} {w(j,l)}  \\
-  {S_2}(j) &amp;= \sum\limits_{l = 1}^{L(j)} {{w^2}(j,l)}
-\end{aligned}\end{split}\]</div></div>
-<p>单边谱的归一化系数可按下式进行计算</p>
-<div class="math-wrapper"><div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-  {C_{\rm PS}}(j) &amp;= \frac{2}{{S_1^2(j)}} \\
-  {C_{\rm PSD}}(j) &amp;= \frac{2}{{{f_s} \cdot {S_2}(j)}}
-\end{aligned}\end{split}\]</div></div>
-<p>其中， <span class="math notranslate nohighlight">\(C_{\rm PS}\)</span> 是功率谱的归一化系数，常用于单频信号的处理。由于绝大多数信号都均匀丰富的频率成分，我们更多地采用功率谱密度，其对于的归一化系数为 <span class="math notranslate nohighlight">\(C_{\rm PSD}\)</span> 。以电压为例，功率谱的单位是 <span class="math notranslate nohighlight">\({\rm V}^2\)</span> ，而功率谱密度的单位是 <span class="math notranslate nohighlight">\({\rm V}^2/{\rm Hz}\)</span> 。在习惯上，我们所说的功率谱指的都是功率谱密度，且取其开方值，单位为 <span class="math notranslate nohighlight">\({\rm V}/\sqrt{ {\rm Hz} }\)</span> 。</p>
-<p>至此，功率谱估计完成，以 <span class="math notranslate nohighlight">\(f(j)\)</span> 为横轴， <span class="math notranslate nohighlight">\(P(j)\)</span> 为纵轴即可绘制功率谱密度曲线。</p>
+<h2>输出参数<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="h">
+<h3>h<a class="headerlink" href="#h" title="永久链接至标题">¶</a></h3>
+<p>当输出参数只有一个时，输出该曲线句柄。在曲线关闭之前，可以分别使用 <code class="docutils literal notranslate"><span class="pre">h.XData</span></code> 和 <code class="docutils literal notranslate"><span class="pre">h.YData</span></code> 获取频率和（开方后的）功率谱密度值。也可以使用曲线句柄的方式对曲线进行调整，详见 <a class="reference external" href="https://ww2.mathworks.cn/help/matlab/ref/matlab.graphics.primitive.line-properties.html?lang=en">曲线属性</a> 。</p>
+</div>
+<div class="section" id="pxx">
+<h3>pxx<a class="headerlink" href="#pxx" title="永久链接至标题">¶</a></h3>
+<p>当输出参数有两个时，该参数为第一个输出，是计算的功率谱密度值，其单位为 <span class="math notranslate nohighlight">\(\mathrm{*^/Hz^2}\)</span> 。当输入参数为矩阵时，该输出也为矩阵。 <code class="docutils literal notranslate"><span class="pre">pxx</span></code> 的每列对应 <code class="docutils literal notranslate"><span class="pre">data</span></code> 每列的功率谱密度。</p>
+</div>
+<div class="section" id="f">
+<h3>f<a class="headerlink" href="#f" title="永久链接至标题">¶</a></h3>
+<p>当输出参数有两个时，该参数为第二个输出，是功率谱密度对应的频率点，单位为 <span class="math notranslate nohighlight">\(\mathrm{Hz}\)</span> 。</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>参考资料<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<hr class="docutils"/>
+<div class="section" id="id7">
+<h2>使用示例<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ASD</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="mf">0.07</span><span class="o">./</span><span class="n">f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">fs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e4</span><span class="p">;</span><span class="w"></span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">genNoise</span><span class="p">(</span><span class="n">ASD</span><span class="p">,</span><span class="n">fs</span><span class="p">,</span><span class="n">N</span><span class="p">);</span><span class="w">                 </span><span class="c">% 生成噪声</span><span class="w"></span>
+
+<span class="nb">figure</span><span class="w"></span>
+<span class="n">iLPSD</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="p">)</span><span class="w"></span>
+<span class="nb">hold</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="nb">grid</span><span class="w"> </span><span class="n">on</span><span class="w"></span>
+<span class="n">iLPSD</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="p">,</span><span class="s">'Jdes'</span><span class="p">,</span><span class="mf">3e3</span><span class="p">)</span><span class="w"></span>
+<span class="n">iLPSD</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">fs</span><span class="p">,</span><span class="s">'win'</span><span class="p">,@</span><span class="n">hamming</span><span class="p">,</span><span class="s">'LineStyle'</span><span class="p">,</span><span class="s">'--'</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">'Frequency (Hz)'</span><span class="p">)</span><span class="w"></span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">'ASD'</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils"/>
+<div class="section" id="id8">
+<h2>参考资料<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <ol class="arabic simple">
-<li><p>M. Tröbs and G. Heinzel, “Improved spectrum estimation from digitized time series on a logarithmic frequency axis,” Measurement, vol. 39, no. 2, pp. 120–129, Feb. 2006, doi: 10.1016/j.measurement.2005.10.010.</p></li>
+<li><p>Michael Tröbs, Gerhard Heinzel. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S026322410500117X">Improved spectrum estimation from digitized time series on a logarithmic frequency axis</a>. Measurement. 2005.</p></li>
+<li><p><a class="reference external" href="https://ichunyu.github.io/dsp/lpsd.html">LPSD 功率谱估计</a> . 某春雨的后花园.</p></li>
 </ol>
 </div>
 </div>
@@ -414,13 +370,27 @@ l = 1,2,3...L(j)\]</div></div>
             <ul>
 <li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">iLPSD</span></code> ：功率谱估计</a><ul>
 <li><a class="reference internal" href="#id1">使用说明</a></li>
-<li><a class="reference internal" href="#id2">算法说明</a><ul>
-<li><a class="reference internal" href="#id3">对数频率的选取</a></li>
-<li><a class="reference internal" href="#id4">数据的分段处理</a></li>
-<li><a class="reference internal" href="#id5">功率谱的归一化</a></li>
+<li><a class="reference internal" href="#id2">输入参数</a><ul>
+<li><a class="reference internal" href="#data">data</a></li>
+<li><a class="reference internal" href="#fs">fs</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">参考资料</a></li>
+<li><a class="reference internal" href="#id3">键值对参数</a><ul>
+<li><a class="reference internal" href="#jdes">Jdes</a></li>
+<li><a class="reference internal" href="#kdes">Kdes</a></li>
+<li><a class="reference internal" href="#ksai">ksai</a></li>
+<li><a class="reference internal" href="#win">win</a></li>
+<li><a class="reference internal" href="#id4">其他绘图控制</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">输出参数</a><ul>
+<li><a class="reference internal" href="#h">h</a></li>
+<li><a class="reference internal" href="#pxx">pxx</a></li>
+<li><a class="reference internal" href="#f">f</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">使用示例</a></li>
+<li><a class="reference internal" href="#id8">参考资料</a></li>
 </ul>
 </li>
 </ul>
