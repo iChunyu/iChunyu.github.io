@@ -11,3 +11,5 @@
     filter_design
     lpsd
     generate_noise
+    orthogonal_projection
+    
