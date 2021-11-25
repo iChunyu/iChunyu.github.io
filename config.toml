@@ -68,7 +68,7 @@ theme = "DoIt"
   # ("sha256", "sha384", "sha512", "md5")
   fingerprint = ""
   #  日期格式
-  dateFormat = "2021-11-24"
+  dateFormat = "2006-01-02"
   # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = ["avatar.jpeg"]
   #  开启 PWA 支持
@@ -135,13 +135,13 @@ theme = "DoIt"
       # LOGO 的 URL
       logo = ""
       # 标题名称
-      name = ""
+      name = "某春雨的后花园"
       # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
       pre = ""
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
       post = ""
       #  是否为标题显示打字机动画
-      typeit = false
+      typeit = true
 
   # 页面底部信息配置
   [params.footer]
@@ -332,7 +332,7 @@ theme = "DoIt"
       # 是否使用目录
       enable = true
       #  是否保持使用文章前面的静态目录
-      keepStatic = true
+      keepStatic = false
       # 是否使侧边目录自动折叠展开
       auto = true
     #  代码配置
@@ -340,7 +340,7 @@ theme = "DoIt"
       # 是否显示代码块的复制按钮
       copy = true
       # 默认展开显示的代码行数
-      maxShownLines = 10
+      maxShownLines = 42
     #  KaTeX 数学公式
     [params.page.math]
       enable = true
@@ -372,7 +372,7 @@ theme = "DoIt"
       fullscreen = true
     #  文章页面的分享信息设置
     [params.page.share]
-      enable = true
+      enable = false
       Twitter = false
       Facebook = false
       Linkedin = false
@@ -662,7 +662,7 @@ theme = "DoIt"
   name = "大春雨"
   email = "chunyu2018@foxmail.com"
   link = ""
-  avatar = ""
+  avatar = "avatar.jpeg"
   gravatarEmail = ""
 
 # 网站地图配置
