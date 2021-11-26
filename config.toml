@@ -540,7 +540,7 @@ theme = "DoIt"
       # 出版者信息
       [params.page.seo.publisher]
         name = ""
-        logoUrl = ""
+        logoUrl = "avatar.jpeg"
 
   #  赞赏配置
   [params.sponsor]
