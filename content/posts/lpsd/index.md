@@ -7,7 +7,7 @@ categories: ["数字信号处理"]
 draft: false
 ---
 
-欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 [LTPDA](https://www.elisascience.org/ltpda)（LISA Technology Package Data Analysis），该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。
+欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 [LTPDA](https://www.elisascience.org/ltpda)，该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。
 
 <!--more-->
 
@@ -15,15 +15,15 @@ draft: false
 
 功率谱估计是频域分析的一种常用手段，可用来检测信号中的单频信号或评估仪器的噪声本底等。常用的功率谱估计算法有周期图法（对应 MATLAB 函数为 `periodogram`）和 Welch 方法（`pwelch`）。对于采集系统收集到的数字信号，周期图法会对该数据进行加窗，然后利用快速傅里叶变换（FFT）将信号转化到频域
 
-$$
+{{< math >}}$$
 X(k) = \sum\limits_{n = 0}^{N - 1} {x(n){e^{ - i\frac{ {2\pi} } {N}nk}}}
-$$
+$${{< /math >}}
 
 然后利用 Wiener--Khinchin 定理即可获得功率谱
 
-$$
+{{< math >}}$$
 S(k) = \frac{2}{Nf_s}|X(k)|^2
-$$
+$${{< /math >}}
 
 式中，系数 $2$ 将双边谱转换到单边谱，这是因为负频率不具备实际的物理意义。
 
@@ -55,29 +55,29 @@ LPSD 算法的基本思想是采用对数分布的频率点，由于此时频率
 
 为了计算频率点，首先考察严格对数均匀的频率点应当满足
 
-$$\log f(j + 1) - \log f(j) = C$$
+{{< math >}}$$\log f(j + 1) - \log f(j) = C$${{< /math >}}
 
 其中C为常数。频率范围受分辨率和采样率的影响，取
 
-$$
+{{< math >}}$$
 \begin{gathered}
     f(1) = {r_{\rm min}} = \frac{{{f_s}}}{N} \\
     f({J_{\rm des}}) = {f_{\rm max}} = \frac{{{f_s}}}{2}
 \end{gathered}
-$$
+$${{< /math >}}
 
 再令
 
-$$g=\log f_{\rm max}- \log r_{\rm min}=\log \frac{N}{2}$$
+{{< math >}}$$g=\log f_{\rm max}- \log r_{\rm min}=\log \frac{N}{2}$${{< /math >}}
 
 可以得到第 $j$ 个点的频率和频率分辨率分别为
 
-$$
+{{< math >}}$$
 \begin{gathered}
     f(j) = {r_{\rm min}} \times {10^{\frac{{j - 1}}{{{J_{\rm des}} - 1}}g}} \\
-    {r_0}(j) = f(j)({10^{\frac{g}{{{J_{\rm des}} - 1}}}} - 1) \\
+    {r_0}(j) = f(j)({10^{\frac{g}{{{J_{\rm des}} - 1}}}} - 1) 
 \end{gathered}
-$$
+$${{< /math >}}
 
 为了使低频段到高频段的频率分辨率变化较连续，对中频段对应的频率分辨率进行调整，为此，引入分段次数期望值 $K_{\rm des}$（其典型值为100）。在分段重叠率为 $\xi$ 时满足
 
@@ -85,27 +85,26 @@ $$({K_{\rm des}} - 1)(1 - \xi ){L_{\rm avg}} + {L_{\rm avg}} = N$$
 
 此时对应的频率分辨率为
 
-$$r_{\rm avg}=\frac{f_s}{L_{\rm avg}}=\frac{f_s}{N}\left[ (K_{\rm des}-1)(1-\xi) +1 \right]$$
+{{< math >}}$$r_{\rm avg}=\frac{f_s}{L_{\rm avg}}=\frac{f_s}{N}\left[ (K_{\rm des}-1)(1-\xi) +1 \right]$${{< /math >}}
 
 根据分辨率限制和算法需求，我们需要对频率分辨率进行调整，如下
 
-$$
-
-r'(j) = \left\{ \begin{aligned}
-    &{{r_0}(j)}& {r_0}(j) \geqslant {r_{\rm avg}} \\
-    &{\sqrt {{r_0}(j) \cdot {r_{\rm avg}}} }&{r_0}(j) < {r_{\rm avg}}{\text{ and }}\sqrt {{r_0}(j) \cdot {r_{\rm avg}}}  > {r_{\min }} \\
-    &{{r_{\rm min}}}&\text{else}
-\end{aligned} \right.
-$$
+{{< math >}}$$
+r'(j) = \left\{ \begin{array}{ll} 
+    {{r_0}(j)}& {r_0}(j) \ge {r_{\rm avg}} \\
+    {\sqrt {{r_0}(j) \cdot {r_{\rm avg}}} }&{r_0}(j) < {r_{\rm avg}}{\text{ and }}\sqrt {{r_0}(j) \cdot {r_{\rm avg}}}  > {r_{\min }} \\
+    {{r_{\rm min}}}&\text{else}
+\end{array} \right.
+$${{< /math >}}
 
 除此之外，为了保证依据频率分辨率分段的数据长度为整数，频率分辨率还应当做进一步调整
 
-$$
+{{< math >}}$$
 \begin{gathered}
     L(j) = \left\lfloor {\frac{{{f_s}}}{{r'(j)}}} \right\rfloor  \\
-    r(j) = \frac{{{f_s}}}{{L(j)}} \\
+    r(j) = \frac{{{f_s}}}{{L(j)}} 
 \end{gathered}
-$$
+$${{< /math >}}
 
 其中，符号 $\left\lfloor \right\rfloor$ 表示向下取整。
 
@@ -122,37 +121,37 @@ $$
 
 由图可知，每段数据未重叠部分长度为
 
-$$D(j) = (1 - \xi ) \cdot L(j)$$
+{{< math >}}$$D(j) = (1 - \xi ) \cdot L(j)$${{< /math >}}
 
 因而分段次数为
 
-$$K(j) = \left\lfloor {\frac{N - L(j)} {D(j) + 1} } \right\rfloor$$
+{{< math >}}$$K(j) = \left\lfloor {\frac{N - L(j)} {D(j) + 1} } \right\rfloor$${{< /math >}}
 
 针对每段数据，我们可以选择利用 `mean` 函数求取数据平均值后予以扣除，或利用 `detrend` 函数直接去除数据中线性漂移。以扣除平均值为例，第 $j$ 个频率点的第 $k$
 段数据平均值为
 
-$$a(j,k) = \frac{1}{L(j)}\sum\limits_{l = 1}^{L(j)} {x\left( {D(j) \cdot (k - 1) + l} \right)}$$
+{{< math >}}$$a(j,k) = \frac{1}{L(j)}\sum\limits_{l = 1}^{L(j)} {x\left( {D(j) \cdot (k - 1) + l} \right)}$${{< /math >}}
 
 将该段数据扣除平均值后，以相同长度的窗函数 $w(j,l)$ 对数据段进行加窗，得到预处理的数据段
 
-$$
+{{< math >}}$$
 G(j,k,l) = \left[ {x\left( {D(j) \cdot (k - 1) + l} \right) - a(j,k)} \right] \cdot w(j,l)
 ,\quad l = 1,\,2,\,3\,...\,L(j)
-$$
+$${{< /math >}}
 
 然后对 $G(j,k,l)$ 进行离散傅里叶变换
 
-$$A(j,k) = \sum\limits_{l = 1}^{L(j)} {G(j,k,l) \cdot {e^{ - 2\pi i\frac{m(j)}{L(j)}l} } }$$
+{{< math >}}$$A(j,k) = \sum\limits_{l = 1}^{L(j)} {G(j,k,l) \cdot {e^{ - 2\pi i\frac{m(j)}{L(j)}l} } }$${{< /math >}}
 
 应当注意的是 $G(j,k,l)$ 中 $j$ 表示频率点、 $k$ 表示分段、 $l$ 代表数据在分段内的位置，因此 $l$ 对应傅里叶变换的时间变量。严格来说，上式是离散傅里叶变换第 $m(j)$ 个点的值。其中
 
-$$m(j)=\frac{f(j)}{r(j)}$$
+{{< math >}}$$m(j)=\frac{f(j)}{r(j)}$${{< /math >}}
 
 在 FFT 算法中， $m(j)$ 应当是整数，而此处不一定满足该要求，故LPSD算法不能利用FFT进行加速，这是该算法耗时较长的原因之一。对 $m(j)$ 的具体讨论详见文献，此处不作赘述。
 
 在进行以上操作后，我们得到了第 $j$ 个频率点对应的 $K(j)$ 段数据 DFT 的 $K(j)$ 个单点值，对这些值进行算数平均，根据Parseval等式可得谱密度为
 
-$$P(j) = \frac{C}{K(j)}\sum\limits_{k = 1}^{K(j)} { { {\left| {A(j,k)} \right|}^2} }$$
+{{< math >}}$$P(j) = \frac{C}{K(j)}\sum\limits_{k = 1}^{K(j)} { { {\left| {A(j,k)} \right|}^2} }$${{< /math >}}
 
 其中 $C$ 为归一化系数，由下一节进行讨论。
 
@@ -160,21 +159,21 @@ $$P(j) = \frac{C}{K(j)}\sum\limits_{k = 1}^{K(j)} { { {\left| {A(j,k)} \right|}^
 
 功率谱的归一化系数与窗函数相关，而窗函数可根据不同需求进行不同的选择。对于任意窗函数 $w(j,l)$ ，做如下定义
 
-$$
+{{< math >}}$$
 \begin{gathered}
-    {S_1}(j) = \sum\limits_{l = 1}^{L(j)} {w(j,l)}  \\
-    {S_2}(j) = \sum\limits_{l = 1}^{L(j)} {{w^2}(j,l)}  \\
+    {S_1}(j) = \sum_{l = 1}^{L(j)} {w(j,l)}   \\
+    {S_2}(j) = \sum_{l = 1}^{L(j)} {{w^2}(j,l)}  
 \end{gathered}
-$$
+$${{< /math >}}
 
 单边谱的归一化系数可按下式进行计算
 
-$$
+{{< math >}}$$
 \begin{gathered}
     {C_{\rm PS}}(j) = \frac{2}{{S_1^2(j)}} \\
-    {C_{\rm PSD}}(j) = \frac{2}{{{f_s} \cdot {S_2}(j)}} \\
+    {C_{\rm PSD}}(j) = \frac{2}{{{f_s} \cdot {S_2}(j)}} 
 \end{gathered}
-$$
+$${{< /math >}}
 
 其中， $C_{\rm PS}$ 是功率谱的归一化系数，常用于单频信号的处理。由于绝大多数信号都均匀丰富的频率成分，我们更多地采用功率谱密度，其对于的归一化系数为 $C_{\rm PSD}$ 。以电压为例，功率谱的单位是 ${\rm V}^2$，而功率谱密度的单位是 ${\rm V}^2/{\rm Hz}$。在习惯上，我们所说的功率谱指的都是功率谱密度，且取其开方值，单位为
 ${\rm V}/\sqrt{ {\rm Hz} }$ 。
