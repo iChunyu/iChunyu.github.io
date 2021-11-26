@@ -2,7 +2,7 @@
 title: "LPSD 功率谱估计"
 date: 2019-02-23
 lastmod: 2021-11-25
-tags: ["功率谱"]
+tags: ["功率谱","LPSD"]
 categories: ["数字信号处理"]
 draft: false
 ---
