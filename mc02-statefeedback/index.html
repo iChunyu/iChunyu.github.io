@@ -182,14 +182,14 @@ $$
 $$
 <p>容易计算系统矩阵的特征值有： $[0,-0.5075,-0.9683,-0.6371\pm0.6669j]$ ，可见改系统具有四个稳定的极点和一个位于原点的极点，可以判定该系统为Ⅰ型系统：系统的阶跃响应收敛于斜直线，如下图所示：</p>
 <div align=center>
-    <img src=mc02a.png width=70% />
+    <img src=mc02a.png width=50% />
 </div>
 <p>通过计算二阶系统的响应，我们发现在 $\omega_n = 1 \rm{ rad/s} ,  \zeta = 0.5$ 时二阶系统 $H(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$ 的响应接近需求，其极点为 $-0.5\pm0.866j$ 。</p>
 <p>因此，我们可以将该系统的主导极点设置为二阶系统的极点，其他极点的距离4倍于主导极点，设置为 $-4$ 。</p>
 <p>在 MATLAB 中使用函数 <code>acker</code> 或 <code>place</code> 均可以实现极点配置，前者由于容易引入数值误差，一般用于阶数较低（$\le10$）的系统；后者的算法是基于特征向量来的，应当避免使用重复极点，必要时可以使重复极点具有微妙的差别。设计时应当注意极点移动的距离越大，意味着反馈增益越大，即需要的能量越大，应当充分考虑执行机的能力。</p>
 <p>通过极点配置，反馈后系统矩阵 $A-BK$ 的特征值为：$[-0.5 \pm 0.866j,,-3.99,,-4,,-4.01]$。进而可以得到系统响应为（输出按20s处的值进行了归一化以便于对比）：</p>
 <div align=center>
-    <img src=mc02b.png width=70% />
+    <img src=mc02b.png width=50% />
 </div>
 <h2 id="lqr设计法">LQR设计法</h2>
 <p>LQR设计旨在寻找合适 $K$ 的使得下面的积分取得最小值</p>
@@ -217,7 +217,7 @@ $$
 \end{aligned}
 $$
 <div align=center>
-    <img src=mc02c.png width=70% />
+    <img src=mc02c.png width=50% />
 </div>
 <p>下面给出参数设计的部分源码以供参考，本文所述工作已整理在 <a href="https://github.com/iChunyu/LearnCtrlSys" target="_blank" rel="noopener noreffer">控制理论学习仓库</a> ，欢迎讨论！</p>
 <div class="highlight"><div class="chroma">

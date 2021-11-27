@@ -173,26 +173,26 @@
 <table>
 <thead>
 <tr>
-<th>符号变量</th>
-<th>符号名</th>
+<th style="text-align:center">符号变量</th>
+<th style="text-align:center">符号名</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>w0</td>
-<td>$\omega _{0}$</td>
+<td style="text-align:center">w0</td>
+<td style="text-align:center">$\omega _{0}$</td>
 </tr>
 <tr>
-<td>rs1</td>
-<td>$r_{i,s}$</td>
+<td style="text-align:center">rs1</td>
+<td style="text-align:center">$r_{i,s}$</td>
 </tr>
 <tr>
-<td>rs2</td>
-<td>$r_{i,s}^{i}$</td>
+<td style="text-align:center">rs2</td>
+<td style="text-align:center">$r_{i,s}^{i}$</td>
 </tr>
 <tr>
-<td>Vprms</td>
-<td>$V_{p,\mathrm{rms}}$</td>
+<td style="text-align:center">Vprms</td>
+<td style="text-align:center">$V_{p,\mathrm{rms}}$</td>
 </tr>
 </tbody>
 </table>
@@ -223,58 +223,58 @@
 <table>
 <thead>
 <tr>
-<th>约束条件</th>
-<th>命令</th>
+<th style="text-align:center">约束条件</th>
+<th style="text-align:center">命令</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>实数</td>
-<td>assume(x,&lsquo;real&rsquo;)</td>
+<td style="text-align:center">实数</td>
+<td style="text-align:center"><code>assume(x,'real')</code></td>
 </tr>
 <tr>
-<td>有理数</td>
-<td>assume(x,&lsquo;rational&rsquo;)</td>
+<td style="text-align:center">有理数</td>
+<td style="text-align:center"><code>assume(x,'rational')</code></td>
 </tr>
 <tr>
-<td>正数</td>
-<td>assume(x,&lsquo;positive&rsquo;)</td>
+<td style="text-align:center">正数</td>
+<td style="text-align:center"><code>assume(x,'positive')</code></td>
 </tr>
 <tr>
-<td>正整数</td>
-<td>assume(x,{&lsquo;positive&rsquo;,&lsquo;integer&rsquo;})</td>
+<td style="text-align:center">正整数</td>
+<td style="text-align:center"><code>assume(x,{'positive','integer'})</code></td>
 </tr>
 <tr>
-<td>小于 -1 或大于 1</td>
-<td>assume(x&lt;-1 | x&gt;1)</td>
+<td style="text-align:center">小于 -1 或大于 1</td>
+<td style="text-align:center"><code>assume(x&lt;-1 | x&gt;1)</code></td>
 </tr>
 <tr>
-<td>2~10 之间的整数</td>
-<td>assume(in(x,&lsquo;integer&rsquo;) &amp; x&gt;2 &amp; x&lt;10)</td>
+<td style="text-align:center">2~10 之间的整数</td>
+<td style="text-align:center"><code>assume(in(x,'integer') &amp; x&gt;2 &amp; x&lt;10)</code></td>
 </tr>
 <tr>
-<td>不是整数</td>
-<td>assume(~in(z,&lsquo;integer&rsquo;))</td>
+<td style="text-align:center">不是整数</td>
+<td style="text-align:center"><code>assume(~in(z,'integer'))</code></td>
 </tr>
 <tr>
-<td>不为零</td>
-<td>assume(x ~= 0)</td>
+<td style="text-align:center">不为零</td>
+<td style="text-align:center"><code>assume(x ~= 0)</code></td>
 </tr>
 <tr>
-<td>偶数</td>
-<td>assume(x/2,&lsquo;integer&rsquo;)</td>
+<td style="text-align:center">偶数</td>
+<td style="text-align:center"><code>assume(x/2,'integer')</code></td>
 </tr>
 <tr>
-<td>奇数</td>
-<td>assume((x-1)/2,&lsquo;integer&rsquo;)</td>
+<td style="text-align:center">奇数</td>
+<td style="text-align:center"><code>assume((x-1)/2,'integer')</code></td>
 </tr>
 <tr>
-<td>大于 0 且小于 $2\pi$</td>
-<td>assume(x&gt;0 &amp; x&lt;2*pi)</td>
+<td style="text-align:center">大于 0 且小于 $2\pi$</td>
+<td style="text-align:center"><code>assume(x&gt;0 &amp; x&lt;2*pi)</code></td>
 </tr>
 <tr>
-<td>$\pi$ 的整数倍</td>
-<td>assume(x/pi,&lsquo;integer&rsquo;)</td>
+<td style="text-align:center">$\pi$ 的整数倍</td>
+<td style="text-align:center"><code>assume(x/pi,'integer')</code></td>
 </tr>
 </tbody>
 </table>

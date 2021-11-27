@@ -70,7 +70,7 @@ y &= \begin{bmatrix}
 \right.
 $${{< /math >}}
 
-其中，$\omega_n=1 {\rm  rad/s,  } \zeta=0.3$，基于Simulink搭建被控对象如图所示
+其中，$\omega_n=1 {\rm  rad/s,}\\, \zeta=0.3$，基于Simulink搭建被控对象如图所示
 
 <div align=center>
     <img src=mc03a.png width=70% />
@@ -80,7 +80,7 @@ $${{< /math >}}
 为了状态估计能够快速收敛，设的阻尼系数 $\zeta=0.7$ ，对应极点为 $-0.70\pm0.71j$ ，进而 $L=\left[0.80,\, -0.48\right]$。带入仿真，观察状态的实际值和估计值如下图所示：
 
 <div align=center>
-    <img src=mc03b.png width=70% />
+    <img src=mc03b.png width=50% />
 </div>
 
 第一个子图实线为真实状态，虚线为状态估计值，可见两者在大约5s后趋于一致。第二个子图则表示两个状态的估计误差，同样可以反应状态估计值的误差随时间收敛到零，状态估计值趋于真实值。
@@ -163,7 +163,7 @@ $${{< /math >}}
 对降维状态估计器进行参数设计，之后得到该估计器的响应如图：
 
 <div align=center>
-    <img src=mc03d.png width=70% />
+    <img src=mc03d.png width=50% />
 </div>
 
 该降维状态估计器仅对状态量 $x_2$ 进行估计，可见在 8s 左右估计的误差已收敛到合适的范围，随着时间的增长，状态估计误差收敛于零，状态估计值收敛于真实值。

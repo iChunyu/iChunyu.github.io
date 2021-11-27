@@ -155,7 +155,7 @@
 </ul>
 <p>以低通滤波器为例，上述四个参数可以用下图来表示</p>
 <div align=center>
-    <img src=filter01.png width=70% />
+    <img src=filter01.png width=60% />
 </div>
 <p>在对延时比较敏感的实时系统中，还需要讨论滤波器的群延时，其定义为相频响应的负导数，即</p>
 $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
@@ -198,7 +198,7 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 <p>对于 Python 用户， <code>scipy.signal</code> 提供了同名的函数，使用方法基本一致，但 <code>'s'</code> 选项应更换为关键字参数 <code>analog=True</code> 。</p>
 <p>以 <code>Wp=1</code> ， <code>Ws=3</code> ， <code>Rp=1</code> 和 <code>Rs=40</code> 为例设计模拟滤波器，幅频响应如下图所示</p>
 <div align=center>
-    <img src=filter02.png width=70% />
+    <img src=filter02.png width=60% />
 </div>
 <p>可见，在相同参数设置下：</p>
 <ul>
@@ -229,7 +229,7 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 <p>从感性上看，第一次滤波是从前往后滤，因此向后引入了延时；第二次滤波是从后往前滤，向前引入的相同的&quot;延时&quot;。由于采用的是完全相同的滤波器，因而延时可以完全抵消。</p>
 <p>为了使用滤波器，在 MATLAB 中可以使用 <code>filter(b,a,x)</code> 进行滤波，也可以使用 <code>filtfilt(b,a,x)</code> 进行零相位滤波。在Python中，这两个函数分别对应于 <code>scipy.signal</code> 中的 <code>lfilter</code> 和 <code>filtfilt</code>。下图给出同一个滤波器使用两种滤波方法对带噪声的正弦信号滤波后的结果。</p>
 <div align=center>
-    <img src=filter03.png width=70% />
+    <img src=filter03.png width=60% />
 </div>
 <p>一般的滤波方法引入了可见的延时，而零相位滤波器没有引入明显延时。此外，相同滤波器下，零相位滤波器的输出结果更光滑，这是因为它对数据进行了两次滤波，其增益特性将是一次滤波的平方。需要注意的是，一般的滤波只在数据的开始阶段存在过渡过程，而零相位滤波在数据两端都有过渡过程。为了消除这些过渡过程，可以使用自适应技术提前对数据进行一定程度的预测。</p>
 <p>零相位滤波是在数据采集完成之后才能进行的操作，不能实时处理，这也就是所谓&quot;非因果系统&quot;的实际含义。对于实时系统，只能通过其他的手段对延时进行补偿。</p></div>

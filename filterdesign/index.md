@@ -18,7 +18,7 @@
 以低通滤波器为例，上述四个参数可以用下图来表示
 
 <div align=center>
-    <img src=filter01.png width=70% />
+    <img src=filter01.png width=60% />
 </div>
 
 在对延时比较敏感的实时系统中，还需要讨论滤波器的群延时，其定义为相频响应的负导数，即
@@ -49,7 +49,7 @@
 以 `Wp=1` ， `Ws=3` ， `Rp=1` 和 `Rs=40` 为例设计模拟滤波器，幅频响应如下图所示
 
 <div align=center>
-    <img src=filter02.png width=70% />
+    <img src=filter02.png width=60% />
 </div>
 
 可见，在相同参数设置下：
@@ -89,7 +89,7 @@ FIR 滤波器是一种全零点数字滤波器，与 IIR 滤波器相比，不�
 为了使用滤波器，在 MATLAB 中可以使用 `filter(b,a,x)` 进行滤波，也可以使用 `filtfilt(b,a,x)` 进行零相位滤波。在Python中，这两个函数分别对应于 `scipy.signal` 中的 `lfilter` 和 `filtfilt`。下图给出同一个滤波器使用两种滤波方法对带噪声的正弦信号滤波后的结果。
 
 <div align=center>
-    <img src=filter03.png width=70% />
+    <img src=filter03.png width=60% />
 </div>
 
 一般的滤波方法引入了可见的延时，而零相位滤波器没有引入明显延时。此外，相同滤波器下，零相位滤波器的输出结果更光滑，这是因为它对数据进行了两次滤波，其增益特性将是一次滤波的平方。需要注意的是，一般的滤波只在数据的开始阶段存在过渡过程，而零相位滤波在数据两端都有过渡过程。为了消除这些过渡过程，可以使用自适应技术提前对数据进行一定程度的预测。

@@ -11,7 +11,7 @@
 由于系统是由元件构成的，而元件的特性通常满足一定的（微分）方程，考虑元件之间的约束后，系统的本质就可以看作是微分方程。以经典的弹簧-质量-阻尼系统为例，如下图所示。
 
 <div align=center>
-    <img src=mc01.jpg width=70% />
+    <img src=mc01.jpg width=40% />
 </div>
 
 
@@ -113,7 +113,7 @@ $${{< /math >}}
 
 {{< math >}}$$
 P\dot{\mathbf{z}}=AP\mathbf{z}+B\mathbf{u}
-\Rightarrow \dot{\mathbf{z}}=P^{-1}AP\mathbf{z}+P^{-1}B\mathbf{u}
+\quad \Rightarrow \quad \dot{\mathbf{z}}=P^{-1}AP\mathbf{z}+P^{-1}B\mathbf{u}
 $${{< /math >}}
 
 选取合适的变换矩阵 $P$ 使得 $P^{-1}AP$ 为矩阵 $A$ 的相似变换，即 $P^{-1}AP$ 为特征值对角矩阵：
@@ -131,7 +131,7 @@ $${{< /math >}}
 
 {{< math >}}$$
 \dot{z}_i = \lambda_i z_i + \tilde{u}_i
-\Rightarrow z_i(t) = C_i \mathrm(e)^{\lambda_i t} + \tilde{z}_i(t)
+\quad \Rightarrow \quad z_i(t) = C_i \mathrm(e)^{\lambda_i t} + \tilde{z}_i(t)
 $${{< /math >}}
 
 其中， $\tilde{u}_i$ 表示 $P^{-1}B\mathbf{u}$ 的第 $i$ 的分量，其对应的特解为 $\tilde{z}_i(t)$ 。最后代回 $\mathbf{x}=P\mathbf{z}$ 即可得到原状态变量，进而带入输出矩阵解得输出。

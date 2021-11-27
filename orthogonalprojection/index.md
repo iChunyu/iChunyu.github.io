@@ -14,7 +14,7 @@
 由于点到平面内的距离最短，那么这个极小化问题的解就是向量 $\vec{v}$ 在给定平面内的正交投影，即 $\vec{u}=\vec{v}_p$ 。
 
 <div align=center>
-    <img src=projection1.png width=60% />
+    <img src=projection1.svg width=70% />
 </div>
 
 
