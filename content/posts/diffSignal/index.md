@@ -38,7 +38,7 @@ $${{< /math >}}
 
 
 <div align=center>
-    <img src=diff01.png width=85% />
+    <img src=diff01.png width=90% />
 </div>
 
 
@@ -65,15 +65,17 @@ $${{< /math >}}
 同样在一阶 Pade 近似下，得传递函数：
 
 {{< math >}}$$
-H_2(s) = \frac{1}{T_2-T_1} \left( \mathrm{e}^{-s T_1} - \mathrm{e}^{-s T_2} \right) 
-    \approx \frac{1}{T_2-T_1} \left( \frac{1}{T_1 s + 1} - \frac{1}{T_2 s + 1}\right)
-    = \frac{s}{T_1T_2 s^2 + (T_1+T_2)s +1}
+\begin{aligned}
+    H_2(s) &= \frac{1}{T_2-T_1} \left( \mathrm{e}^{-s T_1} - \mathrm{e}^{-s T_2} \right)  \\
+    &\approx \frac{1}{T_2-T_1} \left( \frac{1}{T_1 s + 1} - \frac{1}{T_2 s + 1}\right) \\
+    &= \frac{s}{T_1T_2 s^2 + (T_1+T_2)s +1}
+\end{aligned}
 $${{< /math >}}
 
 这是一个带通滤波器！其幅频响应的"左侧"构成微分的功能，而"右侧"能够高频噪声进行抑制。下图展示了这两种微分器的效果。
 
 <div align=center>
-    <img src=diff02.png width=70% />
+    <img src=diff02.png width=60% />
 </div>
 
 
@@ -100,7 +102,7 @@ $${{< /math >}}
 特别地，如果使用 [相图与砰砰控制]({{< ref "../bangbang/index.md" >}}) 所讨论的砰砰控制来稳定环路，就构成了韩京清老师所定义的跟踪微分器。下图展示了这种跟踪微分器的微分效果。
 
 <div align=center>
-    <img src=diff05.png width=70% />
+    <img src=diff05.png width=60% />
 </div>
 
 从控制的角度来看，完全可以使用其他控制器以达到对高频噪声更高阶次的抑制，这里就不再过多讨论了。

@@ -60,7 +60,7 @@ $${{< /math >}}
 容易计算系统矩阵的特征值有： $[0,-0.5075,-0.9683,-0.6371\pm0.6669j]$ ，可见改系统具有四个稳定的极点和一个位于原点的极点，可以判定该系统为Ⅰ型系统：系统的阶跃响应收敛于斜直线，如下图所示：
 
 <div align=center>
-    <img src=mc02a.png width=70% />
+    <img src=mc02a.png width=50% />
 </div>
 
 通过计算二阶系统的响应，我们发现在 $\omega_n = 1 \rm{ rad/s} ,  \zeta = 0.5$ 时二阶系统 $H(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$ 的响应接近需求，其极点为 $-0.5\pm0.866j$ 。
@@ -73,7 +73,7 @@ $${{< /math >}}
 通过极点配置，反馈后系统矩阵 $A-BK$ 的特征值为：$[-0.5 \pm 0.866j,\,-3.99,\,-4,\,-4.01]$。进而可以得到系统响应为（输出按20s处的值进行了归一化以便于对比）：
 
 <div align=center>
-    <img src=mc02b.png width=70% />
+    <img src=mc02b.png width=50% />
 </div>
 
 ## LQR设计法
@@ -110,7 +110,7 @@ LQR设计旨在寻找合适 $K$ 的使得下面的积分取得最小值
 $${{< /math >}}
 
 <div align=center>
-    <img src=mc02c.png width=70% />
+    <img src=mc02c.png width=50% />
 </div>
 
 

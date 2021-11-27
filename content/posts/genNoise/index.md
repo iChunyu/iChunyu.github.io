@@ -59,14 +59,14 @@ f = (0:floor(N/2))'*fs/N;
 与目标基本一致，初步判定噪声满足频域形状的需求。
 
 <div align=center>
-    <img src=gennoise01.png width=70% />
+    <img src=gennoise01.png width=60% />
 </div>
 
 
 平稳随机噪声的特性应当不随时间改变，因此不同时间段的噪声应当具有相同的特性。为此，对生成的数据进行分段作谱（分段之间允许部分重叠），结果如下图所示，生成的噪声也能够满足平稳随机的要求。
 
 <div align=center>
-    <img src=gennoise02.png width=70% />
+    <img src=gennoise02.png width=60% />
 </div>
 
 最后验证噪声的相关性：一方面自相关可以体现噪声各个时段内的相关性，理想情况下不同时段相关性为
@@ -75,7 +75,7 @@ f = (0:floor(N/2))'*fs/N;
 0 。测试结果如下图，可见满足需求。
 
 <div align=center>
-    <img src=gennoise03.png width=70% />
+    <img src=gennoise03.png width=60% />
 </div>
 
 针对生成的噪声还可以进行更加严格的相关性测试，但这超出了我自己的需求，就不再过多赘述。最后展示一个频域为正弦的噪声示例（给大家看看什么叫秀，狗头保命）。
