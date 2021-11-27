@@ -1,15 +1,13 @@
 # 关于
 
 
-<h1> <img src="https://emojis.slackmojis.com/emojis/images/1613285697/12806/meow_attention.png?1613285697" width="30" /> 嗨，你好。 </h1>
+
+<h1> <img src="https://emojis.slackmojis.com/emojis/images/1613285697/12806/meow_attention.png?1613285697" width="30" />  嗨，你好，欢迎光临我的博客～</h1>
+
+我叫春雨，是一名普通的 Huster。这个博客主要是一些学习或折腾的记录，采用了 HUGO 的 [DoIt](https://hugodoit.pages.dev) 主题。感谢大佬 [@PCloud](https://github.com/HEIGE-PCloud) 的精心设计！
+
+- 如你喜欢，请在 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) 共享协议下自由分享。
+- 欢迎通过 [邮件](mailto:chunyu2018@foxmail.com) 或者 [GitHub Issue](https://github.com/iChunyu/iChunyu.github.io/issues/new) 与我讨论。
 
 
-[<img align="right" width="50%" src="https://github-readme-stats.vercel.app/api?username=iChunyu&theme=vue&show_icons=true&include_all_commits=true&count_private=true">](https://metrics.lecoq.io/iChunyu?template=classic)
-
-我是大春雨，一名 [华中科技大学](https://www.hust.edu.cn/) 的研究生.
-
-- 研究航天器动力学与控制
-- 使用 MATLAB/Simulink 进行仿真分析
-- 喜欢折腾 Git, LaTeX, Linux
-- 喜欢打羽毛球
-
+{{< image src="grapefruit.jpg" width="70%" caption="献给我可爱的女朋友">}}
