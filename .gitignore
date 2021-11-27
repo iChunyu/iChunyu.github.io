@@ -6,3 +6,10 @@ __pycache__/
 
 *presenter.sozi.html
 *.sozi.json
+
+# hugo
+.hugo_build.lock
+resources/
+
+# manjaro
+.directory
