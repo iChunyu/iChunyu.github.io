@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">MATLAB 符号计算 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="MATLAB 符号计算" />
+<meta property="og:description" content="理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用 MATLAB 的符号计算工具包辅助完成。本文对此工具包进行简要介绍。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/matlab-symbolic/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-10T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="MATLAB 符号计算"/>
+<meta name="twitter:description" content="理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用 MATLAB 的符号计算工具包辅助完成。本文对此工具包进行简要介绍。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/matlab-symbolic/" /><link rel="prev" href="https://ichunyu.github.io/matlab-function/" /><link rel="next" href="https://ichunyu.github.io/learngit/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MATLAB 符号计算",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/matlab-symbolic\/"
+        },"genre": "posts","keywords": "MATLAB, 符号计算","wordcount":  1369 ,
+        "url": "https:\/\/ichunyu.github.io\/matlab-symbolic\/","datePublished": "2020-05-10T00:00:00+00:00","dateModified": "2020-05-10T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">MATLAB 符号计算</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/matlab/"><i class="far fa-folder fa-fw"></i>MATLAB</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-10">2020-05-10</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-05-10">2020-05-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1369 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#定义符号变量">定义符号变量</a></li>
+    <li><a href="#符号计算示例">符号计算示例</a></li>
+    <li><a href="#输出计算结果">输出计算结果</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用 MATLAB 的符号计算工具包辅助完成。本文对此工具包进行简要介绍。</p>
+<h2 id="定义符号变量">定义符号变量</h2>
+<p>在进行符号计算之前，需要提前定义符号变量，这可以通过函数 <code>sym</code> 和 <code>syms</code> 来完成。其中 <code>syms</code> 常用来批量定义符号变量，例如下面的第一行代码就同时定义了 $x$ 、 $y$ 、$z$ 三个符号变量，各符号变量之间用空格分开。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">syms</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>利用 <code>syms</code> 所定义的符号变量，其变量名与符号相同。若想为符号另外指定变量名，可采用 <code>sym</code> 的方式，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">w0</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega_0&#39;</span><span class="p">);</span>
+<span class="n">rs1</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_i_s&#39;</span><span class="p">);</span>
+<span class="n">rs2</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_i__i_s&#39;</span><span class="p">);</span>
+<span class="n">Vprms</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;V_p_rms&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在声明符号名时（单引号里边的字符串），下划线可以看作特殊的分隔符。单个下划线后面的字符表示下标，这与LaTeX相似，并且可以多次采用单下划线对下标进行分割，这会在最后导出LaTeX代码时自动插入逗号。类似地，若想为符号名加上标，可以连用两个下划线，其后的字符表示上标。例如上面所定义的四个符号变量分别代表以下符号：</p>
+<table>
+<thead>
+<tr>
+<th>符号变量</th>
+<th>符号名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>w0</td>
+<td>$\omega _{0}$</td>
+</tr>
+<tr>
+<td>rs1</td>
+<td>$r_{i,s}$</td>
+</tr>
+<tr>
+<td>rs2</td>
+<td>$r_{i,s}^{i}$</td>
+</tr>
+<tr>
+<td>Vprms</td>
+<td>$V_{p,\mathrm{rms}}$</td>
+</tr>
+</tbody>
+</table>
+<p>使用下划线为符号指定下标和上标时，上标或下标的声明顺序无关紧要，即无所谓先用连续下划线指定上标还是先用单下划线指定下标，甚至上下标交叉指定都不影响符号名。但分割指定多个上下标时，符号名下标的顺序与变量名声明时的顺序一致。例如上面 $r_{i,s}^{i}$ 的定义，下标先指定的是 $i$ ，因此符号名的下标中 $i$ 在前。这一点对一些表示相对关系的符号中至关重要。</p>
+<p>除此之外， <code>sym</code> 还可以指定符号变量的维度，MATLAB会自动补充索引，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">r</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>         <span class="c">% r = [ r1, r2, r3 ]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一般情况下，MATLAB会自动地将符号名末尾的数字标识为下标，但也可以在定义变量名时候可以特殊地用 <code>%d</code> 显式指定索引出现的位置，如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">r1</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_%d&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>     <span class="c">% 行向量，索引指定为下标</span>
+<span class="n">r2</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r__%d&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>    <span class="c">% 行向量，索引指定为上标</span>
+<span class="n">A</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;A_%d__%d&#39;</span><span class="p">,[</span><span class="mi">3</span> <span class="mi">3</span><span class="p">]);</span>  <span class="c">% 矩阵，行列索引分别为下标和上标</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>定义完符号变量后，我们还可以使用 <code>assume</code> 命令对变量进行约束，例如我们可以对符号变量 <code>x</code> 进行如下设置</p>
+<table>
+<thead>
+<tr>
+<th>约束条件</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实数</td>
+<td>assume(x,&lsquo;real&rsquo;)</td>
+</tr>
+<tr>
+<td>有理数</td>
+<td>assume(x,&lsquo;rational&rsquo;)</td>
+</tr>
+<tr>
+<td>正数</td>
+<td>assume(x,&lsquo;positive&rsquo;)</td>
+</tr>
+<tr>
+<td>正整数</td>
+<td>assume(x,{&lsquo;positive&rsquo;,&lsquo;integer&rsquo;})</td>
+</tr>
+<tr>
+<td>小于 -1 或大于 1</td>
+<td>assume(x&lt;-1 | x&gt;1)</td>
+</tr>
+<tr>
+<td>2~10 之间的整数</td>
+<td>assume(in(x,&lsquo;integer&rsquo;) &amp; x&gt;2 &amp; x&lt;10)</td>
+</tr>
+<tr>
+<td>不是整数</td>
+<td>assume(~in(z,&lsquo;integer&rsquo;))</td>
+</tr>
+<tr>
+<td>不为零</td>
+<td>assume(x ~= 0)</td>
+</tr>
+<tr>
+<td>偶数</td>
+<td>assume(x/2,&lsquo;integer&rsquo;)</td>
+</tr>
+<tr>
+<td>奇数</td>
+<td>assume((x-1)/2,&lsquo;integer&rsquo;)</td>
+</tr>
+<tr>
+<td>大于 0 且小于 $2\pi$</td>
+<td>assume(x&gt;0 &amp; x&lt;2*pi)</td>
+</tr>
+<tr>
+<td>$\pi$ 的整数倍</td>
+<td>assume(x/pi,&lsquo;integer&rsquo;)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="符号计算示例">符号计算示例</h2>
+<p>我们以计算微分方程为例展示符号计算的一般步骤。假设待求解的微分方程为弹簧-质量-阻尼系统动力学方程：</p>
+$$\ddot x + 2 \xi \omega_0 \dot x + \omega_0^2 = sin(\omega t)$$
+<p>设初始位移为 $x_0$ ，初速度为 $v_0$ ，求解位移响应 $x(t)$ 。</p>
+<p>我们可以采用以下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="c">% 定义符号变量</span>
+<span class="n">syms</span> <span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="n">xi</span> <span class="n">x0</span> <span class="n">v0</span> <span class="n">t</span>
+<span class="n">ain</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;a_in&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>   <span class="c">% 定义变量的同时引入约束</span>
+<span class="n">w</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>
+<span class="n">w0</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega_0&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>
+
+<span class="c">% 引入阻尼比约束</span>
+<span class="n">assume</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">)</span>
+<span class="n">assume</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">)</span>
+<span class="n">assume</span><span class="p">(</span><span class="n">xi</span><span class="o">&lt;</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="n">xi</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c">% 构造微分方程</span>
+<span class="n">dx</span> <span class="p">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>               <span class="c">% 需要单独定义一阶导数才能引入初速度约束</span>
+<span class="n">d2x</span> <span class="p">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">eq</span> <span class="p">=</span> <span class="n">d2x</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">xi</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">w0</span>^<span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">==</span> <span class="n">ain</span><span class="p">;</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span>
+
+<span class="c">% 求解微分方程</span>
+<span class="n">S</span> <span class="p">=</span> <span class="n">dsolve</span><span class="p">(</span><span class="n">eq</span><span class="p">,[</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="n">v0</span><span class="p">]);</span>
+<span class="n">S</span> <span class="p">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后解得</p>
+$$
+\frac{a_{\mathrm{in}}}{{\omega _{0}}^2}-\frac{a_{\mathrm{in}}\,{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\cos\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)}{{\omega _{0}}^2}-\frac{{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\sin\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)\,\left(a_{\mathrm{in}}\,\xi -\omega _{0}\,v_{0}\right)}{{\omega _{0}}^2\,\sqrt{1-\xi }\,\sqrt{\xi +1}}
+$$
+<h2 id="输出计算结果">输出计算结果</h2>
+<p>如果采用 MATLAB 的实时脚本运行上面的代码，MATLAB 将会自动将公式转化为 $\LaTeX$ 公式，如下图所示：</p>
+<div align=center>
+    <img src=symbolic.png width=80% />
+</div>
+<p>更一般地，我们更希望将计算结果转化为 $\LaTeX$ 代码，通过 MathType 或 $\LaTeX$ 整合到文档中，这时可以使用 <code>latex</code> ，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="o">&gt;&gt;</span> <span class="n">latex</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+
+<span class="nb">ans</span> <span class="p">=</span>
+
+    <span class="s">&#39;\frac{a_{\mathrm{in}}}{{\omega _{0}}^2}-\frac{a_{\mathrm{in}}\,{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\cos\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)}{{\omega _{0}}^2}-\frac{{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\sin\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)\,\left(a_{\mathrm{in}}\,\xi -\omega _{0}\,v_{0}\right)}{{\omega _{0}}^2\,\sqrt{1-\xi }\,\sqrt{\xi +1}}&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果大家仔细观察MATLAB转换的LaTeX代码，会发现它对希腊字母进行了识别和转换，对字符串下标也进行了识别并利用 <code>\mathrm{}</code> 将其转化为正体。如果再仔细一些，自然对数的底 $\mathrm{e}$ 也是正体。可见MATLAB对这种细节的处理非常到位。</p>
+<p>生成的代码较长时，可以使用 <code>clipboard</code> 命令将结果直接复制到系统剪切板中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">texCode</span> <span class="p">=</span> <span class="n">latex</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+<span class="n">clipboard</span><span class="p">(</span><span class="s">&#39;copy&#39;</span><span class="p">,</span><span class="n">texCode</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-05-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/matlab-symbolic/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/matlab/">MATLAB</a>,&nbsp;<a href="/tags/%E7%AC%A6%E5%8F%B7%E8%AE%A1%E7%AE%97/">符号计算</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/matlab-function/" class="prev" rel="prev" title="MATLAB 编写函数"><i class="fas fa-angle-left fa-fw"></i>MATLAB 编写函数</a>
+            <a href="/learngit/" class="next" rel="next" title="Git 版本控制">Git 版本控制<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

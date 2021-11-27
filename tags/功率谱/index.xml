@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>功率谱 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E5%8A%9F%E7%8E%87%E8%B0%B1/</link>
+        <description>功率谱 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 03 Aug 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%8A%9F%E7%8E%87%E8%B0%B1/" rel="self" type="application/rss+xml" /><item>
+    <title>产生任意谱密度的噪声</title>
+    <link>https://ichunyu.github.io/gennoise/</link>
+    <pubDate>Tue, 03 Aug 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/gennoise/</guid>
+    <description><![CDATA[<p>在系统仿真中通常使用噪声滤波器对白噪声进行塑形，从而验证色噪声对系统性能的影响。然而通常滤波器的阶次是整数，难以实现诸如 $1/f^\alpha , (0&lt; \alpha &lt;2)$ 分数阶次的粉红噪声。为此，我们可以在仿真之前利用傅立叶逆变换把噪声造出来，然后引入模型进行仿真。本文将介绍构造噪声的方法。</p>]]></description>
+</item><item>
+    <title>LPSD 功率谱估计</title>
+    <link>https://ichunyu.github.io/lpsd/</link>
+    <pubDate>Sat, 23 Feb 2019 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/lpsd/</guid>
+    <description><![CDATA[<p>欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 <a href="https://www.elisascience.org/ltpda" target="_blank" rel="noopener noreffer">LTPDA</a>，该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。</p>]]></description>
+</item></channel>
+</rss>

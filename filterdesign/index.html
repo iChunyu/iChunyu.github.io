@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">信号的滤波 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="信号的滤波" />
+<meta property="og:description" content="线性系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有完善的工具包对常用线性滤波器进行设计，本文简要介绍这些函数及其用法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/filterdesign/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-02T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="信号的滤波"/>
+<meta name="twitter:description" content="线性系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有完善的工具包对常用线性滤波器进行设计，本文简要介绍这些函数及其用法。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/filterdesign/" /><link rel="prev" href="https://ichunyu.github.io/diffsignal/" /><link rel="next" href="https://ichunyu.github.io/integratorantiwindup/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "信号的滤波",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/filterdesign\/"
+        },"genre": "posts","keywords": "滤波器","wordcount":  2060 ,
+        "url": "https:\/\/ichunyu.github.io\/filterdesign\/","datePublished": "2021-06-02T00:00:00+00:00","dateModified": "2021-06-02T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">信号的滤波</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-02">2021-06-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-06-02">2021-06-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2060 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#滤波器的参数及分类">滤波器的参数及分类</a></li>
+    <li><a href="#iir-滤波器设计">IIR 滤波器设计</a></li>
+    <li><a href="#fir-滤波器设计">FIR 滤波器设计</a></li>
+    <li><a href="#零相位滤波">零相位滤波</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>线性系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有完善的工具包对常用线性滤波器进行设计，本文简要介绍这些函数及其用法。</p>
+<h2 id="滤波器的参数及分类">滤波器的参数及分类</h2>
+<p>滤波器的性能通常以其幅频响应为评估依据，主要包括以下四个参数：</p>
+<ul>
+<li>通带内的纹波 $R_{\rm pass}$：滤波器在通带内的增益允许波动的范围，单位为 $\rm dB$ ；</li>
+<li>阻带内的衰减 $R_{\rm stop}$：阻带内的信号相比于通带信号的衰减，以 $\rm dB$ 表示；</li>
+<li>通带频率 $f_{\rm pass}$：在这个频率范围内，滤波器的增益变动不超过通带纹波的约束；</li>
+<li>阻带频率 $f_{\rm stop}$：在这个频率范围内，滤波器对信号的衰减达到阻带衰减倍数的需求。</li>
+</ul>
+<p>以低通滤波器为例，上述四个参数可以用下图来表示</p>
+<div align=center>
+    <img src=filter01.png width=70% />
+</div>
+<p>在对延时比较敏感的实时系统中，还需要讨论滤波器的群延时，其定义为相频响应的负导数，即</p>
+$$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
+<p>根据滤波器实现方法的不同，可以将其分为模拟滤波器和数字滤波器，前者用于处理连续信号，主要通过模拟电路实现，以拉普拉斯变换为主要的分析工具；后者则用于处理采样后的离散信号，可以部署在各种数字器件，以 $z$ 变换为主要分析工具。</p>
+<p>依据冲击响应还可以将滤波器分为无限脉冲响应（IIR）和有限脉冲响应（FIR），从时域上看，两者的区别在于滤波器的冲击响应是否在有限时间内收敛到 $0$ ；从频域上看，IIR 滤波器的传递函数具有至少一个极点（传递函数的分母包含 $s$ 或 $z^{-1}$），而 FIR 滤波器不具有极点，因此也称其为纯零点滤波器。</p>
+<h2 id="iir-滤波器设计">IIR 滤波器设计</h2>
+<p>常用的 IIR 滤波器有巴特沃斯滤波器、切比雪夫 I 型滤波器、切比雪夫 II 型滤波器和椭圆滤波器。为了精确指定滤波器特性，先使用函数计算滤波器的阶数和带宽，然后再对滤波器系数进行设计。在 MATLAB 中，相应的设计函数如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>滤波器</th>
+<th>求解阶数和带宽</th>
+<th>滤波器设计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>巴特沃斯滤波器</td>
+<td><code>[n,Wn] = buttord(Wp,Ws,Rp,Rs,'s')</code></td>
+<td><code>[b,a] = butter(n,Wn,'s')</code></td>
+</tr>
+<tr>
+<td>切比雪夫 I 型滤波器</td>
+<td><code>[n,Wn] = cheb1ord(Wp,Ws,Rp,Rs,'s')</code></td>
+<td><code>[b,a] = cheby1(n,Rp,Wn,'s')</code></td>
+</tr>
+<tr>
+<td>切比雪夫 II 型滤波器</td>
+<td><code>[n,Wn] = cheb2ord(Wp,Ws,Rp,Rs,'s')</code></td>
+<td><code>[b,a] = cheby2(n,Rs,Wn,'s')</code></td>
+</tr>
+<tr>
+<td>椭圆滤波器</td>
+<td><code>[n,Wn] = ellipord(Wp,Ws,Rp,Rs,'s')</code></td>
+<td><code>[b,a] = ellip(n,Rp,Rs,Wn,'s')</code></td>
+</tr>
+</tbody>
+</table>
+<p>上表中， <code>'s'</code> 选项对应的是模拟滤波器，这时 <code>Wp</code> 和 <code>Ws</code> 的单位都是 $\rm rad/s$ ， <code>Rp</code> 和 <code>Rs</code> 的单位均为 $\rm dB$。对于数字滤波器，调用函数时应当取消 <code>'s'</code> 选项，并且频率采用归一化的数字频率。</p>
+<p>对于 Python 用户， <code>scipy.signal</code> 提供了同名的函数，使用方法基本一致，但 <code>'s'</code> 选项应更换为关键字参数 <code>analog=True</code> 。</p>
+<p>以 <code>Wp=1</code> ， <code>Ws=3</code> ， <code>Rp=1</code> 和 <code>Rs=40</code> 为例设计模拟滤波器，幅频响应如下图所示</p>
+<div align=center>
+    <img src=filter02.png width=70% />
+</div>
+<p>可见，在相同参数设置下：</p>
+<ul>
+<li>巴特沃斯滤波器通带平坦，阻带无纹波，但阶数最高；</li>
+<li>切比雪夫 I 型滤波器通带有纹波，阻带无纹波，阶数适中；</li>
+<li>切比雪夫 II 型滤波器通带无纹波，阻带有纹波，阶数适中；</li>
+<li>椭圆滤波器通带和阻带均有纹波，但阶数最少。</li>
+</ul>
+<h2 id="fir-滤波器设计">FIR 滤波器设计</h2>
+<p>FIR 滤波器是一种全零点数字滤波器，与 IIR 滤波器相比，不存在系统稳定性问题，且具有良好的线性相位，即滤波引入的延时是恒定的。但是为了达到相同的频率相应，FIR滤波器通常需要更高的阶数。</p>
+<p>在 MATLAB 中，可以使用 <code>fir1</code> 或 <code>fir2</code> 进行FIR滤波器设计，前者基于窗函数设计法，设计时只需要给定滤波器阶数和带宽即可；后者基于频率采样设计法，设计时要给定阶数、频率和目标增益。</p>
+<p>对于 Python 用户，相应的函数由 <code>scipy.signal</code> 包提供，分别为 <code>firwin</code> 和 <code>firwin2</code> ，用法也是完全一致。</p>
+<p>由于 FIR 滤波器的设计没有明确给定通带纹波、阻带衰减等特性，设计完成后通常需要验证其是否满足需求。</p>
+<h2 id="零相位滤波">零相位滤波</h2>
+<p>数字滤波器的本质是差分方程，因此可以将滤波器系数转化为差分方程的系数，通过迭代实现滤波。这种动态相应通常以延时的形式表现在输出信号，如果滤波器的延时过大，可能对后续的过程产生影响。为了补偿滤波器引入的延时，有三种常用的方法：</p>
+<ul>
+<li>互相关校准：将输出和输入的互相关来评估系统延时从而进一步补偿；</li>
+<li>全通滤波器：这种滤波器在全频带内的增益都是恒定的，用于调整系统的相位以补偿前置滤波器引入的群延时；</li>
+<li>零相位滤波：一种非因果的滤波技术，可以对延时进行补偿。</li>
+</ul>
+<p>这里主要介绍零相位滤波，其实现方法主要有以下四步：</p>
+<ol>
+<li>使用通常的滤波手段（差分方程）对数据进行滤波；</li>
+<li>将滤波后的数据进行时域翻转；</li>
+<li>将翻转后的数据再次滤波；</li>
+<li>再次进行时域翻转。</li>
+</ol>
+<p>从感性上看，第一次滤波是从前往后滤，因此向后引入了延时；第二次滤波是从后往前滤，向前引入的相同的&quot;延时&quot;。由于采用的是完全相同的滤波器，因而延时可以完全抵消。</p>
+<p>为了使用滤波器，在 MATLAB 中可以使用 <code>filter(b,a,x)</code> 进行滤波，也可以使用 <code>filtfilt(b,a,x)</code> 进行零相位滤波。在Python中，这两个函数分别对应于 <code>scipy.signal</code> 中的 <code>lfilter</code> 和 <code>filtfilt</code>。下图给出同一个滤波器使用两种滤波方法对带噪声的正弦信号滤波后的结果。</p>
+<div align=center>
+    <img src=filter03.png width=70% />
+</div>
+<p>一般的滤波方法引入了可见的延时，而零相位滤波器没有引入明显延时。此外，相同滤波器下，零相位滤波器的输出结果更光滑，这是因为它对数据进行了两次滤波，其增益特性将是一次滤波的平方。需要注意的是，一般的滤波只在数据的开始阶段存在过渡过程，而零相位滤波在数据两端都有过渡过程。为了消除这些过渡过程，可以使用自适应技术提前对数据进行一定程度的预测。</p>
+<p>零相位滤波是在数据采集完成之后才能进行的操作，不能实时处理，这也就是所谓&quot;非因果系统&quot;的实际含义。对于实时系统，只能通过其他的手段对延时进行补偿。</p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-06-02</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/filterdesign/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/">滤波器</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/diffsignal/" class="prev" rel="prev" title="信号的微分"><i class="fas fa-angle-left fa-fw"></i>信号的微分</a>
+            <a href="/integratorantiwindup/" class="next" rel="next" title="抗饱和积分">抗饱和积分<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

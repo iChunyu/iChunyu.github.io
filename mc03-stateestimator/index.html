@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">现代控制理论（3）：状态估计 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="现代控制理论（3）：状态估计" />
+<meta property="og:description" content="现代控制讲究状态反馈，然而系统的状态不一定是直接测得的，这就需要用到本文介绍的状态估计器进行状态估计。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/mc03-stateestimator/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-07-11T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="现代控制理论（3）：状态估计"/>
+<meta name="twitter:description" content="现代控制讲究状态反馈，然而系统的状态不一定是直接测得的，这就需要用到本文介绍的状态估计器进行状态估计。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/mc03-stateestimator/" /><link rel="prev" href="https://ichunyu.github.io/mc02-statefeedback/" /><link rel="next" href="https://ichunyu.github.io/mc04-regulator/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "现代控制理论（3）：状态估计",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/mc03-stateestimator\/"
+        },"genre": "posts","keywords": "状态估计, 现代控制","wordcount":  1848 ,
+        "url": "https:\/\/ichunyu.github.io\/mc03-stateestimator\/","datePublished": "2020-07-11T00:00:00+00:00","dateModified": "2020-07-11T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">现代控制理论（3）：状态估计</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-11">2020-07-11</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-07-11">2020-07-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1848 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#全维状态估计器">全维状态估计器</a></li>
+    <li><a href="#降维状态估计器">降维状态估计器</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>现代控制讲究状态反馈，然而系统的状态不一定是直接测得的，这就需要用到本文介绍的状态估计器进行状态估计。</p>
+<h2 id="全维状态估计器">全维状态估计器</h2>
+<p>设线性时不变被控对象的状态空间表述为：</p>
+$$
+\left\{
+\begin{aligned}
+\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
+y &= C \mathbf{x}
+\end{aligned}
+\right.
+$$
+<p>据此，构建相同的理论模型：</p>
+$$
+\left\{
+\begin{aligned}
+\dot{\hat{\mathbf{x}}} &= A \hat{\mathbf{x}} + Bu  \\
+\hat{y} &= C \hat{\mathbf{x}}
+\end{aligned}
+\right.
+$$
+<p>在该理论模型中，带帽子的变量（如 $\hat{x}$）表示估计值。由于是理论模型，其所有信息都可以通过计算机获得。理论模型和被控对象输入相同的 $u$ 时，原则上两者的响应相同，因而状态和输出都应当相同。然而实际上，由于被控对象和理论模型初始状态的偏差、理论模型的建模误差、被控对象的额外扰动、传感器的测量噪声等因素的影响，实际输出和理论输出并不相同，因而状态也不相同。</p>
+<p><strong>When in trouble, use feedback</strong>。为了解决模型之间的差异，遵循这个控制的金科玉律，对理论模型引入反馈进行矫正，令：</p>
+$$\mathbf{\dot{\hat{x}}} = A\hat{\mathbf{x}} + { B}u + {L}\left( {y - \hat y} \right)$$
+<p>此时状态的估计误差 ${\mathbf{\tilde x}} = {\mathbf{x}} - {\mathbf{\hat{x}}}$ 满足：</p>
+$$\mathbf{\dot{\tilde{x}}} = \left( A - LC \right) \mathbf{\tilde{x}}$$
+<p>于是，只要合理设计 $L$ 令 $\left( A - LC \right)$ 所有特征值的实部均小于零即可使状态估计误差收敛到零，即状态估计值趋近于真是状态。</p>
+<p>状态估计器 $L$ 的设计与状态反馈 $K$ 的设计完全相同，考察数学关系：</p>
+$$
+\left| {{A} - {LC}} \right| = \left| {{{\left( {{A} - {LC}} \right)}^T}} \right| = \left| {{{A}^T} - {{C}^T}{{L}^T}} \right| \leftarrow \left| A - BK \right|
+$$
+<p>即：状态观测器与控制律之间存在对偶关系，设计时只需分别将 $A$ 、 $C$ 、$L$ 转置后采用与状态反馈相同的方法进行极点配置即可。</p>
+<p>下面给出一个全维状态估计器的例子。</p>
+<p>设弹簧-质量-阻尼系统的状态空间为：</p>
+$$
+\left\{
+\begin{aligned}
+\dot{\mathbf{x}} &= \begin{bmatrix}
+0 & 1 \\
+-\omega_n^2 & -2\zeta \omega
+\end{bmatrix}
+\mathbf{x} + \begin{bmatrix}
+0 \\ \omega_n^2
+\end{bmatrix}u  \\
+y &= \begin{bmatrix}
+1 & 0
+\end{bmatrix}\mathbf{x}\
+\end{aligned}
+\right.
+$$
+<p>其中，$\omega_n=1 {\rm  rad/s,  } \zeta=0.3$，基于Simulink搭建被控对象如图所示</p>
+<div align=center>
+    <img src=mc03a.png width=70% />
+</div>
+<p>为了状态估计能够快速收敛，设的阻尼系数 $\zeta=0.7$ ，对应极点为 $-0.70\pm0.71j$ ，进而 $L=\left[0.80,, -0.48\right]$。带入仿真，观察状态的实际值和估计值如下图所示：</p>
+<div align=center>
+    <img src=mc03b.png width=70% />
+</div>
+<p>第一个子图实线为真实状态，虚线为状态估计值，可见两者在大约5s后趋于一致。第二个子图则表示两个状态的估计误差，同样可以反应状态估计值的误差随时间收敛到零，状态估计值趋于真实值。</p>
+<h2 id="降维状态估计器">降维状态估计器</h2>
+<p>上面介绍的状态估计器称之为全维状态估计器，因为它对系统的所有状态都进行了估计。然而，在一些情况下，系统的输出就是系统的某一个状态，能否直接利用这个状态，仅对其他状态进行估计呢？这时就需要用降维状态估计器。</p>
+<p>以单输入单输出系统（SISO，Single Input Sigle Output）为例，将其状态空间方程拆解为：</p>
+$$
+\left\{ \begin{array}{l}
+  \begin{bmatrix}
+  \dot{x}_a \\
+  \dot{\mathbf{x}}_b
+  \end{bmatrix}
+   = \begin{bmatrix}
+A_{aa} & A_{ab} \\ A_{ba} & A_{bb}
+\end{bmatrix}\begin{bmatrix}
+  x_a \\
+  \mathbf{x}_b
+  \end{bmatrix}
++\begin{bmatrix} 
+  B_a \\B_b
+\end{bmatrix} u \\
+y = \begin{bmatrix} 
+  1&0
+\end{bmatrix}\begin{bmatrix}
+  x_a \\
+  \mathbf{x}_b
+  \end{bmatrix}
+\end{array} \right.
+$$
+<p>系统的输出就是状态量 $x_a$ ，需要进行估计的状态为 $\mathbf{x}_b$ 。</p>
+<p>为了实现降维，需要对原始的状态空间方程进行改造，构造新的系统，使其状态变量有且仅有 $\mathbf{x}_b$ 。</p>
+<p>首先从 $\dot{\mathbf{x}}_b$ 的方程中寻找新的系统输入方程：</p>
+$$\dot{\mathbf{x}}_b = {{A}_{bb}}{{\mathbf{x}}_b} + \left( {{A_{ba}}{x_a} + {{ B}_b}u} \right)$$
+<p>将 $\dot{x}_a$ 换为输出的导数 $\dot{y}$ ，改写系统的输出方程：</p>
+$$\left( {\dot{y} - {A_{aa}}{x_a} - {B_a}u} \right) = {{A}_{ab}}{{\mathbf{x}}_b}$$
+<p>由上面两个式子，对比标准的状态空间方程，显然有以下转换关系：</p>
+$$
+\left\{ \begin{array}{l}
+{\bf{x}} \to {{\bf{x}}_b}\\
+{A} \to {{A}_{bb}}\\
+{B}u \to \left( {{A_{ba}}{x_a} + {{B}_b}u} \right)\\
+C \to {{A}_{ab}}\\
+y \to \left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right)
+\end{array} \right.
+$$
+<p>根据全维状态估计器的设计方法，对这个转换后的&quot;新系统&quot;进行状态估计器设计，有</p>
+$$
+\begin{aligned}
+\dot{\hat{\mathbf{x}}}_b &= {{A}_{bb}}{{{\bf{\hat x}}}_b} + \left( {{A_{ba}}{x_a} + {{B}_b}u} \right) + {{L}_b}\left[ {\left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right) - {{A}_{ab}}{{{\bf{\hat x}}}_b}} \right] \\
+&= \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right){{{\bf{\hat x}}}_b} + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u + {{L}_b}\dot y
+\end{aligned}
+$$
+<p>由此初步完成了降维估计器的构造，设计的目标只需令 $A_{bb} - L_bA_{ab}$ 的所有特征值实部为负。需要注意的是，上式中包含输出的导数 $\dot{y}$，实际中微分是不容易实现的，且容易放大高频噪声，应当避免这一项的存在。于是需要进一步构造辅助变量 $\mathbf{x}_c = \mathbf{\hat x}_b - L_by$ ，则上式改为：</p>
+$$
+\dot{\hat{\mathbf{x}}}_c = \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right)\left( {{{\bf{x}}_c} + {{L}_b}y} \right) + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u
+$$
+<p>至此，推导出降维状态估计器的可实现的形式。对于本文所提及的弹簧-质量-阻尼系统，其降维状态估计器结构如下图所示：</p>
+<div align=center>
+    <img src=mc03c.png width=70% />
+</div>
+<p>对降维状态估计器进行参数设计，之后得到该估计器的响应如图：</p>
+<div align=center>
+    <img src=mc03d.png width=70% />
+</div>
+<p>该降维状态估计器仅对状态量 $x_2$ 进行估计，可见在 8s 左右估计的误差已收敛到合适的范围，随着时间的增长，状态估计误差收敛于零，状态估计值收敛于真实值。</p>
+<p>全维状态估计器还是降维状态估计器？这是一个开放性的问题，全维状态估计器的所有状态响应都有一定的收敛过程，而降维状态估计器利用系统输出作为已知状态，仅被估计的状态存在收敛过程，从这一方面看，降维状态估计器具有&quot;更快&quot;的效果；然而，降维估计器中对应于系统输出的状态容易受到传感器噪声的影响，而全维状态估计可以对噪声进行滤波，因而全维状态估计器具有&quot;更低噪声&quot;的效果。</p>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li>G.F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. 2014.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-07-11</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mc03-stateestimator/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/">状态估计</a>,&nbsp;<a href="/tags/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6/">现代控制</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mc02-statefeedback/" class="prev" rel="prev" title="现代控制理论（2）：状态反馈"><i class="fas fa-angle-left fa-fw"></i>现代控制理论（2）：状态反馈</a>
+            <a href="/mc04-regulator/" class="next" rel="next" title="现代控制理论（4）：调节器设计">现代控制理论（4）：调节器设计<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

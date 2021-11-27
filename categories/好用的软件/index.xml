@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>好用的软件 - 分类 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/categories/%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</link>
+        <description>好用的软件 - 分类 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 20 Jun 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/" rel="self" type="application/rss+xml" /><item>
+    <title>Zotero 文献管理</title>
+    <link>https://ichunyu.github.io/zotero/</link>
+    <pubDate>Sat, 20 Jun 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/zotero/</guid>
+    <description><![CDATA[<p>说到文献管理软件，大家可能或多或少听说过 <a href="https://endnote.com/" target="_blank" rel="noopener noreffer">EndNote</a> 或 <a href="http://www.inoteexpress.com/" target="_blank" rel="noopener noreffer">NoteExpress</a> ，这里再跟大家分享 <a href="https://www.zotero.org/" target="_blank" rel="noopener noreffer">Zotero</a>，旨在提供一个新的选择，分享开源的强大。这篇文章主要介绍文献管理软件 Zotero 的基本用法，包括：添加题录、获取原文、添加笔记、文献引用、文档整理和数据同步。为了增强数据同步功能，本文还将对坚果云进行补充介绍。</p>]]></description>
+</item><item>
+    <title>Git 版本控制</title>
+    <link>https://ichunyu.github.io/learngit/</link>
+    <pubDate>Sat, 30 May 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/learngit/</guid>
+    <description><![CDATA[<p>Git 是一个专业的版本控制软件，既可以管理个人文档，也可以进行团队协作。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。</p>]]></description>
+</item></channel>
+</rss>

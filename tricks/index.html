@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">日常小技巧 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="日常小技巧" />
+<meta property="og:description" content="一些不常用但是可能有用的小技巧，或许会不定时更新吧。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/tricks/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-26T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="日常小技巧"/>
+<meta name="twitter:description" content="一些不常用但是可能有用的小技巧，或许会不定时更新吧。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/tricks/" /><link rel="prev" href="https://ichunyu.github.io/integratorantiwindup/" /><link rel="next" href="https://ichunyu.github.io/gennoise/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "日常小技巧",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/tricks\/"
+        },"genre": "posts","keywords": "小技巧","wordcount":  1371 ,
+        "url": "https:\/\/ichunyu.github.io\/tricks\/","datePublished": "2021-07-10T00:00:00+00:00","dateModified": "2021-10-26T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">日常小技巧</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-10">2021-07-10</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-10-26">2021-10-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1371 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#inkscape-批量导出图片">Inkscape 批量导出图片</a></li>
+    <li><a href="#linux-测试-u-盘读写速度">Linux 测试 U 盘读写速度</a></li>
+    <li><a href="#csgo-绑定跳投">CSGO 绑定跳投</a></li>
+    <li><a href="#vim-中文输入法问题">Vim 中文输入法问题</a></li>
+    <li><a href="#linux-终端补全忽略大小写">Linux 终端补全忽略大小写</a></li>
+    <li><a href="#vscodevim-配置">VSCodeVim 配置</a></li>
+    <li><a href="#linux-解压时中文乱码">Linux 解压时中文乱码</a></li>
+    <li><a href="#linux-增加-swap-分区大小">Linux 增加 Swap 分区大小</a></li>
+    <li><a href="#linux-定时任务">Linux 定时任务</a></li>
+    <li><a href="#linux-wps-高分辨率屏幕显示模糊">Linux WPS 高分辨率屏幕显示模糊</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>一些不常用但是可能有用的小技巧，或许会不定时更新吧。</p>
+<h2 id="inkscape-批量导出图片">Inkscape 批量导出图片</h2>
+<p>之前用 Inkscape 画了很多矢量图，今天想把它们转成位图，一个一个打开再导出太麻烦了，于是想到 Inkscape 的命令行操作，果然有这个命令。结合 Python，可以轻松实现批量导出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="c1">## 图片之前另存了 PDF，以此为例</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;.pdf&#39;</span><span class="p">:</span>
+        <span class="n">bash_command</span> <span class="o">=</span> <span class="s1">&#39;inkscape &#39;</span> <span class="o">+</span> <span class="n">file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;\ &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; --export-type=png --export-dpi=600&#39;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">bash_command</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="linux-测试-u-盘读写速度">Linux 测试 U 盘读写速度</h2>
+<p>最简单的方法就是实测，使用 <code>dd</code> 命令随机写入数据并读取，测试速度。这里需要用到两个特殊的设备</p>
+<ul>
+<li><code>/dev/zero</code> ：文件&quot;白洞&quot;，产生任意大小的随机文件；</li>
+<li><code>/dev/null</code> ：文件&quot;黑洞&quot;，所有写入的内容都被忽略。</li>
+</ul>
+<p>使用 <code>df -h</code> 可以发现我的 U 盘挂载在 <code>/run/media/xiaocy/misaka</code>，于是可以用下面的命令进行测试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## 测试写入</span>
+<span class="nb">time</span> dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/run/media/xiaocy/xiaocy/test.tmp <span class="nv">bs</span><span class="o">=</span>4k <span class="nv">count</span><span class="o">=</span><span class="m">100000</span>
+
+<span class="c1">## 测试读取</span>
+<span class="nb">time</span> dd <span class="k">if</span><span class="o">=</span>/run/media/xiaocy/xiaocy/test.tmp <span class="nv">of</span><span class="o">=</span>/dev/null <span class="nv">bs</span><span class="o">=</span>4k
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="csgo-绑定跳投">CSGO 绑定跳投</h2>
+<p>在 CSGO 文件夹 <code>&lt;CSGO-root-path&gt;/csgo/cfg/</code> 内新建 <code>keybind.cfg</code> 文件，并输入以下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias +jumpthrow&#34;+jump;-attack;-attack2&#34;;
+alias -jumpthrow -jump;
+bind t +jumpthrow; 
+</code></pre></td></tr></table>
+</div>
+</div><p>每次运行 CSGO 时，按 <code>~</code> 键打开控制台，执行 <code>exec keybind</code> 即可。使用跳投时先点鼠标左键，然后按 <code>t</code> 即可。</p>
+<p>控制台执行的命令 <code>keybind</code> 即为创建的 <code>.cfg</code> 文件名，可根据自己喜好修改；绑定的跳投键为上述代码第三行的第二个参数，也可以自行修改。</p>
+<h2 id="vim-中文输入法问题">Vim 中文输入法问题</h2>
+<p>当使用 Vim 编辑中文文本时，在切换插入模式和普通模式时需要频繁切换输入法，为此可以使用 <a href="https://github.com/lilydjwg/fcitx.vim" target="_blank" rel="noopener noreffer">fcitx.vim</a> 插件自动化解决这个问题。</p>
+<p>对于 Manjaro 系统，也可以从 AUR 中一键安装该插件： <code>yay -S vim-fcitx</code> 。在命令行使用时，切换模式会存在延时，进一步可以在 <code>~/.vimrc</code> 配置文件中引入 <code>set ttimeoutlen=100</code> 而将其设置为较小值。</p>
+<h2 id="linux-终端补全忽略大小写">Linux 终端补全忽略大小写</h2>
+<p>在家目录下创建 <code>.inputrc</code> 并写入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">set completion-ignore-case on
+</code></pre></td></tr></table>
+</div>
+</div><p>然后重启终端即可。</p>
+<h2 id="vscodevim-配置">VSCodeVim 配置</h2>
+<p>为了自动切换中英文输入法，在配置文件中添加以下设置（适用于 <code>fcitx5</code> 框架）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">&#34;vim.autoSwitchInputMethod.enable&#34;: true,
+&#34;vim.autoSwitchInputMethod.defaultIM&#34;: &#34;1&#34;,
+&#34;vim.autoSwitchInputMethod.obtainIMCmd&#34;: &#34;/usr/bin/fcitx5-remote&#34;,
+&#34;vim.autoSwitchInputMethod.switchIMCmd&#34;: &#34;/usr/bin/fcitx5-remote -t {im}&#34;,
+</code></pre></td></tr></table>
+</div>
+</div><p>添加以下配置可以重新将 <code>j</code> 和 <code>k</code> 映射为 <code>gj</code> 和 <code>gk</code> ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">&#34;vim.normalModeKeyBindingsNonRecursive&#34;: [
+    {
+        &#34;before&#34;: [&#34;j&#34;],
+        &#34;after&#34;: [&#34;g&#34;, &#34;j&#34;]
+    },
+    {
+        &#34;before&#34;: [&#34;k&#34;],
+        &#34;after&#34;: [&#34;g&#34;, &#34;k&#34;]
+    }
+]
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="linux-解压时中文乱码">Linux 解压时中文乱码</h2>
+<p>使用附带 <code>-O cp936</code> 选项的 <code>unzip</code> 命令即可。需要注意，某些发行版的 <code>unzip</code> 不提供 <code>-O</code> 选项，需要安装 <code>unzip-iconv</code> 。</p>
+<p>解压示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">unzip -O cp936 中文解压包.zip
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="linux-增加-swap-分区大小">Linux 增加 Swap 分区大小</h2>
+<p>使用 Linux 做计算时如果内存不够用，可以使用 Swap 空间将部分硬盘当作内存使用。如果 Swap 空间不够，可以使用以下方法进行扩容（需要管理员权限运行）：</p>
+<ol>
+<li>查看当前 Swap 空间大小：<code>free</code></li>
+<li>创建空文件用做 Swap 空间：<code>sudo dd if=/dev/zero of=/swapfile bs=1M count=4096</code> （创建了 4 GB 空间）</li>
+<li>将上一部创建的文件指定为 Swap 空间： <code>sudo mkswap /swapfile</code></li>
+<li>启用交换空间： <code>sudo swapon /swapfile</code></li>
+<li>查看当前 Swap 空间大小： <code>free</code></li>
+</ol>
+<p>以上方法用于临时性地扩容，如果想要永久设置，设置 <code>swapfile</code> 开机时自动挂载即可：编辑 <code>/etc/fstab</code> ，在最后一行加入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">/swapfile           swap        swap        0   0
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="linux-定时任务">Linux 定时任务</h2>
+<p>定时任务可以使用 <code>crontab</code> 实现，常用的命令有：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">crontab -l          <span class="c1">## 查看定时任务</span>
+crontab -e          <span class="c1">## 编辑定时任务</span>
+crontab -r          <span class="c1">## 删除所有任务</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>新建定时任务只需要按时间加命令的形式给出，由空格进行分割，其中时间由五个数字构成，分别是：分、时、日、月、周，并支持以下操作符</p>
+<ul>
+<li><code>*</code> &mdash; 所有可行取值</li>
+<li><code>/</code> &mdash; 指定重复周期</li>
+<li><code>-</code> &mdash; 指定时间范围</li>
+<li><code>,</code> &mdash; 离散时间序列</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">* * * * * myTask                            ## 每分钟运行一次 myTask
+0 * * * * myTask                            ## 每小时整点运行一次 myTask
+30 8 * * 1-5 myTask                         ## 每周一到周五的 8:30 运行 myTask
+0 7-21/3 * * * myTask                       ## 7 点到 21 点每 3 小时运行一次 myTask
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">为了确保定时任务生效，还需要启动相应的服务。在 manjaro 系统中，使用 <code>sudo systemctl start cronie.service</code> 可以开启服务，相应的将 <code>start</code> 选项改为 <code>enable</code> 可以设置自动启动； <code>stop</code> 可以关闭服务， <code>status</code> 查看当前服务状态。</div>
+        </div>
+    </div>
+<h2 id="linux-wps-高分辨率屏幕显示模糊">Linux WPS 高分辨率屏幕显示模糊</h2>
+<p>编辑启动文件，在执行命令前增加 <code>env QT_SCREEN_SCALE_FACTORS=1</code> 即可。</p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-10-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/tricks/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/">小技巧</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/integratorantiwindup/" class="prev" rel="prev" title="抗饱和积分"><i class="fas fa-angle-left fa-fw"></i>抗饱和积分</a>
+            <a href="/gennoise/" class="next" rel="next" title="产生任意谱密度的噪声">产生任意谱密度的噪声<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

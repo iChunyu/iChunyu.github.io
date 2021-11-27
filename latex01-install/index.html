@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">LaTeX 学习记录（1）：安装与配置 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="LaTeX 学习记录（1）：安装与配置" />
+<meta property="og:description" content="$\LaTeX$ 是一个非常优秀的开源排版软件，特别适合于大量公式、代码的理工类文档的排版。本文介绍其安装方法并给出最小示例。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/latex01-install/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-13T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="LaTeX 学习记录（1）：安装与配置"/>
+<meta name="twitter:description" content="$\LaTeX$ 是一个非常优秀的开源排版软件，特别适合于大量公式、代码的理工类文档的排版。本文介绍其安装方法并给出最小示例。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/latex01-install/" /><link rel="prev" href="https://ichunyu.github.io/bangbang/" /><link rel="next" href="https://ichunyu.github.io/latex02-document/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LaTeX 学习记录（1）：安装与配置",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/latex01-install\/"
+        },"genre": "posts","keywords": "LaTeX","wordcount":  1422 ,
+        "url": "https:\/\/ichunyu.github.io\/latex01-install\/","datePublished": "2020-10-13T00:00:00+00:00","dateModified": "2020-10-13T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LaTeX 学习记录（1）：安装与配置</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><i class="far fa-folder fa-fw"></i>LaTeX</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-13">2020-10-13</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-10-13">2020-10-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1422 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#latex-简介">$\LaTeX$ 简介</a></li>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#hello-world">Hello World</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>$\LaTeX$ 是一个非常优秀的开源排版软件，特别适合于大量公式、代码的理工类文档的排版。本文介绍其安装方法并给出最小示例。</p>
+<h2 id="latex-简介">$\LaTeX$ 简介</h2>
+<p>$\LaTeX$ 是一款开源排版软件，区别于 Word 的所见即所得，使用 $\LaTeX$ 编写文档更像是编写代码，需要经过编译才能生成pdf格式的文档。初学者可能会止步于这种代码式的文档编写方法，但随着使用的熟练，在科技报告、论文方面，其至少在下面几个方面碾压 Word ：</p>
+<ul>
+<li>数学公式支持：$\LaTeX$ 天然支持数学公式，而 Word 内置的公式编辑器一般不好用，需借助 Mathtype、AxMath 等公式编辑软件；</li>
+<li>文献应用支持：$\LaTeX$ 天然支持文献引用，并提供了常见各种期刊标准样式，而 Word 内置的参考文献录入麻烦，常需借助文献管理软件如 <a href="https://ichunyu.github.io/zotero/" rel="">Zotero</a>、Endnote 等；</li>
+<li>快速模板切换：$\LaTeX$ 仅需要对导言区的样式进行更改即可实现全文格式的变更，而 Word 一般需要重新定义样式。</li>
+</ul>
+<p>那，话不多说，开整。</p>
+<h2 id="安装">安装</h2>
+<p>$\LaTeX$ 有很多发行版，TeX Live 是最为推荐的一款。下载只需要打开 <a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener noreffer">清华大学开源镜像站</a>，在目录中查找 <code>CTAN → TeX Live → Images</code>，选择任意 <code>texlive*.iso</code> 下载即可。</p>
+<p>无论是 Linux 用户还是 Windows 用户，TeX Live 的安装绝对不是一件难事，借用官方的安装说明如下：</p>
+<blockquote>
+<p>安装脚本叫 install-tl，它在目录树的顶层。你可以通过 <code>perl install-tl</code> 来调用它。在 Windows 下，你可以运行在它旁边的批处理文件：<code>install-tl-windows.bat</code>。在 Mac 上，你可能会希望从 MacTeX 安装，它有自己的安装程序 (也在 DVD 里包括，就在你现在浏览的 texlive/ 目录旁边)。</p>
+</blockquote>
+<p>对于Linux用户，安装完成后还需要对路径进行设置，需要在 <code>~/.bashrc</code> 文件中添加以下内容（注意TeX Live版本号可能存在差异）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">MANPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MANPATH</span><span class="si">}</span>:/usr/local/texlive/2020/texmf-dist/doc/man
+<span class="nb">export</span> <span class="nv">INFOPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">INFOPATH</span><span class="si">}</span>:/usr/local/texlive/2020/texmf-dist/doc/info
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>:/usr/local/texlive/2020/bin/x86_64-linux
+</code></pre></td></tr></table>
+</div>
+</div><p>至此安装完成，为了验证安装的正确性，Linux 用户可以打开终端，Windows 用户可以打开 CMD，运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">latex --version
+</code></pre></td></tr></table>
+</div>
+</div><p>正常输出版本号即代表 $\LaTeX$ 安装正确。</p>
+<h2 id="配置">配置</h2>
+<p>如本文开头所示，使用 $\LaTeX$ 编写文档更像是编写程序，而 $\LaTeX$ 只是编译器。为此，我们还需要一个友好的编写代码环境（当然，你完全可以用记事本之类的软件，取决于个人爱好）。TeXstudio 是一个值得推荐编辑器，这对新手非常友好，基本上不需要进行特别的配置。对于我们需要编写中文文档的，只需要将编译器改为 <code>xelatex</code> 即可。</p>
+<p>另一个好看的编辑器莫过于 VS Code 了，我们仅需要安装插件 <code>LaTeX Workshop</code>，并在设置中引入如下配置即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;latex-workshop.view.pdf.viewer&#34;</span><span class="err">:</span> <span class="s2">&#34;tab&#34;</span><span class="err">,</span>
+<span class="s2">&#34;latex-workshop.latex.tools&#34;</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;%DOCFILE%&#34;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;%DOCFILE%&#34;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;%DOCFILE%&#34;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span><span class="err">,</span>
+<span class="s2">&#34;latex-workshop.latex.recipes&#34;</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;xelatex&#34;</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;pdflatex&#34;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xe-&gt;bib-&gt;xe-&gt;xe&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;xelatex&#34;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdf-&gt;bib-&gt;pdf-&gt;pdf&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+            <span class="s2">&#34;pdflatex&#34;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">]</span><span class="err">,</span>
+<span class="s2">&#34;latex-workshop.bibtex-format.tab&#34;</span><span class="err">:</span> <span class="s2">&#34;4 spaces&#34;</span><span class="err">,</span>
+<span class="s2">&#34;latex-workshop.latex.autoBuild.run&#34;</span> <span class="err">:</span> <span class="s2">&#34;never&#34;</span><span class="err">,</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="hello-world">Hello World</h2>
+<p>$\LaTeX$ 的文档以 <code>.tex</code> 为后缀，因此我们可以创建一个名为 <code>HelloWorld.tex</code> 文件，填入以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% ========================================================
+</span><span class="c">% 🎆🎆🎆🎆🎆             导言区             🎆🎆🎆🎆🎆
+</span><span class="c">% ========================================================
+</span><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>         <span class="c">% 业界习惯：百分号是注释开始的标志
+</span><span class="c"></span>
+<span class="k">\title</span><span class="nb">{</span>Greetings<span class="nb">}</span>               <span class="c">% 不服就试：注释是不会进入正文的哟
+</span><span class="c"></span><span class="k">\author</span><span class="nb">{</span>SpringMan<span class="nb">}</span>              <span class="c">% 凑个对齐：在注释里可以任意地耍赖
+</span><span class="c"></span><span class="k">\date</span><span class="nb">{</span><span class="k">\today</span><span class="nb">}</span>                   <span class="c">% 如你所见：导言区就是进行“某些”设置的
+</span><span class="c"></span>
+
+<span class="c">% ========================================================
+</span><span class="c">% 🎆🎆🎆🎆🎆             正文区             🎆🎆🎆🎆🎆
+</span><span class="c">% ========================================================
+</span><span class="c"></span>
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>                <span class="c">% 可想而知：正文从这里开始
+</span><span class="c"></span>    <span class="k">\maketitle</span>                  <span class="c">% 显而易见：这个命令用来产生标题
+</span><span class="c"></span>
+    Hello World !               <span class="c">% 打个招呼：你好世界
+</span><span class="c"></span><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>                  <span class="c">% 不难预料：正文在这里结束
+</span></code></pre></td></tr></table>
+</div>
+</div><p>使用 TeXstudio 的小伙伴可以点击运行并查看，使用 VS Code 的小伙伴可以仅使用 <code>xelatex</code> 编译，喜欢命令行的猛士也可以在当前目录下运行命令 <code>xelatex HelloWorld.tex</code> ，最后，我们打开编译生成的同名 pdf 文件，就可以看到以下效果，是不是非常神奇呢？</p>
+<div align=center>
+    <img src=HelloWorld.png width=90% />
+</div></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-10-13</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/latex01-install/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/latex/">LaTeX</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/bangbang/" class="prev" rel="prev" title="相图与砰砰控制"><i class="fas fa-angle-left fa-fw"></i>相图与砰砰控制</a>
+            <a href="/latex02-document/" class="next" rel="next" title="LaTeX 学习记录（2）：编写文档">LaTeX 学习记录（2）：编写文档<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

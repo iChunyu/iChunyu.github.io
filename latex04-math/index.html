@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">LaTeX 学习记录（4）：数学公式 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="LaTeX 学习记录（4）：数学公式" />
+<meta property="og:description" content="对于理工科类的报告或论文，除了图表以外，还经常使用到各种公式。 $\LaTeX$ 对数学公式提供了非常好的支持，本文重点对几种常用的数学环境进行介绍。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/latex04-math/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-12-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-05T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="LaTeX 学习记录（4）：数学公式"/>
+<meta name="twitter:description" content="对于理工科类的报告或论文，除了图表以外，还经常使用到各种公式。 $\LaTeX$ 对数学公式提供了非常好的支持，本文重点对几种常用的数学环境进行介绍。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/latex04-math/" /><link rel="prev" href="https://ichunyu.github.io/latex03-tablefigure/" /><link rel="next" href="https://ichunyu.github.io/latex05-cite/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LaTeX 学习记录（4）：数学公式",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/latex04-math\/"
+        },"genre": "posts","keywords": "LaTeX","wordcount":  1669 ,
+        "url": "https:\/\/ichunyu.github.io\/latex04-math\/","datePublished": "2020-12-05T00:00:00+00:00","dateModified": "2020-12-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LaTeX 学习记录（4）：数学公式</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><i class="far fa-folder fa-fw"></i>LaTeX</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-12-05">2020-12-05</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-12-05">2020-12-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1669 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#数学模式简介">数学模式简介</a></li>
+    <li><a href="#常用数学环境">常用数学环境</a></li>
+    <li><a href="#矩阵排版">矩阵排版</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>对于理工科类的报告或论文，除了图表以外，还经常使用到各种公式。 $\LaTeX$ 对数学公式提供了非常好的支持，本文重点对几种常用的数学环境进行介绍。</p>
+<h2 id="数学模式简介">数学模式简介</h2>
+<p>与一般的正文不同，数学会涉及到大量的符号，且对字体、间距有明确的要求。因此需要使用数学模式。$\TeX$ 有两种数学模式：行内（inline）模式和显示（display）模式。前者一般与正文交叉，出现在正文之中，例如这个公式 $\sin 2x=2\sin x \cos x$；反之常用显示模式在单独一行中以合适的间距显示出来，如下式所示</p>
+$$
+\begin{aligned}
+\cos 2x &= \cos^2x - \sin^2 x \\
+&= 2\cos^2x - 1 \\
+&= 1-2\sin^2 x
+\end{aligned}
+$$
+<p>行内公式的使用相对简单，只需要用 <code>$</code> 将公式括起来即可，例如上面示例中的代码为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">`<span class="k">\sin</span> 2x = 2<span class="k">\sin</span> x <span class="k">\cos</span> x<span class="s">$</span><span class="nb">`
+</span></code></pre></td></tr></table>
+</div>
+</div><p>看到这些 $\LaTeX$ 的数学公式代码请不要慌张，因为这一般不是关注的重点，有很多软件可以辅助生成，例如 Mathtype、<a href="https://mathpix.com/" target="_blank" rel="noopener noreffer">Mathpix Snip</a>。不过，我自己偶尔会用一些在线的代码生成工具，友情推荐下 <a href="https://www.latexlive.com/" target="_blank" rel="noopener noreffer">妈叔在线公式编辑器</a>。</p>
+<p>对于显示模式，常采用不同的数学环境，下面就常用的一些进行介绍。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">数学公式的排版通常离不开 AMS 宏包，本文已在导言区使用宏包：<code>amsmath</code> 和 <code>amssymb</code>。</div>
+        </div>
+    </div>
+<h2 id="常用数学环境">常用数学环境</h2>
+<p>作为一个初步的教程，本文不打算对 $\LaTeX$ 的博大精深展开太多介绍，仅对下面列举的常用环境进行介绍。</p>
+<table>
+<thead>
+<tr>
+<th>环境</th>
+<th>简单说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>euqation</code></td>
+<td>单行公式居中显示</td>
+</tr>
+<tr>
+<td><code>gather</code>, <code>gathered</code></td>
+<td>多行公式居中显示</td>
+</tr>
+<tr>
+<td><code>align</code>, <code>aligned</code></td>
+<td>多行公式整体居中，自定义对齐位置</td>
+</tr>
+</tbody>
+</table>
+<p><code>equation</code> 环境提供了单行公式的展示，更一般地常用 <code>\[</code> 和 <code>\]</code> 对进行简化，例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+    <span class="k">\cos</span> 2x <span class="nb">&amp;</span>= <span class="k">\cos</span><span class="nb">^</span>2x - <span class="k">\sin</span><span class="nb">^</span>2 x
+<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>也等价于</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">\[</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\cos</span><span class="nb"> </span><span class="m">2</span><span class="nb">x &amp;</span><span class="o">=</span><span class="nb"> </span><span class="nv">\cos</span><span class="nb">^</span><span class="m">2</span><span class="nb">x </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nb"> x
+</span><span class="nb"></span><span class="s">\]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>该环境默认给公式进行编号，若要取消编号，可使用 <code>equation*</code> 环境，或者在不需要编号的公式后加上 <code>\notag</code> 命令。此外，默认的编号都是从 $1$ 开始计数，如果需要带上章节号，可以在导言区进行如下设置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% 导言区，设置公式编号包含节编号
+</span><span class="c"></span><span class="k">\numberwithin</span><span class="nb">{</span>equation<span class="nb">}{</span>section<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>equation</code> 环境只能展示单行公式，为了展示多行公式，可采用 <code>gather</code> 环境，并用 <code>\\</code> 进行换行，例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>gather<span class="nb">}</span>
+    <span class="k">\cos</span> 2x = <span class="k">\cos</span><span class="nb">^</span>2x - <span class="k">\sin</span><span class="nb">^</span>2 x <span class="k">\\</span>
+    = 2<span class="k">\cos</span><span class="nb">^</span>2x - 1 <span class="k">\\</span>
+    = 1-2<span class="k">\sin</span><span class="nb">^</span>2 x
+<span class="k">\end</span><span class="nb">{</span>gather<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这种排版存在的第一个问题是：整个公式希望它共用一个编号，但它每一行都有一个编号。为此，可以嵌套 <code>gathered</code> 环境，将整个公式组合成“块”，作为一个整体进行排版。如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+    <span class="k">\begin</span><span class="nb">{</span>gathered<span class="nb">}</span>
+        <span class="k">\cos</span> 2x = <span class="k">\cos</span><span class="nb">^</span>2x - <span class="k">\sin</span><span class="nb">^</span>2 x <span class="k">\\</span>
+        = 2<span class="k">\cos</span><span class="nb">^</span>2x - 1 <span class="k">\\</span>
+        = 1-2<span class="k">\sin</span><span class="nb">^</span>2 x
+    <span class="k">\end</span><span class="nb">{</span>gathered<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意到，<code>gathered</code> 环境仅用于将公式组合成块，它的外部通常还需要嵌套其他的环境。由于单个块可以看作单行公式，所以可以在最外层使用 <code>equation</code> 环境。</p>
+<p>同样，如果不希望 <code>gather</code> 产生任何编号，只要加上星号改为 <code>gather*</code> 环境即可。</p>
+<p><code>gather</code> 的第二个问题是：多行公式的每行都是居中对齐的，而对于上面例子的推导而言，显然更好的方式是在等号处对齐，这就需要采用 <code>align</code> 环境。</p>
+<p><code>align</code> 在使用 <code>\\</code> 换行的基础上，还需要使用 <code>&amp;</code> 指定对齐位置，并且整个公式块将在行内居中显示。例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+    <span class="k">\cos</span> 2x <span class="nb">&amp;</span>= <span class="k">\cos</span><span class="nb">^</span>2x - <span class="k">\sin</span><span class="nb">^</span>2 x <span class="k">\\</span>
+    <span class="nb">&amp;</span>= 2<span class="k">\cos</span><span class="nb">^</span>2x - 1 <span class="k">\\</span>
+    <span class="nb">&amp;</span>= 1-2<span class="k">\sin</span><span class="nb">^</span>2 x
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这时，我们可以看到公式整体处于居中，而公式内部在等号位置对齐。同样，为了避免每行出现编号，使用 <code>aligned</code> 环境将公式转化为块即可，如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+    <span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
+        <span class="k">\cos</span> 2x <span class="nb">&amp;</span>= <span class="k">\cos</span><span class="nb">^</span>2x - <span class="k">\sin</span><span class="nb">^</span>2 x <span class="k">\\</span>
+        <span class="nb">&amp;</span>= 2<span class="k">\cos</span><span class="nb">^</span>2x - 1 <span class="k">\\</span>
+        <span class="nb">&amp;</span>= 1-2<span class="k">\sin</span><span class="nb">^</span>2 x
+    <span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>喏，相信看到这里，大家可能会想：既然单行公式是多行公式的特殊情况，那么只需要记住多行公式排版即可，而多行公式多数需要指定对齐位置，那索性只记下 <code>align</code> 环境就行了。幸运的是，就我个人的经验来看，事实确实如此。除非特别地要求多行公式分别居中，不得不用到 <code>gather</code> 环境，一般情况下 <code>align</code> 及其变种 <code>aligned</code> 足够应付绝大多数排版要求。</p>
+<h2 id="矩阵排版">矩阵排版</h2>
+<p>基本的 $\LaTeX$ 中，矩阵采用 <code>\matrix</code> 等命令进行排版，由于其语法与 $\LaTeX$ 基本语法不一致，常采用 AMS 提供的一系列矩阵环境来代替，这些环境的使用与表格的使用相同，区别仅仅在于外部的括号不同：</p>
+<table>
+<thead>
+<tr>
+<th>环境</th>
+<th>简单说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matrix</code></td>
+<td>无括号</td>
+</tr>
+<tr>
+<td><code>pmatrix</code></td>
+<td>圆括号</td>
+</tr>
+<tr>
+<td><code>bmatrix</code></td>
+<td>方括号</td>
+</tr>
+<tr>
+<td><code>Bmatrix</code></td>
+<td>花括号</td>
+</tr>
+<tr>
+<td><code>vmatrix</code></td>
+<td>单竖线</td>
+</tr>
+<tr>
+<td><code>Vmatrix</code></td>
+<td>双竖线</td>
+</tr>
+</tbody>
+</table>
+<p>矩阵排版更灵活的方法是采用 <code>array</code> 环境，有需求的小伙伴可以查看其宏包说明。</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw"></i>问题<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">数学排版从操作上并非难事，但有很多细节问题需要大家认真考虑。比如，标准的数学采用斜体作为标量的字体，加粗的字体表示矩阵或者向量，那么，自然对数的底 $\mathrm{e}$ 应当是什么字体？以及，微分运算符 $\mathrm{d}$ 呢？细心的朋友们会发现，常数和运算符都采用正体，并且运算符与变量之间的间距往往与变量之间的间距还略有不同。类似的细节还很多，算是行业标准，还望大家稍作重视。</div>
+        </div>
+    </div></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-12-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/latex04-math/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/latex/">LaTeX</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/latex03-tablefigure/" class="prev" rel="prev" title="LaTeX 学习记录（3）：使用图表"><i class="fas fa-angle-left fa-fw"></i>LaTeX 学习记录（3）：使用图表</a>
+            <a href="/latex05-cite/" class="next" rel="next" title="LaTeX 学习记录（5）：自动化引用">LaTeX 学习记录（5）：自动化引用<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

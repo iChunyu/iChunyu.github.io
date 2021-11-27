@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">LaTeX 学习记录（3）：使用图表 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="LaTeX 学习记录（3）：使用图表" />
+<meta property="og:description" content="很多朋友使用 $\LaTeX$ 处理图表是都会感觉达不到期望的状态，这篇文章我们来看看如何正确使用图表。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/latex03-tablefigure/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-11-14T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="LaTeX 学习记录（3）：使用图表"/>
+<meta name="twitter:description" content="很多朋友使用 $\LaTeX$ 处理图表是都会感觉达不到期望的状态，这篇文章我们来看看如何正确使用图表。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/latex03-tablefigure/" /><link rel="prev" href="https://ichunyu.github.io/latex02-document/" /><link rel="next" href="https://ichunyu.github.io/latex04-math/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LaTeX 学习记录（3）：使用图表",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/latex03-tablefigure\/"
+        },"genre": "posts","keywords": "LaTeX","wordcount":  2556 ,
+        "url": "https:\/\/ichunyu.github.io\/latex03-tablefigure\/","datePublished": "2020-11-14T00:00:00+00:00","dateModified": "2020-11-14T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LaTeX 学习记录（3）：使用图表</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><i class="far fa-folder fa-fw"></i>LaTeX</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-14">2020-11-14</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-11-14">2020-11-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2556 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#引言与吹牛">引言与吹牛</a></li>
+    <li><a href="#认识浮动体">认识浮动体</a></li>
+    <li><a href="#使用插图">使用插图</a></li>
+    <li><a href="#绘制表格">绘制表格</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>很多朋友使用 $\LaTeX$ 处理图表是都会感觉达不到期望的状态，这篇文章我们来看看如何正确使用图表。</p>
+<h2 id="引言与吹牛">引言与吹牛</h2>
+<p>每次跟朋友安利 $\LaTeX$ 的时候我都会讲这么一个故事：</p>
+<blockquote>
+<p>当时设计天琴一号加速度计的控制器参数，出于数字控制参数切换的便利性，疯狂设计了十几套参数。然而写报告的时候傻了：老板要求每套参数六个自由度的详细参数、指标都汇总到表格里。要是手动录入，恐怕得折腾一天，于是我想到了一个骚操作：MATLAB 设计完参数后以 $\LaTeX$ 表格代码的形式格式化输出到 <code>.tex</code> 文件，编译生成 PDF 后用 Acrobat 转成 Word，就可以复制了。就这样，10分钟不到的时间就把整个表格做完了。</p>
+</blockquote>
+<div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw"></i>危险<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">然而更高技术的朋友会问：“你为什么不直接用 MATLAB 输出到 EXCEL 呢？你不会不知道 <code>writetable</code> 这一系列命令吧？不会吧不会吧？” 唔……爱琴海警告。</div>
+        </div>
+    </div>
+<p>废话不多说，赶紧进入正题，<strong><ruby>开始吧<rt>はじめましょう</rt></ruby></strong> 。</p>
+<h2 id="认识浮动体">认识浮动体</h2>
+<p>$\LaTeX$ 有很多“环境”的概念，在代码里就体现为采用 <code>\begin{&lt;env&gt;}</code> 和 <code>\end{&lt;env&gt;}</code> 括起来的部分。环境一般用于局部的格式设置或者功能扩展，比如正常写作时采用的是两端对齐，如果想临时居中某内容时，可以使用 <code>center</code> 环境，如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">如果采用 <span class="s">$</span><span class="nv">\LaTeX</span><span class="s">$</span> 进行编译后，生成的文档中，这里是正常的两端对齐文字。
+
+<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
+    这里是居中的文字。
+<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>环境是可以嵌套的，例如上面的内容在正文区，而正文区开始于 <code>\begin{document}</code> ，说明正文是处于 <code>document</code> 环境下的。</p>
+<p>可以想象，一般的图表都采用居中的格式，应当分别处于独立的环境中，$\LaTeX$ 为此提供了 <code>table</code> 和 <code>figure</code> 环境。对于上例这样一般的环境，它仅提供局部的格式变动，不会影响上下文之间的位置关系。而 <code>table</code> 和 <code>figure</code> 却与之不同，它们被称作浮动体，意思是源码之间的相对位置与编译后生成文档中的相对位置可能是不同的。比如源码中的顺序是先写“如图 3 所示”，然后再插入图片，生成的文档可能会先插入图片，再出现“如图 3 所示”。</p>
+<p>图表采用这种浮动体的原因有</p>
+<ul>
+<li>一般文档会以交叉引用的方式指明图表（比如“如图 3 所示”，而不是“如下图所示”），因此图表与正文的相对位置没有过于严格的要求；</li>
+<li>当前页面内的剩余版面可能无法完整插入图片或者表格，如果留空白会导致排版不好看，因此可以将图表移位，用后文填充页面；</li>
+<li>$\LaTeX$ 默认的排版美学：同一页内连续使用图表或出现过多图表会使页面显得比较空洞而不好看。</li>
+</ul>
+<p>使用浮动体（<code>table</code> 和 <code>figure</code>环境）时可以用中括号添加可选参数，表示可以浮动的位置，可选以下几个参数或其组合：</p>
+<ul>
+<li>h：允许在当前位置（here），即源码中插图与正文的相对位置保持一致；</li>
+<li>t：允许在当前页面的最顶端（top）；</li>
+<li>b：允许在当前页面的最低端（bottom）；</li>
+<li>p：允许将图片放在单独一页（page）。</li>
+</ul>
+<p>有时候 $\LaTeX$ 默认的排版美学会让人感到困惑，因此浮动体还支持采用 <code>!</code> 选项突破默认的限制，例如我自己插图的时候经常会采用 <code>\begin{figure}[!htb]</code> 的设置。</p>
+<h2 id="使用插图">使用插图</h2>
+<p>为了在文档中插入图片，需要对 $\LaTeX$ 的功能进行“扩展”，在导言区使用 <code>\usepackage{graphicx}</code> 宏包即可。这个宏包提供的 <code>\includegraphics</code> 命令可以方便地插入 <code>pdf</code>、<code>eps</code>、<code>jpg</code>、<code>png</code> 等常见格式的图片，使用方法和示例如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% 导言区添加 \usepackage{graphicx}
+</span><span class="c">% \includegraphics[&lt;选项&gt;]{&lt;图片文件名&gt;}
+</span><span class="c"></span>
+<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!htb]    <span class="c">% 还记得刚说的图片放在浮动体内吗？
+</span><span class="c"></span>    <span class="k">\centering</span>          <span class="c">% 设置图片居中
+</span><span class="c"></span>    <span class="c">% 插入图片，图片宽度为 0.7 倍正文宽度，图片文件为 misaka.png
+</span><span class="c"></span>    <span class="k">\includegraphics</span><span class="na">[width=0.7\textwidth]</span><span class="nb">{</span>misaka.png<span class="nb">}</span>
+    <span class="k">\caption</span><span class="nb">{</span>御坂美琴<span class="nb">}</span>   <span class="c">% 正文中的图名
+</span><span class="c"></span>    <span class="k">\label</span><span class="nb">{</span>fig:misaka<span class="nb">}</span>  <span class="c">% 交叉引用的标签，以后再说哈
+</span><span class="c"></span><span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以这种方法插图时，图片放置的位置必须在搜索路径中，或者使用绝对路径。一般情况下，我们会把正文图片收集在 <code>figures</code> 文件夹内，并在导入宏包后立即将该文件夹添加到图片的搜索路径，如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
+<span class="c">% 添加搜索路径，多个路径时用花括号区分
+</span><span class="c"></span><span class="k">\graphicspath</span><span class="nb">{</span>
+    <span class="nb">{</span>./figure/<span class="nb">}</span>
+    <span class="nb">{</span>./figures/<span class="nb">}</span>
+<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如此就可以实现正文的插图了。实际上，$\LaTeX$ 是支持直接绘图的，有兴趣的小伙伴可以在命令行使用 <code>texdoc pgfmanual</code> 查看具体方法。</p>
+<blockquote>
+<p>1300 多页的说明文档直接给我劝退了……有学会的小伙伴教教我哈。通常我还是使用其他软件绘图，导出 <code>.pdf</code> 后在 $\LaTeX$ 中插图。说来，Inkscape 确实是一款很好用的矢量绘图开源软件。</p>
+</blockquote>
+<h2 id="绘制表格">绘制表格</h2>
+<p>绘制表格所需要的基本环境不需要额外的宏包进行扩展，但是依然推荐两个宏包：<code>tabularx</code> 和 <code>booktabs</code>，前者提供了定宽表格的格式，后者则提供了标准的三线表样式。下面我们先来看一个例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[hbp]
+	<span class="k">\centering</span>
+	<span class="k">\caption</span><span class="nb">{</span>页码数字格式<span class="nb">}</span>
+	<span class="k">\label</span><span class="nb">{</span>tab:pagenum<span class="nb">}</span>
+	<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>ll<span class="nb">}</span>
+		<span class="k">\toprule</span>
+		格式 <span class="nb">&amp;</span> 说明 <span class="k">\\</span>
+		<span class="k">\midrule</span>
+		arabic <span class="nb">&amp;</span> 阿拉伯数字 <span class="k">\\</span>
+		roman <span class="nb">&amp;</span> 小写的罗马数字 <span class="k">\\</span>
+		Roman <span class="nb">&amp;</span> 大写的罗马数字 <span class="k">\\</span>
+		alph <span class="nb">&amp;</span> 小写的字符形式 <span class="k">\\</span>
+		Alph <span class="nb">&amp;</span> 大写的字符形式 <span class="k">\\</span>
+		<span class="k">\bottomrule</span>
+	<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>分析表格的代码：我们在最外围申明了表格所处的 <code>table</code> 环境，这是将表格整体作为浮动体；然后设置该环境下内容居中显示；由于表格的标题一般在表格上方，所以先生成标题并打上标签；剩下的一大块便是由 <code>tabular</code> 环境构造的表格。</p>
+<p><code>tabular</code> 环境是用来构造表格本体的，该环境有一个参数用来指明列格式，常用的列格式包括：</p>
+<ul>
+<li>l：本列左对齐；</li>
+<li>c：本列居中；</li>
+<li>r：本列右对齐；</li>
+<li>p{&lt;列宽&gt;}：指定列宽并允许自动换行；</li>
+<li>|： 画一条竖线，不占据表项计数；</li>
+<li>@{&lt;内容&gt;}：任意添加内容，不占表项计数；</li>
+<li>*{&lt;计数&gt;}{&lt;列格式说明&gt;}：将给定列格式按计数重复多次。</li>
+</ul>
+<p>诸位如果记不住这么多格式，只记住 l、c、r 就够基本使用了，有多少列就写多少个 l、c、r。</p>
+<p>在表内，采用符号 <code>&amp;</code> 指明对齐位置， 并使用 <code>\\</code> 进行换行。表格中可以使用 <code>\hline</code> 绘制横线，或使用<code>\cline{&lt;开始&gt;-&lt;结束&gt;}</code> 指定横线的范围。<code>booktabs</code> 宏包提供了标准三线表的横线，可使用命令 <code>\toprule</code> 、 <code>\midrule</code>、<code>\bottomrule</code>分别绘制顶部横线、中间横线和底部横线。为了像 <code>\cline</code> 那样绘制指定位置的横线，该宏包还提供了 <code>\cmidrule</code> 命令。表格中绘制与单元格等高的竖线可用 <code>\vline</code> 命令。</p>
+<p>如上面的例子所示，在不单独指定列宽的情况下，<code>tabular</code> 环境可以根据内容自动改变表格宽度，这在绝大多数情况下是非常好用的。然而有时候我们希望指定表格的总宽度，这就需要tabularx宏包提供的<code>tabularx</code> 环境。该环境在指定列格式之前必须指定表格的总宽度。同时，该宏包提供了一个特殊的列格式 <code>X</code>，它能够根据总宽度和表的内容自动改变列宽，也可以和其他列格式一起使用。</p>
+<p>写了不少了，更详细的使用帮助可使用 <code>texdoc &lt;宏包名&gt;</code> 查看。不过，现在有很多 <a href="https://tableconvert.com/" target="_blank" rel="noopener noreffer">在线制作 $\LaTeX$ 表格</a> 的工具，大家都可以尝试。</p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-11-14</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/latex03-tablefigure/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/latex/">LaTeX</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/latex02-document/" class="prev" rel="prev" title="LaTeX 学习记录（2）：编写文档"><i class="fas fa-angle-left fa-fw"></i>LaTeX 学习记录（2）：编写文档</a>
+            <a href="/latex04-math/" class="next" rel="next" title="LaTeX 学习记录（4）：数学公式">LaTeX 学习记录（4）：数学公式<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

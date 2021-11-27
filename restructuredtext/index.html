@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">reStructuredText 简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="reStructuredText 简介" />
+<meta property="og:description" content="reStructuredText 是一个不同于 Markdown 的文本标记语言，通常结合 Sphinx 构建静态网站，特别适合帮助类文档的编写。这篇文章简要介绍其基本用法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/restructuredtext/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-13T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="reStructuredText 简介"/>
+<meta name="twitter:description" content="reStructuredText 是一个不同于 Markdown 的文本标记语言，通常结合 Sphinx 构建静态网站，特别适合帮助类文档的编写。这篇文章简要介绍其基本用法。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/restructuredtext/" /><link rel="prev" href="https://ichunyu.github.io/sphinx/" /><link rel="next" href="https://ichunyu.github.io/manjaro/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "reStructuredText 简介",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/restructuredtext\/"
+        },"genre": "posts","keywords": "reStructuredText, 文本标记语言","wordcount":  2252 ,
+        "url": "https:\/\/ichunyu.github.io\/restructuredtext\/","datePublished": "2021-04-13T00:00:00+00:00","dateModified": "2021-04-13T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">reStructuredText 简介</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-13">2021-04-13</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-04-13">2021-04-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2252 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#章节标题">章节标题</a></li>
+    <li><a href="#分割线">分割线</a></li>
+    <li><a href="#列表">列表</a></li>
+    <li><a href="#表格">表格</a>
+      <ul>
+        <li><a href="#简单表">简单表</a></li>
+        <li><a href="#网格表">网格表</a></li>
+        <li><a href="#csv表">CSV表</a></li>
+      </ul>
+    </li>
+    <li><a href="#图片">图片</a></li>
+    <li><a href="#超链接">超链接</a></li>
+    <li><a href="#交叉引用">交叉引用</a></li>
+    <li><a href="#脚注">脚注</a></li>
+    <li><a href="#代码">代码</a></li>
+    <li><a href="#数学公式">数学公式</a></li>
+    <li><a href="#警示标记">警示标记</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>reStructuredText 是一个不同于 Markdown 的文本标记语言，通常结合 Sphinx 构建静态网站，特别适合帮助类文档的编写。这篇文章简要介绍其基本用法。</p>
+<h2 id="章节标题">章节标题</h2>
+<p>在标题的下一行用某一符号填充，且长度不得小于标题文字长度。标题上一行可以填充相同的内容，但不是必须的，例如下面两种方式等价：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText"><span class="gh">========================================</span>
+<span class="gh">甄士隐梦幻识通灵　贾雨村风尘怀闺秀 </span>
+<span class="gh">========================================</span>
+<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="gh">甄士隐梦幻识通灵　贾雨村风尘怀闺秀 </span>
+<span class="gh">========================================</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>应当注意，如果同时使用上面两种方式，即使使用的是同一种符号，也会被认为是不同级别的标题。标题的级别由符号使用的先后顺序决定。</p>
+<p>标题装饰符相对比较随意，可以参考下面 <a href="https://devguide.python.org/documenting/##sections" target="_blank" rel="noopener noreffer">Python 风格指南</a> 的建议：</p>
+<ul>
+<li><code>##</code> 且在标题上下两行均填充，为部（Parts）标题；</li>
+<li><code>*</code> 且在标题上下两行均填充，为章（Chapters）标题；</li>
+<li><code>=</code> 且在标题下填充，为节（Sections）标题；</li>
+<li><code>-</code> 且在标题下填充，为子节（Subsections）标题；</li>
+<li><code>^</code> 且在标题下填充，为二级子节（Subsubections）标题；</li>
+<li><code>&quot;</code> 且在标题下填充，为段落（Paragraphs）标题。</li>
+</ul>
+<h2 id="分割线">分割线</h2>
+<p>使用与标题装饰符号相同的符号集，连续使用4个以上，且上下都是空行，来插入分隔符。应当注意一下事项：</p>
+<ul>
+<li>分隔线与上下内容之间需要有空白行；</li>
+<li>分隔线不能紧贴在大纲标题之前或之后，也不能放在文档最开头；</li>
+<li>两个分隔线不能紧贴，必须有除了空白行之外的内容。</li>
+</ul>
+<h2 id="列表">列表</h2>
+<p>列表第一项之前和最后一项之后都要有空行，编号列表和非编号列表分别用 <code>#.</code> 和 <code>-</code> 后接一个空格引出，代码示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText">这里是一点正文。<span class="err">
+</span><span class="err"></span>
+<span class="m">#.</span> 有序列表的第一项要和正文之间由空行分割；<span class="err">
+</span><span class="err"></span><span class="m">#.</span> 这是自动编号的有序列表的第二项。<span class="err">
+</span><span class="err"></span>
+<span class="m">-</span> 这是一个无编号列表的例子；<span class="err">
+</span><span class="err"></span><span class="m">-</span> 注意列表起始符与列表正文之间的空格；<span class="err">
+</span><span class="err"></span>    - 列表的嵌套只需要缩进即可。<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="表格">表格</h2>
+<p>表格分为简单表、网格表、CSV表，我直接复制了参考资料：</p>
+<h3 id="简单表">简单表</h3>
+<ul>
+<li>行分隔：以等号 <code>=</code> 标记表格的顶线与底线。
+<ul>
+<li>每列中的行分隔符在竖直方向上必须对齐。</li>
+<li>如果有表头，表头与表身也用 <code>=</code> 分隔。</li>
+<li>在简单表中，不允许跨行。</li>
+</ul>
+</li>
+<li>列分隔：以空格来分隔列。
+<ul>
+<li>每列的文本左侧对齐到该列行分隔符的左侧。</li>
+<li>如果需要，表中最右侧的列文本的右侧可以溢出该列的行分隔符右侧。</li>
+<li>简单表允许跨列。用横线 <code>-</code>
+来标记跨列的长度。跨列符必须与某一列的行分隔符对齐。</li>
+<li>跨列时的列间空格用 <code>-</code> 替代。</li>
+</ul>
+</li>
+<li>空白行：表内任一行内部允许文本中存在的空白行。表行之间的空白行会被忽略。</li>
+<li>空白表格：用反斜线 <code>\</code> 标记空白表格。</li>
+</ul>
+<p>下面是一个简单表的例子:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText">=======    =======<span class="err">
+</span><span class="err"></span><span class="gh">PID Controller</span>
+<span class="gh">------------------</span>
+Items      Value<span class="err">
+</span><span class="err"></span>=======    =======<span class="err">
+</span><span class="err"></span>P          15<span class="err">
+</span><span class="err"></span>I          20<span class="err">
+</span><span class="err"></span>D          7<span class="err">
+</span><span class="err"></span>\          Tested<span class="err">
+</span><span class="err"></span>=======    =======<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="网格表">网格表</h3>
+<p>网格表的使用较为复杂但是更为灵活：</p>
+<ul>
+<li>表线必须完整地围住表格文本。</li>
+<li>行分隔线一律用横线 <code>-</code> 书写，除了表头分割线用等号 <code>=</code> 。</li>
+<li>列分隔线一律用竖线 <code>|</code> 书写。</li>
+<li>行、列分隔线的交叉点用加号 <code>+</code> 标记。</li>
+</ul>
+<p>给出一个网格表的例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText"><span class="p">..</span> <span class="ow">table</span><span class="p">::</span> 网格表示例<span class="err">
+</span><span class="err"></span>    <span class="nc">:align:</span> <span class="nf">center</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:width:</span> <span class="nf">40%</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>    +---------------------------+<span class="err">
+</span><span class="err"></span>    <span class="o">|</span> PID Paramters             |<span class="err">
+</span><span class="err"></span>    +======+====================+<span class="err">
+</span><span class="err"></span>    <span class="o">|</span> Item | Degree of Freedoms |<span class="err">
+</span><span class="err"></span>    <span class="o">|</span>      +------+------+------+<span class="err">
+</span><span class="err"></span>    <span class="o">|</span>      |  X   |  Y   |  Z   |<span class="err">
+</span><span class="err"></span>    +------+------+------+------+<span class="err">
+</span><span class="err"></span>    <span class="o">|</span> P    | 1.0  | 2.0  | 3.0  |<span class="err">
+</span><span class="err"></span>    +------+------+------+------+<span class="err">
+</span><span class="err"></span>    <span class="o">|</span> I    | 3.0  | 1.0  | 5.0  |<span class="err">
+</span><span class="err"></span>    +------+------+------+------+<span class="err">
+</span><span class="err"></span>    <span class="o">|</span> D    | 2.0  | 5.0  | 7.0  |<span class="err">
+</span><span class="err"></span>    +------+------+------+------+<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>从这个例子可以看出，网格表可以放在 <code>table</code> 指令（<a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html##table" target="_blank" rel="noopener noreffer">Directive: table</a>）中，并可以提供对齐、宽度等约束。指令的一般用法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText"><span class="p">..</span> <span class="ow">directive</span><span class="p">::</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:option1:</span> <span class="nf">option1</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:option2:</span> <span class="nf">option2</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>    content<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>table</code> 提供以下选项：</p>
+<ul>
+<li><code>align</code> &mdash; 对齐方式： <code>left</code> ， <code>center</code> ， <code>right</code> ；</li>
+<li><code>widths</code> &mdash; 各列的宽度： <code>auto</code> ， <code>grid</code> ，逗号或空格分割的整数序列；</li>
+<li><code>width</code> &mdash; 整个列表的宽度，给定长度或页面宽度的百分比。</li>
+</ul>
+<p>当中英文混合时，网格表容易出现文字对不齐的情况，可以使用中英文等宽字体避免这种显示问题，例如可以使用 <a href="https://typeof.net/Iosevka/" target="_blank" rel="noopener noreffer">Iosevka</a> 字体。</p>
+<h3 id="csv表">CSV表</h3>
+<ul>
+<li>表宽 <code>:width: LENGTH/PERCENT</code> 表格的总宽度，以长度值或者百分数来指定</li>
+<li>列宽 <code>:widths: INT,INT,...</code> 每列的相对宽度（相对于100）可以由整数 <code>INT</code> 指定。默认各列等宽。</li>
+<li>表头：有两种表示方法。
+<ul>
+<li>表头行 <code>:header-rows: INT</code> 指定表格中的前 <code>INT</code> 行为表头。</li>
+<li>表头文本 <code>:header: TEXT,TEXT,...</code> 直接输入每一列表头的文本。它也可以与 <code>header-rows</code> 选项同时使用，但必须放在 <code>header-rows</code> 之前。</li>
+</ul>
+</li>
+<li>列头： <code>:stub-columns: INT</code> 将前 INT 列作为列头。</li>
+<li>对齐： <code>:align: ALIGN</code> 用 <code>left</code>, <code>center</code> 或者 <code>right</code> 来指定整个表如何向外部环境对齐。</li>
+<li>外部CSV文件： 用 <code>:file: FILEPATH</code> 引用本地文件或者 <code>:url: URL</code> 引用网络文件。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText"><span class="p">..</span> <span class="ow">csv-table</span><span class="p">::</span> CSV Table Caption<span class="err">
+</span><span class="err"></span>    <span class="nc">:header:</span> <span class="nf">&#34;First Name&#34;, &#34;Age&#34;, &#34;Gender&#34;</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:widths:</span> <span class="nf">30, 20, 20</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:width:</span> <span class="nf">60%</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:align:</span> <span class="nf">center</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>    &#34;Tom&#34;, 3, Male<span class="err">
+</span><span class="err"></span>    &#34;Dick&#34;, 5<span class="err">
+</span><span class="err"></span>    &#34;Harry&#34;,, Male<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="图片">图片</h2>
+<p>指令 <code>image</code> （<a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html##image" target="_blank" rel="noopener noreffer">Directive: image</a>）和 <code>figure</code> （<a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html##figure" target="_blank" rel="noopener noreffer">Directive: figure</a>）都可以用来插图，但前者不能插入图名，因此这里用一个例子介绍后者的用法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText"><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> figures/kasugano.png<span class="err">
+</span><span class="err"></span>    <span class="nc">:alt:</span> <span class="nf">当图片无法显示时候用于代替的文本</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:width:</span> <span class="nf">80%</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:align:</span> <span class="nf">center</span><span class="err">
+</span><span class="err"></span>    <span class="nc">:target:</span> <span class="nf">https://github.com/iChunyu</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span>    与 <span class="s">``image``</span> 相比， <span class="s">``figure``</span> 在这里可以插入标题甚至段落。<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="超链接">超链接</h2>
+<p>两种超链接使用方法如下，一种是直接使用，一种是先定义别名，再给出链接。后者适合正文多次使用该超链接时使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText"><span class="s">`bilibili </span><span class="si">&lt;https://www.bilibili.com/&gt;</span><span class="s">`_</span> 干杯！<span class="err">
+</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="s">`Git`_</span> 是一个版本管理软件， 它的官网为： <span class="s">`Git`_</span> 。<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">..</span> <span class="nt">_Git:</span> https://git-scm.com<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="交叉引用">交叉引用</h2>
+<p>在需要引用的位置的空一行使用 <code>.. _some-label:</code> 打上标签，然后可以在文中任意位置使用 <code>:ref:`some-label`</code> 进行引用。</p>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText"><span class="p">..</span> <span class="nt">_corss-ref:</span><span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="gh">交叉引用</span>
+<span class="gh">-----------------------------------------------</span>
+<span class="err">
+</span><span class="err"></span>（正文略）<span class="err">
+</span><span class="err">
+</span><span class="err"></span>交叉引用的使用方法可以查看： <span class="na">:ref:</span><span class="nv">`corss-ref`</span> 。<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>除正文交叉引用，还常用到项目内文件的交叉引用，例如 <code>:doc:`learn_git`</code> 可以应用项目内的其他文档 。</p>
+<h2 id="脚注">脚注</h2>
+<p>脚注的在正文中用 <code>[##fn]_</code> 标记，一般在文末通过 <code>.. [##fn] 文本</code>
+给出脚注内容。示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText">这是一个脚注 <span class="s">[##footnotemark]_</span> 。<span class="err">
+</span><span class="err">
+</span><span class="err"></span><span class="p">..</span> <span class="nt">[##footnotemark]</span> 这是脚注的内容。<span class="err">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="代码">代码</h2>
+<p>正文内代码用一对反引号即可，例如 <code>code</code> ，对于代码块，可以使用 <code>code-block</code> 指令，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reStructuredText" data-lang="reStructuredText"><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
+
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">matplot.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="数学公式">数学公式</h2>
+<p>类似代码，行内公式可以使用 <code>:math:`\sin\alpha`</code> 这种形式，单行或多行公式可以在 <code>:math:</code> 指令中使用 $\LaTeX$ 扩展。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">.. math::
+    \left\{
+    \begin{aligned}
+        \sin\left( \alpha+\beta \right) &amp;= \sin\alpha \cos\beta + \cos\alpha \sin\beta \\
+        \cos\left( \alpha+\beta \right) &amp;= \cos\alpha \cos\beta - \sin\alpha \sin\beta
+    \end{aligned}
+    \right.
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="警示标记">警示标记</h2>
+<p>警示标记是一类指令，可以生成特别的消息框，使用方法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">.. warning:: 
+
+    这是一个警告标记。
+</code></pre></td></tr></table>
+</div>
+</div><p>它将产生这种效果：</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>警告<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">这是一个警告标记。</div>
+        </div>
+    </div>
+<p>可以使用的标记有以下 9 种：</p>
+<ul>
+<li><code>attention</code></li>
+<li><code>caution</code></li>
+<li><code>error</code></li>
+<li><code>hint</code></li>
+<li><code>important</code></li>
+<li><code>note</code></li>
+<li><code>tip</code></li>
+<li><code>warning</code></li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li>wklchris. <a href="https://self-contained.github.io/reStructuredText/index.html" target="_blank" rel="noopener noreffer">reStructuredText 简介</a>.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-04-13</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/restructuredtext/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/restructuredtext/">reStructuredText</a>,&nbsp;<a href="/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/">文本标记语言</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sphinx/" class="prev" rel="prev" title="Sphinx 搭建博客"><i class="fas fa-angle-left fa-fw"></i>Sphinx 搭建博客</a>
+            <a href="/manjaro/" class="next" rel="next" title="Manjaro 安装">Manjaro 安装<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

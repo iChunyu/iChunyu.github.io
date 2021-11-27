@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">Vim 简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="Vim 简介" />
+<meta property="og:description" content="最近有兴趣折腾了一下 Vim，不免对这个上古神器的强大感到震撼。这篇文章简要记录下基本操作，只能说是冰山一角。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/vim/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-10T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="Vim 简介"/>
+<meta name="twitter:description" content="最近有兴趣折腾了一下 Vim，不免对这个上古神器的强大感到震撼。这篇文章简要记录下基本操作，只能说是冰山一角。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/vim/" /><link rel="prev" href="https://ichunyu.github.io/gennoise/" /><link rel="next" href="https://ichunyu.github.io/kalmanfilter/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Vim 简介",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/vim\/"
+        },"genre": "posts","keywords": "Vim, 文本编辑器","wordcount":  5213 ,
+        "url": "https:\/\/ichunyu.github.io\/vim\/","datePublished": "2021-08-10T00:00:00+00:00","dateModified": "2021-08-10T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Vim 简介</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-10">2021-08-10</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-08-10">2021-08-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5213 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#认识-vim-基本模式">认识 Vim 基本模式</a></li>
+    <li><a href="#退出-vim">退出 Vim</a></li>
+    <li><a href="#移动光标">移动光标</a>
+      <ul>
+        <li><a href="#基本移动">基本移动</a></li>
+        <li><a href="#基于单词的移动">基于单词的移动</a></li>
+        <li><a href="#基于查找的移动">基于查找的移动</a></li>
+        <li><a href="#其他跳转方法">其他跳转方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#选定范围">选定范围</a></li>
+    <li><a href="#编辑文档">编辑文档</a>
+      <ul>
+        <li><a href="#在普通模式进行少量修改">在普通模式进行少量修改</a></li>
+        <li><a href="#从插入模式编辑文档">从插入模式编辑文档</a></li>
+        <li><a href="#搜索与替换">搜索与替换</a></li>
+        <li><a href="#进行简单的计算">进行简单的计算</a></li>
+      </ul>
+    </li>
+    <li><a href="#寄存器简介">寄存器简介</a>
+      <ul>
+        <li><a href="#复制与粘贴">复制与粘贴</a></li>
+        <li><a href="#宏的录制与回放">宏的录制与回放</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>最近有兴趣折腾了一下 Vim，不免对这个上古神器的强大感到震撼。这篇文章简要记录下基本操作，只能说是冰山一角。</p>
+<h2 id="认识-vim-基本模式">认识 Vim 基本模式</h2>
+<p><a href="https://www.vim.org/" target="_blank" rel="noopener noreffer">Vim</a> 有三种基本模式：普通模式、插入模式和命令行模式。普通模式是打开 Vim 之后的默认模式，也是进行模式转换的桥梁。在普通模式下，可以进行常规的浏览、替换、删除、粘贴等命令；在普通模式下按 <code>i</code> 即可切换到插入模式，这种模式与常规的文本编辑器相同，可以自由添加、修改、删除文本内容；按 <code>Esc</code> 可以从插入模式切换回普通模式，再次键入 <code>:</code> 会切换到命令行模式。这种模式支持各种命令的使用，在我看来也是 Vim 的强大之处所在。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Vim 命令对大小写敏感，因此在使用 Vim 时务必确保大写锁定处于关闭状态。通常情况下，大家会建议将键盘的 <code>Caps Lock</code> 键重新映射为 <code>Esc</code> ，对于 Manjaro
+系统，可以通过系统设置中的键盘的高级选项进行修改，非常方便。</p>
+<p>当本文提及大写的命令如 <code>A</code> 时，实际上是指 <code>Shift</code> + <code>a</code> 的组合键。</p>
+</div>
+        </div>
+    </div>
+<h2 id="退出-vim">退出 Vim</h2>
+<p>网络上流传有这么一个段子：&ldquo;问：如何产生随机字符串？答：让新手退出 Vim。&rdquo;</p>
+<p>退出 Vim 首先要确保处于普通模式，如果不是很确定，可以多按几次 <code>Esc</code>。然后输入 <code>:quit</code> 即可退出 Vim。这个命令可以这样来看，首先键入的 <code>:</code> 使 Vim 进入到命令行模式，而 <code>quit</code> 就是执行的命令。</p>
+<p>可以猜想，如果只是写入文档而不退出（一般编辑器下的&quot;保存&quot;按钮），应当执行 <code>:write</code> ；如果想看某个命令的帮助文档，应该会涉及 <code>:help</code> 命令，实际上的确如此。在普通模式下输入 <code>:help quit</code> 就可以看到相应的帮助文档，其中 <code>:q[uit]</code> 的中括号部分表示可以省略。因此 <code>:quit</code> 可以简写为 <code>:q</code> 。</p>
+<p>如果文档进行了改动，直接运行 <code>:q</code> 会抛出警告，这时需要写入后退出，或者不保存退出。汇总这些相关的命令，如下：</p>
+<ul>
+<li><code>:q</code> &mdash; 退出 Vim （关闭文档）；</li>
+<li><code>:w</code> &mdash; 写入（保存）文档但不退出；</li>
+<li><code>:wq</code> &mdash; 保存并关闭当前文档；</li>
+<li><code>:q!</code> &mdash; 忽略所有更改并关闭当前文档。</li>
+</ul>
+<h2 id="移动光标">移动光标</h2>
+<p>移动光标需要在普通模式下进行，用于浏览文档或为编辑做准备。</p>
+<h3 id="基本移动">基本移动</h3>
+<p>普通模式下，光标移动可以通过以下按键实现：</p>
+<ul>
+<li><code>h</code> &mdash; 左移一个字符；</li>
+<li><code>j</code> &mdash; 下移一行；</li>
+<li><code>k</code> &mdash; 上已一行；</li>
+<li><code>l</code> &mdash; 右移一个字符；</li>
+<li><code>0</code> &mdash; 移动到本行开头；</li>
+<li><code>$</code> &mdash; 移动到本行末尾；</li>
+<li><code>gg</code> &mdash; 移动到文档首行开头；</li>
+<li><code>G</code> &mdash; 移动到文档最后一行开头。</li>
+</ul>
+<p>Vim 的命令在执行前可以指定重复次数，例如下移15行可以使用 <code>15j</code> 来完成。特别地，在 <code>G</code> 之前指定数字可以跳转到指定行。为了在 Vim 中显示行号，可以在普通模式下执行 <code>:set number</code> 。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>技巧<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">当文档单行内容过长而 Vim 的 <code>wrap</code> 设置被启用（默认启用）时，过长的文字会在屏幕内自动换行，但这并不是真正的换行。Vim 默认的 <code>j</code> 命令是对实际行进行操作，遇到这种情况时难免会出乎我们的期望，因此可以使用 <code>gj</code> 和 <code>gk</code> 进行屏幕行的跳转。</div>
+        </div>
+    </div>
+<p>为了默认使用屏幕行的跳转，我们会将 <code>j</code> 与 <code>gj</code> 的功能互换，可以在配置文件 <code>.vimrc</code> 中添加以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="基于单词的移动">基于单词的移动</h3>
+<p>比普通模式更快地，Vim 可以基于单词进行移动，主要命令如下：</p>
+<ul>
+<li><code>w</code> &mdash; 移动到下一个单词开头（word）；</li>
+<li><code>e</code> &mdash; 移动到当前单词结尾（end）；</li>
+<li><code>b</code> &mdash; 向前移动到单词开头（backward）；</li>
+<li><code>ge</code> &mdash; 向前移动到单词结尾；</li>
+<li><code>W</code> &mdash; 移动到下一个字符串开头；</li>
+<li><code>E</code> &mdash; 移动到下一个字符串结尾；</li>
+<li><code>B</code> &mdash; 向前移动到字符串开头；</li>
+<li><code>gE</code> &mdash; 向前移动到字符串结尾。</li>
+</ul>
+<p>对比可以发现，小写命令针对单词，而大写命令针对的是字符串，两者的区别在于对特殊字符的处理方式：单词认为 <code>'</code> 是单词之间的分割，而字符串则严格以空格作为分割。例如 <code>let's go</code> 这个短语会被 Vim 解读成 4 个单词或 2个字符串。</p>
+<h3 id="基于查找的移动">基于查找的移动</h3>
+<p>Vim 可以使用 <code>f</code> 对行内的单个字符进行查找，结合 <code>;</code> 向后继续查找，当跳转过头时使用 <code>,</code> 向前查找。同样，也可以使用 <code>/</code> 对字符串进行查找，使用 <code>n</code> 或 <code>N</code> 分别向后、向前继续查找。</p>
+<p>我们用下面的一个例子来对比各种移动光标的方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">The quick brown fox jumps over the lazy dog.
+</code></pre></td></tr></table>
+</div>
+</div><p>假设现在光标处于这段话的开头，现在希望将光标跳转到 <code>over</code> 的开头，有这么几种做法：</p>
+<ul>
+<li><code>wwwww</code> &mdash; 所见即所得，只要不觉得麻烦就可以达到效果；</li>
+<li><code>5w</code> &mdash; 与上一个命令等价，虽然按键少了，但需要一定的计算；</li>
+<li><code>fo;;</code> &mdash; 首先 <code>fo</code> 指定了对字符 <code>o</code> 的查找，光标跳转到 <code>brown</code> 的中间，然后继续查找两次达成目标；</li>
+<li><code>fvh</code> &mdash; 对 <code>v</code> 进行查找，然后向左移动一个字符；</li>
+<li><code>/over&lt;Enter&gt;</code> &mdash; 对字符串 <code>over</code> 进行查找并跳转（其中 <code>&lt;Enter&gt;</code> 表示按回车键）。</li>
+</ul>
+<p>对比这几种方法，第一种最直观，但是当句子特别长时跳转很慢；第二种虽然看起来简单，但数数的功夫容易得不偿失，也很少使用；第三种方法应该说是最常用也是最容易被人接受的，当句子较长时能够获得比较快的跳转速度；第四种是第三种的高阶用法，查找不常出现的字符以提高跳转速度；最后一种单次使用时输入较为复杂，通常结合替换使用。</p>
+<h3 id="其他跳转方法">其他跳转方法</h3>
+<p><code>%</code> 可以用于配对符号之间的跳转，例如在 <code>(</code> 处按 <code>%</code> 可以跳转到相应的 <code>)</code>，这个功能特别适合对代码进行检查。</p>
+<p><code>m</code> 和 <code>`</code> 构成标记（mark）&mdash;&mdash;跳转对。例如， <code>ma</code> 将当前位置标记为 <code>a</code> ，普通模式下使用 <code>`a</code> 就可以跳转到刚刚标记的位置。需要说明的是，标记只能是单个字符，并且区分大小写；单个文档可以存在多个标记。</p>
+<h2 id="选定范围">选定范围</h2>
+<p>类比于英语中动词可以分为及物动词和不及物动词，Vim 中有些命令可以直接执行，例如 <code>j</code> 就是下移一行；也有些命令需要指定作用范围，这里我们以删除命令 <code>d</code>
+（delete）为例进行说明。</p>
+<p>为了执行删除操作，按下 <code>d</code> 之后还应当给定删除范围。前面介绍跳转的时候说过 <code>w</code> 是从当前位置到下一个单词开头，确切地表明了范围。因此 <code>dw</code> 就是从当前位置删除到下一个单词的开头。类似地， <code>d2w</code> 就是从当前位置删除到后面第三个单词的开头（删除两个单词）、 <code>d$</code> 从当前位置删除到本行结尾。</p>
+<p>如果光标处于某个想删除的单词的中间，而使用 <code>dw</code> 删除时，光标之前部分不会被删除。为此，Vim 还提供了 <code>a</code> 和 <code>i</code> 这两个修饰词（可以理解为 around 和 inside）来进一步修饰范围， <code>a</code> 可以将选区扩展到光标两边，包括限定词； <code>i</code> 将选区扩展到两边，但是不包括限定词。例如， <code>daw</code> 将删除整个单词以及后面的一个空格，不管光标处于单词的哪个位置。使用 <code>a</code> 或 <code>i</code> 进行修饰时，除了使用 <code>w</code> 设定范围外，还可以使用配对符号进行扩展。例如，当光标处于某一对括号内部任意位置，使用 <code>da)</code> 可以删除整个括号内的内容，并连同括号一起删除。</p>
+<p>特别地，Vim 的一些命令重复按两次表示对当前行进行操作，如 <code>dd</code> 为删除当前行。</p>
+<p>除了使用命令划定范围外，与普通编辑器相同，可以先选定范围再执行操作。按 <code>v</code> 进入 Vim 的可视模式（visual mode），然后再利用前面介绍的各种跳转命令，可以发现光标遍历的位置高亮，这时候再执行 <code>d</code> 即可删除高亮选区。特别地， <code>V</code> 直接对整行进行选取。</p>
+<p>组合键 <code>Ctrl</code> + <code>v</code> 在 Vim 中不再是粘贴，在普通模式下使用该组合键可以进入 Vim 的块选取模式，对应通常编辑器的列编辑功能，能够同时对多行进行相同的修改。</p>
+<h2 id="编辑文档">编辑文档</h2>
+<h3 id="在普通模式进行少量修改">在普通模式进行少量修改</h3>
+<p>在普通模式下可以对文档进行部分删除和简单的替换工作，常用有：</p>
+<ul>
+<li><code>x</code> &mdash; 删除当前字符；</li>
+<li><code>r</code> &mdash; 使用另一个字符替换当前字符（replace），例如 <code>re</code> 是将光标下的字符替换为 <code>e</code> ；</li>
+<li><code>d</code> &mdash; 删除操作，在上面已经讨论，不再赘述；</li>
+<li><code>.</code> &mdash; 重复上一次操作。</li>
+</ul>
+<h3 id="从插入模式编辑文档">从插入模式编辑文档</h3>
+<p>编辑文档最主要的方式是进入编辑模式，像普通编辑器一样编辑文档。Vim 提供以下基本的方式进入插入模式：</p>
+<ul>
+<li><code>i</code> &mdash; 从当前光标之前进入插入模式（insert）；</li>
+<li><code>I</code> &mdash; 从当前行（或可选模式下的选区）之前进入插入模式；</li>
+<li><code>a</code> &mdash; 从当前光标之后进入插入模式（append）；</li>
+<li><code>A</code> &mdash; 从当前行（或可选模式下的选区）之后进入插入模式；</li>
+<li><code>o</code> &mdash; 向下插入新行并进入插入模式；</li>
+<li><code>O</code> &mdash; 向上插入新行并进入插入模式；</li>
+<li><code>s</code> &mdash; 删除当前字符并进入插入模式；</li>
+<li><code>S</code> &mdash; 删除当前行并进入插入模式。</li>
+</ul>
+<p>Vim 还可以使用 <code>c</code> 命令进行更改（change），例如 <code>caw</code> 表示删除当前的单词并进入插入模式。这种方法在修改程序时非常有效，例如修改字符串变量 <code>sys_name = &quot;Windows 10&quot;</code> 时，将光标移至双引号内部任意位置，使用 <code>ci&quot;</code> 即可删除字符串变量的值并进行修改。</p>
+<h3 id="搜索与替换">搜索与替换</h3>
+<p>前面介绍了 <code>/</code> 进行搜索，而替换则需要结合命令行 <code>:s</code> 实现（substitute）,例如将 <code>old</code> 替换为 <code>new</code> ，有以下几种不同的方式：</p>
+<ul>
+<li><code>:s/old/new</code> &mdash; 从光标之后对当前行进行搜索，将第一个 <code>old</code> 替换为 <code>new</code>；</li>
+<li><code>:s/old/new/g</code> &mdash; 从光标之后对当前行进行搜索，将所有 <code>old</code> 替换为 <code>new</code>；</li>
+<li><code>:%s/old/new/g</code> &mdash; 对全文进行搜索，将所有 <code>old</code> 替换为 <code>new</code>；</li>
+<li><code>:%s/old/new/gc</code> &mdash; 对全文进行搜索，将所有 <code>old</code> 替换为 <code>new</code>，并在执行前进行确认。</li>
+</ul>
+<h3 id="进行简单的计算">进行简单的计算</h3>
+<p>在普通模式使用组合键 <code>Ctrl</code> + <code>a</code> 可以对光标下的数字加一，而使用 <code>Ctrl</code> + <code>x</code> 则进行减一操作。当光标不处于数字上，Vim 会自动从光标之后搜索当前行的第一个数字，执行相应操作。同样地，这种方式可以指定次数运行，例如 <code>10&lt;Ctrl&gt;a</code> 是将当前数字加 10 。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>应当注意，<code>Ctrl</code> + <code>a</code> 和 <code>Ctrl</code> + <code>x</code> 都是针对单词的操作，因此小数将以小数点分界，作为两个整数来对待。</p>
+<p>如果数字以 0 开头，Vim 默认将其解释为八进制，因此对 007 进行 <code>&lt;Ctrl&gt;a</code> 命令后，得到的是 010 而不是 008。为了只使用十进制，可以在配置文件 <code>.vimrc</code> 中添加 <code>set nrformats=</code> 进行设置。</p>
+</div>
+        </div>
+    </div>
+<p>在插入模式中，可以使用 <code>Ctrl</code> + <code>r</code> + <code>=</code> 触发计算功能，输入计算表达式后，按 <code>Enter</code> 即可将计算结果输出到当前位置。例如 <code>&lt;Ctrl&gt;r=1+1&lt;Enter&gt;</code> 将会输入 2 。</p>
+<h2 id="寄存器简介">寄存器简介</h2>
+<p>Vim 提供多种寄存器，用于储存复制或删除的内容。寄存器可以通过 <code>&quot;</code> 进行引用，有以下几种常见寄存器：</p>
+<ul>
+<li><code>[a-z]</code> &mdash; 有名寄存器，用于各种自定义内容；</li>
+<li><code>&quot;</code> &mdash; 无名寄存器，不指定寄存器时默认使用该寄存器；</li>
+<li><code>0</code> &mdash; 复制专用寄存器（书里这么写的，我也不知道为啥要起这个名字，实际上复制不一定非要用这个）；</li>
+<li><code>+</code> &mdash; 系统剪切板，用于系统级的复制粘贴；</li>
+<li><code>_</code> &mdash; 黑洞寄存器，所有在这里的东西都丢失，彻彻底底地删除；</li>
+<li><code>=</code> &mdash; 表达式寄存器，可以用于计算；</li>
+<li><code>%</code> &mdash; 当前文件名。</li>
+</ul>
+<p>还有一些其他寄存器，这里不多赘述。</p>
+<h3 id="复制与粘贴">复制与粘贴</h3>
+<p>以复制粘贴这个经典的例子来介绍寄存器的使用。</p>
+<p>复制可以使用 <code>y</code> 来实现（yank），而粘贴使用 <code>p</code> 完成（paste）。复制时需要指定范围，可以用限定词来指定，如 <code>yaw</code> 为复制当前单词；也可以用可视模式进行选择。<code>p</code>
+默认将内容粘贴在光标之后（Vim 会自动判断是否换行），也可用 <code>P</code> 粘贴在之前，或使用可视模式进行选择替换。特别地， <code>yy</code> 将对当前行进行复制。</p>
+<p>上面这种直接复制的方法没有指定寄存器，默认使用无名寄存器 <code>&quot;</code>,即 <code>yy</code> 命令等价于 <code>&quot;&quot;yy</code> （第一个 <code>&quot;</code> 表示使用寄存器，第二个 <code>&quot;</code> 表示使用无名寄存器）。使用无名寄存器容易导致复制的内容丢失，我们看下面一个例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">1) 使用 `yy` 命令复制本行；
+2) 使用 `dd` 命令删除本行；
+3）尝试在此使用 `p` 命令将第一行内容粘贴到本行之下。
+</code></pre></td></tr></table>
+</div>
+</div><p>如果按照上面的提示做，会发现最后粘贴的是第二行的内容。这是因为第二行使用 <code>dd</code> 删除的内容并没有真正的删除，而是以剪切的方式储存在寄存器内，而前面的 <code>yy</code> 和这里的 <code>dd</code> 均没有显式指定寄存器，所有都使用的是无名寄存器。无名寄存器第一次复制的内容被第二次删除的内容覆盖，因此粘贴时读取的无名寄存器是第二行内容。</p>
+<p>为此，可以改变操作顺序，如先删除，后复制。也可以使用显式指定其他寄存器以避免内容覆盖，例如可以使用 <code>&quot;0yy</code> 和 <code>&quot;0p</code> 进行复制粘贴；或者可以将删除内容放置到其他寄存器如 <code>&quot;_dd</code> 。</p>
+<p>可以同时使用多个寄存器，例如复制帐号和密码时，可以使用 <code>&quot;ay</code> 将帐号复制到寄存器 <code>a</code> ，而使用 <code>“by</code> 将密码复制到寄存器 <code>b</code>。粘贴分别使用 <code>&quot;ap</code> 和 <code>&quot;bp</code> 即可。</p>
+<p>上述的粘贴是在普通模式进行，为了在插入模式直接读取寄存器内容，可以使用 <code>Ctrl</code> + <code>r</code> 组合键，指定寄存器后即可将内容粘贴到正文。</p>
+<p>忘记寄存器内容时，可以使用 <code>:reg</code> 命令进行查看。</p>
+<h3 id="宏的录制与回放">宏的录制与回放</h3>
+<p>寄存器中还可以保存命令（宏），并在特定的时候执行（回放）。普通模式下按 <code>q</code> 并指定寄存器即可开启宏的录制，再次按 <code>q</code> 即停止录制。在使用寄存器内保存的宏时，使用 <code>@</code> 和寄存器名即可。</p>
+<p>例如，如果要在 Markdown 中使用 <kbd>Enter</kbd> 这样的键盘样式，需要输入指令 <code>&lt;kbd&gt;Enter&lt;/kbd&gt;</code>，非常麻烦。因此可以录制一个宏，自动在单词两边分别添加 <code>&lt;kbd&gt;</code> 和<code>&lt;/kbd&gt;</code> 。假如我将这个宏录制到寄存器 <code>k</code>，具体步骤如下：</p>
+<ol>
+<li>普通模式下将光标移动到需要添加键盘样式的单词处；</li>
+<li>键入 <code>qk</code> 开始录制宏，并指定将宏录制到有名寄存器 <code>k</code>；</li>
+<li>使用 <code>ciw</code> 删除当前单词并保留两边的空格，进入插入模式，输入前缀 <code>&lt;kbd&gt;</code>；</li>
+<li>在插入模式中使用<code>&lt;Ctrl&gt;r&quot;</code> 读取无名寄存器的内容，即上一步删除的单词，然后输入后缀 <code>&lt;/kbd&gt;</code>；</li>
+<li>按 <code>Esc</code> 返回普通模式，按 <code>q</code> 停止录制。</li>
+</ol>
+<p>如此做，只需要在另一个需要添加键盘样式的单词处使用 <code>@k</code> 即可调用宏。使用 <code>@</code> 回放宏的时候，也可以像普通命令一样指定次数。一个经典的例子就是在各行前面添加行号，需要结合一定的脚本，使用以下方式实现：</p>
+<ol>
+<li>在命令行运行 <code>:let i=1</code> 设定行号初值，并将光标移动到需要编号的那一行；</li>
+<li>使用 <code>qq</code> 开始录制宏，并将其录制到寄存器 <code>q</code>；</li>
+<li>使用 <code>I\&lt;Ctrl&gt;r=i\&lt;Enter&gt;)</code> 将变量 <code>i</code> 的值插入到行的最前面，并添加 <code>)</code> 进行修饰；</li>
+<li>按 <code>Esc</code> 回到普通模式，运行 <code>:let i+=1`` 进行递归，然后按 </code>j` 换行；</li>
+<li>按 <code>q</code> 停止宏录制，然后使用 <code>22@q&gt;</code> 将宏重复 22 次（<code>2</code> 与 <code>@</code>在同一个键位，用起来方便而已）。</li>
+</ol>
+<p>当行数不足以满足指定的重复次数时，Vim 会自动停止回放宏，因此无需担心指定次数不准确的问题。</p>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li>Neil D. Vim实用技巧. 杨源, 车文隆, 译. 人民邮电出版社, 2014.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-08-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/vim/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/vim/">Vim</a>,&nbsp;<a href="/tags/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">文本编辑器</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/gennoise/" class="prev" rel="prev" title="产生任意谱密度的噪声"><i class="fas fa-angle-left fa-fw"></i>产生任意谱密度的噪声</a>
+            <a href="/kalmanfilter/" class="next" rel="next" title="卡尔曼滤波简介">卡尔曼滤波简介<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

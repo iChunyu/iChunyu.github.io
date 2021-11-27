@@ -1,0 +1,80 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>某春雨的后花园</title>
+        <link>https://ichunyu.github.io/</link>
+        <description>Looking to the future...</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 26 Nov 2021 21:39:17 &#43;0800</lastBuildDate>
+            <atom:link href="https://ichunyu.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>模型预测控制简介</title>
+    <link>https://ichunyu.github.io/modelpreditivecontrol/</link>
+    <pubDate>Fri, 26 Nov 2021 21:39:17 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/modelpreditivecontrol/</guid>
+    <description><![CDATA[<p>最近在 DR_CAN 的视频中学到了模型预测控制，于是打算写篇博客记记笔记，权当公式推导的练习。</p>]]></description>
+</item><item>
+    <title>卡尔曼滤波简介</title>
+    <link>https://ichunyu.github.io/kalmanfilter/</link>
+    <pubDate>Thu, 19 Aug 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/kalmanfilter/</guid>
+    <description><![CDATA[<p>卡尔曼滤波是一种最优滤波器，通过对系统的输入和输出进行数据融合来获得状态的最优估计。本文介绍卡尔曼滤波的基本原理并推导其核心公式。</p>]]></description>
+</item><item>
+    <title>Vim 简介</title>
+    <link>https://ichunyu.github.io/vim/</link>
+    <pubDate>Tue, 10 Aug 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/vim/</guid>
+    <description><![CDATA[<p>最近有兴趣折腾了一下 Vim，不免对这个上古神器的强大感到震撼。这篇文章简要记录下基本操作，只能说是冰山一角。</p>]]></description>
+</item><item>
+    <title>产生任意谱密度的噪声</title>
+    <link>https://ichunyu.github.io/gennoise/</link>
+    <pubDate>Tue, 03 Aug 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/gennoise/</guid>
+    <description><![CDATA[<p>在系统仿真中通常使用噪声滤波器对白噪声进行塑形，从而验证色噪声对系统性能的影响。然而通常滤波器的阶次是整数，难以实现诸如 $1/f^\alpha , (0&lt; \alpha &lt;2)$ 分数阶次的粉红噪声。为此，我们可以在仿真之前利用傅立叶逆变换把噪声造出来，然后引入模型进行仿真。本文将介绍构造噪声的方法。</p>]]></description>
+</item><item>
+    <title>日常小技巧</title>
+    <link>https://ichunyu.github.io/tricks/</link>
+    <pubDate>Sat, 10 Jul 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/tricks/</guid>
+    <description><![CDATA[<p>一些不常用但是可能有用的小技巧，或许会不定时更新吧。</p>]]></description>
+</item><item>
+    <title>抗饱和积分</title>
+    <link>https://ichunyu.github.io/integratorantiwindup/</link>
+    <pubDate>Sat, 19 Jun 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/integratorantiwindup/</guid>
+    <description><![CDATA[<p>对于实际的系统，控制器的输出应当受到幅度限制，以避免超出执行机的量程。然而，在具有积分的控制器中如果仅对输出进行限幅，将会引起所谓的退饱和现象，使控制器的性能变差甚至导致系统不稳定。这回我们来谈谈抗饱和积分器。</p>]]></description>
+</item><item>
+    <title>信号的滤波</title>
+    <link>https://ichunyu.github.io/filterdesign/</link>
+    <pubDate>Wed, 02 Jun 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/filterdesign/</guid>
+    <description><![CDATA[<p>线性系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有完善的工具包对常用线性滤波器进行设计，本文简要介绍这些函数及其用法。</p>]]></description>
+</item><item>
+    <title>信号的微分</title>
+    <link>https://ichunyu.github.io/diffsignal/</link>
+    <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/diffsignal/</guid>
+    <description><![CDATA[<p>数字信号处理中经常会用到微分，典型的例子就是数字 PID 控制器中的微分环节。然而理想的微分是不存在的，即使存在，其对高频噪声的放大也约束了它的实际应用。这篇文章我们将讨论并对比一些常见的微分算法。</p>]]></description>
+</item><item>
+    <title>Manjaro 安装</title>
+    <link>https://ichunyu.github.io/manjaro/</link>
+    <pubDate>Wed, 12 May 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/manjaro/</guid>
+    <description><![CDATA[<p>尝试过 Debian 系的 deepin、Ubuntu 和它的衍生版 Pop!_OS，都被各种各样的 Bug 劝退。后来尝试了 Arch 系的 Manjaro，唔，这真的是一款非常令人舒适的 Linux 发行版！来跟我一起折腾吧！</p>]]></description>
+</item><item>
+    <title>reStructuredText 简介</title>
+    <link>https://ichunyu.github.io/restructuredtext/</link>
+    <pubDate>Tue, 13 Apr 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/restructuredtext/</guid>
+    <description><![CDATA[<p>reStructuredText 是一个不同于 Markdown 的文本标记语言，通常结合 Sphinx 构建静态网站，特别适合帮助类文档的编写。这篇文章简要介绍其基本用法。</p>]]></description>
+</item></channel>
+</rss>

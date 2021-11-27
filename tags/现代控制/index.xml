@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>现代控制 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6/</link>
+        <description>现代控制 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 15 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6/" rel="self" type="application/rss+xml" /><item>
+    <title>鲁棒跟踪控制</title>
+    <link>https://ichunyu.github.io/robusttracking/</link>
+    <pubDate>Sat, 15 Aug 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/robusttracking/</guid>
+    <description><![CDATA[<p>对于被引入到系统的参考信号，如果其特征是已知的，还可以采用所谓的鲁棒跟踪控制进一步提高系统对该类信号的跟踪能力。本文将介绍这种方法的设计。</p>]]></description>
+</item><item>
+    <title>现代控制理论（5）：参考信号的引入</title>
+    <link>https://ichunyu.github.io/mc05-reference/</link>
+    <pubDate>Sat, 08 Aug 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/mc05-reference/</guid>
+    <description><![CDATA[<p>调节器只能将系统的各状态拉回到零位，而控制系统的根本目的是使被控对象的输出跟随参考信号，因此在调节器设计完成的基础上，还需要正确地引入参考信号。本文介绍三种常用的方式将参考信号引入到控制系统。</p>]]></description>
+</item><item>
+    <title>现代控制理论（3）：状态估计</title>
+    <link>https://ichunyu.github.io/mc03-stateestimator/</link>
+    <pubDate>Sat, 11 Jul 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/mc03-stateestimator/</guid>
+    <description><![CDATA[<p>现代控制讲究状态反馈，然而系统的状态不一定是直接测得的，这就需要用到本文介绍的状态估计器进行状态估计。</p>]]></description>
+</item><item>
+    <title>现代控制理论（2）：状态反馈</title>
+    <link>https://ichunyu.github.io/mc02-statefeedback/</link>
+    <pubDate>Wed, 08 Jul 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/mc02-statefeedback/</guid>
+    <description><![CDATA[<p>状态反馈是现代控制理论的基础，本文分析其基本原理，并介绍主导极点法和 LQR 设计法两种参数设计方法。</p>]]></description>
+</item><item>
+    <title>现代控制理论（1）：系统的描述</title>
+    <link>https://ichunyu.github.io/mc01-sysdiscription/</link>
+    <pubDate>Mon, 06 Jul 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/mc01-sysdiscription/</guid>
+    <description><![CDATA[<p>系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。</p>]]></description>
+</item></channel>
+</rss>

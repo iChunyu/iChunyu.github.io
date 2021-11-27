@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>生命在于折腾 - 分类 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/</link>
+        <description>生命在于折腾 - 分类 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 10 Aug 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/" rel="self" type="application/rss+xml" /><item>
+    <title>Vim 简介</title>
+    <link>https://ichunyu.github.io/vim/</link>
+    <pubDate>Tue, 10 Aug 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/vim/</guid>
+    <description><![CDATA[<p>最近有兴趣折腾了一下 Vim，不免对这个上古神器的强大感到震撼。这篇文章简要记录下基本操作，只能说是冰山一角。</p>]]></description>
+</item><item>
+    <title>日常小技巧</title>
+    <link>https://ichunyu.github.io/tricks/</link>
+    <pubDate>Sat, 10 Jul 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/tricks/</guid>
+    <description><![CDATA[<p>一些不常用但是可能有用的小技巧，或许会不定时更新吧。</p>]]></description>
+</item><item>
+    <title>Manjaro 安装</title>
+    <link>https://ichunyu.github.io/manjaro/</link>
+    <pubDate>Wed, 12 May 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/manjaro/</guid>
+    <description><![CDATA[<p>尝试过 Debian 系的 deepin、Ubuntu 和它的衍生版 Pop!_OS，都被各种各样的 Bug 劝退。后来尝试了 Arch 系的 Manjaro，唔，这真的是一款非常令人舒适的 Linux 发行版！来跟我一起折腾吧！</p>]]></description>
+</item><item>
+    <title>reStructuredText 简介</title>
+    <link>https://ichunyu.github.io/restructuredtext/</link>
+    <pubDate>Tue, 13 Apr 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/restructuredtext/</guid>
+    <description><![CDATA[<p>reStructuredText 是一个不同于 Markdown 的文本标记语言，通常结合 Sphinx 构建静态网站，特别适合帮助类文档的编写。这篇文章简要介绍其基本用法。</p>]]></description>
+</item><item>
+    <title>Sphinx 搭建博客</title>
+    <link>https://ichunyu.github.io/sphinx/</link>
+    <pubDate>Fri, 09 Apr 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/sphinx/</guid>
+    <description><![CDATA[<p>Sphinx 是一个静态网页生成工具，可以将 reStructuredText 转化为静态网站，特别适合教程、说明等文档的编写。本文介绍如何基于此部署自己的博客。</p>]]></description>
+</item></channel>
+</rss>

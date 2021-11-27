@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Git - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/git/</link>
+        <description>Git - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 30 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Git 版本控制</title>
+    <link>https://ichunyu.github.io/learngit/</link>
+    <pubDate>Sat, 30 May 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/learngit/</guid>
+    <description><![CDATA[<p>Git 是一个专业的版本控制软件，既可以管理个人文档，也可以进行团队协作。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。</p>]]></description>
+</item></channel>
+</rss>

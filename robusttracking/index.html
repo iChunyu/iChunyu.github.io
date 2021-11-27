@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">鲁棒跟踪控制 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="鲁棒跟踪控制" />
+<meta property="og:description" content="对于被引入到系统的参考信号，如果其特征是已知的，还可以采用所谓的鲁棒跟踪控制进一步提高系统对该类信号的跟踪能力。本文将介绍这种方法的设计。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/robusttracking/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-08-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-15T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="鲁棒跟踪控制"/>
+<meta name="twitter:description" content="对于被引入到系统的参考信号，如果其特征是已知的，还可以采用所谓的鲁棒跟踪控制进一步提高系统对该类信号的跟踪能力。本文将介绍这种方法的设计。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/robusttracking/" /><link rel="prev" href="https://ichunyu.github.io/mc05-reference/" /><link rel="next" href="https://ichunyu.github.io/orthogonalprojection/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "鲁棒跟踪控制",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/robusttracking\/"
+        },"genre": "posts","keywords": "鲁棒跟踪, 现代控制","wordcount":  1271 ,
+        "url": "https:\/\/ichunyu.github.io\/robusttracking\/","datePublished": "2020-08-15T00:00:00+00:00","dateModified": "2020-08-15T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">鲁棒跟踪控制</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-15">2020-08-15</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-08-15">2020-08-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1271 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#参考信号特征">参考信号特征</a></li>
+    <li><a href="#扩展控制律">扩展控制律</a></li>
+    <li><a href="#扩展状态估计器">扩展状态估计器</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>对于被引入到系统的参考信号，如果其特征是已知的，还可以采用所谓的鲁棒跟踪控制进一步提高系统对该类信号的跟踪能力。本文将介绍这种方法的设计。</p>
+<h2 id="参考信号特征">参考信号特征</h2>
+<p>参考信号的特征可以用一定的微分方程进行描述。例如直流信号可以不失一般性地描述为 $\dot{r}=0$；而正弦信号可以参考弹簧-刚度系统的描述；如果参考信号为
+$\omega_1$ 和 $\omega_2$ 两个正弦信号的叠加，它的微分方程可选为</p>
+$$r^{(4)}+(\omega_1^2+\omega_2^2)r^{(2)} + \omega_1^2\omega_2^2 =0$$
+<p>用于描述信号特征的微分方程有很多，依信号类型而不同。本文以一个二阶信号为例，假设输入的参考信号满足微分方程</p>
+$$\ddot{r} + \alpha_1 \dot{r} +\alpha_0 r = 0$$
+<p>根据该微分方程，可以对控制律或这状态估计器进行扩展，从而实现鲁棒跟踪控制（Robust Tracking Control）。</p>
+<h2 id="扩展控制律">扩展控制律</h2>
+<p>设被控对象的状态空间表述为</p>
+$$
+\left\{
+\begin{aligned}
+\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
+y &= C \mathbf{x}
+\end{aligned}
+\right.
+$$
+<p>定义跟踪误差 $e=y-r$ 。将其代入参考信号的微分方程，有</p>
+$$
+\begin{aligned}
+\ddot e + {\alpha _1}\dot e + {\alpha _0}e &= \ddot y + {\alpha _1}\dot y + {\alpha _0}y \\ 
+&= {C}\left( {\ddot{\mathbf{x}} + {\alpha_1}\dot{\mathbf{x}} + {\alpha _0}{\mathbf{x}}} \right) \\ 
+&= {C\mathbf{\xi }} \\ 
+\end{aligned}
+$$
+<p>这里定义了 $\xi={\ddot{\mathbf{x}} + {\alpha_1}\dot{\mathbf{x}} + {\alpha _0}{\mathbf{x}}}$，考察它的动态，有</p>
+$$
+\begin{aligned}
+\dot{\xi} &= \frac{\mathrm{d}}{\mathrm{d}t} \left( \ddot{\mathbf{x}} + \alpha_1 \dot{\mathbf{x}} +\alpha_0 \mathbf{x}\right) \\
+&= \frac{\mathrm{d}^2}{\mathrm{d}t^2}  \dot{\mathbf{x}} + \alpha_1 \frac{\mathrm{d}}{\mathrm{d}t} \dot{\mathbf{x}} + \dot{\mathbf{x}} \\
+&=A\left( \ddot{\mathbf{x}} + \alpha_1 \dot{\mathbf{x}} +\alpha_0 \mathbf{x}\right)
++ B \left( \ddot{u} + \alpha_1 \dot{u} +\alpha_0 u\right) \\
+&= A \xi + B \mu
+\end{aligned}
+$$
+<p>同样补充定义了 $\mu  = \ddot u + \alpha \dot u + \alpha_0 u$ 。</p>
+<p>综上，利用误差和扩展的状态量构造误差空间（Error Space）</p>
+$$
+{\mathbf{\dot z}} = {{ A}_z}{\mathbf{z}} + {{B}_z}\mu =
+\begin{bmatrix}
+0&1&{0}\\\
+{ - {\alpha _0}}&{ - {\alpha _1}}&{C}\\\
+{0}&{0}&{ A}
+\end{bmatrix}
+\left[
+\begin{array}{c}
+e \\ \dot{e} \\ \xi
+\end{array} \right]
++ \begin{bmatrix}
+0\\\
+0\\\
+{B}
+\end{bmatrix} \mu
+$$
+<p>取状态反馈为 $\mu = - {{K}_z}{\mathbf{z}} = - \begin{bmatrix} {{K_{e0}}}&{{K_{e1}}}&{{{K}_x}} \end{bmatrix}\mathbf{z}$，当上述误差收敛时，由于跟踪误差为零，系统的输出将跟随输入。</p>
+<p>为了实现上述控制器，需要从 $\mu$ 中求解系统输入 $u$ ，这可以从 $\mu$ 的定义中获得</p>
+$$
+\begin{gathered}
+\ddot u + {\alpha _1}\dot u + {\alpha _0}u =  - {{K}_z}{\mathbf{z}} =  - {K_{e0}}e - {K_{e1}}\dot e - {K}_x\left( \ddot{\mathbf{x}} + {\alpha _1}\dot{\mathbf{x}} + {\alpha _0}{\mathbf{x}} \right) \\ 
+\Updownarrow  \\ 
+\frac{{{{\text{d}}^2}}}{{{\text{d}}{t^2}}}\left( {u + {{K}_x}{\mathbf{x}}} \right) + {\alpha _1}\frac{{\text{d}}}{{{\text{d}}t}}\left( {u + {{K}_x}{\mathbf{x}}} \right) + {\alpha _0}\left( {u + {{K}_x}{\mathbf{x}}} \right) =  - {K_{e0}}e - {K_{e1}}\dot e \\ 
+\Downarrow  \\ 
+e \to u + {{K}_x}{\mathbf{x}}:\quad H(s) =  - \frac{{{K_{e1}}s + {K_{e0}}}}{{{s^2} + {\alpha _1}s + {\alpha _0}}} \\ 
+\end{gathered}
+$$
+<p>利用微分方程的实现手段（传递函数或状态空间的标准实现），根据 $e$ 求解 $u + {{K}_x}{\mathbf{x}}$ ，然后与 ${{K}_x}{\mathbf{x}}$ 相减即可得到系统的输入信号 $u$ 。这种方法可以看作是对控制律的扩展，而状态估计器与一般的估计器并无大异，可以将这种方法命名为扩展控制律，其结构如下图所示。</p>
+<div align=center>
+    <img src=tracking1.png width=70% />
+</div>
+<h2 id="扩展状态估计器">扩展状态估计器</h2>
+<p>既然控制律可以利用已知的参考信号动态进行扩展，那么状态估计器也应当能够扩展。我们可以这样想：如果系统的输出与参考之间存在误差，说明系统的输入端存在没有被完全抵消的扰动 $\rho$ ，如果能够对这个扰动进行估计，令 $u=-K\mathbf{x}-\rho$ 就可以在控制器的输出端抵消这个扰动，从而减小跟踪误差。</p>
+<p>从系统的输出向输入看，表现为各微分的组合，当参考信号 $r$ 满足某个微分方程时， $\rho$ 也一定会满足该微分方程，在本例中</p>
+$$\ddot{\rho} + \alpha_1 \dot{\rho} +\alpha_0 \rho = 0$$
+<p>类似扩展控制律，将扰动和系统状态合一起作为扩展状态，状态空间可表述为</p>
+$$
+\left\{ \begin{aligned}
+\mathbf{\dot{z}} &= {{A}_z}{\mathbf{z} + {{B}_z}u = \begin{bmatrix}
+0&1&{\mathbf{0}} \\ 
+{ - {\alpha _0}}&{ - {\alpha _1}}&{\mathbf{0}} \\ 
+{B}&{\mathbf{0}}&{A} 
+\end{bmatrix}\begin{bmatrix}
+\rho  \\ 
+{\dot{\rho} } \\ 
+{\mathbf{x}} 
+\end{bmatrix} + \begin{bmatrix}
+0 \\ 
+0 \\ 
+{B} 
+\end{bmatrix}u{\quad}} \\ 
+y &= {{C}_z}{\mathbf{z} = \begin{bmatrix}
+0&0&{C} 
+\end{bmatrix}{\mathbf{z}}} 
+\end{aligned}\right.
+$$
+<p>其对应的扩展状态估计器为</p>
+$$\dot{\mathbf{\hat{z}}} = {{A}_z}{\mathbf{z}} + {{B}_z}u + {L}_z\left( {y - {{C}_z}{\mathbf{z}}} \right)$$
+<p>利用 ${{A}_z} - {{L}_z}{{C}_z}$ 的特征值设计使扩展状态估计器稳定，最后用 $u=-K\hat{\mathbf{x}} - \hat{\rho}$ 即可完成整个控制器设计。本例中的闭环框图如下，状态估计器相对于普通的状态估计器增加了对扰动的建模，因此称为扩展状态估计器。</p>
+<div align=center>
+    <img src=tracking2.png width=70% />
+</div>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li>G.F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. 2014.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-08-15</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/robusttracking/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E9%B2%81%E6%A3%92%E8%B7%9F%E8%B8%AA/">鲁棒跟踪</a>,&nbsp;<a href="/tags/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6/">现代控制</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mc05-reference/" class="prev" rel="prev" title="现代控制理论（5）：参考信号的引入"><i class="fas fa-angle-left fa-fw"></i>现代控制理论（5）：参考信号的引入</a>
+            <a href="/orthogonalprojection/" class="next" rel="next" title="正交投影——极小化问题的解决方案">正交投影——极小化问题的解决方案<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

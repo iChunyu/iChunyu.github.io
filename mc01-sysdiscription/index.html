@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">现代控制理论（1）：系统的描述 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="现代控制理论（1）：系统的描述" />
+<meta property="og:description" content="系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/mc01-sysdiscription/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.jpeg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-07-06T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.jpeg"/>
+
+<meta name="twitter:title" content="现代控制理论（1）：系统的描述"/>
+<meta name="twitter:description" content="系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.jpeg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://ichunyu.github.io/mc01-sysdiscription/" /><link rel="prev" href="https://ichunyu.github.io/zotero/" /><link rel="next" href="https://ichunyu.github.io/mc02-statefeedback/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "现代控制理论（1）：系统的描述",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/mc01-sysdiscription\/"
+        },"genre": "posts","keywords": "传递函数, 状态空间, 现代控制","wordcount":  1949 ,
+        "url": "https:\/\/ichunyu.github.io\/mc01-sysdiscription\/","datePublished": "2020-07-06T00:00:00+00:00","dateModified": "2020-07-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">现代控制理论（1）：系统的描述</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-06">2020-07-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-07-06">2020-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1949 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#系统的微分方程">系统的微分方程</a></li>
+    <li><a href="#系统的传递函数">系统的传递函数</a></li>
+    <li><a href="#系统的状态空间">系统的状态空间</a></li>
+    <li><a href="#三种描述的对比">三种描述的对比</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。</p>
+<h2 id="系统的微分方程">系统的微分方程</h2>
+<p>由于系统是由元件构成的，而元件的特性通常满足一定的（微分）方程，考虑元件之间的约束后，系统的本质就可以看作是微分方程。以经典的弹簧-质量-阻尼系统为例，如下图所示。</p>
+<div align=center>
+    <img src=mc01.jpg width=70% />
+</div>
+<p>该系统由弹簧、阻尼器、质量三个元件构成，三个元件的特性分别由以下方程进行描述：</p>
+<ul>
+<li>弹簧满足胡克定律： $F_k = -kx$</li>
+<li>阻尼与速度成正比： $F_c = -cv = -c \dot{x}$</li>
+<li>质量满足牛顿定律： $F_m = ma = m \ddot{x}$</li>
+</ul>
+<p>元件与输入之间的联系可以考虑为质量块力的合成： $F_m = F+F_k+F_c$</p>
+<p>综合元件特性与相互联系后，该系统的微分方程为：</p>
+$$m \ddot{x} + c \dot{x} + k x = F$$
+<p>更一般地，设系统的输入为 $u$ ，输出为 $y$，线性系统的微分方程通常可表示为：</p>
+$$y^{(n)} + a_{n-1} y^{(n-1)} + ...+a_1 y' + a_0 = b_m u^{(m)} + b_{m-1} u^{(m-1)} + ...+b_1 u' + b_0$$
+<p>对于实际的系统，上式通常有 $m \le n$ 。</p>
+<h2 id="系统的传递函数">系统的传递函数</h2>
+<p>对于线性微分方程，可以通过所谓的拉普拉斯变换将其转化为频域表达式，拉普拉斯变换的定义为：</p>
+$$X(s) = \int_{-\infty}^{\infty} x(t) \mathrm{e}^{st}\, \mathrm{d}t$$
+<p>根据定义，对系统的微分方程两边同时进行拉普拉斯变换，有：</p>
+$$
+\left( s^{n} + a_{n-1} s^{n-1} + ...+a_1 s + a_0 \right) Y(s)
+= \left( b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0 \right) U(s)
+$$
+<p>如此做，系统的微分方程在形式上变成了关于复变量 $s$ 的代数方程，称系统输出的拉普拉斯变换与输入的拉普拉斯变换之比为传递函数，记为 $H(s)$ ，由上式可得：</p>
+$$H(s) = \frac{b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0}{s^{n} + a_{n-1} s^{n-1} + ...+a_1 s + a_0}$$
+<h2 id="系统的状态空间">系统的状态空间</h2>
+<p>系统的微分方程阶数通常较高而不便于分析，状态空间的思想在于引入状态变量，将一个高阶微分方程转化为多个一阶微分方程。对于线性微分方程，状态变量的数量等于输出变量的最高微分阶数 $n$ ，从技巧上通常可以取输出及其 $n-1$ 次导数作为状态变量。以上述弹簧-质量-阻尼系统为例，输出最高阶数为2，因此需要选择两个状态变量。选取第一个状态变量为输出，即 $x_1 = x$ ，第二个状态变量为输出的一阶导数，即 $x_2=\dot{x}$ ，于是有：</p>
+$$
+\left\{
+\begin{aligned}
+\dot{x}_1 &= x_2 \\
+\dot{x}_2 &= -\frac{k}{m} x_1 -\frac{c}{m}x_2 + \frac{F}{m}
+\end{aligned}
+\right.
+$$
+<p>不失一般性地，将上述表达写成矩阵的形式为：</p>
+$$
+\left\{
+\begin{aligned}
+\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
+y &= C \mathbf{x} + Du
+\end{aligned}
+\right.
+$$
+<p>其中， $\mathbf{x}$ 为系统的状态变量， $A$ 称为系统矩阵， $B$ 为输入矩阵， $C$ 为输出矩阵， $D$ 为直接传输矩阵且通常 $D=0$。就本例而言：</p>
+$$
+A = \begin{bmatrix}
+0 & 1\\
+- \frac{k}{m} & - \frac{c}{m}
+\end{bmatrix},
+\quad
+B = \begin{bmatrix} 0 \\ \frac{1}{m} \end{bmatrix},
+\quad
+C = \begin{bmatrix} 1 & 0 \end{bmatrix}
+$$
+<p>需要说明的是，系统的微分方程和传递函数表达式都是唯一的，而状态空间却不是唯一的，这是由于状态变量的选择不唯一。状态空间有几种标准的形式，将在以后进行讨论。除此之外，状态空间表达并不局限于线性时不变系统，它跟微分方程一样广泛适用于各种系统的描述，状态空间更一般的形式如下，暂不做过多讨论。</p>
+$$
+\left\{ 
+\begin{aligned}
+\dot{\mathbf{x}} &= f(\mathbf{x},\mathbf{u},t)  \\
+y &= h(\mathbf{x},\mathbf{u},t)  \\
+\end{aligned}
+\right.
+$$
+<p>为了说明状态空间方程的求解思路，设系统的状态空间方程为：</p>
+$$
+\left\{
+\begin{aligned}
+\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
+y &= C \mathbf{x}
+\end{aligned}
+\right.
+$$
+<p>设辅助状态变量 $\mathbf{z}$ 满足线性变换 $\mathbf{x}=P\mathbf{z}$（ $P$ 为常矩阵），带入第一个方程，有：</p>
+$$
+P\dot{\mathbf{z}}=AP\mathbf{z}+B\mathbf{u}
+\Rightarrow \dot{\mathbf{z}}=P^{-1}AP\mathbf{z}+P^{-1}B\mathbf{u}
+$$
+<p>选取合适的变换矩阵 $P$ 使得 $P^{-1}AP$ 为矩阵 $A$ 的相似变换，即 $P^{-1}AP$ 为特征值对角矩阵：</p>
+$$
+P^{-1}AP = \begin{bmatrix}
+{{\lambda_1}}&{}&{}&{}\\
+{}&{{\lambda_2}}&{}&{}\\
+{}&{}& \ddots &{}\\
+{}&{}&{}&{{\lambda_n}}
+\end{bmatrix}
+$$
+<p>如此做，关于辅助状态变量 $\mathbf{z}$ 的微分方程组解耦为独立的一阶微分方程：</p>
+$$
+\dot{z}_i = \lambda_i z_i + \tilde{u}_i
+\Rightarrow z_i(t) = C_i \mathrm(e)^{\lambda_i t} + \tilde{z}_i(t)
+$$
+<p>其中， $\tilde{u}_i$ 表示 $P^{-1}B\mathbf{u}$ 的第 $i$ 的分量，其对应的特解为 $\tilde{z}_i(t)$ 。最后代回 $\mathbf{x}=P\mathbf{z}$ 即可得到原状态变量，进而带入输出矩阵解得输出。</p>
+<p>由微分方程的解可以看出，若系统矩阵 $A$ 存在某特征值 $\lambda_i$ 大于零，根据微分方程的通解，系统将存在某一状态量随时间趋于无穷，在实际系统中将是输出饱和，于是说该系统是不稳定的。若系统矩阵的特征值的实部均小于零，通解将收敛到零（若存在虚部，则是震荡收敛），意味着状态变量的初值将收敛，系统的输出由输入控制，称系统是（渐进）稳定的。特别地，若系统的特征值小于等于零，等于零的特征值将对应于某状态的等幅震荡，由于不会导致系统输出发散，因而也可以说系统是（临界）稳定的。对于实际工作的系统，都应当满足渐进稳定。</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">最近 3b1b 在 bilibili 上传的 <a href="https://www.bilibili.com/video/BV11y4y1b7c5" target="_blank" rel="noopener noreffer">e的矩阵指数</a> 视频对应着状态空间的求解，有兴趣的同学可以作为扩展学习。</div>
+        </div>
+    </div>
+<h2 id="三种描述的对比">三种描述的对比</h2>
+<p>微分方程作为系统的本质，适用于各种系统，且对系统的描述是最为详尽的，但其表达不够直观，通常不利于分析问题；传递函数仅适用于线性时不变系统，但其计算简单，直接在频域建模，能够直观表达系统的频率特性（主要指幅频响应和相频响应），但传递函数没有指明系统的状态变量，在基于传递函数建模的仿真系统中通常不能对初始状态的影响进行分析；状态空间是微分方程的等价表述，因而也可以广泛用于各种系统，由于其引入了状态变量的概念，能够方便地分析系统初始状态带来的影响，线性系统的状态空间由矩阵描述，还能使用线性代数中的各种技巧，便于计算。但状态空间基于时域建模，分析系统频率特性时还需要进行拉普拉斯变换。</p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-07-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mc01-sysdiscription/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/">传递函数</a>,&nbsp;<a href="/tags/%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4/">状态空间</a>,&nbsp;<a href="/tags/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6/">现代控制</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/zotero/" class="prev" rel="prev" title="Zotero 文献管理"><i class="fas fa-angle-left fa-fw"></i>Zotero 文献管理</a>
+            <a href="/mc02-statefeedback/" class="next" rel="next" title="现代控制理论（2）：状态反馈">现代控制理论（2）：状态反馈<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

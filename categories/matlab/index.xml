@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>MATLAB - 分类 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/categories/matlab/</link>
+        <description>MATLAB - 分类 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 10 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/matlab/" rel="self" type="application/rss+xml" /><item>
+    <title>MATLAB 符号计算</title>
+    <link>https://ichunyu.github.io/matlab-symbolic/</link>
+    <pubDate>Sun, 10 May 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/matlab-symbolic/</guid>
+    <description><![CDATA[<p>理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用 MATLAB 的符号计算工具包辅助完成。本文对此工具包进行简要介绍。</p>]]></description>
+</item><item>
+    <title>MATLAB 编写函数</title>
+    <link>https://ichunyu.github.io/matlab-function/</link>
+    <pubDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/matlab-function/</guid>
+    <description><![CDATA[<p>编写程序的时候会经常用到相似的代码片段，为了使代码整洁，可以将这些代码片段封装为函数使用。本文介绍 MATLAB 编写函数的一般方法。</p>]]></description>
+</item></channel>
+</rss>
