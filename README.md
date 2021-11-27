@@ -1,17 +1,16 @@
-<h2> <img src="https://emojis.slackmojis.com/emojis/images/1613285697/12806/meow_attention.png?1613285697" width="30" /> 嗨，你好。 </h2>
+# 某春雨的后花园
 
 
-[<img align="right" width="50%" src="https://github-readme-stats.vercel.app/api?username=iChunyu&theme=vue&show_icons=true&include_all_commits=true&count_private=true">](https://metrics.lecoq.io/iChunyu?template=classic)
+<h1> <img src="https://emojis.slackmojis.com/emojis/images/1613285697/12806/meow_attention.png?1613285697" width="30" /> 嗨，你好~ </h1>
 
-我是大春雨，一名 [华中科技大学](https://www.hust.edu.cn/) 的研究生.
+欢迎光临我的博客，这是它的源码仓库。
 
-- :man_student: 研究航天器动力学与控制
-- :computer: 使用 MATLAB/Simulink 进行仿真分析
-- :zany_face: 喜欢折腾 Git, LaTeX, Linux
-- :badminton: 喜欢da羽毛球
-- :house: 欢迎参观我的 [技术博客](https://ichunyu.github.io/).
-
-----
+这个博客主要是我自己学习的一些记录，或者是瞎捣腾一些东西的记录。为了使用数学公式，最先是用 Sphinx + reStructuredText 搭建的。后来看到了 HUGO 下 [DoIt](https://hugodoit.pages.dev) 主题，不禁让我眼前一亮，于是就换了过来。非常感谢大佬 [@PCloud](https://github.com/HEIGE-PCloud) 的精心设计！
 
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /> 本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。
+博客内的所有文章除了特殊声明外，如你喜欢，请自由分享，但同时也请遵守 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) 共享协议。
+
+当然，我可能会犯一些愚蠢的错误。如果你发现了这些错误，或者你有更好的想法，欢迎与我讨论：
+
+- Email: [mailto:chunyu2018@foxmail.com](mailto:chunyu2018@foxmail.com)
+- GitHub: [https://github.com/iChunyu/iChunyu.github.io](https://github.com/iChunyu/iChunyu.github.io)
