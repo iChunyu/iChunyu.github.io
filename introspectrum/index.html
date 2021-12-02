@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">傅立叶变换与频域分析简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="傅立叶变换与频域分析简介" />
+<meta property="og:description" content="广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/introspectrum/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-02T14:36:16+08:00" />
+<meta property="article:modified_time" content="2021-12-02T14:36:16+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.png"/>
+
+<meta name="twitter:title" content="傅立叶变换与频域分析简介"/>
+<meta name="twitter:description" content="广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/introspectrum/" /><link rel="prev" href="https://ichunyu.github.io/modelpreditivecontrol/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "傅立叶变换与频域分析简介",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/introspectrum\/"
+        },"genre": "posts","keywords": "傅立叶变换, 频域分析","wordcount":  3481 ,
+        "url": "https:\/\/ichunyu.github.io\/introspectrum\/","datePublished": "2021-12-02T14:36:16+08:00","dateModified": "2021-12-02T14:36:16+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">傅立叶变换与频域分析简介</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-02">2021-12-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-12-02">2021-12-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3481 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#连续信号频域分析">连续信号频域分析</a>
+      <ul>
+        <li><a href="#傅立叶级数">傅立叶级数</a></li>
+        <li><a href="#傅立叶变换">傅立叶变换</a></li>
+        <li><a href="#两者的统一">两者的统一</a></li>
+      </ul>
+    </li>
+    <li><a href="#离散信号频域分析">离散信号频域分析</a>
+      <ul>
+        <li><a href="#时域采样与频率混叠">时域采样与频率混叠</a></li>
+        <li><a href="#有限窗长与频率泄露">有限窗长与频率泄露</a></li>
+        <li><a href="#频域采样与栅栏效应">频域采样与栅栏效应</a></li>
+        <li><a href="#频率分辨率与计算分辨率">频率分辨率与计算分辨率</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。</p>
+<h2 id="连续信号频域分析">连续信号频域分析</h2>
+<h3 id="傅立叶级数">傅立叶级数</h3>
+<p>首先我们从一个问题开始：假设现在有一个周期信号，不妨假设为下图蓝色曲线所示的方波。凭借朴素的直觉，这个周期信号应当能够分解为另一系列周期信号的叠加。如果选择正弦信号为基准，如何将给定的方波信号分解为正弦信号的叠加？</p>
+<div align=center>
+    <img src=FourierSeries.png width=70% />
+</div>
+<p>提到分解，不免会想到矢量的分解。对于一个给定的矢量，如果想将它分解为不同矢量的叠加，通常需要选择一组正交的单位基矢（坐标系），然后通过内积计算向量在不同基矢上的投影（坐标），最后就可以通过投影和基矢来表达原来的矢量。</p>
+<div align=center>
+    <img src=vecProj.svg width=35% />
+</div>
+<p>于是，我们可以类比地选择 $\cos n \omega_0 t$ 和 $\sin n \omega_0 t$ 为函数空间的基；矢量内积的相乘、相加运算类比过来就是相乘、积分，而由于是周期信号，因此积分区间只取一个周期即可；最后只要按照内积的定义计算相应的“坐标”即可知道各个正弦信号对应的幅值。这就是函数的 <a href="https://ichunyu.github.io/orthogonalprojection/" rel="">正交投影</a>。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">可以通过内积进行验证：倍频正弦（包括余弦）是在周期内是正交的，即任意两个相乘在周期内积分为零。实际上这样的正交基并不局限于正弦，由于傅立叶变换是基于正弦信号展开，故此处仅讨论正弦的情况。</div>
+        </div>
+    </div>
+<p>根据这个思路，实际上我们已经自己推导出了傅立叶变换，用公式表示为</p>
+<ul>
+<li>综合公式</li>
+</ul>
+$$
+x(t) = \frac{a_0}{2} + \sum_{k=1}^{+\infty} \left(a_k \cos k\omega_0t + b_k \sin k\omega_0t\right)
+$$
+<ul>
+<li>分析公式</li>
+</ul>
+$$
+\left\{\begin{aligned}
+    a_k &= \frac{2}{T} \int_T x(t) \cos k\omega_0t \,\mathrm{d}t \\
+    b_k &= \frac{2}{T} \int_T x(t) \sin k\omega_0t \,\mathrm{d}t \\
+\end{aligned}\right.
+$$
+<p>其中综合公式类比于矢量用基矢的表示，而分析公式则给出基矢的投影（坐标）。$T$ 为信号的周期，$\omega_0=\frac{1}{T}$ 是正弦的基频。虽然这些正弦函数相互正交，但是它们不是归一化的，因此分析公式中存在系数 $\frac{2}{T}$ 进行归一化。在这种表达中，频率索引 $k$ 非负，意味着频域是“单边”的，如果我们允许负频率的存在，并将相应的 $b_k$ 反号以与上式保持一致，就能得到更加统一的表达式：</p>
+$$
+x(t) =  \sum_{k=-\infty}^{+\infty} \left(a_k \cos k\omega_0t + b_k \sin k\omega_0t\right)
+\quad \left\{\begin{aligned}
+    a_k &= \frac{1}{T} \int_T x(t) \cos k\omega_0t \,\mathrm{d}t \\
+    b_k &= \frac{1}{T} \int_T x(t) \sin k\omega_0t \,\mathrm{d}t \\
+\end{aligned}\right.
+$$
+<p>但是这样还不足够简洁。进一步考虑欧拉公式将 $\mathrm{e}$ 的复指数分解成了正弦和余弦，如果采用这种表达，可以得到最漂亮的傅立叶级数（Fourier Series）表达式（注意 $\mathrm{e}$ 指数的符号）：</p>
+$$
+x(t) = \sum_{k=-\infty}^{+\infty} A_k \mathrm{e}^{\mathrm{j}k\omega_0t}  
+\qquad
+A_k = \frac{1}{T} \int_T x(t) \mathrm{e}^{-\mathrm{j}k\omega_0t}\,\mathrm{d}t
+$$
+<p>方波的傅立叶级数分解如下图所示。</p>
+<div align=center>
+    <img src=FourierSeries.svg width=70% />
+</div>
+<p>傅立叶级数存在收敛条件，实际上是约束信号真实存在，这里我不做过多解释，直接给出（后边的傅立叶变换也有相似的条件）：</p>
+<ul>
+<li>在一个周期内信号绝对可积</li>
+<li>不存在第二类间断点（无穷间断点、震荡间断点）</li>
+</ul>
+<p>在开始下一部分之前，小结一下傅立叶级数的特点：</p>
+<ul>
+<li>适用于连续、周期信号</li>
+<li>频率间隔 $\Delta f = \frac{1}{T}$</li>
+<li>$A_k$ 共轭对称</li>
+<li>时域周期对应频域离散</li>
+</ul>
+<h3 id="傅立叶变换">傅立叶变换</h3>
+<p>为了将傅立叶级数应用到非周期信号，只需要重新理解一下什么是非周期信号即可：非周期嘛，不就是周期无限大吗？将傅立叶变换的综合公式取极限，有</p>
+$$
+\begin{aligned}
+    x(t) &= \sum_{k=-\infty}^{+\infty} A_k \mathrm{e}^{\mathrm{j}k\omega_0t}  \\
+    &= \lim_{T \to \infty} \sum_{k=-\infty}^{+\infty} \frac{1}{T}\mathrm{e}^{\mathrm{j}k\omega_0t} 
+    \underbrace{\int_{-\infty}^{+\infty} x(t) \mathrm{e}^{-\mathrm{j}k\omega_0t}\,\mathrm{d} t }_{X(\mathrm{j}\omega)} \\
+    &= \lim_{\omega_0 \to 0} \sum_{k  = -\infty}^{+\infty} X(\mathrm{j}\omega) \mathrm{e}^{\mathrm{j}k\omega_0t} \omega_0  \\
+    &= \int_{-\infty}^{+\infty} X(\mathrm{j}\omega)  \mathrm{e}^{\mathrm{j}\omega t}\, \mathrm{d}\omega
+\end{aligned}
+$$
+<p>当周期 $T$ 趋于无穷大，基频 $\omega_0$ 就趋近于 $0$，离散频率 $k\omega_0$ 就变成了连续的频率 $\omega$。整理上式就可以得到非周期信号的傅立叶变换（Fourier Transform）：</p>
+$$
+x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(\mathrm{j}\omega) \mathrm{e}^{\mathrm{j}\omega t}\,\mathrm{d}\omega 
+\qquad
+X(\mathrm{j}\omega) = \int_{-\infty}^{+\infty} x(t) \mathrm{e}^{-\mathrm{j}\omega t}\,\mathrm{d}t 
+$$
+<p>下图给出了傅立叶变换的示意，其具有以下基本性质：</p>
+<ul>
+<li>$X(\mathrm{j}\omega)$ 共轭对称</li>
+<li>时域非周期对应于频域连续</li>
+</ul>
+<div align=center>
+    <img src=FourierTransform.svg width=70% />
+</div>
+<p>至此，我们得到了两个非常重要的定性的结论：周期对应离散，非周期对应连续。实际上这个结论是“对称”的。例如在后面我们会讨论到，如果时域是离散的，那么频域就是周期的。</p>
+<h3 id="两者的统一">两者的统一</h3>
+<p>现在我们有了傅立叶级数用于处理连续的周期信号，还有傅立叶变换处理连续的非周期信号。然而，无论是数学“抽象归纳”的思想，或者逻辑上傅立叶变换是傅立叶级数的延拓，我们都希望这两者能够在表达上统一。为此，引入狄拉克函数，用 $\delat (t)$ 表示。它是一个广义函数，形式上可以定义为单位阶跃函数 $u(t)$ 的导数：</p>
+$$
+u(t) = \left\{\begin{array}{cl}
+            0 & t < 0 \\
+            1 & t > 0
+        \end{array}\right.
+        \quad \rightarrow \quad
+        \delta (t) := \frac{\mathrm{d}}{\mathrm{d}t} u(t) = \left\{\begin{array}{cl}
+            \infty & t = 0 \\
+            0 & t \ne 0
+        \end{array}\right. 
+$$
+<p>狄拉克函数有以下两个重要性质，将在后面的讨论中使用：</p>
+<ul>
+<li>采样性质：$\int f(t) \delta (t-t_0) \mathrm{d} t = \int f(t_0) \delta (t-t_0)  \mathrm{d} t = f(t_0)$</li>
+<li>卷积性质：$f(t) \ast \delta (t-t_0) = \int f(\tau) \delta (t-t_0-\tau)  \mathrm{d} \tau = f(t-t_0)$</li>
+</ul>
+<p>根据上面的采样性质，傅立叶级数可以以傅立叶变换的形式统一表示为</p>
+$$
+\begin{gathered}
+        X(\mathrm{j}\omega) = \sum_{k=-\infty}^{+\infty}  2 \pi A_k \delta (\omega - k\omega_0)\\
+        \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(\mathrm{j}\omega) \mathrm{e}^{\mathrm{j}\omega t}\,\mathrm{d}\omega 
+        \Leftrightarrow  \sum_{k=-\infty}^{+\infty} A_k \mathrm{e}^{\mathrm{j}k\omega_0t}  
+\end{gathered}
+$$
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>需要注意的是，这种表述方法常用于分析频谱。对于实际的周期信号，还是应当使用傅里叶级数计算系数，然后改写成狄拉克函数。直接依据傅立叶变换计算会得到无穷大，无法获知狄拉克函数的系数。</p>
+<p>正弦函数利用傅立叶变换得到的无穷大可以作为狄拉克函数的另一种定义方法。</p>
+</div>
+        </div>
+    </div>
+<h2 id="离散信号频域分析">离散信号频域分析</h2>
+<h3 id="时域采样与频率混叠">时域采样与频率混叠</h3>
+<p>为了将连续信号离散化，可以采用冲击串进行采样，冲击串用狄拉克函数表达为</p>
+$$
+p(t) = \sum_{n=-\infty}^{+\infty} \delta (t - n T_s) 
+$$
+<div align=center>
+    <img src=sample.svg width=50% />
+</div>
+<p>代入傅立叶变换的表达式，进一步可以整理出离散时间傅立叶变换（Discrete-Time Fourier Transform）：</p>
+$$
+x(n) = \frac{1}{2\pi} \int_{2\pi} X(\mathrm{e}^{\mathrm{j}\omega}) \mathrm{e}^{\mathrm{j}\omega n}\,\mathrm{d}\omega 
+            \qquad
+            X(\mathrm{e}^{\mathrm{j}\omega}) = \sum_{n=-\infty}^{+\infty} x(n) \mathrm{e}^{-\mathrm{j}\omega n}    
+$$
+<p>应当注意，上式中的 $\omega$ 是数字频率，它被采样率 $f_s$ 归一化，是数字信号处理的常用方式。对于实际频率为 $f$ 的信号，其对应的数字频率为 $\omega = 2 \pi \frac{f}{f_s}$ 。</p>
+<p>采样会引入一个非常重要的效应：频谱混叠。在对此进行解释之前，两个小结论需要读者自行证明：</p>
+<ul>
+<li>时域乘积对应频域卷积</li>
+<li>时域冲击串的频谱也是冲击串，且频域冲击间隔为采样率。</li>
+</ul>
+<p>根据这两个结论，我们可以从下图直观地感受到频谱混叠的含义：首先，第一个图中的三角形假设为原连续信号的频谱，冲击串为采样函数的频谱；当进行采样，时域相乘，频域卷积。根据前面提到狄拉克函数的卷积性质，实际上是将原来的频谱按照采样率为间隔进行复制粘贴，如第二个图所示；如果原信号的带宽过大，复制粘贴之后的频谱重叠，合成之后的频谱就会发生改变，如第三个图所示，这就是所谓的频谱混叠。</p>
+<div align=center>
+    <img src=aliasing.svg width=70% />
+</div>
+<p>可见，要想避免混叠，信号的带宽不应当超过采样率的一半。对于实际数据，如果混叠来自高频噪声，可以使用滤波器进行滤除，相应的滤波器称为抗混叠滤波器；如果是由于信号的频率较大，那么应当适当提高采样率。</p>
+<h3 id="有限窗长与频率泄露">有限窗长与频率泄露</h3>
+<p>除了频谱混叠，由于实际采样的时间有限，还会有频率泄露的效应。为了说明这个问题，定义一个窗函数，其在采样持续时间内为正值，否则为零。最常见的窗函数就是矩形窗，如下图所示</p>
+<div align=center>
+    <img src=window.svg width=50% />
+</div>
+<p>同样，时域上信号与窗函数相乘，频域表现为原信号的频谱与窗函数频谱做卷积，这会在一定程度上影响原信号的频谱，使采样后的结果存在误差。这也是通常我们说谱估计而不是谱计算的原因。</p>
+<p>一般情况下，窗函数具有如下图所示的频谱特征：其具有一个主瓣和多个旁瓣。为了好理解，假设原始信号就是正弦，那么与窗函数相乘之后的频谱的形状与窗函数的频谱相同（但中心频率点不同）。显然，窗函数的主瓣宽度会影响单频信号的频率分辨率，而旁瓣则容易产生出“误解”，错误地认为存在对应频率点的信号。</p>
+<div align=center>
+    <img src=window-function.svg width=40% />
+</div>
+<p>由于采样总是有限时常，窗函数引入的频率泄露无法避免。为了尽可能减小这个效应，可以使用非矩形窗如汗宁窗、海明窗等，它们通常表现为窗的两端小，中间大。具体可以在 MATLAB 中使用 <code>hann</code> 等函数查看。</p>
+<h3 id="频域采样与栅栏效应">频域采样与栅栏效应</h3>
+<p>至此我们已经分析了时域离散的情况，距离使用计算机计算之差最后一步：频域离散化。前面讨论了离散化是冲击串相乘，时域离散对应着频域周期延拓。反过来，频域离散对应这时域周期延拓，如下图所示，为了避免利用采样后的频谱恢复时域数据时发生混叠，频率间隔应当不大于采样时长的倒数。</p>
+<div align=center>
+    <img src=freqDiscrete.svg width=70% />
+</div>
+<p>取 $\Delta f = \frac{1}{T}$ 时，恰好不发生混叠，频域样本点数与时域数据点数相同。此时有离散傅立叶变换（Discrete Fourier Transform）</p>
+$$
+x(n) = \frac{1}{N} \sum_{k=0}^{N-1} X(k) \mathrm{e}^{\mathrm{j} 2\pi\frac{k}{N} n} 
+            \qquad
+            X(k) = \sum_{n=0}^{N-1} x(n) \mathrm{e}^{-\mathrm{j} 2\pi\frac{k}{N} n}
+$$
+<p>此时，频域离散，得到的频谱都是离散的点，似乎是通过栅栏在进行观察，因此叫做栅栏效应。</p>
+<h3 id="频率分辨率与计算分辨率">频率分辨率与计算分辨率</h3>
+<p>最后，对两个概念进行梳理</p>
+<ul>
+<li>离散时间傅立叶变换中能够分辨的最小频率间隔 $f_{\rm res} = \frac{1}{T}$</li>
+<li>离散傅立叶变换的频率间隔（栅栏效应）$\Delta f = \frac{f_s}{N}$</li>
+</ul>
+<p>两个概念可以用下面的图粗糙地进行示意。</p>
+<div align=center>
+    <img src=freqs-resolution.svg width=70% />
+</div>
+<p>在大多数情况下，两个概念并不需要进行区分，这是有 $\Delta f = \frac{f_s}{N} = \frac{1}{N T_s} = \frac{1}{T} = f_{\rm res}$ 。快速傅立叶变化的算法得到的频率点数与时域样本点数相同，可以在时域数据后补若干 $0$ 增加计算点数，从而改善计算分辨率。但是这种补 $0$ 的操作并不影响离散时间傅立叶变换，因此不会改变实际的频率分辨率。</p>
+<p>此外，通常的频域采样是为了确保采样后的数据能够根据逆变换公式反演出时域数据，如果只关注频域特性，对频域采样不会具有太高的要求。例如 <a href="https://ichunyu.github.io/lpsd/" rel="">LPSD 功率谱估计</a> 就采用了非均匀的频域采样。</p>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li>Alan V. Oppenheim 等, 刘树棠译. 信号与系统. 第二版. 电子工业出版社. 2014.</li>
+<li>程佩清. 数字信号处理. 第四版. 清华大学出版社. 2013.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-12-02</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/introspectrum/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2/">傅立叶变换</a>,&nbsp;<a href="/tags/%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90/">频域分析</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/modelpreditivecontrol/" class="prev" rel="prev" title="模型预测控制简介"><i class="fas fa-angle-left fa-fw"></i>模型预测控制简介</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.89.4">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                                
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                                
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>
