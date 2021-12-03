@@ -10,6 +10,7 @@ __pycache__/
 # hugo
 .hugo_build.lock
 public/
+resources/
 
 # manjaro
 .directory
