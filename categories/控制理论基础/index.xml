@@ -26,6 +26,13 @@
     </author><guid>https://ichunyu.github.io/integratorantiwindup/</guid>
     <description><![CDATA[<p>对于实际的系统，控制器的输出应当受到幅度限制，以避免超出执行机的量程。然而，在具有积分的控制器中如果仅对输出进行限幅，将会引起所谓的退饱和现象，使控制器的性能变差甚至导致系统不稳定。这回我们来谈谈抗饱和积分器。</p>]]></description>
 </item><item>
+    <title>感性认识 PID</title>
+    <link>https://ichunyu.github.io/intropid/</link>
+    <pubDate>Tue, 08 Sep 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/intropid/</guid>
+    <description><![CDATA[<p>比例积分微分（PID）控制器是一种经典的控制器，以其简单的结构和较强的鲁棒性广泛适用于各种控制系统。对 PID 的原理有多种解释，今天跟大家分享一些自己的看法。</p>]]></description>
+</item><item>
     <title>相图与砰砰控制</title>
     <link>https://ichunyu.github.io/bangbang/</link>
     <pubDate>Fri, 21 Aug 2020 00:00:00 &#43;0000</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/mc02-statefeedback/</guid>
     <description><![CDATA[<p>状态反馈是现代控制理论的基础，本文分析其基本原理，并介绍主导极点法和 LQR 设计法两种参数设计方法。</p>]]></description>
-</item><item>
-    <title>现代控制理论（1）：系统的描述</title>
-    <link>https://ichunyu.github.io/mc01-sysdiscription/</link>
-    <pubDate>Mon, 06 Jul 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/mc01-sysdiscription/</guid>
-    <description><![CDATA[<p>系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。</p>]]></description>
 </item></channel>
 </rss>
