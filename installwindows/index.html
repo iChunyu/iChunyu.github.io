@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">Windows 系统安装 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="Windows 系统安装" />
+<meta property="og:description" content="最近女朋友的电脑被她玩挂了，我决定写一篇文章教她如何重装系统。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/installwindows/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-17T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/avatar.png"/>
+
+<meta name="twitter:title" content="Windows 系统安装"/>
+<meta name="twitter:description" content="最近女朋友的电脑被她玩挂了，我决定写一篇文章教她如何重装系统。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/installwindows/" /><link rel="prev" href="https://ichunyu.github.io/introspectrum/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Windows 系统安装",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/installwindows\/"
+        },"genre": "posts","keywords": "Windows, 操作系统","wordcount":  1692 ,
+        "url": "https:\/\/ichunyu.github.io\/installwindows\/","datePublished": "2021-12-17T00:00:00+00:00","dateModified": "2021-12-17T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Windows 系统安装</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-17">2021-12-17</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-12-17">2021-12-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1692 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装前的准备">安装前的准备</a></li>
+    <li><a href="#通过-pe-安装系统">通过 PE 安装系统</a></li>
+    <li><a href="#推荐一些实用软件">推荐一些实用软件</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>最近女朋友的电脑被她玩挂了，我决定写一篇文章教她如何重装系统。</p>
+<h2 id="安装前的准备">安装前的准备</h2>
+<p>重装系统之前，最重要的事情就是备份了：遍历一下自己经常使用的文件夹，把重要的文件拷贝到 U 盘或者移动硬盘里备份，以免重装系统时丢失或损坏。</p>
+<div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw"></i>危险<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一定要备份！一定要备份！一定要备份！</div>
+        </div>
+    </div>
+<p>备份好数据后，就可以正式准备安装系统了。首先需要下载系统镜像，可以从 <a href="https://msdn.itellyou.cn" target="_blank" rel="noopener noreffer">I Tell You</a> 下载。然后有两种方法安装系统：</p>
+<ul>
+<li>将下载好的镜像文件（<code>.iso</code> 文件）通过烧写软件（例如 <a href="https://rufus.ie/en/" target="_blank" rel="noopener noreffer">Rufus</a>）写入 U 盘，重启电脑，将 U 盘作为光盘安装系统；</li>
+<li>将 U 盘制作成 PE 系统，重启后进入 U 盘的 PE 系统进行安装。</li>
+</ul>
+<p>一般来说，我比较建议使用第二种方法。一方面，优秀的 PE 自带很多工具可以辅助系统安装；另一方面，PE 盘还可以用于 Windows 系统救急，比如利用其内置的工具可以很容易修改 Windows 密码（可见 Windows 系统密码并不安全）。</p>
+<p>在我试过的各种 PE 制作软件中，<a href="https://www.wepe.com.cn" target="_blank" rel="noopener noreffer">微 PE 工具箱</a> 是我最爱的一款，至少具有工具齐全、无广告、无捆绑软件等优点。鉴于我经常白嫖它的便利，不妨在此为其做个广告。</p>
+<p>为了制作 PE 盘，需要准备 U 盘。应当注意，制作 PE 盘会格式化 U 盘，因此重要文件不要放在 U 盘里（千万别把前面备份的 U 盘拿来做启动盘）。插入 U 盘，使用管理员权限运行微 PE 工具箱，选择安装进 U 盘后，按照提示选择 U 盘、文件系统（推荐 NTFS）等即可完成安装。PE 盘制作完成后，记得将下载好的系统镜像拷贝到该 U 盘内。</p>
+<h2 id="通过-pe-安装系统">通过 PE 安装系统</h2>
+<p>制作好 PE 盘后，重启系统。一般在电脑出现 LOGO 后立马按 <code>F12</code> 键选择启动盘，但不同电脑的快捷键可能有所不同。操作正常的话，电脑应当会出现硬盘/U 盘列表，选择刚才制作的 U 盘，按回车进入 PE 系统。</p>
+<div align=center>
+    <img src=win01.png width=80% />
+</div>
+<p>微 PE 工具箱内置了很多工具，这里我们打开 Windows 安装器。在不做任何操作时，右侧 EFI 旁边的灯通常不是绿色，说明分区存在问题。这是先暂时退出 Windows 安装器，打开分区助手重新进行分区（因为涉及到重新分区，所以原硬盘的数据可能会格式化，这也是一再强调备份的主要原因）。</p>
+<div align=center>
+    <img src=win02.png width=60% />
+</div>
+<p>从分区助手的硬盘列表可以看到当前的所有硬盘和 U 盘信息，熟悉分区的老手可以自行分区，不熟悉的同学可以直接右键硬盘，选择快速分区，如下图所示。</p>
+<div align=center>
+    <img src=win03.png width=60% />
+</div>
+<p>我们来看看分区设置。首先确认下硬盘是我们所选的硬盘，即需要安装系统的硬盘。分区的数量根据个人喜好进行选择。一般我比较推荐单独使用一个分区安装系统和软件，使用额外的分区单独存放数据，例如新建一个数据分区存放个人重要文件，新建一个文件分区存放一般性文件等。这里我使用两个分区进行示意，右侧适当调整分区大小，并起个好听的名字就可以了。</p>
+<p>硬盘的类型可以无脑选择 GPT, 这是一种新的分区表，有兴趣的同学可以自行查阅相关内容。其他选项可以参考我的设置，勾选“重建 MBR”和“创建 ESP 和 MSR 分区”，这是前面 EFI 黄灯的主要原因。对于固态硬盘，应当将分区对齐到 4096 扇区。</p>
+<p>OK，准备就绪，执行分区操作即可。</p>
+<p>分区完成后推出分区助手，重新打开 Windows 安装器，依次执行：</p>
+<ul>
+<li>选择 Windows 安装文件的位置：点击搜索，选择之前下载的系统镜像文件即可；</li>
+<li>选择引导驱动器的位置：点击搜索，选择待装系统硬盘上的 FAT32 分区，这个分区是上面分区时自动创建的，通常没有 C、D、E 这种盘符。这时候右侧 EFI 应当变为绿灯；</li>
+<li>选择安装驱动器的位置：点击搜索，选择待装系统硬盘上的系统分区，这是分区时手动创建的，盘符一般为 C,但不重要（Windows 安装好了后会重置为 C）；</li>
+<li>选项：选择 Windows 版本。一个系统镜像通常具有多个版本，应当注意选择合适的版本。</li>
+</ul>
+<div align=center>
+    <img src=win04.png width=60% />
+</div>
+<p>点击安装，等待、重启，就完事了。</p>
+<p>在我写这篇博客时，发现了微 PE 官方提供的 <a href="https://www.wepe.com.cn/ubook/" target="_blank" rel="noopener noreffer">微 PE 安装系统教程</a>，如果此文无法解决你的问题，不妨参考一下这个教程。</p>
+<h2 id="推荐一些实用软件">推荐一些实用软件</h2>
+<p>系统安装完成后，最麻烦的就是安装软件了。不过 Windows 下还是有很多有趣的软件，这里简要列举其中一二，有兴趣的同学可以自行折腾。</p>
+<ul>
+<li><a href="https://github.com/Chuyu-Team/Dism-Multi-language" target="_blank" rel="noopener noreffer">Dism++</a>：对 Windows 进行深度配置；</li>
+<li><a href="https://www.voidtools.com" target="_blank" rel="noopener noreffer">Everything</a>：快速查找电脑里的文件；</li>
+<li><a href="https://www.snipaste.com" target="_blank" rel="noopener noreffer">Snipaste</a>：截图与贴图工具；</li>
+<li><a href="https://www.jianguoyun.com" target="_blank" rel="noopener noreffer">坚果云</a>：超好用的同步网盘；</li>
+<li><a href="https://potplayer.daum.net" target="_blank" rel="noopener noreffer">PotPlayer</a>：最好的视频播放软件（官网经常无法打开）；</li>
+<li><a href="https://motrix.app" target="_blank" rel="noopener noreffer">Motrix</a>：美丽的下载软件；</li>
+<li><a href="https://capslox.com/capslock-plus" target="_blank" rel="noopener noreffer">Capslock+</a>：更改大写锁定键功能；</li>
+<li><a href="https://github.com/microsoft/PowerToys" target="_blank" rel="noopener noreffer">PowerToys</a>：Windows 强化工具；</li>
+<li><a href="https://cmder.net" target="_blank" rel="noopener noreffer">Cmder</a>：Windows 终端美化。</li>
+</ul></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-12-17</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/installwindows/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/windows/">Windows</a>,&nbsp;<a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/introspectrum/" class="prev" rel="prev" title="傅立叶变换与频域分析简介"><i class="fas fa-angle-left fa-fw"></i>傅立叶变换与频域分析简介</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.90.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                                
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                                
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

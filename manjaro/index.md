@@ -1,4 +1,4 @@
-# Manjaro 安装
+# Manjaro 系统安装
 
 
 尝试过 Debian 系的 deepin、Ubuntu 和它的衍生版 Pop!_OS，都被各种各样的 Bug 劝退。后来尝试了 Arch 系的 Manjaro，唔，这真的是一款非常令人舒适的 Linux 发行版！来跟我一起折腾吧！

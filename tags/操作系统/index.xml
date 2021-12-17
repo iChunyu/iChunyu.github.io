@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>操作系统 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+        <description>操作系统 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 17 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
+    <title>Windows 系统安装</title>
+    <link>https://ichunyu.github.io/installwindows/</link>
+    <pubDate>Fri, 17 Dec 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/installwindows/</guid>
+    <description><![CDATA[<p>最近女朋友的电脑被她玩挂了，我决定写一篇文章教她如何重装系统。</p>]]></description>
+</item><item>
+    <title>Manjaro 系统安装</title>
+    <link>https://ichunyu.github.io/manjaro/</link>
+    <pubDate>Wed, 12 May 2021 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/manjaro/</guid>
+    <description><![CDATA[<p>尝试过 Debian 系的 deepin、Ubuntu 和它的衍生版 Pop!_OS，都被各种各样的 Bug 劝退。后来尝试了 Arch 系的 Manjaro，唔，这真的是一款非常令人舒适的 Linux 发行版！来跟我一起折腾吧！</p>]]></description>
+</item></channel>
+</rss>
