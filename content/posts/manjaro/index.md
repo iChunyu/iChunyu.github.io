@@ -1,7 +1,7 @@
 ---
-title: "Manjaro 安装"
+title: "Manjaro 系统安装"
 date: 2021-05-12
-tags: ["Manjaro","Linux"]
+tags: ["Manjaro","Linux","操作系统"]
 categories: ["生命在于折腾"]
 draft: false
 ---
