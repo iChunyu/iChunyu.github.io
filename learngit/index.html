@@ -8,19 +8,19 @@
     <title class="pjax-title">Git 版本控制 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="Git 版本控制" />
 <meta property="og:description" content="Git 是一个专业的版本控制软件，既可以管理个人文档，也可以进行团队协作。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/learngit/" /><meta property="og:image" content="https://ichunyu.github.io/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://ichunyu.github.io/learngit/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-05-30T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-11-27T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ichunyu.github.io/avatar.png"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
 <meta name="twitter:title" content="Git 版本控制"/>
 <meta name="twitter:description" content="Git 是一个专业的版本控制软件，既可以管理个人文档，也可以进行团队协作。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/learngit/" /><link rel="prev" href="https://ichunyu.github.io/matlab-symbolic/" /><link rel="next" href="https://ichunyu.github.io/zotero/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/learngit/" /><link rel="prev" href="https://ichunyu.github.io/matlab-symbolic/" /><link rel="next" href="https://ichunyu.github.io/zotero/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
     
@@ -38,7 +38,12 @@
         },"genre": "posts","keywords": "Git, 版本控制","wordcount":  3355 ,
         "url": "https:\/\/ichunyu.github.io\/learngit\/","datePublished": "2020-05-30T00:00:00+00:00","dateModified": "2021-11-27T00:00:00+00:00","publisher": {
             "@type": "Organization",
-            "name": "","logo": "https:\/\/ichunyu.github.io\/avatar.png"},"author": {
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
                 "@type": "Person",
                 "name": "大春雨"
             },"description": ""
@@ -379,7 +384,7 @@ git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## �
 </div>
 </article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.90.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
         </div><script>
                     if('serviceWorker' in navigator) {
