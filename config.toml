@@ -70,7 +70,7 @@ theme = "DoIt"
   #  日期格式
   dateFormat = "2006-01-02"
   # 网站图片, 用于 Open Graph 和 Twitter Cards
-  images = ["avatar.png"]
+  images = ["/images/avatar.png"]
   #  开启 PWA 支持
   enablePWA = true
   #  版权信息
@@ -82,7 +82,7 @@ theme = "DoIt"
     # 是否隐藏网站图标资源链接
     noFavicon = false
     # 更现代的 SVG 网站图标, 可替代旧的 .png 和 .ico 文件
-    svgFavicon = "avatar.png"
+    svgFavicon = "/images/avatar.png"
     # Safari 图标颜色
     iconColor = "#5bbad5"
     # Windows v8-10磁贴颜色
@@ -197,7 +197,7 @@ theme = "DoIt"
       # 主页显示头像的 URL
       # 将你的头像文件放置于 static 或者 assets 目录下
       # 文件路径是相对于 static 或者 assets 目录的
-      avatarURL = "avatar.png"
+      avatarURL = "/images/avatar.png"
       #  主页显示的网站标题 (支持 HTML 格式)
       title = "某春雨的后花园"
       # 主页显示的网站副标题
@@ -540,7 +540,7 @@ theme = "DoIt"
       # 出版者信息
       [params.page.seo.publisher]
         name = ""
-        logoUrl = "avatar.png"
+        logoUrl = "/images/avatar.png"
 
   #  赞赏配置
   [params.sponsor]
@@ -662,7 +662,7 @@ theme = "DoIt"
   name = "大春雨"
   email = "chunyu2018@foxmail.com"
   link = ""
-  avatar = "avatar.png"
+  avatar = "/images/avatar.png"
   gravatarEmail = ""
 
 # 网站地图配置
