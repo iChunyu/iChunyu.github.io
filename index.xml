@@ -4,9 +4,16 @@
         <link>https://ichunyu.github.io/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 17 Dec 2021 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 26 Dec 2021 21:27:40 &#43;0800</lastBuildDate>
             <atom:link href="https://ichunyu.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Arch Linux 系统安装</title>
+    <link>https://ichunyu.github.io/installarch/</link>
+    <pubDate>Sun, 26 Dec 2021 21:27:40 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/installarch/</guid>
+    <description><![CDATA[<p>最近有兴趣折腾了一下 Arch Linux，并在虚拟机中成功安装。将安装步骤记录于此，下一次就真机实战。</p>]]></description>
+</item><item>
     <title>Windows 系统安装</title>
     <link>https://ichunyu.github.io/installwindows/</link>
     <pubDate>Fri, 17 Dec 2021 00:00:00 &#43;0000</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/filterdesign/</guid>
     <description><![CDATA[<p>线性系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有完善的工具包对常用线性滤波器进行设计，本文简要介绍这些函数及其用法。</p>]]></description>
-</item><item>
-    <title>信号的微分</title>
-    <link>https://ichunyu.github.io/diffsignal/</link>
-    <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/diffsignal/</guid>
-    <description><![CDATA[<p>数字信号处理中经常会用到微分，典型的例子就是数字 PID 控制器中的微分环节。然而理想的微分是不存在的，即使存在，其对高频噪声的放大也约束了它的实际应用。这篇文章我们将讨论并对比一些常见的微分算法。</p>]]></description>
 </item></channel>
 </rss>

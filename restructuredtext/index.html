@@ -65,7 +65,7 @@
             <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -113,7 +113,7 @@
                     <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
                     <option value="light">浅色</option>
@@ -133,19 +133,7 @@
 <main class="main">
             <div class="container"><div class="toc" id="toc-auto">
         <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">reStructuredText 简介</h1><div class="post-meta">
-            <div class="post-meta-line">
-                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-13">2021-04-13</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-04-13">2021-04-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2252 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
-                <div class="details-summary toc-title">
-                    <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
     <li><a href="#章节标题">章节标题</a></li>
     <li><a href="#分割线">分割线</a></li>
@@ -167,9 +155,21 @@
     <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">reStructuredText 简介</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-13">2021-04-13</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-04-13">2021-04-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2252 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"></div>
             </div><div class="content" id="content"><p>reStructuredText 是一个不同于 Markdown 的文本标记语言，通常结合 Sphinx 构建静态网站，特别适合帮助类文档的编写。这篇文章简要介绍其基本用法。</p>
-<h2 id="章节标题">章节标题</h2>
-<p>在标题的下一行用某一符号填充，且长度不得小于标题文字长度。标题上一行可以填充相同的内容，但不是必须的，例如下面两种方式等价：</p>
+<h2 id="章节标题" class="headerLink">
+    <a href="#%e7%ab%a0%e8%8a%82%e6%a0%87%e9%a2%98" class="header-mark"></a>章节标题</h2><p>在标题的下一行用某一符号填充，且长度不得小于标题文字长度。标题上一行可以填充相同的内容，但不是必须的，例如下面两种方式等价：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -200,15 +200,15 @@
 <li><code>^</code> 且在标题下填充，为二级子节（Subsubections）标题；</li>
 <li><code>&quot;</code> 且在标题下填充，为段落（Paragraphs）标题。</li>
 </ul>
-<h2 id="分割线">分割线</h2>
-<p>使用与标题装饰符号相同的符号集，连续使用4个以上，且上下都是空行，来插入分隔符。应当注意一下事项：</p>
+<h2 id="分割线" class="headerLink">
+    <a href="#%e5%88%86%e5%89%b2%e7%ba%bf" class="header-mark"></a>分割线</h2><p>使用与标题装饰符号相同的符号集，连续使用4个以上，且上下都是空行，来插入分隔符。应当注意一下事项：</p>
 <ul>
 <li>分隔线与上下内容之间需要有空白行；</li>
 <li>分隔线不能紧贴在大纲标题之前或之后，也不能放在文档最开头；</li>
 <li>两个分隔线不能紧贴，必须有除了空白行之外的内容。</li>
 </ul>
-<h2 id="列表">列表</h2>
-<p>列表第一项之前和最后一项之后都要有空行，编号列表和非编号列表分别用 <code>#.</code> 和 <code>-</code> 后接一个空格引出，代码示例如下：</p>
+<h2 id="列表" class="headerLink">
+    <a href="#%e5%88%97%e8%a1%a8" class="header-mark"></a>列表</h2><p>列表第一项之前和最后一项之后都要有空行，编号列表和非编号列表分别用 <code>#.</code> 和 <code>-</code> 后接一个空格引出，代码示例如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -231,10 +231,10 @@
 </span><span class="err"></span>    - 列表的嵌套只需要缩进即可。<span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="表格">表格</h2>
-<p>表格分为简单表、网格表、CSV表，我直接复制了参考资料：</p>
-<h3 id="简单表">简单表</h3>
-<ul>
+</div><h2 id="表格" class="headerLink">
+    <a href="#%e8%a1%a8%e6%a0%bc" class="header-mark"></a>表格</h2><p>表格分为简单表、网格表、CSV表，我直接复制了参考资料：</p>
+<h3 id="简单表" class="headerLink">
+    <a href="#%e7%ae%80%e5%8d%95%e8%a1%a8" class="header-mark"></a>简单表</h3><ul>
 <li>行分隔：以等号 <code>=</code> 标记表格的顶线与底线。
 <ul>
 <li>每列中的行分隔符在竖直方向上必须对齐。</li>
@@ -281,8 +281,8 @@ Items      Value<span class="err">
 </span><span class="err"></span>=======    =======<span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><h3 id="网格表">网格表</h3>
-<p>网格表的使用较为复杂但是更为灵活：</p>
+</div><h3 id="网格表" class="headerLink">
+    <a href="#%e7%bd%91%e6%a0%bc%e8%a1%a8" class="header-mark"></a>网格表</h3><p>网格表的使用较为复杂但是更为灵活：</p>
 <ul>
 <li>表线必须完整地围住表格文本。</li>
 <li>行分隔线一律用横线 <code>-</code> 书写，除了表头分割线用等号 <code>=</code> 。</li>
@@ -354,8 +354,8 @@ Items      Value<span class="err">
 <li><code>width</code> &mdash; 整个列表的宽度，给定长度或页面宽度的百分比。</li>
 </ul>
 <p>当中英文混合时，网格表容易出现文字对不齐的情况，可以使用中英文等宽字体避免这种显示问题，例如可以使用 <a href="https://typeof.net/Iosevka/" target="_blank" rel="noopener noreffer">Iosevka</a> 字体。</p>
-<h3 id="csv表">CSV表</h3>
-<ul>
+<h3 id="csv表" class="headerLink">
+    <a href="#csv%e8%a1%a8" class="header-mark"></a>CSV表</h3><ul>
 <li>表宽 <code>:width: LENGTH/PERCENT</code> 表格的总宽度，以长度值或者百分数来指定</li>
 <li>列宽 <code>:widths: INT,INT,...</code> 每列的相对宽度（相对于100）可以由整数 <code>INT</code> 指定。默认各列等宽。</li>
 <li>表头：有两种表示方法。
@@ -392,8 +392,8 @@ Items      Value<span class="err">
 </span><span class="err"></span>    &#34;Harry&#34;,, Male<span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="图片">图片</h2>
-<p>指令 <code>image</code> （<a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html##image" target="_blank" rel="noopener noreffer">Directive: image</a>）和 <code>figure</code> （<a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html##figure" target="_blank" rel="noopener noreffer">Directive: figure</a>）都可以用来插图，但前者不能插入图名，因此这里用一个例子介绍后者的用法。</p>
+</div><h2 id="图片" class="headerLink">
+    <a href="#%e5%9b%be%e7%89%87" class="header-mark"></a>图片</h2><p>指令 <code>image</code> （<a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html##image" target="_blank" rel="noopener noreffer">Directive: image</a>）和 <code>figure</code> （<a href="https://docutils.sourceforge.io/docs/ref/rst/directives.html##figure" target="_blank" rel="noopener noreffer">Directive: figure</a>）都可以用来插图，但前者不能插入图名，因此这里用一个例子介绍后者的用法。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -414,8 +414,8 @@ Items      Value<span class="err">
 </span><span class="err"></span>    与 <span class="s">``image``</span> 相比， <span class="s">``figure``</span> 在这里可以插入标题甚至段落。<span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="超链接">超链接</h2>
-<p>两种超链接使用方法如下，一种是直接使用，一种是先定义别名，再给出链接。后者适合正文多次使用该超链接时使用。</p>
+</div><h2 id="超链接" class="headerLink">
+    <a href="#%e8%b6%85%e9%93%be%e6%8e%a5" class="header-mark"></a>超链接</h2><p>两种超链接使用方法如下，一种是直接使用，一种是先定义别名，再给出链接。后者适合正文多次使用该超链接时使用。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -434,8 +434,8 @@ Items      Value<span class="err">
 </span><span class="err"></span><span class="p">..</span> <span class="nt">_Git:</span> https://git-scm.com<span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="交叉引用">交叉引用</h2>
-<p>在需要引用的位置的空一行使用 <code>.. _some-label:</code> 打上标签，然后可以在文中任意位置使用 <code>:ref:`some-label`</code> 进行引用。</p>
+</div><h2 id="交叉引用" class="headerLink">
+    <a href="#%e4%ba%a4%e5%8f%89%e5%bc%95%e7%94%a8" class="header-mark"></a>交叉引用</h2><p>在需要引用的位置的空一行使用 <code>.. _some-label:</code> 打上标签，然后可以在文中任意位置使用 <code>:ref:`some-label`</code> 进行引用。</p>
 <p>例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -460,8 +460,8 @@ Items      Value<span class="err">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>除正文交叉引用，还常用到项目内文件的交叉引用，例如 <code>:doc:`learn_git`</code> 可以应用项目内的其他文档 。</p>
-<h2 id="脚注">脚注</h2>
-<p>脚注的在正文中用 <code>[##fn]_</code> 标记，一般在文末通过 <code>.. [##fn] 文本</code>
+<h2 id="脚注" class="headerLink">
+    <a href="#%e8%84%9a%e6%b3%a8" class="header-mark"></a>脚注</h2><p>脚注的在正文中用 <code>[##fn]_</code> 标记，一般在文末通过 <code>.. [##fn] 文本</code>
 给出脚注内容。示例如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -475,8 +475,8 @@ Items      Value<span class="err">
 </span><span class="err"></span><span class="p">..</span> <span class="nt">[##footnotemark]</span> 这是脚注的内容。<span class="err">
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="代码">代码</h2>
-<p>正文内代码用一对反引号即可，例如 <code>code</code> ，对于代码块，可以使用 <code>code-block</code> 指令，例如：</p>
+</div><h2 id="代码" class="headerLink">
+    <a href="#%e4%bb%a3%e7%a0%81" class="header-mark"></a>代码</h2><p>正文内代码用一对反引号即可，例如 <code>code</code> ，对于代码块，可以使用 <code>code-block</code> 指令，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -491,8 +491,8 @@ Items      Value<span class="err">
     <span class="kn">import</span> <span class="nn">matplot.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="数学公式">数学公式</h2>
-<p>类似代码，行内公式可以使用 <code>:math:`\sin\alpha`</code> 这种形式，单行或多行公式可以在 <code>:math:</code> 指令中使用 $\LaTeX$ 扩展。例如：</p>
+</div><h2 id="数学公式" class="headerLink">
+    <a href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f" class="header-mark"></a>数学公式</h2><p>类似代码，行内公式可以使用 <code>:math:`\sin\alpha`</code> 这种形式，单行或多行公式可以在 <code>:math:</code> 指令中使用 $\LaTeX$ 扩展。例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -513,8 +513,8 @@ Items      Value<span class="err">
     \right.
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="警示标记">警示标记</h2>
-<p>警示标记是一类指令，可以生成特别的消息框，使用方法如下：</p>
+</div><h2 id="警示标记" class="headerLink">
+    <a href="#%e8%ad%a6%e7%a4%ba%e6%a0%87%e8%ae%b0" class="header-mark"></a>警示标记</h2><p>警示标记是一类指令，可以生成特别的消息框，使用方法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -547,8 +547,8 @@ Items      Value<span class="err">
 <li><code>tip</code></li>
 <li><code>warning</code></li>
 </ul>
-<h2 id="参考资料">参考资料</h2>
-<ol>
+<h2 id="参考资料" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
 <li>wklchris. <a href="https://self-contained.github.io/reStructuredText/index.html" target="_blank" rel="noopener noreffer">reStructuredText 简介</a>.</li>
 </ol></div>
 
@@ -561,9 +561,8 @@ Items      Value<span class="err">
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/restructuredtext/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
-                        </span></div>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/restructuredtext/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
             <div class="post-info-share">
                 <span></span>
             </div>
@@ -582,7 +581,8 @@ Items      Value<span class="err">
 </div>
 </article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
         </div><script>
                     if('serviceWorker' in navigator) {
@@ -605,11 +605,9 @@ Items      Value<span class="err">
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
 
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></div>
 </body>
 
 </html>

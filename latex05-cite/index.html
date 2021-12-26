@@ -65,7 +65,7 @@
             <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -113,7 +113,7 @@
                     <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
                     <option value="light">浅色</option>
@@ -133,7 +133,14 @@
 <main class="main">
             <div class="container"><div class="toc" id="toc-auto">
         <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#脚注">脚注</a></li>
+    <li><a href="#超链接">超链接</a></li>
+    <li><a href="#交叉引用">交叉引用</a></li>
+    <li><a href="#文献引用">文献引用</a></li>
+  </ul>
+</nav></div>
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LaTeX 学习记录（5）：自动化引用</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
@@ -145,17 +152,10 @@
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#脚注">脚注</a></li>
-    <li><a href="#超链接">超链接</a></li>
-    <li><a href="#交叉引用">交叉引用</a></li>
-    <li><a href="#文献引用">文献引用</a></li>
-  </ul>
-</nav></div>
+                <div class="details-content toc-content" id="toc-content-static"></div>
             </div><div class="content" id="content"><p>写文档的时候会在必要位置插入脚注进行补充说明，也会引用已经出现的图、表、章节等，即交叉引用。对于科技论文写作，会进一步涉及到参考文献引用；少数情况下，还会使用到外部超链接。被引对象的编号问题无疑是手动引用的繁琐之处，这篇文章向大家展示如何在 $\LaTeX$ 中实现自动化引用。</p>
-<h2 id="脚注">脚注</h2>
-<p>在 $\LaTeX$ 中可以轻松使用 <code>\footnote{&lt;text&gt;}</code> 命令快速插入脚注，也可以用 <code>\footnotemark</code> 打上标记，在其后相应的位置使用 <code>\footnotetext{&lt;text&gt;}</code> 给出具体脚注信息。这两种方法在正文中使用时并无二异，但是如果在表格等环境中使用脚注时，<code>\footnote{&lt;text&gt;}</code> 通常会失效，这时应当使用 <code>\footnotemark</code> 打上标记，然后在环境外使用 <code>\footnotetext{&lt;text&gt;}</code> 给出具体脚注内容。</p>
+<h2 id="脚注" class="headerLink">
+    <a href="#%e8%84%9a%e6%b3%a8" class="header-mark"></a>脚注</h2><p>在 $\LaTeX$ 中可以轻松使用 <code>\footnote{&lt;text&gt;}</code> 命令快速插入脚注，也可以用 <code>\footnotemark</code> 打上标记，在其后相应的位置使用 <code>\footnotetext{&lt;text&gt;}</code> 给出具体脚注信息。这两种方法在正文中使用时并无二异，但是如果在表格等环境中使用脚注时，<code>\footnote{&lt;text&gt;}</code> 通常会失效，这时应当使用 <code>\footnotemark</code> 打上标记，然后在环境外使用 <code>\footnotetext{&lt;text&gt;}</code> 给出具体脚注内容。</p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -194,8 +194,8 @@
 </span><span class="c"></span><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\thefootnote</span><span class="nb">}{</span><span class="k">\ding</span><span class="nb">{</span><span class="k">\numexpr</span>171+<span class="k">\value</span><span class="nb">{</span>footnote<span class="nb">}}}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="超链接">超链接</h2>
-<p>超链接的使用相对容易，只需要导入 <code>hyperref</code> 宏包即可，配合 <code>\href{&lt;link&gt;}{&lt;text&gt;}</code> 命令使用即可。例如我想产生一个像这样指向 <a href="https://ichunyu.github.io/" target="_blank" rel="noopener noreffer">我的博客</a> 的超链接，只需要像这样编写文档即可：</p>
+</div><h2 id="超链接" class="headerLink">
+    <a href="#%e8%b6%85%e9%93%be%e6%8e%a5" class="header-mark"></a>超链接</h2><p>超链接的使用相对容易，只需要导入 <code>hyperref</code> 宏包即可，配合 <code>\href{&lt;link&gt;}{&lt;text&gt;}</code> 命令使用即可。例如我想产生一个像这样指向 <a href="https://ichunyu.github.io/" target="_blank" rel="noopener noreffer">我的博客</a> 的超链接，只需要像这样编写文档即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -217,8 +217,8 @@
 </span></code></pre></td></tr></table>
 </div>
 </div><p>当然，如果不喜欢默认的颜色，也可以进行设置，这就不多说了。</p>
-<h2 id="交叉引用">交叉引用</h2>
-<p>交叉引用的一般思路是在适当的位置使用 <code>\label{&lt;label&gt;}</code> 插入标签，然后在需要引用的地方使用 <code>\ref{&lt;label&gt;}</code> 引用其编号，或者也可以使用 <code>\pageref{&lt;label&gt;}</code> 引用对象所在的页码。这就好比 LOL 里边先插眼后 TP 一样。下面给出一些可供参考的标签插入：</p>
+<h2 id="交叉引用" class="headerLink">
+    <a href="#%e4%ba%a4%e5%8f%89%e5%bc%95%e7%94%a8" class="header-mark"></a>交叉引用</h2><p>交叉引用的一般思路是在适当的位置使用 <code>\label{&lt;label&gt;}</code> 插入标签，然后在需要引用的地方使用 <code>\ref{&lt;label&gt;}</code> 引用其编号，或者也可以使用 <code>\pageref{&lt;label&gt;}</code> 引用对象所在的页码。这就好比 LOL 里边先插眼后 TP 一样。下面给出一些可供参考的标签插入：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -296,8 +296,8 @@
 </span><span class="c"></span><span class="k">\crefformat</span><span class="nb">{</span>subsection<span class="nb">}{</span><span class="k">\!</span>第~#2#1#3~小节<span class="k">\!</span><span class="nb">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="文献引用">文献引用</h2>
-<p>以前使用 Word 的时候最头疼的就是参考文献引用及其格式设置，而对于 $\LaTeX$ 而言，这是十分简单的工作。对于投期刊文章的小伙伴，一般期刊会给 $\LaTeX$ 模板并内置了参考文献样式；对于普通中文论文，一般需要满足 GB/T 7714&mdash;2015 《信息与文献 参考文献著录规则》，而 <code>gbt7714</code> 宏包为此提供了极大的便利。</p>
+</div><h2 id="文献引用" class="headerLink">
+    <a href="#%e6%96%87%e7%8c%ae%e5%bc%95%e7%94%a8" class="header-mark"></a>文献引用</h2><p>以前使用 Word 的时候最头疼的就是参考文献引用及其格式设置，而对于 $\LaTeX$ 而言，这是十分简单的工作。对于投期刊文章的小伙伴，一般期刊会给 $\LaTeX$ 模板并内置了参考文献样式；对于普通中文论文，一般需要满足 GB/T 7714&mdash;2015 《信息与文献 参考文献著录规则》，而 <code>gbt7714</code> 宏包为此提供了极大的便利。</p>
 <p>参考文献的引用可以分为以下三步</p>
 <ol>
 <li>导言区导入 <code>gbt7714</code> 宏包并使用 <code>\bibliographystyle{gbt7714-numerical}</code> 设置为顺序编码制（也可以设置为 <code>gbt7714-author-year</code> ）；</li>
@@ -340,9 +340,8 @@ language = <span class="nb">{</span>en<span class="nb">}</span>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/latex05-cite/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
-                        </span></div>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/latex05-cite/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
             <div class="post-info-share">
                 <span></span>
             </div>
@@ -361,7 +360,8 @@ language = <span class="nb">{</span>en<span class="nb">}</span>
 </div>
 </article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
         </div><script>
                     if('serviceWorker' in navigator) {
@@ -384,11 +384,9 @@ language = <span class="nb">{</span>en<span class="nb">}</span>
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
 
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></div>
 </body>
 
 </html>

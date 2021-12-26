@@ -65,7 +65,7 @@
             <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -113,7 +113,7 @@
                     <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
                     <option value="light">浅色</option>
@@ -133,7 +133,14 @@
 <main class="main">
             <div class="container"><div class="toc" id="toc-auto">
         <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#从示例开始">从示例开始</a></li>
+    <li><a href="#导言区的设置">导言区的设置</a></li>
+    <li><a href="#正文区的编写">正文区的编写</a></li>
+    <li><a href="#文档风格分享">文档风格分享</a></li>
+  </ul>
+</nav></div>
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LaTeX 学习记录（2）：编写文档</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
@@ -145,17 +152,10 @@
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#从示例开始">从示例开始</a></li>
-    <li><a href="#导言区的设置">导言区的设置</a></li>
-    <li><a href="#正文区的编写">正文区的编写</a></li>
-    <li><a href="#文档风格分享">文档风格分享</a></li>
-  </ul>
-</nav></div>
+                <div class="details-content toc-content" id="toc-content-static"></div>
             </div><div class="content" id="content"><p>这回我们来看看如何用 $\LaTeX$ 编写文档。</p>
-<h2 id="从示例开始">从示例开始</h2>
-<p>上回在介绍 $\LaTeX$ 的 <a href="https://ichunyu.github.io/latex01-install/" rel="">安装与配置</a> 后给出了一个最小的示例，给出了比较详细的注释，我们就从这个示例开始。</p>
+<h2 id="从示例开始" class="headerLink">
+    <a href="#%e4%bb%8e%e7%a4%ba%e4%be%8b%e5%bc%80%e5%a7%8b" class="header-mark"></a>从示例开始</h2><p>上回在介绍 $\LaTeX$ 的 <a href="https://ichunyu.github.io/latex01-install/" rel="">安装与配置</a> 后给出了一个最小的示例，给出了比较详细的注释，我们就从这个示例开始。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -209,8 +209,8 @@
 </div><p>首先注意到， <code>%</code> 后面的文字颜色与其他部分不一样，这是因为 <code>%</code> 是注释符号，像很多其他编程语言一样，注释的内容仅为了分割源码一起为源码的功能写备注所用，注释的内容并不会对主程序产生影响。</p>
 <p>根据注释信息，文档分为导言区和正文区。两者实际上是以 <code>\begin{document}</code> 为分割，在此之前的内容一般都是对文档的格式或属性进行声明，不会直接影响正文内容。正文区则以 <code>\begin{document}</code> 和 <code>\end{document}</code> 包围，是文档的主要内容。</p>
 <p>在语法高亮功能的辅助下，诸位应当能够看到各种以反斜线 <code>\</code> 开头的词语呈现花花绿绿的颜色，这就是 $\LaTeX$ 的命令（也叫做宏），类比为其他编程中的函数。这些命令可以完成丰富的功能，如设置文档信息的 <code>\title</code>，在正文中生成标题的 <code>\maketitle</code> 等。本例中的命令顾名思义即可，并不复杂，其他命令及其使用将在后面详细介绍。</p>
-<h2 id="导言区的设置">导言区的设置</h2>
-<p>在导言区内，首先需要使用 <code>\documentclass{}</code> 声明文档类，这一步可以理解成为整个文档初始化，包括设置参数默认值（如行间距）、导入基本的命令。例如，在上面的例子中，<code>article</code> 是 $\LaTeX$ 最基础的文档类，其诞生时并没有考虑到多语言支持，若使用该文档类，正文区使用中文将出现与预期不符的结果。</p>
+<h2 id="导言区的设置" class="headerLink">
+    <a href="#%e5%af%bc%e8%a8%80%e5%8c%ba%e7%9a%84%e8%ae%be%e7%bd%ae" class="header-mark"></a>导言区的设置</h2><p>在导言区内，首先需要使用 <code>\documentclass{}</code> 声明文档类，这一步可以理解成为整个文档初始化，包括设置参数默认值（如行间距）、导入基本的命令。例如，在上面的例子中，<code>article</code> 是 $\LaTeX$ 最基础的文档类，其诞生时并没有考虑到多语言支持，若使用该文档类，正文区使用中文将出现与预期不符的结果。</p>
 <p>可见，仅调用文档类并采用其提供的默认设置并不能解决编写文档的需求，这时候我们需要“扩展” $\LaTeX$ 的功能。只需要使用命令 <code>\usepackage{}</code> 调用宏包即可。例如，为了在 <code>article</code> 文档类中使用中文，只需要在导言区补充 <code>\usepackage{ctex}</code> 即可。</p>
 <blockquote>
 <p>碎碎念1：实际上可以使用 CTeX 提供的 <code>ctexart</code> 文档类直接初始化中文支持，这也是最常用的方法。</p>
@@ -293,8 +293,8 @@
 </span><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>gbt7714<span class="nb">}</span>        <span class="c">% 标准参考文献引用
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="正文区的编写">正文区的编写</h2>
-<p>在正文区内，只需要按正常的思路编写文档即可。应当注意，$\LaTeX$ 源码内的换行不会引起编译后的文档新起一个段落，这与 Word 有所区别。通过空行（一行或多行）可以实现正文另起段落。</p>
+</div><h2 id="正文区的编写" class="headerLink">
+    <a href="#%e6%ad%a3%e6%96%87%e5%8c%ba%e7%9a%84%e7%bc%96%e5%86%99" class="header-mark"></a>正文区的编写</h2><p>在正文区内，只需要按正常的思路编写文档即可。应当注意，$\LaTeX$ 源码内的换行不会引起编译后的文档新起一个段落，这与 Word 有所区别。通过空行（一行或多行）可以实现正文另起段落。</p>
 <p>利用源代码换行的特性，我们可以一句一行以便修改，这取决于个人的习惯。需要提醒的一个技巧是利用换行和注释对文档进行修改，从而保留修改历史以方便对比，如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -432,8 +432,8 @@
 </tr>
 </tbody>
 </table>
-<h2 id="文档风格分享">文档风格分享</h2>
-<p>作为好习惯的开始，希望大家能够在使用 $\LaTeX$ 的时候形成自己的文件管理风格，这可以利用 <code>\include{}</code> 和 <code>\input{}</code> 命令完成：<code>\include{}</code> 命令将另一个 <code>.tex</code> 文档的内容复制到命令所在的位置，并利用 <code>\clearpage</code> 进行分页；<code>\input{}</code> 命令则相当于仅把目标文档复制到命令所在位置。</p>
+<h2 id="文档风格分享" class="headerLink">
+    <a href="#%e6%96%87%e6%a1%a3%e9%a3%8e%e6%a0%bc%e5%88%86%e4%ba%ab" class="header-mark"></a>文档风格分享</h2><p>作为好习惯的开始，希望大家能够在使用 $\LaTeX$ 的时候形成自己的文件管理风格，这可以利用 <code>\include{}</code> 和 <code>\input{}</code> 命令完成：<code>\include{}</code> 命令将另一个 <code>.tex</code> 文档的内容复制到命令所在的位置，并利用 <code>\clearpage</code> 进行分页；<code>\input{}</code> 命令则相当于仅把目标文档复制到命令所在位置。</p>
 <p>最后分享一下我目前的风格，文件结构如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -562,9 +562,8 @@
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/latex02-document/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
-                        </span></div>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/latex02-document/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
             <div class="post-info-share">
                 <span></span>
             </div>
@@ -583,7 +582,8 @@
 </div>
 </article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
         </div><script>
                     if('serviceWorker' in navigator) {
@@ -606,11 +606,9 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
 
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></div>
 </body>
 
 </html>

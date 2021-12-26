@@ -65,7 +65,7 @@
             <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -113,7 +113,7 @@
                     <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
                     <option value="light">浅色</option>
@@ -133,19 +133,7 @@
 <main class="main">
             <div class="container"><div class="toc" id="toc-auto">
         <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Git 版本控制</h1><div class="post-meta">
-            <div class="post-meta-line">
-                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/"><i class="far fa-folder fa-fw"></i>好用的软件</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-30">2020-05-30</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-11-27">2021-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3355 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
-                <div class="details-summary toc-title">
-                    <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
     <li><a href="#git-基本概念">Git 基本概念</a>
       <ul>
@@ -163,12 +151,24 @@
     </li>
   </ul>
 </nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Git 版本控制</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/"><i class="far fa-folder fa-fw"></i>好用的软件</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-05-30">2020-05-30</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-11-27">2021-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3355 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"></div>
             </div><div class="content" id="content"><p>Git 是一个专业的版本控制软件，既可以管理个人文档，也可以进行团队协作。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。</p>
-<h2 id="git-基本概念">Git 基本概念</h2>
-<p>所谓版本控制，实际上就是阶段性备份。习惯比较好的同学，在进行文档修改时会创建副本，这样，当修改后的版本不好，或者出错、误删，都可以用备份好的副本来继续工作，这就是最简单的版本控制。这种&quot;人肉&quot;版本控制的优点显然是简单，只要有好习惯就可以，不需要使用额外的工具。但是缺点也是显而易见的，一方面是随着修改次数的增加，副本会越来越多使得文件夹显得非常凌乱；另一方面，当需要以前的版本时，仅从副本的文件名很难获得足够的信息来精确定位所需的版本。为了更好地进行版本控制，<a href="https://git-scm.com/" target="_blank" rel="noopener noreffer">Git</a> 是一个非常不错的选择。</p>
+<h2 id="git-基本概念" class="headerLink">
+    <a href="#git-%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" class="header-mark"></a>Git 基本概念</h2><p>所谓版本控制，实际上就是阶段性备份。习惯比较好的同学，在进行文档修改时会创建副本，这样，当修改后的版本不好，或者出错、误删，都可以用备份好的副本来继续工作，这就是最简单的版本控制。这种&quot;人肉&quot;版本控制的优点显然是简单，只要有好习惯就可以，不需要使用额外的工具。但是缺点也是显而易见的，一方面是随着修改次数的增加，副本会越来越多使得文件夹显得非常凌乱；另一方面，当需要以前的版本时，仅从副本的文件名很难获得足够的信息来精确定位所需的版本。为了更好地进行版本控制，<a href="https://git-scm.com/" target="_blank" rel="noopener noreffer">Git</a> 是一个非常不错的选择。</p>
 <p>在使用 Git 之前首先介绍一些基本概念，或许会对理解 Git 的工作流程有所帮助。</p>
-<h3 id="工作区暂存区和版本库">工作区、暂存区和版本库</h3>
-<p>在正式介绍 Git 之前，首先简要说明三个相关的概念：</p>
+<h3 id="工作区暂存区和版本库" class="headerLink">
+    <a href="#%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%9a%82%e5%ad%98%e5%8c%ba%e5%92%8c%e7%89%88%e6%9c%ac%e5%ba%93" class="header-mark"></a>工作区、暂存区和版本库</h3><p>在正式介绍 Git 之前，首先简要说明三个相关的概念：</p>
 <ul>
 <li>工作区：是能够看到的目录，例如 <code>~/LearnGit/</code> ；</li>
 <li>暂存区：用于临时保存工作区的修改，一般不可见；</li>
@@ -176,8 +176,8 @@
 </ul>
 <p>工作区的文件被改动后，需要先提交到暂存区，暂存区所记录的修改通常需要提供一定的注释或说明才能提交到版本库。一旦文件提交到了版本库，Git 就会生成一个哈希值来标识当前版本。这种哈希值由40位16进制的字符组成，形如 <code>78b6157cdbc031530c24b003fd72d283fab30d44</code> 。通常情况下哈希值差异很大，在不引起矛盾的情况下，我们可以只使用哈希值的前几位来表示相应的版本。</p>
 <p>文件提交到版本库后就可以为所欲为了，下面的一系列图片将会帮助理解 Git 的开发流程。</p>
-<h3 id="分支与开发流程">分支与开发流程</h3>
-<p>假设工作过程中对文件进行了各种修改，并提交到仓库，提交历史将如下图所示：</p>
+<h3 id="分支与开发流程" class="headerLink">
+    <a href="#%e5%88%86%e6%94%af%e4%b8%8e%e5%bc%80%e5%8f%91%e6%b5%81%e7%a8%8b" class="header-mark"></a>分支与开发流程</h3><p>假设工作过程中对文件进行了各种修改，并提交到仓库，提交历史将如下图所示：</p>
 <div align=center>
     <img src=git1.png width=70% />
 </div>
@@ -210,8 +210,8 @@
 </div>
 <p>刚刚提到&quot;主分支&quot;，实际上 Git 中的分支都是平权的，不存在所谓的主分支，只是习惯上会将默认的 <code>master</code> 分支看作主分支。Git 的分支非常适合团队协作，例如，在 <code>97bbf1b</code> 处新建多个分支分配给团队的各个小组：<code>dev</code> 分支进行进一步开发、<code>doc</code> 分支进行帮助和说明文档的编写、<code>debug</code> 分支进行详细的调试等，一轮进行完成后合并到 <code>master</code> 分支，并由此重新生成各个分支进行下一轮开发。</p>
 <p>下面简要介绍部分常用命令的使用，当然 Git 的使用不局限于命令行，已有很多的图形界面程序可以使 Git 操作通过点击鼠标完成，这里就不作推荐了。</p>
-<h2 id="使用示例">使用示例</h2>
-<p>对于 Windows 系统，从 Git 官方网站下载安装包之后，直接双击即可实现 Git 的安装，一路基本都采用默认设置即可。在安装过程中会出现下面这样选择默认编辑器的页面，由于默认的 vim 编辑器对新手不友好，可以根据习惯另外选择（可能需要另外安装）。</p>
+<h2 id="使用示例" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b" class="header-mark"></a>使用示例</h2><p>对于 Windows 系统，从 Git 官方网站下载安装包之后，直接双击即可实现 Git 的安装，一路基本都采用默认设置即可。在安装过程中会出现下面这样选择默认编辑器的页面，由于默认的 vim 编辑器对新手不友好，可以根据习惯另外选择（可能需要另外安装）。</p>
 <div align=center>
     <img src=git0.png width=70% />
 </div>
@@ -309,10 +309,10 @@ git log             <span class="c1">## 查看当前分支的历史提交</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>以后就可以用 <code>logs</code> 这个别名查看 Git 最近20次提交的历史。</p>
-<h2 id="git-其他技巧">Git 其他技巧</h2>
-<p>收集一些 Git 的使用技巧，看到了就随手记下来，或有用或没用，不定时更新。</p>
-<h3 id="清空历史提交">清空历史提交</h3>
-<p>随着提交越来越多，仓库体积也会越来越大。对于个人维护的项目，如果想要清理过去所有提交以减小仓库体积，可以使用下面这种 <a href="https://zhuanlan.zhihu.com/p/73029640" target="_blank" rel="noopener noreffer">简单粗暴的方法</a> ：</p>
+<h2 id="git-其他技巧" class="headerLink">
+    <a href="#git-%e5%85%b6%e4%bb%96%e6%8a%80%e5%b7%a7" class="header-mark"></a>Git 其他技巧</h2><p>收集一些 Git 的使用技巧，看到了就随手记下来，或有用或没用，不定时更新。</p>
+<h3 id="清空历史提交" class="headerLink">
+    <a href="#%e6%b8%85%e7%a9%ba%e5%8e%86%e5%8f%b2%e6%8f%90%e4%ba%a4" class="header-mark"></a>清空历史提交</h3><p>随着提交越来越多，仓库体积也会越来越大。对于个人维护的项目，如果想要清理过去所有提交以减小仓库体积，可以使用下面这种 <a href="https://zhuanlan.zhihu.com/p/73029640" target="_blank" rel="noopener noreffer">简单粗暴的方法</a> ：</p>
 <ol>
 <li>创建孤立分支并将当前提交的文件检出到新分支：<code>git checkout --orphan &lt;newBranch&gt;</code></li>
 <li>添加所有文件：<code>git add .</code></li>
@@ -329,8 +329,8 @@ git log             <span class="c1">## 查看当前分支的历史提交</span>
             <div class="admonition-content">这种方法简单粗暴，会不可恢复地删除过往历史，在执行该操作前请做好备份。</div>
         </div>
     </div>
-<h3 id="提取特定版本的文件">提取特定版本的文件</h3>
-<p>可以采取下面的命令将特定版本中的某个文件提取出来，并写入到一个新文件中：</p>
+<h3 id="提取特定版本的文件" class="headerLink">
+    <a href="#%e6%8f%90%e5%8f%96%e7%89%b9%e5%ae%9a%e7%89%88%e6%9c%ac%e7%9a%84%e6%96%87%e4%bb%b6" class="header-mark"></a>提取特定版本的文件</h3><p>可以采取下面的命令将特定版本中的某个文件提取出来，并写入到一个新文件中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -342,8 +342,8 @@ git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## �
 </code></pre></td></tr></table>
 </div>
 </div><p>这种方法需要准确知道待提取的文件在对应版本下的名字。对文件夹内的文件，应当以相对路径的形式给出。</p>
-<h3 id="保存-http-帐号密码">保存 HTTP 帐号密码</h3>
-<p>如果使用 HTTP 的方式克隆仓库，在每次提交代码到远程仓库时都需要提供帐号和密码，这无疑是个繁琐的操作。为了将密码保存在本地，可以使用 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8" target="_blank" rel="noopener noreffer">储存凭证</a> 的功能：</p>
+<h3 id="保存-http-帐号密码" class="headerLink">
+    <a href="#%e4%bf%9d%e5%ad%98-http-%e5%b8%90%e5%8f%b7%e5%af%86%e7%a0%81" class="header-mark"></a>保存 HTTP 帐号密码</h3><p>如果使用 HTTP 的方式克隆仓库，在每次提交代码到远程仓库时都需要提供帐号和密码，这无疑是个繁琐的操作。为了将密码保存在本地，可以使用 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8" target="_blank" rel="noopener noreffer">储存凭证</a> 的功能：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -363,9 +363,8 @@ git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## �
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/learngit/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
-                        </span></div>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/learngit/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
             <div class="post-info-share">
                 <span></span>
             </div>
@@ -384,7 +383,8 @@ git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## �
 </div>
 </article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
         </div><script>
                     if('serviceWorker' in navigator) {
@@ -407,11 +407,9 @@ git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## �
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
 
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></div>
 </body>
 
 </html>

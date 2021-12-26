@@ -65,7 +65,7 @@
             <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -113,7 +113,7 @@
                     <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
                     <option value="light">浅色</option>
@@ -133,7 +133,15 @@
 <main class="main">
             <div class="container"><div class="toc" id="toc-auto">
         <h2 class="toc-title">目录</h2>
-        <div class="toc-content" id="toc-content-auto"></div>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#sphinx-的安装与配置">Sphinx 的安装与配置</a></li>
+    <li><a href="#github-源码托管">GitHub 源码托管</a></li>
+    <li><a href="#read-the-docs-网站部署">Read the Docs 网站部署</a></li>
+    <li><a href="#github-pages-网站部署">GitHub Pages 网站部署</a></li>
+  </ul>
+</nav></div>
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Sphinx 搭建博客</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
@@ -145,25 +153,17 @@
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#概述">概述</a></li>
-    <li><a href="#sphinx-的安装与配置">Sphinx 的安装与配置</a></li>
-    <li><a href="#github-源码托管">GitHub 源码托管</a></li>
-    <li><a href="#read-the-docs-网站部署">Read the Docs 网站部署</a></li>
-    <li><a href="#github-pages-网站部署">GitHub Pages 网站部署</a></li>
-  </ul>
-</nav></div>
+                <div class="details-content toc-content" id="toc-content-static"></div>
             </div><div class="content" id="content"><p>Sphinx 是一个静态网页生成工具，可以将 reStructuredText 转化为静态网站，特别适合教程、说明等文档的编写。本文介绍如何基于此部署自己的博客。</p>
-<h2 id="概述">概述</h2>
-<p>静态网页可以由 <a href="https://www.sphinx-doc.org/zh_CN/master/" target="_blank" rel="noopener noreffer">Sphinx</a> 编译而成，源代码托管于 <a href="https://github.com/iChunyu/iChunyu.github.io/" target="_blank" rel="noopener noreffer">GitHub</a> 仓库，生成的静态网站部署在 <a href="https://readthedocs.org/" target="_blank" rel="noopener noreffer">Read the Docs</a>。以这种方式建立网站的主要步骤为：</p>
+<h2 id="概述" class="headerLink">
+    <a href="#%e6%a6%82%e8%bf%b0" class="header-mark"></a>概述</h2><p>静态网页可以由 <a href="https://www.sphinx-doc.org/zh_CN/master/" target="_blank" rel="noopener noreffer">Sphinx</a> 编译而成，源代码托管于 <a href="https://github.com/iChunyu/iChunyu.github.io/" target="_blank" rel="noopener noreffer">GitHub</a> 仓库，生成的静态网站部署在 <a href="https://readthedocs.org/" target="_blank" rel="noopener noreffer">Read the Docs</a>。以这种方式建立网站的主要步骤为：</p>
 <ul>
 <li>安装并初始化 Sphinx 项目；</li>
 <li>在 GitHub 建立文档源码托管仓库；</li>
 <li>从 Read the Docs 导入 Sphinx 项目。</li>
 </ul>
-<h2 id="sphinx-的安装与配置">Sphinx 的安装与配置</h2>
-<p>在 Linux 系统上，可以通过以下命令安装 Sphinx:</p>
+<h2 id="sphinx-的安装与配置" class="headerLink">
+    <a href="#sphinx-%e7%9a%84%e5%ae%89%e8%a3%85%e4%b8%8e%e9%85%8d%e7%bd%ae" class="header-mark"></a>Sphinx 的安装与配置</h2><p>在 Linux 系统上，可以通过以下命令安装 Sphinx:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -234,8 +234,8 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>至此，基本的设置就完成了。</p>
-<h2 id="github-源码托管">GitHub 源码托管</h2>
-<p>代码托管涉及到 <a href="https://git-scm.com/" target="_blank" rel="noopener noreffer">Git</a> 的使用，基本规则可以参考 <a href="https://ichunyu.github.io/learngit/" rel="">Git 版本控制</a> 。这里我们只需要在 GitHub 建立仓库，例如 <code>helps</code> 。然后在 Sphinx 项目目录下运行以下命令即可。</p>
+<h2 id="github-源码托管" class="headerLink">
+    <a href="#github-%e6%ba%90%e7%a0%81%e6%89%98%e7%ae%a1" class="header-mark"></a>GitHub 源码托管</h2><p>代码托管涉及到 <a href="https://git-scm.com/" target="_blank" rel="noopener noreffer">Git</a> 的使用，基本规则可以参考 <a href="https://ichunyu.github.io/learngit/" rel="">Git 版本控制</a> 。这里我们只需要在 GitHub 建立仓库，例如 <code>helps</code> 。然后在 Sphinx 项目目录下运行以下命令即可。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -263,12 +263,12 @@ git push -u origin main
 <li>添加远程分支，注意自己远程分支的地址；</li>
 <li>将当前分支推送到远程分支。</li>
 </ol>
-<h2 id="read-the-docs-网站部署">Read the Docs 网站部署</h2>
-<p>注册并登录 Read the Docs ，与发现有个 <code>Import a Project</code> 按钮，点之。根据提示与 GitHub 绑定，然后会刷新出仓库列表，选择保存 Sphinx 项目的仓库，然后根据提示进行设置，完成导入即可。</p>
+<h2 id="read-the-docs-网站部署" class="headerLink">
+    <a href="#read-the-docs-%e7%bd%91%e7%ab%99%e9%83%a8%e7%bd%b2" class="header-mark"></a>Read the Docs 网站部署</h2><p>注册并登录 Read the Docs ，与发现有个 <code>Import a Project</code> 按钮，点之。根据提示与 GitHub 绑定，然后会刷新出仓库列表，选择保存 Sphinx 项目的仓库，然后根据提示进行设置，完成导入即可。</p>
 <p>在 Read the Docs 导入项目之后，会在相应的 GitHub 仓库部署一个钩子。这个钩子的功能就是检测该仓库的提交，每当有新的提交，Read the Docs 将会根据最新的仓库重新编译 Sphinx 项目，并部署在项目所设置的网站上。</p>
 <p>这样以来就基本配置好了，剩下的只要依据 <a href="http://www.pythondoc.com/sphinx/index.html" target="_blank" rel="noopener noreffer">reStructuredText</a> 的规则编写文档即可。当然，Sphinx 也可以通过插件提供 Markdown 支持。reStructuredText 具有很同意的风格和完善的扩展，但使用稍微复杂一点点；而 Markdown 虽然简单，却存在很多“方言”，不同的编辑器会有不同的特性。各位可以自行取舍。</p>
-<h2 id="github-pages-网站部署">GitHub Pages 网站部署</h2>
-<p>生成的静态网站还可以直接由 GitHub Pages 进行托管，但需要遵循相关规则：</p>
+<h2 id="github-pages-网站部署" class="headerLink">
+    <a href="#github-pages-%e7%bd%91%e7%ab%99%e9%83%a8%e7%bd%b2" class="header-mark"></a>GitHub Pages 网站部署</h2><p>生成的静态网站还可以直接由 GitHub Pages 进行托管，但需要遵循相关规则：</p>
 <ol>
 <li>生成的静态网站所有内容都要放置在根目录 <code>docs/</code> 文件夹下：<code>cp -r build/html/* docs/</code>；</li>
 <li>在根目录和 <code>docs/</code> 下添加 <code>.nojekyll</code> 文件以取消 Jekyll 支持： <code>tuoch .nojekyll</code>；</li>
@@ -284,9 +284,8 @@ git push -u origin main
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/sphinx/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
-                        </span></div>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/sphinx/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
             <div class="post-info-share">
                 <span></span>
             </div>
@@ -305,7 +304,8 @@ git push -u origin main
 </div>
 </article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
         </div><script>
                     if('serviceWorker' in navigator) {
@@ -328,11 +328,9 @@ git push -u origin main
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
 
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/katex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-    <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></div>
 </body>
 
 </html>
