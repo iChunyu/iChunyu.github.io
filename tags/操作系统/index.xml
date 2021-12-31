@@ -4,10 +4,10 @@
         <link>https://ichunyu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
         <description>操作系统 - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 26 Dec 2021 21:27:40 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="self" type="application/rss+xml" /><item>
     <title>Arch Linux 系统安装</title>
     <link>https://ichunyu.github.io/installarch/</link>
-    <pubDate>Sun, 26 Dec 2021 21:27:40 &#43;0800</pubDate><author>
+    <pubDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/installarch/</guid>
     <description><![CDATA[<p>最近有兴趣折腾了一下 Arch Linux，并在虚拟机中成功安装。将安装步骤记录于此，下一次就真机实战。</p>]]></description>
