@@ -109,7 +109,7 @@ $$ {{< /math >}}
 = (RM)^N \left| \mathrm{sinc}\, \frac{RM\omega}{2} \right|^N
 $$ {{< /math >}}
 
-当 $R\rightarrow\infty$ 时幅频响应趋近于 $\mathrm{sinc}$ 函数，因此 CIC 滤波器也成为 SINC 滤波器。
+当 $R\rightarrow\infty$ 时幅频响应趋近于 $\mathrm{sinc}$ 函数，因此 CIC 滤波器也称为 SINC 滤波器。
 
 从传递函数 $\mathrm{e}$ 指数的虚部可以看出 CIC 滤波器的相频响应为
 
