@@ -35,7 +35,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/introcic\/"
-        },"genre": "posts","keywords": "CIC, 滤波器, 降采样, 升采样","wordcount":  2026 ,
+        },"genre": "posts","keywords": "CIC, 滤波器, 降采样, 升采样","wordcount":  2060 ,
         "url": "https:\/\/ichunyu.github.io\/introcic\/","datePublished": "2022-02-13T13:37:42+08:00","dateModified": "2022-02-13T13:37:42+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
@@ -139,13 +139,14 @@
     <li><a href="#cic-滤波器的实现">CIC 滤波器的实现</a></li>
     <li><a href="#cic-滤波器的频率响应">CIC 滤波器的频率响应</a></li>
     <li><a href="#降采样倍数的设计">降采样倍数的设计</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav></div>
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CIC 滤波器简介</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-13">2022-02-13</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-02-13">2022-02-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2026 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-13">2022-02-13</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-02-13">2022-02-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2060 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -158,6 +159,7 @@
     <li><a href="#cic-滤波器的实现">CIC 滤波器的实现</a></li>
     <li><a href="#cic-滤波器的频率响应">CIC 滤波器的频率响应</a></li>
     <li><a href="#降采样倍数的设计">降采样倍数的设计</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>级联积分梳状（CIC, Cascaded Integrator–Comb）滤波器是一种非常“经济”的滤波器。它的实现所需资源少、具有线性相位，同时实现采样率的改变，通常可用于模数转换器（ADC, Analog to Digital Converter）的抗混叠滤波。本文简要介绍 CIC 滤波器的基本原理及其实现方法，分析该滤波器的频率响应，然后给出 CIC 滤波器在降采样（抽取）和升采样（插值）的应用，最后给出降采样倍数的一般设计方法。</p>
@@ -262,7 +264,11 @@ $$
  $$
 R \ge R_\mathrm{min} = \left \lceil \frac{2\sigma_w^2}{f_sS_{w,\mathrm{max}}^2 } \right \rceil
 = \left \lceil \frac{1}{6f_s S_{w,\mathrm{max}}^2} \left(\frac{V_\mathrm{ref}}{2^{\mu_y-1}}\right)^2 \right \rceil
-$$</div>
+$$ 
+<h2 id="参考资料" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
+<li>E. Hogenauer, <a href="https://doi.org/10.1109/TASSP.1981.1163535" target="_blank" rel="noopener noreffer">An Economical Class of Digital Filters for Decimation and Interpolation</a>, IEEE Transactions on Acoustics, Speech, and Signal Processing. 29 (1981) 155–162.</li>
+</ol></div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">

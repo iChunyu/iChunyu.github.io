@@ -156,3 +156,9 @@ R \ge R_\mathrm{min} = \left \lceil \frac{2\sigma_w^2}{f_sS_{w,\mathrm{max}}^2 }
 = \left \lceil \frac{1}{6f_s S_{w,\mathrm{max}}^2} \left(\frac{V_\mathrm{ref}}{2^{\mu_y-1}}\right)^2 \right \rceil
 $$ {{< /math >}}
 
+
+## 参考资料
+
+1. E. Hogenauer, [An Economical Class of Digital Filters for Decimation and Interpolation](https://doi.org/10.1109/TASSP.1981.1163535), IEEE Transactions on Acoustics, Speech, and Signal Processing. 29 (1981) 155–162.
+
+
