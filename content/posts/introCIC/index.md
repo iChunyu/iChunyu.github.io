@@ -114,7 +114,7 @@ $$ {{< /math >}}
 = (RM)^N \left| \mathrm{sinc}\, \frac{RM\omega}{2} \right|^N
 $$ {{< /math >}}
 
-当 $R\rightarrow\infty$ 时幅频响应趋近于 $\mathrm{sinc}$ 函数，因此 CIC 滤波器也成为 SINC 滤波器。
+当 $R\rightarrow\infty$ 时幅频响应趋近于 $\mathrm{sinc}$ 函数，因此 CIC 滤波器也称为 SINC 滤波器。
 
 从传递函数 $\mathrm{e}$ 指数的虚部可以看出 CIC 滤波器的相频响应为
 
@@ -160,3 +160,9 @@ $$ {{< /math >}}
 R \ge R_\mathrm{min} = \left \lceil \frac{2\sigma_w^2}{f_sS_{w,\mathrm{max}}^2 } \right \rceil
 = \left \lceil \frac{1}{6f_s S_{w,\mathrm{max}}^2} \left(\frac{V_\mathrm{ref}}{2^{\mu_y-1}}\right)^2 \right \rceil
 $$ {{< /math >}}
+
+
+## 参考资料
+
+1. E. Hogenauer, [An Economical Class of Digital Filters for Decimation and Interpolation](https://doi.org/10.1109/TASSP.1981.1163535), IEEE Transactions on Acoustics, Speech, and Signal Processing. 29 (1981) 155–162.
+
