@@ -4,7 +4,14 @@
         <link>https://ichunyu.github.io/posts/</link>
         <description>所有文章 | 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>CIC 滤波器简介</title>
+    <link>https://ichunyu.github.io/introcic/</link>
+    <pubDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/introcic/</guid>
+    <description><![CDATA[<p>级联积分梳状（CIC, Cascaded Integrator–Comb）滤波器是一种非常“经济”的滤波器。它的实现所需资源少、具有线性相位，同时实现采样率的改变，通常可用于模数转换器（ADC, Analog to Digital Converter）的抗混叠滤波。本文简要介绍 CIC 滤波器的基本原理及其实现方法，分析该滤波器的频率响应，然后给出 CIC 滤波器在降采样（抽取）和升采样（插值）的应用，最后给出降采样倍数的一般设计方法。</p>]]></description>
+</item><item>
     <title>Arch Linux 系统安装</title>
     <link>https://ichunyu.github.io/installarch/</link>
     <pubDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/integratorantiwindup/</guid>
     <description><![CDATA[<p>对于实际的系统，控制器的输出应当受到幅度限制，以避免超出执行机的量程。然而，在具有积分的控制器中如果仅对输出进行限幅，将会引起所谓的退饱和现象，使控制器的性能变差甚至导致系统不稳定。这回我们来谈谈抗饱和积分器。</p>]]></description>
-</item><item>
-    <title>信号的滤波</title>
-    <link>https://ichunyu.github.io/filterdesign/</link>
-    <pubDate>Wed, 02 Jun 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/filterdesign/</guid>
-    <description><![CDATA[<p>线性系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有完善的工具包对常用线性滤波器进行设计，本文简要介绍这些函数及其用法。</p>]]></description>
 </item></channel>
 </rss>
