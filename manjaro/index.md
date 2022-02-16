@@ -47,8 +47,7 @@ sudo pacman -Syu
 Manjaro 系统包管理的命令是 `pacman` ，为了使用强大的 AUR （Arch User Repository），可以安装并使用 `yay` 对软件进行管理：
 
 ``` bash
-sudo pacman -S yay                                          ## 安装 yay
-yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save      ## 设置 AUR 镜像站
+sudo pacman -S yay                  # 安装 yay
 ```
 
 此后 `sudo pacman` 命令可以用 `yay` 代替了。绝大部分常用软件都可以不加额外配置地使用 `yay -S` 进行安装，是不是非常方便呢：
