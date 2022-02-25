@@ -8,7 +8,7 @@
     <title class="pjax-title">Manjaro 系统安装 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="Manjaro 系统安装" />
 <meta property="og:description" content="尝试过 Debian 系的 deepin、Ubuntu 和它的衍生版 Pop!_OS，都被各种各样的 Bug 劝退。后来尝试了 Arch 系的 Manjaro，唔，这真的是一款非常令人舒适的 Linux 发行版！来跟我一起折腾吧！" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/manjaro/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://ichunyu.github.io/installmanjaro/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-12T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-05-12T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
@@ -20,7 +20,7 @@
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/manjaro/" /><link rel="prev" href="https://ichunyu.github.io/restructuredtext/" /><link rel="next" href="https://ichunyu.github.io/diffsignal/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/installmanjaro/" /><link rel="prev" href="https://ichunyu.github.io/restructuredtext/" /><link rel="next" href="https://ichunyu.github.io/diffsignal/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
     
@@ -34,9 +34,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ichunyu.github.io\/manjaro\/"
-        },"genre": "posts","keywords": "Manjaro, Linux, 操作系统","wordcount":  2706 ,
-        "url": "https:\/\/ichunyu.github.io\/manjaro\/","datePublished": "2021-05-12T00:00:00+00:00","dateModified": "2021-05-12T00:00:00+00:00","publisher": {
+            "@id": "https:\/\/ichunyu.github.io\/installmanjaro\/"
+        },"genre": "posts","keywords": "Manjaro, Linux, 操作系统","wordcount":  2692 ,
+        "url": "https:\/\/ichunyu.github.io\/installmanjaro\/","datePublished": "2021-05-12T00:00:00+00:00","dateModified": "2021-05-12T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -161,7 +161,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2706 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2692 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -326,7 +326,7 @@ nnoremap k gk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yay -S fcitx5-im
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yay -S fcitx5-im fcitx5-chinese-addons
 </code></pre></td></tr></table>
 </div>
 </div><p>使用 <code>vim ~/.pam_environment</code> 新建文件，添加以下内容以设置 <code>fcitx5</code> 的环境变量：</p>
@@ -369,33 +369,22 @@ yay -S deepin-wine-qq                   <span class="c1"># wine QQ</span>
 </div><p>由于 Wine 本身的问题，使用时可能会出现一些问题，常见的问题和解决方案有：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## 微信中文乱码</span>
 yay -S wqy-zenhei wqy-microhei                      <span class="c1"># 安装文泉译黑体</span>
 
-<span class="c1">## 微信最小化出现透明窗口</span>
-/opt/apps/com.qq.weixin.deepin/files/run.sh -d      <span class="c1"># 切换到 deepin-wine</span>
-
-<span class="c1">## QQ 打不开</span>
-/opt/apps/com.qq.im.deepin/files/run.sh -d          <span class="c1"># 切换另一个 deepin-wine</span>
-
 <span class="c1">## 高分辨率屏幕下，界面字体过小</span>
-<span class="nv">WINEPREFIX</span><span class="o">=</span>~/.deepinwine/Deepin-WeChat/ /usr/bin/deepin-wine5 winecfg
+/opt/apps/com.qq.weixin.deepin/files/run.sh winecfg
 </code></pre></td></tr></table>
 </div>
-</div><p>最后调整界面字体时， <code>Deepin-WeChat</code> 对应的是微信，QQ 应当做相应替换。运行后会弹出设置窗口，在 &ldquo;显示&rdquo; 选项卡中调整 &ldquo;屏幕分辨率&rdquo; 的 DPI 即可。将默认值 96 改为 144 即可实现 150% 的缩放效果。</p>
+</div><p>最后调整界面字体时， 路径 <code>*/com.qq.weixin.deepin/*</code> 对应的是微信，QQ 应当做相应替换。运行后会弹出设置窗口，在 &ldquo;显示&rdquo; 选项卡中调整 &ldquo;屏幕分辨率&rdquo; 的 DPI 即可。将默认值 96 改为 144 即可实现 150% 的缩放效果。</p>
+<p>详细的安装说明及问题可以参考 <a href="https://github.com/vufa/deepin-wine-wechat-arch" target="_blank" rel="noopener noreffer">ArchLinux 微信</a> 的说明文档。</p>
 <h3 id="matlab" class="headerLink">
     <a href="#matlab" class="header-mark"></a>MATLAB</h3><p>从官网下载的 <code>.zip</code> 压缩包如果直接解压可能导致无法打开安装文件，使用下面的命令进行解压：</p>
 <div class="highlight"><div class="chroma">
@@ -601,7 +590,7 @@ GRUB_TIMEOUT_STYLE=hidden       ## 样式：hidden 或 menu
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span><a class="link-to-mardown" href=/manjaro/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/installmanjaro/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                     </span></div>
             <div class="post-info-share">
                 <span></span>
