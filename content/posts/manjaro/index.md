@@ -108,7 +108,7 @@ nnoremap k gk
 首先安装 `fcitx5` 框架，唔......老命令换新名：
 
 ``` bash
-yay -S fcitx5-im
+yay -S fcitx5-im fcitx5-chinese-addons
 ```
 
 使用 `vim ~/.pam_environment` 新建文件，添加以下内容以设置 `fcitx5` 的环境变量：
@@ -144,17 +144,15 @@ yay -S deepin-wine-qq                   # wine QQ
 ## 微信中文乱码
 yay -S wqy-zenhei wqy-microhei                      # 安装文泉译黑体
 
-## 微信最小化出现透明窗口
-/opt/apps/com.qq.weixin.deepin/files/run.sh -d      # 切换到 deepin-wine
-
-## QQ 打不开
-/opt/apps/com.qq.im.deepin/files/run.sh -d          # 切换另一个 deepin-wine
-
 ## 高分辨率屏幕下，界面字体过小
-WINEPREFIX=~/.deepinwine/Deepin-WeChat/ /usr/bin/deepin-wine5 winecfg
+/opt/apps/com.qq.weixin.deepin/files/run.sh winecfg
 ```
 
-最后调整界面字体时， `Deepin-WeChat` 对应的是微信，QQ 应当做相应替换。运行后会弹出设置窗口，在 "显示" 选项卡中调整 "屏幕分辨率" 的 DPI 即可。将默认值 96 改为 144 即可实现 150% 的缩放效果。
+最后调整界面字体时， 路径 `*/com.qq.weixin.deepin/*` 对应的是微信，QQ 应当做相应替换。运行后会弹出设置窗口，在 "显示" 选项卡中调整 "屏幕分辨率" 的 DPI 即可。将默认值 96 改为 144 即可实现 150% 的缩放效果。
+
+详细的安装说明及问题可以参考 [ArchLinux 微信](https://github.com/vufa/deepin-wine-wechat-arch) 的说明文档。
+
+
 
 ### MATLAB
 
