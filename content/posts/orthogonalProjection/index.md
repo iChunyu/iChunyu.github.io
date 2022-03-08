@@ -2,7 +2,7 @@
 title: "正交投影——极小化问题的解决方案"
 date: 2020-08-16
 tags: ["正交投影","曲线拟合"]
-categories: ["数字信号处理"]
+categories: ["奇妙的数学"]
 draft: false
 ---
 
