@@ -201,8 +201,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=[</span>/path/to/manjaro.iso<span class="o">]</span> <span class="nv">of</span><span class="o">=</span>/dev/sd<span class="o">[</span>drive letter<span class="o">]</span> <span class="nv">status</span><span class="o">=</span>progress <span class="nv">oflag</span><span class="o">=</span>sync
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=[</span>/path/to/manjaro.iso<span class="o">]</span> <span class="nv">of</span><span class="o">=</span>/dev/sd<span class="o">[</span>drive letter<span class="o">]</span> <span class="nv">status</span><span class="o">=</span>progress <span class="nv">oflag</span><span class="o">=</span>sync
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>命令中的 <code>if</code> 和 <code>of</code> 分别代表输入文件（input file）和输出文件（output file），下载位置不同，注意连同中括号替换路径。</p>
 <div class="details admonition note open">
@@ -224,8 +224,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo pacman-mirrors -i -c China -m rank
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman-mirrors -i -c China -m rank
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在弹出的窗口进行选择即可完成换源。进一步可以使用 <code>vi /etc/pacman.d/mirrorlist</code> 进行确认。然后，运行以下命令更新系统：</p>
 <div class="highlight"><div class="chroma">
@@ -233,8 +233,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -Syu
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -Syu
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="安装软件" class="headerLink">
     <a href="#%e5%ae%89%e8%a3%85%e8%bd%af%e4%bb%b6" class="header-mark"></a>安装软件</h2><p>Manjaro 系统包管理的命令是 <code>pacman</code> ，为了使用强大的 AUR （Arch User Repository），可以安装并使用 <code>yay</code> 对软件进行管理：</p>
@@ -243,8 +243,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S yay                  <span class="c1"># 安装 yay</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S yay                  <span class="c1"># 安装 yay</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此后 <code>sudo pacman</code> 命令可以用 <code>yay</code> 代替了。绝大部分常用软件都可以不加额外配置地使用 <code>yay -S</code> 进行安装，是不是非常方便呢：</p>
 <div class="highlight"><div class="chroma">
@@ -263,19 +263,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yay -S base-devel                   <span class="c1"># 基本打包工具，yay 安装软件可能用到</span>
-yay -S zotero                       <span class="c1"># Zotero</span>
-yay -S nutstore                     <span class="c1"># 坚果云</span>
-yay -S visual-studio-code-bin       <span class="c1"># VS Code</span>
-yay -S youdao-dict                  <span class="c1"># 有道词典</span>
-yay -S qqmusic                      <span class="c1"># QQ音乐</span>
-yay -S vmware-workstation           <span class="c1"># VM-Ware 虚拟机</span>
-yay -S thefuck                      <span class="c1"># 命令输入错误后输入 `fuck` 进行纠错</span>
-yay -S mlocate                      <span class="c1"># 文件查找</span>
-yay -S obs-studio                   <span class="c1"># OBS Studio</span>
-yay -S enca                         <span class="c1"># 文件编码转换：enca -L chinese -x utf-8 *</span>
-yay -S bash-completion              <span class="c1"># 终端自动补全功能</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S base-devel                   <span class="c1"># 基本打包工具，yay 安装软件可能用到</span>
+</span></span><span class="line"><span class="cl">yay -S zotero                       <span class="c1"># Zotero</span>
+</span></span><span class="line"><span class="cl">yay -S nutstore                     <span class="c1"># 坚果云</span>
+</span></span><span class="line"><span class="cl">yay -S visual-studio-code-bin       <span class="c1"># VS Code</span>
+</span></span><span class="line"><span class="cl">yay -S youdao-dict                  <span class="c1"># 有道词典</span>
+</span></span><span class="line"><span class="cl">yay -S qqmusic                      <span class="c1"># QQ音乐</span>
+</span></span><span class="line"><span class="cl">yay -S vmware-workstation           <span class="c1"># VM-Ware 虚拟机</span>
+</span></span><span class="line"><span class="cl">yay -S thefuck                      <span class="c1"># 命令输入错误后输入 `fuck` 进行纠错</span>
+</span></span><span class="line"><span class="cl">yay -S mlocate                      <span class="c1"># 文件查找</span>
+</span></span><span class="line"><span class="cl">yay -S obs-studio                   <span class="c1"># OBS Studio</span>
+</span></span><span class="line"><span class="cl">yay -S enca                         <span class="c1"># 文件编码转换：enca -L chinese -x utf-8 *</span>
+</span></span><span class="line"><span class="cl">yay -S bash-completion              <span class="c1"># 终端自动补全功能</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>不确定软件名字的时候，可以使用命令 <code>yay -Ss &lt;pkgname&gt;</code> 进行搜索，或者在 <a href="https://aur.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener noreffer">AUR 仓库镜像站</a> 搜索。</p>
 <p>Manjaro 自带最新版本 Git ，真不错。下面记录一些需要少许配置的其他软件的安装。</p>
@@ -286,8 +286,8 @@ yay -S bash-completion              <span class="c1"># 终端自动补全功能<
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yay -S gvim
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S gvim
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以通过 <code>vim ~/.vimrc</code> 编辑文件对 Vim 进行配置，例如：</p>
 <div class="highlight"><div class="chroma">
@@ -305,18 +305,18 @@ yay -S bash-completion              <span class="c1"># 终端自动补全功能<
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">syntax on
-set number
-set autoindent
-set smartindent
-set tabstop=4
-set expandtab
-set shiftwidth=4
-set fileencodings=utf8
-
-nnoremap j gj
-nnoremap k gk
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">syntax on
+</span></span><span class="line"><span class="cl">set number
+</span></span><span class="line"><span class="cl">set autoindent
+</span></span><span class="line"><span class="cl">set smartindent
+</span></span><span class="line"><span class="cl">set tabstop=4
+</span></span><span class="line"><span class="cl">set expandtab
+</span></span><span class="line"><span class="cl">set shiftwidth=4
+</span></span><span class="line"><span class="cl">set fileencodings=utf8
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">nnoremap j gj
+</span></span><span class="line"><span class="cl">nnoremap k gk
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后两行是重新映射了 Vim 的换行功能，相关的使用说明可以参考 <a href="https://ichunyu.github.io/vim/" rel="">Vim 简介</a>。</p>
 <h3 id="中文输入法" class="headerLink">
@@ -326,8 +326,8 @@ nnoremap k gk
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yay -S fcitx5-im fcitx5-chinese-addons
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S fcitx5-im fcitx5-chinese-addons
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用 <code>vim ~/.pam_environment</code> 新建文件，添加以下内容以设置 <code>fcitx5</code> 的环境变量：</p>
 <div class="highlight"><div class="chroma">
@@ -338,11 +338,11 @@ nnoremap k gk
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">INPUT_METHOD  DEFAULT=fcitx5
-GTK_IM_MODULE DEFAULT=fcitx5
-QT_IM_MODULE  DEFAULT=fcitx5
-XMODIFIERS    DEFAULT=\@im=fcitx5
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">INPUT_METHOD  DEFAULT=fcitx5
+</span></span><span class="line"><span class="cl">GTK_IM_MODULE DEFAULT=fcitx5
+</span></span><span class="line"><span class="cl">QT_IM_MODULE  DEFAULT=fcitx5
+</span></span><span class="line"><span class="cl">XMODIFIERS    DEFAULT=\@im=fcitx5
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后就可以安装具体的输入法了，例如 <a href="https://rime.im/" target="_blank" rel="noopener noreffer">Rime</a> 可以使用如下命令进行安装：</p>
 <div class="highlight"><div class="chroma">
@@ -350,8 +350,8 @@ XMODIFIERS    DEFAULT=\@im=fcitx5
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yay -S fcitx5-rime
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S fcitx5-rime
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>安装完成之后需要注销用户重新登录系统，然后在开始菜单找到并打开 <code>Fcitx5 Configuration</code> ，点击 &ldquo;添加输入法&rdquo; 按钮，搜索并选择 Rime 即可。Rime 是一款可高度自定义的输入法，单是它的配置就可以写很多教程，这里我不想写的太多。不愿意折腾的朋友当然可以使用 <code>fcitx5</code> 自带的拼音输入法，还能安装 <code>fcitx5-material-color</code> 更换皮肤哟～</p>
 <h3 id="微信-qq" class="headerLink">
@@ -362,9 +362,9 @@ XMODIFIERS    DEFAULT=\@im=fcitx5
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yay -S deepin-wine-wechat               <span class="c1"># wine 微信</span>
-yay -S deepin-wine-qq                   <span class="c1"># wine QQ</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S deepin-wine-wechat               <span class="c1"># wine 微信</span>
+</span></span><span class="line"><span class="cl">yay -S deepin-wine-qq                   <span class="c1"># wine QQ</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于 Wine 本身的问题，使用时可能会出现一些问题，常见的问题和解决方案有：</p>
 <div class="highlight"><div class="chroma">
@@ -376,12 +376,12 @@ yay -S deepin-wine-qq                   <span class="c1"># wine QQ</span>
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">## 微信中文乱码</span>
-yay -S wqy-zenhei wqy-microhei                      <span class="c1"># 安装文泉译黑体</span>
-
-<span class="c1">## 高分辨率屏幕下，界面字体过小</span>
-/opt/apps/com.qq.weixin.deepin/files/run.sh winecfg
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">## 微信中文乱码</span>
+</span></span><span class="line"><span class="cl">yay -S wqy-zenhei wqy-microhei                      <span class="c1"># 安装文泉译黑体</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 高分辨率屏幕下，界面字体过小</span>
+</span></span><span class="line"><span class="cl">/opt/apps/com.qq.weixin.deepin/files/run.sh winecfg
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后调整界面字体时， 路径 <code>*/com.qq.weixin.deepin/*</code> 对应的是微信，QQ 应当做相应替换。运行后会弹出设置窗口，在 &ldquo;显示&rdquo; 选项卡中调整 &ldquo;屏幕分辨率&rdquo; 的 DPI 即可。将默认值 96 改为 144 即可实现 150% 的缩放效果。</p>
 <p>详细的安装说明及问题可以参考 <a href="https://github.com/vufa/deepin-wine-wechat-arch" target="_blank" rel="noopener noreffer">ArchLinux 微信</a> 的说明文档。</p>
@@ -392,8 +392,8 @@ yay -S wqy-zenhei wqy-microhei                      <span class="c1"># 安装文
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">unzip -X -K matlab_R2021a_glnxa64.zip -d installMATLAB/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">unzip -X -K matlab_R2021a_glnxa64.zip -d installMATLAB/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>从终端进入解压出来的 <code>installMATLAB</code> 文件夹，使用 <code>./install</code> 调用安装程序即可根据用户界面按顺序进行安装。</p>
 <p>为了将 MATLAB 添加到开始菜单，使用 <code>sudo vim /usr/share/applications/MATLAB.desktop</code> 创建文件，并写入以下内容（注意安装路径）</p>
@@ -411,17 +411,17 @@ yay -S wqy-zenhei wqy-microhei                      <span class="c1"># 安装文
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">[Desktop Entry]
-Type=Application
-Name=MATLAB
-GenericName=MATLAB R2021a
-Comment=MATLAB: The Language of Technical Computing
-Exec=sh /home/xiaocy/MATLAB/R2021a/bin/matlab -desktop
-Icon=/home/xiaocy/MATLAB/R2021a/toolbox/nnet/nnresource/icons/matlab.png
-StartupNotify=true
-Terminal=false
-Categories=Development;MATLAB;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">[Desktop Entry]
+</span></span><span class="line"><span class="cl">Type=Application
+</span></span><span class="line"><span class="cl">Name=MATLAB
+</span></span><span class="line"><span class="cl">GenericName=MATLAB R2021a
+</span></span><span class="line"><span class="cl">Comment=MATLAB: The Language of Technical Computing
+</span></span><span class="line"><span class="cl">Exec=sh /home/xiaocy/MATLAB/R2021a/bin/matlab -desktop
+</span></span><span class="line"><span class="cl">Icon=/home/xiaocy/MATLAB/R2021a/toolbox/nnet/nnresource/icons/matlab.png
+</span></span><span class="line"><span class="cl">StartupNotify=true
+</span></span><span class="line"><span class="cl">Terminal=false
+</span></span><span class="line"><span class="cl">Categories=Development;MATLAB;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>KDE 桌面环境下，MATLAB 中右键 &ldquo;Open Current Folder in File Manager&rdquo; 可能不工作，可按 <a href="https://ww2.mathworks.cn/matlabcentral/answers/496880-open-current-folder-in-file-manager-does-nothing-matlab-r2019b-on-kubuntu-19-10" target="_blank" rel="noopener noreffer">以下步骤</a> 进行设置：</p>
 <ol>
@@ -434,8 +434,8 @@ Categories=Development;MATLAB;
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-MATLAB" data-lang="MATLAB"><span class="n">setenv</span><span class="p">(</span><span class="s">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;/usr/lib/:&#39;</span><span class="p">,</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">)]);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-MATLAB" data-lang="MATLAB"><span class="line"><span class="cl"><span class="n">setenv</span><span class="p">(</span><span class="s">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;/usr/lib/:&#39;</span><span class="p">,</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;LD_LIBRARY_PATH&#39;</span><span class="p">)]);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对于高分辨率屏幕，MATLAB 界面的字体显得略小，可在 MATLAB 命令行中进行调整：</p>
 <div class="highlight"><div class="chroma">
@@ -444,9 +444,9 @@ Categories=Development;MATLAB;
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-MATLAB" data-lang="MATLAB"><span class="n">s</span> <span class="p">=</span> <span class="n">settings</span><span class="p">;</span><span class="n">s</span><span class="p">.</span><span class="n">matlab</span><span class="p">.</span><span class="n">desktop</span><span class="p">.</span><span class="n">DisplayScaleFactor</span>
-<span class="n">s</span><span class="p">.</span><span class="n">matlab</span><span class="p">.</span><span class="n">desktop</span><span class="p">.</span><span class="n">DisplayScaleFactor</span><span class="p">.</span><span class="n">PersonalValue</span> <span class="p">=</span> <span class="mf">1.5</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-MATLAB" data-lang="MATLAB"><span class="line"><span class="cl"><span class="n">s</span> <span class="p">=</span> <span class="n">settings</span><span class="p">;</span><span class="n">s</span><span class="p">.</span><span class="n">matlab</span><span class="p">.</span><span class="n">desktop</span><span class="p">.</span><span class="n">DisplayScaleFactor</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span><span class="p">.</span><span class="n">matlab</span><span class="p">.</span><span class="n">desktop</span><span class="p">.</span><span class="n">DisplayScaleFactor</span><span class="p">.</span><span class="n">PersonalValue</span> <span class="p">=</span> <span class="mf">1.5</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对于双显卡电脑（一般是笔记本电脑），绘图时可能出现无法使用独立显卡进行渲染的情况，通常给出 &ldquo;MATLAB禁用了一些高级图形功能&rdquo; 的警告或者直接抛出 OpenGL
 相关的错误。为此，可在命令行使用 <a href="https://www.mathworks.com/matlabcentral/answers/239279-hardware-based-opengl-on-linux" target="_blank" rel="noopener noreffer">以下命令</a>
@@ -456,8 +456,8 @@ Categories=Development;MATLAB;
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">MESA_LOADER_DRIVER_OVERRIDE</span><span class="o">=</span>i965<span class="p">;</span> matlab
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">MESA_LOADER_DRIVER_OVERRIDE</span><span class="o">=</span>i965<span class="p">;</span> matlab
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>进一步，若想保持这种设置，可将快捷方式的设置改为：</p>
 <div class="highlight"><div class="chroma">
@@ -465,8 +465,8 @@ Categories=Development;MATLAB;
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">Exec=env MESA_LOADER_DRIVER_OVERRIDE=i965 /home/xiaocy/MATLAB/R2021a/bin/matlab -desktop
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Exec=env MESA_LOADER_DRIVER_OVERRIDE=i965 /home/xiaocy/MATLAB/R2021a/bin/matlab -desktop
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="tex-live" class="headerLink">
     <a href="#tex-live" class="header-mark"></a>TeX Live</h3><p>下载 TeX Live 的镜像文件，挂载后使用 <code>sudo ./install-tl</code> 即可安装。安装完成后需要在 <code>~/.bashrc</code> 中设置路径：</p>
@@ -477,10 +477,10 @@ Categories=Development;MATLAB;
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:${MANPATH}
-export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:${INFOPATH}
-export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:${MANPATH}
+</span></span><span class="line"><span class="cl">export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:${INFOPATH}
+</span></span><span class="line"><span class="cl">export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同样注意安装路径可能有所不同。最后运行 <code>source .bashrc</code> 刷新即可。</p>
 <h3 id="inkscape" class="headerLink">
@@ -490,8 +490,8 @@ export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">yay -S inkscape
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S inkscape
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>除此，我还喜欢为其安装 <a href="https://textext.github.io/textext/" target="_blank" rel="noopener noreffer">TexText</a> 扩展以在绘图时使用 LaTeX 。虽然该扩展可以简单地使用 <code>yay -S textext</code> 进行安装，但这种方法偶尔会找不到 LaTeX 路径，因此建议从 <a href="https://github.com/textext/textext/releases" target="_blank" rel="noopener noreffer">GitHub release page</a> 下载，并在安装时手动指定路径：</p>
 <div class="highlight"><div class="chroma">
@@ -499,8 +499,8 @@ export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">python setup.py --pdflatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/pdflatex --xelatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/xelatex --lualatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/lualatex
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python setup.py --pdflatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/pdflatex --xelatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/xelatex --lualatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/lualatex
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以编辑 <code>~/.config/inkscape/extensions/textext/default_packages.tex</code> 对 TexText 宏包进行设置。一般我会使用以下宏包：</p>
 <div class="highlight"><div class="chroma">
@@ -515,15 +515,15 @@ export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-LaTeX" data-lang="LaTeX"><span class="k">\usepackage</span><span class="nb">{</span>metalogo<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>newtxmath<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="nb">{</span>siunitx<span class="nb">}</span>
-<span class="k">\usepackage</span><span class="na">[UTF8]</span><span class="nb">{</span>ctex<span class="nb">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-LaTeX" data-lang="LaTeX"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>metalogo<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="na">[table]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>newtxmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>siunitx<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="na">[UTF8]</span><span class="nb">{</span>ctex<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="flameshot" class="headerLink">
     <a href="#flameshot" class="header-mark"></a>Flameshot</h3><p>Linux 下对标 <a href="https://www.snipaste.com/" target="_blank" rel="noopener noreffer">Snipaste</a> 的开源截图软件，安装很容易：</p>
@@ -532,8 +532,8 @@ export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">yay -S flameshot
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">yay -S flameshot
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>我喜欢给这个截图工具设置全局快捷键，可以打开系统设置 → 快捷键 → 自定义快捷键 → 编辑 → 新建 → 全局快捷键 → 命令/URL。快捷键可以自己定义，绑定的命令应当设置为 <code>flameshot gui</code> 。</p>
 <h2 id="系统设置" class="headerLink">
@@ -547,8 +547,8 @@ export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="m">2</span> &gt;&gt; /sys/module/hid_apple/parameters/fnmode
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="m">2</span> &gt;&gt; /sys/module/hid_apple/parameters/fnmode
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果想要这个设置永久生效，可以在 <code>/etc/modprobe.d/hid_apple.conf</code> 文件中添加以下内容：</p>
 <div class="highlight"><div class="chroma">
@@ -556,8 +556,8 @@ export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">options hid_apple fnmode=2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">options hid_apple fnmode=2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="grub-基本设置" class="headerLink">
     <a href="#grub-%e5%9f%ba%e6%9c%ac%e8%ae%be%e7%bd%ae" class="header-mark"></a>GRUB 基本设置</h3><p>设置启动选项，只需要 <code>sudo vim /etc/default/grub</code> 编辑设置文件即可，我只动过以下两条：</p>
@@ -567,9 +567,9 @@ export PATH=/usr/local/texlive/2021/bin/x86_64-linux:${PATH}
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">GRUB_TIMEOUT=0                  ## 启动等待时间
-GRUB_TIMEOUT_STYLE=hidden       ## 样式：hidden 或 menu
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">GRUB_TIMEOUT=0                  ## 启动等待时间
+</span></span><span class="line"><span class="cl">GRUB_TIMEOUT_STYLE=hidden       ## 样式：hidden 或 menu
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>改动之后运行 <code>sudo update-grub</code> 刷新。</p>
 <div class="details admonition danger open">
@@ -611,7 +611,7 @@ GRUB_TIMEOUT_STYLE=hidden       ## 样式：hidden 或 menu
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

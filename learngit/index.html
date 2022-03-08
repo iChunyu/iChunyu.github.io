@@ -240,9 +240,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git config --global user.name &lt;username&gt;
-git config --global user.email &lt;emailaddress&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global user.name &lt;username&gt;
+</span></span><span class="line"><span class="cl">git config --global user.email &lt;emailaddress&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中 <code>&lt;&gt;</code> 内部的命令由用户自己指定，输入时不需要输入尖括号。后面再介绍命令使用时也将采用这种表述。</p>
 <p>这两条命令运行后不会出现任何可见的效果，因为 Git 认为简单的最好，而最简单的莫过于什么都不显示了～</p>
@@ -252,8 +252,8 @@ git config --global user.email &lt;emailaddress&gt;
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git init
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将文件添加到暂存区、再将暂存区所记录的修改提交到版本库，依次使用以下命令（<code>#</code> 是 Git 的注释符）：</p>
 <div class="highlight"><div class="chroma">
@@ -262,9 +262,9 @@ git config --global user.email &lt;emailaddress&gt;
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git add &lt;filename&gt;      <span class="c1">## 将工作区修改到暂存区</span>
-git commit              <span class="c1">## 将暂存区修改提交到版本库</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add &lt;filename&gt;      <span class="c1">## 将工作区修改到暂存区</span>
+</span></span><span class="line"><span class="cl">git commit              <span class="c1">## 将暂存区修改提交到版本库</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>若需要将工作目录下的所有修改或新增的文件添加到暂存区，可以使用 <code>.</code> 来代替所有的文件名。提交到版本库时， Git 会根据安装时设置的默认编辑器弹出编辑界面，在其中编写此次提交的备注，保存并关闭后即完成了 <code>commit</code> 命令。编写备注中， <code>#</code> 开头的行将作为注释忽略。一般情况下第一行简要说明此次修改的内容，空一行之后从第三行对此次修改进行详细说明，以便后期需要版本回退时精确定位回退的版本。</p>
 <p>初始化仓库时会自从创建名为 <code>master</code> 的分支，若需要创建分支，可以使用这个命令：</p>
@@ -273,8 +273,8 @@ git commit              <span class="c1">## 将暂存区修改提交到版本库
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch &lt;branchname&gt; <span class="o">[</span>&lt;hash&gt;<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch &lt;branchname&gt; <span class="o">[</span>&lt;hash&gt;<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面的中括号表示可选参数，用于指定新分支所指向的提交（用哈希值表示），当留空时默认为当前所在的提交。</p>
 <p>移动 <code>HEAD</code> 所指向的分支，可以使用 <code>switch</code> 命令，如下：</p>
@@ -283,8 +283,8 @@ git commit              <span class="c1">## 将暂存区修改提交到版本库
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git switch &lt;branchname&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git switch &lt;branchname&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将某分支合并到当前分支，采用如下命令：</p>
 <div class="highlight"><div class="chroma">
@@ -292,8 +292,8 @@ git commit              <span class="c1">## 将暂存区修改提交到版本库
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git merge &lt;branchname&gt;
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git merge &lt;branchname&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>合并时，若某文件在两个分支不相同，Git 会提示存在冲突，并尝试进行差异对比。所有冲突解决之后会要求编写备注以产生新的提交。</p>
 <p>使用时经常需要查看 Git 当前的状态，或者查看当前分支的整个开发历史，可以使用以下命令：</p>
@@ -303,9 +303,9 @@ git commit              <span class="c1">## 将暂存区修改提交到版本库
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git status          <span class="c1">## 查看当前状态</span>
-git log             <span class="c1">## 查看当前分支的历史提交</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git status          <span class="c1">## 查看当前状态</span>
+</span></span><span class="line"><span class="cl">git log             <span class="c1">## 查看当前分支的历史提交</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>当历史太多又想掌握全部状态时，可以使用带参数的 <code>log</code> 命令，如本人常用以下命令查看整个仓库最近20次的提交：</p>
 <div class="highlight"><div class="chroma">
@@ -313,8 +313,8 @@ git log             <span class="c1">## 查看当前分支的历史提交</span>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git log --all --oneline --graph --decorate -20
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git log --all --oneline --graph --decorate -20
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>而为了简化这个命令，将整个命令取个别名：</p>
 <div class="highlight"><div class="chroma">
@@ -322,8 +322,8 @@ git log             <span class="c1">## 查看当前分支的历史提交</span>
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git config --global alias.logs <span class="s1">&#39;log --all --oneline --graph --decorate -20&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global alias.logs <span class="s1">&#39;log --all --oneline --graph --decorate -20&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>以后就可以用 <code>logs</code> 这个别名查看 Git 最近20次提交的历史。</p>
 <h2 id="git-其他技巧" class="headerLink">
@@ -354,9 +354,9 @@ git log             <span class="c1">## 查看当前分支的历史提交</span>
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git show &lt;comment-id&gt;:&lt;filename&gt; &gt; &lt;newfilename&gt;        <span class="c1">## 用法</span>
-git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## 示例</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git show &lt;comment-id&gt;:&lt;filename&gt; &gt; &lt;newfilename&gt;        <span class="c1">## 用法</span>
+</span></span><span class="line"><span class="cl">git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## 示例</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这种方法需要准确知道待提取的文件在对应版本下的名字。对文件夹内的文件，应当以相对路径的形式给出。</p>
 <h3 id="保存-http-帐号密码" class="headerLink">
@@ -366,8 +366,8 @@ git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## �
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git config --global credential.helper store
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git config --global credential.helper store
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
 
@@ -401,7 +401,7 @@ git show 7926ba:spdoc.rst &gt; spdoc.temp.rst              <span class="c1">## �
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

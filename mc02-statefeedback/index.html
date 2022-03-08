@@ -255,22 +255,22 @@ $$
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="c">% Plant</span>
-<span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="o">-</span><span class="mf">0.1</span> <span class="o">-</span><span class="mf">0.35</span> <span class="mf">0.1</span> <span class="mf">0.1</span> <span class="mf">0.75</span><span class="p">;</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">;</span>
-     <span class="mf">0.4</span> <span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">1.4</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span> <span class="o">-</span><span class="mf">0.03</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="p">];</span>
-<span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">];</span>
-
-<span class="c">% Dominant Second-Order Poles</span>
-<span class="n">p</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="o">+</span><span class="mf">0.866</span><span class="nb">i</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">0.866</span><span class="nb">i</span> <span class="o">-</span><span class="mf">3.99</span> <span class="o">-</span><span class="mf">4.00</span> <span class="o">-</span><span class="mf">4.01</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="n">K</span> <span class="p">=</span> <span class="n">place</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
-
-<span class="c">% Linear Quadratic Regulator</span>
-<span class="n">xm</span> <span class="p">=</span> <span class="p">[</span><span class="mf">0.2</span> <span class="mf">0.2</span> <span class="mf">0.2</span> <span class="mf">0.2</span> <span class="mf">0.2</span><span class="p">];</span>
-<span class="n">Q</span> <span class="p">=</span> <span class="nb">diag</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">xm</span><span class="o">.^</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">R</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">K</span> <span class="p">=</span> <span class="n">lqr</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">R</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% Plant</span>
+</span></span><span class="line"><span class="cl"><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="o">-</span><span class="mf">0.1</span> <span class="o">-</span><span class="mf">0.35</span> <span class="mf">0.1</span> <span class="mf">0.1</span> <span class="mf">0.75</span><span class="p">;</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">     <span class="mf">0.4</span> <span class="mf">0.4</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">-</span><span class="mf">1.4</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span> <span class="o">-</span><span class="mf">0.03</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Dominant Second-Order Poles</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="o">+</span><span class="mf">0.866</span><span class="nb">i</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">-</span><span class="mf">0.866</span><span class="nb">i</span> <span class="o">-</span><span class="mf">3.99</span> <span class="o">-</span><span class="mf">4.00</span> <span class="o">-</span><span class="mf">4.01</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">K</span> <span class="p">=</span> <span class="n">place</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Linear Quadratic Regulator</span>
+</span></span><span class="line"><span class="cl"><span class="n">xm</span> <span class="p">=</span> <span class="p">[</span><span class="mf">0.2</span> <span class="mf">0.2</span> <span class="mf">0.2</span> <span class="mf">0.2</span> <span class="mf">0.2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">Q</span> <span class="p">=</span> <span class="nb">diag</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">xm</span><span class="o">.^</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">R</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">K</span> <span class="p">=</span> <span class="n">lqr</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">R</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考资料" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
@@ -307,7 +307,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

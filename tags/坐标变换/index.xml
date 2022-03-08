@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>坐标变换 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2/</link>
+        <description>坐标变换 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 08 Mar 2022 14:48:25 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2/" rel="self" type="application/rss+xml" /><item>
+    <title>坐标变换与矢量旋转</title>
+    <link>https://ichunyu.github.io/vectortransform/</link>
+    <pubDate>Tue, 08 Mar 2022 14:48:25 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/vectortransform/</guid>
+    <description><![CDATA[<p>在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。</p>]]></description>
+</item></channel>
+</rss>

@@ -40,13 +40,6 @@
     </author><guid>https://ichunyu.github.io/diffsignal/</guid>
     <description><![CDATA[<p>数字信号处理中经常会用到微分，典型的例子就是数字 PID 控制器中的微分环节。然而理想的微分是不存在的，即使存在，其对高频噪声的放大也约束了它的实际应用。这篇文章我们将讨论并对比一些常见的微分算法。</p>]]></description>
 </item><item>
-    <title>正交投影——极小化问题的解决方案</title>
-    <link>https://ichunyu.github.io/orthogonalprojection/</link>
-    <pubDate>Sun, 16 Aug 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/orthogonalprojection/</guid>
-    <description><![CDATA[<p>“近似”是非常常用的数学手段，其中包括利用多项式来作为其他函数的近似，并使得两个函数之间的某个误差最小，这类极小化问题应当如何求解？本文从一个几何例子开始，以数形结合的思想初步给出极小化问题与正交投影之间的关系；然后介绍多项式的内积定义，给出函数在多项式线性空间的正交投影计算方法；最后以正弦函数的多项式近似给出一个极小化问题的实例。</p>]]></description>
-</item><item>
     <title>LPSD 功率谱估计</title>
     <link>https://ichunyu.github.io/lpsd/</link>
     <pubDate>Sat, 23 Feb 2019 00:00:00 &#43;0000</pubDate><author>

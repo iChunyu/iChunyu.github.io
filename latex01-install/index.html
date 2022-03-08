@@ -183,10 +183,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">MANPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MANPATH</span><span class="si">}</span>:/usr/local/texlive/2020/texmf-dist/doc/man
-<span class="nb">export</span> <span class="nv">INFOPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">INFOPATH</span><span class="si">}</span>:/usr/local/texlive/2020/texmf-dist/doc/info
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>:/usr/local/texlive/2020/bin/x86_64-linux
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">MANPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">MANPATH</span><span class="si">}</span>:/usr/local/texlive/2020/texmf-dist/doc/man
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">INFOPATH</span><span class="o">=</span><span class="si">${</span><span class="nv">INFOPATH</span><span class="si">}</span>:/usr/local/texlive/2020/texmf-dist/doc/info
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>:/usr/local/texlive/2020/bin/x86_64-linux
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>至此安装完成，为了验证安装的正确性，Linux 用户可以打开终端，Windows 用户可以打开 CMD，运行</p>
 <div class="highlight"><div class="chroma">
@@ -194,8 +194,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">latex --version
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">latex --version
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>正常输出版本号即代表 $\LaTeX$ 安装正确。</p>
 <h2 id="配置" class="headerLink">
@@ -269,71 +269,71 @@
 </span><span class="lnt">64
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;latex-workshop.view.pdf.viewer&#34;</span><span class="err">:</span> <span class="s2">&#34;tab&#34;</span><span class="err">,</span>
-<span class="s2">&#34;latex-workshop.latex.tools&#34;</span><span class="err">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;%DOCFILE%&#34;</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;%DOCFILE%&#34;</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;%DOCFILE%&#34;</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">]</span><span class="err">,</span>
-<span class="s2">&#34;latex-workshop.latex.recipes&#34;</span><span class="err">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;xelatex&#34;</span>
-        <span class="p">],</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;pdflatex&#34;</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xe-&gt;bib-&gt;xe-&gt;xe&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;xelatex&#34;</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdf-&gt;bib-&gt;pdf-&gt;pdf&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
-            <span class="s2">&#34;pdflatex&#34;</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">]</span><span class="err">,</span>
-<span class="s2">&#34;latex-workshop.bibtex-format.tab&#34;</span><span class="err">:</span> <span class="s2">&#34;4 spaces&#34;</span><span class="err">,</span>
-<span class="s2">&#34;latex-workshop.latex.autoBuild.run&#34;</span> <span class="err">:</span> <span class="s2">&#34;never&#34;</span><span class="err">,</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;latex-workshop.view.pdf.viewer&#34;</span><span class="err">:</span> <span class="s2">&#34;tab&#34;</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;latex-workshop.latex.tools&#34;</span><span class="err">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;%DOCFILE%&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;-synctex=1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;-interaction=nonstopmode&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;-file-line-error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;%DOCFILE%&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;%DOCFILE%&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;latex-workshop.latex.recipes&#34;</span><span class="err">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;xelatex&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;pdflatex&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;xe-&gt;bib-&gt;xe-&gt;xe&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;xelatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;xelatex&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;pdf-&gt;bib-&gt;pdf-&gt;pdf&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;tools&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;bibtex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;pdflatex&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;pdflatex&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;latex-workshop.bibtex-format.tab&#34;</span><span class="err">:</span> <span class="s2">&#34;4 spaces&#34;</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;latex-workshop.latex.autoBuild.run&#34;</span> <span class="err">:</span> <span class="s2">&#34;never&#34;</span><span class="err">,</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="hello-world" class="headerLink">
     <a href="#hello-world" class="header-mark"></a>Hello World</h2><p>$\LaTeX$ 的文档以 <code>.tex</code> 为后缀，因此我们可以创建一个名为 <code>HelloWorld.tex</code> 文件，填入以下内容：</p>
@@ -360,26 +360,26 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% ========================================================
-</span><span class="c">% 🎆🎆🎆🎆🎆             导言区             🎆🎆🎆🎆🎆
-</span><span class="c">% ========================================================
-</span><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>         <span class="c">% 业界习惯：百分号是注释开始的标志
-</span><span class="c"></span>
-<span class="k">\title</span><span class="nb">{</span>Greetings<span class="nb">}</span>               <span class="c">% 不服就试：注释是不会进入正文的哟
-</span><span class="c"></span><span class="k">\author</span><span class="nb">{</span>SpringMan<span class="nb">}</span>              <span class="c">% 凑个对齐：在注释里可以任意地耍赖
-</span><span class="c"></span><span class="k">\date</span><span class="nb">{</span><span class="k">\today</span><span class="nb">}</span>                   <span class="c">% 如你所见：导言区就是进行“某些”设置的
-</span><span class="c"></span>
-
-<span class="c">% ========================================================
-</span><span class="c">% 🎆🎆🎆🎆🎆             正文区             🎆🎆🎆🎆🎆
-</span><span class="c">% ========================================================
-</span><span class="c"></span>
-<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>                <span class="c">% 可想而知：正文从这里开始
-</span><span class="c"></span>    <span class="k">\maketitle</span>                  <span class="c">% 显而易见：这个命令用来产生标题
-</span><span class="c"></span>
-    Hello World !               <span class="c">% 打个招呼：你好世界
-</span><span class="c"></span><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>                  <span class="c">% 不难预料：正文在这里结束
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl"><span class="c">% ========================================================
+</span></span></span><span class="line"><span class="cl"><span class="c">% 🎆🎆🎆🎆🎆             导言区             🎆🎆🎆🎆🎆
+</span></span></span><span class="line"><span class="cl"><span class="c">% ========================================================
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>         <span class="c">% 业界习惯：百分号是注释开始的标志
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl"><span class="k">\title</span><span class="nb">{</span>Greetings<span class="nb">}</span>               <span class="c">% 不服就试：注释是不会进入正文的哟
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\author</span><span class="nb">{</span>SpringMan<span class="nb">}</span>              <span class="c">% 凑个对齐：在注释里可以任意地耍赖
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\date</span><span class="nb">{</span><span class="k">\today</span><span class="nb">}</span>                   <span class="c">% 如你所见：导言区就是进行“某些”设置的
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% ========================================================
+</span></span></span><span class="line"><span class="cl"><span class="c">% 🎆🎆🎆🎆🎆             正文区             🎆🎆🎆🎆🎆
+</span></span></span><span class="line"><span class="cl"><span class="c">% ========================================================
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>                <span class="c">% 可想而知：正文从这里开始
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\maketitle</span>                  <span class="c">% 显而易见：这个命令用来产生标题
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl">    Hello World !               <span class="c">% 打个招呼：你好世界
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>                  <span class="c">% 不难预料：正文在这里结束
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用 TeXstudio 的小伙伴可以点击运行并查看，使用 VS Code 的小伙伴可以仅使用 <code>xelatex</code> 编译，喜欢命令行的猛士也可以在当前目录下运行命令 <code>xelatex HelloWorld.tex</code> ，最后，我们打开编译生成的同名 pdf 文件，就可以看到以下效果，是不是非常神奇呢？</p>
 <div align=center>
@@ -416,7 +416,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

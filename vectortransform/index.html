@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">坐标变换与矢量旋转 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="坐标变换与矢量旋转" />
+<meta property="og:description" content="在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/vectortransform/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-08T14:48:25+08:00" />
+<meta property="article:modified_time" content="2022-03-08T14:48:25+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="坐标变换与矢量旋转"/>
+<meta name="twitter:description" content="在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/vectortransform/" /><link rel="prev" href="https://ichunyu.github.io/introcic/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "坐标变换与矢量旋转",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/vectortransform\/"
+        },"genre": "posts","keywords": "坐标变换, 矢量旋转","wordcount":  2672 ,
+        "url": "https:\/\/ichunyu.github.io\/vectortransform\/","datePublished": "2022-03-08T14:48:25+08:00","dateModified": "2022-03-08T14:48:25+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#矢量的坐标表示">矢量的坐标表示</a></li>
+    <li><a href="#坐标变换">坐标变换</a></li>
+    <li><a href="#矢量旋转">矢量旋转</a></li>
+    <li><a href="#r_ab-的运动学特性">$R_a^b$ 的运动学特性</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">坐标变换与矢量旋转</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>奇妙的数学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2672 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#矢量的坐标表示">矢量的坐标表示</a></li>
+    <li><a href="#坐标变换">坐标变换</a></li>
+    <li><a href="#矢量旋转">矢量旋转</a></li>
+    <li><a href="#r_ab-的运动学特性">$R_a^b$ 的运动学特性</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。</p>
+<h2 id="矢量的坐标表示" class="headerLink">
+    <a href="#%e7%9f%a2%e9%87%8f%e7%9a%84%e5%9d%90%e6%a0%87%e8%a1%a8%e7%a4%ba" class="header-mark"></a>矢量的坐标表示</h2><p>有大小和方向的物理量称为矢量（Vector），通常用带箭头的符号表示，如 $\vec{r}$。为了定量描述与计算，需要选定基矢构成参考系，利用矢量合成原理进行表述。如下图所示，参考系 $\mathscr{A} = \{O,\,\vec{a}_1,\,\vec{a}_2 \}$ 以 $O$ 为原点，$\vec{a}_1$ 和 $\vec{a}_2$ 为基矢。任意矢量 $\vec{r}$ 可以写作</p>
+<div align=center>
+    <img src=coordinate.png width=25% />
+</div>
+$$
+\vec{r} = r_1^a \vec{a}_1 + r_2^a \vec{a}_2 
+= \begin{bmatrix} \vec{a}_1 & \vec{a}_2 \end{bmatrix}
+    \begin{bmatrix} r_1^a \\ r_2^a \end{bmatrix}
+= \vec{A} \mathbf{r}^a
+$$
+<p>这里我们使用带箭头的大写字母表示参考系基矢构成的行向量，即 $\vec{A} = [\vec{a}_1, \vec{a}_2]$；选定基矢后，基矢的组合系数构成列向量，为矢量的坐标（Coordinate），用加粗的字母表示，并将参考系标记在上标的位置，本例中为 $\mathbf{r}^a= [r_1^a, r_2^a]^\mathrm{T}$。在此记号下，我们可以使用矩阵的计算方法将适量表示为基矢与坐标的组合，即上式最后的等号。在后文的推导中，我们将使用更一般的三维形式，而为了方便理解，示意图保持为二维形式。</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>注解<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">在实际操作中，如果只涉及一个参考系，通常没有必要严格区分矢量与坐标之间的关系，因此在一般的教科书中会将上图所示的矢量直接记做 $\vec{r} = [r_1, r_2]^\mathrm{T}$。本文涉及多个参考系，务必区分矢量与坐标之间的关系：矢量是一个“不变量”，与参考系无关，而其坐标因参考系的不同而发生改变。因此，严格意义上说，只有将参考系（基矢）和坐标合起来才能准确表示一个矢量。</div>
+        </div>
+    </div>
+<p>如无特别说明，参考系的基矢通常选为单位正交基，其点积满足</p>
+$$
+\vec{A}^\mathrm{T} \cdot \vec{A} = 
+\begin{bmatrix} \vec{a}_1 \\ \vec{a}_2 \\ \vec{a}_3 \end{bmatrix}
+\cdot
+\begin{bmatrix} \vec{a}_1 & \vec{a}_2 & \vec{a}_3 \end{bmatrix}
+= \begin{bmatrix}
+1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+\end{bmatrix} = I_{3 \times 3}
+$$
+<p>由此我们可以获知坐标的计算方法：</p>
+$$
+\mathbf{r}^a = I_{3 \times 3} \mathbf{r}^a 
+= \left( \vec{A}^\mathrm{T} \cdot \vec{A} \right)  \mathbf{r}^a 
+= \vec{A}^\mathrm{T} \cdot \left( \vec{A} \mathbf{r}^a \right)
+= \vec{A}^\mathrm{T} \cdot \vec{r} 
+= \begin{bmatrix}
+    \vec{a}_1 \cdot \vec{r} \\
+    \vec{a}_2 \cdot \vec{r} \\
+    \vec{a}_3 \cdot \vec{r} \\
+\end{bmatrix}
+$$
+<p>上式指出，为了获取矢量在给定参考系下的坐标，只需计算矢量与参考各基矢之间的点积即可，即：坐标是矢量在基矢方向的投影。</p>
+<h2 id="坐标变换" class="headerLink">
+    <a href="#%e5%9d%90%e6%a0%87%e5%8f%98%e6%8d%a2" class="header-mark"></a>坐标变换</h2><p>选取的参考系不同，相同矢量的坐标不同。参考系之间的平移可以简单地通过矢量加法实现，因此这里的坐标变换重点关注参考系之间的转动，设它们的原点重合（因此后文直接用基矢表示各参考系），如下图所示。</p>
+<div align=center>
+    <img src=coordinateTransform.png width=35% />
+</div>
+<p>矢量 $\vec{r}$ 可以在两个参考系中分别表述为</p>
+$$
+\vec{r} = \vec{A} \mathbf{r}^a = \vec{B} \mathbf{r}^b
+$$
+<p>考察坐标之间的关系，不难得到</p>
+$$
+\mathbf{r}^b = \vec{B} \cdot \vec{r} 
+= \vec{B}^\mathrm{T} \cdot \left( \vec{A} \mathbf{r}^a \right)
+= \left( \vec{B}^\mathrm{T} \cdot \vec{A} \right) \mathbf{r}^a
+= R_a^b \mathbf{r}^a
+$$
+<p>其中 $R_a^b$ 为坐标变换矩阵，其表示从参考系 $\vec{A}$ 到参考系 $\vec{B}$ 的坐标变换（从下往上读）。从上式的两端可以发现，在这种表述方式下，角标形式上具有“相互抵消”的性质，即：如果左侧变量的下标与右侧变量的上标相同，则抵消两个角标并根据左侧变量的上标替换掉右侧变量的上标。后面讨论的连续坐标变换能够充分体现这种特性。</p>
+<p>坐标变换矩阵 $R_a^b$ 具体展开为</p>
+$$
+\begin{aligned}
+R_a^b &= \begin{bmatrix} \vec{B}^\mathrm{T} \cdot \vec{a}_1 & 
+    \vec{B}^\mathrm{T} \cdot \vec{a}_2 & 
+    \vec{B}^\mathrm{T} \cdot \vec{a}_3 \end{bmatrix}
+    = \begin{bmatrix}
+        \mathbf{a}_1^b & \mathbf{a}_2^b & \mathbf{a}_2^b
+    \end{bmatrix} \\
+&= \begin{bmatrix}
+    \vec{b}_1 \cdot \vec{A} \\
+    \vec{b}_2 \cdot \vec{A} \\
+    \vec{b}_3 \cdot \vec{A} \\ 
+\end{bmatrix}
+= \begin{bmatrix}
+    \left(\mathbf{b}_1^a\right)^\mathrm{T} \\
+    \left(\mathbf{b}_2^a\right)^\mathrm{T} \\
+    \left(\mathbf{b}_3^a\right)^\mathrm{T}
+\end{bmatrix}
+\end{aligned}
+$$
+<p>上式中，第一行说明坐标变换矩阵可以按列解释：每一列分别由参考系 $\vec{A}$ 的各基矢在参考系 $\vec{B}$ 中的坐标组成；第二行说明该矩阵也可以按行解释：每一行为参考系 $\vec{B}$ 的各基矢在参考系 $\vec{A}$ 中的坐标（的转制）组成 。我们通常倾向于按列解释，这样可以保持上标的一致性。由于单位向量的点积等于夹角的余弦，因此坐标变换矩阵也称作方向余弦矩阵（DCM, Direction Cosine Matrix）。</p>
+<p>考虑矢量 $\vec{r}$ 按照 $\vec{A} \rightarrow \vec{B}_1 \rightarrow \vec{B}_2 \rightarrow \cdots \rightarrow \vec{B}_n$ 的顺序进行 $n$ 次坐标变换，有</p>
+$$
+\mathbf{r}^{b_n} = R_{b_{n-1}}^{b_n} \mathbf{r}^{b_{n-1}} 
+= R_{b_{n-1}}^b \left( R_{b_{n-2}}^{b_{n-1}}\mathbf{r}^{b_{n-2}} \right)
+= \cdots 
+= \left( R_{b_{n-1}}^b R_{b_{n-2}}^{b_{n-1}} \cdots R_a^{b_{1}} \right) \mathbf{r}^a
+$$
+<p>即</p>
+$$
+R_a^{b_n} = R_{b_{n-1}}^{b_n} R_{b_{n-2}}^{b_{n-1}} \cdots R_a^{b_{1}} 
+$$
+<p>说明连续坐标变换矩阵为各坐标变换矩阵按顺序左乘的结果。</p>
+<p>最后，我们重新将坐标变换矩阵代回到矢量表达式中，得</p>
+$$
+\vec{r} = \vec{A} \mathbf{r}^a = \vec{B} \mathbf{r}^b = \vec{B} R_a^b \mathbf{r}^a 
+\quad \Rightarrow \quad
+\vec{A} = \vec{B} R_a^b
+$$
+<p>最后的等号暗示了坐标系之间的关系，将在后文矢量旋转那里做进一步说明。利用基矢的正交性，有</p>
+$$
+I_{3 \times 3} = \vec{A}^\mathrm{T} \cdot \vec{A}
+= \left( \vec{B} R_a^b \right)^\mathrm{T} \cdot \left( \vec{B} R_a^b \right)
+= \left(R_a^b \right)^\mathrm{T} \left(\vec{B}^\mathrm{T} \cdot \vec{B}\right) R_a^b
+= \left(R_a^b \right)^\mathrm{T} R_a^b
+$$
+<p>这说明坐标变换矩阵 $R_a^b$ 为正交矩阵，即 $\left(R_a^b \right)^{-1} = \left(R_a^b \right)^\mathrm{T}$。我们可以令 $R_b^a = \left(R_a^b \right)^{-1}$，则 $R_a^b R_b^a = R_b^a R_a^b = I$ 意味着来回变换之后坐标保持不变（这里可以再次看到角标之间的“抵消”性质）。</p>
+<h2 id="矢量旋转" class="headerLink">
+    <a href="#%e7%9f%a2%e9%87%8f%e6%97%8b%e8%bd%ac" class="header-mark"></a>矢量旋转</h2><p>将目光限定在参考系 $\vec{A}$ 中，现在将矢量 $\vec{r}_1$ 进行一定的旋转，得到 $\vec{r}_2$ ，如何得到它们坐标 $\mathbf{r}_1^a$ 和 $\mathbf{r}_2^a$ 之间的关系？</p>
+<div align=center>
+    <img src=rotation.png width=35% />
+</div>
+<p>考虑 $\vec{r}_1$ 连同参考系（的基矢） $\vec{A}$ 一起旋转，当 $\vec{r}_1$ 转到 $\vec{r}_2$ 的位置时 $\vec{A}$ 相应地变成 $\vec{B}$。由于是一起旋转，相对关系保持不变，即 $\vec{r}_2$ 在 $\vec{B}$ 的坐标等于 $\vec{r}_1$ 在 $\vec{A}$ 的坐标，即 $\mathbf{r}_2^b = \mathbf{r}_1^a$，考虑到坐标变换有 $\mathbf{r}_2^a = R_b^a \mathbf{r}_2^b$，可以得到</p>
+$$
+\mathbf{r}_2^a = R_b^a \mathbf{r}_1^a
+$$
+<p>这就说明，坐标变换矩阵同时具有旋转的含义，也可称之为旋转矩阵， $R_b^a$ 表示从参考系 $\vec{A}$ 到参考系 $\vec{B}$ 的旋转（从上往下读，注意这里交换了角标）。</p>
+<p>在对实际物体旋转的描述中，通常使用本体坐标系之间的关系。在上文我们实际上已经得到了 $\vec{A} = \vec{B} R_a^b$，这同样可以“从上往下”地解读为 $\vec{B}$ 旋转到 $\vec{A}$。</p>
+<p>考虑参考系 $\vec{r}$ 按照 $\vec{A} \rightarrow \vec{B}_1 \rightarrow \vec{B}_2 \rightarrow \cdots \rightarrow \vec{B}_n$ 的顺序进行 $n$ 次旋转，有</p>
+$$
+\vec{B}_n = \vec{B}_{n-1} R_{b_{n}}^{b_{n-1}}
+= \vec{B}_{n-2} R_{b_{n-1}}^{b_{n-2}} R_{b_{n}}^{b_{n-1}}
+= \cdots 
+= \vec{A} R_{b_1}^a \cdots R_{b_{n-1}}^{b_{n-2}} R_{b_{n}}^{b_{n-1}}
+$$
+<p>即 $\vec{A}$ 到 $\vec{B}_n$ 的连续旋转结果为</p>
+$$
+R_{b_n}^a = R_{b_1}^a R_{b_2}^{b_1}  \cdots R_{b_{n}}^{b_{n-1}}
+$$
+<p>最终的旋转矩阵 $R_b^a$ 为各次旋转矩阵按顺序右乘的结果。</p>
+<h2 id="r_ab-的运动学特性" class="headerLink">
+    <a href="#r_ab-%e7%9a%84%e8%bf%90%e5%8a%a8%e5%ad%a6%e7%89%b9%e6%80%a7" class="header-mark"></a>$R_a^b$ 的运动学特性</h2><p>最后我们来看一下坐标变换矩阵（或者说转动矩阵）的运动学特性。首先如下图所示，假设参考系 $\vec{B}$ （通常为刚体的本体参考系）的角速度为 $\bm{\omega}_b^b = [\omega_1,\omega_2,\omega_3]^\mathrm{T}$（注意角速度都是在本体坐标系下建立的，各分量省略了上标），以基矢 $\vec{b}_1$ 为例，在 $\mathrm{d}t$ 时间内其变化量为</p>
+<div align=center>
+    <img src=rotating.png width=35% />
+</div>
+$$
+\mathrm{d}\vec{b}_1 =  (\omega_3 \mathrm{d} t) \vec{b}_2 -(\omega_2 \mathrm{d}t)\vec{b}_3 +
+\quad \Rightarrow \quad 
+\dot{\vec{b}}_1 =  \omega_3 \vec{b}_2 -\omega_2 \vec{b}_3
+$$
+<p>类似地，将三个基矢的导数整理为</p>
+$$
+\begin{aligned}
+\dot{\vec{B}} &= 
+\begin{bmatrix}
+    \omega_3 \vec{b}_2 -\omega_2 \vec{b}_3  & 
+    -\omega_3 \vec{b}_1 + \omega_1 \vec{b}_3 &
+    \omega_2 \vec{b}_1 - \omega_1 \vec{b}_2
+\end{bmatrix} \\
+&= \begin{bmatrix}
+    \vec{b}_1 & \vec{b}_2 & \vec{b}_3 
+\end{bmatrix}
+\begin{bmatrix}
+0 & -\omega_3 & \omega_2 \\
+\omega_3 & 0 & -\omega_1 \\
+-\omega_2 & \omega_1 & 0
+\end{bmatrix} \\
+&= \vec{B} \bm{\omega}_b^b \times
+\end{aligned}
+$$
+<p>我们将上式最后的 $3 \times 3$ 矩阵记做 $\bm{\omega}_b^b \times$，这样的表述与矢量的叉乘一致，且 $(\bm{\omega}_b^b \times)^\mathrm{T} = -\bm{\omega}_b^b \times$ 为反对称矩阵。最后，我们考察任意参考系 $\vec{A}$ 向本体系 $\vec{B}$ 的转动矩阵 $R_b^a$ 的导数，得</p>
+$$
+\begin{aligned}
+\dot{R}_b^a &= \frac{\mathrm{d}}{\mathrm{d}t} \left( \vec{A}^\mathrm{T} \cdot \vec{B} \right)  \\
+&= \dot{\vec{A}}{}^\mathrm{T} \cdot \vec{B} + \vec{A}^\mathrm{T} \cdot \dot{\vec{B}} \\
+&= (\bm{\omega}_a^a \times)^\mathrm{T} \vec{A}^\mathrm{T} \cdot \vec{B} + \vec{A}^\mathrm{T} \cdot \vec{B} (\bm{\omega}_b^b \times)  \\
+&= -(\bm{\omega}_a^a \times) R_b^a + R_b^a \bm{\omega}_b^b \times \\
+&= -R_b^a (\bm{\omega}_a^b \times) + R_b^a \bm{\omega}_b^b \times \\
+&= R_b^a \bm{\omega}_{ab}^b \times
+\end{aligned}
+$$
+<p>式中 $\bm{\omega}_{ab}^b = \bm{\omega}_b^b - \bm{\omega}_a^b$ 表示参考系之间的相对角速度在 $\vec{B}$ 参考系下的坐标。推导的倒数第二行使用了如下等式</p>
+$$
+\bm{\omega}_a^b \times = \left( R_a^b \bm{\omega}_a^a \right) \times = R_a^b (\bm{\omega}_a^a \times) R_b^a
+$$
+<p>该等式的简单证明可以从角速度叉乘 $\vec{\omega}_a \times \vec{\omega}_b$ 在两个参考系下的表达获得：</p>
+$$
+\left\{\begin{aligned}
+\vec{\omega}_a \times \vec{\omega}_b &= \vec{A} \bm{\omega}_a^a \times \bm{\omega}_b^a 
+    = \vec{A} (\bm{\omega}_a^a \times) R_b^a \bm{\omega}_b^b \\
+\vec{\omega}_a \times \vec{\omega}_b &= \vec{B} \bm{\omega}_a^b \times \bm{\omega}_b^b 
+    =\vec{A}R_b^a \bm{\omega}_a^b \times \bm{\omega}_b^b 
+\end{aligned}\right. \\
+\Downarrow \\
+(\bm{\omega}_a^a \times) R_b^a = R_b^a \bm{\omega}_a^b \times \\
+\Downarrow \\
+\bm{\omega}_a^b \times = \left( R_a^b \bm{\omega}_a^a \right) \times = R_a^b (\bm{\omega}_a^a \times) R_b^a
+$$
+<h2 id="参考资料" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
+<li>E. Canuto, C. Novara, D. Carlucci, C.P. Montenegro, L. Massotti, Spacecraft Dynamics and Control: The Embedded Model Control Approach, Butterworth-Heinemann, 2018.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/vectortransform/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2/">坐标变换</a>,&nbsp;<a href="/tags/%E7%9F%A2%E9%87%8F%E6%97%8B%E8%BD%AC/">矢量旋转</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/introcic/" class="prev" rel="prev" title="CIC 滤波器简介"><i class="fas fa-angle-left fa-fw"></i>CIC 滤波器简介</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

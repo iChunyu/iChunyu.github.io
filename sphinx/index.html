@@ -177,8 +177,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pip install sphinx sphinx_rtd_theme
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install sphinx sphinx_rtd_theme
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中 <code>sphinx</code> 是主程序，<code>sphinx_rtd_theme</code> 是很常用的一个主题，更多主题可以在 <a href="https://sphinx-themes.org" target="_blank" rel="noopener noreffer">Sphinx Themes Gallery</a> 查看。</p>
 <p>新建文件夹用于存放 Sphinx 文档的源码。在该文件夹打开终端后，运行 <code>sphinx-quickstart</code> 以快速创建 Sphinx 工程。依次会出现以下提示：</p>
@@ -219,16 +219,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">.
-├── build/
-├── make.bat
-├── Makefile
-└── source/
-   ├── conf.py
-   ├── index.rst
-   ├── _static/
-   └── _templates/
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── build/
+</span></span><span class="line"><span class="cl">├── make.bat
+</span></span><span class="line"><span class="cl">├── Makefile
+</span></span><span class="line"><span class="cl">└── source/
+</span></span><span class="line"><span class="cl">   ├── conf.py
+</span></span><span class="line"><span class="cl">   ├── index.rst
+</span></span><span class="line"><span class="cl">   ├── _static/
+</span></span><span class="line"><span class="cl">   └── _templates/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>初始话的文件夹为空，这时只需要在该项目的根目录下运行 <code>make html</code> 就可以生成最基本的静态页面样板，生成的结果可以在 <code>build/html/index.html</code>
 中查看。</p>
@@ -238,8 +238,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>至此，基本的设置就完成了。</p>
 <h2 id="github-源码托管" class="headerLink">
@@ -254,13 +254,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git init
-<span class="nb">echo</span> <span class="s2">&#34;build/&#34;</span> &gt; .gitignore
-git add .
-git commit -m <span class="s1">&#39;Initial commit&#39;</span>
-git remote add origin git@github.com:iChunyu/helps.git
-git push -u origin main
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;build/&#34;</span> &gt; .gitignore
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s1">&#39;Initial commit&#39;</span>
+</span></span><span class="line"><span class="cl">git remote add origin git@github.com:iChunyu/helps.git
+</span></span><span class="line"><span class="cl">git push -u origin main
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上述各条命令的功能简述如下：</p>
 <ol>
@@ -313,7 +313,7 @@ git push -u origin main
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

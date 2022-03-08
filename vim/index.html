@@ -261,11 +261,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">nnoremap k gk
+</span></span><span class="line"><span class="cl">nnoremap gk k
+</span></span><span class="line"><span class="cl">nnoremap j gj
+</span></span><span class="line"><span class="cl">nnoremap gj j
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="基于单词的移动" class="headerLink">
     <a href="#%e5%9f%ba%e4%ba%8e%e5%8d%95%e8%af%8d%e7%9a%84%e7%a7%bb%e5%8a%a8" class="header-mark"></a>基于单词的移动</h3><p>比普通模式更快地，Vim 可以基于单词进行移动，主要命令如下：</p>
@@ -288,8 +288,8 @@ nnoremap gj j
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">The quick brown fox jumps over the lazy dog.
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">The quick brown fox jumps over the lazy dog.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>假设现在光标处于这段话的开头，现在希望将光标跳转到 <code>over</code> 的开头，有这么几种做法：</p>
 <ul>
@@ -378,10 +378,10 @@ nnoremap gj j
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">1) 使用 `yy` 命令复制本行；
-2) 使用 `dd` 命令删除本行；
-3）尝试在此使用 `p` 命令将第一行内容粘贴到本行之下。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1) 使用 `yy` 命令复制本行；
+</span></span><span class="line"><span class="cl">2) 使用 `dd` 命令删除本行；
+</span></span><span class="line"><span class="cl">3）尝试在此使用 `p` 命令将第一行内容粘贴到本行之下。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果按照上面的提示做，会发现最后粘贴的是第二行的内容。这是因为第二行使用 <code>dd</code> 删除的内容并没有真正的删除，而是以剪切的方式储存在寄存器内，而前面的 <code>yy</code> 和这里的 <code>dd</code> 均没有显式指定寄存器，所有都使用的是无名寄存器。无名寄存器第一次复制的内容被第二次删除的内容覆盖，因此粘贴时读取的无名寄存器是第二行内容。</p>
 <p>为此，可以改变操作顺序，如先删除，后复制。也可以使用显式指定其他寄存器以避免内容覆盖，例如可以使用 <code>&quot;0yy</code> 和 <code>&quot;0p</code> 进行复制粘贴；或者可以将删除内容放置到其他寄存器如 <code>&quot;_dd</code> 。</p>
@@ -442,7 +442,7 @@ nnoremap gj j
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

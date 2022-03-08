@@ -166,8 +166,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">syms</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">syms</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>利用 <code>syms</code> 所定义的符号变量，其变量名与符号相同。若想为符号另外指定变量名，可采用 <code>sym</code> 的方式，如：</p>
 <div class="highlight"><div class="chroma">
@@ -178,11 +178,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">w0</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega_0&#39;</span><span class="p">);</span>
-<span class="n">rs1</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_i_s&#39;</span><span class="p">);</span>
-<span class="n">rs2</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_i__i_s&#39;</span><span class="p">);</span>
-<span class="n">Vprms</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;V_p_rms&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">w0</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega_0&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">rs1</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_i_s&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">rs2</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_i__i_s&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Vprms</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;V_p_rms&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在声明符号名时（单引号里边的字符串），下划线可以看作特殊的分隔符。单个下划线后面的字符表示下标，这与LaTeX相似，并且可以多次采用单下划线对下标进行分割，这会在最后导出LaTeX代码时自动插入逗号。类似地，若想为符号名加上标，可以连用两个下划线，其后的字符表示上标。例如上面所定义的四个符号变量分别代表以下符号：</p>
 <table>
@@ -218,8 +218,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">r</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>         <span class="c">% r = [ r1, r2, r3 ]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">r</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>         <span class="c">% r = [ r1, r2, r3 ]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一般情况下，MATLAB会自动地将符号名末尾的数字标识为下标，但也可以在定义变量名时候可以特殊地用 <code>%d</code> 显式指定索引出现的位置，如</p>
 <div class="highlight"><div class="chroma">
@@ -229,10 +229,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">r1</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_%d&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>     <span class="c">% 行向量，索引指定为下标</span>
-<span class="n">r2</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r__%d&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>    <span class="c">% 行向量，索引指定为上标</span>
-<span class="n">A</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;A_%d__%d&#39;</span><span class="p">,[</span><span class="mi">3</span> <span class="mi">3</span><span class="p">]);</span>  <span class="c">% 矩阵，行列索引分别为下标和上标</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">r1</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r_%d&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>     <span class="c">% 行向量，索引指定为下标</span>
+</span></span><span class="line"><span class="cl"><span class="n">r2</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;r__%d&#39;</span><span class="p">,[</span><span class="mi">1</span> <span class="mi">3</span><span class="p">]);</span>    <span class="c">% 行向量，索引指定为上标</span>
+</span></span><span class="line"><span class="cl"><span class="n">A</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;A_%d__%d&#39;</span><span class="p">,[</span><span class="mi">3</span> <span class="mi">3</span><span class="p">]);</span>  <span class="c">% 矩阵，行列索引分别为下标和上标</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>定义完符号变量后，我们还可以使用 <code>assume</code> 命令对变量进行约束，例如我们可以对符号变量 <code>x</code> 进行如下设置</p>
 <table>
@@ -322,27 +322,27 @@ $$\ddot x + 2 \xi \omega_0 \dot x + \omega_0^2 = sin(\omega t)$$
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="c">% 定义符号变量</span>
-<span class="n">syms</span> <span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="n">xi</span> <span class="n">x0</span> <span class="n">v0</span> <span class="n">t</span>
-<span class="n">ain</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;a_in&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>   <span class="c">% 定义变量的同时引入约束</span>
-<span class="n">w</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>
-<span class="n">w0</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega_0&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>
-
-<span class="c">% 引入阻尼比约束</span>
-<span class="n">assume</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span><span class="n">xi</span><span class="o">&lt;</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="n">xi</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c">% 构造微分方程</span>
-<span class="n">dx</span> <span class="p">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>               <span class="c">% 需要单独定义一阶导数才能引入初速度约束</span>
-<span class="n">d2x</span> <span class="p">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
-<span class="n">eq</span> <span class="p">=</span> <span class="n">d2x</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">xi</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">w0</span>^<span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">==</span> <span class="n">ain</span><span class="p">;</span>
-<span class="nb">disp</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span>
-
-<span class="c">% 求解微分方程</span>
-<span class="n">S</span> <span class="p">=</span> <span class="n">dsolve</span><span class="p">(</span><span class="n">eq</span><span class="p">,[</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="n">v0</span><span class="p">]);</span>
-<span class="n">S</span> <span class="p">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 定义符号变量</span>
+</span></span><span class="line"><span class="cl"><span class="n">syms</span> <span class="n">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="n">xi</span> <span class="n">x0</span> <span class="n">v0</span> <span class="n">t</span>
+</span></span><span class="line"><span class="cl"><span class="n">ain</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;a_in&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>   <span class="c">% 定义变量的同时引入约束</span>
+</span></span><span class="line"><span class="cl"><span class="n">w</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">w0</span> <span class="p">=</span> <span class="n">sym</span><span class="p">(</span><span class="s">&#39;omega_0&#39;</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% 引入阻尼比约束</span>
+</span></span><span class="line"><span class="cl"><span class="n">assume</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">assume</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span><span class="s">&#39;real&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">assume</span><span class="p">(</span><span class="n">xi</span><span class="o">&lt;</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="n">xi</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% 构造微分方程</span>
+</span></span><span class="line"><span class="cl"><span class="n">dx</span> <span class="p">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>               <span class="c">% 需要单独定义一阶导数才能引入初速度约束</span>
+</span></span><span class="line"><span class="cl"><span class="n">d2x</span> <span class="p">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">eq</span> <span class="p">=</span> <span class="n">d2x</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">xi</span><span class="o">*</span><span class="n">w0</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">w0</span>^<span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">==</span> <span class="n">ain</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">disp</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% 求解微分方程</span>
+</span></span><span class="line"><span class="cl"><span class="n">S</span> <span class="p">=</span> <span class="n">dsolve</span><span class="p">(</span><span class="n">eq</span><span class="p">,[</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="n">v0</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="n">S</span> <span class="p">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后解得</p>
 $$
@@ -363,12 +363,12 @@ $$
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="o">&gt;&gt;</span> <span class="n">latex</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
-
-<span class="nb">ans</span> <span class="p">=</span>
-
-    <span class="s">&#39;\frac{a_{\mathrm{in}}}{{\omega _{0}}^2}-\frac{a_{\mathrm{in}}\,{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\cos\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)}{{\omega _{0}}^2}-\frac{{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\sin\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)\,\left(a_{\mathrm{in}}\,\xi -\omega _{0}\,v_{0}\right)}{{\omega _{0}}^2\,\sqrt{1-\xi }\,\sqrt{\xi +1}}&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="o">&gt;&gt;</span> <span class="n">latex</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">ans</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="s">&#39;\frac{a_{\mathrm{in}}}{{\omega _{0}}^2}-\frac{a_{\mathrm{in}}\,{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\cos\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)}{{\omega _{0}}^2}-\frac{{\mathrm{e}}^{-\omega _{0}\,t\,\xi }\,\sin\left(\omega _{0}\,t\,\sqrt{1-\xi ^2}\right)\,\left(a_{\mathrm{in}}\,\xi -\omega _{0}\,v_{0}\right)}{{\omega _{0}}^2\,\sqrt{1-\xi }\,\sqrt{\xi +1}}&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果大家仔细观察MATLAB转换的LaTeX代码，会发现它对希腊字母进行了识别和转换，对字符串下标也进行了识别并利用 <code>\mathrm{}</code> 将其转化为正体。如果再仔细一些，自然对数的底 $\mathrm{e}$ 也是正体。可见MATLAB对这种细节的处理非常到位。</p>
 <p>生成的代码较长时，可以使用 <code>clipboard</code> 命令将结果直接复制到系统剪切板中：</p>
@@ -378,9 +378,9 @@ $$
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">texCode</span> <span class="p">=</span> <span class="n">latex</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
-<span class="n">clipboard</span><span class="p">(</span><span class="s">&#39;copy&#39;</span><span class="p">,</span><span class="n">texCode</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">texCode</span> <span class="p">=</span> <span class="n">latex</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">clipboard</span><span class="p">(</span><span class="s">&#39;copy&#39;</span><span class="p">,</span><span class="n">texCode</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
 
@@ -414,7 +414,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

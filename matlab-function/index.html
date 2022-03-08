@@ -168,8 +168,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">f</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">f</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到，匿名函数的定义与 $y=f(x)$ 这种形式相似，我们只需要用 <code>@</code>
 和括号给定自变量，然后给出表达式，即可定义名为 <code>f</code>
@@ -200,19 +200,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="c">% 函数作用的简单说明</span>
-<span class="c">% 输入输出变量的基本说明</span>
-
-<span class="c">% 作者和修改日期</span>
-
-<span class="c">%% 主函数</span>
-<span class="k">function</span><span class="w"> </span>[y1,y2,y3] <span class="p">=</span><span class="w"> </span><span class="nf">simplefcn</span><span class="p">(</span>x1,x2,x3<span class="p">)</span><span class="w">
-</span><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
-   <span class="n">y1</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
-   <span class="n">y2</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
-   <span class="n">y3</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
-<span class="k">end</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 函数作用的简单说明</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 输入输出变量的基本说明</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% 作者和修改日期</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%% 主函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>[y1,y2,y3] <span class="p">=</span><span class="w"> </span><span class="nf">simplefcn</span><span class="p">(</span>x1,x2,x3<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">y1</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">y2</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">y3</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>由于函数的通用性，共同工作的小伙伴们会经常分享一些好用的函数。因此，用 <code>%</code> 写好注释是一件非常重要的事情。MATLAB官方模板中将函数说明写在 <code>function</code> 紧接着的下一行，然而更实用的情况是写在文件的最前面，同时我们可以用 <code>%%</code> 对代码进行分节，使可读性更强。</p>
 <p>注释是不参与代码计算的，因此上面这个例子中，函数真正开始于 <code>function</code>。然后分别给出输出、函数名和输入参数。当有多个输出时，只需用中括号和逗号构成输出向量即可。</p>
@@ -244,28 +244,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="c">% 脚本说明</span>
-<span class="c">% 作者和修改日期</span>
-
-<span class="c">%% 主代码</span>
-<span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
-
-<span class="c">%% 子函数1</span>
-<span class="c">% 函数说明</span>
-<span class="c">% 变量说明</span>
-<span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">subfcn1</span><span class="p">(</span>x<span class="p">)</span><span class="w">
-</span><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
-    <span class="n">y</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
-<span class="k">end</span>
-
-<span class="c">%% 子函数2</span>
-<span class="c">% 函数说明</span>
-<span class="c">% 变量说明</span>
-<span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">subfcn2</span><span class="p">(</span>x<span class="p">)</span><span class="w">
-</span><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
-    <span class="n">y</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
-<span class="k">end</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 脚本说明</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 作者和修改日期</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%% 主代码</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%% 子函数1</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 函数说明</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 变量说明</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">subfcn1</span><span class="p">(</span>x<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%% 子函数2</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 函数说明</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 变量说明</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">subfcn2</span><span class="p">(</span>x<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>同样地，建议将注释写完整并放在前面显眼的位置。例子中， <code>subfcn1</code> 和 <code>subfcn2</code> 是两个子函数，其只在脚本内有效。子函数不仅适用于脚本文件，在大型函数的定义中也可将一些小函数编写成子函数，从而提高代码的可读性。</p>
 <blockquote>
@@ -321,49 +321,49 @@
 </span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="c">% 函数说明</span>
-<span class="c">% 变量说明</span>
-
-<span class="c">% 作者和修改日期</span>
-
-<span class="c">%% 主函数</span>
-<span class="k">function</span><span class="w"> </span>varargout <span class="p">=</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span>varargin<span class="p">)</span><span class="w">
-</span><span class="w">    </span><span class="c">% 解析输入变量</span>
-    <span class="k">switch</span> <span class="n">nargin</span>
-        <span class="k">case</span> <span class="mi">0</span>
-            <span class="o">&lt;</span>导入输入变量默认值<span class="o">&gt;</span>
-        <span class="k">case</span> <span class="mi">1</span>
-            <span class="o">&lt;</span>变量<span class="mi">1</span><span class="o">&gt;</span> <span class="p">=</span> <span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
-            <span class="o">&lt;</span>其他变量取默认值<span class="o">&gt;</span>
-        <span class="k">otherwise</span>
-            <span class="n">error</span><span class="p">(</span><span class="s">&#39;无效输入&#39;</span><span class="p">)</span>
-    <span class="k">end</span>
-
-    <span class="c">% 函数主体</span>
-    <span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
-
-    <span class="c">% 解析输出变量</span>
-    <span class="k">switch</span> <span class="n">nargout</span>
-        <span class="o">&lt;</span>定义不同数量输出时的操作<span class="o">&gt;</span>
-    <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c">%% 子函数1</span>
-<span class="c">% 函数说明</span>
-<span class="c">% 变量说明</span>
-<span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">subfcn1</span><span class="p">(</span>x<span class="p">)</span><span class="w">
-</span><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
-    <span class="n">y</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
-<span class="k">end</span>
-
-<span class="c">%% 子函数2</span>
-<span class="c">% 函数说明</span>
-<span class="c">% 变量说明</span>
-<span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">subfcn2</span><span class="p">(</span>x<span class="p">)</span><span class="w">
-</span><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
-    <span class="n">y</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
-<span class="k">end</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 函数说明</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 变量说明</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% 作者和修改日期</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%% 主函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>varargout <span class="p">=</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span>varargin<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c">% 解析输入变量</span>
+</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="n">nargin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span>导入输入变量默认值<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span>变量<span class="mi">1</span><span class="o">&gt;</span> <span class="p">=</span> <span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span>其他变量取默认值<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">otherwise</span>
+</span></span><span class="line"><span class="cl">            <span class="n">error</span><span class="p">(</span><span class="s">&#39;无效输入&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% 函数主体</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% 解析输出变量</span>
+</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="n">nargout</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span>定义不同数量输出时的操作<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%% 子函数1</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 函数说明</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 变量说明</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">subfcn1</span><span class="p">(</span>x<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%% 子函数2</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 函数说明</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 变量说明</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>y <span class="p">=</span><span class="w"> </span><span class="nf">subfcn2</span><span class="p">(</span>x<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">&lt;</span>某些操作<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="p">=</span> <span class="o">&lt;</span>某变量<span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一般来说，主函数采用可变输入输出以增强通用性，而子函数由于只在文件内部有效，可采用简单的模式。上面以存在两个子函数的情况为例，实际使用时并不一定完全如此。</p>
 <h2 id="其他用法" class="headerLink">
@@ -380,8 +380,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">x</span> <span class="p">=</span> <span class="n">evalin</span><span class="p">(</span><span class="s">&#39;base&#39;</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span> <span class="n">evalin</span><span class="p">(</span><span class="s">&#39;base&#39;</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这样就实现了在不定义全局变量时，从工作空间向函数内部单向传递参数的功能。应当注意，虽然函数内的变量名为
 <code>x</code> ，但由于不是全局变量，其与外部工作空间的 <code>x</code>
@@ -395,8 +395,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">&#39;LineStyle&#39;</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">&#39;LineStyle&#39;</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面在调用绘图函数时还额外指定了线宽和线型。像这样的输入，我们应当如何定义函数呢？</p>
 <p>答案是： <code>inputParser</code> 。</p>
@@ -422,24 +422,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="k">function</span><span class="w"> </span>a <span class="p">=</span><span class="w"> </span><span class="nf">findArea</span><span class="p">(</span>width,varargin<span class="p">)</span><span class="w">
-</span><span class="w">   </span><span class="n">defaultHeight</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-   <span class="n">defaultUnits</span> <span class="p">=</span> <span class="s">&#39;inches&#39;</span><span class="p">;</span>
-   <span class="n">defaultShape</span> <span class="p">=</span> <span class="s">&#39;rectangle&#39;</span><span class="p">;</span>
-   <span class="n">expectedShapes</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;square&#39;</span><span class="p">,</span><span class="s">&#39;rectangle&#39;</span><span class="p">,</span><span class="s">&#39;parallelogram&#39;</span><span class="p">};</span>
-
-   <span class="n">p</span> <span class="p">=</span> <span class="n">inputParser</span><span class="p">;</span>
-   <span class="n">validScalarPosNum</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="n">isnumeric</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">isscalar</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
-   <span class="n">addRequired</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;width&#39;</span><span class="p">,</span><span class="n">validScalarPosNum</span><span class="p">);</span>
-   <span class="n">addOptional</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;height&#39;</span><span class="p">,</span><span class="n">defaultHeight</span><span class="p">,</span><span class="n">validScalarPosNum</span><span class="p">);</span>
-   <span class="n">addParameter</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;units&#39;</span><span class="p">,</span><span class="n">defaultUnits</span><span class="p">,@</span><span class="n">isstring</span><span class="p">);</span>
-   <span class="n">addParameter</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;shape&#39;</span><span class="p">,</span><span class="n">defaultShape</span><span class="p">,</span><span class="c">...</span>
-                 <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="n">any</span><span class="p">(</span><span class="n">validatestring</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">expectedShapes</span><span class="p">)));</span>
-   <span class="n">parse</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">varargin</span><span class="p">{:});</span>
-
-   <span class="n">a</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">width</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">height</span><span class="p">;</span> 
-<span class="k">end</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>a <span class="p">=</span><span class="w"> </span><span class="nf">findArea</span><span class="p">(</span>width,varargin<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">defaultHeight</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">defaultUnits</span> <span class="p">=</span> <span class="s">&#39;inches&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">defaultShape</span> <span class="p">=</span> <span class="s">&#39;rectangle&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">expectedShapes</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;square&#39;</span><span class="p">,</span><span class="s">&#39;rectangle&#39;</span><span class="p">,</span><span class="s">&#39;parallelogram&#39;</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="n">p</span> <span class="p">=</span> <span class="n">inputParser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">validScalarPosNum</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="n">isnumeric</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">isscalar</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">addRequired</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;width&#39;</span><span class="p">,</span><span class="n">validScalarPosNum</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">addOptional</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;height&#39;</span><span class="p">,</span><span class="n">defaultHeight</span><span class="p">,</span><span class="n">validScalarPosNum</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">addParameter</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;units&#39;</span><span class="p">,</span><span class="n">defaultUnits</span><span class="p">,@</span><span class="n">isstring</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">addParameter</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;shape&#39;</span><span class="p">,</span><span class="n">defaultShape</span><span class="p">,</span><span class="c">...</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="n">any</span><span class="p">(</span><span class="n">validatestring</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">expectedShapes</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">   <span class="n">parse</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">varargin</span><span class="p">{:});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="n">a</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">width</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">height</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
 
@@ -473,7 +473,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

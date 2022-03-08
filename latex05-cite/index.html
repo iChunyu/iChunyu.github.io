@@ -180,11 +180,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">这是第一个脚注 <span class="k">\footnotemark</span><span class="na">[1]</span>，这是第二个 <span class="k">\footnotemark</span><span class="na">[2]</span>。
-
-<span class="k">\footnotetext</span><span class="na">[1]</span><span class="nb">{</span>脚注1的内容<span class="nb">}</span>
-<span class="k">\footnotetext</span><span class="na">[2]</span><span class="nb">{</span>脚注1的内容<span class="nb">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl">这是第一个脚注 <span class="k">\footnotemark</span><span class="na">[1]</span>，这是第二个 <span class="k">\footnotemark</span><span class="na">[2]</span>。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\footnotetext</span><span class="na">[1]</span><span class="nb">{</span>脚注1的内容<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\footnotetext</span><span class="na">[2]</span><span class="nb">{</span>脚注1的内容<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>脚注默认的样式是阿拉伯数字角标，而对于中文文档的习惯，通常需要用带圆圈的数字且每页重新计数，这可以在导言区进行如下设置：</p>
 <div class="highlight"><div class="chroma">
@@ -195,11 +195,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% 优化脚注设置
-</span><span class="c"></span><span class="k">\usepackage</span><span class="na">[perpage]</span><span class="nb">{</span>footmisc<span class="nb">}</span>              <span class="c">% 每页重新计数
-</span><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>pifont<span class="nb">}</span>                         <span class="c">% 设置带圆圈的数字
-</span><span class="c"></span><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\thefootnote</span><span class="nb">}{</span><span class="k">\ding</span><span class="nb">{</span><span class="k">\numexpr</span>171+<span class="k">\value</span><span class="nb">{</span>footnote<span class="nb">}}}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl"><span class="c">% 优化脚注设置
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="na">[perpage]</span><span class="nb">{</span>footmisc<span class="nb">}</span>              <span class="c">% 每页重新计数
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>pifont<span class="nb">}</span>                         <span class="c">% 设置带圆圈的数字
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\thefootnote</span><span class="nb">}{</span><span class="k">\ding</span><span class="nb">{</span><span class="k">\numexpr</span>171+<span class="k">\value</span><span class="nb">{</span>footnote<span class="nb">}}}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="超链接" class="headerLink">
     <a href="#%e8%b6%85%e9%93%be%e6%8e%a5" class="header-mark"></a>超链接</h2><p>超链接的使用相对容易，只需要导入 <code>hyperref</code> 宏包即可，配合 <code>\href{&lt;link&gt;}{&lt;text&gt;}</code> 命令使用即可。例如我想产生一个像这样指向 <a href="https://ichunyu.github.io/" target="_blank" rel="noopener noreffer">我的博客</a> 的超链接，只需要像这样编写文档即可：</p>
@@ -208,8 +208,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">像这样就可以产生一个指向 <span class="k">\href</span><span class="nb">{</span>https://ichunyu.github.io/<span class="nb">}{</span>我的博客<span class="nb">}</span> 的超链接。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl">像这样就可以产生一个指向 <span class="k">\href</span><span class="nb">{</span>https://ichunyu.github.io/<span class="nb">}{</span>我的博客<span class="nb">}</span> 的超链接。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>导入 <code>hyperref</code> 宏包的另一个好处就是生成的文档会根据章节自动生成标签链接，方便 PDF 文档的导航。</p>
 <p>默认情况下，不同类型的超链接将以不同颜色的方框将链接内容包围，即使这个方框在打印的时候不会出现，依然导致电子文档阅读时不够美观。所以我自己在使用的时候通常会在调用宏包后增加以下设置，将超链接的方框隐藏，使用带颜色的字来表示。</p>
@@ -219,9 +219,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\hypersetup</span><span class="nb">{</span>hidelinks<span class="nb">}</span>              <span class="c">% 隐藏超链接的方框
-</span><span class="c"></span><span class="k">\hypersetup</span><span class="nb">{</span>colorlinks = true<span class="nb">}</span>      <span class="c">% 使用颜色字体表示超链接
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl"><span class="k">\hypersetup</span><span class="nb">{</span>hidelinks<span class="nb">}</span>              <span class="c">% 隐藏超链接的方框
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\hypersetup</span><span class="nb">{</span>colorlinks = true<span class="nb">}</span>      <span class="c">% 使用颜色字体表示超链接
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>当然，如果不喜欢默认的颜色，也可以进行设置，这就不多说了。</p>
 <h2 id="交叉引用" class="headerLink">
@@ -253,30 +253,30 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\section</span><span class="nb">{</span>自动化交叉引用<span class="nb">}</span>  
-<span class="k">\label</span><span class="nb">{</span>sec:autocite<span class="nb">}</span>                    <span class="c">% 章节标签
-</span><span class="c"></span>
-<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!htb]
-    <span class="k">\centering</span>
-    <span class="k">\includegraphics</span><span class="na">[width=0.8\textwidth]</span><span class="nb">{</span>demo-figure.pdf<span class="nb">}</span>
-    <span class="k">\caption</span><span class="nb">{</span>figure name<span class="nb">}</span>
-    <span class="k">\label</span><span class="nb">{</span>fig:demo<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>                            <span class="c">% 图片标签
-</span><span class="c"></span>
-<span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[!htb]
-    <span class="k">\centering</span>
-    <span class="k">\caption</span><span class="nb">{</span>table name<span class="nb">}</span>
-    <span class="k">\label</span><span class="nb">{</span>tab:demo<span class="nb">}</span>                    <span class="c">% 表格标签
-</span><span class="c"></span>    <span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}</span>
-        &lt;...&gt;
-    <span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>                    
-
-<span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
-    <span class="k">\sin</span> 2x = 2 <span class="k">\sin</span> x <span class="k">\cos</span> x
-    <span class="k">\label</span><span class="nb">{</span>tab:demo<span class="nb">}</span>                    <span class="c">% 公式标签
-</span><span class="c"></span><span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>      
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl"><span class="k">\section</span><span class="nb">{</span>自动化交叉引用<span class="nb">}</span>  
+</span></span><span class="line"><span class="cl"><span class="k">\label</span><span class="nb">{</span>sec:autocite<span class="nb">}</span>                    <span class="c">% 章节标签
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!htb]
+</span></span><span class="line"><span class="cl">    <span class="k">\centering</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\includegraphics</span><span class="na">[width=0.8\textwidth]</span><span class="nb">{</span>demo-figure.pdf<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\caption</span><span class="nb">{</span>figure name<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\label</span><span class="nb">{</span>fig:demo<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>                            <span class="c">% 图片标签
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[!htb]
+</span></span><span class="line"><span class="cl">    <span class="k">\centering</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\caption</span><span class="nb">{</span>table name<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\label</span><span class="nb">{</span>tab:demo<span class="nb">}</span>                    <span class="c">% 表格标签
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">        &lt;...&gt;
+</span></span><span class="line"><span class="cl">    <span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>                    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\sin</span> 2x = 2 <span class="k">\sin</span> x <span class="k">\cos</span> x
+</span></span><span class="line"><span class="cl">    <span class="k">\label</span><span class="nb">{</span>tab:demo<span class="nb">}</span>                    <span class="c">% 公式标签
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>      
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>在引用编号的时候，对于图、表、章节通常可以直接引用，而公式编号通常用括号包围。为此，AMS 数学红包提供了 <code>\eqref{&lt;label&gt;}</code> 命令在引用公式是为编号加上括号。此外，以英文引用表格为例，&ldquo;Tab&rdquo; 和数字之间会有一个空格，且换行不能在 &ldquo;Tab&rdquo; 和数字之间打断，因此需要用 <code>~</code> 产生不可打断的空格，完整的引用示例应当像这样： <code>Tab~\ref{tab:demo}</code>。</p>
 <p>为了使引用更加简单，推荐使用 <code>cleveref</code> 宏包提供的 <code>\cref{&lt;label&gt;}</code>，它会根据计数器类型自动添加 &ldquo;Tab&rdquo;、&ldquo;Fig&rdquo; 等前缀，对于公式也能自动添加括号，使用非常地方便。由于该宏包依赖于 <code>hyperref</code> ，因此建议在导言区最后引入。同时该宏包提供以下选项：</p>
@@ -296,12 +296,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\crefname</span><span class="nb">{</span>equation<span class="nb">}{</span>式<span class="nb">}{</span>式<span class="nb">}</span>
-<span class="k">\crefname</span><span class="nb">{</span>table<span class="nb">}{</span>表<span class="nb">}{</span>表<span class="nb">}</span>
-<span class="k">\crefname</span><span class="nb">{</span>figure<span class="nb">}{</span>图<span class="nb">}{</span>图<span class="nb">}</span>
-<span class="k">\crefformat</span><span class="nb">{</span>section<span class="nb">}{</span><span class="k">\!</span>第~#2#1#3~节<span class="k">\!</span><span class="nb">}</span>                  <span class="c">% 使用 \! 取消命令前后的空格
-</span><span class="c"></span><span class="k">\crefformat</span><span class="nb">{</span>subsection<span class="nb">}{</span><span class="k">\!</span>第~#2#1#3~小节<span class="k">\!</span><span class="nb">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>equation<span class="nb">}{</span>式<span class="nb">}{</span>式<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>table<span class="nb">}{</span>表<span class="nb">}{</span>表<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>figure<span class="nb">}{</span>图<span class="nb">}{</span>图<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefformat</span><span class="nb">{</span>section<span class="nb">}{</span><span class="k">\!</span>第~#2#1#3~节<span class="k">\!</span><span class="nb">}</span>                  <span class="c">% 使用 \! 取消命令前后的空格
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\crefformat</span><span class="nb">{</span>subsection<span class="nb">}{</span><span class="k">\!</span>第~#2#1#3~小节<span class="k">\!</span><span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="文献引用" class="headerLink">
     <a href="#%e6%96%87%e7%8c%ae%e5%bc%95%e7%94%a8" class="header-mark"></a>文献引用</h2><p>以前使用 Word 的时候最头疼的就是参考文献引用及其格式设置，而对于 $\LaTeX$ 而言，这是十分简单的工作。对于投期刊文章的小伙伴，一般期刊会给 $\LaTeX$ 模板并内置了参考文献样式；对于普通中文论文，一般需要满足 GB/T 7714&mdash;2015 《信息与文献 参考文献著录规则》，而 <code>gbt7714</code> 宏包为此提供了极大的便利。</p>
@@ -325,16 +325,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">@book<span class="nb">{</span>canutoSpacecraftDynamicsControl2018,
-title = <span class="nb">{</span>Spacecraft Dynamics and Control: The Embedded Model Control Approach<span class="nb">}</span>,
-author = <span class="nb">{</span>Canuto, Enrico and Novara, Carlo and Carlucci, Donato and Montenegro, Carlos Perez and Massotti, Luca<span class="nb">}</span>,
-year = <span class="nb">{</span>2018<span class="nb">}</span>,
-month = mar,
-publisher = <span class="nb">{</span>Butterworth-Heinemann<span class="nb">}</span>,
-isbn = <span class="nb">{</span>978-0-08-100700-6<span class="nb">}</span>,
-language = <span class="nb">{</span>en<span class="nb">}</span>
-<span class="nb">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl">@book<span class="nb">{</span>canutoSpacecraftDynamicsControl2018,
+</span></span><span class="line"><span class="cl">title = <span class="nb">{</span>Spacecraft Dynamics and Control: The Embedded Model Control Approach<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">author = <span class="nb">{</span>Canuto, Enrico and Novara, Carlo and Carlucci, Donato and Montenegro, Carlos Perez and Massotti, Luca<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">year = <span class="nb">{</span>2018<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">month = mar,
+</span></span><span class="line"><span class="cl">publisher = <span class="nb">{</span>Butterworth-Heinemann<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">isbn = <span class="nb">{</span>978-0-08-100700-6<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">language = <span class="nb">{</span>en<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个文件通常都是导出的，基本不需要自己手动编写，而内容基本也可以顾名思义。引用该文献需要用到的 <code>citekey</code> 就是第一行花括号右侧的字符串，本例就是<code>canutoSpacecraftDynamicsControl2018</code> 。</p></div>
 
@@ -368,7 +368,7 @@ language = <span class="nb">{</span>en<span class="nb">}</span>
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

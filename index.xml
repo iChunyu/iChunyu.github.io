@@ -4,9 +4,16 @@
         <link>https://ichunyu.github.io/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 08 Mar 2022 14:48:25 &#43;0800</lastBuildDate>
             <atom:link href="https://ichunyu.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>坐标变换与矢量旋转</title>
+    <link>https://ichunyu.github.io/vectortransform/</link>
+    <pubDate>Tue, 08 Mar 2022 14:48:25 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/vectortransform/</guid>
+    <description><![CDATA[<p>在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。</p>]]></description>
+</item><item>
     <title>CIC 滤波器简介</title>
     <link>https://ichunyu.github.io/introcic/</link>
     <pubDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/tricks/</guid>
     <description><![CDATA[<p>一些不常用但是可能有用的小技巧，或许会不定时更新吧。</p>]]></description>
-</item><item>
-    <title>抗饱和积分</title>
-    <link>https://ichunyu.github.io/integratorantiwindup/</link>
-    <pubDate>Sat, 19 Jun 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/integratorantiwindup/</guid>
-    <description><![CDATA[<p>对于实际的系统，控制器的输出应当受到幅度限制，以避免超出执行机的量程。然而，在具有积分的控制器中如果仅对输出进行限幅，将会引起所谓的退饱和现象，使控制器的性能变差甚至导致系统不稳定。这回我们来谈谈抗饱和积分器。</p>]]></description>
 </item></channel>
 </rss>

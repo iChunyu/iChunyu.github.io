@@ -186,12 +186,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">如果采用 <span class="s">$</span><span class="nv">\LaTeX</span><span class="s">$</span> 进行编译后，生成的文档中，这里是正常的两端对齐文字。
-
-<span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-    这里是居中的文字。
-<span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl">如果采用 <span class="s">$</span><span class="nv">\LaTeX</span><span class="s">$</span> 进行编译后，生成的文档中，这里是正常的两端对齐文字。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    这里是居中的文字。
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>环境是可以嵌套的，例如上面的内容在正文区，而正文区开始于 <code>\begin{document}</code> ，说明正文是处于 <code>document</code> 环境下的。</p>
 <p>可以想象，一般的图表都采用居中的格式，应当分别处于独立的环境中，$\LaTeX$ 为此提供了 <code>table</code> 和 <code>figure</code> 环境。对于上例这样一般的环境，它仅提供局部的格式变动，不会影响上下文之间的位置关系。而 <code>table</code> 和 <code>figure</code> 却与之不同，它们被称作浮动体，意思是源码之间的相对位置与编译后生成文档中的相对位置可能是不同的。比如源码中的顺序是先写“如图 3 所示”，然后再插入图片，生成的文档可能会先插入图片，再出现“如图 3 所示”。</p>
@@ -225,17 +225,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="c">% 导言区添加 \usepackage{graphicx}
-</span><span class="c">% \includegraphics[&lt;选项&gt;]{&lt;图片文件名&gt;}
-</span><span class="c"></span>
-<span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!htb]    <span class="c">% 还记得刚说的图片放在浮动体内吗？
-</span><span class="c"></span>    <span class="k">\centering</span>          <span class="c">% 设置图片居中
-</span><span class="c"></span>    <span class="c">% 插入图片，图片宽度为 0.7 倍正文宽度，图片文件为 misaka.png
-</span><span class="c"></span>    <span class="k">\includegraphics</span><span class="na">[width=0.7\textwidth]</span><span class="nb">{</span>misaka.png<span class="nb">}</span>
-    <span class="k">\caption</span><span class="nb">{</span>御坂美琴<span class="nb">}</span>   <span class="c">% 正文中的图名
-</span><span class="c"></span>    <span class="k">\label</span><span class="nb">{</span>fig:misaka<span class="nb">}</span>  <span class="c">% 交叉引用的标签，以后再说哈
-</span><span class="c"></span><span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl"><span class="c">% 导言区添加 \usepackage{graphicx}
+</span></span></span><span class="line"><span class="cl"><span class="c">% \includegraphics[&lt;选项&gt;]{&lt;图片文件名&gt;}
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!htb]    <span class="c">% 还记得刚说的图片放在浮动体内吗？
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\centering</span>          <span class="c">% 设置图片居中
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="c">% 插入图片，图片宽度为 0.7 倍正文宽度，图片文件为 misaka.png
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\includegraphics</span><span class="na">[width=0.7\textwidth]</span><span class="nb">{</span>misaka.png<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\caption</span><span class="nb">{</span>御坂美琴<span class="nb">}</span>   <span class="c">% 正文中的图名
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\label</span><span class="nb">{</span>fig:misaka<span class="nb">}</span>  <span class="c">% 交叉引用的标签，以后再说哈
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>以这种方法插图时，图片放置的位置必须在搜索路径中，或者使用绝对路径。一般情况下，我们会把正文图片收集在 <code>figures</code> 文件夹内，并在导入宏包后立即将该文件夹添加到图片的搜索路径，如下</p>
 <div class="highlight"><div class="chroma">
@@ -248,13 +248,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
-<span class="c">% 添加搜索路径，多个路径时用花括号区分
-</span><span class="c"></span><span class="k">\graphicspath</span><span class="nb">{</span>
-    <span class="nb">{</span>./figure/<span class="nb">}</span>
-    <span class="nb">{</span>./figures/<span class="nb">}</span>
-<span class="nb">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 添加搜索路径，多个路径时用花括号区分
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\graphicspath</span><span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">{</span>./figure/<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">{</span>./figures/<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如此就可以实现正文的插图了。实际上，$\LaTeX$ 是支持直接绘图的，有兴趣的小伙伴可以在命令行使用 <code>texdoc pgfmanual</code> 查看具体方法。</p>
 <blockquote>
@@ -282,23 +282,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[hbp]
-	<span class="k">\centering</span>
-	<span class="k">\caption</span><span class="nb">{</span>页码数字格式<span class="nb">}</span>
-	<span class="k">\label</span><span class="nb">{</span>tab:pagenum<span class="nb">}</span>
-	<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>ll<span class="nb">}</span>
-		<span class="k">\toprule</span>
-		格式 <span class="nb">&amp;</span> 说明 <span class="k">\\</span>
-		<span class="k">\midrule</span>
-		arabic <span class="nb">&amp;</span> 阿拉伯数字 <span class="k">\\</span>
-		roman <span class="nb">&amp;</span> 小写的罗马数字 <span class="k">\\</span>
-		Roman <span class="nb">&amp;</span> 大写的罗马数字 <span class="k">\\</span>
-		alph <span class="nb">&amp;</span> 小写的字符形式 <span class="k">\\</span>
-		Alph <span class="nb">&amp;</span> 大写的字符形式 <span class="k">\\</span>
-		<span class="k">\bottomrule</span>
-	<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>[hbp]
+</span></span><span class="line"><span class="cl">	<span class="k">\centering</span>
+</span></span><span class="line"><span class="cl">	<span class="k">\caption</span><span class="nb">{</span>页码数字格式<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">\label</span><span class="nb">{</span>tab:pagenum<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>ll<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">\toprule</span>
+</span></span><span class="line"><span class="cl">		格式 <span class="nb">&amp;</span> 说明 <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">		<span class="k">\midrule</span>
+</span></span><span class="line"><span class="cl">		arabic <span class="nb">&amp;</span> 阿拉伯数字 <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">		roman <span class="nb">&amp;</span> 小写的罗马数字 <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">		Roman <span class="nb">&amp;</span> 大写的罗马数字 <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">		alph <span class="nb">&amp;</span> 小写的字符形式 <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">		Alph <span class="nb">&amp;</span> 大写的字符形式 <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">		<span class="k">\bottomrule</span>
+</span></span><span class="line"><span class="cl">	<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>分析表格的代码：我们在最外围申明了表格所处的 <code>table</code> 环境，这是将表格整体作为浮动体；然后设置该环境下内容居中显示；由于表格的标题一般在表格上方，所以先生成标题并打上标签；剩下的一大块便是由 <code>tabular</code> 环境构造的表格。</p>
 <p><code>tabular</code> 环境是用来构造表格本体的，该环境有一个参数用来指明列格式，常用的列格式包括：</p>
@@ -346,7 +346,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.93.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
