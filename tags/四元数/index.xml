@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>四元数 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E5%9B%9B%E5%85%83%E6%95%B0/</link>
+        <description>四元数 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 16 Mar 2022 14:32:58 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%9B%9B%E5%85%83%E6%95%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>四元数与三维旋转</title>
+    <link>https://ichunyu.github.io/quaternion/</link>
+    <pubDate>Wed, 16 Mar 2022 14:32:58 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/quaternion/</guid>
+    <description><![CDATA[<p>复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。</p>]]></description>
+</item></channel>
+</rss>
