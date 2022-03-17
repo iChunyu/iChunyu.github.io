@@ -49,6 +49,14 @@ theme = "DoIt"
     url = "/about/"
     title = ""
     weight = 4
+  [[menu.main]]
+    identifier = "github"
+    pre = "<i class='fab fa-github fa-fw'></i>"
+    post = ""
+    name = ""
+    url = "https://github.com/iChunyu/iChunyu.github.io"
+    title = "GitHub"
+    weight = 5
 
 
 [params]
