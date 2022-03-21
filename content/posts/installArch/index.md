@@ -550,7 +550,6 @@ INPUT_METHOD    DEFAULT=fcitx5
 GTK_IM_MODULE   DEFAULT=fcitx5
 QT_IM_MODULE    DEFAULT=fcitx5
 XMODIFIERS      DEFAULT=\@im=fcitx5
-SDL_IM_MODULE   DEFAULT=fcitx
 ```
 
 Arch Linux 的可玩性不限于此，剩下的请大家自行折腾～
