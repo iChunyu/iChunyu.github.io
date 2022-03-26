@@ -142,6 +142,6 @@ $${{< /math >}}
     <img src=tracking2.png width=70% />
 </div>
 
-## 参考资料
+## 参考文献
 
 1. G.F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. 2014.

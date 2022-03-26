@@ -279,6 +279,6 @@ D          7
 - `warning` 
 
 
-## 参考资料
+## 参考文献
 
 1. wklchris. [reStructuredText 简介](https://self-contained.github.io/reStructuredText/index.html).

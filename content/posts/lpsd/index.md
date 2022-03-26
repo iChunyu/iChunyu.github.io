@@ -196,7 +196,7 @@ ${\rm V}/\sqrt{ {\rm Hz} }$ 。
 </div>
 
 
-## 参考资料
+## 参考文献
 
 1. Michael Tröbs, Gerhard Heinzel. [Improved spectrum estimation from digitized time series on a logarithmic frequency axis](https://www.sciencedirect.com/science/article/pii/S026322410500117X). Measurement. 2005.
 

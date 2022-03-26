@@ -141,7 +141,7 @@ $${{< /math >}}
 
 我在 [GitHub](https://github.com/iChunyu/LearnCtrlSys/tree/main/ModelPredictiveControl) 上传了一个简单的 MPC 例子，欢迎留言、讨论。
 
-## 参考资料
+## 参考文献
 
 1. DR_CAN, [【MPC模型预测控制器】1_最优化控制和基本概念](https://www.bilibili.com/video/BV1cL411n7KV).
 2. DR_CAN, [【MPC模型预测控制器】2_最优化数学建模推导](https://www.bilibili.com/video/BV1SQ4y1Y7FG).
