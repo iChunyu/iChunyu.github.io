@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">从牛顿方程到开普勒定律 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="从牛顿方程到开普勒定律" />
+<meta property="og:description" content="开普勒定律揭示了行星围绕中心天体运动的规律，随后牛顿提出的运动学定律和万有引力定律进一步从原理上进行了解释。本文从牛顿方程的角度出发，基于限制性二体问题推导开普勒运动定律，被简要介绍轨道六要素和开普勒方程。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/newton2kepler/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-26T16:36:15+08:00" />
+<meta property="article:modified_time" content="2022-03-26T16:36:15+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="从牛顿方程到开普勒定律"/>
+<meta name="twitter:description" content="开普勒定律揭示了行星围绕中心天体运动的规律，随后牛顿提出的运动学定律和万有引力定律进一步从原理上进行了解释。本文从牛顿方程的角度出发，基于限制性二体问题推导开普勒运动定律，被简要介绍轨道六要素和开普勒方程。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/newton2kepler/" /><link rel="prev" href="https://ichunyu.github.io/quaternion/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "从牛顿方程到开普勒定律",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/newton2kepler\/"
+        },"genre": "posts","keywords": "牛顿方程, 开普勒定律, 开普勒方程","wordcount":  2004 ,
+        "url": "https:\/\/ichunyu.github.io\/newton2kepler\/","datePublished": "2022-03-26T16:36:15+08:00","dateModified": "2022-03-26T16:36:15+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme);}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/iChunyu/iChunyu.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/iChunyu/iChunyu.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#限制性二体问题">限制性二体问题</a></li>
+    <li><a href="#角动量守恒">角动量守恒</a></li>
+    <li><a href="#离心率守恒">离心率守恒</a></li>
+    <li><a href="#开普勒方程">开普勒方程</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">从牛顿方程到开普勒定律</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>奇妙的数学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-26">2022-03-26</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-26">2022-03-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2004 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#限制性二体问题">限制性二体问题</a></li>
+    <li><a href="#角动量守恒">角动量守恒</a></li>
+    <li><a href="#离心率守恒">离心率守恒</a></li>
+    <li><a href="#开普勒方程">开普勒方程</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>开普勒定律揭示了行星围绕中心天体运动的规律，随后牛顿提出的运动学定律和万有引力定律进一步从原理上进行了解释。本文从牛顿方程的角度出发，基于限制性二体问题推导开普勒运动定律，被简要介绍轨道六要素和开普勒方程。</p>
+<h2 id="限制性二体问题" class="headerLink">
+    <a href="#%e9%99%90%e5%88%b6%e6%80%a7%e4%ba%8c%e4%bd%93%e9%97%ae%e9%a2%98" class="header-mark"></a>限制性二体问题</h2><p>设两个质点 $m_0$、$m_1$ 的位置矢量分别为 $\vec{r}_0$ 和 $\vec{r}_1$。记万有引力常数为 $G$，并将质点的相对位置记为 $\vec{r}=\vec{r}_1 - \vec{r}_0$，则质点之间的万有引力分别为：</p>
+$$
+\vec{G}_0 = \frac{Gm_0m_1}{r^2} \frac{\vec{r}}{r} ,\qquad
+\vec{G}_1 = -\frac{Gm_0m_1}{r^2} \frac{\vec{r}}{r}
+$$
+<p>进一步考虑质点受到其他的作用力 $\vec{F}_0$ 和 $\vec{F}_1$，根据牛顿第二定律，有</p>
+$$
+\left\{\begin{aligned}
+    \ddot{\vec{r}}_0 &= \frac{Gm_1}{r^2} \frac{\vec{r}}{r} + \frac{\vec{F}_0}{m_0} \\
+    \ddot{\vec{r}}_1 &= -\frac{Gm_0}{r^2} \frac{\vec{r}}{r} + \frac{\vec{F}_1}{m_1}
+\end{aligned}\right.
+$$
+<p>因此相对运动方程为</p>
+$$
+\ddot{\vec{r}} = \ddot{\vec{r}}_1 - \ddot{\vec{r}}_0 
+    = -\frac{G(m_0+m_1)}{r^2} \frac{\vec{r}}{r} + \frac{\vec{F}_1}{m_1} - \frac{\vec{F}_0}{m_0}
+$$
+<p>当 $m_0 \gg m_1$ 时，上述方程可以简化为</p>
+$$
+\ddot{\vec{r}}  = -\frac{\mu}{r^2} \frac{\vec{r}}{r} + \frac{\vec{F}_1}{m_1}
+$$
+<p>称之为限制性二体问题。为了表述的方便，将引力常数重新记为 $\mu = Gm_0$。更进一步，当 $\vec{F}_0 = \vec{0}$ 时，上述微分方程的通解称为轨道的自由响应，满足开普勒运动定律。后文将基于此假设推导开普勒定律。</p>
+<p>更进一步，二体的质心运动满足</p>
+$$
+\ddot{\vec{r}}_c =  \frac{\mathrm{d}^2}{\mathrm{d}t^2} \left( \frac{m_0}{m_0+m_1}\vec{r}_0 + \frac{m_0}{m_0+m_1}\vec{r}_1 \right)
+    = \frac{1}{m_0 + m_1} \left(\vec{F}_0 + \vec{F}_1\right)
+$$
+<p>当外力 $\vec{F}_0 = \vec{F}_1 = \vec{0}$ 时，质心加速度为零，可以作为惯性参考系的原点。对于限制性二体问题，系统质心取为较大质量质点的质心，即中心天体的质心。</p>
+<h2 id="角动量守恒" class="headerLink">
+    <a href="#%e8%a7%92%e5%8a%a8%e9%87%8f%e5%ae%88%e6%81%92" class="header-mark"></a>角动量守恒</h2><p>由于限制性二体问题在外力 $\vec{F}_0 = \vec{0}$ 时只受到连线方向的引力作用，合力矩为零，因此其角动量 $\vec{h} = \vec{r} \times \vec{v}$ 守恒。我们可以从其导数为零（零向量）进行证明：</p>
+$$
+\dot{\vec{h}} = \frac{\mathrm{d}}{\mathrm{d}t} \left( \vec{r} \times \vec{v} \right)
+    = \dot{\vec{r}} \times \vec{v} + \vec{r} \times \dot{\vec{v}}
+    = \vec{v} \times \vec{v} + \vec{r} \times \left( - \frac{\mu}{r^2} \frac{\vec{r}}{r} \right)
+    = \vec{0}
+$$
+<p>角动量守恒可以从两方面来看，首先，角动量的方向不变，意味着该方向可以作为（轨道）惯性参考系的基矢。习惯上取该方向为第三基矢 $\vec{p}_3=\vec{h}/h$，因此在该参考系下可以将角动量记为坐标形式，即 $\mathbf{h}^p = [0, 0, h]^\mathrm{T}$。</p>
+<p>其次，角动量的大小不变。为了说明该性质的物理含义，考察下图所示在 $\mathrm{d}t$ 时间内运动质点与中心质点连线扫过的面积为</p>
+<div align=center>
+    <img src=Kepler1.svg width=30% />
+</div>
+$$
+\mathrm{d}A = \frac{1}{2} |\vec{r}|  \left( |\vec{v}| \mathrm{d}t \right)  \sin\phi 
+= \frac{1}{2} |\vec{r} \times \vec{v}| \mathrm{d}t 
+= \frac{1}{2} h \mathrm{d}t
+\quad \Rightarrow \quad
+\frac{\mathrm{d}A}{\mathrm{d}t} = \frac{1}{2} h 
+$$
+<p>这意味着单位时间内连线扫过的面积为常数，用实例表述为：行星和太阳连线在相同的时间内扫过的面积相等。这就是开普勒第二定律。</p>
+<h2 id="离心率守恒" class="headerLink">
+    <a href="#%e7%a6%bb%e5%bf%83%e7%8e%87%e5%ae%88%e6%81%92" class="header-mark"></a>离心率守恒</h2><p>根据限定性二体问题的运动方程，移项后与角动量进行叉乘，有</p>
+$$
+\begin{aligned}
+    \vec{0} \times \vec{h} &= \left( \ddot{\vec{r}} + \frac{\mu}{r^3} \vec{r} \right) \times \vec{h} \\
+    &= \dot{\vec{v}} \times \vec{h} + \frac{\mu}{r^3} \vec{r}  \times \left( \vec{r} \times \vec{v} \right) \\
+    &= \frac{\mathrm{d}}{\mathrm{d}t} \left(\vec{v}\times \vec{h} \right) 
+        + \frac{\mu}{r^3} \bigl( \left(\vec{r}\cdot\vec{v}\right) \vec{r} -  \left(\vec{r}\cdot\vec{r}\right)\vec{v} \bigr) \\
+    &= \frac{\mathrm{d}}{\mathrm{d}t} \left(\vec{v}\times \vec{h} \right) 
+        + \frac{\mu}{r^3} \left(  r\vec{r} \frac{\mathrm{d}r}{\mathrm{d}t} - r^2 \frac{\mathrm{d}\vec{r}}{\mathrm{d}t}  \right) \\
+    &= \frac{\mathrm{d}}{\mathrm{d}t} \left(\vec{v}\times \vec{h} \right) - \mu \frac{\mathrm{d}}{\mathrm{d}t} \left(\frac{\vec{r}}{r} \right) \\
+    &= \mu \frac{\mathrm{d}}{\mathrm{d}t} \left( \frac{\vec{v}\times \vec{h}}{\mu} - \frac{\vec{r}}{r} \right)
+\end{aligned}
+$$
+<p>上式最后一行将 $\mu$ 放到括号，括号内部为无量纲矢量且导数为 $\vec{0}$。因此该矢量也是守恒量，记为 $\vec{e}$，可以作为轨道惯性系的基矢 $\vec{p}_1 = \vec{e}/e$（最后的基矢可以由 $\vec{p}_2 = \vec{p}_3 \times \vec{p}_1$ 得到）。考虑位移矢量 $\vec{r}$ 与 $\vec{e}$ 的点积，有</p>
+$$
+\begin{aligned}
+    \vec{r} \cdot \vec{e} &= r e \cos\theta \\
+    &= \vec{r} \cdot \left( \frac{\vec{v}\times \vec{h}}{\mu} - \frac{\vec{r}}{r} \right) \\
+    &= \frac{\vec{h} \cdot \left(\vec{r}\times \vec{v}\right)}{\mu} - \frac{\vec{r} \cdot \vec{r}}{r} \\
+    &= \frac{h^2}{\mu} - r \\
+    &= p - r
+\end{aligned}
+$$
+<p>其中 $p = h^2/\mu$，解得</p>
+$$
+r = \frac{p}{1+e\cos\theta}
+$$
+<p>这正是椭圆的表达式，且 $e = |\vec{e}|$ 为离心率，$\theta$ 称为真近点角。因此：行星的轨道是以太阳为一个焦点的椭圆轨道。这就是开普勒第一定律。</p>
+<p>在椭圆的近拱点，速度与位置垂直，可知离心率矢量 $\vec{e}$ 的方向与半长轴方向相同。在椭圆中心建立如下图所示的 $\vec{x}$-$\vec{y}$ 平面参考系，当 $\theta = \pi/2$ 时，带入坐标 $[c,p]^\mathrm{T}$ 到椭圆方程，有</p>
+<div align=center>
+    <img src=ellipse.svg width=50% />
+</div>
+$$
+\frac{c^2}{a^2} + \frac{p^2}{b^2} = 1 
+\quad \Rightarrow \quad
+p = \frac{h^2}{\mu} = a(1-e^2) 
+\quad \Rightarrow \quad
+h = \sqrt{\mu a(1-e^2)}
+$$
+<p>结合椭圆面积的计算公式和前面推导的 $\dot{A} = h/2$，积分一周得到运动周期为</p>
+$$
+A = \pi ab = \frac{h}{2} T 
+\quad \Rightarrow \quad 
+T = 2\pi \sqrt{\frac{a^3}{\mu}}
+$$
+<p>于是可以验证开普勒第三定律：行星绕太阳运动周期的平方与其半长轴的三次方成比例。</p>
+<p>至此，我们从牛顿方程推导了开普勒运动定律。</p>
+<h2 id="开普勒方程" class="headerLink">
+    <a href="#%e5%bc%80%e6%99%ae%e5%8b%92%e6%96%b9%e7%a8%8b" class="header-mark"></a>开普勒方程</h2><p>开普勒运动定律揭示了行星运动是以中心天体为焦点的椭圆，且角动量和离心率守恒决定了轨道平面的方向和椭圆的形状。只有真近点角 $\theta$ 是时间的变量，用于唯一地确定行星的位置。考察轨道参考系内，行星的位置坐标可以分解为</p>
+$$
+\mathbf{r}^p = r \begin{bmatrix} \cos\theta \\ \sin\theta \\ 0 \end{bmatrix}
+$$
+<p>因此有</p>
+$$
+\mathbf{v}^p = \dot{\mathbf{r}}_p 
+= \dot{r} \begin{bmatrix} \cos\theta \\ \sin\theta \\ 0 \end{bmatrix}
++ r \dot{\theta} \begin{bmatrix} -\sin\theta \\ \cos\theta \\ 0 \end{bmatrix}
+$$
+<p>带入角动量守恒</p>
+$$
+\mathbf{h}^p = \mathbf{r}^p \times \mathbf{v}^p = \begin{bmatrix} 0 \\ 0 \\ h \end{bmatrix} 
+$$
+<p>得</p>
+$$
+r^2 \dot{\theta} = h 
+\quad \Rightarrow \quad
+\dot{\theta} = \frac{h}{r^2} = \sqrt{\frac{\mu}{p^3}} \left(1+e\cos\theta\right)^2
+$$
+<p>这是一个非线性微分方程，求解比较复杂。为此，如上图，构造与椭圆中心重合且半径为 $a$ 的圆，矢量 $\vec{r}$ 在 $\vec{y}$ 方向投影的延长线与圆相交于 $Q$ 点。记 $\overrightarrow{OQ}$ 与 $\vec{x}$ 的夹角为 $E$。</p>
+<p>考察 $\vec{r}$ 在 $\vec{x}$ 方向的投影，有</p>
+$$
+r \cos\theta = a\cos E - c = a (\cos E -e)
+$$
+<p>根据几何关系，将 $[a\cos E, r \sin\theta]^\mathrm{T}$ 代入 $\vec{x}$-$\vec{y}$ 平面内椭圆方程，有</p>
+$$
+\cos^2 E + \frac{r^2 \sin^2 E}{b^2} = 1
+\quad \Rightarrow \quad
+r\sin\theta = b \sin E = a \sqrt{1-e^2} \sin E
+$$
+<p>将上面两个等式代入 $\mathbf{r}^p$ 中，可以得到用角度 $E$ 表述的坐标：</p>
+$$
+\mathbf{r}^p = a \begin{bmatrix}  (\cos E -e) \\ \sqrt{1-e^2} \sin E \\ 0 \end{bmatrix}
+$$
+<p>因此</p>
+$$
+\mathbf{v}^p = \dot{\mathbf{r}}_p = a \dot{E} \begin{bmatrix} -\sin E \\ \sqrt{1-e^2} \cos E \\ 0 \end{bmatrix}
+$$
+<p>代入 $\mathbf{h}^p = \mathbf{r}^p \times \mathbf{v}^p$，整理可得</p>
+$$
+\dot{E} \left( 1-e\cos E\right) = \frac{h}{a^2\sqrt{1-e^2}} = \sqrt{\frac{\mu}{a^3}} := \omega_0
+$$
+<p>这个微分方程称为开普勒方程。两边积分可得</p>
+$$
+E(t) - e \sin E(t) = \omega_o t + E_0
+$$
+<p>如此做，将原本关于 $\theta(t)$ 的非线性微分方程转化为了关于 $E(t)$ 的非线性方程，避免了数值积分的累计误差。为了求解该方程，可以利用不动点法或牛顿迭代等数值解法以满足所需的精度。</p>
+<h2 id="参考文献" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+<li>E. Canuto, C. Novara, D. Carlucci, C.P. Montenegro, L. Massotti, Spacecraft Dynamics and Control: The Embedded Model Control Approach, Butterworth-Heinemann, 2018.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/newton2kepler/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%89%9B%E9%A1%BF%E6%96%B9%E7%A8%8B/">牛顿方程</a>,&nbsp;<a href="/tags/%E5%BC%80%E6%99%AE%E5%8B%92%E5%AE%9A%E5%BE%8B/">开普勒定律</a>,&nbsp;<a href="/tags/%E5%BC%80%E6%99%AE%E5%8B%92%E6%96%B9%E7%A8%8B/">开普勒方程</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/quaternion/" class="prev" rel="prev" title="四元数与三维旋转"><i class="fas fa-angle-left fa-fw"></i>四元数与三维旋转</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.95.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

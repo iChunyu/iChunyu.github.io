@@ -4,7 +4,14 @@
         <link>https://ichunyu.github.io/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/</link>
         <description>奇妙的数学 - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 16 Mar 2022 14:32:58 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 26 Mar 2022 16:36:15 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+    <title>从牛顿方程到开普勒定律</title>
+    <link>https://ichunyu.github.io/newton2kepler/</link>
+    <pubDate>Sat, 26 Mar 2022 16:36:15 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/newton2kepler/</guid>
+    <description><![CDATA[<p>开普勒定律揭示了行星围绕中心天体运动的规律，随后牛顿提出的运动学定律和万有引力定律进一步从原理上进行了解释。本文从牛顿方程的角度出发，基于限制性二体问题推导开普勒运动定律，被简要介绍轨道六要素和开普勒方程。</p>]]></description>
+</item><item>
     <title>四元数与三维旋转</title>
     <link>https://ichunyu.github.io/quaternion/</link>
     <pubDate>Wed, 16 Mar 2022 14:32:58 &#43;0800</pubDate><author>
