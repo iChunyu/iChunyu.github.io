@@ -137,7 +137,7 @@
   <ul>
     <li><a href="#基本原理">基本原理</a></li>
     <li><a href="#公式推导">公式推导</a></li>
-    <li><a href="#参考资料">参考资料</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">模型预测控制简介</h1><div class="post-meta">
@@ -155,7 +155,7 @@
   <ul>
     <li><a href="#基本原理">基本原理</a></li>
     <li><a href="#公式推导">公式推导</a></li>
-    <li><a href="#参考资料">参考资料</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>最近在 DR_CAN 的视频中学到了模型预测控制，于是打算写篇博客记记笔记，权当公式推导的练习。</p>
@@ -270,8 +270,8 @@ $$
 $$
 <p>优化的对象为 $\mathbf{U}(k)$ 。注意代价函数的最后一项 $x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k)$ 为常数，不影响优化结果，可以不做考虑。与二次规划的标准形式相比，代价函数存在二倍关系，应当注意 $H$ 和 $f^\mathrm{T}$ 的选择。最后使用 MATLAB <code>quadprog</code> 进行优化计算即可获得 $\mathbf{U}(k)$ 。</p>
 <p>我在 <a href="https://github.com/iChunyu/LearnCtrlSys/tree/main/ModelPredictiveControl" target="_blank" rel="noopener noreffer">GitHub</a> 上传了一个简单的 MPC 例子，欢迎留言、讨论。</p>
-<h2 id="参考资料" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
+<h2 id="参考文献" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
 <li>DR_CAN, <a href="https://www.bilibili.com/video/BV1cL411n7KV" target="_blank" rel="noopener noreffer">【MPC模型预测控制器】1_最优化控制和基本概念</a>.</li>
 <li>DR_CAN, <a href="https://www.bilibili.com/video/BV1SQ4y1Y7FG" target="_blank" rel="noopener noreffer">【MPC模型预测控制器】2_最优化数学建模推导</a>.</li>
 </ol></div>

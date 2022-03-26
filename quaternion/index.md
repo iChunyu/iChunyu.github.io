@@ -282,7 +282,7 @@ $${{< /math >}}
 
 
 
-## 参考资料
+## 参考文献
 
 1. E. Canuto, C. Novara, D. Carlucci, C.P. Montenegro, L. Massotti, Spacecraft Dynamics and Control: The Embedded Model Control Approach, Butterworth-Heinemann, 2018.
 2. Krasjet, [A brief introduction to the quaternions and its applications in 3D geometry](https://github.com/Krasjet/quaternion).

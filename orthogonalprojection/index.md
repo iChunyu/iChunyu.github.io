@@ -173,7 +173,7 @@ xlim([-pi pi])
 ```
 
 
-## 参考资料
+## 参考文献
 
 1. Sheldon Axler. Linear Algebra Done Right (线性代数应该这样学). 2016.
 

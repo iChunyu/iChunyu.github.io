@@ -150,7 +150,7 @@
         <li><a href="#频率分辨率与计算分辨率">频率分辨率与计算分辨率</a></li>
       </ul>
     </li>
-    <li><a href="#参考资料">参考资料</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">傅立叶变换与频域分析简介</h1><div class="post-meta">
@@ -181,7 +181,7 @@
         <li><a href="#频率分辨率与计算分辨率">频率分辨率与计算分辨率</a></li>
       </ul>
     </li>
-    <li><a href="#参考资料">参考资料</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。</p>
@@ -373,8 +373,8 @@ $$
 </div>
 <p>在大多数情况下，两个概念并不需要进行区分，这是有 $\Delta f = \frac{f_s}{N} = \frac{1}{N T_s} = \frac{1}{T} = f_{\rm res}$ 。快速傅立叶变化的算法得到的频率点数与时域样本点数相同，可以在时域数据后补若干 $0$ 增加计算点数，从而改善计算分辨率。但是这种补 $0$ 的操作并不影响离散时间傅立叶变换，因此不会改变实际的频率分辨率。</p>
 <p>此外，通常的频域采样是为了确保采样后的数据能够根据逆变换公式反演出时域数据，如果只关注频域特性，对频域采样不会具有太高的要求。例如 <a href="https://ichunyu.github.io/lpsd/" rel="">LPSD 功率谱估计</a> 就采用了非均匀的频域采样。</p>
-<h2 id="参考资料" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
+<h2 id="参考文献" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
 <li>Alan V. Oppenheim 等, 刘树棠译. 信号与系统. 第二版. 电子工业出版社. 2014.</li>
 <li>程佩清. 数字信号处理. 第四版. 清华大学出版社. 2013.</li>
 </ol></div>

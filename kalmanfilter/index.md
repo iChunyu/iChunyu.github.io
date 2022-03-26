@@ -107,7 +107,7 @@ P_k &= \left(I-KC\right)P_k^-
 $${{< /math >}}
 
 
-## 参考资料
+## 参考文献
 
 1. [DR_CAN 卡尔曼增益超详细推导](https://www.bilibili.com/video/BV1hC4y1b7K7).
 2. R. Faragher. Understanding the Basis of the Kalman Filter Via a Simple and Intuitive Derivation. IEEE Signal Processing Magazine. 2012.

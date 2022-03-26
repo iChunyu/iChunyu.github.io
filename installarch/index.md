@@ -548,7 +548,7 @@ XMODIFIERS      DEFAULT=\@im=fcitx5
 
 Arch Linux 的可玩性不限于此，剩下的请大家自行折腾～
 
-## 参考资料
+## 参考文献
 
 1. [【残酷难度】最全Arch Linux安装教程——打造真正属于你的操作系统](https://www.bilibili.com/video/BV11J411a7Tp).
 2. [VirtualBox 安装 Arch Linux: 从新建虚拟机到图形界面](https://zhuanlan.zhihu.com/p/355826301).

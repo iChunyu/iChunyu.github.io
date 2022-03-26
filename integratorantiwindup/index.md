@@ -59,7 +59,7 @@
 
 可见，如果不采用抗饱和积分器，控制命令由于退饱和而存在一定延时，导致系统的输出具有较大的超调，并因此而具有较长的收敛时间。唔，实际使用时还是得用抗饱和积分器。
 
-## 参考资料
+## 参考文献
 
 1.  [【中英双字】了解 PID 控制，第 2 部分：超越简单的积分 MATLAB&Simulink](https://www.bilibili.com/video/BV1Ky4y1g7b9).
 2.  G.F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. 2014.

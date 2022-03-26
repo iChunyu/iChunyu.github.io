@@ -2,17 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://ichunyu.github.io/categories/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://ichunyu.github.io/posts/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://ichunyu.github.io/tags/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://ichunyu.github.io/tags/%E5%9B%9B%E5%85%83%E6%95%B0/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://ichunyu.github.io/quaternion/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://ichunyu.github.io/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://ichunyu.github.io/tags/%E6%97%8B%E8%BD%AC/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://ichunyu.github.io/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://ichunyu.github.io/tags/%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2/</loc><lastmod>2022-03-08T14:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://ichunyu.github.io/vectortransform/</loc><lastmod>2022-03-08T14:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>https://ichunyu.github.io/tags/%E7%9F%A2%E9%87%8F%E6%97%8B%E8%BD%AC/</loc><lastmod>2022-03-08T14:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/categories/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/posts/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/tags/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/tags/%E5%9B%9B%E5%85%83%E6%95%B0/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/quaternion/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/tags/%E6%97%8B%E8%BD%AC/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/</loc><lastmod>2022-03-16T14:32:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://ichunyu.github.io/tags/%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2/</loc><lastmod>2022-03-08T14:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://ichunyu.github.io/vectortransform/</loc><lastmod>2022-03-08T14:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://ichunyu.github.io/tags/%E7%9F%A2%E9%87%8F%E6%97%8B%E8%BD%AC/</loc><lastmod>2022-03-08T14:48:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://ichunyu.github.io/tags/cic/</loc><lastmod>2022-02-13T13:37:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://ichunyu.github.io/introcic/</loc><lastmod>2022-02-13T13:37:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://ichunyu.github.io/tags/%E5%8D%87%E9%87%87%E6%A0%B7/</loc><lastmod>2022-02-13T13:37:42&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

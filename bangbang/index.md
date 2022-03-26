@@ -85,7 +85,7 @@ $${{< /math >}}
 </div>
 
 
-## 参考资料
+## 参考文献
 
 1. G.F. Franklin, J. D. Powell, A. Emami-Naeini. Feedback Control of Dynamic Systems. 7th ed. 2014. p673-676.
 2. 韩京清, 自抗扰控制技术: 估计补偿不确定因素的控制技术. 国防工业出版社. 2008. p107.
