@@ -35,7 +35,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/latex03-tablefigure\/"
-        },"genre": "posts","keywords": "LaTeX","wordcount":  2563 ,
+        },"genre": "posts","keywords": "LaTeX","wordcount":  2257 ,
         "url": "https:\/\/ichunyu.github.io\/latex03-tablefigure\/","datePublished": "2020-11-14T00:00:00+00:00","dateModified": "2020-11-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
@@ -135,7 +135,6 @@
         <h2 class="toc-title">目录</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#引言与吹牛">引言与吹牛</a></li>
     <li><a href="#认识浮动体">认识浮动体</a></li>
     <li><a href="#使用插图">使用插图</a></li>
     <li><a href="#绘制表格">绘制表格</a></li>
@@ -145,8 +144,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><i class="far fa-folder fa-fw"></i>LaTeX</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-14">2020-11-14</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-11-14">2020-11-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2563 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-14">2020-11-14</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-11-14">2020-11-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2257 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -154,27 +153,12 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#引言与吹牛">引言与吹牛</a></li>
     <li><a href="#认识浮动体">认识浮动体</a></li>
     <li><a href="#使用插图">使用插图</a></li>
     <li><a href="#绘制表格">绘制表格</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>很多朋友使用 $\LaTeX$ 处理图表是都会感觉达不到期望的状态，这篇文章我们来看看如何正确使用图表。</p>
-<h2 id="引言与吹牛" class="headerLink">
-    <a href="#%e5%bc%95%e8%a8%80%e4%b8%8e%e5%90%b9%e7%89%9b" class="header-mark"></a>引言与吹牛</h2><p>每次跟朋友安利 $\LaTeX$ 的时候我都会讲这么一个故事：</p>
-<blockquote>
-<p>当时设计天琴一号加速度计的控制器参数，出于数字控制参数切换的便利性，疯狂设计了十几套参数。然而写报告的时候傻了：老板要求每套参数六个自由度的详细参数、指标都汇总到表格里。要是手动录入，恐怕得折腾一天，于是我想到了一个骚操作：MATLAB 设计完参数后以 $\LaTeX$ 表格代码的形式格式化输出到 <code>.tex</code> 文件，编译生成 PDF 后用 Acrobat 转成 Word，就可以复制了。就这样，10分钟不到的时间就把整个表格做完了。</p>
-</blockquote>
-<div class="details admonition danger open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-skull-crossbones fa-fw"></i>危险<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">然而更高技术的朋友会问：“你为什么不直接用 MATLAB 输出到 EXCEL 呢？你不会不知道 <code>writetable</code> 这一系列命令吧？不会吧不会吧？” 唔……爱琴海警告。</div>
-        </div>
-    </div>
-<p>废话不多说，赶紧进入正题，<strong><ruby>开始吧<rt>はじめましょう</rt></ruby></strong> 。</p>
 <h2 id="认识浮动体" class="headerLink">
     <a href="#%e8%ae%a4%e8%af%86%e6%b5%ae%e5%8a%a8%e4%bd%93" class="header-mark"></a>认识浮动体</h2><p>$\LaTeX$ 有很多“环境”的概念，在代码里就体现为采用 <code>\begin{&lt;env&gt;}</code> 和 <code>\end{&lt;env&gt;}</code> 括起来的部分。环境一般用于局部的格式设置或者功能扩展，比如正常写作时采用的是两端对齐，如果想临时居中某内容时，可以使用 <code>center</code> 环境，如</p>
 <div class="highlight"><div class="chroma">
@@ -346,7 +330,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.95.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.96.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
