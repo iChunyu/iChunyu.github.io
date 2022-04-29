@@ -95,7 +95,7 @@ $${{< /math >}}
 \end{aligned}
 $${{< /math >}}
 
-上式最后一行将 $\mu$ 放到括号，括号内部为无量纲矢量且导数为 $\vec{0}$。因此该矢量也是守恒量，记为 $\vec{e}$，可以作为轨道惯性系的基矢 $\vec{p}_1 = \vec{e}/e$（最后的基矢可以由 $\vec{p}_2 = \vec{p}_3 \times \vec{p}_1$ 得到）。考虑位移矢量 $\vec{r}$ 与 $\vec{e}$ 的点积，有
+上式最后一行将 $\mu$ 放到括号外，括号内部为无量纲矢量且导数为 $\vec{0}$。因此该矢量也是守恒量，记为 $\vec{e}$，可以作为轨道惯性系的基矢 $\vec{p}_1 = \vec{e}/e$（最后的基矢可以由 $\vec{p}_2 = \vec{p}_3 \times \vec{p}_1$ 得到）。考虑位移矢量 $\vec{r}$ 与 $\vec{e}$ 的点积，有
 
 {{< math >}}$$
 \begin{aligned}
@@ -220,3 +220,4 @@ $${{< /math >}}
 ## 参考文献
 
 1. E. Canuto, C. Novara, D. Carlucci, C.P. Montenegro, L. Massotti, Spacecraft Dynamics and Control: The Embedded Model Control Approach, Butterworth-Heinemann, 2018.
+

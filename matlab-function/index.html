@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/matlab-function/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-04-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-04-29T00:00:00+00:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2022-04-29T15:33:32+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
@@ -35,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/matlab-function\/"
-        },"genre": "posts","keywords": "MATLAB, 函数","wordcount":  2720 ,
-        "url": "https:\/\/ichunyu.github.io\/matlab-function\/","datePublished": "2020-04-29T00:00:00+00:00","dateModified": "2020-04-29T00:00:00+00:00","publisher": {
+        },"genre": "posts","keywords": "MATLAB, 函数","wordcount":  2750 ,
+        "url": "https:\/\/ichunyu.github.io\/matlab-function\/","datePublished": "2020-04-29T00:00:00+00:00","dateModified": "2022-04-29T15:33:32+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -138,14 +138,20 @@
     <li><a href="#匿名函数">匿名函数</a></li>
     <li><a href="#自定义函数">自定义函数</a></li>
     <li><a href="#函数的重载">函数的重载</a></li>
-    <li><a href="#其他用法">其他用法</a></li>
+    <li><a href="#其他用法">其他用法</a>
+      <ul>
+        <li><a href="#从工作空间获取变量">从工作空间获取变量</a></li>
+        <li><a href="#直接输出到工作空间">直接输出到工作空间</a></li>
+        <li><a href="#带参数的输入">带参数的输入</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">MATLAB 编写函数</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/matlab/"><i class="far fa-folder fa-fw"></i>MATLAB</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2720 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-04-29">2022-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2750 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -157,7 +163,13 @@
     <li><a href="#匿名函数">匿名函数</a></li>
     <li><a href="#自定义函数">自定义函数</a></li>
     <li><a href="#函数的重载">函数的重载</a></li>
-    <li><a href="#其他用法">其他用法</a></li>
+    <li><a href="#其他用法">其他用法</a>
+      <ul>
+        <li><a href="#从工作空间获取变量">从工作空间获取变量</a></li>
+        <li><a href="#直接输出到工作空间">直接输出到工作空间</a></li>
+        <li><a href="#带参数的输入">带参数的输入</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>编写程序的时候会经常用到相似的代码片段，为了使代码整洁，可以将这些代码片段封装为函数使用。本文介绍 MATLAB 编写函数的一般方法。</p>
@@ -267,13 +279,18 @@
 </span></span><span class="line"><span class="cl"><span class="k">end</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>同样地，建议将注释写完整并放在前面显眼的位置。例子中， <code>subfcn1</code> 和 <code>subfcn2</code> 是两个子函数，其只在脚本内有效。子函数不仅适用于脚本文件，在大型函数的定义中也可将一些小函数编写成子函数，从而提高代码的可读性。</p>
-<blockquote>
-<p>MATLAB中函数文件以 <code>function</code> 开头的m文件，除此以外的m文件均可视为脚本。两者的不同之处在于函数可以有输入输出变量，且函数内的变量具有独立的变量空间。而脚本虽然能被其他脚本所调用，但不能提供输入参数，且脚本内的变量共享工作空间。例如两个脚本中都有 <code>x</code> 这个变量，那么 <code>x</code> 的值就会受两个脚本控制，有时会因为变量被覆盖而使计算与预期不符。这也是为什么建议将通用的算法写成函数而非脚本，</p>
-</blockquote>
+</div><p>同样地，建议将注释写完整并放在前面显眼的位置。例子中，<code>subfcn1</code> 和 <code>subfcn2</code> 是两个子函数，其只在脚本内有效。子函数不仅适用于脚本文件，在大型函数的定义中也可将一些小函数编写成子函数，从而提高代码的可读性。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注解<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">MATLAB 中函数文件以 <code>function</code> 开头的m文件，除此以外的m文件均可视为脚本。两者的不同之处在于函数可以有输入输出变量，且函数内的变量具有独立的变量空间。而脚本虽然能被其他脚本所调用，但不能提供输入参数，且脚本内的变量共享工作空间。例如两个脚本中都有 <code>x</code> 这个变量，那么 <code>x</code> 的值就会受两个脚本控制，有时会因为变量被覆盖而使计算与预期不符。这也是为什么建议将通用的算法写成函数而非脚本。</div>
+        </div>
+    </div>
 <h2 id="函数的重载" class="headerLink">
     <a href="#%e5%87%bd%e6%95%b0%e7%9a%84%e9%87%8d%e8%bd%bd" class="header-mark"></a>函数的重载</h2><p>从前面的介绍中可以看到，定义函数时需要给定输入、输出变量的数目，那么问题就来了：如果不确定有多少输入输出，允许函数内使用一定的默认值，或者当给定不同数量的输入、输出时函数进行不同的操作，要怎么做呢？可能有人会说，重新定义相应的函数就可以了。这确实是一种办法，但会使函数文件过多而显得冗余。这时就需要用到函数的重载。</p>
-<p>在MATLAB中可利用关键字 <code>varargin</code> 作为输入，用 <code>varargout</code> 作为输出来代替可变数量的输入输出(variable-length input/output argument list)。同时，用 <code>nargin</code> 和 <code>nargout</code> 来获取输入和输出变量的数量。结合 <code>if</code> 或 <code>switch</code> 语句即可实现函数的重载。进一步，可使用函数 <code>narginchk</code> 和 <code>nargoutchk</code> 来限制输入输出变量的数量，但是这两个函数在较老的MATLAB版本中不存在。</p>
+<p>在 MATLAB 中可利用关键字 <code>varargin</code> 作为输入，用 <code>varargout</code> 作为输出来代替可变数量的输入输出（variable-length input/output argument list）。同时，用 <code>nargin</code> 和 <code>nargout</code> 来获取输入和输出变量的数量。结合 <code>if</code> 或 <code>switch</code> 语句即可实现函数的重载。进一步，可使用函数 <code>narginchk</code> 和 <code>nargoutchk</code> 来限制输入输出变量的数量，但是这两个函数在较老的MATLAB版本中不存在。</p>
 <p>这样一来，我们可以给出更加通用的函数定义模板：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -367,14 +384,10 @@
 </div>
 </div><p>一般来说，主函数采用可变输入输出以增强通用性，而子函数由于只在文件内部有效，可采用简单的模式。上面以存在两个子函数的情况为例，实际使用时并不一定完全如此。</p>
 <h2 id="其他用法" class="headerLink">
-    <a href="#%e5%85%b6%e4%bb%96%e7%94%a8%e6%b3%95" class="header-mark"></a>其他用法</h2><p>MATLAB 的函数中还有一些其他的&quot;高级&quot;用法，鉴于使用较少且本人也并不常用，这里仅作提醒，有兴趣的伙伴们可以自行学习。</p>
-<ul>
-<li>从工作空间获取变量</li>
-</ul>
-<p>为了与函数内的变量进行交互，常用的方式是在函数内外采用 <code>global</code>
-申明全局变量，从而实现参数传递。</p>
-<p>如果仅仅想获取工作区变量而不对其进行操作的话，可采用 <code>evalin</code>
-函数，例如，为了在函数内部获取工作区名为 <code>x</code> 变量的值，可使用以下代码：</p>
+    <a href="#%e5%85%b6%e4%bb%96%e7%94%a8%e6%b3%95" class="header-mark"></a>其他用法</h2><p>MATLAB 的函数中还有一些其他的&quot;高级&quot;用法，这里稍作提醒，有兴趣的伙伴们可以自行学习。</p>
+<h3 id="从工作空间获取变量" class="headerLink">
+    <a href="#%e4%bb%8e%e5%b7%a5%e4%bd%9c%e7%a9%ba%e9%97%b4%e8%8e%b7%e5%8f%96%e5%8f%98%e9%87%8f" class="header-mark"></a>从工作空间获取变量</h3><p>为了与函数内的变量进行交互，常用的方式是在函数内外采用 <code>global</code> 申明全局变量，从而实现参数传递。</p>
+<p>如果仅仅想获取工作区变量而不对其进行操作的话，可采用 <code>evalin</code> 函数，例如，为了在函数内部获取工作区名为 <code>x</code> 变量的值，可使用以下代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -383,13 +396,27 @@
 <pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">x</span> <span class="p">=</span> <span class="n">evalin</span><span class="p">(</span><span class="s">&#39;base&#39;</span><span class="p">,</span><span class="s">&#39;x&#39;</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>这样就实现了在不定义全局变量时，从工作空间向函数内部单向传递参数的功能。应当注意，虽然函数内的变量名为
-<code>x</code> ，但由于不是全局变量，其与外部工作空间的 <code>x</code>
-相互独立，除利用该函数传递数值外，互不干扰。</p>
-<ul>
-<li>带参数的输入</li>
-</ul>
-<p>熟悉MATLAB的小伙伴或许知道有些函数可以像面向对象编程那样输入&quot;属性值&quot;，最经典的例子莫过于绘图函数的调用：</p>
+</div><p>这样就实现了在不定义全局变量时，从工作空间向函数内部单向传递参数的功能。应当注意，虽然函数内的变量名为 <code>x</code>，但由于不是全局变量，其与外部工作空间的 <code>x</code> 相互独立，除利用该函数传递数值外，互不干扰。</p>
+<h3 id="直接输出到工作空间" class="headerLink">
+    <a href="#%e7%9b%b4%e6%8e%a5%e8%be%93%e5%87%ba%e5%88%b0%e5%b7%a5%e4%bd%9c%e7%a9%ba%e9%97%b4" class="header-mark"></a>直接输出到工作空间</h3><p>与 <code>evalin</code> 类似但相反，<code>assignin</code> 能够将函数内的局部变量输出到工作空间。例如，将函数内计算的 <code>x</code> 输出到工作空间，并命名为 <code>xout</code>，相应的代码为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">assignin</span><span class="p">(</span><span class="s">&#39;base&#39;</span><span class="p">,</span><span class="s">&#39;xout&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw"></i>危险<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">需要特别注意，这种方法会直接覆盖掉工作空间内的同名变量，因此不满足一般的编程规范。除非在特定情况下，否则不建议使用这个功能。</div>
+        </div>
+    </div>
+<h3 id="带参数的输入" class="headerLink">
+    <a href="#%e5%b8%a6%e5%8f%82%e6%95%b0%e7%9a%84%e8%be%93%e5%85%a5" class="header-mark"></a>带参数的输入</h3><p>熟悉MATLAB的小伙伴或许知道有些函数可以像面向对象编程那样输入&quot;属性值&quot;，最经典的例子莫过于绘图函数的调用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -398,56 +425,14 @@
 <pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">&#39;LineStyle&#39;</span><span class="p">,</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>上面在调用绘图函数时还额外指定了线宽和线型。像这样的输入，我们应当如何定义函数呢？</p>
-<p>答案是： <code>inputParser</code> 。</p>
-<p>这个功能的使用稍微复杂一些，平时如果规范编程的话也不常用，所以这里直接给出 MATLAB 的官方示例，有兴趣的小伙伴可自行学习。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>a <span class="p">=</span><span class="w"> </span><span class="nf">findArea</span><span class="p">(</span>width,varargin<span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">defaultHeight</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">   <span class="n">defaultUnits</span> <span class="p">=</span> <span class="s">&#39;inches&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">   <span class="n">defaultShape</span> <span class="p">=</span> <span class="s">&#39;rectangle&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">   <span class="n">expectedShapes</span> <span class="p">=</span> <span class="p">{</span><span class="s">&#39;square&#39;</span><span class="p">,</span><span class="s">&#39;rectangle&#39;</span><span class="p">,</span><span class="s">&#39;parallelogram&#39;</span><span class="p">};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">   <span class="n">p</span> <span class="p">=</span> <span class="n">inputParser</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">   <span class="n">validScalarPosNum</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="n">isnumeric</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">isscalar</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">   <span class="n">addRequired</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;width&#39;</span><span class="p">,</span><span class="n">validScalarPosNum</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">   <span class="n">addOptional</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;height&#39;</span><span class="p">,</span><span class="n">defaultHeight</span><span class="p">,</span><span class="n">validScalarPosNum</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">   <span class="n">addParameter</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;units&#39;</span><span class="p">,</span><span class="n">defaultUnits</span><span class="p">,@</span><span class="n">isstring</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">   <span class="n">addParameter</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="s">&#39;shape&#39;</span><span class="p">,</span><span class="n">defaultShape</span><span class="p">,</span><span class="c">...</span>
-</span></span><span class="line"><span class="cl">                 <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="n">any</span><span class="p">(</span><span class="n">validatestring</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">expectedShapes</span><span class="p">)));</span>
-</span></span><span class="line"><span class="cl">   <span class="n">parse</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">varargin</span><span class="p">{:});</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">   <span class="n">a</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">width</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">height</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></div>
+</div><p>上面在调用绘图函数时还额外指定了线宽和线型。对于这样的输入，我们应当如何定义函数呢？ 有兴趣的小伙伴可以参考 <a href="https://ichunyu.github.io/matlab-inputparser/" rel="">MATLAB 解析输入参数</a>。</p></div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-04-29</span>
+                <span>更新于 2022-04-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/a920909c56107e0349cb303d767bd7931a5ab719" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) a920909c56107e0349cb303d767bd7931a5ab719: add MATLAB-inputParser, update theme BTW" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>a920909</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -473,7 +458,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.97.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

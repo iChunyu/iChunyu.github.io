@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">MATLAB 解析输入参数 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="MATLAB 解析输入参数" />
+<meta property="og:description" content="为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 nargin 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 inputParser 类专门用于参数解析。本文对该其用法进简要介绍。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/matlab-inputparser/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-29T15:33:32+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="MATLAB 解析输入参数"/>
+<meta name="twitter:description" content="为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 nargin 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 inputParser 类专门用于参数解析。本文对该其用法进简要介绍。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/matlab-inputparser/" /><link rel="prev" href="https://ichunyu.github.io/newton2kepler/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MATLAB 解析输入参数",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/matlab-inputparser\/"
+        },"genre": "posts","keywords": "MATLAB, 参数解析","wordcount":  1969 ,
+        "url": "https:\/\/ichunyu.github.io\/matlab-inputparser\/","datePublished": "2022-04-29T00:00:00+00:00","dateModified": "2022-04-29T15:33:32+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/iChunyu/iChunyu.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/iChunyu/iChunyu.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#条件语句的限制">条件语句的限制</a></li>
+    <li><a href="#输入解析器简介">输入解析器简介</a>
+      <ul>
+        <li><a href="#声明与设置">声明与设置</a></li>
+        <li><a href="#添加参数">添加参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#参数有效性验证">参数有效性验证</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">MATLAB 解析输入参数</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/matlab/"><i class="far fa-folder fa-fw"></i>MATLAB</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-29">2022-04-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-04-29">2022-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1969 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#条件语句的限制">条件语句的限制</a></li>
+    <li><a href="#输入解析器简介">输入解析器简介</a>
+      <ul>
+        <li><a href="#声明与设置">声明与设置</a></li>
+        <li><a href="#添加参数">添加参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#参数有效性验证">参数有效性验证</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 <code>nargin</code> 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 <code>inputParser</code> 类专门用于参数解析。本文对该其用法进简要介绍。</p>
+<h2 id="条件语句的限制" class="headerLink">
+    <a href="#%e6%9d%a1%e4%bb%b6%e8%af%ad%e5%8f%a5%e7%9a%84%e9%99%90%e5%88%b6" class="header-mark"></a>条件语句的限制</h2><p>我们在之前介绍 <a href="https://ichunyu.github.io/matlab-function/" rel="">MATLAB 编写函数</a> 时提到过关键字 <code>nargin</code> 可以用来判断函数输入参数的数量，据此可以编写条件语句实现重载，其基本格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span>varargout <span class="p">=</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span>varargin<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c">% 解析输入变量</span>
+</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="n">nargin</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span>导入输入变量默认值<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span>变量<span class="mi">1</span><span class="o">&gt;</span> <span class="p">=</span> <span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;</span>其他变量取默认值<span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">otherwise</span>
+</span></span><span class="line"><span class="cl">            <span class="n">error</span><span class="p">(</span><span class="s">&#39;无效输入&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% 函数主体</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% ...</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输入较少时，这种方法是十分便捷的。但如果函数提供了多个可选项，这种写法会带来不便：（1）编写程序时，<code>switch</code> 语句会特别冗长，以适应不同输入参数情况下解析；（2）只使用参数数目进行判断，参数通常是位置敏感的。例如，使用时想对第三个参数进行修改，必须输入第二个参数（除非第二个参数和第三个参数具有不同的数据类型，在编写 <code>switch</code> 时可以进一步进行数据类型判断）；（3）这种方法不容易实现形如 <code>'Name',Value</code> 这种键值对输入；（4）当自定义函数嵌套其他函数时，难以将多余的键值对参数传递给其他函数。因此，当自定义函数提供多个可选输入时，应当使用更好的参数解析方法。MATLAB 提供了 <code>inputParser</code> 类专门用于解析输入参数。</p>
+<h2 id="输入解析器简介" class="headerLink">
+    <a href="#%e8%be%93%e5%85%a5%e8%a7%a3%e6%9e%90%e5%99%a8%e7%ae%80%e4%bb%8b" class="header-mark"></a>输入解析器简介</h2><p>我们从下面一个（局部的）例子开始说起：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 声明输入解析器并进行设置</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="p">=</span> <span class="n">inputParser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">FunctionName</span> <span class="p">=</span> <span class="s">&#39;myFunc&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">KeepUnmatched</span> <span class="p">=</span> <span class="n">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% 定义参数</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addRequired</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addOptional</span><span class="p">(</span><span class="s">&#39;fs&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addParameter</span><span class="p">(</span><span class="s">&#39;window&#39;</span><span class="p">,@</span><span class="n">hann</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% 解析参数</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">varargin</span><span class="p">{:})</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">fs</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">fs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">window</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">window</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">passOpts</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Unmatched</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="声明与设置" class="headerLink">
+    <a href="#%e5%a3%b0%e6%98%8e%e4%b8%8e%e8%ae%be%e7%bd%ae" class="header-mark"></a>声明与设置</h3><p>首先我们声明一个输入解析器 <code>p = inputParser</code>，如果不打分号将会在命令行输出其属性，其中可以进行设置的为</p>
+<ul>
+<li><code>FunctionName</code>：默认为空。通常设置为 <code>inputParser</code> 所在函数的名字，这样可以在出错是给出是在哪个函数发生的；</li>
+<li><code>CaseSensitive</code>：默认为 <code>false</code>，即大小写不敏感。这样在输入键值对参数是，键的大小写不会影响解析；</li>
+<li><code>KeepUnmatched</code>：默认为 <code>false</code>，即不保留未配对的参数。如此做，函数输入未定义的参数时会给出错误；当设置其为 <code>true</code> 时，未配对的参数会汇总到 <code>Unmatched</code> 属性中，可以用于传递给其他函数；</li>
+<li><code>PartialMatching</code>：默认为 <code>true</code>。如此做，键值对的键如果只有部分匹配的参数，将认为正确匹配。例如上例中定义了 <code>’window‘</code> 参数，实际使用时只输入 <code>’w'</code> 依然能够正确匹配；</li>
+<li><code>StructExpand</code>：默认为 <code>true</code>。如此做，当输入结构体时，会按照键值对的方式展开进行匹配。</li>
+</ul>
+<h3 id="添加参数" class="headerLink">
+    <a href="#%e6%b7%bb%e5%8a%a0%e5%8f%82%e6%95%b0" class="header-mark"></a>添加参数</h3><p>声明输入解析器并设置完成后，开始添加参数：</p>
+<p><code>addRequired</code> 用于添加必要参数，应当放在其他参数设置之前。当函数有多个必要参数时，可以多次使用该函数定义参数。需要注意的是，必要参数是位置敏感的，定义的顺序与调用函数时的输入顺序一致。例如，使用以下代码声明了函数 <code>myFunc</code> 的两个必要参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 局部代码</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addRequired</span><span class="p">(</span><span class="s">&#39;p1&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addRequired</span><span class="p">(</span><span class="s">&#39;p2&#39;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在使用 <code>myFunc(1)</code> 时，因为缺少必要参数 <code>p2</code> 会出错；使用 <code>myFunc(1,2)</code> 时，会按照参数顺序和定义顺序，将 $1$、$2$ 分别赋值给 <code>p1</code>、<code>p2</code>。</p>
+<p><code>addOptional</code> 用于添加可选参数，且该参数是位置敏感的，相应的位置与定义的顺序一致。由于该参数是可选的，定义时需要给出默认值。例如下面的局部代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 局部代码</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addRequired</span><span class="p">(</span><span class="s">&#39;p1&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addOptional</span><span class="p">(</span><span class="s">&#39;p2&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addOptional</span><span class="p">(</span><span class="s">&#39;p3&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，如果只调用 <code>myFunc(1,-1)</code>，则会将 $1$ 赋值给必要参数 <code>p1</code>；$-1$ 赋值给可选参数 <code>p2</code>；而由于没有第三个输入，可选参数 <code>p3</code> 将保持默认值 $3$。</p>
+<p>由于参数对位置敏感，这种方法无法只输入 <code>p1</code> 和 <code>p3</code>，与前面讨论的 <code>nargin</code> 加条件语句的限制一致。为此，可以使用位置不敏感的键值参数。</p>
+<p><code>addParameter</code> 用于添加键值对参数，其对位置不敏感，特别适合输入参数较多的情况。同样由于该参数是可选的，定义时需要给出默认值。我们将上面的可选输入改为键值参数，有</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 局部代码</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addRequired</span><span class="p">(</span><span class="s">&#39;p1&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addParameter</span><span class="p">(</span><span class="s">&#39;p2&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addParameter</span><span class="p">(</span><span class="s">&#39;p3&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样，如果只想输入 <code>p1</code> 和 <code>p3</code>，只要形如 <code>myFunc(1,'p3',2)</code> 调用即可。</p>
+<h2 id="参数有效性验证" class="headerLink">
+    <a href="#%e5%8f%82%e6%95%b0%e6%9c%89%e6%95%88%e6%80%a7%e9%aa%8c%e8%af%81" class="header-mark"></a>参数有效性验证</h2><p>添加参数时，可以同时对参数的有效性进行验证，这只需要在定义参数时额外给出验证函数的函数句柄即可，例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 局部代码</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addRequired</span><span class="p">(</span><span class="s">&#39;p1&#39;</span><span class="p">,@(</span><span class="n">x</span><span class="p">)</span><span class="n">isnumeric</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>需要说明的是，用于验证参数有效性的函数必须只接收一个输入，且输出必须是逻辑变量 <code>true</code> 或 <code>false</code>。我们可以根据需求自定义验证函数，也可以使用 MATLAB 内置的函数，详细可以查看 <a href="https://ww2.mathworks.cn/help/matlab/ref/is.html" target="_blank" rel="noopener noreffer">状态检测</a>，这些函数基本上都可以顾名思义，因此这里不再展开。</p>
+<p>最后介绍两个非常好用的内置函数：<code>validateattributes</code> 用于验证参数的类型和属性；<code>validatestring</code> 用于在给定范围内匹配字符。</p>
+<p><code>validateattributes(A,classes,attributes)</code> 用于验证给定参数 <code>A</code> 是否在允许的 <code>class</code> 类型中，且其属性（例如矩阵的维度）是否满足 <code>attributes</code> 中的某个约束。</p>
+<p><code>matchedStr = validatestring(str,validStrings)</code> 将字符串 <code>str</code> 与选项 <code>validStrings</code> 进行对比，当匹配某个选项时将该选项输出。特别地，该函数可以设置忽略大小写，且可以局部匹配，可以避免使用时输入不准确导致程序无法运行。</p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-04-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/a920909c56107e0349cb303d767bd7931a5ab719" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) a920909c56107e0349cb303d767bd7931a5ab719: add MATLAB-inputParser, update theme BTW" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>a920909</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/matlab-inputparser/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/matlab/">MATLAB</a>,&nbsp;<a href="/tags/%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">参数解析</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/newton2kepler/" class="prev" rel="prev" title="从牛顿方程到开普勒定律"><i class="fas fa-angle-left fa-fw"></i>从牛顿方程到开普勒定律</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

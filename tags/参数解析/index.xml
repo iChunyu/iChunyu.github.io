@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>参数解析 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/</link>
+        <description>参数解析 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 29 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" rel="self" type="application/rss+xml" /><item>
+    <title>MATLAB 解析输入参数</title>
+    <link>https://ichunyu.github.io/matlab-inputparser/</link>
+    <pubDate>Fri, 29 Apr 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/matlab-inputparser/</guid>
+    <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 <code>nargin</code> 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 <code>inputParser</code> 类专门用于参数解析。本文对该其用法进简要介绍。</p>]]></description>
+</item></channel>
+</rss>

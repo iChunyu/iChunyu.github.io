@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/newton2kepler/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-26T16:36:15+08:00" />
-<meta property="article:modified_time" content="2022-03-26T16:36:15+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2022-04-29T15:33:32+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
@@ -20,7 +20,7 @@
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/newton2kepler/" /><link rel="prev" href="https://ichunyu.github.io/quaternion/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/newton2kepler/" /><link rel="prev" href="https://ichunyu.github.io/quaternion/" /><link rel="next" href="https://ichunyu.github.io/matlab-inputparser/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
     
@@ -35,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/newton2kepler\/"
-        },"genre": "posts","keywords": "牛顿方程, 开普勒定律, 开普勒方程","wordcount":  2004 ,
-        "url": "https:\/\/ichunyu.github.io\/newton2kepler\/","datePublished": "2022-03-26T16:36:15+08:00","dateModified": "2022-03-26T16:36:15+08:00","publisher": {
+        },"genre": "posts","keywords": "牛顿方程, 开普勒定律, 开普勒方程","wordcount":  2005 ,
+        "url": "https:\/\/ichunyu.github.io\/newton2kepler\/","datePublished": "2022-03-26T16:36:15+08:00","dateModified": "2022-04-29T15:33:32+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -146,8 +146,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>奇妙的数学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-26">2022-03-26</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-26">2022-03-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2004 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-26">2022-03-26</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-04-29">2022-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2005 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -227,7 +227,7 @@ $$
     &= \mu \frac{\mathrm{d}}{\mathrm{d}t} \left( \frac{\vec{v}\times \vec{h}}{\mu} - \frac{\vec{r}}{r} \right)
 \end{aligned}
 $$
-<p>上式最后一行将 $\mu$ 放到括号，括号内部为无量纲矢量且导数为 $\vec{0}$。因此该矢量也是守恒量，记为 $\vec{e}$，可以作为轨道惯性系的基矢 $\vec{p}_1 = \vec{e}/e$（最后的基矢可以由 $\vec{p}_2 = \vec{p}_3 \times \vec{p}_1$ 得到）。考虑位移矢量 $\vec{r}$ 与 $\vec{e}$ 的点积，有</p>
+<p>上式最后一行将 $\mu$ 放到括号外，括号内部为无量纲矢量且导数为 $\vec{0}$。因此该矢量也是守恒量，记为 $\vec{e}$，可以作为轨道惯性系的基矢 $\vec{p}_1 = \vec{e}/e$（最后的基矢可以由 $\vec{p}_2 = \vec{p}_3 \times \vec{p}_1$ 得到）。考虑位移矢量 $\vec{r}$ 与 $\vec{e}$ 的点积，有</p>
 $$
 \begin{aligned}
     \vec{r} \cdot \vec{e} &= r e \cos\theta \\
@@ -319,7 +319,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-26</span>
+                <span>更新于 2022-04-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/a920909c56107e0349cb303d767bd7931a5ab719" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) a920909c56107e0349cb303d767bd7931a5ab719: add MATLAB-inputParser, update theme BTW" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>a920909</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -339,12 +340,13 @@ $$
         </section>
     </div>
 
-    <div class="post-nav"><a href="/quaternion/" class="prev" rel="prev" title="四元数与三维旋转"><i class="fas fa-angle-left fa-fw"></i>四元数与三维旋转</a></div>
+    <div class="post-nav"><a href="/quaternion/" class="prev" rel="prev" title="四元数与三维旋转"><i class="fas fa-angle-left fa-fw"></i>四元数与三维旋转</a>
+            <a href="/matlab-inputparser/" class="next" rel="next" title="MATLAB 解析输入参数">MATLAB 解析输入参数<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.97.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
