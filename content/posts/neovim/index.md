@@ -521,6 +521,8 @@ let g:bullets_enabled_file_types = [
 
 ## 参考资料
 
+本配置重点参考了 [David Chen](https://github.com/theniceboy) 在哔哩哔哩（用户名为 [TheCW](https://space.bilibili.com/13081489/)）上投稿的教程视频以及他的配置文档；同时也参考了 [Elijan Mastnak](https://github.com/ejmastnak) 关于使用 NeoVim 编辑 LaTeX 的系列文章，非常感谢这些大佬们的分享！相关参考如下：
+
 1. TheCW, [上古神器Vim：从恶言相向到爱不释手 - 终极Vim教程01 - 带你配置属于你自己的最强IDE](https://www.bilibili.com/video/BV164411P7tw)
 2. TheCW, [上古神器Vim：进阶使用/配置、必备插件介绍 - 终极Vim教程02 - 带你配置属于你自己的最强IDE](https://www.bilibili.com/video/BV1e4411V7AA)
 3. TheCW, [「妈妈不会告诉你的Vim技巧」 -Vim终极教程03 - 带你配置属于你自己的最强IDE](https://www.bilibili.com/video/BV1r4411G7de)
@@ -537,3 +539,4 @@ let g:bullets_enabled_file_types = [
 14. Elijan Mastnak, [A Vimscript Primer for Filetype-Specific Workflows](https://ejmastnak.github.io/tutorials/vim-latex/vimscript.html)
 15. Jacob Banks, [Collections of Awesome Neovim Plugins](https://morioh.com/p/a7063de46490)
 
+最后分享一下我自己的 [配置文档](https://github.com/iChunyu/nvim)。
