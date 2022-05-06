@@ -6,7 +6,7 @@ categories: ["MATLAB"]
 draft: false
 ---
 
-为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 `nargin` 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 `inputParser` 类专门用于参数解析。本文对该其用法进简要介绍。
+为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。
 
 <!--more-->
 
@@ -63,8 +63,8 @@ passOpts = p.Unmatched;
 
 - `FunctionName`：默认为空。通常设置为 `inputParser` 所在函数的名字，这样可以在出错是给出是在哪个函数发生的；
 - `CaseSensitive`：默认为 `false`，即大小写不敏感。这样在输入键值对参数是，键的大小写不会影响解析；
-- `KeepUnmatched`：默认为 `false`，即不保留未配对的参数。如此做，函数输入未定义的参数时会给出错误；当设置其为 `true` 时，未配对的参数会汇总到 `Unmatched` 属性中，可以用于传递给其他函数；
-- `PartialMatching`：默认为 `true`。如此做，键值对的键如果只有部分匹配的参数，将认为正确匹配。例如上例中定义了 `’window‘` 参数，实际使用时只输入 `’w'` 依然能够正确匹配；
+- `KeepUnmatched`：默认为 `false`，即不保留未配对的参数。如此做，函数输入未定义的参数时会给出错误；当设置其为 `true` 时，未配对的参数会以结构体的形式汇总到 `Unmatched` 属性中，可以用于传递给其他函数；
+- `PartialMatching`：默认为 `true`。如此做，键值对的键如果只有部分匹配的参数，将认为正确匹配。例如上例中定义了 `'window'` 参数，实际使用时只输入 `'w'` 依然能够正确匹配；
 - `StructExpand`：默认为 `true`。如此做，当输入结构体时，会按照键值对的方式展开进行匹配。
 
 ### 添加参数
@@ -104,6 +104,22 @@ p.addParameter('p3',3);
 ```
 
 这样，如果只想输入 `p1` 和 `p3`，只要形如 `myFunc(1,'p3',2)` 调用即可。
+
+### 解析输入
+
+设置好 `inputParser` 之后，只需要使用 `p.parse(varargin{:})` 对输入进行解析即可。解析的结果将以结构体的形式汇总在 `p.Results` 中。
+
+这里应当注意的是，`parse` 函数接受逗号分隔的列表输入，而关键字 `varargin` 是 `cell` 数组，应当使用花括号加 `:` 的形式进行转换。
+
+如前所述，`inputParser` 默认接受结构体输入，而未配对成功的参数将会以结构体的形式存放在 `p.Unmatched` 中，因此可以将其传递给子函数。例如我自编用于画功率谱的 [`iLPSD`](https://ichunyu.github.io/helps/functions/ilpsd/) 函数，内部调用了 `loglog` 画图，为了将绘图选项传递给该函数，我用到了下面的方法：
+
+``` matlab
+% 外部调用 iLPSD
+iLPSD(data,fs,'LineWidth',2)
+
+% iLPSD 内部的 inputParser 没有定义 'LineWidth' 参数，将其传递给 loglog
+loglog(f,sqrt(pxx),p.Unmatched)
+```
 
 ## 参数有效性验证
 
