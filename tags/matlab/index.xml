@@ -10,7 +10,7 @@
     <pubDate>Fri, 29 Apr 2022 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/matlab-inputparser/</guid>
-    <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 <code>nargin</code> 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 <code>inputParser</code> 类专门用于参数解析。本文对该其用法进简要介绍。</p>]]></description>
+    <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。</p>]]></description>
 </item><item>
     <title>MATLAB 符号计算</title>
     <link>https://ichunyu.github.io/matlab-symbolic/</link>

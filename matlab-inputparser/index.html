@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
     <title class="pjax-title">MATLAB 解析输入参数 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="MATLAB 解析输入参数" />
-<meta property="og:description" content="为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 nargin 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 inputParser 类专门用于参数解析。本文对该其用法进简要介绍。" />
+<meta property="og:description" content="为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/matlab-inputparser/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-04-29T15:33:32+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2022-05-06T18:47:27+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
 <meta name="twitter:title" content="MATLAB 解析输入参数"/>
-<meta name="twitter:description" content="为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 nargin 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 inputParser 类专门用于参数解析。本文对该其用法进简要介绍。"/>
+<meta name="twitter:description" content="为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/matlab-inputparser/" /><link rel="prev" href="https://ichunyu.github.io/newton2kepler/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/matlab-inputparser/" /><link rel="prev" href="https://ichunyu.github.io/newton2kepler/" /><link rel="next" href="https://ichunyu.github.io/neovim/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
     
@@ -35,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/matlab-inputparser\/"
-        },"genre": "posts","keywords": "MATLAB, 参数解析","wordcount":  1969 ,
-        "url": "https:\/\/ichunyu.github.io\/matlab-inputparser\/","datePublished": "2022-04-29T00:00:00+00:00","dateModified": "2022-04-29T15:33:32+08:00","publisher": {
+        },"genre": "posts","keywords": "MATLAB, 参数解析","wordcount":  2217 ,
+        "url": "https:\/\/ichunyu.github.io\/matlab-inputparser\/","datePublished": "2022-04-29T00:00:00+00:00","dateModified": "2022-05-06T18:47:27+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -140,6 +140,7 @@
       <ul>
         <li><a href="#声明与设置">声明与设置</a></li>
         <li><a href="#添加参数">添加参数</a></li>
+        <li><a href="#解析输入">解析输入</a></li>
       </ul>
     </li>
     <li><a href="#参数有效性验证">参数有效性验证</a></li>
@@ -149,8 +150,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/matlab/"><i class="far fa-folder fa-fw"></i>MATLAB</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-29">2022-04-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-04-29">2022-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1969 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-29">2022-04-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-06">2022-05-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2217 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -163,12 +164,13 @@
       <ul>
         <li><a href="#声明与设置">声明与设置</a></li>
         <li><a href="#添加参数">添加参数</a></li>
+        <li><a href="#解析输入">解析输入</a></li>
       </ul>
     </li>
     <li><a href="#参数有效性验证">参数有效性验证</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 <code>nargin</code> 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 <code>inputParser</code> 类专门用于参数解析。本文对该其用法进简要介绍。</p>
+            </div><div class="content" id="content"><p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。</p>
 <h2 id="条件语句的限制" class="headerLink">
     <a href="#%e6%9d%a1%e4%bb%b6%e8%af%ad%e5%8f%a5%e7%9a%84%e9%99%90%e5%88%b6" class="header-mark"></a>条件语句的限制</h2><p>我们在之前介绍 <a href="https://ichunyu.github.io/matlab-function/" rel="">MATLAB 编写函数</a> 时提到过关键字 <code>nargin</code> 可以用来判断函数输入参数的数量，据此可以编写条件语句实现重载，其基本格式为：</p>
 <div class="highlight"><div class="chroma">
@@ -253,8 +255,8 @@
 <ul>
 <li><code>FunctionName</code>：默认为空。通常设置为 <code>inputParser</code> 所在函数的名字，这样可以在出错是给出是在哪个函数发生的；</li>
 <li><code>CaseSensitive</code>：默认为 <code>false</code>，即大小写不敏感。这样在输入键值对参数是，键的大小写不会影响解析；</li>
-<li><code>KeepUnmatched</code>：默认为 <code>false</code>，即不保留未配对的参数。如此做，函数输入未定义的参数时会给出错误；当设置其为 <code>true</code> 时，未配对的参数会汇总到 <code>Unmatched</code> 属性中，可以用于传递给其他函数；</li>
-<li><code>PartialMatching</code>：默认为 <code>true</code>。如此做，键值对的键如果只有部分匹配的参数，将认为正确匹配。例如上例中定义了 <code>’window‘</code> 参数，实际使用时只输入 <code>’w'</code> 依然能够正确匹配；</li>
+<li><code>KeepUnmatched</code>：默认为 <code>false</code>，即不保留未配对的参数。如此做，函数输入未定义的参数时会给出错误；当设置其为 <code>true</code> 时，未配对的参数会以结构体的形式汇总到 <code>Unmatched</code> 属性中，可以用于传递给其他函数；</li>
+<li><code>PartialMatching</code>：默认为 <code>true</code>。如此做，键值对的键如果只有部分匹配的参数，将认为正确匹配。例如上例中定义了 <code>'window'</code> 参数，实际使用时只输入 <code>'w'</code> 依然能够正确匹配；</li>
 <li><code>StructExpand</code>：默认为 <code>true</code>。如此做，当输入结构体时，会按照键值对的方式展开进行匹配。</li>
 </ul>
 <h3 id="添加参数" class="headerLink">
@@ -306,7 +308,27 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>这样，如果只想输入 <code>p1</code> 和 <code>p3</code>，只要形如 <code>myFunc(1,'p3',2)</code> 调用即可。</p>
-<h2 id="参数有效性验证" class="headerLink">
+<h3 id="解析输入" class="headerLink">
+    <a href="#%e8%a7%a3%e6%9e%90%e8%be%93%e5%85%a5" class="header-mark"></a>解析输入</h3><p>设置好 <code>inputParser</code> 之后，只需要使用 <code>p.parse(varargin{:})</code> 对输入进行解析即可。解析的结果将以结构体的形式汇总在 <code>p.Results</code> 中。</p>
+<p>这里应当注意的是，<code>parse</code> 函数接受逗号分隔的列表输入，而关键字 <code>varargin</code> 是 <code>cell</code> 数组，应当使用花括号加 <code>:</code> 的形式进行转换。</p>
+<p>如前所述，<code>inputParser</code> 默认接受结构体输入，而未配对成功的参数将会以结构体的形式存放在 <code>p.Unmatched</code> 中，因此可以将其传递给子函数。例如我自编用于画功率谱的 <a href="https://ichunyu.github.io/helps/functions/ilpsd/" target="_blank" rel="noopener noreffer"><code>iLPSD</code></a> 函数，内部调用了 <code>loglog</code> 画图，为了将绘图选项传递给该函数，我用到了下面的方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% 外部调用 iLPSD</span>
+</span></span><span class="line"><span class="cl"><span class="n">iLPSD</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">fs</span><span class="p">,</span><span class="s">&#39;LineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% iLPSD 内部的 inputParser 没有定义 &#39;LineWidth&#39; 参数，将其传递给 loglog</span>
+</span></span><span class="line"><span class="cl"><span class="n">loglog</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">pxx</span><span class="p">),</span><span class="n">p</span><span class="p">.</span><span class="n">Unmatched</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="参数有效性验证" class="headerLink">
     <a href="#%e5%8f%82%e6%95%b0%e6%9c%89%e6%95%88%e6%80%a7%e9%aa%8c%e8%af%81" class="header-mark"></a>参数有效性验证</h2><p>添加参数时，可以同时对参数的有效性进行验证，这只需要在定义参数时额外给出验证函数的函数句柄即可，例如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -327,8 +349,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-04-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/a920909c56107e0349cb303d767bd7931a5ab719" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) a920909c56107e0349cb303d767bd7931a5ab719: add MATLAB-inputParser, update theme BTW" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>a920909</a></span>
+                <span>更新于 2022-05-06&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/48259d51c27d717c5e1d82dd2aaa8d1305b63e36" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 48259d51c27d717c5e1d82dd2aaa8d1305b63e36: update `inputParser` and add `neovim`" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>48259d5</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -348,7 +370,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/newton2kepler/" class="prev" rel="prev" title="从牛顿方程到开普勒定律"><i class="fas fa-angle-left fa-fw"></i>从牛顿方程到开普勒定律</a></div>
+    <div class="post-nav"><a href="/newton2kepler/" class="prev" rel="prev" title="从牛顿方程到开普勒定律"><i class="fas fa-angle-left fa-fw"></i>从牛顿方程到开普勒定律</a>
+            <a href="/neovim/" class="next" rel="next" title="NeoVim 基本配置">NeoVim 基本配置<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
         </main><footer class="footer">

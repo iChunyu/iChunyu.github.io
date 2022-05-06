@@ -4,13 +4,20 @@
         <link>https://ichunyu.github.io/posts/</link>
         <description>所有文章 | 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 29 Apr 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 06 May 2022 18:12:48 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>NeoVim 基本配置</title>
+    <link>https://ichunyu.github.io/neovim/</link>
+    <pubDate>Fri, 06 May 2022 18:12:48 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/neovim/</guid>
+    <description><![CDATA[<p>Vim 被称之为神之编辑器，与其强大的可配置性脱不了关系。NeoVim 是 Vim 的一个复刻，更多强大的插件也随之诞生。本文简要介绍 NeoVim 的配置，包括软件基本的设置和常用插件的安装与配置。</p>]]></description>
+</item><item>
     <title>MATLAB 解析输入参数</title>
     <link>https://ichunyu.github.io/matlab-inputparser/</link>
     <pubDate>Fri, 29 Apr 2022 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/matlab-inputparser/</guid>
-    <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过关键字 <code>nargin</code> 配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了 <code>inputParser</code> 类专门用于参数解析。本文对该其用法进简要介绍。</p>]]></description>
+    <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。</p>]]></description>
 </item><item>
     <title>从牛顿方程到开普勒定律</title>
     <link>https://ichunyu.github.io/newton2kepler/</link>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/modelpreditivecontrol/</guid>
     <description><![CDATA[<p>最近在 DR_CAN 的视频中学到了模型预测控制，于是打算写篇博客记记笔记，权当公式推导的练习。</p>]]></description>
-</item><item>
-    <title>卡尔曼滤波简介</title>
-    <link>https://ichunyu.github.io/kalmanfilter/</link>
-    <pubDate>Thu, 19 Aug 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/kalmanfilter/</guid>
-    <description><![CDATA[<p>卡尔曼滤波是一种最优滤波器，通过对系统的输入和输出进行数据融合来获得状态的最优估计。本文介绍卡尔曼滤波的基本原理并推导其核心公式。</p>]]></description>
 </item></channel>
 </rss>
