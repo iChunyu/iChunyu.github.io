@@ -50,14 +50,6 @@ enableGitInfo = true
     url = "/about/"
     title = ""
     weight = 4
-  [[menu.main]]
-    identifier = "github"
-    pre = "<i class='fab fa-github fa-fw'></i>"
-    post = ""
-    name = ""
-    url = "https://github.com/iChunyu/iChunyu.github.io"
-    title = "GitHub"
-    weight = 5
 
 
 [params]
@@ -297,7 +289,7 @@ enableGitInfo = true
     Linktree = ""
     QQ = ""
     QQGroup = ""
-    Email = "chunyu2018@foxmail.com"
+    Email = "chunyu.hust@gmail.com"
     RSS = true # 
 
   #  文章页面配置
