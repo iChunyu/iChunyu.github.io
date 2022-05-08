@@ -178,6 +178,9 @@ noremap <leader>j <c-w>j
 noremap <leader>k <c-w>k
 ```
 
+{{< image src="split.gif" caption="分屏" width=70% >}}
+
+
 使用空格加大写方向键将当前分屏放置到指定方向的最边缘：
 
 ```vim
@@ -186,6 +189,8 @@ noremap <leader>H <c-w>H
 noremap <leader>J <c-w>J
 noremap <leader>K <c-w>K
 ```
+
+{{< image src="split2.gif" caption="分屏移动" width=70% >}}
 
 使用上下左右键调整当前分屏的高度和宽度：
 
@@ -302,6 +307,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 ```
 
+{{< image src="ultisnip.gif" caption="UltiSnip 代码片段" width=70% >}}
+
 ### vimtex：LaTeX 支持
 
 [vimtex](https://github.com/lervag/vimtex) 提供了大量的 LaTeX 支持，这里我没有进行深入设置。
@@ -353,6 +360,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 ```
 
+{{< image src="airline.png" caption="AirLine 状态栏美化" width=80% >}}
 
 ### coc.nvim：代码补全
 
@@ -394,7 +402,9 @@ let g:rainbow_active = 1
 
 ### wildfire.vim：选择成对符号内字符
 
-[wildfire.vim](https://github.com/gcmt/wildfire.vim) 提供了使用回车快速选择成对符号内字符的功能。嵌套使用函数时，如 `sin(linspace(0,2*pi,200))` ，将光标放到内部，多次按回车可以扩选括号匹配的内容。
+[wildfire.vim](https://github.com/gcmt/wildfire.vim) 提供了使用回车快速选择成对符号内字符的功能。嵌套使用函数时，将光标放到内部，多次按回车可以扩选括号匹配的内容。
+
+{{< image src="wildfire.gif" caption="WildFire 选择括号内容" width=70% >}}
 
 ### undotree：撤销历史
 
@@ -403,6 +413,8 @@ let g:rainbow_active = 1
 ``` vim
 nnoremap <leader>u :UndotreeToggle<CR>
 ```
+
+{{< image src="undotree.gif" caption="UndoTree 撤销历史" width=70% >}}
 
 ### lightspeed.nvim：快速跳转
 
@@ -415,6 +427,8 @@ noremap H <Plug>Lightspeed_S
 ```
 
 当在普通模式输入 `L` 时，以光标所在位置为界，触发向后跳转。其后向字符大部分变为灰色。部分高亮字符意味着可以直接跳转。输入目标字符的首字母后，高亮会有所改变，部分甚至会临时改变附近字符以辅助定位跳转。简言之，键入 `L` 后盯住目标位置，输入前几个字符即可实现跳转。
+
+{{< image src="lightspeed.gif" caption="LightSpeed 快速跳转：向第二个 `sum` 跳转时，`m` 被临时替换为 `s`以进行区分。" width=70% >}}
 
 ### nvim-treesitter：高亮强化
 
@@ -434,7 +448,9 @@ EOF
 
 ### fcitx.nvim：输入法切换
 
-[fcitx.nvim](https://github.com/h-hg/fcitx.nvim) 提供了 Fcitx5 下使用 NeoVim 编辑中文文档时中文输入法自动切换的功能。
+[fcitx.nvim](https://github.com/h-hg/fcitx.nvim) 提供了 Fcitx5 下自动切换输入法的的功能。利用该插件，在编辑中文文档时，进入插入模式会自动切换到中文输入法，退回到普通模式时会自动切换到英文输入，避免输入法导致使用命令的困难。
+
+{{< image src="fcitx.gif" caption="Fcitx 输入法自动切换" width=70% >}}
 
 ### nvim-notify：弹窗美化
 
@@ -461,6 +477,8 @@ noremap <leader>gu :Gitsigns undo_stage_hunk<CR>
 - `<leader>ga`：将当前行的改动提交到暂存区（`a` 理解为 add）；
 - `<leader>gu`：撤销提交暂存区（`u` 理解为 undo）。
 
+{{< image src="gitsigns.gif" caption="GitSigns 集成 Git 版本控制" width=70% >}}
+
 ### tabular：指定字符对齐文本
 
 [tabular](https://github.com/godlygeek/tabular) 可以指定字符串，使多行文本对齐。常用于代码中 `=` 对齐。
@@ -472,6 +490,8 @@ vnoremap <leader>t :Tabular /
 ```
 
 使用时在可视模式下选择需要对齐的文本，按下空格和 `t`，输入对齐的字符，回车即可。
+
+{{< image src="tabular.gif" caption="Tabular 自动对齐" width=70% >}}
 
 ### telescope.nvim：搜索文件
 
@@ -485,6 +505,8 @@ lua require'telescope'.setup{}
 ```
 
 普通模式使用空格和 `tf` 触发搜索窗口查找文件后，按下回车在当前窗口打开文件，或使用 `<c-x>` 分屏打开文件，也可以使用 `<c-t>` 在新标签页打开文件。
+
+{{< image src="telescope.gif" caption="Telescope 搜索文件" width=70% >}}
 
 ### vim-markdown-toc：Markdown 生成目录
 
@@ -503,6 +525,8 @@ let g:vmt_fence_closing_text = '/TOC'
 - `:GenTocGitLab` 生成 GitLab 样式的目录；
 - `:GenTocMarked` 生成用于 Marked 解析的目录。
     
+{{< image src="markdown-toc.gif" caption="Vim-Markdown-TOC 生成目录" width=70% >}}
+
 ### bullets.vim：自动列表
 
 [bullets.vim](https://github.com/dkarter/bullets.vim) 可以根据前文连续生成相应的列表样式，例如 Markwon 中 `-` 所引导的无序列表。使用时只需要配置该插件使用的文件类型即可：
