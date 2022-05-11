@@ -10,12 +10,14 @@ Vim 被称之为神之编辑器，与其强大的可配置性脱不了关系。N
 
 <!--more-->
 
+{{< admonition info >}}
+本文所述的配置仅为成文时的状态，后面的更新详见我放在 GitHub 的 [配置文档](https://github.com/iChunyu/nvim)。
+{{< /admonition >}}
+
 
 ## 基本配置
 
-利用 `set` 等关键字可以对 Neovim 进行最基本的设置，基本配置有（为了避免与设置内容产生混淆，后面用 `<XXX>` 表示省略）：
-
-> 使用 `:h <XXX>` 可以查看帮助文档。
+利用 `set` 等关键字可以对 Neovim 进行最基本的设置，使用 `:h XXX` 可以查看详细的帮助文档。
 
 ### 文件类型支持
 
@@ -303,12 +305,12 @@ snippets
 
 当使用正则表达式时，匹配结果可以通过形如 `match.group(1)` 的方式进行调用；输出到代码片段的内容只需要赋值给变量 `snip.rv` 即可。
 
-编写好代码片段文件后，在 Neovim 的配置文件中设置触发键即可。一般情况下，我们会使用 `<tab>` 展开代码片段，但测试发现这样会与后文的自动补全冲突，因此这里将触发设置成了 `<c-j>` （`Ctrl` 和 `j` 的组合键）。同时分别用 `<c-j>` 和 `<c-k>` 跳转到下一个或上一个断点。下面配置的最后一行手动指定（限定）代码片段的搜索路径，以加快加载速度。
+编写好代码片段文件后，在 Neovim 的配置文件中设置触发键即可。一般情况下，我们会使用 `<tab>` 展开代码片段，但测试发现这样会与后文的自动补全冲突，因此这里将触发设置成了 `jk` 。同时分别用 `jk` 和 `kj` 跳转到下一个或上一个断点。下面配置的最后一行手动指定（限定）代码片段的搜索路径，以加快加载速度。
 
 ``` vim
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="jk"
+let g:UltiSnipsJumpForwardTrigger="jk"
+let g:UltiSnipsJumpBackwardTrigger="kj"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 ```
 
@@ -443,13 +445,15 @@ noremap H <Plug>Lightspeed_S
 lua << EOF
 require'nvim-treesitter.configs'.setup {
     -- one of "all", "language", or a list of languages
-    ensure_installed = {'bibtex', 'html', 'json', 'latex', 'python', 'vim'},
+    ensure_installed = {'bibtex', 'html', 'json', 'python', 'vim'},
     highlight = {
         enable = true,              -- false will disable the whole extension
     },
 }
 EOF
 ```
+
+在本文完成时，treesitter 的 $\\LaTeX$ 支持回导致 UltiSnip 的 `context` 对数学环境的判断失效，因此这里并未启用。详细的讨论可以查看 [该 Issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/1184)。
 
 ### fcitx.nvim：输入法切换
 
@@ -563,4 +567,3 @@ let g:bullets_enabled_file_types = [
 14. Elijan Mastnak, [A Vimscript Primer for Filetype-Specific Workflows](https://ejmastnak.github.io/tutorials/vim-latex/vimscript.html)
 15. Jacob Banks, [Collections of Awesome Neovim Plugins](https://morioh.com/p/a7063de46490)
 
-最后分享一下我自己的 [配置文档](https://github.com/iChunyu/nvim)。
