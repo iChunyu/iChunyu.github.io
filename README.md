@@ -12,5 +12,5 @@
 
 当然，我可能会犯一些愚蠢的错误。如果你发现了这些错误，或者你有更好的想法，欢迎与我讨论：
 
-- Email: [mailto:chunyu2018@foxmail.com](mailto:chunyu2018@foxmail.com)
+- Email: [chunyu.hust@gmail.com](mailto:chunyu.hust@gmail.com)
 - GitHub: [https://github.com/iChunyu/iChunyu.github.io](https://github.com/iChunyu/iChunyu.github.io)
