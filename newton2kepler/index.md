@@ -64,7 +64,7 @@ $${{< /math >}}
 其次，角动量的大小不变。为了说明该性质的物理含义，考察下图所示在 $\mathrm{d}t$ 时间内运动质点与中心质点连线扫过的面积为
 
 <div align=center>
-    <img src=Kepler1.svg width=30% />
+    <img src=Kepler1.png width=30% />
 </div>
 
 {{< math >}}$$
@@ -118,7 +118,7 @@ $${{< /math >}}
 在椭圆的近拱点，速度与位置垂直，可知离心率矢量 $\vec{e}$ 的方向与半长轴方向相同。在椭圆中心建立如下图所示的 $\vec{x}$-$\vec{y}$ 平面参考系，当 $\theta = \pi/2$ 时，带入坐标 $[c,p]^\mathrm{T}$ 到椭圆方程，有
 
 <div align=center>
-    <img src=ellipse.svg width=50% />
+    <img src=ellipse.png width=50% />
 </div>
 
 {{< math >}}$$

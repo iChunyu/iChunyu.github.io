@@ -32,7 +32,7 @@ $${{< /math >}}
 欧拉定理告诉我们，空间内的任意旋转都可以等价为绕一个方向旋转一个角度。设任意矢量 $\vec{a}$ 绕单位矢量 $\vec{v}$ 旋转 $\varphi$ 角度后得到 $\vec{b}$，如下图所示
 
 <div align=center>
-    <img src=./rotation.svg width=30% />
+    <img src=./rotation.png width=30% />
 </div>
 
 我们将矢量 $\vec{a}$ 分解为平行于 $\vec{v}$ 的 {{< math >}}$\vec{a}_\parallel${{< /math >}} 和垂直于 $\vec{v}$ 的 {{< math >}}$\vec{a}_\perp${{< /math >}}，分别将其旋转后组合即可得到 $\vec{b}$。

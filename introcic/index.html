@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/introcic/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-13T13:37:42+08:00" />
-<meta property="article:modified_time" content="2022-03-26T15:05:16+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2022-05-18T09:04:54+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
@@ -36,7 +36,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/introcic\/"
         },"genre": "posts","keywords": "CIC, 滤波器, 降采样, 升采样","wordcount":  2060 ,
-        "url": "https:\/\/ichunyu.github.io\/introcic\/","datePublished": "2022-02-13T13:37:42+08:00","dateModified": "2022-03-26T15:05:16+08:00","publisher": {
+        "url": "https:\/\/ichunyu.github.io\/introcic\/","datePublished": "2022-02-13T13:37:42+08:00","dateModified": "2022-05-18T09:04:54+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -146,7 +146,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-13">2022-02-13</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-03-26">2022-03-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2060 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-13">2022-02-13</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-18">2022-05-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2060 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -170,7 +170,7 @@ y(i) = \frac{1}{R} \left( x(iR) + x(iR-1) + \cdots + x((i-1)R+1) \right) = \frac
 $$ 
 <p>如果我们省略掉归一化系数 $R^{-1}$ ，如果直接实现上述过程，需要 $R-1$ 个寄存器进行单位延时，系统如下图所示。</p>
 <div align=center>
-    <img src=CascadedDelay.svg width=80% />
+    <img src=CascadedDelay.png width=80% />
 </div>
 <p>容易想象，当我们需要进行高倍数的降采样时，所需要的寄存器（单位延时）数量会大大增加，这对数字系统设计是非常不“经济”的。下面我们就来讨论 CIC 是如何使用更“经济”的方法实现上述系统。</p>
 <h2 id="cic-滤波器的实现" class="headerLink">
@@ -200,11 +200,11 @@ $$
 <p>工程实践中一般取 $M=1,,2$ 。</p>
 <p>CIC 滤波器用于降采样时的系统框图如下</p>
 <div align=center>
-    <img src=CICDecimator.svg width=80% />
+    <img src=CICDecimator.png width=80% />
 </div>
 <p>用于升采样时，只需要将梳状部分和积分部分交换即可，如下图所示</p>
 <div align=center>
-    <img src=CICInterpolator.svg width=80% />
+    <img src=CICInterpolator.png width=80% />
 </div>
 <p>小结：CIC 滤波器使用高速度累加和低速率差分，使用时根据降/升采样目标调整积分部分和梳状部分的顺序即可。</p>
 <h2 id="cic-滤波器的频率响应" class="headerLink">
@@ -274,8 +274,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-26&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/ecd9d77fa9b1b1a9a4182ec8906fd71dcc0b81d4" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) ecd9d77fa9b1b1a9a4182ec8906fd71dcc0b81d4: rename title of &#39;Reference&#39;, remove useless files" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>ecd9d77</a></span>
+                <span>更新于 2022-05-18&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/b8f3c10766a7329bc701ee0eb05cfc0825c68f40" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) b8f3c10766a7329bc701ee0eb05cfc0825c68f40: update all figures with png format" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>b8f3c10</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -301,7 +301,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

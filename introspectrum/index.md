@@ -14,7 +14,7 @@
 
 
 <div align=center>
-    <img src=FourierSeries.png width=70% />
+    <img src=FourierSeriesShow.png width=70% />
 </div>
 
 
@@ -22,7 +22,7 @@
 
 
 <div align=center>
-    <img src=vecProj.svg width=35% />
+    <img src=vecProj.png width=35% />
 </div>
 
 
@@ -77,7 +77,7 @@ $${{< /math >}}
 方波的傅立叶级数分解如下图所示。
 
 <div align=center>
-    <img src=FourierSeries.svg width=70% />
+    <img src=FourierSeries.png width=70% />
 </div>
 
 傅立叶级数存在收敛条件，实际上是约束信号真实存在，这里我不做过多解释，直接给出（后边的傅立叶变换也有相似的条件）：
@@ -128,7 +128,7 @@ $${{< /math >}}
 - 时域非周期对应于频域连续
 
 <div align=center>
-    <img src=FourierTransform.svg width=70% />
+    <img src=FourierTransform.png width=70% />
 </div>
 
 
@@ -193,7 +193,7 @@ p(t) = \sum_{n=-\infty}^{+\infty} \delta (t - n T_s)
 $${{< /math >}}
 
 <div align=center>
-    <img src=sample.svg width=50% />
+    <img src=sample.png width=50% />
 </div>
 
 代入傅立叶变换的表达式，进一步可以整理出离散时间傅立叶变换（Discrete-Time Fourier Transform）：
@@ -215,7 +215,7 @@ $${{< /math >}}
 根据这两个结论，我们可以从下图直观地感受到频谱混叠的含义：首先，第一个图中的三角形假设为原连续信号的频谱，冲击串为采样函数的频谱；当进行采样，时域相乘，频域卷积。根据前面提到狄拉克函数的卷积性质，实际上是将原来的频谱按照采样率为间隔进行复制粘贴，如第二个图所示；如果原信号的带宽过大，复制粘贴之后的频谱重叠，合成之后的频谱就会发生改变，如第三个图所示，这就是所谓的频谱混叠。
 
 <div align=center>
-    <img src=aliasing.svg width=70% />
+    <img src=aliasing.png width=70% />
 </div>
 
 
@@ -230,7 +230,7 @@ $${{< /math >}}
 
 
 <div align=center>
-    <img src=window.svg width=50% />
+    <img src=window.png width=50% />
 </div>
 
 
@@ -240,7 +240,7 @@ $${{< /math >}}
 一般情况下，窗函数具有如下图所示的频谱特征：其具有一个主瓣和多个旁瓣。为了好理解，假设原始信号就是正弦，那么与窗函数相乘之后的频谱的形状与窗函数的频谱相同（但中心频率点不同）。显然，窗函数的主瓣宽度会影响单频信号的频率分辨率，而旁瓣则容易产生出“误解”，错误地认为存在对应频率点的信号。
 
 <div align=center>
-    <img src=window-function.svg width=40% />
+    <img src=window-function.png width=40% />
 </div>
 
 
@@ -252,7 +252,7 @@ $${{< /math >}}
 至此我们已经分析了时域离散的情况，距离使用计算机计算之差最后一步：频域离散化。前面讨论了离散化是冲击串相乘，时域离散对应着频域周期延拓。反过来，频域离散对应这时域周期延拓，如下图所示，为了避免利用采样后的频谱恢复时域数据时发生混叠，频率间隔应当不大于采样时长的倒数。
 
 <div align=center>
-    <img src=freqDiscrete.svg width=70% />
+    <img src=freqDiscrete.png width=70% />
 </div>
 
 取 $\Delta f = \frac{1}{T}$ 时，恰好不发生混叠，频域样本点数与时域数据点数相同。此时有离散傅立叶变换（Discrete Fourier Transform）
@@ -277,7 +277,7 @@ $${{< /math >}}
 两个概念可以用下面的图粗糙地进行示意。
 
 <div align=center>
-    <img src=freqs-resolution.svg width=70% />
+    <img src=freqs-resolution.png width=70% />
 </div>
 
 
@@ -291,3 +291,4 @@ $${{< /math >}}
 
 1. Alan V. Oppenheim 等, 刘树棠译. 信号与系统. 第二版. 电子工业出版社. 2014.
 2. 程佩清. 数字信号处理. 第四版. 清华大学出版社. 2013.
+
