@@ -158,7 +158,7 @@ enableGitInfo = true
     # 网站创立年份
     since = 2021
     # ICP 备案信息, 仅在中国使用 (支持 HTML 格式)
-    icp = ""
+    icp = '' 
     # 许可协议信息 (支持 HTML 格式)
     license = '本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。'
 
@@ -580,7 +580,7 @@ enableGitInfo = true
 
   #  网站分析配置
   [params.analytics]
-    enable = false
+    enable = true
     # Google Analytics
     [params.analytics.google]
       id = ""
@@ -596,9 +596,9 @@ enableGitInfo = true
       id = ""
     #  Umami Analytics
     [params.analytics.umami]
-      data_website_id = ""
-      src = ""
-      data_domains = ""
+      data_website_id = "af5d05fc-c104-49e5-9972-31aa026748e1"
+      src = "https://umami-production-038f.up.railway.app/umami.js"
+      data_domains = "ichunyu.github.io"
     #  Plausible Analytics
     [params.analytics.plausible]
       data_domain = ""
