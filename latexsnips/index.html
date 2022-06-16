@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">使用代码片段编写 LaTeX 文档 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="使用代码片段编写 LaTeX 文档" />
+<meta property="og:description" content="LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/latexsnips/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-16T08:43:47+08:00" />
+<meta property="article:modified_time" content="2022-06-16T16:04:41+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="使用代码片段编写 LaTeX 文档"/>
+<meta name="twitter:description" content="LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/latexsnips/" /><link rel="prev" href="https://ichunyu.github.io/neovim/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "使用代码片段编写 LaTeX 文档",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/latexsnips\/"
+        },"genre": "posts","keywords": "LaTeX, 代码片段","wordcount":  3139 ,
+        "url": "https:\/\/ichunyu.github.io\/latexsnips\/","datePublished": "2022-06-16T08:43:47+08:00","dateModified": "2022-06-16T16:04:41+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#插件介绍与使用">插件介绍与使用</a>
+      <ul>
+        <li><a href="#插件简介">插件简介</a></li>
+        <li><a href="#基本语法">基本语法</a></li>
+        <li><a href="#依内容触发">依内容触发</a></li>
+        <li><a href="#使用编程接口">使用编程接口</a></li>
+      </ul>
+    </li>
+    <li><a href="#代码片段设计示例">代码片段设计示例</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">使用代码片段编写 LaTeX 文档</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><i class="far fa-folder fa-fw"></i>LaTeX</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-16">2022-06-16</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-06-16">2022-06-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3139 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#插件介绍与使用">插件介绍与使用</a>
+      <ul>
+        <li><a href="#插件简介">插件简介</a></li>
+        <li><a href="#基本语法">基本语法</a></li>
+        <li><a href="#依内容触发">依内容触发</a></li>
+        <li><a href="#使用编程接口">使用编程接口</a></li>
+      </ul>
+    </li>
+    <li><a href="#代码片段设计示例">代码片段设计示例</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。</p>
+<h2 id="插件介绍与使用" class="headerLink">
+    <a href="#%e6%8f%92%e4%bb%b6%e4%bb%8b%e7%bb%8d%e4%b8%8e%e4%bd%bf%e7%94%a8" class="header-mark"></a>插件介绍与使用</h2><p>顾名思义，代码片段就是一小段可以重复利用的代码。使用代码片段本质上类似于复制粘贴并修改的操作，但利用关键字触发可以避免复制代码的过程；不仅如此，通过插件可以对设定的代码片段进行进一步操作，大大提高编程效率。</p>
+<h3 id="插件简介" class="headerLink">
+    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>插件简介</h3><p>对于 Vim 或者 NeoVim 用户，可以使用 <a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreffer">UltiSnips</a>，我在之前的 <a href="https://ichunyu.github.io/neovim/" rel="">NeoVim 基本配置</a> 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 <a href="https://marketplace.visualstudio.com/items?itemName=draivin.hsnips" target="_blank" rel="noopener noreffer">HyperSnips</a> 插件。这两款插件之间的对比如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>UltiSnips</th>
+<th>HyperSnips</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件路径</td>
+<td><code>&lt;vimroot&gt;/UltiSnips/</code></td>
+<td><em>HyperSnips: Open Snippets Directory</em></td>
+</tr>
+<tr>
+<td>文件命名</td>
+<td><code>&lt;filetype&gt;.snippets</code></td>
+<td><code>&lt;filetype&gt;.hsnips</code></td>
+</tr>
+<tr>
+<td>刷新插件</td>
+<td><code>:call UltiSnips#RefreshSnippets()</code></td>
+<td><em>HyperSnips: Reload Snippets</em></td>
+</tr>
+<tr>
+<td>编程接口</td>
+<td>Python</td>
+<td>JavaScript</td>
+</tr>
+<tr>
+<td>触发片段</td>
+<td>自动触发或自定义快捷键</td>
+<td>自动触发或 <code>&lt;Tab&gt;</code> 键</td>
+</tr>
+</tbody>
+</table>
+<p>其中，斜体表示该操作可以通过 VS Code 界面键入 <code>&lt;Ctrl&gt;&lt;Shift&gt;p</code> 打开命令面板搜索得到。</p>
+<h3 id="基本语法" class="headerLink">
+    <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark"></a>基本语法</h3><p>在编写代码片段时，两个插件具有非常相似的语法，基本结构如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">snippet trigger &#34;description&#34; options
+</span></span><span class="line"><span class="cl">snippet body
+</span></span><span class="line"><span class="cl">endsnippet
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>snippet</code> 和 <code>endsnippet</code> 是编写代码片段的关键字，标志着代码片段定义的开始和结尾（抱歉这里的代码暂时不支持高亮）。</p>
+<p><code>trigger</code> 是触发代码片段的关键字，当编写文档时输入关键字并满足 <code>options</code> 约束的触发条件后，将会展开代码片段。一般情况下，两个插件的 <code>trigger</code> 可以直接设置为任意字符，如 <code>fig</code>。如果需要使用正则表达式，UltiSnips 需要将 <code>trigger</code> 使用单引号或双引号括起来，并在 <code>options</code> 中加入 <code>r</code> 选项；HyperSnips 只需要将 <code>trigger</code> 使用反引号 <code>`</code> 括起来即可。</p>
+<p><code>&quot;description&quot;</code> 是对当前代码片段功能的描述，需要使用引号括起。通常情况下该参数不是必须的，但是为了使用后面的 <code>options</code> 选项（对位置敏感），需要补充该简要说明。</p>
+<p><code>options</code> 是触发选项，即编辑时键入关键字后还应当满足触发条件才能够展开代码片段，可选项有：</p>
+<ul>
+<li><code>w</code>：单词边界触发。这是默认的触发选项，当关键字两端不存在其他非空字符时可以触发代码片段；</li>
+<li><code>b</code>：行首触发。当关键子出现在单独一行的行首时可以触发代码片段；</li>
+<li><code>i</code>：单词内触发：只要出现关键字就可以触发代码片段；</li>
+<li><code>r</code>：（只在 UltiSnips 中有该选项）启用正则表达式；</li>
+<li><code>A</code>：自动展开。当关键字可以触发代码片段时自动展开，通常与其他选项结合使用。</li>
+</ul>
+<p><code>snippet body</code> 是自定义的代码片段，即触发关键字后展开的内容。代码片段内可以使用 <code>$</code> 和数字设置跳点，这样可以使用设置的快捷键快速跳转：UltiSnips 需要自行设置，见 <a href="https://ichunyu.github.io/neovim/" rel="">NeoVim 基本配置</a>；VS Code 使用 <code>&lt;Tab&gt;</code> 键跳至下一个跳点，使用 <code>&lt;Shift&gt;&lt;Tab&gt;</code> 跳到上一个跳点。特别地，<code>$0</code> 为最后一个跳点，跳至这里后无法再进行回跳。代码片段内的跳点可以进一步使用花括号和冒号设置默认值。</p>
+<p>下面用一个例子进行解释（两个插件通用）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">snippet beg &#34;begin an environment&#34; bA
+</span></span><span class="line"><span class="cl">\begin{${1:document}}
+</span></span><span class="line"><span class="cl">	$0
+</span></span><span class="line"><span class="cl">\end{${1:document}}
+</span></span><span class="line"><span class="cl">endsnippet
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该片段定义了触发关键字 <code>beg</code> 以开始一个新的 LaTeX 环境，<code>bA</code> 设置该代码片段当且仅当 <code>beg</code> 出现在行首时自动展开。展开后，原本输入的 <code>beg</code> 将被代码片段的内容替换，且 <code>\begin{}</code> 和 <code>\end{}</code> 花括号里的内容将默认填充为 <code>document</code> 并以高亮选中可供替换。按下跳转键后光标将进入环境内部，由于该位置为 <code>$0</code>，该代码片段使用结束。</p>
+<h3 id="依内容触发" class="headerLink">
+    <a href="#%e4%be%9d%e5%86%85%e5%ae%b9%e8%a7%a6%e5%8f%91" class="header-mark"></a>依内容触发</h3><p>除了使用 <code>options</code> 对代码片段的触发条件进行设置，两个插件还提供了 <code>context</code> 功能进一步限定代码片段的触发条件：在 <code>snippet</code> 前一行通过 <code>context</code> 调用 Python （或 JavaScript）函数，只有当该函数返回 <code>True</code> 时，后面的代码片段可以触发。利用这个功能，我们可以检测当前光标位置所处的环境，当处于数学环境中时才启用某些代码片段，以减少误触发的概率。</p>
+<p>对于 Vim/NeoVim 用户，UltiSnips 在处理 LaTeX 文档时需要借用 <a href="https://github.com/lervag/vimtex" target="_blank" rel="noopener noreffer">vimtex</a> 插件提供的 <code>vimtex#syntax#in_mathzone()</code> 函数；而将其应用于 Markdown 时，还要进一步通过 <a href="https://github.com/preservim/vim-markdown" target="_blank" rel="noopener noreffer">vim-markdown</a> 插件使该能够判断 Markdown 文件的数学环境。如此做，在代码片段文件的开头做如下函数定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">global !p
+</span></span><span class="line"><span class="cl">def math():
+</span></span><span class="line"><span class="cl">	return vim.eval(&#39;vimtex#syntax#in_mathzone()&#39;) == &#39;1&#39;
+</span></span><span class="line"><span class="cl">endglobal
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后在 <code>snippet</code> 的前一行加入 <code>context &quot;math()&quot;</code> 即可。</p>
+<p>对于 VS Code 用户，可以使用 <code>&lt;Ctrl&gt;&lt;Shift&gt;p</code> 打开命令面板，搜索使用 <em>Developer: Inspect Editor Tokens and Scopes</em>，通过 <em>scopes</em> 属性查看当前光标所在的环境。相应地，HyperSnips 可以定义类似的 JavaScript 函数用于数学环境的判断：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">global
+</span></span><span class="line"><span class="cl">function math(context){
+</span></span><span class="line"><span class="cl">    return context.scopes.some(s =&gt; s.includes(&#34;.math&#34;));
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">endglobal
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不同于 UltiSnips 的用法， HyperSnips 在 <code>snippet</code> 的前一行加入的命令为 <code>context math(context)</code>。</p>
+<h3 id="使用编程接口" class="headerLink">
+    <a href="#%e4%bd%bf%e7%94%a8%e7%bc%96%e7%a8%8b%e6%8e%a5%e5%8f%a3" class="header-mark"></a>使用编程接口</h3><p>如前所述，UltiSnips 和 HyperSnips 分别支持在代码片段内使用 Python 和 JavaScript 作为编程接口。这通常与正则表达式联合使用，可以更加灵活地处理代码片段。UltiSnips 中使用编程接口时，Python 代码需要使用 <code> `!p</code> 和 <code>`</code> 包裹；而 HyperSnips 的 JavaScript 代码需要用 <code>``</code> 在两端包裹。两个插件提供了默认变量用于接口，常用的变量如下表所示（ UltiSnips 提供更多变量，使用 <code>:h UltiSnips-python</code> 查看）</p>
+<table>
+<thead>
+<tr>
+<th>关键字内容</th>
+<th>UltiSnips</th>
+<th>HyperSnips</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>当前文件路径</td>
+<td><code>path</code></td>
+<td><code>path</code></td>
+</tr>
+<tr>
+<td>代码片段各跳点的内容</td>
+<td><code>t</code></td>
+<td><code>t</code></td>
+</tr>
+<tr>
+<td>正则表达式各分组匹配的内容</td>
+<td><code>match.group</code></td>
+<td><code>m</code></td>
+</tr>
+<tr>
+<td>编程返回的代码片段</td>
+<td><code>snip.rv</code></td>
+<td><code>rv</code></td>
+</tr>
+</tbody>
+</table>
+<p>由于本人对 JavaScript 所知甚少，下面用 Python 接口为例进行解释。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">context &#34;math()&#34;
+</span></span><span class="line"><span class="cl">snippet &#39;([A-Za-z]+)rm&#39; &#34;mathrm&#34; rA
+</span></span><span class="line"><span class="cl">`!p snip.rv = &#39;\\mathrm{&#39; + match.group(1) + &#39;}&#39; `$0
+</span></span><span class="line"><span class="cl">endsnippet
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该 UltiSnips 代码片段的第一行约束了该片段只在数学模式下生效。触发关键词使用引号，结合触发选项 <code>r</code> 说明使用了正则表达式：圆括号对字符串做了一个分组，匹配之后该分组的内容可以使用 <code>match.group(1)</code> 获取；分组内的中括号指明该分组匹配的内容为大小写字母，后面的加号表示至少有一个字母；圆括号外的字符表示该关键字必须以 <code>rm</code> 结尾（这就是所谓的“后缀式触发”）。该代码片段实现的效果是：在数学模式下，在字符后面加入 <code>rm</code> 可以将前面的字符变成 <code>\mathrm{}</code> 命令包围的直立字体。更多关于正则表达式的用法可以参考 <a href="https://www.runoob.com/regexp/regexp-metachar.html" target="_blank" rel="noopener noreffer">菜鸟教程</a> 等技术教程。</p>
+<h2 id="代码片段设计示例" class="headerLink">
+    <a href="#%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5%e8%ae%be%e8%ae%a1%e7%a4%ba%e4%be%8b" class="header-mark"></a>代码片段设计示例</h2><p>为了偷懒，代码片段的关键字应当尽可能少，使用 2～3 个字符较为合理。并且根据 Elijan 的建议，尽可能使用自动展开加快编写速度。</p>
+<p>为此，我定义了下列关键字用于触发 LaTeX 中的各种环境或命令：</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>功能</th>
+<th>触发条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>env</code></td>
+<td>新建 LaTeX 环境</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>beg</code></td>
+<td>新建 LaTeX 环境</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>fig</code></td>
+<td>新建插图环境</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>tabu</code></td>
+<td>新建普通表格</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>tabx</code></td>
+<td>新建定宽表格</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>tabl</code></td>
+<td>插入三线表的横线</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>equ</code></td>
+<td>单行公式环境</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>gat</code></td>
+<td>居中对齐的多行公式环境</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>ali</code></td>
+<td>手动对齐的多行公式环境</td>
+<td>行首触发</td>
+</tr>
+<tr>
+<td><code>gad</code></td>
+<td>居中对齐公式的子环境</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>ald</code></td>
+<td>手动对齐公式的子环境</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>pmat</code></td>
+<td>圆括号包围的矩阵环境</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>bmat</code></td>
+<td>方括号包围的矩阵环境</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>Bmat</code></td>
+<td>花括号包围的矩阵环境</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>vmat</code></td>
+<td>单竖线包围的矩阵环境</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>Vmat</code></td>
+<td>双竖线包围的矩阵环境</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>ff</code></td>
+<td>插入数学分式</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>lr()</code></td>
+<td>自动大小的圆括号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>lr[]</code></td>
+<td>自动大小的方括号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>lr{}</code></td>
+<td>自动大小的花括号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>lr&lt;</code></td>
+<td>自动大小的尖括号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>ab|</code></td>
+<td>自动大小的绝对值符号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>no|</code></td>
+<td>自动大小的范数符号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>b()</code></td>
+<td>手动大圆括号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>b2()</code></td>
+<td>手动更大的圆括号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>b3()</code></td>
+<td>手动超级大的圆括号</td>
+<td>边界触发</td>
+</tr>
+<tr>
+<td><code>b4()</code></td>
+<td>手动究极大的圆括号</td>
+<td>边界触发</td>
+</tr>
+</tbody>
+</table>
+<p>使用正则表达式结合词内触发可以实现更常用的后缀式触发，这在对数学符号进行修饰时非常好用。例如上面演示的触发正体命令。类似地，我做了如下定义（用 <code>X</code> 表示后缀前面的内容，不能出现空格）：</p>
+<table>
+<thead>
+<tr>
+<th>后缀</th>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rm</code></td>
+<td><code>\mathrm{X}</code></td>
+<td>将变量变为直立体</td>
+</tr>
+<tr>
+<td><code>bf</code></td>
+<td><code>\mathbf{X}</code></td>
+<td>将变量变为粗体</td>
+</tr>
+<tr>
+<td><code>fk</code></td>
+<td><code>\mathfrak{X}</code></td>
+<td>将变量变为哥特体</td>
+</tr>
+<tr>
+<td><code>bm</code></td>
+<td><code>\bm{X}</code></td>
+<td>使用 <code>bm</code> 宏包加粗变量</td>
+</tr>
+<tr>
+<td><code>ii</code></td>
+<td><code>X^{-1}</code></td>
+<td>求逆</td>
+</tr>
+<tr>
+<td><code>sr</code></td>
+<td><code>\sqrt{X}</code></td>
+<td>开方</td>
+</tr>
+<tr>
+<td><code>vec</code></td>
+<td><code>\vec{X}</code></td>
+<td>箭头（矢量符号）</td>
+</tr>
+<tr>
+<td><code>dot</code></td>
+<td><code>\dot{X}</code></td>
+<td>一个点（一阶导数）</td>
+</tr>
+<tr>
+<td><code>ddo</code></td>
+<td><code>\ddot{X}</code></td>
+<td>两个点（二阶导数）</td>
+</tr>
+<tr>
+<td><code>hat</code></td>
+<td><code>\hat{X}</code></td>
+<td>尖帽子（估计值）</td>
+</tr>
+<tr>
+<td><code>bar</code></td>
+<td><code>\bar{X}</code></td>
+<td>横线（平均值）</td>
+</tr>
+<tr>
+<td><code>bre</code></td>
+<td><code>\breve{X}</code></td>
+<td>圆帽子（测量值）</td>
+</tr>
+<tr>
+<td><code>til</code></td>
+<td><code>\tilde{X}</code></td>
+<td>波浪线（误差）</td>
+</tr>
+</tbody>
+</table>
+<p>使用后缀触发可以实现更加便利的功能：</p>
+<ul>
+<li><strong>分式自动处理</strong></li>
+</ul>
+<p>1500 页数学笔记的小哥在他的 <a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener noreffer">博客</a> 中给出了自动处理分式的代码片段：在数学模式下，当输入除法 <code>/</code> 时，会自动将前面的字符作为 <code>\frac</code> 的分子，并跳转到分母位置。当分子不止一个变量时，可以使用圆括号括起后再输入 <code>/</code>，此时分子会自动取消最外围用于定界的圆括号。</p>
+<ul>
+<li><strong>角标自动处理</strong></li>
+</ul>
+<p>数学通常会与角标打交道，为此，我在数学模式下定义了用于处理角标的 <code>;</code>，基本用法为：<code>任意字符;下标;上标;</code> 。代码片段在感受第三个封号后会自动处理角标，并且会根据字符长度选择性地添加 <code>{}</code>。下标或上标可以置空，但不允许出现空格。角标中处理特殊符号时可以使用空的花括号分隔命令，例如 <code>\omega{}t</code> 。</p>
+<p>上面讨论的 UltiSnips 和 HyperSnips 代码片段可以分别在我 <a href="https://github.com/iChunyu/nvim/tree/main/UltiSnips/tex" target="_blank" rel="noopener noreffer">nvim 仓库</a> 和 <a href="https://github.com/iChunyu/LearnLaTeX/tree/main/util" target="_blank" rel="noopener noreffer">LaTeX 仓库</a> 找到，欢迎使用和分享建议。</p>
+<h2 id="参考资料" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
+<li>Gilles Castel. <a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener noreffer">How I&rsquo;m able to take notes in mathematics lectures using LaTeX and Vim</a>.</li>
+<li>Elijan J. Mastnak. <a href="https://ejmastnak.github.io/tutorials/vim-latex/ultisnips.html" target="_blank" rel="noopener noreffer">An UltiSnips guide for LaTeX workflows</a>.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-16&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/68e36228dfd10e8cabbce8d8f2d23d69808d798c" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 68e36228dfd10e8cabbce8d8f2d23d69808d798c: update theme, add latexsnips, correct neovim" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>68e3622</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/latexsnips/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/latex/">LaTeX</a>,&nbsp;<a href="/tags/%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">代码片段</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/neovim/" class="prev" rel="prev" title="NeoVim 基本配置"><i class="fas fa-angle-left fa-fw"></i>NeoVim 基本配置</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.100.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script><script async defer data-website-id="af5d05fc-c104-49e5-9972-31aa026748e1" src="https://ichunyu-umami.up.railway.app/umami.js"  data-domains="ichunyu.github.io" ></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

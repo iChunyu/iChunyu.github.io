@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/neovim/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-06T18:12:48+08:00" />
-<meta property="article:modified_time" content="2022-05-11T09:18:09+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2022-06-16T16:04:41+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
@@ -20,7 +20,7 @@
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/neovim/" /><link rel="prev" href="https://ichunyu.github.io/matlab-inputparser/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/neovim/" /><link rel="prev" href="https://ichunyu.github.io/matlab-inputparser/" /><link rel="next" href="https://ichunyu.github.io/latexsnips/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
     
@@ -35,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/neovim\/"
-        },"genre": "posts","keywords": "Vim","wordcount":  6054 ,
-        "url": "https:\/\/ichunyu.github.io\/neovim\/","datePublished": "2022-05-06T18:12:48+08:00","dateModified": "2022-05-11T09:18:09+08:00","publisher": {
+        },"genre": "posts","keywords": "Vim","wordcount":  5949 ,
+        "url": "https:\/\/ichunyu.github.io\/neovim\/","datePublished": "2022-05-06T18:12:48+08:00","dateModified": "2022-06-16T16:04:41+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -185,8 +185,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-06">2022-05-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-05-11">2022-05-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6054 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-06">2022-05-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-06-16">2022-06-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5949 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -648,7 +648,7 @@
 <li><code>A</code>：检测到关键字之后自动展开；</li>
 <li><code>r</code>：使用正则表达式判定关键字，此时关键字需要用引号包围；</li>
 <li><code>w</code>：单独出现关键词时才能触发（关键词两边不是字母）；</li>
-<li><code>i</code>：与 <code>w</code> 相反，关键字在单词内部时才能出发；</li>
+<li><code>i</code>：与 <code>w</code> 相反，关键字在单词内部时才能触发；</li>
 <li><code>b</code>：当关键词为行首时才能触发。</li>
 </ul>
 <p>上述选项可以结合使用，例如 <code>bA</code> 表示关键词出现在行首时自动展开代码片段。</p>
@@ -1094,8 +1094,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-11&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/de1ea581b68ca01a76b6b52fd0ef338b7c51b6e0" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) de1ea581b68ca01a76b6b52fd0ef338b7c51b6e0: update neovim" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>de1ea58</a></span>
+                <span>更新于 2022-06-16&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/68e36228dfd10e8cabbce8d8f2d23d69808d798c" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 68e36228dfd10e8cabbce8d8f2d23d69808d798c: update theme, add latexsnips, correct neovim" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>68e3622</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1115,12 +1115,13 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/matlab-inputparser/" class="prev" rel="prev" title="MATLAB 解析输入参数"><i class="fas fa-angle-left fa-fw"></i>MATLAB 解析输入参数</a></div>
+    <div class="post-nav"><a href="/matlab-inputparser/" class="prev" rel="prev" title="MATLAB 解析输入参数"><i class="fas fa-angle-left fa-fw"></i>MATLAB 解析输入参数</a>
+            <a href="/latexsnips/" class="next" rel="next" title="使用代码片段编写 LaTeX 文档">使用代码片段编写 LaTeX 文档<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.100.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
