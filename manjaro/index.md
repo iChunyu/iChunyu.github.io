@@ -228,7 +228,7 @@ yay -S inkscape
 除此，我还喜欢为其安装 [TexText](https://textext.github.io/textext/) 扩展以在绘图时使用 LaTeX 。虽然该扩展可以简单地使用 `yay -S textext` 进行安装，但这种方法偶尔会找不到 LaTeX 路径，因此建议从 [GitHub release page](https://github.com/textext/textext/releases) 下载，并在安装时手动指定路径：
 
 ``` bash
-python setup.py --pdflatex-executable=/usr/local/texlive/2021/bin/x86_64-linux/pdflatex --xelatex-executable=/usr/local/texlive/2021/bin/x86_64-linux/xelatex --lualatex-executable=/usr/local/texlive/2021/bin/x86_64-linux/lualatex
+python setup.py --pdflatex-executable=$(which pdflatex) --xelatex-executable=$(which xelatex) --lualatex-executable=$(which lualatex)
 ```
 
 可以编辑 `~/.config/inkscape/extensions/textext/default_packages.tex` 对 TexText 宏包进行设置。一般我会使用以下宏包：
@@ -290,4 +290,14 @@ GRUB_TIMEOUT_STYLE=hidden       ## 样式：hidden 或 menu
 {{< admonition danger >}}
 GRUB 是很关键的系统文件，我曾经折腾 Ubuntu 时瞎改 GRUB 导致系统无法启动，新手改一下启动时间和样式就好，其他最好不乱动。
 {{< /admonition >}}
+
+
+### Zsh 忽略大小写
+
+在 `.zshrc` 中加入以下配置：
+
+``` bash
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+```
 

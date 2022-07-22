@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/manjaro/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-25T10:04:41+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2022-07-22T09:32:03+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
@@ -35,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/manjaro\/"
-        },"genre": "posts","keywords": "Manjaro, Linux, 操作系统","wordcount":  2692 ,
-        "url": "https:\/\/ichunyu.github.io\/manjaro\/","datePublished": "2021-05-12T00:00:00+00:00","dateModified": "2022-02-25T10:04:41+08:00","publisher": {
+        },"genre": "posts","keywords": "Manjaro, Linux, 操作系统","wordcount":  2730 ,
+        "url": "https:\/\/ichunyu.github.io\/manjaro\/","datePublished": "2021-05-12T00:00:00+00:00","dateModified": "2022-07-22T09:32:03+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -153,6 +153,7 @@
         <li><a href="#高分辨率屏幕缩放">高分辨率屏幕缩放</a></li>
         <li><a href="#fn-键设置">Fn 键设置</a></li>
         <li><a href="#grub-基本设置">GRUB 基本设置</a></li>
+        <li><a href="#zsh-忽略大小写">Zsh 忽略大小写</a></li>
       </ul>
     </li>
   </ul>
@@ -161,7 +162,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-02-25">2022-02-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2692 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-07-22">2022-07-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2730 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -188,6 +189,7 @@
         <li><a href="#高分辨率屏幕缩放">高分辨率屏幕缩放</a></li>
         <li><a href="#fn-键设置">Fn 键设置</a></li>
         <li><a href="#grub-基本设置">GRUB 基本设置</a></li>
+        <li><a href="#zsh-忽略大小写">Zsh 忽略大小写</a></li>
       </ul>
     </li>
   </ul>
@@ -499,7 +501,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python setup.py --pdflatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/pdflatex --xelatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/xelatex --lualatex-executable<span class="o">=</span>/usr/local/texlive/2021/bin/x86_64-linux/lualatex
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python setup.py --pdflatex-executable<span class="o">=</span><span class="k">$(</span>which pdflatex<span class="k">)</span> --xelatex-executable<span class="o">=</span><span class="k">$(</span>which xelatex<span class="k">)</span> --lualatex-executable<span class="o">=</span><span class="k">$(</span>which lualatex<span class="k">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以编辑 <code>~/.config/inkscape/extensions/textext/default_packages.tex</code> 对 TexText 宏包进行设置。一般我会使用以下宏包：</p>
@@ -579,14 +581,27 @@
         <div class="details-content">
             <div class="admonition-content">GRUB 是很关键的系统文件，我曾经折腾 Ubuntu 时瞎改 GRUB 导致系统无法启动，新手改一下启动时间和样式就好，其他最好不乱动。</div>
         </div>
-    </div></div>
+    </div>
+<h3 id="zsh-忽略大小写" class="headerLink">
+    <a href="#zsh-%e5%bf%bd%e7%95%a5%e5%a4%a7%e5%b0%8f%e5%86%99" class="header-mark"></a>Zsh 忽略大小写</h3><p>在 <code>.zshrc</code> 中加入以下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># case insensitive path-completion</span>
+</span></span><span class="line"><span class="cl">zstyle <span class="s1">&#39;:completion:*&#39;</span> matcher-list <span class="s1">&#39;m:{[:lower:][:upper:]}={[:upper:][:lower:]}&#39;</span> <span class="s1">&#39;m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*&#39;</span> <span class="s1">&#39;m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*&#39;</span> <span class="s1">&#39;m:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-02-25&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/d06cc6209602367a620ed1fedf7d0ad35e69721b" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) d06cc6209602367a620ed1fedf7d0ad35e69721b: update post: manjaro" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>d06cc62</a></span>
+                <span>更新于 2022-07-22&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/f341bcf669ce2dfec1226f226f116fd884805623" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) f341bcf669ce2dfec1226f226f116fd884805623: update theme, add manjaro settings" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>f341bcf</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -612,7 +627,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.100.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
