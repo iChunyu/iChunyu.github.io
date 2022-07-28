@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>反步法 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E5%8F%8D%E6%AD%A5%E6%B3%95/</link>
+        <description>反步法 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Thu, 28 Jul 2022 14:44:56 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%8F%8D%E6%AD%A5%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>使用反步法设计非线性控制器</title>
+    <link>https://ichunyu.github.io/backstepping/</link>
+    <pubDate>Thu, 28 Jul 2022 14:44:56 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/backstepping/</guid>
+    <description><![CDATA[<p>反步法（Backstepping）通过拼凑李雅普诺夫函数得到控制律，可用于非线性被控对象的控制器设计。本文是对 DR_CAN 系列视频的学习，并以一个开环不稳定的非线性系统为例进行设计与仿真。</p>]]></description>
+</item></channel>
+</rss>
