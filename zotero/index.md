@@ -104,7 +104,7 @@ Zotero 对 Word 的支持使得文献引用非常简单，只需要在 Word 中�
 
 手动修改文献列表前建议先对文档进行备份。从 Word 点击 `Zotero → Unlink Citations` ，断开参考文献列表与文献编号的关联（在 EndNote 中称之为格式化，这将使得新插入的参考文献重新从 1 开始编号，因此务必确认参考文献已经全部引用），这样就可以将参考文献列表变成文本，进行修改。
 
-关于参考文献引用，$\\LaTeX$ 的 [gbt7714 宏包](https://www.ctan.org/pkg/gbt7714) 提供了非常好的多语言支持，这里稍微秀一下，相关用法可以参考 $\\LaTeX$ 的学习记录：[自动化引用]({{< ref "../latex05-cite/index.md" >}}) 。
+关于参考文献引用，$\\LaTeX$ 的 [gbt7714 宏包](https://www.ctan.org/pkg/gbt7714) 提供了非常好的多语言支持，这里稍微秀一下，相关用法可以参考 $\\LaTeX$ 的学习记录：[自动化引用]({{< ref "/posts/latex/latex05-cite/index.md" >}}) 。
 
 <div align=center>
     <img src=zotero10.png width=70% />
