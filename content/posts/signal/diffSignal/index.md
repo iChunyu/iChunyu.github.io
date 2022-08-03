@@ -99,7 +99,7 @@ $${{< /math >}}
     <img src=diff04.png width=70% />
 </div>
 
-特别地，如果使用 [相图与砰砰控制]({{< ref "/posts/control/bangbang/index.md" >}}) 所讨论的砰砰控制来稳定环路，就构成了韩京清老师所定义的跟踪微分器。下图展示了这种跟踪微分器的微分效果。
+特别地，如果使用 [相图与砰砰控制]({{< ref "../../control/bangbang/index.md" >}}) 所讨论的砰砰控制来稳定环路，就构成了韩京清老师所定义的跟踪微分器。下图展示了这种跟踪微分器的微分效果。
 
 <div align=center>
     <img src=diff05.png width=60% />
