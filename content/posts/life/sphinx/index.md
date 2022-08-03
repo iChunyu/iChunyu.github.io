@@ -78,7 +78,7 @@ html_theme = 'sphinx_rtd_theme'
 
 ## GitHub 源码托管
 
-代码托管涉及到 [Git](https://git-scm.com/) 的使用，基本规则可以参考 [Git 版本控制]({{< ref "../learnGit/index.md" >}}) 。这里我们只需要在 GitHub 建立仓库，例如 `helps` 。然后在 Sphinx 项目目录下运行以下命令即可。
+代码托管涉及到 [Git](https://git-scm.com/) 的使用，基本规则可以参考 [Git 版本控制]({{< ref "/posts/tool/learnGit/index.md" >}}) 。这里我们只需要在 GitHub 建立仓库，例如 `helps` 。然后在 Sphinx 项目目录下运行以下命令即可。
 
 ``` bash
 git init
