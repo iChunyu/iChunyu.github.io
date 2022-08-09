@@ -5,22 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">使用反步法设计非线性控制器 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="使用反步法设计非线性控制器" />
-<meta property="og:description" content="反步法（Backstepping）通过拼凑李雅普诺夫函数得到控制律，可用于非线性被控对象的控制器设计。本文是对 DR_CAN 系列视频的学习，并以一个开环不稳定的非线性系统为例进行设计与仿真。" />
+    <title class="pjax-title">递增子序列的最大长度 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="递增子序列的最大长度" />
+<meta property="og:description" content="在给定的数组中进行抽取，保持元素的相对顺序不变，最长的递增序列包含多少个元素？为了求解这种递增子序列的问题，可以使用动态规划。本文简要介绍这种算法在该问题上的应用。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/backstepping/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-07-28T14:44:56+08:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="og:url" content="https://ichunyu.github.io/increasingsubseq/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-03T15:01:06+08:00" />
+<meta property="article:modified_time" content="2022-08-09T17:04:47+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
-<meta name="twitter:title" content="使用反步法设计非线性控制器"/>
-<meta name="twitter:description" content="反步法（Backstepping）通过拼凑李雅普诺夫函数得到控制律，可用于非线性被控对象的控制器设计。本文是对 DR_CAN 系列视频的学习，并以一个开环不稳定的非线性系统为例进行设计与仿真。"/>
+<meta name="twitter:title" content="递增子序列的最大长度"/>
+<meta name="twitter:description" content="在给定的数组中进行抽取，保持元素的相对顺序不变，最长的递增序列包含多少个元素？为了求解这种递增子序列的问题，可以使用动态规划。本文简要介绍这种算法在该问题上的应用。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/backstepping/" /><link rel="prev" href="https://ichunyu.github.io/latexsnips/" /><link rel="next" href="https://ichunyu.github.io/increasingsubseq/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/increasingsubseq/" /><link rel="prev" href="https://ichunyu.github.io/backstepping/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
     
@@ -30,13 +30,13 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "使用反步法设计非线性控制器",
+        "headline": "递增子序列的最大长度",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ichunyu.github.io\/backstepping\/"
-        },"genre": "posts","keywords": "反步法, 非线性控制","wordcount":  1803 ,
-        "url": "https:\/\/ichunyu.github.io\/backstepping\/","datePublished": "2022-07-28T14:44:56+08:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+            "@id": "https:\/\/ichunyu.github.io\/increasingsubseq\/"
+        },"genre": "posts","keywords": "动态规划","wordcount":  1029 ,
+        "url": "https:\/\/ichunyu.github.io\/increasingsubseq\/","datePublished": "2022-08-03T15:01:06+08:00","dateModified": "2022-08-09T17:04:47+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -135,18 +135,17 @@
         <h2 class="toc-title">目录</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#反步法基本思路">反步法基本思路</a></li>
-    <li><a href="#示例与公式推导">示例与公式推导</a></li>
-    <li><a href="#仿真建模与验证">仿真建模与验证</a></li>
-    <li><a href="#参考文献">参考文献</a></li>
+    <li><a href="#递增子序列">递增子序列</a></li>
+    <li><a href="#动态规划算法">动态规划算法</a></li>
+    <li><a href="#代码实现">代码实现</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">使用反步法设计非线性控制器</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">递增子序列的最大长度</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-07-28">2022-07-28</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1803 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E4%BC%98%E9%9B%85%E7%9A%84%E7%AE%97%E6%B3%95/"><i class="far fa-folder fa-fw"></i>优雅的算法</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-09">2022-08-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1029 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -154,151 +153,115 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#反步法基本思路">反步法基本思路</a></li>
-    <li><a href="#示例与公式推导">示例与公式推导</a></li>
-    <li><a href="#仿真建模与验证">仿真建模与验证</a></li>
-    <li><a href="#参考文献">参考文献</a></li>
+    <li><a href="#递增子序列">递增子序列</a></li>
+    <li><a href="#动态规划算法">动态规划算法</a></li>
+    <li><a href="#代码实现">代码实现</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>反步法（Backstepping）通过拼凑李雅普诺夫函数得到控制律，可用于非线性被控对象的控制器设计。本文是对 DR_CAN 系列视频的学习，并以一个开环不稳定的非线性系统为例进行设计与仿真。</p>
-<h2 id="反步法基本思路" class="headerLink">
-    <a href="#%e5%8f%8d%e6%ad%a5%e6%b3%95%e5%9f%ba%e6%9c%ac%e6%80%9d%e8%b7%af" class="header-mark"></a>反步法基本思路</h2><p>为了使用李雅普诺夫函数判定系统稳定性，首先做如下定义：</p>
-<p>对于标量函数 $V(\mathbf{x})$，若有</p>
-<ul>
-<li>$V(\mathbf{x}) = 0, \ \mathbf{x}=0$</li>
-<li>$V(\mathbf{x}) &gt; 0,\ \mathbf{x}\ne 0$</li>
-</ul>
-<p>则称 $V(\mathbf{x})$ 为正定函数。如果 $\mathbf{x}\ne 0$ 时 $V(x)\ge 0$，则称之为半正定函数。类似地，如果 $\mathbf{x}\ne 0$ 时 $V(x) &lt; 0$ 则将其称为负定函数；如果 $V(x) \le 0$ 则为半负定函数。</p>
-<p>非线性系统的稳定性可以通过李雅普诺夫直接法进行判定：如果一个关于所有状态的函数 $V(\mathbf{x})$ 是正定的，其导数 $\dot{V}(\mathbf{x})$ 为半负定的，则该函数为李雅普诺夫函数，且对应的系统稳定。进一步，如果 $\dot{V}(\mathbf{x})$ 是负定的，则系统渐进稳定。</p>
-<p>反步法的基本思路是逐级构造关于误差的正定函数，通过误差动态模型将该正定函数的导数凑成负定函数，从而获得控制律的具体表达，使系统满足稳定性需求。</p>
-<h2 id="示例与公式推导" class="headerLink">
-    <a href="#%e7%a4%ba%e4%be%8b%e4%b8%8e%e5%85%ac%e5%bc%8f%e6%8e%a8%e5%af%bc" class="header-mark"></a>示例与公式推导</h2><p>假设现有非线性负刚度弹簧系统，其状态空间方程表述为</p>
-$$
-\left\{
-\begin{aligned}
-    \dot{x} &= v \\
-    \dot{v} &= a x^2 + u
-\end{aligned}
-\right.
-$$
-<p>其中 $u$ 为控制命令。设控制的目标是使位移 $x$ 跟随参考位移 $x_r$，不失一般性地，控制指令应当是状态和参考的函数，即 $u=f(x,v,x_r)$。反步法的目标就是设计非线性控制律 $f(\cdot)$ 来实现参考信号的跟随。需要说明的是，参考信号可以通过多种手段给出，因此 $x_r$ 及其导数均可以认为是已知的，可直接用于构成控制律。</p>
-<p>控制器设计以误差收敛为目标，首先定义位移跟踪误差，并构造第一级李雅普诺夫函数</p>
-$$
-\left\{
-\begin{aligned}
-e_1 &= x - x_r \\
-V_1 &= \frac{1}{2} e_1^2 > 0, \quad (e_1 \ne 0)
-\end{aligned}
-\right.
-$$
-<div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">本文所定义的误差与 DR_CAN 视频中的误差定义相反，这样做的好处是当参考信号为零时误差即为信号本身而不必取其相反数。</div>
-        </div>
-    </div>
-<p>$V_1$ 在 $e_1\ne 0$ 时均为正值，即为正定的。$e_1$ 渐进稳定的条件是 $\dot{V}_1$ 是负定，考虑</p>
-$$
-\dot{V}_1 = e_1 \dot{e}_1 = e_1 \left( v - \dot{x}_r \right)
-$$
-<p>为了将上式凑成负定函数，可以让 $v-\dot{x}_r = -K_1 e_1$，将该需求进一步分解为使速度的跟踪误差收敛：</p>
-$$
-v - \dot{x}_r = -K_1 e_1 \rightarrow
-\left\{
-\begin{aligned}
-    v_r &= \dot{x}_r - K_1 e_1 \\
-    e_2 &= v-v_r = 0
-\end{aligned}
-\right.
-$$
-<p>此时将需求从一个误差收敛扩展到了两个误差收敛，相应的李雅普诺夫函数可选取为</p>
-$$
-V = \frac{1}{2} e_1^2 + \frac{1}{2}e_2^2
-$$
-<p>显然它是正定的。再次考虑其导数</p>
-$$
-\begin{aligned}
-    \dot{V} &= e_1 \dot{e}_1 + e_2 \left( ax^2 + u - \left( \ddot{x}_r - K_1 \dot{e}_1 \right) \right) \\
-    &= e_1 \left( v - \dot{x}_r \right) + e_2 \left( ax^2 + u -\ddot{x}_r + K_1 \left( v-\dot{x}r \right) \right) \\
-    &= e_1 \left(-K_1 e_1 + e_2 \right) + e_2 \left( ax^2 + u -\ddot{x}_r + K_1 \left( v-\dot{x}_r \right) \right) \\
-    &= -K_1 e_1^2 + e_2 \left( e_1 + ax^2 + u -\ddot{x}_r + K_1 \left( v-\dot{x}_r \right) \right)
-\end{aligned}
-$$
-<p>注意，在第三行我们只将第一项的 $\dot{e}_1$ 进行了替换： $\dot{e}_1 = v-\dot{x}_r = v_r + e_2 - \dot{x}_r = -K_1e_1 + e_2$ ，这是第一次凑李雅普诺夫函数的期望；而第二项没有作此替换，是为了第二次凑负定函数。也就是说，反步法是逐级将函数凑成负定形式。显然，如果希望 $\dot{V}$ 是负定的，可以使</p>
-$$
-e_1 + ax^2 + u -\ddot{x}_r + K_1 \left( v-\dot{x}_r \right) = -K_2 e_2
-$$
-<p>由此可以解得控制律为</p>
-$$
-\begin{aligned}
-    u &= -ax^2 + \ddot{x}_r - e_1 -K_1 \left( v - \dot{x}_r \right) - K_2 e_2 \\
-    &= -ax^2 + \ddot{x}_r - \left( x-x_r \right) -K_1 \left( v - \dot{x}_r \right) - K_2 \left( v - \dot{x}_r + K_1 \left( x - x_r \right) \right) \\
-    &= -ax^2 + \ddot{x}_r - G_1 \left( x-x_r \right) - G_2 \left( v-\dot{x}_r \right)
-\end{aligned}
-$$
-<p>其中 $G_1 = 1 + K_1K_2,, G_2 = K_1 + K_2$ 将控制律写成了一般形式的状态（误差）反馈。非线性控制律由三部分构成：</p>
-<ul>
-<li>非线性动态：利用 $-ax^2$ 将模型中的非线性偶和扣除，从而达到将模型线性化的目的，是反馈显性化的重要组成；</li>
-<li>参考指令：$\ddot{x}_r$ 实际上是“开环控制”的指令，作为先验知识驱动被控对象跟随参考信号；</li>
-<li>误差反馈：将状态与参考信号的误差进行反馈，是误差环路稳定的基本要素，可以通过调整控制参数调节误差的收敛动态。</li>
-</ul>
-<p>最后，将误差的动态重新整理，可得</p>
-$$
-\left\{
-\begin{aligned}
-    \dot{e}_1 & = -K_1e_1 + e_2 \\
-    \dot{e}_2 & = -e_1 - K_2e_2
-\end{aligned}
-\right.
-$$
-<p>可见，非线性被控对象通过反馈，使得误差的动态为线性模型，称之为反馈线性化。误差动态的极点由以下方程给出</p>
-$$
-\begin{vmatrix} -K_1-\lambda & 1 \\ -1 & -K_2-\lambda \end{vmatrix} = \lambda^2 + \left( K_1+K_2 \right) \lambda + K_1K_2+1 = 0
-$$
-<p>设极点配置为 $p_1,,p_2$，相应的特征方程为</p>
-$$
-\left( \lambda - p_1 \right) \left( \lambda - p_2 \right) = \lambda^2 - \left( p_1 + p_2 \right) \lambda + p_1 p_2 = 0
-$$
-<p>对比以上两个式子可得</p>
-$$
-\left\{
-\begin{aligned}
-    & K_1 + K_2 = - \left( p_1 + p_2 \right) \\
-    & K_1K_2 +1 = p_1p_2
-\end{aligned}
-\right.
-\quad \Rightarrow \quad
-K_{1,2} = \frac{-\left( p_1+p_2 \right)\pm\sqrt{\left( p_1 - p_2 \right)^2+4}}{2}
-$$
-<h2 id="仿真建模与验证" class="headerLink">
-    <a href="#%e4%bb%bf%e7%9c%9f%e5%bb%ba%e6%a8%a1%e4%b8%8e%e9%aa%8c%e8%af%81" class="header-mark"></a>仿真建模与验证</h2><p>利用 Simulink 可以很容易验证上面的设计结果，仿真模型如下图所示：</p>
+            </div><div class="content" id="content"><p>在给定的数组中进行抽取，保持元素的相对顺序不变，最长的递增序列包含多少个元素？为了求解这种递增子序列的问题，可以使用动态规划。本文简要介绍这种算法在该问题上的应用。</p>
+<h2 id="递增子序列" class="headerLink">
+    <a href="#%e9%80%92%e5%a2%9e%e5%ad%90%e5%ba%8f%e5%88%97" class="header-mark"></a>递增子序列</h2><p>给定序列 $[x_n]$ （本文假设序列的下标从 $1$ 开始），保持元素的相对顺序进行抽取（可以全部抽取），得到其子序列 $[\breve{x}_n]$，若对于任意 $i&gt;j$ 均有 $\breve{x}_i&gt;\breve{x}_j$，则称 $[\breve{x}_n]$ 是 $[x_n]$ 的递增子序列。</p>
+<p>例如，给定序列 $[6,7,1,4,2,3,5]$，其递增子序列可以是 $[6,7]$、$[1,4]$、$[2,3,5]$ 等，其中最长的递增子序列为 $[1,2,3,5]$，其长度为 $4$，是本问题求解的目标。</p>
 <div align=center>
-    <img src=simulator.png width=70% />
+    <img src=./subseq.png width=40% />
 </div>
-<p>为了验证控制律，假设系统是理想的，即没有外部扰动和测量噪声、所有状态都精确可知。在实际情况下应当引入相应的噪声模型，并通过状态估计器对状态进行估计。</p>
-<p>假设被控对象的初始位置与目标位置不同，利用该控制器将其控制到目标位置。在本例中，参考发生器使用三阶砰砰控制以对参考信号进行的微分，以使过渡过程光滑无超调。最终被控对象的位移响应如下图所示：</p>
+<p>为了求解递增子序列的最大长度，最直接的思路是列举所有可能的递增子序列，找出这些子序列的最大长度即可。在给定序列的前提下，只要给出子序列最后一个数字即可确定以该数字结尾的递增子序列，据此可以遍历所有的递增子序列，从而得到所求的最大长度。然而穷举意味着大量的重复，是否可以基于之前遍历的结果进行递归？答案就是动态规划。</p>
+<h2 id="动态规划算法" class="headerLink">
+    <a href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92%e7%ae%97%e6%b3%95" class="header-mark"></a>动态规划算法</h2><p>求解的思路：找到以 $x_i$ 结尾的递增子序列并求解这些序列的最大长度 $y_i$，最后只要找到序列 $[y_n]$ 的最大值即可。</p>
+<p>为了得到 $y_i$，试想将 $x_i$ 插入到任意 $x_{j&lt;i}$ 后面，考察以 $x_i$ 结尾的递增子序列的最大长度 $y_{j|i}$。为了说明这一过程，如下图所示。设 $x_i=5$，当 $j=2$ 时，$x_j = 7 &gt; x_i = 5$，此时以 $x_i$ 结尾的递增子序列为 $[5]$，长度为 $1$；当 $j=4$ 时，$x_j = 4 &lt; x_i = 5$，意味着 $x_i$ 可以插入到 $x_j$ 后面构成递增序列。在这种情况下，递增子序列的长度是以 $x_j$ 为结尾的递增子序列最大长度加一，即 $y_j + 1$。</p>
 <div align=center>
-    <img src=backstepping.png width=50% />
+    <img src=./showDP.png width=50% />
 </div>
-<p>上述仿真模型我分享在了 <a href="https://github.com/iChunyu/LearnCtrlSys/tree/main/Backstepping" target="_blank" rel="noopener noreffer">GitHub 仓库</a>，欢迎克隆、讨论、分享。</p>
-<h2 id="参考文献" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
-<li>DR_CAN, <a href="https://www.bilibili.com/video/BV1BW411M7v4" target="_blank" rel="noopener noreffer">Nonlinear Backstepping Control</a>.</li>
-</ol></div>
+<p>由此可以归纳出递归公式：</p>
+<ul>
+<li>初始化：以第一个元素结尾的序列只包含其自己，长度为</li>
+</ul>
+$$
+y_1 = 1
+$$
+<ul>
+<li>将 $x_i$ 插入到 $x_j$ 之后且以 $x_i$ 为结尾的递增子序列最大长度</li>
+</ul>
+$$
+y_{j|i} = 
+\left\{
+\begin{aligned}
+    & 1 ,& x_i \le x_j \\
+    & y_j + 1, & x_i > x_j
+\end{aligned}
+\right. ,\quad 1 \le j < i
+$$
+<ul>
+<li>以 $x_i$ 结尾的递增子序列的最大长度：</li>
+</ul>
+$$
+y_i = \max_{j< i} y_{j|i}
+$$
+<ul>
+<li>给定序列的递增子序列的最大长度</li>
+</ul>
+$$
+y_\mathrm{max} = \max_i y_i
+$$
+<h2 id="代码实现" class="headerLink">
+    <a href="#%e4%bb%a3%e7%a0%81%e5%ae%9e%e7%8e%b0" class="header-mark"></a>代码实现</h2><p>本题来自 LeetCode 的 <a href="https://leetcode.cn/problems/longest-increasing-subsequence/" target="_blank" rel="noopener noreffer">300. 最长递增子序列</a>，Python 代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">lengthOfLIS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>                   <span class="c1"># 输入序列的长度</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">N</span>                       <span class="c1"># 将 x[i] 结尾的递增子序列的最大长度初始化为 1</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ymax</span> <span class="o">=</span> <span class="mi">1</span>                        <span class="c1"># 初始化序列的递增子序列最大长度</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>          <span class="c1"># 当 x[i] 插在 x[j] 后的递增子序列最大长度</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>  
+</span></span><span class="line"><span class="cl">                    <span class="n">yji</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">yji</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">yji</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>          <span class="c1"># y[i] 是 yji 的最大值</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">yji</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ymax</span><span class="p">:</span>             <span class="c1"># ymax 是 y[i] 的最大值</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ymax</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ymax</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2022-08-09&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/b976769b207e3bdbffc8b7889e1243fd6c386668" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) b976769b207e3bdbffc8b7889e1243fd6c386668: add algorithm to calculate max length of sub-increasing sequence" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>b976769</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span><a class="link-to-mardown" href=/backstepping/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/increasingsubseq/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                     </span></div>
             <div class="post-info-share">
                 <span></span>
@@ -307,14 +270,13 @@ $$
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%8F%8D%E6%AD%A5%E6%B3%95/">反步法</a>,&nbsp;<a href="/tags/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%8E%A7%E5%88%B6/">非线性控制</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/latexsnips/" class="prev" rel="prev" title="使用代码片段编写 LaTeX 文档"><i class="fas fa-angle-left fa-fw"></i>使用代码片段编写 LaTeX 文档</a>
-            <a href="/increasingsubseq/" class="next" rel="next" title="递增子序列的最大长度">递增子序列的最大长度<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/backstepping/" class="prev" rel="prev" title="使用反步法设计非线性控制器"><i class="fas fa-angle-left fa-fw"></i>使用反步法设计非线性控制器</a></div>
 </div>
 </article></div>
         </main><footer class="footer">
