@@ -200,7 +200,7 @@ enableGitInfo = true
       # 文件路径是相对于 static 或者 assets 目录的
       avatarURL = "/images/avatar.png"
       #  主页显示的网站标题 (支持 HTML 格式)
-      title = '<a href="https://ichunyu-umami.up.railway.app/share/toWRV4WK/%E6%9F%90%E6%98%A5%E9%9B%A8%E7%9A%84%E5%90%8E%E8%8A%B1%E5%9B%AD">某春雨的后花园</a>'
+      title = '某春雨的后花园'
       # 主页显示的网站副标题
       subtitle = "Looking to the future..."
       # 是否为副标题显示打字机动画
@@ -281,7 +281,7 @@ enableGitInfo = true
     Gitea = ""
     XMPP = ""
     Matrix = ""
-    Bilibili = "35078011"
+    Bilibili = ""
     ORCID = ""
     Liberapay = ""
     Ko-Fi = ""
@@ -596,9 +596,9 @@ enableGitInfo = true
       id = ""
     #  Umami Analytics
     [params.analytics.umami]
-      data_website_id = "af5d05fc-c104-49e5-9972-31aa026748e1"
-      src = "https://ichunyu-umami.up.railway.app/umami.js"
-      data_domains = "ichunyu.github.io"
+      data_website_id = ""
+      src = ""
+      data_domains = ""
     #  Plausible Analytics
     [params.analytics.plausible]
       data_domain = ""
