@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">数据的强制类型转换及其应用 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="数据的强制类型转换及其应用" />
+<meta property="og:description" content="之前看到过一种快速求解平方根倒数的程序，里面包含了强制类型转换和一个神奇的常数，让人摸不着头脑。最近有兴趣了解了这个算法的细节，不禁叹为观止，以此文作为学习记录。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/typeconvert/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-03T15:31:40+08:00" />
+<meta property="article:modified_time" content="2022-09-03T20:02:24+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="数据的强制类型转换及其应用"/>
+<meta name="twitter:description" content="之前看到过一种快速求解平方根倒数的程序，里面包含了强制类型转换和一个神奇的常数，让人摸不着头脑。最近有兴趣了解了这个算法的细节，不禁叹为观止，以此文作为学习记录。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/typeconvert/" /><link rel="prev" href="https://ichunyu.github.io/backstepping/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "数据的强制类型转换及其应用",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/typeconvert\/"
+        },"genre": "posts","keywords": "数据类型转换, 快速平方根倒数","wordcount":  1551 ,
+        "url": "https:\/\/ichunyu.github.io\/typeconvert\/","datePublished": "2022-09-03T15:31:40+08:00","dateModified": "2022-09-03T20:02:24+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#浮点数与整数的储存">浮点数与整数的储存</a></li>
+    <li><a href="#对数计算与强制类型转换">对数计算与强制类型转换</a></li>
+    <li><a href="#快速求解平方根的倒数">快速求解平方根的倒数</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">数据的强制类型转换及其应用</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E4%BC%98%E9%9B%85%E7%9A%84%E7%AE%97%E6%B3%95/"><i class="far fa-folder fa-fw"></i>优雅的算法</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-03">2022-09-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-09-03">2022-09-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1551 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#浮点数与整数的储存">浮点数与整数的储存</a></li>
+    <li><a href="#对数计算与强制类型转换">对数计算与强制类型转换</a></li>
+    <li><a href="#快速求解平方根的倒数">快速求解平方根的倒数</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>之前看到过一种快速求解平方根倒数的程序，里面包含了强制类型转换和一个神奇的常数，让人摸不着头脑。最近有兴趣了解了这个算法的细节，不禁叹为观止，以此文作为学习记录。</p>
+<h2 id="浮点数与整数的储存" class="headerLink">
+    <a href="#%e6%b5%ae%e7%82%b9%e6%95%b0%e4%b8%8e%e6%95%b4%e6%95%b0%e7%9a%84%e5%82%a8%e5%ad%98" class="header-mark"></a>浮点数与整数的储存</h2><p>IEEE 754 给出了浮点数的储存规范，其基本结构如下图所示（中括号内的的选项分别代表单精度数和双精度数）：</p>
+<ul>
+<li>符号位（S, Sign）：占 $1$ 位，为 $0$ 时表示正数，为 $1$ 时表示负数；</li>
+<li>指数位（E, Exponent）：表示 $2$ 的指数，可占据 $\mu_E = [8,11]$ 位；</li>
+<li>小数位（M, Mantissa）：科学计数法中的小数部位，可占据 $\mu_M = [23, 52]$ 位。</li>
+</ul>
+<div align=center>
+    <img src=./storedData.png width=50% />
+</div>
+<p>为了能够更精细地表示小数，指数位应当覆盖负数。为此，指数部分应当扣除偏移：</p>
+$$
+E_0 = 2^{\mu_E - 1} - 1 = \left[ 127,\, 1023 \right]
+$$
+<p>记</p>
+$$
+M_0 = 2^{\mu_M} = \left[ 2^{23},\, 2^{52} \right]
+$$
+<p>则小数部分的分辨率为 $M_0^{-1}$，浮点数 $x$ 表示为</p>
+$$
+x = (-1)^S 2^{E-E_0} \left( 1 + \frac{M}{M_0} \right)
+$$
+<p>式中 $S$、$E$ 和 $M$ 分别表示符号位、指数位和小数位直接按二进制读取的整数。为了更好地区分数据类型，采用大写字母表示整数、小写字母表示实数。</p>
+<h2 id="对数计算与强制类型转换" class="headerLink">
+    <a href="#%e5%af%b9%e6%95%b0%e8%ae%a1%e7%ae%97%e4%b8%8e%e5%bc%ba%e5%88%b6%e7%b1%bb%e5%9e%8b%e8%bd%ac%e6%8d%a2" class="header-mark"></a>对数计算与强制类型转换</h2><p>为了计算对数，我们将讨论范围局限为正实数，即假设符号位 $S=0$。于是有</p>
+$$
+    \log_2 x = \log_2 \left( 2^{E-E_0} \left( 1 + \frac{M}{M_0} \right) \right)
+    = E-E_0 + \log_2 \left( 1 + \frac{M}{M_0}\right) \\
+$$
+<p>考虑到 $\frac{M}{M_0}\in [0,1)$，在该区间内，对数函数可以取线性近似 $\log_2(1+t) \approx t + k$，例如取 $k=0.045$ 时，两者的对比如下图所示。</p>
+<div align=center>
+    <img src=./log2approx.png width=50% />
+</div>
+<p>如此做，对数计算可以近似为</p>
+$$
+    \log_2 x \approx E-E_0 + \frac{M}{M_0} + k = \frac{1}{M_0} \biggl( \underbrace{EM_0 + M}_{f_{\mathrm{int}}(x)} + \underbrace{M_0 \left( k-E_0  \right)}_{R} \biggr)
+$$
+<p>式中，$EM_0 + M$ 是将浮点数 $x$ 的指数位和小数位合在一起进行二进制转化得到的整数，即所谓的强制类型转换，用函数记作 $f_{\mathrm{int}}(x)$。</p>
+<p>由此我们可以得到一个重要结论：<strong>浮点数的对数与其强制类型转化后的整数存在线性近似</strong>，因此可以利用强制类型转换对对数计算进行快速估计。如下图所示，在 $x\in[10^{-10}, 10^{10}]$ 范围内的估计误差不超过 $0.05$。</p>
+<div align=center>
+    <img src=./log2calc.png width=60% />
+</div>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">我们在对 $\log_2 (1+t)$ 进行线性近似时人为规定了斜率为 $1$，只有这样 $\log_2 x$ 才与强制类型转化之后的结果 $EM_0 +M$ 相关。若取 $\log_2(1+t) \approx at + k, (a\ne 1)$，$M$ 将替换为 $aM$，需要对小数部分做额外的乘法，与直接进行强制数据类型转换相比引入了额外的计算，会降低程序效率。</div>
+        </div>
+    </div>
+<h2 id="快速求解平方根的倒数" class="headerLink">
+    <a href="#%e5%bf%ab%e9%80%9f%e6%b1%82%e8%a7%a3%e5%b9%b3%e6%96%b9%e6%a0%b9%e7%9a%84%e5%80%92%e6%95%b0" class="header-mark"></a>快速求解平方根的倒数</h2><p>利用强制类型转换获得对数的初步估计值后，可以利用牛顿迭代获得更高精度的值。在此我们讨论另一种常用的应用：快速计算平方根的倒数，其有名的 C 代码如下所示。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">float</span> <span class="nf">Q_rsqrt</span><span class="p">(</span> <span class="kt">float</span> <span class="n">number</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">long</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">float</span> <span class="n">threeHalfs</span> <span class="o">=</span> <span class="mf">1.5f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">x2</span> <span class="o">=</span> <span class="n">number</span> <span class="o">*</span> <span class="mf">0.5f</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span>  <span class="o">=</span> <span class="n">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">i</span>  <span class="o">=</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">long</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">;</span>                       <span class="c1">// evil floating point bit level hacking
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">i</span>  <span class="o">=</span> <span class="mh">0x5f3759df</span> <span class="o">-</span> <span class="p">(</span> <span class="n">i</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span> <span class="p">);</span>               <span class="c1">// What the fuck? 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">y</span>  <span class="o">=</span> <span class="o">*</span> <span class="p">(</span> <span class="kt">float</span> <span class="o">*</span> <span class="p">)</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span>  <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span> <span class="n">threeHalfs</span> <span class="o">-</span> <span class="p">(</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="p">)</span> <span class="p">);</span>   <span class="c1">// 1st iteration
+</span></span></span><span class="line"><span class="cl"><span class="c1">//  y  = y * ( threeHalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在我们用强制类型转换与对数的关系来解释这个代码：</p>
+<ul>
+<li>使用将原问题取对数变成线性问题：</li>
+</ul>
+$$
+y = \frac{1}{\sqrt{x}} \quad \rightarrow \quad \log_2 y = - \frac{1}{2} \log_2 x
+$$
+<ul>
+<li>将对数用强制进制转化近似，更新线性关系（C 代码中，除以二可以使用右移位得到）：</li>
+</ul>
+$$
+\left.\begin{aligned}
+    \log_2 x &\approx \frac{1}{M_0} \left( f_{\mathrm{int}}(x) + R \right) \\
+    \log_2 y &\approx \frac{1}{M_0} \left( f_{\mathrm{int}}(y) + R \right)
+\end{aligned} \right\}
+\quad \rightarrow \quad
+f_{\mathrm{int}}(y_0) = - \frac{3}{2} R - \frac{1}{2} f_{\mathrm{int}}(x)
+$$
+<p>其中 $-\frac{3}{2}R = \frac{3}{2}M_0(E_0-k)$，对于单精度数，取 $k=0.045$ 时，其指用十六进制表示为 <code>0x5f3759df</code>，这就是代码中“魔法数”的由来。</p>
+<ul>
+<li>反向使用强制进制转化得到原数（平方根的倒数）初值：</li>
+</ul>
+$$
+y_0 = f_{\mathrm{int}}^{-1}(y_0) = f_{\mathrm{int}}^{-1}\left( -\frac{3}{2} R - \frac{1}{2} f_{\mathrm{int}}(x) \right)
+$$
+<ul>
+<li>构造牛顿迭代提高求解精度：</li>
+</ul>
+<p>原问题可以转化为函数 $f(y) = 1/y^2 -x$ 的零点问题，因此牛顿迭代为</p>
+$$
+y_{i+1} = y_i - \frac{f(y_i)}{f'(y_i)} = y_i \left( \frac{3}{2} - \frac{x}{2} y_i^2 \right)
+$$
+<p>牛顿迭代的收敛速度很快，并且由于对数近似对初值的估计较为准确，所以只需要进行简单的一次或两次迭代就可以达到足够的精度。最后给出验证结果，如下图所示，可见利用强制类型转换已经获取足够的精度了，两次牛顿迭代后可以将误差进一步缩小到 $10^{-5}$ 以下，简单且高效。</p>
+<div align=center>
+    <img src=./results.png width=60% />
+</div>
+<p>本文相关的 MATLAB 代码我放在了 <a href="https://github.com/iChunyu/signal-process-demo/blob/main/05_TryAlgorithms/Try04_rsqrt.m" target="_blank" rel="noopener noreffer">GitHub 仓库</a>，欢迎讨论交流。</p>
+<h2 id="参考资料" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
+<li>MathWorks Inc., <a href="https://ww2.mathworks.cn/help/matlab/matlab_prog/floating-point-numbers.html" target="_blank" rel="noopener noreffer">Floating-Point Numbers</a>.</li>
+<li>爱XR的麦子, <a href="https://zhuanlan.zhihu.com/p/415245234" target="_blank" rel="noopener noreffer">【回归本源】番外1-雷神之锤3的那段代码</a>.</li>
+<li>Chris Lomont, Fast Inverse Square Root, 2003.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-09-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/05731aeab5026985fb93c496550720a2e41e65d4" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 05731aeab5026985fb93c496550720a2e41e65d4: Add new post: data type conversion and its application" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>05731ae</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/typeconvert/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">数据类型转换</a>,&nbsp;<a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0/">快速平方根倒数</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/backstepping/" class="prev" rel="prev" title="使用反步法设计非线性控制器"><i class="fas fa-angle-left fa-fw"></i>使用反步法设计非线性控制器</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>

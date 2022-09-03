@@ -4,7 +4,14 @@
         <link>https://ichunyu.github.io/posts/</link>
         <description>所有文章 | 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Thu, 28 Jul 2022 14:44:56 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 03 Sep 2022 15:31:40 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>数据的强制类型转换及其应用</title>
+    <link>https://ichunyu.github.io/typeconvert/</link>
+    <pubDate>Sat, 03 Sep 2022 15:31:40 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/typeconvert/</guid>
+    <description><![CDATA[<p>之前看到过一种快速求解平方根倒数的程序，里面包含了强制类型转换和一个神奇的常数，让人摸不着头脑。最近有兴趣了解了这个算法的细节，不禁叹为观止，以此文作为学习记录。</p>]]></description>
+</item><item>
     <title>使用反步法设计非线性控制器</title>
     <link>https://ichunyu.github.io/backstepping/</link>
     <pubDate>Thu, 28 Jul 2022 14:44:56 &#43;0800</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/installarch/</guid>
     <description><![CDATA[<p>最近有兴趣折腾了一下 Arch Linux，并在虚拟机中成功安装。将安装步骤记录于此，下一次就真机实战。</p>]]></description>
-</item><item>
-    <title>Windows 系统安装</title>
-    <link>https://ichunyu.github.io/installwindows/</link>
-    <pubDate>Fri, 17 Dec 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/installwindows/</guid>
-    <description><![CDATA[<p>最近女朋友的电脑被她玩挂了，我决定写一篇文章教她如何重装系统。</p>]]></description>
 </item></channel>
 </rss>
