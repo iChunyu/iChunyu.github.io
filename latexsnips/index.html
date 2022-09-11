@@ -176,7 +176,7 @@
 <h2 id="插件介绍与使用" class="headerLink">
     <a href="#%e6%8f%92%e4%bb%b6%e4%bb%8b%e7%bb%8d%e4%b8%8e%e4%bd%bf%e7%94%a8" class="header-mark"></a>插件介绍与使用</h2><p>顾名思义，代码片段就是一小段可以重复利用的代码。使用代码片段本质上类似于复制粘贴并修改的操作，但利用关键字触发可以避免复制代码的过程；不仅如此，通过插件可以对设定的代码片段进行进一步操作，大大提高编程效率。</p>
 <h3 id="插件简介" class="headerLink">
-    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>插件简介</h3><p>对于 Vim 或者 NeoVim 用户，可以使用 <a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreffer">UltiSnips</a>，我在之前的 <a href="https://ichunyu.github.io/neovim/" rel="">NeoVim 基本配置</a> 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 <a href="https://marketplace.visualstudio.com/items?itemName=draivin.hsnips" target="_blank" rel="noopener noreffer">HyperSnips</a> 插件。这两款插件之间的对比如下表所示：</p>
+    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>插件简介</h3><p>对于 Vim 或者 NeoVim 用户，可以使用 <a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreferrer">UltiSnips</a>，我在之前的 <a href="https://ichunyu.github.io/neovim/" rel="">NeoVim 基本配置</a> 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 <a href="https://marketplace.visualstudio.com/items?itemName=draivin.hsnips" target="_blank" rel="noopener noreferrer">HyperSnips</a> 插件。这两款插件之间的对比如下表所示：</p>
 <table>
 <thead>
 <tr>
@@ -260,7 +260,7 @@
 </div><p>该片段定义了触发关键字 <code>beg</code> 以开始一个新的 LaTeX 环境，<code>bA</code> 设置该代码片段当且仅当 <code>beg</code> 出现在行首时自动展开。展开后，原本输入的 <code>beg</code> 将被代码片段的内容替换，且 <code>\begin{}</code> 和 <code>\end{}</code> 花括号里的内容将默认填充为 <code>document</code> 并以高亮选中可供替换。按下跳转键后光标将进入环境内部，由于该位置为 <code>$0</code>，该代码片段使用结束。</p>
 <h3 id="依内容触发" class="headerLink">
     <a href="#%e4%be%9d%e5%86%85%e5%ae%b9%e8%a7%a6%e5%8f%91" class="header-mark"></a>依内容触发</h3><p>除了使用 <code>options</code> 对代码片段的触发条件进行设置，两个插件还提供了 <code>context</code> 功能进一步限定代码片段的触发条件：在 <code>snippet</code> 前一行通过 <code>context</code> 调用 Python （或 JavaScript）函数，只有当该函数返回 <code>True</code> 时，后面的代码片段可以触发。利用这个功能，我们可以检测当前光标位置所处的环境，当处于数学环境中时才启用某些代码片段，以减少误触发的概率。</p>
-<p>对于 Vim/NeoVim 用户，UltiSnips 在处理 LaTeX 文档时需要借用 <a href="https://github.com/lervag/vimtex" target="_blank" rel="noopener noreffer">vimtex</a> 插件提供的 <code>vimtex#syntax#in_mathzone()</code> 函数；而将其应用于 Markdown 时，还要进一步通过 <a href="https://github.com/preservim/vim-markdown" target="_blank" rel="noopener noreffer">vim-markdown</a> 插件使该能够判断 Markdown 文件的数学环境。如此做，在代码片段文件的开头做如下函数定义：</p>
+<p>对于 Vim/NeoVim 用户，UltiSnips 在处理 LaTeX 文档时需要借用 <a href="https://github.com/lervag/vimtex" target="_blank" rel="noopener noreferrer">vimtex</a> 插件提供的 <code>vimtex#syntax#in_mathzone()</code> 函数；而将其应用于 Markdown 时，还要进一步通过 <a href="https://github.com/preservim/vim-markdown" target="_blank" rel="noopener noreferrer">vim-markdown</a> 插件使该能够判断 Markdown 文件的数学环境。如此做，在代码片段文件的开头做如下函数定义：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -342,7 +342,7 @@
 </span></span><span class="line"><span class="cl">endsnippet
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>该 UltiSnips 代码片段的第一行约束了该片段只在数学模式下生效。触发关键词使用引号，结合触发选项 <code>r</code> 说明使用了正则表达式：圆括号对字符串做了一个分组，匹配之后该分组的内容可以使用 <code>match.group(1)</code> 获取；分组内的中括号指明该分组匹配的内容为大小写字母，后面的加号表示至少有一个字母；圆括号外的字符表示该关键字必须以 <code>rm</code> 结尾（这就是所谓的“后缀式触发”）。该代码片段实现的效果是：在数学模式下，在字符后面加入 <code>rm</code> 可以将前面的字符变成 <code>\mathrm{}</code> 命令包围的直立字体。更多关于正则表达式的用法可以参考 <a href="https://www.runoob.com/regexp/regexp-metachar.html" target="_blank" rel="noopener noreffer">菜鸟教程</a> 等技术教程。</p>
+</div><p>该 UltiSnips 代码片段的第一行约束了该片段只在数学模式下生效。触发关键词使用引号，结合触发选项 <code>r</code> 说明使用了正则表达式：圆括号对字符串做了一个分组，匹配之后该分组的内容可以使用 <code>match.group(1)</code> 获取；分组内的中括号指明该分组匹配的内容为大小写字母，后面的加号表示至少有一个字母；圆括号外的字符表示该关键字必须以 <code>rm</code> 结尾（这就是所谓的“后缀式触发”）。该代码片段实现的效果是：在数学模式下，在字符后面加入 <code>rm</code> 可以将前面的字符变成 <code>\mathrm{}</code> 命令包围的直立字体。更多关于正则表达式的用法可以参考 <a href="https://www.runoob.com/regexp/regexp-metachar.html" target="_blank" rel="noopener noreferrer">菜鸟教程</a> 等技术教程。</p>
 <h2 id="代码片段设计示例" class="headerLink">
     <a href="#%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5%e8%ae%be%e8%ae%a1%e7%a4%ba%e4%be%8b" class="header-mark"></a>代码片段设计示例</h2><p>为了偷懒，代码片段的关键字应当尽可能少，使用 2～3 个字符较为合理。并且根据 Elijan 的建议，尽可能使用自动展开加快编写速度。</p>
 <p>为此，我定义了下列关键字用于触发 LaTeX 中的各种环境或命令：</p>
@@ -573,16 +573,16 @@
 <ul>
 <li><strong>分式自动处理</strong></li>
 </ul>
-<p>1500 页数学笔记的小哥在他的 <a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener noreffer">博客</a> 中给出了自动处理分式的代码片段：在数学模式下，当输入除法 <code>/</code> 时，会自动将前面的字符作为 <code>\frac</code> 的分子，并跳转到分母位置。当分子不止一个变量时，可以使用圆括号括起后再输入 <code>/</code>，此时分子会自动取消最外围用于定界的圆括号。</p>
+<p>1500 页数学笔记的小哥在他的 <a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener noreferrer">博客</a> 中给出了自动处理分式的代码片段：在数学模式下，当输入除法 <code>/</code> 时，会自动将前面的字符作为 <code>\frac</code> 的分子，并跳转到分母位置。当分子不止一个变量时，可以使用圆括号括起后再输入 <code>/</code>，此时分子会自动取消最外围用于定界的圆括号。</p>
 <ul>
 <li><strong>角标自动处理</strong></li>
 </ul>
 <p>数学通常会与角标打交道，为此，我在数学模式下定义了代码片段：<code>任意字符;下标;上标;</code> 。该代码片段在感受第三个封号后会自动处理角标，并且会根据字符长度选择性地添加 <code>{}</code>。下标或上标可以置空，但不允许出现空格。角标中处理特殊符号时可以使用空的花括号分隔命令，例如 <code>\omega{}t</code> 。</p>
-<p>上面讨论的 UltiSnips 和 HyperSnips 代码片段可以分别在我 <a href="https://github.com/iChunyu/nvim/tree/main/UltiSnips/tex" target="_blank" rel="noopener noreffer">nvim 仓库</a> 和 <a href="https://github.com/iChunyu/LearnLaTeX/tree/main/util" target="_blank" rel="noopener noreffer">LaTeX 仓库</a> 找到，欢迎使用和分享建议。</p>
+<p>上面讨论的 UltiSnips 和 HyperSnips 代码片段可以分别在我 <a href="https://github.com/iChunyu/nvim/tree/main/UltiSnips/tex" target="_blank" rel="noopener noreferrer">nvim 仓库</a> 和 <a href="https://github.com/iChunyu/LearnLaTeX/tree/main/util" target="_blank" rel="noopener noreferrer">LaTeX 仓库</a> 找到，欢迎使用和分享建议。</p>
 <h2 id="参考资料" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
-<li>Gilles Castel. <a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener noreffer">How I&rsquo;m able to take notes in mathematics lectures using LaTeX and Vim</a>.</li>
-<li>Elijan J. Mastnak. <a href="https://ejmastnak.github.io/tutorials/vim-latex/ultisnips.html" target="_blank" rel="noopener noreffer">An UltiSnips guide for LaTeX workflows</a>.</li>
+<li>Gilles Castel. <a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener noreferrer">How I&rsquo;m able to take notes in mathematics lectures using LaTeX and Vim</a>.</li>
+<li>Elijan J. Mastnak. <a href="https://ejmastnak.github.io/tutorials/vim-latex/ultisnips.html" target="_blank" rel="noopener noreferrer">An UltiSnips guide for LaTeX workflows</a>.</li>
 </ol></div>
 
         <div class="post-footer" id="post-footer">
@@ -616,7 +616,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

@@ -10,6 +10,6 @@
     <pubDate>Sat, 23 Feb 2019 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/lpsd/</guid>
-    <description><![CDATA[<p>欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 <a href="https://www.elisascience.org/ltpda" target="_blank" rel="noopener noreffer">LTPDA</a>，该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。</p>]]></description>
+    <description><![CDATA[<p>欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 <a href="https://www.elisascience.org/ltpda" target="_blank" rel="noopener noreferrer">LTPDA</a>，该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。</p>]]></description>
 </item></channel>
 </rss>

@@ -311,7 +311,7 @@
 <h3 id="解析输入" class="headerLink">
     <a href="#%e8%a7%a3%e6%9e%90%e8%be%93%e5%85%a5" class="header-mark"></a>解析输入</h3><p>设置好 <code>inputParser</code> 之后，只需要使用 <code>p.parse(varargin{:})</code> 对输入进行解析即可。解析的结果将以结构体的形式汇总在 <code>p.Results</code> 中。</p>
 <p>这里应当注意的是，<code>parse</code> 函数接受逗号分隔的列表输入，而关键字 <code>varargin</code> 是 <code>cell</code> 数组，应当使用花括号加 <code>:</code> 的形式进行转换。</p>
-<p>如前所述，<code>inputParser</code> 默认接受结构体输入，而未配对成功的参数将会以结构体的形式存放在 <code>p.Unmatched</code> 中，因此可以将其传递给子函数。例如我自编用于画功率谱的 <a href="https://ichunyu.github.io/helps/functions/ilpsd/" target="_blank" rel="noopener noreffer"><code>iLPSD</code></a> 函数，内部调用了 <code>loglog</code> 画图，为了将绘图选项传递给该函数，我用到了下面的方法：</p>
+<p>如前所述，<code>inputParser</code> 默认接受结构体输入，而未配对成功的参数将会以结构体的形式存放在 <code>p.Unmatched</code> 中，因此可以将其传递给子函数。例如我自编用于画功率谱的 <a href="https://ichunyu.github.io/helps/functions/ilpsd/" target="_blank" rel="noopener noreferrer"><code>iLPSD</code></a> 函数，内部调用了 <code>loglog</code> 画图，为了将绘图选项传递给该函数，我用到了下面的方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -340,7 +340,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">p</span><span class="p">.</span><span class="n">addRequired</span><span class="p">(</span><span class="s">&#39;p1&#39;</span><span class="p">,@(</span><span class="n">x</span><span class="p">)</span><span class="n">isnumeric</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>需要说明的是，用于验证参数有效性的函数必须只接收一个输入，且输出必须是逻辑变量 <code>true</code> 或 <code>false</code>。我们可以根据需求自定义验证函数，也可以使用 MATLAB 内置的函数，详细可以查看 <a href="https://ww2.mathworks.cn/help/matlab/ref/is.html" target="_blank" rel="noopener noreffer">状态检测</a>，这些函数基本上都可以顾名思义，因此这里不再展开。</p>
+</div><p>需要说明的是，用于验证参数有效性的函数必须只接收一个输入，且输出必须是逻辑变量 <code>true</code> 或 <code>false</code>。我们可以根据需求自定义验证函数，也可以使用 MATLAB 内置的函数，详细可以查看 <a href="https://ww2.mathworks.cn/help/matlab/ref/is.html" target="_blank" rel="noopener noreferrer">状态检测</a>，这些函数基本上都可以顾名思义，因此这里不再展开。</p>
 <p>最后介绍两个非常好用的内置函数：<code>validateattributes</code> 用于验证参数的类型和属性；<code>validatestring</code> 用于在给定范围内匹配字符。</p>
 <p><code>validateattributes(A,classes,attributes)</code> 用于验证给定参数 <code>A</code> 是否在允许的 <code>class</code> 类型中，且其属性（例如矩阵的维度）是否满足 <code>attributes</code> 中的某个约束。</p>
 <p><code>matchedStr = validatestring(str,validStrings)</code> 将字符串 <code>str</code> 与选项 <code>validStrings</code> 进行对比，当匹配某个选项时将该选项输出。特别地，该函数可以设置忽略大小写，且可以局部匹配，可以避免使用时输入不准确导致程序无法运行。</p></div>
@@ -376,7 +376,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

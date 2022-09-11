@@ -246,7 +246,7 @@
             <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">本文所述的配置仅为成文时的状态，后面的更新详见我放在 GitHub 的 <a href="https://github.com/iChunyu/nvim" target="_blank" rel="noopener noreffer">配置文档</a>。</div>
+            <div class="admonition-content">本文所述的配置仅为成文时的状态，后面的更新详见我放在 GitHub 的 <a href="https://github.com/iChunyu/nvim" target="_blank" rel="noopener noreferrer">配置文档</a>。</div>
         </div>
     </div>
 <h2 id="基本配置" class="headerLink">
@@ -566,7 +566,7 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="插件简介" class="headerLink">
-    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>插件简介</h2><p>为了使用 <a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener noreffer">vim-plug</a> 对插件进行管理，只要在配置文件中的 <code>call plug#begin()</code> 和 <code>call plug#end()</code> 之间使用关键字 <code>Plug</code> 声明插件仓库的地址即可（确切的说只要 GitHub 地址后半部分）。我使用了以下插件：</p>
+    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>插件简介</h2><p>为了使用 <a href="https://github.com/junegunn/vim-plug" target="_blank" rel="noopener noreferrer">vim-plug</a> 对插件进行管理，只要在配置文件中的 <code>call plug#begin()</code> 和 <code>call plug#end()</code> 之间使用关键字 <code>Plug</code> 声明插件仓库的地址即可（确切的说只要 GitHub 地址后半部分）。我使用了以下插件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -629,7 +629,7 @@
 </div>
 </div><p>普通模式下输入 <code>R</code> 刷新配置（在前面我们配置了快捷键），然后输入 <code>:PlugInstall</code> 即可自动安装插件。下面我们对插件进行配置。</p>
 <h3 id="ultisnips代码片段" class="headerLink">
-    <a href="#ultisnips%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5" class="header-mark"></a>ultisnips：代码片段</h3><p><a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreffer">ultisnips</a> 插件提供了简单的语法以自定义代码片段，特定文件的代码片段默认放置在配置文件目录下 <code>UltiSnips/</code> 文件夹内，命名格式为 <code>[后缀名].snippets</code>。也可以任意命名为 <code>*.snippets</code> 并放置在以后缀名为名的子文件下。特别地，<code>all.snippets</code> 对所有文件都生效。</p>
+    <a href="#ultisnips%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5" class="header-mark"></a>ultisnips：代码片段</h3><p><a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreferrer">ultisnips</a> 插件提供了简单的语法以自定义代码片段，特定文件的代码片段默认放置在配置文件目录下 <code>UltiSnips/</code> 文件夹内，命名格式为 <code>[后缀名].snippets</code>。也可以任意命名为 <code>*.snippets</code> 并放置在以后缀名为名的子文件下。特别地，<code>all.snippets</code> 对所有文件都生效。</p>
 <p>编写代码片段的基本语法如下（中文用于提示，中括号及其里面内容为可选项）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -698,12 +698,12 @@
     </a><figcaption class="image-caption">UltiSnip 代码片段</figcaption>
     </figure>
 <h3 id="vimtexlatex-支持" class="headerLink">
-    <a href="#vimtexlatex-%e6%94%af%e6%8c%81" class="header-mark"></a>vimtex：LaTeX 支持</h3><p><a href="https://github.com/lervag/vimtex" target="_blank" rel="noopener noreffer">vimtex</a> 提供了大量的 LaTeX 支持，这里我没有进行深入设置。</p>
+    <a href="#vimtexlatex-%e6%94%af%e6%8c%81" class="header-mark"></a>vimtex：LaTeX 支持</h3><p><a href="https://github.com/lervag/vimtex" target="_blank" rel="noopener noreferrer">vimtex</a> 提供了大量的 LaTeX 支持，这里我没有进行深入设置。</p>
 <blockquote>
 <p>详细的配置可以查看最后参考资料中的 Elijan Mastnak 的博客，他的讲解非常详细。</p>
 </blockquote>
 <h3 id="nightfoxnvim配色方案" class="headerLink">
-    <a href="#nightfoxnvim%e9%85%8d%e8%89%b2%e6%96%b9%e6%a1%88" class="header-mark"></a>nightfox.nvim：配色方案</h3><p><a href="https://github.com/EdenEast/nightfox.nvim" target="_blank" rel="noopener noreffer">nightfox.nvim</a> 提供了很多配色方案，个人倾向于其中的 Nord 方案，同时高亮当前的屏幕行：</p>
+    <a href="#nightfoxnvim%e9%85%8d%e8%89%b2%e6%96%b9%e6%a1%88" class="header-mark"></a>nightfox.nvim：配色方案</h3><p><a href="https://github.com/EdenEast/nightfox.nvim" target="_blank" rel="noopener noreferrer">nightfox.nvim</a> 提供了很多配色方案，个人倾向于其中的 Nord 方案，同时高亮当前的屏幕行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -717,7 +717,7 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="vim-airline美化状态栏" class="headerLink">
-    <a href="#vim-airline%e7%be%8e%e5%8c%96%e7%8a%b6%e6%80%81%e6%a0%8f" class="header-mark"></a>vim-airline：美化状态栏</h3><p><a href="https://github.com/vim-airline/vim-airline" target="_blank" rel="noopener noreffer">vim-airline</a> 和 <a href="https://github.com/vim-airline/vim-airline-themes" target="_blank" rel="noopener noreffer">vim-airline-themes</a> 提供了底部状态栏的美化方案。相应配置参考了 Vi Stack Exchange 上的<a href="https://vi.stackexchange.com/questions/3359/how-do-i-fix-the-status-bar-symbols-in-the-airline-plugin" target="_blank" rel="noopener noreffer">方案</a>，具体配置为：</p>
+    <a href="#vim-airline%e7%be%8e%e5%8c%96%e7%8a%b6%e6%80%81%e6%a0%8f" class="header-mark"></a>vim-airline：美化状态栏</h3><p><a href="https://github.com/vim-airline/vim-airline" target="_blank" rel="noopener noreferrer">vim-airline</a> 和 <a href="https://github.com/vim-airline/vim-airline-themes" target="_blank" rel="noopener noreferrer">vim-airline-themes</a> 提供了底部状态栏的美化方案。相应配置参考了 Vi Stack Exchange 上的<a href="https://vi.stackexchange.com/questions/3359/how-do-i-fix-the-status-bar-symbols-in-the-airline-plugin" target="_blank" rel="noopener noreferrer">方案</a>，具体配置为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -790,7 +790,7 @@
     </a><figcaption class="image-caption">AirLine 状态栏美化</figcaption>
     </figure>
 <h3 id="cocnvim代码补全" class="headerLink">
-    <a href="#cocnvim%e4%bb%a3%e7%a0%81%e8%a1%a5%e5%85%a8" class="header-mark"></a>coc.nvim：代码补全</h3><p><a href="https://github.com/neoclide/coc.nvim" target="_blank" rel="noopener noreffer">coc.nvim</a> 提供了强大的代码补全功能，通过 <code>:CocInstall</code> 进一步安装相关语言的扩展就可以启用代码补全。除了必要的设置外，关键在于设置 <code>&lt;tab&gt;</code> 键触发自动补全，核心配置为：</p>
+    <a href="#cocnvim%e4%bb%a3%e7%a0%81%e8%a1%a5%e5%85%a8" class="header-mark"></a>coc.nvim：代码补全</h3><p><a href="https://github.com/neoclide/coc.nvim" target="_blank" rel="noopener noreferrer">coc.nvim</a> 提供了强大的代码补全功能，通过 <code>:CocInstall</code> 进一步安装相关语言的扩展就可以启用代码补全。除了必要的设置外，关键在于设置 <code>&lt;tab&gt;</code> 键触发自动补全，核心配置为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -840,7 +840,7 @@
 <p>其他设置请参考资料中 TheCW 的视频教程。</p>
 </blockquote>
 <h3 id="rainbow彩色括号" class="headerLink">
-    <a href="#rainbow%e5%bd%a9%e8%89%b2%e6%8b%ac%e5%8f%b7" class="header-mark"></a>rainbow：彩色括号</h3><p><a href="https://github.com/luochen1990/rainbow" target="_blank" rel="noopener noreffer">rainbow</a> 提供了成对符号用颜色匹配的功能，设置中只需要激活即可：</p>
+    <a href="#rainbow%e5%bd%a9%e8%89%b2%e6%8b%ac%e5%8f%b7" class="header-mark"></a>rainbow：彩色括号</h3><p><a href="https://github.com/luochen1990/rainbow" target="_blank" rel="noopener noreferrer">rainbow</a> 提供了成对符号用颜色匹配的功能，设置中只需要激活即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -850,7 +850,7 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="wildfirevim选择成对符号内字符" class="headerLink">
-    <a href="#wildfirevim%e9%80%89%e6%8b%a9%e6%88%90%e5%af%b9%e7%ac%a6%e5%8f%b7%e5%86%85%e5%ad%97%e7%ac%a6" class="header-mark"></a>wildfire.vim：选择成对符号内字符</h3><p><a href="https://github.com/gcmt/wildfire.vim" target="_blank" rel="noopener noreffer">wildfire.vim</a> 提供了使用回车快速选择成对符号内字符的功能。嵌套使用函数时，将光标放到内部，多次按回车可以扩选括号匹配的内容。</p>
+    <a href="#wildfirevim%e9%80%89%e6%8b%a9%e6%88%90%e5%af%b9%e7%ac%a6%e5%8f%b7%e5%86%85%e5%ad%97%e7%ac%a6" class="header-mark"></a>wildfire.vim：选择成对符号内字符</h3><p><a href="https://github.com/gcmt/wildfire.vim" target="_blank" rel="noopener noreferrer">wildfire.vim</a> 提供了使用回车快速选择成对符号内字符的功能。嵌套使用函数时，将光标放到内部，多次按回车可以扩选括号匹配的内容。</p>
 <figure><a class="lightgallery" href="/neovim/wildfire.gif" title="/neovim/wildfire.gif" data-thumbnail="/neovim/wildfire.gif" data-sub-html="<h2>WildFire 选择括号内容</h2>">
         <img
             class="lazyload"
@@ -861,7 +861,7 @@
     </a><figcaption class="image-caption">WildFire 选择括号内容</figcaption>
     </figure>
 <h3 id="undotree撤销历史" class="headerLink">
-    <a href="#undotree%e6%92%a4%e9%94%80%e5%8e%86%e5%8f%b2" class="header-mark"></a>undotree：撤销历史</h3><p><a href="https://github.com/mbbill/undotree" target="_blank" rel="noopener noreffer">undotree</a> 提供了类似 Git 分支的以树形图现实的撤销历史，并可以恢复到特定节点重新开始。基本使用时只需要将触发撤销树的指令映射到给定快捷键即可，这里使用的是空格和 <code>u</code> （undo）：</p>
+    <a href="#undotree%e6%92%a4%e9%94%80%e5%8e%86%e5%8f%b2" class="header-mark"></a>undotree：撤销历史</h3><p><a href="https://github.com/mbbill/undotree" target="_blank" rel="noopener noreferrer">undotree</a> 提供了类似 Git 分支的以树形图现实的撤销历史，并可以恢复到特定节点重新开始。基本使用时只需要将触发撤销树的指令映射到给定快捷键即可，这里使用的是空格和 <code>u</code> （undo）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -880,7 +880,7 @@
     </a><figcaption class="image-caption">UndoTree 撤销历史</figcaption>
     </figure>
 <h3 id="lightspeednvim快速跳转" class="headerLink">
-    <a href="#lightspeednvim%e5%bf%ab%e9%80%9f%e8%b7%b3%e8%bd%ac" class="header-mark"></a>lightspeed.nvim：快速跳转</h3><p><a href="https://github.com/ggandor/lightspeed.nvim" target="_blank" rel="noopener noreffer">lightspeed.nvim</a> 提供了基于数个字符在行间进行跳转的功能。其默认使用小写和大写的 <code>s</code> 分别向后、向前跳转。然而，如前所属，单独的小写 <code>s</code> 必须映射为 <code>&lt;nop&gt;</code> 以配合分屏操作。因此，这里将向后、向前跳转分别映射为 <code>L</code> 和 <code>H</code>，以与前面配置的 <code>J</code> 和 <code>K</code> 多行跳转相一致。</p>
+    <a href="#lightspeednvim%e5%bf%ab%e9%80%9f%e8%b7%b3%e8%bd%ac" class="header-mark"></a>lightspeed.nvim：快速跳转</h3><p><a href="https://github.com/ggandor/lightspeed.nvim" target="_blank" rel="noopener noreferrer">lightspeed.nvim</a> 提供了基于数个字符在行间进行跳转的功能。其默认使用小写和大写的 <code>s</code> 分别向后、向前跳转。然而，如前所属，单独的小写 <code>s</code> 必须映射为 <code>&lt;nop&gt;</code> 以配合分屏操作。因此，这里将向后、向前跳转分别映射为 <code>L</code> 和 <code>H</code>，以与前面配置的 <code>J</code> 和 <code>K</code> 多行跳转相一致。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -904,7 +904,7 @@
     </a><figcaption class="image-caption">LightSpeed 快速跳转：向第二个 <code>sum</code> 跳转时，<code>m</code> 被临时替换为 <code>s</code>以进行区分。</figcaption>
     </figure>
 <h3 id="nvim-treesitter高亮强化" class="headerLink">
-    <a href="#nvim-treesitter%e9%ab%98%e4%ba%ae%e5%bc%ba%e5%8c%96" class="header-mark"></a>nvim-treesitter：高亮强化</h3><p><a href="https://github.com/nvim-treesitter/nvim-treesitter" target="_blank" rel="noopener noreffer">nvim-treesitter</a> 强化了代码高亮，其设置基于 Lua，这里只对 <code>ensure_installed</code> 进行了配置，强化指定文件的高亮功能。</p>
+    <a href="#nvim-treesitter%e9%ab%98%e4%ba%ae%e5%bc%ba%e5%8c%96" class="header-mark"></a>nvim-treesitter：高亮强化</h3><p><a href="https://github.com/nvim-treesitter/nvim-treesitter" target="_blank" rel="noopener noreferrer">nvim-treesitter</a> 强化了代码高亮，其设置基于 Lua，这里只对 <code>ensure_installed</code> 进行了配置，强化指定文件的高亮功能。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -929,9 +929,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">EOF</span><span class="err">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>在本文完成时，treesitter 的 $\LaTeX$ 支持回导致 UltiSnip 的 <code>context</code> 对数学环境的判断失效，因此这里并未启用。详细的讨论可以查看 <a href="https://github.com/nvim-treesitter/nvim-treesitter/issues/1184" target="_blank" rel="noopener noreffer">该 Issue</a>。</p>
+</div><p>在本文完成时，treesitter 的 $\LaTeX$ 支持回导致 UltiSnip 的 <code>context</code> 对数学环境的判断失效，因此这里并未启用。详细的讨论可以查看 <a href="https://github.com/nvim-treesitter/nvim-treesitter/issues/1184" target="_blank" rel="noopener noreferrer">该 Issue</a>。</p>
 <h3 id="fcitxnvim输入法切换" class="headerLink">
-    <a href="#fcitxnvim%e8%be%93%e5%85%a5%e6%b3%95%e5%88%87%e6%8d%a2" class="header-mark"></a>fcitx.nvim：输入法切换</h3><p><a href="https://github.com/h-hg/fcitx.nvim" target="_blank" rel="noopener noreffer">fcitx.nvim</a> 提供了 Fcitx5 下自动切换输入法的的功能。利用该插件，在编辑中文文档时，进入插入模式会自动切换到中文输入法，退回到普通模式时会自动切换到英文输入，避免输入法导致使用命令的困难。</p>
+    <a href="#fcitxnvim%e8%be%93%e5%85%a5%e6%b3%95%e5%88%87%e6%8d%a2" class="header-mark"></a>fcitx.nvim：输入法切换</h3><p><a href="https://github.com/h-hg/fcitx.nvim" target="_blank" rel="noopener noreferrer">fcitx.nvim</a> 提供了 Fcitx5 下自动切换输入法的的功能。利用该插件，在编辑中文文档时，进入插入模式会自动切换到中文输入法，退回到普通模式时会自动切换到英文输入，避免输入法导致使用命令的困难。</p>
 <figure><a class="lightgallery" href="/neovim/fcitx.gif" title="/neovim/fcitx.gif" data-thumbnail="/neovim/fcitx.gif" data-sub-html="<h2>Fcitx 输入法自动切换</h2>">
         <img
             class="lazyload"
@@ -942,9 +942,9 @@
     </a><figcaption class="image-caption">Fcitx 输入法自动切换</figcaption>
     </figure>
 <h3 id="nvim-notify弹窗美化" class="headerLink">
-    <a href="#nvim-notify%e5%bc%b9%e7%aa%97%e7%be%8e%e5%8c%96" class="header-mark"></a>nvim-notify：弹窗美化</h3><p><a href="https://github.com/rcarriga/nvim-notify" target="_blank" rel="noopener noreffer">nvim-notify</a> 对 NeoVim 可能出现的弹窗进行了美化，这里使用了默认配置。</p>
+    <a href="#nvim-notify%e5%bc%b9%e7%aa%97%e7%be%8e%e5%8c%96" class="header-mark"></a>nvim-notify：弹窗美化</h3><p><a href="https://github.com/rcarriga/nvim-notify" target="_blank" rel="noopener noreferrer">nvim-notify</a> 对 NeoVim 可能出现的弹窗进行了美化，这里使用了默认配置。</p>
 <h3 id="gitsignsnvimgit-集成" class="headerLink">
-    <a href="#gitsignsnvimgit-%e9%9b%86%e6%88%90" class="header-mark"></a>gitsigns.nvim：Git 集成</h3><p><a href="https://github.com/lewis6991/gitsigns.nvim" target="_blank" rel="noopener noreffer">gitsigns.nvim</a> 将 Git 集成到了 NeoVim 中，我只在默认方案的基础上，只对部分功能的快捷键进行了重新映射：</p>
+    <a href="#gitsignsnvimgit-%e9%9b%86%e6%88%90" class="header-mark"></a>gitsigns.nvim：Git 集成</h3><p><a href="https://github.com/lewis6991/gitsigns.nvim" target="_blank" rel="noopener noreferrer">gitsigns.nvim</a> 将 Git 集成到了 NeoVim 中，我只在默认方案的基础上，只对部分功能的快捷键进行了重新映射：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -981,7 +981,7 @@
     </a><figcaption class="image-caption">GitSigns 集成 Git 版本控制</figcaption>
     </figure>
 <h3 id="tabular指定字符对齐文本" class="headerLink">
-    <a href="#tabular%e6%8c%87%e5%ae%9a%e5%ad%97%e7%ac%a6%e5%af%b9%e9%bd%90%e6%96%87%e6%9c%ac" class="header-mark"></a>tabular：指定字符对齐文本</h3><p><a href="https://github.com/godlygeek/tabular" target="_blank" rel="noopener noreffer">tabular</a> 可以指定字符串，使多行文本对齐。常用于代码中 <code>=</code> 对齐。</p>
+    <a href="#tabular%e6%8c%87%e5%ae%9a%e5%ad%97%e7%ac%a6%e5%af%b9%e9%bd%90%e6%96%87%e6%9c%ac" class="header-mark"></a>tabular：指定字符对齐文本</h3><p><a href="https://github.com/godlygeek/tabular" target="_blank" rel="noopener noreferrer">tabular</a> 可以指定字符串，使多行文本对齐。常用于代码中 <code>=</code> 对齐。</p>
 <p>为了方便使用，映射了可选模式下 <code>&lt;leader&gt;t</code> 作为指定对齐字符的快捷键：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1002,7 +1002,7 @@
     </a><figcaption class="image-caption">Tabular 自动对齐</figcaption>
     </figure>
 <h3 id="telescopenvim搜索文件" class="headerLink">
-    <a href="#telescopenvim%e6%90%9c%e7%b4%a2%e6%96%87%e4%bb%b6" class="header-mark"></a>telescope.nvim：搜索文件</h3><p><a href="https://github.com/nvim-telescope/telescope.nvim" target="_blank" rel="noopener noreffer">telescope.nvim</a> 提供了搜索文件的功能，为了正确使用，需要安装依赖：<a href="https://github.com/nvim-lua/plenary.nvim" target="_blank" rel="noopener noreffer">plenary.nvim</a>，<a href="https://github.com/BurntSushi/ripgrep" target="_blank" rel="noopener noreffer">ripgrep</a>，<a href="https://github.com/sharkdp/fd" target="_blank" rel="noopener noreffer">fd</a>。</p>
+    <a href="#telescopenvim%e6%90%9c%e7%b4%a2%e6%96%87%e4%bb%b6" class="header-mark"></a>telescope.nvim：搜索文件</h3><p><a href="https://github.com/nvim-telescope/telescope.nvim" target="_blank" rel="noopener noreferrer">telescope.nvim</a> 提供了搜索文件的功能，为了正确使用，需要安装依赖：<a href="https://github.com/nvim-lua/plenary.nvim" target="_blank" rel="noopener noreferrer">plenary.nvim</a>，<a href="https://github.com/BurntSushi/ripgrep" target="_blank" rel="noopener noreferrer">ripgrep</a>，<a href="https://github.com/sharkdp/fd" target="_blank" rel="noopener noreferrer">fd</a>。</p>
 <p>此配置使用了插件的默认设置，仅将查找文件界面的功能映射到了 <code>&lt;leader&gt;tf</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1025,7 +1025,7 @@
     </a><figcaption class="image-caption">Telescope 搜索文件</figcaption>
     </figure>
 <h3 id="vim-markdown-tocmarkdown-生成目录" class="headerLink">
-    <a href="#vim-markdown-tocmarkdown-%e7%94%9f%e6%88%90%e7%9b%ae%e5%bd%95" class="header-mark"></a>vim-markdown-toc：Markdown 生成目录</h3><p><a href="https://github.com/mzlogin/vim-markdown-toc" target="_blank" rel="noopener noreffer">vim-markdown-toc</a> 插件提供了命令生成目录，这里只做了一些无关紧要的配置：</p>
+    <a href="#vim-markdown-tocmarkdown-%e7%94%9f%e6%88%90%e7%9b%ae%e5%bd%95" class="header-mark"></a>vim-markdown-toc：Markdown 生成目录</h3><p><a href="https://github.com/mzlogin/vim-markdown-toc" target="_blank" rel="noopener noreferrer">vim-markdown-toc</a> 插件提供了命令生成目录，这里只做了一些无关紧要的配置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1055,7 +1055,7 @@
     </a><figcaption class="image-caption">Vim-Markdown-TOC 生成目录</figcaption>
     </figure>
 <h3 id="bulletsvim自动列表" class="headerLink">
-    <a href="#bulletsvim%e8%87%aa%e5%8a%a8%e5%88%97%e8%a1%a8" class="header-mark"></a>bullets.vim：自动列表</h3><p><a href="https://github.com/dkarter/bullets.vim" target="_blank" rel="noopener noreffer">bullets.vim</a> 可以根据前文连续生成相应的列表样式，例如 Markwon 中 <code>-</code> 所引导的无序列表。使用时只需要配置该插件使用的文件类型即可：</p>
+    <a href="#bulletsvim%e8%87%aa%e5%8a%a8%e5%88%97%e8%a1%a8" class="header-mark"></a>bullets.vim：自动列表</h3><p><a href="https://github.com/dkarter/bullets.vim" target="_blank" rel="noopener noreferrer">bullets.vim</a> 可以根据前文连续生成相应的列表样式，例如 Markwon 中 <code>-</code> 所引导的无序列表。使用时只需要配置该插件使用的文件类型即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1071,23 +1071,23 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考资料" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><p>本配置重点参考了 <a href="https://github.com/theniceboy" target="_blank" rel="noopener noreffer">David Chen</a> 在哔哩哔哩（用户名为 <a href="https://space.bilibili.com/13081489/" target="_blank" rel="noopener noreffer">TheCW</a>）上投稿的教程视频以及他的配置文档；同时也参考了 <a href="https://github.com/ejmastnak" target="_blank" rel="noopener noreffer">Elijan Mastnak</a> 关于使用 NeoVim 编辑 LaTeX 的系列文章，非常感谢这些大佬们的分享！相关参考如下：</p>
+    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><p>本配置重点参考了 <a href="https://github.com/theniceboy" target="_blank" rel="noopener noreferrer">David Chen</a> 在哔哩哔哩（用户名为 <a href="https://space.bilibili.com/13081489/" target="_blank" rel="noopener noreferrer">TheCW</a>）上投稿的教程视频以及他的配置文档；同时也参考了 <a href="https://github.com/ejmastnak" target="_blank" rel="noopener noreferrer">Elijan Mastnak</a> 关于使用 NeoVim 编辑 LaTeX 的系列文章，非常感谢这些大佬们的分享！相关参考如下：</p>
 <ol>
-<li>TheCW, <a href="https://www.bilibili.com/video/BV164411P7tw" target="_blank" rel="noopener noreffer">上古神器Vim：从恶言相向到爱不释手 - 终极Vim教程01 - 带你配置属于你自己的最强IDE</a></li>
-<li>TheCW, <a href="https://www.bilibili.com/video/BV1e4411V7AA" target="_blank" rel="noopener noreffer">上古神器Vim：进阶使用/配置、必备插件介绍 - 终极Vim教程02 - 带你配置属于你自己的最强IDE</a></li>
-<li>TheCW, <a href="https://www.bilibili.com/video/BV1r4411G7de" target="_blank" rel="noopener noreffer">「妈妈不会告诉你的Vim技巧」 -Vim终极教程03 - 带你配置属于你自己的最强IDE</a></li>
-<li>TheCW, <a href="https://www.bilibili.com/video/BV1y4411C7pE" target="_blank" rel="noopener noreffer">21世纪最强代码编辑器：NeoVim ——就是这些设置让它变成了编辑器之鬼 【附配置与插件教程】</a></li>
-<li>TheCW, <a href="https://www.bilibili.com/video/BV1Ka4y1E7AM" target="_blank" rel="noopener noreffer">【硬货】让你的vim像vscode一样强大 —— coc.nvim终极指南</a></li>
-<li>TheCW, <a href="https://github.com/theniceboy/nvim" target="_blank" rel="noopener noreffer">Colemak 用户使用的 NeoVim 配置文件</a></li>
-<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/intro.html" target="_blank" rel="noopener noreffer">Real-time LaTeX Using (Neo)Vim</a></li>
-<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/prerequisites.html" target="_blank" rel="noopener noreffer">Suggested Prerequisites for Writing LaTeX in Vim</a></li>
-<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/ultisnips.html" target="_blank" rel="noopener noreffer">An UltiSnips guide for LaTeX workflows</a></li>
-<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/ftplugin.html" target="_blank" rel="noopener noreffer">Vim’s <code>ftplugin</code> system</a></li>
-<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/vimtex.html" target="_blank" rel="noopener noreffer">Getting started with the VimTeX plugin</a></li>
-<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/compilation.html" target="_blank" rel="noopener noreffer">Compiling LaTeX Documents in a Vim-Based Workflow</a></li>
-<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/pdf-reader.html" target="_blank" rel="noopener noreffer">Setting Up a PDF Reader for Writing LaTeX with Vim</a></li>
-<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/vimscript.html" target="_blank" rel="noopener noreffer">A Vimscript Primer for Filetype-Specific Workflows</a></li>
-<li>Jacob Banks, <a href="https://morioh.com/p/a7063de46490" target="_blank" rel="noopener noreffer">Collections of Awesome Neovim Plugins</a></li>
+<li>TheCW, <a href="https://www.bilibili.com/video/BV164411P7tw" target="_blank" rel="noopener noreferrer">上古神器Vim：从恶言相向到爱不释手 - 终极Vim教程01 - 带你配置属于你自己的最强IDE</a></li>
+<li>TheCW, <a href="https://www.bilibili.com/video/BV1e4411V7AA" target="_blank" rel="noopener noreferrer">上古神器Vim：进阶使用/配置、必备插件介绍 - 终极Vim教程02 - 带你配置属于你自己的最强IDE</a></li>
+<li>TheCW, <a href="https://www.bilibili.com/video/BV1r4411G7de" target="_blank" rel="noopener noreferrer">「妈妈不会告诉你的Vim技巧」 -Vim终极教程03 - 带你配置属于你自己的最强IDE</a></li>
+<li>TheCW, <a href="https://www.bilibili.com/video/BV1y4411C7pE" target="_blank" rel="noopener noreferrer">21世纪最强代码编辑器：NeoVim ——就是这些设置让它变成了编辑器之鬼 【附配置与插件教程】</a></li>
+<li>TheCW, <a href="https://www.bilibili.com/video/BV1Ka4y1E7AM" target="_blank" rel="noopener noreferrer">【硬货】让你的vim像vscode一样强大 —— coc.nvim终极指南</a></li>
+<li>TheCW, <a href="https://github.com/theniceboy/nvim" target="_blank" rel="noopener noreferrer">Colemak 用户使用的 NeoVim 配置文件</a></li>
+<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/intro.html" target="_blank" rel="noopener noreferrer">Real-time LaTeX Using (Neo)Vim</a></li>
+<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/prerequisites.html" target="_blank" rel="noopener noreferrer">Suggested Prerequisites for Writing LaTeX in Vim</a></li>
+<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/ultisnips.html" target="_blank" rel="noopener noreferrer">An UltiSnips guide for LaTeX workflows</a></li>
+<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/ftplugin.html" target="_blank" rel="noopener noreferrer">Vim’s <code>ftplugin</code> system</a></li>
+<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/vimtex.html" target="_blank" rel="noopener noreferrer">Getting started with the VimTeX plugin</a></li>
+<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/compilation.html" target="_blank" rel="noopener noreferrer">Compiling LaTeX Documents in a Vim-Based Workflow</a></li>
+<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/pdf-reader.html" target="_blank" rel="noopener noreferrer">Setting Up a PDF Reader for Writing LaTeX with Vim</a></li>
+<li>Elijan Mastnak, <a href="https://ejmastnak.github.io/tutorials/vim-latex/vimscript.html" target="_blank" rel="noopener noreferrer">A Vimscript Primer for Filetype-Specific Workflows</a></li>
+<li>Jacob Banks, <a href="https://morioh.com/p/a7063de46490" target="_blank" rel="noopener noreferrer">Collections of Awesome Neovim Plugins</a></li>
 </ol></div>
 
         <div class="post-footer" id="post-footer">
@@ -1121,7 +1121,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

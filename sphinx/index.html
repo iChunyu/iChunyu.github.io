@@ -164,7 +164,7 @@
 </nav></div>
             </div><div class="content" id="content"><p>Sphinx 是一个静态网页生成工具，可以将 reStructuredText 转化为静态网站，特别适合教程、说明等文档的编写。本文介绍如何基于此部署自己的博客。</p>
 <h2 id="概述" class="headerLink">
-    <a href="#%e6%a6%82%e8%bf%b0" class="header-mark"></a>概述</h2><p>静态网页可以由 <a href="https://www.sphinx-doc.org/zh_CN/master/" target="_blank" rel="noopener noreffer">Sphinx</a> 编译而成，源代码托管于 <a href="https://github.com/iChunyu/iChunyu.github.io/" target="_blank" rel="noopener noreffer">GitHub</a> 仓库，生成的静态网站部署在 <a href="https://readthedocs.org/" target="_blank" rel="noopener noreffer">Read the Docs</a>。以这种方式建立网站的主要步骤为：</p>
+    <a href="#%e6%a6%82%e8%bf%b0" class="header-mark"></a>概述</h2><p>静态网页可以由 <a href="https://www.sphinx-doc.org/zh_CN/master/" target="_blank" rel="noopener noreferrer">Sphinx</a> 编译而成，源代码托管于 <a href="https://github.com/iChunyu/iChunyu.github.io/" target="_blank" rel="noopener noreferrer">GitHub</a> 仓库，生成的静态网站部署在 <a href="https://readthedocs.org/" target="_blank" rel="noopener noreferrer">Read the Docs</a>。以这种方式建立网站的主要步骤为：</p>
 <ul>
 <li>安装并初始化 Sphinx 项目；</li>
 <li>在 GitHub 建立文档源码托管仓库；</li>
@@ -180,7 +180,7 @@
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install sphinx sphinx_rtd_theme
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>其中 <code>sphinx</code> 是主程序，<code>sphinx_rtd_theme</code> 是很常用的一个主题，更多主题可以在 <a href="https://sphinx-themes.org" target="_blank" rel="noopener noreffer">Sphinx Themes Gallery</a> 查看。</p>
+</div><p>其中 <code>sphinx</code> 是主程序，<code>sphinx_rtd_theme</code> 是很常用的一个主题，更多主题可以在 <a href="https://sphinx-themes.org" target="_blank" rel="noopener noreferrer">Sphinx Themes Gallery</a> 查看。</p>
 <p>新建文件夹用于存放 Sphinx 文档的源码。在该文件夹打开终端后，运行 <code>sphinx-quickstart</code> 以快速创建 Sphinx 工程。依次会出现以下提示：</p>
 <ol>
 <li>
@@ -243,7 +243,7 @@
 </div>
 </div><p>至此，基本的设置就完成了。</p>
 <h2 id="github-源码托管" class="headerLink">
-    <a href="#github-%e6%ba%90%e7%a0%81%e6%89%98%e7%ae%a1" class="header-mark"></a>GitHub 源码托管</h2><p>代码托管涉及到 <a href="https://git-scm.com/" target="_blank" rel="noopener noreffer">Git</a> 的使用，基本规则可以参考 <a href="https://ichunyu.github.io/learngit/" rel="">Git 版本控制</a> 。这里我们只需要在 GitHub 建立仓库，例如 <code>helps</code> 。然后在 Sphinx 项目目录下运行以下命令即可。</p>
+    <a href="#github-%e6%ba%90%e7%a0%81%e6%89%98%e7%ae%a1" class="header-mark"></a>GitHub 源码托管</h2><p>代码托管涉及到 <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> 的使用，基本规则可以参考 <a href="https://ichunyu.github.io/learngit/" rel="">Git 版本控制</a> 。这里我们只需要在 GitHub 建立仓库，例如 <code>helps</code> 。然后在 Sphinx 项目目录下运行以下命令即可。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -274,7 +274,7 @@
 <h2 id="read-the-docs-网站部署" class="headerLink">
     <a href="#read-the-docs-%e7%bd%91%e7%ab%99%e9%83%a8%e7%bd%b2" class="header-mark"></a>Read the Docs 网站部署</h2><p>注册并登录 Read the Docs ，与发现有个 <code>Import a Project</code> 按钮，点之。根据提示与 GitHub 绑定，然后会刷新出仓库列表，选择保存 Sphinx 项目的仓库，然后根据提示进行设置，完成导入即可。</p>
 <p>在 Read the Docs 导入项目之后，会在相应的 GitHub 仓库部署一个钩子。这个钩子的功能就是检测该仓库的提交，每当有新的提交，Read the Docs 将会根据最新的仓库重新编译 Sphinx 项目，并部署在项目所设置的网站上。</p>
-<p>这样以来就基本配置好了，剩下的只要依据 <a href="http://www.pythondoc.com/sphinx/index.html" target="_blank" rel="noopener noreffer">reStructuredText</a> 的规则编写文档即可。当然，Sphinx 也可以通过插件提供 Markdown 支持。reStructuredText 具有很同意的风格和完善的扩展，但使用稍微复杂一点点；而 Markdown 虽然简单，却存在很多“方言”，不同的编辑器会有不同的特性。各位可以自行取舍。</p>
+<p>这样以来就基本配置好了，剩下的只要依据 <a href="http://www.pythondoc.com/sphinx/index.html" target="_blank" rel="noopener noreferrer">reStructuredText</a> 的规则编写文档即可。当然，Sphinx 也可以通过插件提供 Markdown 支持。reStructuredText 具有很同意的风格和完善的扩展，但使用稍微复杂一点点；而 Markdown 虽然简单，却存在很多“方言”，不同的编辑器会有不同的特性。各位可以自行取舍。</p>
 <h2 id="github-pages-网站部署" class="headerLink">
     <a href="#github-pages-%e7%bd%91%e7%ab%99%e9%83%a8%e7%bd%b2" class="header-mark"></a>GitHub Pages 网站部署</h2><p>生成的静态网站还可以直接由 GitHub Pages 进行托管，但需要遵循相关规则：</p>
 <ol>
@@ -314,7 +314,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

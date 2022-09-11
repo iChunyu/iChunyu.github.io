@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/typeconvert/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-09-03T15:31:40+08:00" />
-<meta property="article:modified_time" content="2022-09-03T20:02:24+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2022-09-11T14:49:43+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
@@ -35,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/typeconvert\/"
-        },"genre": "posts","keywords": "数据类型转换, 快速平方根倒数","wordcount":  1551 ,
-        "url": "https:\/\/ichunyu.github.io\/typeconvert\/","datePublished": "2022-09-03T15:31:40+08:00","dateModified": "2022-09-03T20:02:24+08:00","publisher": {
+        },"genre": "posts","keywords": "数据类型转换, 快速平方根倒数","wordcount":  1549 ,
+        "url": "https:\/\/ichunyu.github.io\/typeconvert\/","datePublished": "2022-09-03T15:31:40+08:00","dateModified": "2022-09-11T14:49:43+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -145,7 +145,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E4%BC%98%E9%9B%85%E7%9A%84%E7%AE%97%E6%B3%95/"><i class="far fa-folder fa-fw"></i>优雅的算法</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-03">2022-09-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-09-03">2022-09-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1551 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-03">2022-09-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-09-11">2022-09-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1549 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -269,7 +269,7 @@ $$
 \quad \rightarrow \quad
 f_{\mathrm{int}}(y_0) = - \frac{3}{2} R - \frac{1}{2} f_{\mathrm{int}}(x)
 $$
-<p>其中 $-\frac{3}{2}R = \frac{3}{2}M_0(E_0-k)$，对于单精度数，取 $k=0.045$ 时，其指用十六进制表示为 <code>0x5f3759df</code>，这就是代码中“魔法数”的由来。</p>
+<p>其中 $-\frac{3}{2}R = \frac{3}{2}M_0(E_0-k)$，对于单精度数，取 $k=0.045$ 时，用十六进制表示为 <code>0x5f3759df</code>，这就是代码中“魔法数”的由来。</p>
 <ul>
 <li>反向使用强制进制转化得到原数（平方根的倒数）初值：</li>
 </ul>
@@ -287,11 +287,11 @@ $$
 <div align=center>
     <img src=./results.png width=60% />
 </div>
-<p>本文相关的 MATLAB 代码我放在了 <a href="https://github.com/iChunyu/signal-process-demo/blob/main/05_TryAlgorithms/Try04_rsqrt.m" target="_blank" rel="noopener noreffer">GitHub 仓库</a>，欢迎讨论交流。</p>
+<p>本文相关的 MATLAB 代码我放在了 <a href="https://github.com/iChunyu/signal-process-demo/blob/main/05_TryAlgorithms/Try04_rsqrt.m" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>，欢迎讨论交流。</p>
 <h2 id="参考资料" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
-<li>MathWorks Inc., <a href="https://ww2.mathworks.cn/help/matlab/matlab_prog/floating-point-numbers.html" target="_blank" rel="noopener noreffer">Floating-Point Numbers</a>.</li>
-<li>爱XR的麦子, <a href="https://zhuanlan.zhihu.com/p/415245234" target="_blank" rel="noopener noreffer">【回归本源】番外1-雷神之锤3的那段代码</a>.</li>
+<li>MathWorks Inc., <a href="https://ww2.mathworks.cn/help/matlab/matlab_prog/floating-point-numbers.html" target="_blank" rel="noopener noreferrer">Floating-Point Numbers</a>.</li>
+<li>爱XR的麦子, <a href="https://zhuanlan.zhihu.com/p/415245234" target="_blank" rel="noopener noreferrer">【回归本源】番外1-雷神之锤3的那段代码</a>.</li>
 <li>Chris Lomont, Fast Inverse Square Root, 2003.</li>
 </ol></div>
 
@@ -299,8 +299,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-09-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/05731aeab5026985fb93c496550720a2e41e65d4" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 05731aeab5026985fb93c496550720a2e41e65d4: Add new post: data type conversion and its application" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>05731ae</a></span>
+                <span>更新于 2022-09-11&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/3aa0a299dd2d51bfe7c3a4694764be5d0bf679b5" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 3aa0a299dd2d51bfe7c3a4694764be5d0bf679b5: Update theme, correct posts" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>3aa0a29</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -325,7 +325,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

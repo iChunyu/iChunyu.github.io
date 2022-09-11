@@ -196,8 +196,8 @@
 </nav></div>
             </div><div class="content" id="content"><p>尝试过 Debian 系的 deepin、Ubuntu 和它的衍生版 Pop!_OS，都被各种各样的 Bug 劝退。后来尝试了 Arch 系的 Manjaro，唔，这真的是一款非常令人舒适的 Linux 发行版！来跟我一起折腾吧！</p>
 <h2 id="安装系统" class="headerLink">
-    <a href="#%e5%ae%89%e8%a3%85%e7%b3%bb%e7%bb%9f" class="header-mark"></a>安装系统</h2><p><a href="https://manjaro.org/" target="_blank" rel="noopener noreffer">Manjaro</a> 的系统镜像可以从官网下载，为了提高下载速度，可以从国内镜像站下载，例如我自己常用的 <a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener noreffer">清华大学开源软件镜像站</a>。Manjaro 有 XFCE、KDE、GNOME 三种官方桌面可供选择，而社区提供更多其他桌面环境。这里我个人非常推荐 KDE 版本。</p>
-<p>准备一个空U盘制作系统启动盘，Windows 用户可以使用 <a href="https://rufus.ie/" target="_blank" rel="noopener noreffer">Rufus</a> 等工具通过用户界面对镜像文件进行烧写，对于 Linux 用户，可以按如下方式使用 <code>dd</code> 命令：</p>
+    <a href="#%e5%ae%89%e8%a3%85%e7%b3%bb%e7%bb%9f" class="header-mark"></a>安装系统</h2><p><a href="https://manjaro.org/" target="_blank" rel="noopener noreferrer">Manjaro</a> 的系统镜像可以从官网下载，为了提高下载速度，可以从国内镜像站下载，例如我自己常用的 <a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener noreferrer">清华大学开源软件镜像站</a>。Manjaro 有 XFCE、KDE、GNOME 三种官方桌面可供选择，而社区提供更多其他桌面环境。这里我个人非常推荐 KDE 版本。</p>
+<p>准备一个空U盘制作系统启动盘，Windows 用户可以使用 <a href="https://rufus.ie/" target="_blank" rel="noopener noreferrer">Rufus</a> 等工具通过用户界面对镜像文件进行烧写，对于 Linux 用户，可以按如下方式使用 <code>dd</code> 命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -279,7 +279,7 @@
 </span></span><span class="line"><span class="cl">yay -S bash-completion              <span class="c1"># 终端自动补全功能</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>不确定软件名字的时候，可以使用命令 <code>yay -Ss &lt;pkgname&gt;</code> 进行搜索，或者在 <a href="https://aur.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener noreffer">AUR 仓库镜像站</a> 搜索。</p>
+</div><p>不确定软件名字的时候，可以使用命令 <code>yay -Ss &lt;pkgname&gt;</code> 进行搜索，或者在 <a href="https://aur.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener noreferrer">AUR 仓库镜像站</a> 搜索。</p>
 <p>Manjaro 自带最新版本 Git ，真不错。下面记录一些需要少许配置的其他软件的安装。</p>
 <h3 id="vim" class="headerLink">
     <a href="#vim" class="header-mark"></a>Vim</h3><p>Vim 是一个很强的编辑器，几乎所有 Linux 发行版都会内置，但自带的通常不能把文件内容复制到系统剪切板，为此可以安装 gVim：</p>
@@ -346,7 +346,7 @@
 </span></span><span class="line"><span class="cl">XMODIFIERS    DEFAULT=\@im=fcitx5
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>然后就可以安装具体的输入法了，例如 <a href="https://rime.im/" target="_blank" rel="noopener noreffer">Rime</a> 可以使用如下命令进行安装：</p>
+</div><p>然后就可以安装具体的输入法了，例如 <a href="https://rime.im/" target="_blank" rel="noopener noreferrer">Rime</a> 可以使用如下命令进行安装：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -386,7 +386,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>最后调整界面字体时， 路径 <code>*/com.qq.weixin.deepin/*</code> 对应的是微信，QQ 应当做相应替换。运行后会弹出设置窗口，在 &ldquo;显示&rdquo; 选项卡中调整 &ldquo;屏幕分辨率&rdquo; 的 DPI 即可。将默认值 96 改为 144 即可实现 150% 的缩放效果。</p>
-<p>详细的安装说明及问题可以参考 <a href="https://github.com/vufa/deepin-wine-wechat-arch" target="_blank" rel="noopener noreffer">ArchLinux 微信</a> 的说明文档。</p>
+<p>详细的安装说明及问题可以参考 <a href="https://github.com/vufa/deepin-wine-wechat-arch" target="_blank" rel="noopener noreferrer">ArchLinux 微信</a> 的说明文档。</p>
 <h3 id="matlab" class="headerLink">
     <a href="#matlab" class="header-mark"></a>MATLAB</h3><p>从官网下载的 <code>.zip</code> 压缩包如果直接解压可能导致无法打开安装文件，使用下面的命令进行解压：</p>
 <div class="highlight"><div class="chroma">
@@ -425,7 +425,7 @@
 </span></span><span class="line"><span class="cl">Categories=Development;MATLAB;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>KDE 桌面环境下，MATLAB 中右键 &ldquo;Open Current Folder in File Manager&rdquo; 可能不工作，可按 <a href="https://ww2.mathworks.cn/matlabcentral/answers/496880-open-current-folder-in-file-manager-does-nothing-matlab-r2019b-on-kubuntu-19-10" target="_blank" rel="noopener noreffer">以下步骤</a> 进行设置：</p>
+</div><p>KDE 桌面环境下，MATLAB 中右键 &ldquo;Open Current Folder in File Manager&rdquo; 可能不工作，可按 <a href="https://ww2.mathworks.cn/matlabcentral/answers/496880-open-current-folder-in-file-manager-does-nothing-matlab-r2019b-on-kubuntu-19-10" target="_blank" rel="noopener noreferrer">以下步骤</a> 进行设置：</p>
 <ol>
 <li>在终端使用 <code>locate libQt5Core.so.5</code> 确认库的位置；</li>
 <li>在 MATLAB 中新建启动脚本： <code>edit(fullfile(userpath,'startup.m'))</code> ；</li>
@@ -451,7 +451,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>对于双显卡电脑（一般是笔记本电脑），绘图时可能出现无法使用独立显卡进行渲染的情况，通常给出 &ldquo;MATLAB禁用了一些高级图形功能&rdquo; 的警告或者直接抛出 OpenGL
-相关的错误。为此，可在命令行使用 <a href="https://www.mathworks.com/matlabcentral/answers/239279-hardware-based-opengl-on-linux" target="_blank" rel="noopener noreffer">以下命令</a>
+相关的错误。为此，可在命令行使用 <a href="https://www.mathworks.com/matlabcentral/answers/239279-hardware-based-opengl-on-linux" target="_blank" rel="noopener noreferrer">以下命令</a>
 启动 MATLAB：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -486,7 +486,7 @@
 </div>
 </div><p>同样注意安装路径可能有所不同。最后运行 <code>source .bashrc</code> 刷新即可。</p>
 <h3 id="inkscape" class="headerLink">
-    <a href="#inkscape" class="header-mark"></a>Inkscape</h3><p><a href="https://inkscape.org/" target="_blank" rel="noopener noreffer">Inkscape</a> 是我最喜欢的绘图软件，它的安装非常简单：</p>
+    <a href="#inkscape" class="header-mark"></a>Inkscape</h3><p><a href="https://inkscape.org/" target="_blank" rel="noopener noreferrer">Inkscape</a> 是我最喜欢的绘图软件，它的安装非常简单：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -495,7 +495,7 @@
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yay -S inkscape
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>除此，我还喜欢为其安装 <a href="https://textext.github.io/textext/" target="_blank" rel="noopener noreffer">TexText</a> 扩展以在绘图时使用 LaTeX 。虽然该扩展可以简单地使用 <code>yay -S textext</code> 进行安装，但这种方法偶尔会找不到 LaTeX 路径，因此建议从 <a href="https://github.com/textext/textext/releases" target="_blank" rel="noopener noreffer">GitHub release page</a> 下载，并在安装时手动指定路径：</p>
+</div><p>除此，我还喜欢为其安装 <a href="https://textext.github.io/textext/" target="_blank" rel="noopener noreferrer">TexText</a> 扩展以在绘图时使用 LaTeX 。虽然该扩展可以简单地使用 <code>yay -S textext</code> 进行安装，但这种方法偶尔会找不到 LaTeX 路径，因此建议从 <a href="https://github.com/textext/textext/releases" target="_blank" rel="noopener noreferrer">GitHub release page</a> 下载，并在安装时手动指定路径：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -528,7 +528,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="flameshot" class="headerLink">
-    <a href="#flameshot" class="header-mark"></a>Flameshot</h3><p>Linux 下对标 <a href="https://www.snipaste.com/" target="_blank" rel="noopener noreffer">Snipaste</a> 的开源截图软件，安装很容易：</p>
+    <a href="#flameshot" class="header-mark"></a>Flameshot</h3><p>Linux 下对标 <a href="https://www.snipaste.com/" target="_blank" rel="noopener noreferrer">Snipaste</a> 的开源截图软件，安装很容易：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -543,7 +543,7 @@
 <h3 id="高分辨率屏幕缩放" class="headerLink">
     <a href="#%e9%ab%98%e5%88%86%e8%be%a8%e7%8e%87%e5%b1%8f%e5%b9%95%e7%bc%a9%e6%94%be" class="header-mark"></a>高分辨率屏幕缩放</h3><p>Manjaro 对高分辨率屏幕的支持很好，只需要打开系统设置 → （硬件）显示监视器 → 显示设置 → 全局缩放。将其设置为 150% 即可（取决于个人喜好，也可 125%）。</p>
 <h3 id="fn-键设置" class="headerLink">
-    <a href="#fn-%e9%94%ae%e8%ae%be%e7%bd%ae" class="header-mark"></a>Fn 键设置</h3><p>如果键盘的 <code>Fn</code> 键不可用，或者默认处于开启状态，希望默认关闭，可以在参考 <a href="https://wiki.archlinux.org/title/Apple_Keyboard" target="_blank" rel="noopener noreffer">Arch Wiki</a>，在管理员身份下运行以下命令：</p>
+    <a href="#fn-%e9%94%ae%e8%ae%be%e7%bd%ae" class="header-mark"></a>Fn 键设置</h3><p>如果键盘的 <code>Fn</code> 键不可用，或者默认处于开启状态，希望默认关闭，可以在参考 <a href="https://wiki.archlinux.org/title/Apple_Keyboard" target="_blank" rel="noopener noreferrer">Arch Wiki</a>，在管理员身份下运行以下命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -627,7 +627,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreffer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.102.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
