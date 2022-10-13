@@ -21,7 +21,7 @@
     &= \frac{1}{T_s} \sqrt{ \left( 1 - \cos \omega T_s \right)^2 + \sin^2 \omega T_s } \\
     &= \frac{1}{T_s} \sqrt{ 2 - 2 \cos \omega T_s } \\
     &= \frac{1}{T_s} \sqrt{4 \sin^2 \frac{\omega T_s}{2}} \\
-    &= f_s \sin 2\pi\frac{f}{f_s} \approx 2\pi f = \left| s \right| \quad  (f \ll f_s)
+    &= 2 f_s \sin \pi\frac{f}{f_s} \approx 2\pi f = \left| s \right| \quad  (f \ll f_s)
 \end{aligned}
 $${{< /math >}}
 
