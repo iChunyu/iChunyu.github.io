@@ -26,7 +26,7 @@ draft: false
 {{< math >}}$$
 \left\{
 \begin{aligned}
-\mathbf{x}_{k+1} &= A\mathbf{x}_k + B \mathbf{u}_k + \mathbf{w}_k \\
+\mathbf{x}_k &= A\mathbf{x}_{k-1} + B \mathbf{u}_k + \mathbf{w}_k \\
 \mathbf{y}_k &= C \mathbf{x}_k + \mathbf{v}_k
 \end{aligned}
 \right.
@@ -38,7 +38,7 @@ $${{< /math >}}
 
 由于噪声是不可知的，只能通过模型对输出估计，状态的先验估计（上标带有负号）为
 
-{{< math >}}$$\hat{\mathbf{x}}_{k+1}^- = A \hat{\mathbf{x}}_k + B \mathbf{u}_k$${{< /math >}}
+{{< math >}}$$\hat{\mathbf{x}}_k^- = A \hat{\mathbf{x}}_{k-1} + B \mathbf{u}_k$${{< /math >}}
 
 应当注意，下一步状态的先验估计由上一步状态的后验估计（上标没有负号）迭代计算，而后验估计则依据模型误差进行数据融合得到，为
 
@@ -105,7 +105,7 @@ $${{< /math >}}
 \begin{aligned}
 &\left.
 \begin{aligned}
-\hat{\mathbf{x}}_{k+1}^- &= A \hat{\mathbf{x}}_k + B \mathbf{u}_k \\
+\hat{\mathbf{x}}_k^- &= A \hat{\mathbf{x}}_{k-1} + B \mathbf{u}_k \\
 P_k^- &= AP_{k-1}A^T+Q
 \end{aligned}
 \quad \right\} \text{预测} \\
