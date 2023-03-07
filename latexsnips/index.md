@@ -11,7 +11,7 @@ LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境�
 
 ### 插件简介
 
-对于 Vim 或者 NeoVim 用户，可以使用 [UltiSnips](https://github.com/SirVer/ultisnips)，我在之前的 [NeoVim 基本配置]({{< ref "../../life/neovim/index.md" >}}) 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 [HyperSnips](https://marketplace.visualstudio.com/items?itemName=draivin.hsnips) 插件。这两款插件之间的对比如下表所示：
+对于 Vim 或者 NeoVim 用户，可以使用 [UltiSnips](https://github.com/SirVer/ultisnips)，我在之前的 [NeoVim 基本配置]({{< ref "../../tool/neovim/index.md" >}}) 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 [HyperSnips](https://marketplace.visualstudio.com/items?itemName=draivin.hsnips) 插件。这两款插件之间的对比如下表所示：
 
 | 项目     | UltiSnips                           | HyperSnips                            |
 | :---     | :---                                | :---                                  |
@@ -47,7 +47,7 @@ endsnippet
 - `r`：（只在 UltiSnips 中有该选项）启用正则表达式；
 - `A`：自动展开。当关键字可以触发代码片段时自动展开，通常与其他选项结合使用。
 
-`snippet body` 是自定义的代码片段，即触发关键字后展开的内容。代码片段内可以使用 `$` 和数字设置跳点，这样可以使用设置的快捷键快速跳转：UltiSnips 需要自行设置，见 [NeoVim 基本配置]({{< ref "../../life/neovim/index.md" >}})；VS Code 使用 `<Tab>` 键跳至下一个跳点，使用 `<Shift><Tab>` 跳到上一个跳点。特别地，`$0` 为最后一个跳点，跳至这里后无法再进行回跳。代码片段内的跳点可以进一步使用花括号和冒号设置默认值。
+`snippet body` 是自定义的代码片段，即触发关键字后展开的内容。代码片段内可以使用 `$` 和数字设置跳点，这样可以使用设置的快捷键快速跳转：UltiSnips 需要自行设置，见 [NeoVim 基本配置]({{< ref "../../tool/neovim/index.md" >}})；VS Code 使用 `<Tab>` 键跳至下一个跳点，使用 `<Shift><Tab>` 跳到上一个跳点。特别地，`$0` 为最后一个跳点，跳至这里后无法再进行回跳。代码片段内的跳点可以进一步使用花括号和冒号设置默认值。
 
 
 下面用一个例子进行解释（两个插件通用）：

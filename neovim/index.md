@@ -6,7 +6,7 @@ Vim 被称之为神之编辑器，与其强大的可配置性脱不了关系。N
 <!--more-->
 
 {{< admonition info >}}
-本文所述的配置仅为成文时的状态，后面的更新详见我放在 GitHub 的 [配置文档](https://github.com/iChunyu/nvim)。
+本文所述的配置仅为成文时的状态，详细可以参考我的配置文件在 [`e50327e`](https://github.com/iChunyu/nvim/tree/e50327e0e759bac2c6d4408fec2a89fba192cada) 处的提交。
 {{< /admonition >}}
 
 

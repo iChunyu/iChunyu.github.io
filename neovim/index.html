@@ -5,13 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">NeoVim 基本配置 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="NeoVim 基本配置" />
+    <title>NeoVim 基本配置 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="NeoVim 基本配置" />
 <meta property="og:description" content="Vim 被称之为神之编辑器，与其强大的可配置性脱不了关系。NeoVim 是 Vim 的一个复刻，更多强大的插件也随之诞生。本文简要介绍 NeoVim 的配置，包括软件基本的设置和常用插件的安装与配置。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/neovim/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-06T18:12:48+08:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
-
+<meta property="article:modified_time" content="2023-03-07T19:31:26+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -20,7 +19,7 @@
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/neovim/" /><link rel="prev" href="https://ichunyu.github.io/matlab-inputparser/" /><link rel="next" href="https://ichunyu.github.io/latexsnips/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/neovim/" /><link rel="prev" href="https://ichunyu.github.io/matlab-inputparser/" /><link rel="next" href="https://ichunyu.github.io/latexsnips/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
     
@@ -35,8 +34,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/neovim\/"
-        },"genre": "posts","keywords": "Vim","wordcount":  5949 ,
-        "url": "https:\/\/ichunyu.github.io\/neovim\/","datePublished": "2022-05-06T18:12:48+08:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "Vim","wordcount":  5951 ,
+        "url": "https:\/\/ichunyu.github.io\/neovim\/","datePublished": "2022-05-06T18:12:48+08:00","dateModified": "2023-03-07T19:31:26+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -48,7 +47,8 @@
                 "name": "大春雨"
             },"description": ""
     }
-    </script></head>
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
         function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
@@ -67,16 +67,16 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
                     <i class="fas fa-adjust fa-fw"></i>
                     <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
                         <option value="light">浅色</option>
@@ -100,20 +100,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
                         取消
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" onclick="return false;" class="menu-item theme-select" title="切换主题">
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
                     <option value="light">浅色</option>
@@ -184,8 +184,8 @@
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">NeoVim 基本配置</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>生命在于折腾</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-06">2022-05-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5949 字&nbsp;
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/"><i class="far fa-folder fa-fw"></i>好用的软件</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-06">2022-05-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-07">2023-03-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5951 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -246,7 +246,7 @@
             <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">本文所述的配置仅为成文时的状态，后面的更新详见我放在 GitHub 的 <a href="https://github.com/iChunyu/nvim" target="_blank" rel="noopener noreferrer">配置文档</a>。</div>
+            <div class="admonition-content">本文所述的配置仅为成文时的状态，详细可以参考我的配置文件在 <a href="https://github.com/iChunyu/nvim/tree/e50327e0e759bac2c6d4408fec2a89fba192cada" target="_blank" rel="noopener noreferrer"><code>e50327e</code></a> 处的提交。</div>
         </div>
     </div>
 <h2 id="基本配置" class="headerLink">
@@ -485,10 +485,11 @@
 </div>
 </div><figure><a class="lightgallery" href="/neovim/split.gif" title="/neovim/split.gif" data-thumbnail="/neovim/split.gif" data-sub-html="<h2>分屏</h2>">
         <img
-            class="lazyload"
-            data-src="split.gif"
-            data-srcset="/neovim/split.gif, split.gif 1.5x, /neovim/split.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="split.gif"
+            srcset="/neovim/split.gif, split.gif 1.5x, /neovim/split.gif 2x"
+            sizes="auto"
             alt="/neovim/split.gif"width="70%">
     </a><figcaption class="image-caption">分屏</figcaption>
     </figure>
@@ -509,10 +510,11 @@
 </div>
 </div><figure><a class="lightgallery" href="/neovim/split2.gif" title="/neovim/split2.gif" data-thumbnail="/neovim/split2.gif" data-sub-html="<h2>分屏移动</h2>">
         <img
-            class="lazyload"
-            data-src="split2.gif"
-            data-srcset="/neovim/split2.gif, split2.gif 1.5x, /neovim/split2.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="split2.gif"
+            srcset="/neovim/split2.gif, split2.gif 1.5x, /neovim/split2.gif 2x"
+            sizes="auto"
             alt="/neovim/split2.gif"width="70%">
     </a><figcaption class="image-caption">分屏移动</figcaption>
     </figure>
@@ -557,12 +559,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">noremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">o</span> <span class="nx">o</span><span class="p">&lt;</span><span class="nx">Esc</span><span class="p">&gt;</span><span class="nx">k</span>               “ <span class="nx">空格加小写字母</span> <span class="nx">o</span>：<span class="nx">向下插入空行</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">noremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">O</span> <span class="nx">O</span><span class="p">&lt;</span><span class="nx">Esc</span><span class="p">&gt;</span><span class="nx">j</span>               ” <span class="nx">空格加大写字母</span> <span class="nx">O</span>：<span class="nx">向上插入空行</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">noremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">w</span> :<span class="nx">w</span><span class="p">&lt;</span><span class="nx">CR</span><span class="p">&gt;</span>                “ <span class="nx">空格加小写字母</span> <span class="nx">w</span>：<span class="nx">保存文档</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">noremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">q</span> :<span class="nx">q</span><span class="p">&lt;</span><span class="nx">CR</span><span class="p">&gt;</span>                ” <span class="nx">空格加小写字母</span> <span class="nx">q</span>：<span class="nx">退出</span> <span class="nx">Neovim</span><span class="err">
+<pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">noremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">o</span> <span class="nx">o</span><span class="p">&lt;</span><span class="nx">Esc</span><span class="p">&gt;</span><span class="nx">k</span>               “ 空格加小写字母 <span class="nx">o</span>：向下插入空行<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">noremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">O</span> <span class="nx">O</span><span class="p">&lt;</span><span class="nx">Esc</span><span class="p">&gt;</span><span class="nx">j</span>               ” 空格加大写字母 <span class="nx">O</span>：向上插入空行<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">noremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">w</span> :<span class="nx">w</span><span class="p">&lt;</span><span class="nx">CR</span><span class="p">&gt;</span>                “ 空格加小写字母 <span class="nx">w</span>：保存文档<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">noremap</span> <span class="p">&lt;</span><span class="nx">leader</span><span class="p">&gt;</span><span class="nx">q</span> :<span class="nx">q</span><span class="p">&lt;</span><span class="nx">CR</span><span class="p">&gt;</span>                ” 空格加小写字母 <span class="nx">q</span>：退出 <span class="nx">Neovim</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">noremap</span> <span class="nx">Y</span> <span class="c">&#34;+y                           “ 大写字母 Y：复制到系统剪切板</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">nnoremap</span> <span class="nx">R</span> :<span class="nx">source</span> $<span class="nx">MYVIMRC</span><span class="p">&lt;</span><span class="nx">CR</span><span class="p">&gt;</span>         “ <span class="nx">普通模式下大写字母</span> <span class="nx">R</span>：<span class="nx">刷新</span> <span class="nx">Neovim</span> <span class="nx">配置</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">nnoremap</span> <span class="nx">R</span> :<span class="nx">source</span> $<span class="nx">MYVIMRC</span><span class="p">&lt;</span><span class="nx">CR</span><span class="p">&gt;</span>         “ 普通模式下大写字母 <span class="nx">R</span>：刷新 <span class="nx">Neovim</span> 配置<span class="err">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="插件简介" class="headerLink">
@@ -690,10 +692,11 @@
 </div>
 </div><figure><a class="lightgallery" href="/neovim/ultisnip.gif" title="/neovim/ultisnip.gif" data-thumbnail="/neovim/ultisnip.gif" data-sub-html="<h2>UltiSnip 代码片段</h2>">
         <img
-            class="lazyload"
-            data-src="ultisnip.gif"
-            data-srcset="/neovim/ultisnip.gif, ultisnip.gif 1.5x, /neovim/ultisnip.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="ultisnip.gif"
+            srcset="/neovim/ultisnip.gif, ultisnip.gif 1.5x, /neovim/ultisnip.gif 2x"
+            sizes="auto"
             alt="/neovim/ultisnip.gif"width="70%">
     </a><figcaption class="image-caption">UltiSnip 代码片段</figcaption>
     </figure>
@@ -782,10 +785,11 @@
 </div>
 </div><figure><a class="lightgallery" href="/neovim/airline.png" title="/neovim/airline.png" data-thumbnail="/neovim/airline.png" data-sub-html="<h2>AirLine 状态栏美化</h2>">
         <img
-            class="lazyload"
-            data-src="airline.png"
-            data-srcset="/neovim/airline.png, airline.png 1.5x, /neovim/airline.png 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="airline.png"
+            srcset="/neovim/airline.png, airline.png 1.5x, /neovim/airline.png 2x"
+            sizes="auto"
             alt="/neovim/airline.png"width="80%">
     </a><figcaption class="image-caption">AirLine 状态栏美化</figcaption>
     </figure>
@@ -853,10 +857,11 @@
     <a href="#wildfirevim%e9%80%89%e6%8b%a9%e6%88%90%e5%af%b9%e7%ac%a6%e5%8f%b7%e5%86%85%e5%ad%97%e7%ac%a6" class="header-mark"></a>wildfire.vim：选择成对符号内字符</h3><p><a href="https://github.com/gcmt/wildfire.vim" target="_blank" rel="noopener noreferrer">wildfire.vim</a> 提供了使用回车快速选择成对符号内字符的功能。嵌套使用函数时，将光标放到内部，多次按回车可以扩选括号匹配的内容。</p>
 <figure><a class="lightgallery" href="/neovim/wildfire.gif" title="/neovim/wildfire.gif" data-thumbnail="/neovim/wildfire.gif" data-sub-html="<h2>WildFire 选择括号内容</h2>">
         <img
-            class="lazyload"
-            data-src="wildfire.gif"
-            data-srcset="/neovim/wildfire.gif, wildfire.gif 1.5x, /neovim/wildfire.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="wildfire.gif"
+            srcset="/neovim/wildfire.gif, wildfire.gif 1.5x, /neovim/wildfire.gif 2x"
+            sizes="auto"
             alt="/neovim/wildfire.gif"width="70%">
     </a><figcaption class="image-caption">WildFire 选择括号内容</figcaption>
     </figure>
@@ -872,10 +877,11 @@
 </div>
 </div><figure><a class="lightgallery" href="/neovim/undotree.gif" title="/neovim/undotree.gif" data-thumbnail="/neovim/undotree.gif" data-sub-html="<h2>UndoTree 撤销历史</h2>">
         <img
-            class="lazyload"
-            data-src="undotree.gif"
-            data-srcset="/neovim/undotree.gif, undotree.gif 1.5x, /neovim/undotree.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="undotree.gif"
+            srcset="/neovim/undotree.gif, undotree.gif 1.5x, /neovim/undotree.gif 2x"
+            sizes="auto"
             alt="/neovim/undotree.gif"width="70%">
     </a><figcaption class="image-caption">UndoTree 撤销历史</figcaption>
     </figure>
@@ -896,10 +902,11 @@
 </div><p>当在普通模式输入 <code>L</code> 时，以光标所在位置为界，触发向后跳转。其后向字符大部分变为灰色。部分高亮字符意味着可以直接跳转。输入目标字符的首字母后，高亮会有所改变，部分甚至会临时改变附近字符以辅助定位跳转。简言之，键入 <code>L</code> 后盯住目标位置，输入前几个字符即可实现跳转。</p>
 <figure><a class="lightgallery" href="/neovim/lightspeed.gif" title="/neovim/lightspeed.gif" data-thumbnail="/neovim/lightspeed.gif" data-sub-html="<h2>LightSpeed 快速跳转：向第二个 sum 跳转时，m 被临时替换为 s以进行区分。</h2>">
         <img
-            class="lazyload"
-            data-src="lightspeed.gif"
-            data-srcset="/neovim/lightspeed.gif, lightspeed.gif 1.5x, /neovim/lightspeed.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="lightspeed.gif"
+            srcset="/neovim/lightspeed.gif, lightspeed.gif 1.5x, /neovim/lightspeed.gif 2x"
+            sizes="auto"
             alt="/neovim/lightspeed.gif"width="70%">
     </a><figcaption class="image-caption">LightSpeed 快速跳转：向第二个 <code>sum</code> 跳转时，<code>m</code> 被临时替换为 <code>s</code>以进行区分。</figcaption>
     </figure>
@@ -934,10 +941,11 @@
     <a href="#fcitxnvim%e8%be%93%e5%85%a5%e6%b3%95%e5%88%87%e6%8d%a2" class="header-mark"></a>fcitx.nvim：输入法切换</h3><p><a href="https://github.com/h-hg/fcitx.nvim" target="_blank" rel="noopener noreferrer">fcitx.nvim</a> 提供了 Fcitx5 下自动切换输入法的的功能。利用该插件，在编辑中文文档时，进入插入模式会自动切换到中文输入法，退回到普通模式时会自动切换到英文输入，避免输入法导致使用命令的困难。</p>
 <figure><a class="lightgallery" href="/neovim/fcitx.gif" title="/neovim/fcitx.gif" data-thumbnail="/neovim/fcitx.gif" data-sub-html="<h2>Fcitx 输入法自动切换</h2>">
         <img
-            class="lazyload"
-            data-src="fcitx.gif"
-            data-srcset="/neovim/fcitx.gif, fcitx.gif 1.5x, /neovim/fcitx.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="fcitx.gif"
+            srcset="/neovim/fcitx.gif, fcitx.gif 1.5x, /neovim/fcitx.gif 2x"
+            sizes="auto"
             alt="/neovim/fcitx.gif"width="70%">
     </a><figcaption class="image-caption">Fcitx 输入法自动切换</figcaption>
     </figure>
@@ -973,10 +981,11 @@
 </ul>
 <figure><a class="lightgallery" href="/neovim/gitsigns.gif" title="/neovim/gitsigns.gif" data-thumbnail="/neovim/gitsigns.gif" data-sub-html="<h2>GitSigns 集成 Git 版本控制</h2>">
         <img
-            class="lazyload"
-            data-src="gitsigns.gif"
-            data-srcset="/neovim/gitsigns.gif, gitsigns.gif 1.5x, /neovim/gitsigns.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="gitsigns.gif"
+            srcset="/neovim/gitsigns.gif, gitsigns.gif 1.5x, /neovim/gitsigns.gif 2x"
+            sizes="auto"
             alt="/neovim/gitsigns.gif"width="70%">
     </a><figcaption class="image-caption">GitSigns 集成 Git 版本控制</figcaption>
     </figure>
@@ -994,10 +1003,11 @@
 </div><p>使用时在可视模式下选择需要对齐的文本，按下空格和 <code>t</code>，输入对齐的字符，回车即可。</p>
 <figure><a class="lightgallery" href="/neovim/tabular.gif" title="/neovim/tabular.gif" data-thumbnail="/neovim/tabular.gif" data-sub-html="<h2>Tabular 自动对齐</h2>">
         <img
-            class="lazyload"
-            data-src="tabular.gif"
-            data-srcset="/neovim/tabular.gif, tabular.gif 1.5x, /neovim/tabular.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="tabular.gif"
+            srcset="/neovim/tabular.gif, tabular.gif 1.5x, /neovim/tabular.gif 2x"
+            sizes="auto"
             alt="/neovim/tabular.gif"width="70%">
     </a><figcaption class="image-caption">Tabular 自动对齐</figcaption>
     </figure>
@@ -1017,10 +1027,11 @@
 </div><p>普通模式使用空格和 <code>tf</code> 触发搜索窗口查找文件后，按下回车在当前窗口打开文件，或使用 <code>&lt;c-x&gt;</code> 分屏打开文件，也可以使用 <code>&lt;c-t&gt;</code> 在新标签页打开文件。</p>
 <figure><a class="lightgallery" href="/neovim/telescope.gif" title="/neovim/telescope.gif" data-thumbnail="/neovim/telescope.gif" data-sub-html="<h2>Telescope 搜索文件</h2>">
         <img
-            class="lazyload"
-            data-src="telescope.gif"
-            data-srcset="/neovim/telescope.gif, telescope.gif 1.5x, /neovim/telescope.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="telescope.gif"
+            srcset="/neovim/telescope.gif, telescope.gif 1.5x, /neovim/telescope.gif 2x"
+            sizes="auto"
             alt="/neovim/telescope.gif"width="70%">
     </a><figcaption class="image-caption">Telescope 搜索文件</figcaption>
     </figure>
@@ -1047,10 +1058,11 @@
 </ul>
 <figure><a class="lightgallery" href="/neovim/markdown-toc.gif" title="/neovim/markdown-toc.gif" data-thumbnail="/neovim/markdown-toc.gif" data-sub-html="<h2>Vim-Markdown-TOC 生成目录</h2>">
         <img
-            class="lazyload"
-            data-src="markdown-toc.gif"
-            data-srcset="/neovim/markdown-toc.gif, markdown-toc.gif 1.5x, /neovim/markdown-toc.gif 2x"
-            data-sizes="auto"
+            
+            loading="lazy"
+            src="markdown-toc.gif"
+            srcset="/neovim/markdown-toc.gif, markdown-toc.gif 1.5x, /neovim/markdown-toc.gif 2x"
+            sizes="auto"
             alt="/neovim/markdown-toc.gif"width="70%">
     </a><figcaption class="image-caption">Vim-Markdown-TOC 生成目录</figcaption>
     </figure>
@@ -1094,8 +1106,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-03-07&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/9c39d06dd8d7015c7b184dcf6389b8d5aa49e61d" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 9c39d06dd8d7015c7b184dcf6389b8d5aa49e61d: Chore: update theme, content, links, etc." rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>9c39d06</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1121,8 +1133,8 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.105.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.111.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
@@ -1145,10 +1157,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
-
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript></div>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
 </body>
 
 </html>
