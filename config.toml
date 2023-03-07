@@ -54,7 +54,7 @@ enableGitInfo = true
 
 [params]
   #  DoIt 主题版本
-  version = "0.2.X"
+  version = "0.3.X"
   # 网站名称
   title = "某春雨的后花园"
   # 网站描述
