@@ -4,9 +4,16 @@
         <link>https://ichunyu.github.io/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 03 Sep 2022 15:31:40 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://ichunyu.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>LaTeX 常用宏包简介</title>
+    <link>https://ichunyu.github.io/packages/</link>
+    <pubDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/packages/</guid>
+    <description><![CDATA[<p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>]]></description>
+</item><item>
     <title>数据的强制类型转换及其应用</title>
     <link>https://ichunyu.github.io/typeconvert/</link>
     <pubDate>Sat, 03 Sep 2022 15:31:40 &#43;0800</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/introcic/</guid>
     <description><![CDATA[<p>级联积分梳状（CIC, Cascaded Integrator–Comb）滤波器是一种非常“经济”的滤波器。它的实现所需资源少、具有线性相位，同时实现采样率的改变，通常可用于模数转换器（ADC, Analog to Digital Converter）的抗混叠滤波。本文简要介绍 CIC 滤波器的基本原理及其实现方法，分析该滤波器的频率响应，然后给出 CIC 滤波器在降采样（抽取）和升采样（插值）的应用，最后给出降采样倍数的一般设计方法。</p>]]></description>
-</item><item>
-    <title>Arch Linux 系统安装</title>
-    <link>https://ichunyu.github.io/installarch/</link>
-    <pubDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/installarch/</guid>
-    <description><![CDATA[<p>最近有兴趣折腾了一下 Arch Linux，并在虚拟机中成功安装。将安装步骤记录于此，下一次就真机实战。</p>]]></description>
 </item></channel>
 </rss>

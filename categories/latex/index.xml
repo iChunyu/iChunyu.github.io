@@ -4,7 +4,14 @@
         <link>https://ichunyu.github.io/categories/latex/</link>
         <description>LaTeX - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Thu, 16 Jun 2022 08:43:47 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/latex/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/latex/" rel="self" type="application/rss+xml" /><item>
+    <title>LaTeX 常用宏包简介</title>
+    <link>https://ichunyu.github.io/packages/</link>
+    <pubDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/packages/</guid>
+    <description><![CDATA[<p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>]]></description>
+</item><item>
     <title>使用代码片段编写 LaTeX 文档</title>
     <link>https://ichunyu.github.io/latexsnips/</link>
     <pubDate>Thu, 16 Jun 2022 08:43:47 &#43;0800</pubDate><author>

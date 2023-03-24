@@ -51,7 +51,7 @@
 </head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
@@ -487,10 +487,10 @@
         <img
             
             loading="lazy"
-            src="split.gif"
-            srcset="/neovim/split.gif, split.gif 1.5x, /neovim/split.gif 2x"
+            src="/neovim/split.gif"
+            srcset="/neovim/split.gif, /neovim/split.gif 1.5x, /neovim/split.gif 2x"
             sizes="auto"
-            alt="/neovim/split.gif"width="70%">
+            alt="/neovim/split.gif" height="667"  width="70%" >
     </a><figcaption class="image-caption">分屏</figcaption>
     </figure>
 <p>使用空格加大写方向键将当前分屏放置到指定方向的最边缘：</p>
@@ -512,10 +512,10 @@
         <img
             
             loading="lazy"
-            src="split2.gif"
-            srcset="/neovim/split2.gif, split2.gif 1.5x, /neovim/split2.gif 2x"
+            src="/neovim/split2.gif"
+            srcset="/neovim/split2.gif, /neovim/split2.gif 1.5x, /neovim/split2.gif 2x"
             sizes="auto"
-            alt="/neovim/split2.gif"width="70%">
+            alt="/neovim/split2.gif" height="667"  width="70%" >
     </a><figcaption class="image-caption">分屏移动</figcaption>
     </figure>
 <p>使用上下左右键调整当前分屏的高度和宽度：</p>
@@ -694,10 +694,10 @@
         <img
             
             loading="lazy"
-            src="ultisnip.gif"
-            srcset="/neovim/ultisnip.gif, ultisnip.gif 1.5x, /neovim/ultisnip.gif 2x"
+            src="/neovim/ultisnip.gif"
+            srcset="/neovim/ultisnip.gif, /neovim/ultisnip.gif 1.5x, /neovim/ultisnip.gif 2x"
             sizes="auto"
-            alt="/neovim/ultisnip.gif"width="70%">
+            alt="/neovim/ultisnip.gif" height="332"  width="70%" >
     </a><figcaption class="image-caption">UltiSnip 代码片段</figcaption>
     </figure>
 <h3 id="vimtexlatex-支持" class="headerLink">
@@ -787,10 +787,10 @@
         <img
             
             loading="lazy"
-            src="airline.png"
-            srcset="/neovim/airline.png, airline.png 1.5x, /neovim/airline.png 2x"
+            src="/neovim/airline.png"
+            srcset="/neovim/airline.png, /neovim/airline.png 1.5x, /neovim/airline.png 2x"
             sizes="auto"
-            alt="/neovim/airline.png"width="80%">
+            alt="/neovim/airline.png" height="55"  width="80%" >
     </a><figcaption class="image-caption">AirLine 状态栏美化</figcaption>
     </figure>
 <h3 id="cocnvim代码补全" class="headerLink">
@@ -859,10 +859,10 @@
         <img
             
             loading="lazy"
-            src="wildfire.gif"
-            srcset="/neovim/wildfire.gif, wildfire.gif 1.5x, /neovim/wildfire.gif 2x"
+            src="/neovim/wildfire.gif"
+            srcset="/neovim/wildfire.gif, /neovim/wildfire.gif 1.5x, /neovim/wildfire.gif 2x"
             sizes="auto"
-            alt="/neovim/wildfire.gif"width="70%">
+            alt="/neovim/wildfire.gif" height="203"  width="70%" >
     </a><figcaption class="image-caption">WildFire 选择括号内容</figcaption>
     </figure>
 <h3 id="undotree撤销历史" class="headerLink">
@@ -879,10 +879,10 @@
         <img
             
             loading="lazy"
-            src="undotree.gif"
-            srcset="/neovim/undotree.gif, undotree.gif 1.5x, /neovim/undotree.gif 2x"
+            src="/neovim/undotree.gif"
+            srcset="/neovim/undotree.gif, /neovim/undotree.gif 1.5x, /neovim/undotree.gif 2x"
             sizes="auto"
-            alt="/neovim/undotree.gif"width="70%">
+            alt="/neovim/undotree.gif" height="695"  width="70%" >
     </a><figcaption class="image-caption">UndoTree 撤销历史</figcaption>
     </figure>
 <h3 id="lightspeednvim快速跳转" class="headerLink">
@@ -904,10 +904,10 @@
         <img
             
             loading="lazy"
-            src="lightspeed.gif"
-            srcset="/neovim/lightspeed.gif, lightspeed.gif 1.5x, /neovim/lightspeed.gif 2x"
+            src="/neovim/lightspeed.gif"
+            srcset="/neovim/lightspeed.gif, /neovim/lightspeed.gif 1.5x, /neovim/lightspeed.gif 2x"
             sizes="auto"
-            alt="/neovim/lightspeed.gif"width="70%">
+            alt="/neovim/lightspeed.gif" height="695"  width="70%" >
     </a><figcaption class="image-caption">LightSpeed 快速跳转：向第二个 <code>sum</code> 跳转时，<code>m</code> 被临时替换为 <code>s</code>以进行区分。</figcaption>
     </figure>
 <h3 id="nvim-treesitter高亮强化" class="headerLink">
@@ -943,10 +943,10 @@
         <img
             
             loading="lazy"
-            src="fcitx.gif"
-            srcset="/neovim/fcitx.gif, fcitx.gif 1.5x, /neovim/fcitx.gif 2x"
+            src="/neovim/fcitx.gif"
+            srcset="/neovim/fcitx.gif, /neovim/fcitx.gif 1.5x, /neovim/fcitx.gif 2x"
             sizes="auto"
-            alt="/neovim/fcitx.gif"width="70%">
+            alt="/neovim/fcitx.gif" height="364"  width="70%" >
     </a><figcaption class="image-caption">Fcitx 输入法自动切换</figcaption>
     </figure>
 <h3 id="nvim-notify弹窗美化" class="headerLink">
@@ -983,10 +983,10 @@
         <img
             
             loading="lazy"
-            src="gitsigns.gif"
-            srcset="/neovim/gitsigns.gif, gitsigns.gif 1.5x, /neovim/gitsigns.gif 2x"
+            src="/neovim/gitsigns.gif"
+            srcset="/neovim/gitsigns.gif, /neovim/gitsigns.gif 1.5x, /neovim/gitsigns.gif 2x"
             sizes="auto"
-            alt="/neovim/gitsigns.gif"width="70%">
+            alt="/neovim/gitsigns.gif" height="515"  width="70%" >
     </a><figcaption class="image-caption">GitSigns 集成 Git 版本控制</figcaption>
     </figure>
 <h3 id="tabular指定字符对齐文本" class="headerLink">
@@ -1005,10 +1005,10 @@
         <img
             
             loading="lazy"
-            src="tabular.gif"
-            srcset="/neovim/tabular.gif, tabular.gif 1.5x, /neovim/tabular.gif 2x"
+            src="/neovim/tabular.gif"
+            srcset="/neovim/tabular.gif, /neovim/tabular.gif 1.5x, /neovim/tabular.gif 2x"
             sizes="auto"
-            alt="/neovim/tabular.gif"width="70%">
+            alt="/neovim/tabular.gif" height="585"  width="70%" >
     </a><figcaption class="image-caption">Tabular 自动对齐</figcaption>
     </figure>
 <h3 id="telescopenvim搜索文件" class="headerLink">
@@ -1029,10 +1029,10 @@
         <img
             
             loading="lazy"
-            src="telescope.gif"
-            srcset="/neovim/telescope.gif, telescope.gif 1.5x, /neovim/telescope.gif 2x"
+            src="/neovim/telescope.gif"
+            srcset="/neovim/telescope.gif, /neovim/telescope.gif 1.5x, /neovim/telescope.gif 2x"
             sizes="auto"
-            alt="/neovim/telescope.gif"width="70%">
+            alt="/neovim/telescope.gif" height="694"  width="70%" >
     </a><figcaption class="image-caption">Telescope 搜索文件</figcaption>
     </figure>
 <h3 id="vim-markdown-tocmarkdown-生成目录" class="headerLink">
@@ -1060,10 +1060,10 @@
         <img
             
             loading="lazy"
-            src="markdown-toc.gif"
-            srcset="/neovim/markdown-toc.gif, markdown-toc.gif 1.5x, /neovim/markdown-toc.gif 2x"
+            src="/neovim/markdown-toc.gif"
+            srcset="/neovim/markdown-toc.gif, /neovim/markdown-toc.gif 1.5x, /neovim/markdown-toc.gif 2x"
             sizes="auto"
-            alt="/neovim/markdown-toc.gif"width="70%">
+            alt="/neovim/markdown-toc.gif" height="694"  width="70%" >
     </a><figcaption class="image-caption">Vim-Markdown-TOC 生成目录</figcaption>
     </figure>
 <h3 id="bulletsvim自动列表" class="headerLink">
@@ -1133,7 +1133,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.111.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.111.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

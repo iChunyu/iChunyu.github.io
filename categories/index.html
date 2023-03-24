@@ -27,7 +27,7 @@
 </head>
 
 <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
-        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
         if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
@@ -129,6 +129,25 @@
                     </div><div class="card-item">
                         <div class="card-item-wrapper">
                             <h3 class="card-item-title">
+                                <a href="/categories/latex/">
+                                    <i class="far fa-folder fa-fw"></i>&nbsp;LaTeX <sup>7</sup>
+                                </a>
+                            </h3><article class="archive-item">
+                                    <a href="/packages/" class="archive-item-link">LaTeX 常用宏包简介</a>
+                                </article><article class="archive-item">
+                                    <a href="/latexsnips/" class="archive-item-link">使用代码片段编写 LaTeX 文档</a>
+                                </article><article class="archive-item">
+                                    <a href="/latex05-cite/" class="archive-item-link">LaTeX 学习记录（5）：自动化引用</a>
+                                </article><article class="archive-item">
+                                    <a href="/latex04-math/" class="archive-item-link">LaTeX 学习记录（4）：数学公式</a>
+                                </article><article class="archive-item">
+                                    <a href="/latex03-tablefigure/" class="archive-item-link">LaTeX 学习记录（3）：使用图表</a>
+                                </article><span class="more-post">
+                                    <a href="/categories/latex/" class="more-single-link">更多 >></a>
+                                </span></div>
+                    </div><div class="card-item">
+                        <div class="card-item-wrapper">
+                            <h3 class="card-item-title">
                                 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/">
                                     <i class="far fa-folder fa-fw"></i>&nbsp;生命在于折腾 <sup>7</sup>
                                 </a>
@@ -144,25 +163,6 @@
                                     <a href="/manjaro/" class="archive-item-link">Manjaro 系统安装</a>
                                 </article><span class="more-post">
                                     <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/" class="more-single-link">更多 >></a>
-                                </span></div>
-                    </div><div class="card-item">
-                        <div class="card-item-wrapper">
-                            <h3 class="card-item-title">
-                                <a href="/categories/latex/">
-                                    <i class="far fa-folder fa-fw"></i>&nbsp;LaTeX <sup>6</sup>
-                                </a>
-                            </h3><article class="archive-item">
-                                    <a href="/latexsnips/" class="archive-item-link">使用代码片段编写 LaTeX 文档</a>
-                                </article><article class="archive-item">
-                                    <a href="/latex05-cite/" class="archive-item-link">LaTeX 学习记录（5）：自动化引用</a>
-                                </article><article class="archive-item">
-                                    <a href="/latex04-math/" class="archive-item-link">LaTeX 学习记录（4）：数学公式</a>
-                                </article><article class="archive-item">
-                                    <a href="/latex03-tablefigure/" class="archive-item-link">LaTeX 学习记录（3）：使用图表</a>
-                                </article><article class="archive-item">
-                                    <a href="/latex02-document/" class="archive-item-link">LaTeX 学习记录（2）：编写文档</a>
-                                </article><span class="more-post">
-                                    <a href="/categories/latex/" class="more-single-link">更多 >></a>
                                 </span></div>
                     </div><div class="card-item">
                         <div class="card-item-wrapper">
@@ -236,7 +236,7 @@
                     </div></div></div></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.111.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.111.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

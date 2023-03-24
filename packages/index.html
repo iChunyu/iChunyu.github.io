@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>LaTeX 常用宏包简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="LaTeX 常用宏包简介" />
+<meta property="og:description" content="基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/packages/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-24T17:29:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="LaTeX 常用宏包简介"/>
+<meta name="twitter:description" content="基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/packages/" /><link rel="prev" href="https://ichunyu.github.io/typeconvert/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LaTeX 常用宏包简介",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/packages\/"
+        },"genre": "posts","keywords": "LaTeX, 宏包","wordcount":  4707 ,
+        "url": "https:\/\/ichunyu.github.io\/packages\/","datePublished": "2023-03-24T00:00:00+00:00","dateModified": "2023-03-24T17:29:36+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#中文支持ctex">中文支持：<code>ctex</code></a></li>
+    <li><a href="#排版优化mocrotype">排版优化：<code>mocrotype</code></a></li>
+    <li><a href="#页面设置geometry">页面设置：<code>geometry</code></a></li>
+    <li><a href="#页眉页脚fancyhdr">页眉页脚：<code>fancyhdr</code></a></li>
+    <li><a href="#超链接hyperref">超链接：<code>hyperref</code></a></li>
+    <li><a href="#交叉引用cleveref">交叉引用：<code>cleveref</code></a></li>
+    <li><a href="#列表设置enumitem">列表设置：enumitem</a></li>
+    <li><a href="#数学相关宏包">数学相关宏包</a></li>
+    <li><a href="#国际单位制sinunitx">国际单位制：<code>sinunitx</code></a></li>
+    <li><a href="#图表相关宏包">图表相关宏包</a></li>
+    <li><a href="#参考文献相关宏包">参考文献相关宏包</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">LaTeX 常用宏包简介</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><i class="far fa-folder fa-fw"></i>LaTeX</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-24">2023-03-24</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-24">2023-03-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4707 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#中文支持ctex">中文支持：<code>ctex</code></a></li>
+    <li><a href="#排版优化mocrotype">排版优化：<code>mocrotype</code></a></li>
+    <li><a href="#页面设置geometry">页面设置：<code>geometry</code></a></li>
+    <li><a href="#页眉页脚fancyhdr">页眉页脚：<code>fancyhdr</code></a></li>
+    <li><a href="#超链接hyperref">超链接：<code>hyperref</code></a></li>
+    <li><a href="#交叉引用cleveref">交叉引用：<code>cleveref</code></a></li>
+    <li><a href="#列表设置enumitem">列表设置：enumitem</a></li>
+    <li><a href="#数学相关宏包">数学相关宏包</a></li>
+    <li><a href="#国际单位制sinunitx">国际单位制：<code>sinunitx</code></a></li>
+    <li><a href="#图表相关宏包">图表相关宏包</a></li>
+    <li><a href="#参考文献相关宏包">参考文献相关宏包</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>本文介绍的宏包均收录于 <a href="https://tug.org/texlive/" target="_blank" rel="noopener noreferrer">TeX Live</a>。若宏包用法更新，可以在命令行使用 <code>texdoc 宏包名</code> 查看已安装版本的帮助文档。</p>
+<p>本文只介绍宏包最基本的一些设置和用法，详细说明请参考相应的帮助文档。</p>
+</div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="c">% CTeX configuration
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\ctexset</span><span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    tocdepth = 2,
+</span></span><span class="line"><span class="cl">    appendix/name = 附录
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Date format yyyy-mm-dd
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>datetime2<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Page margin
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>geometry<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\geometry</span><span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    a4paper,
+</span></span><span class="line"><span class="cl">    top = 45mm,
+</span></span><span class="line"><span class="cl">    bottom = 28mm,
+</span></span><span class="line"><span class="cl">    left = 28mm,
+</span></span><span class="line"><span class="cl">    right = 28mm,
+</span></span><span class="line"><span class="cl">    headheight = 15mm,
+</span></span><span class="line"><span class="cl">    headsep = 6mm,
+</span></span><span class="line"><span class="cl">    footskip = 11mm
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Color and Google colors
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="na">[hyperref]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% \definecolor{blue}{HTML}{4285F4}
+</span></span></span><span class="line"><span class="cl"><span class="c">% \definecolor{red}{HTML}{DB4437}
+</span></span></span><span class="line"><span class="cl"><span class="c">% \definecolor{yellow}{HTML}{F4B400}
+</span></span></span><span class="line"><span class="cl"><span class="c">% \definecolor{green}{HTML}{0F9D58}
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Footer and header of page
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>fancyhdr<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\pagestyle</span><span class="nb">{</span>fancy<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\headrule</span><span class="nb">}{</span><span class="k">\makebox</span><span class="na">[0pt][l]</span><span class="nb">{</span><span class="k">\rule</span><span class="na">[0.6mm]</span><span class="nb">{</span><span class="k">\textwidth</span><span class="nb">}{</span>0.3mm<span class="nb">}}</span><span class="k">\rule</span><span class="nb">{</span><span class="k">\textwidth</span><span class="nb">}{</span>0.3mm<span class="nb">}}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\footrule</span><span class="nb">}{</span><span class="k">\rule</span><span class="nb">{</span><span class="k">\textwidth</span><span class="nb">}{</span>0.3mm<span class="nb">}}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% \renewcommand{\footrulewidth}{0.4pt}
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\lhead</span><span class="nb">{}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% \chead{\slshape\Large \makebox[120mm]{华\hfill{}中\hfill{}科\hfill{}技\hfill{}大\hfill{}学\hfill{}博\hfill{}士\hfill{}学\hfill{}位\hfill{}论\hfill{}文}}
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\chead</span><span class="nb">{</span><span class="k">\slshape\Large</span> <span class="k">\makebox</span><span class="na">[60mm]</span><span class="nb">{</span>博<span class="k">\hfill</span><span class="nb">{}</span>士<span class="k">\hfill</span><span class="nb">{}</span>学<span class="k">\hfill</span><span class="nb">{}</span>位<span class="k">\hfill</span><span class="nb">{}</span>论<span class="k">\hfill</span><span class="nb">{}</span>文<span class="nb">}}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\rhead</span><span class="nb">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\cfoot</span><span class="nb">{</span><span class="k">\thepage</span><span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% add bibliography to TOC
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>tocbibind<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Optimize footnotemark
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="na">[perpage]</span><span class="nb">{</span>footmisc<span class="nb">}</span>              <span class="c">% clear count per page
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>pifont<span class="nb">}</span>                         <span class="c">% use number with ciecle
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\thefootnote</span><span class="nb">}{</span><span class="k">\ding</span><span class="nb">{</span><span class="k">\numexpr</span>171+<span class="k">\value</span><span class="nb">{</span>footnote<span class="nb">}}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Hyperlink
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>hyperref<span class="nb">}</span>                       <span class="c">% required package
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\hypersetup</span><span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    hidelinks,
+</span></span><span class="line"><span class="cl">    colorlinks = false,
+</span></span><span class="line"><span class="cl">    <span class="c">% pdfauthor = 肖春雨,
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    bookmarksdepth = 3
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Math
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>nicematrix<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>newtxmath<span class="nb">}</span>                      <span class="c">% times now roam font
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span>                             <span class="c">% bold fonts
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\numberwithin</span><span class="nb">{</span>equation<span class="nb">}{</span>section<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% SI units
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>siunitx<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\sisetup</span><span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    per-mode = symbol,
+</span></span><span class="line"><span class="cl">    uncertainty-mode = separate,
+</span></span><span class="line"><span class="cl">    range-phrase = <span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\,\sim\,</span><span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">    range-units = single
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Table and figure
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>                       <span class="c">% figure package
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>tabularx<span class="nb">}</span>                       <span class="c">% fixed-width table
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>multirow<span class="nb">}</span>                       <span class="c">% merge row
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>                       <span class="c">% standard three-line table
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>longtable<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>caption<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>subcaption<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\graphicspath</span><span class="nb">{{</span>./figures/<span class="nb">}}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\numberwithin</span><span class="nb">{</span>figure<span class="nb">}{</span>section<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\numberwithin</span><span class="nb">{</span>table<span class="nb">}{</span>section<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\captionsetup</span><span class="nb">{</span>labelsep=space<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Support user-defined styles of enumerate
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>enumitem<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Biolography style
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>gbt7714<span class="nb">}</span>                        <span class="c">% China standard style
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\bibliographystyle</span><span class="nb">{</span>gbt7714-numerical<span class="nb">}</span>       <span class="c">% numerical / author-year
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\setlength</span><span class="nb">{</span><span class="k">\bibsep</span><span class="nb">}{</span>0.5ex<span class="nb">}</span>                  <span class="c">% vertical spacing between references
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>notoccite<span class="nb">}</span>                      <span class="c">% remove citations in TOC and ensure correct numbering
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Cross reference
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="na">[nameinlink]</span><span class="nb">{</span>cleveref<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>equation<span class="nb">}{</span>式<span class="nb">}{</span>式<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>table<span class="nb">}{</span>表<span class="nb">}{</span>表<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>figure<span class="nb">}{</span>图<span class="nb">}{</span>图<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>appendix<span class="nb">}{</span>附录<span class="nb">}{</span>附录<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefformat</span><span class="nb">{</span>section<span class="nb">}{</span>#2第~#1~章#3<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefformat</span><span class="nb">{</span>subsection<span class="nb">}{</span>#2第~#1~节#3<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefformat</span><span class="nb">{</span>subsubsection<span class="nb">}{</span>#2第~#1~小节#3<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefrangeformat</span><span class="nb">{</span>equation<span class="nb">}{</span>#3式~(#1)#4~<span class="k">\~</span><span class="nb">{}</span>~#5式~(#2)#6<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\captionsetup</span><span class="na">[subfigure]</span><span class="nb">{</span>subrefformat=simple,labelformat=simple<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\renewcommand\thesubfigure</span><span class="nb">{</span><span class="k">\,</span>(<span class="k">\alph</span><span class="nb">{</span>subfigure<span class="nb">}</span>)<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>
+</span></span><span class="line"><span class="cl"><span class="c">% define new environment and add to contents
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\newenvironment</span><span class="nb">{</span>preface<span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\bfseries</span> <span class="k">\large</span> #1
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\phantomsection</span>     <span class="c">% required if using hyperref
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\addcontentsline</span><span class="nb">{</span>toc<span class="nb">}{</span>section<span class="nb">}{</span>#1<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\normalsize</span> <span class="k">\par</span><span class="nb">}{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% override `cleardoublepage&#39;, see `fancyhdr&#39; doc
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\makeatletter</span>
+</span></span><span class="line"><span class="cl"><span class="k">\def\cleardoublepage</span><span class="nb">{</span><span class="k">\clearpage\if</span>@twoside <span class="k">\ifodd\c</span>@page<span class="k">\else</span>
+</span></span><span class="line"><span class="cl"><span class="k">\begingroup</span>
+</span></span><span class="line"><span class="cl"><span class="k">\mbox</span><span class="nb">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\vspace*</span><span class="nb">{</span><span class="k">\fill</span><span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">（此页留白）
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\vspace</span><span class="nb">{</span><span class="k">\fill</span><span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\newpage</span>
+</span></span><span class="line"><span class="cl"><span class="k">\if</span>@twocolumn<span class="k">\mbox</span><span class="nb">{}</span><span class="k">\newpage\fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">\endgroup\fi\fi</span><span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\makeatother</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% support equations to display across pages 
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\allowdisplaybreaks</span><span class="na">[4]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="中文支持ctex" class="headerLink">
+    <a href="#%e4%b8%ad%e6%96%87%e6%94%af%e6%8c%81ctex" class="header-mark"></a>中文支持：<code>ctex</code></h2><p>$\text{C\TeX}$ 宏集为编写 $\LaTeX$ 文档提供了中文支持，其主要功能集中在 <a href="https://www.ctan.org/pkg/ctex" target="_blank" rel="noopener noreferrer"><code>ctex</code></a> 宏包及其相应的文档类（包括 <code>ctexart</code>、<code>ctexrep</code>、<code>ctexbook</code>、<code>ctexbeamer</code>）。在使用宏包和文档类时，常用的选项有：</p>
+<ul>
+<li><code>zihao</code>：设置文档的默认字号，可选项有 <code>-4</code>（小四）、<code>5</code>（五号，默认值）；</li>
+<li><code>linespread</code>：行间距的倍数，默认为 <code>1.3</code>；</li>
+<li><code>fontset</code>：字库设置。Windows 用户通常不需要特别指定，Linux 用户通常需要安装额外字体，然后手动指定；</li>
+<li><code>twoside</code>：设置文档双面排版，此时使用 <code>\cleardoublepage</code> 可以确保后面内容开始于奇数页。默认情况下使用的是 <code>oneside</code> 选项，<code>\cleardoublepage</code> 与 <code>\clearpage</code> 命令相同，开始新的一页。</li>
+</ul>
+<p>除了宏包选项外，可以使用 <code>\ctexset</code> 命令进行额外的设置，常用选项包括：</p>
+<ul>
+<li><code>tocdepth</code>：目录级别，例如对于 <code>ctexart</code> 文档类，将该参数设置为 <code>2</code> 时，生成的目录只包含 <code>section</code> 和 <code>subsection</code>；</li>
+<li><code>today</code>：设置 <code>\today</code> 显示日期的格式，可选项有 <code>small</code>（阿拉伯数字现实日期）、<code>big</code>（全汉字日期）、<code>old</code>（英文格式的日期）；</li>
+<li>标题名称汉化，常用设置及其默认值有：
+<ul>
+<li><code>contentsname</code>：目录；</li>
+<li><code>listfigurename</code>：插图；</li>
+<li><code>listtablename</code>：表格；</li>
+<li><code>appendixname</code>：附录；</li>
+<li><code>bibname</code>：参考文献。</li>
+</ul>
+</li>
+</ul>
+<h2 id="排版优化mocrotype" class="headerLink">
+    <a href="#%e6%8e%92%e7%89%88%e4%bc%98%e5%8c%96mocrotype" class="header-mark"></a>排版优化：<code>mocrotype</code></h2><p>如果你的文档由纯英文编写，简单地加载 <a href="https://www.ctan.org/pkg/microtype" target="_blank" rel="noopener noreferrer"><code>microtype</code></a> 宏包即可以实现排版细节的优化。</p>
+<h2 id="页面设置geometry" class="headerLink">
+    <a href="#%e9%a1%b5%e9%9d%a2%e8%ae%be%e7%bd%aegeometry" class="header-mark"></a>页面设置：<code>geometry</code></h2><p><a href="https://www.ctan.org/pkg/geometry" target="_blank" rel="noopener noreferrer"><code>geometry</code></a> 宏包提供了 <code>\geometry</code> 命令可以方便地设置页面布局，常用设置包括：</p>
+<ul>
+<li><code>paper</code>：指定纸张大小，例如 <code>a4paper</code>。使用时 <code>paper=a4paper</code> 可以直接简写为 <code>a4paper</code>；</li>
+<li><code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>：上、下、左、右的页面边距。</li>
+</ul>
+<h2 id="页眉页脚fancyhdr" class="headerLink">
+    <a href="#%e9%a1%b5%e7%9c%89%e9%a1%b5%e8%84%9afancyhdr" class="header-mark"></a>页眉页脚：<code>fancyhdr</code></h2><p>使用 <a href="https://www.ctan.org/pkg/fancyhdr" target="_blank" rel="noopener noreferrer"><code>fancyhdr</code></a> 宏包可以方便地对页眉、页脚进行设置。在使用 <code>\pagestyle{fancy}</code> 声明页面样式后，<code>\lhead</code>、<code>\chead</code>、<code>\rhead</code> 命令分别用于定义页眉左、中、右部分内容，将命令中的 “head” 改为 “foot” 可以相应地对页脚进行定义。</p>
+<p>在定义页眉页脚时，可以使用 <code>\theXXX</code> 获取 <code>XXX</code> 相应的编号，例如 <code>\thepage</code> 是当前页码、<code>\thesection</code> 是当前节的编号。除此之外，<code>\leftmark</code> 可以读取当前节的标题。</p>
+<p>特别地，对于双面文档，使用 <code>\cleardoublepage</code> 时，可以使用以下设置可以设置留白页面的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="c">% override `cleardoublepage&#39;, see `fancyhdr&#39; doc
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\makeatletter</span>
+</span></span><span class="line"><span class="cl"><span class="k">\def\cleardoublepage</span><span class="nb">{</span><span class="k">\clearpage\if</span>@twoside <span class="k">\ifodd\c</span>@page<span class="k">\else</span>
+</span></span><span class="line"><span class="cl"><span class="k">\begingroup</span>
+</span></span><span class="line"><span class="cl"><span class="k">\mbox</span><span class="nb">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\vspace*</span><span class="nb">{</span><span class="k">\fill</span><span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">（此页留白）
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\vspace</span><span class="nb">{</span><span class="k">\fill</span><span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\newpage</span>
+</span></span><span class="line"><span class="cl"><span class="k">\if</span>@twocolumn<span class="k">\mbox</span><span class="nb">{}</span><span class="k">\newpage\fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">\endgroup\fi\fi</span><span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\makeatother</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="超链接hyperref" class="headerLink">
+    <a href="#%e8%b6%85%e9%93%be%e6%8e%a5hyperref" class="header-mark"></a>超链接：<code>hyperref</code></h2><p><a href="https://www.ctan.org/pkg/hyperref" target="_blank" rel="noopener noreferrer"><code>hyperref</code></a> 扩展了生成的 PDF 文件的超链接功能，通常情况下简单地导入即可，除此之外，可以使用 <code>hypersetup</code> 命令进行个性化设置。例如，该宏包默认使用方框标记超链接，可以使用下面的设置将超链接用颜色标记：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\hypersetup</span><span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    hidelinks,
+</span></span><span class="line"><span class="cl">    colorlinks = false
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一般情况下，生成 PDF 文件导航目录（阅读器里面的导航，不是正文目录）的级别与 <code>ctex</code> 宏包的 <code>tocdepth</code> 参数设置一致，如果希望 PDF 文件的目录级别不同，可以使用该宏包参数 <code>bookmarksdepth</code> 进行修改。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">如果使用该宏包时出现问题，尝试在导言区中将该宏包最后导入。</div>
+        </div>
+    </div>
+<h2 id="交叉引用cleveref" class="headerLink">
+    <a href="#%e4%ba%a4%e5%8f%89%e5%bc%95%e7%94%a8cleveref" class="header-mark"></a>交叉引用：<code>cleveref</code></h2><p><a href="https://www.ctan.org/pkg/cleveref" target="_blank" rel="noopener noreferrer"><code>cleveref</code></a> 宏包简化了交叉引用，使得所有类型的交叉引用都可以使用命令 <code>\cref</code> 完成，并且自动添加形如 “Section”、“Figure” 等前缀（对于英文写作，段落开头的交叉引用可以使用 <code>\Cref</code> 以确保首字母大写且不使用缩写）。</p>
+<p>该宏包提供以下几个常用选项：</p>
+<ul>
+<li><code>capitalise</code>：设置交叉引用前缀的首字母大写；</li>
+<li><code>nameinlink</code>：默认情况只有交叉引用的数字可以进行超链接跳转，使用该选项后超链接包含前缀和后缀；</li>
+<li><code>noabbrev</code>：设置交叉引用的前缀不使用缩写。</li>
+</ul>
+<p><code>\cref</code> 命令一次性可以接收多个标签，标签之间用逗号分割，例如 <code>\cref{fig:bodeplot,fig:stepplot}</code>。多个引用时，还可以使用 <code>\crefrange</code> 指定引用范围，例如 <code>\crefrange{eq:basic}{eq:conclusion}</code> 将产生形如 “式 (3) ~ 式 (14)”形式的引用。</p>
+<p>英文写作时通常不需要对该宏包进行额外设置，对于中文文档，需要对前后缀进行设置，参考设置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>equation<span class="nb">}{</span>式<span class="nb">}{</span>式<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>table<span class="nb">}{</span>表<span class="nb">}{</span>表<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>figure<span class="nb">}{</span>图<span class="nb">}{</span>图<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefname</span><span class="nb">{</span>appendix<span class="nb">}{</span>附录<span class="nb">}{</span>附录<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefformat</span><span class="nb">{</span>section<span class="nb">}{</span>#2第~#1~章#3<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefformat</span><span class="nb">{</span>subsection<span class="nb">}{</span>#2第~#1~节#3<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefformat</span><span class="nb">{</span>subsubsection<span class="nb">}{</span>#2第~#1~小节#3<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\crefrangeformat</span><span class="nb">{</span>equation<span class="nb">}{</span>#3式~(#1)#4~<span class="k">\~</span><span class="nb">{}</span>~#5式~(#2)#6<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="列表设置enumitem" class="headerLink">
+    <a href="#%e5%88%97%e8%a1%a8%e8%ae%be%e7%bd%aeenumitem" class="header-mark"></a>列表设置：enumitem</h2><p><a href="https://www.ctan.org/pkg/enumitem" target="_blank" rel="noopener noreferrer"><code>enumitem</code></a> 提供了很多选项以优化列表环境，并可以使用 <code>\setlist</code> 进行全局设置。例如默认的列表之间间距太大，使用 <code>\setlist{nosep}</code> 取消额外间距。</p>
+<h2 id="数学相关宏包" class="headerLink">
+    <a href="#%e6%95%b0%e5%ad%a6%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>数学相关宏包</h2><p>编写数学公式时，常用的宏包如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% \usepackage{nicematrix}
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>newtxmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\numberwithin</span><span class="nb">{</span>equation<span class="nb">}{</span>section<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.ctan.org/pkg/amsmath" target="_blank" rel="noopener noreferrer"><code>amsmath</code></a> 提供了大量数学环境的支持；<code>amssymb</code> 提供了额外的数学符号；对于矩阵排版，如有特殊需求，可以使用 <a href="https://www.ctan.org/pkg/nicematrix" target="_blank" rel="noopener noreferrer"><code>nicematrix</code></a> 宏包提供的 <code>NiceArray</code> 等环境；<a href="https://www.ctan.org/pkg/newtx" target="_blank" rel="noopener noreferrer"><code>newtxmath</code></a> 宏包将数学字体设置为罗马形式的衬线体，可根据个人喜好选择性使用；<a href="https://www.ctan.org/pkg/bm" target="_blank" rel="noopener noreferrer"><code>bm</code></a> 宏包提供了 <code>\bm</code> 命令专门用于加粗数学符号。上述代码的最后一行将节编号加入到的公式编号中。</p>
+<h2 id="国际单位制sinunitx" class="headerLink">
+    <a href="#%e5%9b%bd%e9%99%85%e5%8d%95%e4%bd%8d%e5%88%b6sinunitx" class="header-mark"></a>国际单位制：<code>sinunitx</code></h2><p><a href="https://www.ctan.org/pkg/siunitx" target="_blank" rel="noopener noreferrer"><code>siunitx</code></a> 宏包大大方便了带单位数值的编写，最常用的命令有：</p>
+<ul>
+<li><code>\qty{数值}{单位}</code>：（老版本为 <code>\SI</code> 命令）其中数值可以采用程序的写法，例如 <code>3e-15</code> 将渲染为 $3 \times 10^{-15}$；单位部分可以直接采用该宏包定义的多种标准单位及其组合，例如 <code>\kilogram</code>、<code>\metre\per\second</code> 等。单位可以直接使用相应的英文字符，例如 <code>Hz</code>，在这种方法下，表示乘法关系的单位之家通常有一个小空格，为了确保单位正确渲染，应当添加 一个英文句点，例如力矩可以写作：<code>\qty{3.14e-3}{N.m}</code>。</li>
+<li><code>\ang{数值}</code>：角度的表述可以单独使用该命令；</li>
+<li><code>\num{数值}</code>：只渲染数值部分；</li>
+<li><code>\unit{单位}</code>：只渲染单位部分；</li>
+<li><code>\qtyrange{数值}{数值}{单位}</code>：设定某一范围内的数量。</li>
+</ul>
+<p>数量的输出格式可以使用 <code>sisetup</code> 命令进行设置，参考示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\sisetup</span><span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    per-mode = symbol,
+</span></span><span class="line"><span class="cl">    uncertainty-mode = separate,
+</span></span><span class="line"><span class="cl">    range-phrase = <span class="k">\ensuremath</span><span class="nb">{</span><span class="k">\,\sim\,</span><span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">    range-units = single
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>特别地，改宏包提供了 <code>S</code> 列格式，可以在排版表格时将竖直在小数点对齐，然后整体向在列居中。</p>
+<h2 id="图表相关宏包" class="headerLink">
+    <a href="#%e5%9b%be%e8%a1%a8%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>图表相关宏包</h2><p>常用的图表相关宏包设置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>                       <span class="c">% figure package
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>tabularx<span class="nb">}</span>                       <span class="c">% fixed-width table
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>multirow<span class="nb">}</span>                       <span class="c">% merge row
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span>                       <span class="c">% standard three-line table
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>longtable<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>subcaption<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>caption<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\graphicspath</span><span class="nb">{{</span>./figures/<span class="nb">}}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\numberwithin</span><span class="nb">{</span>figure<span class="nb">}{</span>section<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\numberwithin</span><span class="nb">{</span>table<span class="nb">}{</span>section<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\captionsetup</span><span class="nb">{</span>labelsep=space<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.ctan.org/pkg/graphicx" target="_blank" rel="noopener noreferrer"><code>graphicx</code></a> 宏包用于处理插图，其核心命令为 <code>\includegraphics[选项]{图的文件名}</code>，其中，选项主要用来调整图的缩放和旋转，常用参数有 <code>width</code>、<code>height</code>、<code>scale</code>、<code>angle</code>。此外，该宏包提供了 <code>\scalebox</code> 命令用于对盒子的大小进行缩放。为了在插入图片时省去文件路径，可以使用 <code>graphicspath</code> 命令声明搜索路径。</p>
+<p><a href="https://www.ctan.org/pkg/tabularx" target="_blank" rel="noopener noreferrer"><code>tabularx</code></a> 宏包提供了定宽表格 <code>tabularx</code> 环境，使用该环境时需要在列格式前声明表格总宽度。此外，该宏包提供了 <code>X</code> 列格式，用于自动调整列的宽度。</p>
+<p><a href="https://www.ctan.org/pkg/multirow" target="_blank" rel="noopener noreferrer"><code>multirow</code></a> 宏包提供的 <code>\multirow[竖直位置]{合并行数}{列宽}{内容}</code> 命令可以用于合并表格的行。其中，“竖直位置可以设置为 <code>c</code> 中间对齐（默认）、<code>t</code> 顶部对齐或 <code>b</code> 底部对齐；“列宽”可以设置为 <code>*</code> 以自动进行调整。</p>
+<p><a href="https://www.ctan.org/pkg/booktabs" target="_blank" rel="noopener noreferrer"><code>booktabs</code></a> 宏包提供了标准三线表定义，分别是 <code>\toprule</code>、<code>\midrule</code> 和 <code>\bottomrule</code>。特别地，使用 <code>\cmidrule</code> 命令可以只绘制部分列的中间横线。</p>
+<p>当表格特别长时，可以使用 <a href="https://www.ctan.org/pkg/longtable" target="_blank" rel="noopener noreferrer"><code>longtable</code></a> 处理跨页表格，参考用法如下，此处不做展开。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>longtable<span class="nb">}{</span>ll<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\caption</span><span class="nb">{</span>表名<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\label</span><span class="nb">{</span>tab:longtable<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% 首页表头
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\\</span> <span class="k">\toprule</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\endfirsthead</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% 续页表头
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\multicolumn</span><span class="nb">{</span>2<span class="nb">}{</span>l<span class="nb">}{</span>（续表）<span class="nb">}</span> <span class="k">\\</span> <span class="k">\midrule</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\endhead</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% 前页表尾
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\midrule</span> <span class="k">\multicolumn</span><span class="nb">{</span>2<span class="nb">}{</span>r<span class="nb">}{</span>（接下一页表格）<span class="nb">}</span> <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\endfoot</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% 末页表尾
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    <span class="k">\bottomrule</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\endlastfoot</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% 表格内容
+</span></span></span><span class="line"><span class="cl"><span class="c"></span>    XX <span class="nb">&amp;</span> XX <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">    XX <span class="nb">&amp;</span> XX <span class="k">\\</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>longtable<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当需要图片并排时，可以使用 <a href="https://www.ctan.org/pkg/subcaption" target="_blank" rel="noopener noreferrer"><code>subcaption</code></a> 宏包提供的 <code>\subcaptionbox</code> 命令，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>[!htb]
+</span></span><span class="line"><span class="cl">    <span class="k">\centering</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\subcaptionbox</span><span class="nb">{</span>图名A<span class="k">\label</span><span class="nb">{</span>fig:figA<span class="nb">}}{</span><span class="k">\includegraphics</span><span class="na">[height=55mm]</span><span class="nb">{</span>图片1.pdf<span class="nb">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\hspace</span><span class="nb">{</span>10mm minus 5mm<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\subcaptionbox</span><span class="nb">{</span>图名B<span class="k">\label</span><span class="nb">{</span>fig:figB<span class="nb">}}{</span><span class="k">\includegraphics</span><span class="na">[height=55mm]</span><span class="nb">{</span>图片2.pdf<span class="nb">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\caption</span><span class="nb">{</span>总图名<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\label</span><span class="nb">{</span>fig:figAB<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用 <a href="https://www.ctan.org/pkg/caption" target="_blank" rel="noopener noreferrer"><code>caption</code></a> 宏包对图表名称的格式进行设置，例如上面利用 <code>\captionsetup{labelsep=space}</code> 将图表编号与名字之间的间隔设置为了空格（其他的类似还有分号、句点等习惯）。</p>
+<p>类似于公式的编号设置，可以使用 <code>\numberwithin</code> 将节的编号添加到图表编号中。</p>
+<h2 id="参考文献相关宏包" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>参考文献相关宏包</h2><p>英文参考文献格式可以由 <a href="https://www.ctan.org/pkg/natbib" target="_blank" rel="noopener noreferrer"><code>natbib</code></a> 宏包手动设置，或使用期刊模板提供的样式。对于中文文献，一般使用 <a href="https://www.ctan.org/pkg/gbt7714" target="_blank" rel="noopener noreferrer"><code>gbt7714</code></a> 自动处理，为了使用数字编号，需要在使用该宏包后采用 <code>\bibliographystyle{gbt7714-numerical}</code> 指定格式。该宏包的默认样式基本可以满足要求，如果需要额外设置，可参考说明文档修改对应的 <code>.bst</code> 样式文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>gbt7714<span class="nb">}</span>                        <span class="c">% China standard style
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\bibliographystyle</span><span class="nb">{</span>gbt7714-numerical<span class="nb">}</span>       <span class="c">% numerical / author-year
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\setlength</span><span class="nb">{</span><span class="k">\bibsep</span><span class="nb">}{</span>0.5ex<span class="nb">}</span>                  <span class="c">% vertical spacing between references
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>notoccite<span class="nb">}</span>                      <span class="c">% remove citations in TOC and ensure correct numbering
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果在图表的名字中插入了参考文献，可以使用 <a href="https://www.ctan.org/pkg/notoccite" target="_blank" rel="noopener noreferrer"><code>notoccite</code></a> 宏包避免引用的编号出现在目录中。该宏包还进一步确保了图标标题插入引用时的编号正确。</p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-03-24&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/3d8bf855a9a5d26f316cae4e49fe0a2d37f737c5" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 3d8bf855a9a5d26f316cae4e49fe0a2d37f737c5: Add brief introduction to common-used LaTeX packages and update theme." rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>3d8bf85</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/packages/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/latex/">LaTeX</a>,&nbsp;<a href="/tags/%E5%AE%8F%E5%8C%85/">宏包</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/typeconvert/" class="prev" rel="prev" title="数据的强制类型转换及其应用"><i class="fas fa-angle-left fa-fw"></i>数据的强制类型转换及其应用</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.111.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>
