@@ -12,7 +12,7 @@
     <pubDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/packages/</guid>
-    <description><![CDATA[<p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>]]></description>
+    <description><![CDATA[<p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>]]></description>
 </item><item>
     <title>数据的强制类型转换及其应用</title>
     <link>https://ichunyu.github.io/typeconvert/</link>

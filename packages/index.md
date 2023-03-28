@@ -1,7 +1,7 @@
 # LaTeX 常用宏包简介
 
 
-基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。
+基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。
 
 <!--more-->
 
@@ -186,7 +186,7 @@ $\text{C\TeX}$ 宏集为编写 $\LaTeX$ 文档提供了中文支持，其主要�
     - `bibname`：参考文献。
 
 
-## 排版优化：`mocrotype`
+## 排版优化：`microtype`
 
 如果你的文档由纯英文编写，简单地加载 [`microtype`](https://www.ctan.org/pkg/microtype) 宏包即可以实现排版细节的优化。
 
@@ -274,22 +274,6 @@ $\text{C\TeX}$ 宏集为编写 $\LaTeX$ 文档提供了中文支持，其主要�
 [`enumitem`](https://www.ctan.org/pkg/enumitem) 提供了很多选项以优化列表环境，并可以使用 `\setlist` 进行全局设置。例如默认的列表之间间距太大，使用 `\setlist{nosep}` 取消额外间距。
 
 
-## 数学相关宏包
-
-编写数学公式时，常用的宏包如下：
-
-```latex
-\usepackage{amsmath}
-\usepackage{amssymb}
-% \usepackage{nicematrix}
-\usepackage{newtxmath}
-\usepackage{bm}
-\numberwithin{equation}{section}
-```
-
-[`amsmath`](https://www.ctan.org/pkg/amsmath) 提供了大量数学环境的支持；`amssymb` 提供了额外的数学符号；对于矩阵排版，如有特殊需求，可以使用 [`nicematrix`](https://www.ctan.org/pkg/nicematrix) 宏包提供的 `NiceArray` 等环境；[`newtxmath`](https://www.ctan.org/pkg/newtx) 宏包将数学字体设置为罗马形式的衬线体，可根据个人喜好选择性使用；[`bm`](https://www.ctan.org/pkg/bm) 宏包提供了 `\bm` 命令专门用于加粗数学符号。上述代码的最后一行将节编号加入到的公式编号中。
-
-
 ## 国际单位制：`sinunitx`
 
 [`siunitx`](https://www.ctan.org/pkg/siunitx) 宏包大大方便了带单位数值的编写，最常用的命令有：
@@ -312,6 +296,62 @@ $\text{C\TeX}$ 宏集为编写 $\LaTeX$ 文档提供了中文支持，其主要�
 ```
 
 特别地，改宏包提供了 `S` 列格式，可以在排版表格时将竖直在小数点对齐，然后整体向在列居中。
+
+
+## 美丽的盒子：`tcolorbox`
+
+[`tcolorbox`](https://www.ctan.org/pkg/tcolorbox) 宏包提供了 `tcolorbox` 环境 和 `\tcbox` 命令用于产生各种彩色的盒子。该宏包的功能非常强大，这里只展示一个简单的示例：论文修订时结合边注提醒审稿人修改内容，部分代码如下：
+
+
+```latex
+% 导言区定义 \Rev 命令，以边注的形式标记附近修订所对应的审稿意见
+\newcommand\Rev[1]{}
+\usepackage{marginnote}
+\newcommand\Rev[1]{
+    \marginnote{\tcbox[on line,
+    arc=4pt,colback=blue!10!white,colframe=blue!50!black,
+    boxrule=0.7pt,boxsep=0pt,left=3pt,right=3pt,top=3pt,bottom=3pt]{
+    \small Rev. #1
+}}}
+```
+
+
+## 跟踪修改：`changes`
+
+[`changes`](https://www.ctan.org/pkg/changes) 宏包提供了标记修订的接口，可以生成带标记的 PDF 文档。其中常用命令包括：
+
+- `\added{new}`：添加；
+- `\deleted{old}`：删除；
+- `\replaced{new}{old}`：替换；
+- `\highlight{text}`：高亮；
+- `\comment{text}`：备注。
+
+在某些特别场景下，上述默认命令可能与其他宏包的命令冲突，可以在导入宏包时加入 `commandnameprefix` 选项，例如：
+
+```latex
+% 导入宏包并将命令增加 `ch` 前缀，例如：\added --> \chadded
+\usepackage[commandnameprefix=ch]{changes}
+```
+
+使用该宏包提供的 `final` 选项可以编译出“接受所有修订”之后的文档，可用于终稿的编译。
+
+通常情况下手动标记修订是比较麻烦的，可以复制 $\LaTeX$ 源码后直接修订，然后使用 `latexdiff` 命令进行差异对比并自动生成带标记的文档。为了美化，将 `latexdiff` 输出的文件中的差异标记命令用 `changes` 宏包重载即可。
+
+
+## 数学相关宏包
+
+编写数学公式时，常用的宏包如下：
+
+```latex
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage{nicematrix}
+\usepackage{newtxmath}
+\usepackage{bm}
+\numberwithin{equation}{section}
+```
+
+[`amsmath`](https://www.ctan.org/pkg/amsmath) 提供了大量数学环境的支持；`amssymb` 提供了额外的数学符号；对于矩阵排版，如有特殊需求，可以使用 [`nicematrix`](https://www.ctan.org/pkg/nicematrix) 宏包提供的 `NiceArray` 等环境；[`newtxmath`](https://www.ctan.org/pkg/newtx) 宏包将数学字体设置为罗马形式的衬线体，可根据个人喜好选择性使用；[`bm`](https://www.ctan.org/pkg/bm) 宏包提供了 `\bm` 命令专门用于加粗数学符号。上述代码的最后一行将节编号加入到的公式编号中。
 
 
 ## 图表相关宏包

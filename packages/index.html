@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
     <title>LaTeX 常用宏包简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="LaTeX 常用宏包简介" />
-<meta property="og:description" content="基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。" />
+<meta property="og:description" content="基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/packages/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-24T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-24T17:29:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-03-28T16:43:47+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
 <meta name="twitter:title" content="LaTeX 常用宏包简介"/>
-<meta name="twitter:description" content="基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。"/>
+<meta name="twitter:description" content="基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
@@ -34,8 +34,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/packages\/"
-        },"genre": "posts","keywords": "LaTeX, 宏包","wordcount":  4707 ,
-        "url": "https:\/\/ichunyu.github.io\/packages\/","datePublished": "2023-03-24T00:00:00+00:00","dateModified": "2023-03-24T17:29:36+08:00","publisher": {
+        },"genre": "posts","keywords": "LaTeX, 宏包","wordcount":  5199 ,
+        "url": "https:\/\/ichunyu.github.io\/packages\/","datePublished": "2023-03-24T00:00:00+00:00","dateModified": "2023-03-28T16:43:47+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -136,14 +136,16 @@
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
     <li><a href="#中文支持ctex">中文支持：<code>ctex</code></a></li>
-    <li><a href="#排版优化mocrotype">排版优化：<code>mocrotype</code></a></li>
+    <li><a href="#排版优化microtype">排版优化：<code>microtype</code></a></li>
     <li><a href="#页面设置geometry">页面设置：<code>geometry</code></a></li>
     <li><a href="#页眉页脚fancyhdr">页眉页脚：<code>fancyhdr</code></a></li>
     <li><a href="#超链接hyperref">超链接：<code>hyperref</code></a></li>
     <li><a href="#交叉引用cleveref">交叉引用：<code>cleveref</code></a></li>
     <li><a href="#列表设置enumitem">列表设置：enumitem</a></li>
-    <li><a href="#数学相关宏包">数学相关宏包</a></li>
     <li><a href="#国际单位制sinunitx">国际单位制：<code>sinunitx</code></a></li>
+    <li><a href="#美丽的盒子tcolorbox">美丽的盒子：<code>tcolorbox</code></a></li>
+    <li><a href="#跟踪修改changes">跟踪修改：<code>changes</code></a></li>
+    <li><a href="#数学相关宏包">数学相关宏包</a></li>
     <li><a href="#图表相关宏包">图表相关宏包</a></li>
     <li><a href="#参考文献相关宏包">参考文献相关宏包</a></li>
   </ul>
@@ -152,8 +154,8 @@
             <div class="post-meta-line">
                 <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><i class="far fa-folder fa-fw"></i>LaTeX</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-24">2023-03-24</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-24">2023-03-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4707 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-24">2023-03-24</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-03-28">2023-03-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5199 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -162,19 +164,21 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#中文支持ctex">中文支持：<code>ctex</code></a></li>
-    <li><a href="#排版优化mocrotype">排版优化：<code>mocrotype</code></a></li>
+    <li><a href="#排版优化microtype">排版优化：<code>microtype</code></a></li>
     <li><a href="#页面设置geometry">页面设置：<code>geometry</code></a></li>
     <li><a href="#页眉页脚fancyhdr">页眉页脚：<code>fancyhdr</code></a></li>
     <li><a href="#超链接hyperref">超链接：<code>hyperref</code></a></li>
     <li><a href="#交叉引用cleveref">交叉引用：<code>cleveref</code></a></li>
     <li><a href="#列表设置enumitem">列表设置：enumitem</a></li>
-    <li><a href="#数学相关宏包">数学相关宏包</a></li>
     <li><a href="#国际单位制sinunitx">国际单位制：<code>sinunitx</code></a></li>
+    <li><a href="#美丽的盒子tcolorbox">美丽的盒子：<code>tcolorbox</code></a></li>
+    <li><a href="#跟踪修改changes">跟踪修改：<code>changes</code></a></li>
+    <li><a href="#数学相关宏包">数学相关宏包</a></li>
     <li><a href="#图表相关宏包">图表相关宏包</a></li>
     <li><a href="#参考文献相关宏包">参考文献相关宏包</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文归纳部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>
+            </div><div class="content" id="content"><p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -513,8 +517,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="排版优化mocrotype" class="headerLink">
-    <a href="#%e6%8e%92%e7%89%88%e4%bc%98%e5%8c%96mocrotype" class="header-mark"></a>排版优化：<code>mocrotype</code></h2><p>如果你的文档由纯英文编写，简单地加载 <a href="https://www.ctan.org/pkg/microtype" target="_blank" rel="noopener noreferrer"><code>microtype</code></a> 宏包即可以实现排版细节的优化。</p>
+<h2 id="排版优化microtype" class="headerLink">
+    <a href="#%e6%8e%92%e7%89%88%e4%bc%98%e5%8c%96microtype" class="header-mark"></a>排版优化：<code>microtype</code></h2><p>如果你的文档由纯英文编写，简单地加载 <a href="https://www.ctan.org/pkg/microtype" target="_blank" rel="noopener noreferrer"><code>microtype</code></a> 宏包即可以实现排版细节的优化。</p>
 <h2 id="页面设置geometry" class="headerLink">
     <a href="#%e9%a1%b5%e9%9d%a2%e8%ae%be%e7%bd%aegeometry" class="header-mark"></a>页面设置：<code>geometry</code></h2><p><a href="https://www.ctan.org/pkg/geometry" target="_blank" rel="noopener noreferrer"><code>geometry</code></a> 宏包提供了 <code>\geometry</code> 命令可以方便地设置页面布局，常用设置包括：</p>
 <ul>
@@ -620,27 +624,6 @@
 </div>
 </div><h2 id="列表设置enumitem" class="headerLink">
     <a href="#%e5%88%97%e8%a1%a8%e8%ae%be%e7%bd%aeenumitem" class="header-mark"></a>列表设置：enumitem</h2><p><a href="https://www.ctan.org/pkg/enumitem" target="_blank" rel="noopener noreferrer"><code>enumitem</code></a> 提供了很多选项以优化列表环境，并可以使用 <code>\setlist</code> 进行全局设置。例如默认的列表之间间距太大，使用 <code>\setlist{nosep}</code> 取消额外间距。</p>
-<h2 id="数学相关宏包" class="headerLink">
-    <a href="#%e6%95%b0%e5%ad%a6%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>数学相关宏包</h2><p>编写数学公式时，常用的宏包如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>
-</span></span><span class="line"><span class="cl"><span class="c">% \usepackage{nicematrix}
-</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>newtxmath<span class="nb">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">\numberwithin</span><span class="nb">{</span>equation<span class="nb">}{</span>section<span class="nb">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><a href="https://www.ctan.org/pkg/amsmath" target="_blank" rel="noopener noreferrer"><code>amsmath</code></a> 提供了大量数学环境的支持；<code>amssymb</code> 提供了额外的数学符号；对于矩阵排版，如有特殊需求，可以使用 <a href="https://www.ctan.org/pkg/nicematrix" target="_blank" rel="noopener noreferrer"><code>nicematrix</code></a> 宏包提供的 <code>NiceArray</code> 等环境；<a href="https://www.ctan.org/pkg/newtx" target="_blank" rel="noopener noreferrer"><code>newtxmath</code></a> 宏包将数学字体设置为罗马形式的衬线体，可根据个人喜好选择性使用；<a href="https://www.ctan.org/pkg/bm" target="_blank" rel="noopener noreferrer"><code>bm</code></a> 宏包提供了 <code>\bm</code> 命令专门用于加粗数学符号。上述代码的最后一行将节编号加入到的公式编号中。</p>
 <h2 id="国际单位制sinunitx" class="headerLink">
     <a href="#%e5%9b%bd%e9%99%85%e5%8d%95%e4%bd%8d%e5%88%b6sinunitx" class="header-mark"></a>国际单位制：<code>sinunitx</code></h2><p><a href="https://www.ctan.org/pkg/siunitx" target="_blank" rel="noopener noreferrer"><code>siunitx</code></a> 宏包大大方便了带单位数值的编写，最常用的命令有：</p>
 <ul>
@@ -670,6 +653,75 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>特别地，改宏包提供了 <code>S</code> 列格式，可以在排版表格时将竖直在小数点对齐，然后整体向在列居中。</p>
+<h2 id="美丽的盒子tcolorbox" class="headerLink">
+    <a href="#%e7%be%8e%e4%b8%bd%e7%9a%84%e7%9b%92%e5%ad%90tcolorbox" class="header-mark"></a>美丽的盒子：<code>tcolorbox</code></h2><p><a href="https://www.ctan.org/pkg/tcolorbox" target="_blank" rel="noopener noreferrer"><code>tcolorbox</code></a> 宏包提供了 <code>tcolorbox</code> 环境 和 <code>\tcbox</code> 命令用于产生各种彩色的盒子。该宏包的功能非常强大，这里只展示一个简单的示例：论文修订时结合边注提醒审稿人修改内容，部分代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="c">% 导言区定义 \Rev 命令，以边注的形式标记附近修订所对应的审稿意见
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\newcommand\Rev</span><span class="na">[1]</span><span class="nb">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>marginnote<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\newcommand\Rev</span><span class="na">[1]</span><span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\marginnote</span><span class="nb">{</span><span class="k">\tcbox</span>[on line,
+</span></span><span class="line"><span class="cl">    arc=4pt,colback=blue!10!white,colframe=blue!50!black,
+</span></span><span class="line"><span class="cl">    boxrule=0.7pt,boxsep=0pt,left=3pt,right=3pt,top=3pt,bottom=3pt]<span class="nb">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\small</span> Rev. #1
+</span></span><span class="line"><span class="cl"><span class="nb">}}}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="跟踪修改changes" class="headerLink">
+    <a href="#%e8%b7%9f%e8%b8%aa%e4%bf%ae%e6%94%b9changes" class="header-mark"></a>跟踪修改：<code>changes</code></h2><p><a href="https://www.ctan.org/pkg/changes" target="_blank" rel="noopener noreferrer"><code>changes</code></a> 宏包提供了标记修订的接口，可以生成带标记的 PDF 文档。其中常用命令包括：</p>
+<ul>
+<li><code>\added{new}</code>：添加；</li>
+<li><code>\deleted{old}</code>：删除；</li>
+<li><code>\replaced{new}{old}</code>：替换；</li>
+<li><code>\highlight{text}</code>：高亮；</li>
+<li><code>\comment{text}</code>：备注。</li>
+</ul>
+<p>在某些特别场景下，上述默认命令可能与其他宏包的命令冲突，可以在导入宏包时加入 <code>commandnameprefix</code> 选项，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="c">% 导入宏包并将命令增加 `ch` 前缀，例如：\added --&gt; \chadded
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="na">[commandnameprefix=ch]</span><span class="nb">{</span>changes<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用该宏包提供的 <code>final</code> 选项可以编译出“接受所有修订”之后的文档，可用于终稿的编译。</p>
+<p>通常情况下手动标记修订是比较麻烦的，可以复制 $\LaTeX$ 源码后直接修订，然后使用 <code>latexdiff</code> 命令进行差异对比并自动生成带标记的文档。为了美化，将 <code>latexdiff</code> 输出的文件中的差异标记命令用 <code>changes</code> 宏包重载即可。</p>
+<h2 id="数学相关宏包" class="headerLink">
+    <a href="#%e6%95%b0%e5%ad%a6%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>数学相关宏包</h2><p>编写数学公式时，常用的宏包如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amssymb<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% \usepackage{nicematrix}
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>newtxmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\numberwithin</span><span class="nb">{</span>equation<span class="nb">}{</span>section<span class="nb">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.ctan.org/pkg/amsmath" target="_blank" rel="noopener noreferrer"><code>amsmath</code></a> 提供了大量数学环境的支持；<code>amssymb</code> 提供了额外的数学符号；对于矩阵排版，如有特殊需求，可以使用 <a href="https://www.ctan.org/pkg/nicematrix" target="_blank" rel="noopener noreferrer"><code>nicematrix</code></a> 宏包提供的 <code>NiceArray</code> 等环境；<a href="https://www.ctan.org/pkg/newtx" target="_blank" rel="noopener noreferrer"><code>newtxmath</code></a> 宏包将数学字体设置为罗马形式的衬线体，可根据个人喜好选择性使用；<a href="https://www.ctan.org/pkg/bm" target="_blank" rel="noopener noreferrer"><code>bm</code></a> 宏包提供了 <code>\bm</code> 命令专门用于加粗数学符号。上述代码的最后一行将节编号加入到的公式编号中。</p>
 <h2 id="图表相关宏包" class="headerLink">
     <a href="#%e5%9b%be%e8%a1%a8%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>图表相关宏包</h2><p>常用的图表相关宏包设置如下：</p>
 <div class="highlight"><div class="chroma">
@@ -796,8 +848,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-03-24&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/3d8bf855a9a5d26f316cae4e49fe0a2d37f737c5" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 3d8bf855a9a5d26f316cae4e49fe0a2d37f737c5: Add brief introduction to common-used LaTeX packages and update theme." rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>3d8bf85</a></span>
+                <span>更新于 2023-03-28&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/36159b7622bdb85840543c01e35714918c0cdb15" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 36159b7622bdb85840543c01e35714918c0cdb15: Update latex packages." rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>36159b7</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
