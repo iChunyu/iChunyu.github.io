@@ -4,9 +4,16 @@
         <link>https://ichunyu.github.io/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</lastBuildDate>
             <atom:link href="https://ichunyu.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>基于五点的数据处理算法</title>
+    <link>https://ichunyu.github.io/fivepoints/</link>
+    <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/fivepoints/</guid>
+    <description><![CDATA[<p>五点法是采用五个样本点对数据进行处理的一类方法，可以对数据进行平滑或微分处理。本文将讨论五点法的基本思路，并介绍 LISA 团队使用五点法处理二阶微分时的改进。</p>]]></description>
+</item><item>
     <title>LaTeX 常用宏包简介</title>
     <link>https://ichunyu.github.io/packages/</link>
     <pubDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/vectortransform/</guid>
     <description><![CDATA[<p>在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。</p>]]></description>
-</item><item>
-    <title>CIC 滤波器简介</title>
-    <link>https://ichunyu.github.io/introcic/</link>
-    <pubDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/introcic/</guid>
-    <description><![CDATA[<p>级联积分梳状（CIC, Cascaded Integrator–Comb）滤波器是一种非常“经济”的滤波器。它的实现所需资源少、具有线性相位，同时实现采样率的改变，通常可用于模数转换器（ADC, Analog to Digital Converter）的抗混叠滤波。本文简要介绍 CIC 滤波器的基本原理及其实现方法，分析该滤波器的频率响应，然后给出 CIC 滤波器在降采样（抽取）和升采样（插值）的应用，最后给出降采样倍数的一般设计方法。</p>]]></description>
 </item></channel>
 </rss>

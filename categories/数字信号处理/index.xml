@@ -4,7 +4,14 @@
         <link>https://ichunyu.github.io/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</link>
         <description>数字信号处理 - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+    <title>基于五点的数据处理算法</title>
+    <link>https://ichunyu.github.io/fivepoints/</link>
+    <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/fivepoints/</guid>
+    <description><![CDATA[<p>五点法是采用五个样本点对数据进行处理的一类方法，可以对数据进行平滑或微分处理。本文将讨论五点法的基本思路，并介绍 LISA 团队使用五点法处理二阶微分时的改进。</p>]]></description>
+</item><item>
     <title>CIC 滤波器简介</title>
     <link>https://ichunyu.github.io/introcic/</link>
     <pubDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</pubDate><author>

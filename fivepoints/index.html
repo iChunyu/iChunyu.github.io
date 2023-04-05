@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>基于五点的数据处理算法 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="基于五点的数据处理算法" />
+<meta property="og:description" content="五点法是采用五个样本点对数据进行处理的一类方法，可以对数据进行平滑或微分处理。本文将讨论五点法的基本思路，并介绍 LISA 团队使用五点法处理二阶微分时的改进。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/fivepoints/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-05T15:44:26+08:00" />
+<meta property="article:modified_time" content="2023-04-06T00:40:42+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="基于五点的数据处理算法"/>
+<meta name="twitter:description" content="五点法是采用五个样本点对数据进行处理的一类方法，可以对数据进行平滑或微分处理。本文将讨论五点法的基本思路，并介绍 LISA 团队使用五点法处理二阶微分时的改进。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/fivepoints/" /><link rel="prev" href="https://ichunyu.github.io/packages/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "基于五点的数据处理算法",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/fivepoints\/"
+        },"genre": "posts","keywords": "五点法, 平滑, 滤波, 微分","wordcount":  1811 ,
+        "url": "https:\/\/ichunyu.github.io\/fivepoints\/","datePublished": "2023-04-05T15:44:26+08:00","dateModified": "2023-04-06T00:40:42+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme; }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="#" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#泰勒级数法">泰勒级数法</a></li>
+    <li><a href="#参数估计法">参数估计法</a></li>
+    <li><a href="#lisa-的二阶微分法">LISA 的二阶微分法</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">基于五点的数据处理算法</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><i class="author fas fa-user-circle fa-fw"></i><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-05">2023-04-05</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-04-06">2023-04-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1811 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#泰勒级数法">泰勒级数法</a></li>
+    <li><a href="#参数估计法">参数估计法</a></li>
+    <li><a href="#lisa-的二阶微分法">LISA 的二阶微分法</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>五点法是采用五个样本点对数据进行处理的一类方法，可以对数据进行平滑或微分处理。本文将讨论五点法的基本思路，并介绍 LISA 团队使用五点法处理二阶微分时的改进。</p>
+<p>我们之前在 <a href="https://ichunyu.github.io/diffsignal/" rel="">信号的微分</a> 那篇文章里从控制系统的角度介绍了跟踪微分算法，那是一种满足因果性的算法，意味着当前数据的平滑（滤波）和微分不依赖于将来的数据。与之不同的是，五点法在处理当前时刻的数据时需要使用未来的数据，因此通常用于已经得到数据之后的离线处理。五点法基于当前时刻附近五个数据点的一类处理方法，本文将讨论五点法的三种设计思路，分别为泰勒级数法、参数估计法和 LISA 的二阶微分法。</p>
+<h2 id="泰勒级数法" class="headerLink">
+    <a href="#%e6%b3%b0%e5%8b%92%e7%ba%a7%e6%95%b0%e6%b3%95" class="header-mark"></a>泰勒级数法</h2><p>泰勒展开为讨论数据在附近短时间内的变化规律提供了基本线索，记时域数据 $y(t)$ 的采样时间为 $T$，则 $t=nT$ 附近的低阶泰勒级数可以表述为：</p>
+$$
+y(nT+kT) = \alpha_0 + \alpha_1 kT + \alpha_2 (kT)^2 + \alpha_3 (kT)^3 + \alpha_4 (kT)^4 + \mathscr{o}(T^5)
+$$
+<p>式中幂级数的系数 $\alpha_k$ 与 $y(t)$ 的导数关系为：</p>
+$$
+\left.\frac{\mathrm{d}^ky}{\mathrm{d}t^k}\right|_{t=nT} = \alpha_k k!
+$$
+<p>分别取 $k=\{-2,-1,0,1,2\}$ 并舍去式中的高阶小量，利用 $y(nT+kT)$ 的数据可以构造方程组：</p>
+$$
+Y_5(n,T) = \begin{bmatrix} y(nT-2T) \\ y(nT-T) \\ y(nT) \\ y(nT+T) \\ y(nT+2T) \end{bmatrix} =
+\begin{bmatrix}
+1 & -2T & 4T^2 & -8T^3 & 16T^4 \\
+1 & -T & T^2 & -T^3 & T^4 \\
+1 & 0 & 0 & 0 & 0 \\
+1 & T & T^2 & T^3 & T^4 \\
+1 & 2T & 4T^2 & 8T^3 & 16T^4
+\end{bmatrix}
+\begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \\ \alpha_4 \end{bmatrix}
+$$
+<p>由此可以对 $\alpha_k$ 定解，进而根据系数与导数的关系，可以估计 $y(t)$ 在 $t =nT$ 附近的各阶导数为：</p>
+$$
+\begin{aligned}
+    \hat{y}(nT) &\approx \alpha_0 = \begin{bmatrix} 0 & 0 & 1 & 0 & 0 \end{bmatrix} Y_5(n,T) \\
+    \hat{y}'(nT) &\approx \alpha_1 = \frac{1}{12T} \begin{bmatrix} 1 & -8 & 0 & 8 & -1 \end{bmatrix} Y_5(n,T) \\
+    \hat{y}''(nT) &\approx 2 \alpha_2 = \frac{1}{12T^2} \begin{bmatrix} -1 & 16 & -30 & 16 & -1 \end{bmatrix} Y_5(n,T) \\
+    \hat{y}^{(3)}(nT) &\approx 6 \alpha_3 = \frac{1}{2T^3} \begin{bmatrix} -1 & 2 & 0 & -2 & 1 \end{bmatrix} Y_5(n,T) \\
+    \hat{y}^{(4)}(nT) &\approx 24 \alpha_4 = \frac{1}{T^4} \begin{bmatrix} 1 & -4 & 6 & -4 & 1 \end{bmatrix} Y_5(n,T)
+\end{aligned}
+$$
+<p>该算法实际上是将原数据分段看作四次函数，并根据附近五个点进行定解，因而求解之后的函数在 $t = nT$ 处的数值与 $y(nT)$ 严格相等，即上面的第一个式子所示。然而，当数据存在噪声时，这种算法将因为过拟合而无法对数据进行平均，达不到平滑数据的效果。</p>
+<p>在后面的对比中，我们将讨论的重点放在二阶导数，根据上面的第三式将相应的传递函数写为：</p>
+$$
+D_{\mathrm{Taylor}}(z) = \frac{1}{12T^2} \left( -z^{-2} + 16 z^{-1} -30 + 16 z  -z^2  \right)
+$$
+<h2 id="参数估计法" class="headerLink">
+    <a href="#%e5%8f%82%e6%95%b0%e4%bc%b0%e8%ae%a1%e6%b3%95" class="header-mark"></a>参数估计法</h2><p>为了达到平滑的效果，我们将泰勒展开的阶数降低，利用最小二乘法进行“平均”。考虑二次展开的情况，利用 $t=nT$ 附近的五个点构造方程组：</p>
+$$
+Y_5(n,T) = \begin{bmatrix} y(nT-2T) \\ y(nT-T) \\ y(nT) \\ y(nT+T) \\ y(nT+2T) \end{bmatrix} =
+\begin{bmatrix}
+1 & -2T & 4T^2 \\
+1 & -T  & T^2 \\
+1 & 0   & 0   \\
+1 & T   & T^2 \\
+1 & 2T  & 4T^2
+\end{bmatrix}
+\begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \end{bmatrix}
+= \Gamma A
+$$
+<p>最小二乘法的解为：</p>
+$$
+A = \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \end{bmatrix} = \left( \Gamma^\mathrm{T}\Gamma \right)^{-1} \Gamma^\mathrm{T} Y_5(n,T)
+$$
+<p>因而 $y(t)$ 在 $t=nT$ 处的各阶导数为：</p>
+$$
+\begin{aligned}
+    \hat{y}(nT) &\approx \alpha_0 = \frac{1}{35} \begin{bmatrix} -3 & 12 & 17 & 12 & -3 \end{bmatrix} Y_5(n,T) \\
+    \hat{y}'(nT) &\approx \alpha_1 = \frac{1}{10T} \begin{bmatrix} -2 & -1 & 0 & 1 & 2 \end{bmatrix} Y_5(n,T) \\
+    \hat{y}''(nT) &\approx 2 \alpha_2 = \frac{1}{7T^2} \begin{bmatrix} 2 & -1 & -2 & -1 & 2 \end{bmatrix} Y_5(n,T)
+\end{aligned}
+$$
+<p>上面的第一个式子指出，$\hat{y}(nT)$ 的估计值是对 $y(nT)$ 附近五个数据的加权平均，因此可以达到数据的平滑效果。</p>
+<p>同样地，二阶微分的传递函数可以写做：</p>
+$$
+D_{\mathrm{fit}}(z) = \frac{1}{7T^2} \left( 2 z^{-2} - z^{-1} -2 - z + 2z^2 \right)
+$$
+<h2 id="lisa-的二阶微分法" class="headerLink">
+    <a href="#lisa-%e7%9a%84%e4%ba%8c%e9%98%b6%e5%be%ae%e5%88%86%e6%b3%95" class="header-mark"></a>LISA 的二阶微分法</h2><p>LISA 的二次微分算法主要从传递函数的层面考虑，根据上面的讨论，不失一般性地将二次微分的传递函数设为：</p>
+$$
+D_{\mathrm{LISA}}(z) = \frac{1}{T^2} \left( a_{-2} z^{-2} + a_{-1}z^{-1} + a_0 + a_1 z + a_2 z^2 \right)
+$$
+<p>将 $z=\mathrm{e}^{j\omega T}$ 带入上式，可以得到频率响应为：</p>
+$$
+\begin{aligned}
+    D_{\mathrm{LISA}}(j\omega) &= \frac{1}{T^2} \Bigl[ (a_2 + a_{-2}) \cos(2 \omega T) + j(a_2 - a_{-2}) \sin(2\omega T) \\
+    &\qquad + (a_1 + a_{-1}) \cos (\omega T) + j(a_1 - a_{-1}) \sin (\omega T) + a_0 \Bigr]
+\end{aligned}
+$$
+<p>理想二次微分的频率响应为：</p>
+$$
+D_\mathrm{ideal}(j\omega) = (j\omega)^2 = -\omega^2
+$$
+<p>将 $D_{\mathrm{LISA}}(j\omega)$ 与 $D_{\mathrm{ideal}}(j\omega)$ 进行对比，可以分别得到以下约束条件：</p>
+<ol>
+<li>虚部为零：</li>
+</ol>
+$$
+a_2 = a_{-2} ,\qquad a_1 = a_{-1}
+$$
+<ol start="2">
+<li>直流响应为 $0$：</li>
+</ol>
+$$
+\left( a_2 + a_{-2} \right) + \left( a_1 + a_{-1} \right) + a_0 = 2 a_2 + 2 a_1 + a_0 = 0
+$$
+<ol start="3">
+<li>低频段内近似相等（低阶泰勒展开）：</li>
+</ol>
+$$
+D_{\mathrm{LISA}}(j\omega) %= \frac{1}{T^2} \Bigl[ 2a_2 \cos (2\omega T)  + 2 a_1 \cos (\omega T) + a_0 \Bigr]
+\approx  - (4 a_2 + a_1) \omega^2  \quad \rightarrow \quad  4 a_2 + a_1 = 1
+$$
+<p>上面的约束仍不足以定解，对于数字系统，考虑在奈奎斯特频率处增加一个零点，即令 $D_{\mathrm{LISA}}(j \omega)$ 在 $\omega = \pi f_s = \pi/T$ 时为零，可补充方程为：</p>
+$$
+2 a_2 - 2 a_1 + a_0 = 0
+$$
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">如果取 $a_2= -1/12$ 或 $a_2 = 2/7$，基于上述三个约束条件，可以分别得到泰勒级数法和参数估计法给出的二次微分算法。</div>
+        </div>
+    </div>
+<p>因此可以解得 $a_0 = -1/2$，$a_1 = a_{-1} = 0$，$a_2=a_{-2} = 1/4$。因此 $y(t)$ 的二阶导数在 $t=nT$ 时刻的估计值为：</p>
+$$
+\hat{y}''(nT) = \frac{1}{T^2} \Bigl( \frac{1}{4} y(nT-2T) - \frac{1}{2} y(nT) + \frac{1}{4} y(nT+2T) \Bigr)
+$$
+<p>最后，我们将三种方法给出的二阶微分传递函数的幅频响应绘制在一起，如下图所示。其中黄色曲线为理想二次微分的幅频响应；蓝色是基于泰勒展开法的二次微分，它在很大的频率范围内与理想微分的增益一致，然而其高频增益太大，容易受到实际测量噪声的影响；红色曲线对应参数估计法，其在低频范围具有二次微分的响应，而在高频兼顾了滤波效果，其零点在奈奎斯特频率之前；绿色曲线为 LISA 的二次微分方法，相较于红色曲线，将零点挪到了奈奎斯特频率处，可以有效抑制高频噪声。</p>
+<div align=center>
+    <img src=./diff2_5p.png width=60% />
+</div>
+<h2 id="参考文献" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+<li>L. Ferraioli, M. Hueller, S. Vitale. <a href="https://doi.org/10.1088/0264-9381/26/9/094013" target="_blank" rel="noopener noreferrer">Discrete derivative estimation in LISA Pathfinder data reduction</a>. Classical and Quantum Gravity. 26 (2009) 094013.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-04-06&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/3172b40c0cea15b1987f7280fa2fb2dab778bc28" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 3172b40c0cea15b1987f7280fa2fb2dab778bc28: Add five-points method to process digital signal." rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>3172b40</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/fivepoints/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E4%BA%94%E7%82%B9%E6%B3%95/">五点法</a>,&nbsp;<a href="/tags/%E5%B9%B3%E6%BB%91/">平滑</a>,&nbsp;<a href="/tags/%E6%BB%A4%E6%B3%A2/">滤波</a>,&nbsp;<a href="/tags/%E5%BE%AE%E5%88%86/">微分</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/packages/" class="prev" rel="prev" title="LaTeX 常用宏包简介"><i class="fas fa-angle-left fa-fw"></i>LaTeX 常用宏包简介</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.111.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>
