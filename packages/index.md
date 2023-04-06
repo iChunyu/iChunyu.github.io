@@ -330,7 +330,7 @@ $\text{C\TeX}$ 宏集为编写 $\LaTeX$ 文档提供了中文支持，其主要�
 
 ```latex
 % 导入宏包并将命令增加 `ch` 前缀，例如：\added --> \chadded
-\usepackage[commandnameprefix=ch]{changes}
+\usepackage[commandnameprefix=always]{changes}
 ```
 
 使用该宏包提供的 `final` 选项可以编译出“接受所有修订”之后的文档，可用于终稿的编译。
