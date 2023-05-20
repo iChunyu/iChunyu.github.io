@@ -335,7 +335,7 @@ enableGitInfo = true
       #  是否保持使用文章前面的静态目录
       keepStatic = false
       # 是否使侧边目录自动折叠展开
-      auto = true
+      auto = false
     #  代码配置
     [params.page.code]
       # 是否显示代码块的复制按钮
@@ -656,7 +656,7 @@ enableGitInfo = true
   # 目录设置
   [markup.tableOfContents]
     startLevel = 2
-    endLevel = 6
+    endLevel = 4
 
 # 作者配置
 [author]
