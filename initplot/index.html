@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>MATLAB 自定义默认绘图样式 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="MATLAB 自定义默认绘图样式" />
+<meta property="og:description" content="为了让 MATLAB 绘制的曲线好看，通常需要使用各种参数设置绘图样式，这会使得绘图代码重复且冗长。本文将介绍如何自定义 MATLAB 的默认绘图样式以简化绘图命令。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/initplot/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-20T18:54:52+08:00" />
+<meta property="article:modified_time" content="2023-05-20T21:32:03+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="MATLAB 自定义默认绘图样式"/>
+<meta name="twitter:description" content="为了让 MATLAB 绘制的曲线好看，通常需要使用各种参数设置绘图样式，这会使得绘图代码重复且冗长。本文将介绍如何自定义 MATLAB 的默认绘图样式以简化绘图命令。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/initplot/" /><link rel="prev" href="https://ichunyu.github.io/fivepoints/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MATLAB 自定义默认绘图样式",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/initplot\/"
+        },"genre": "posts","keywords": "MATLAB","wordcount":  1762 ,
+        "url": "https:\/\/ichunyu.github.io\/initplot\/","datePublished": "2023-05-20T18:54:52+08:00","dateModified": "2023-05-20T21:32:03+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本思路">基本思路</a></li>
+    <li><a href="#自定义样式">自定义样式</a></li>
+    <li><a href="#封装函数">封装函数</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">MATLAB 自定义默认绘图样式</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/matlab/"><i class="far fa-folder fa-fw"></i>MATLAB</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-20">2023-05-20</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-20">2023-05-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1762 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本思路">基本思路</a></li>
+    <li><a href="#自定义样式">自定义样式</a></li>
+    <li><a href="#封装函数">封装函数</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>为了让 MATLAB 绘制的曲线好看，通常需要使用各种参数设置绘图样式，这会使得绘图代码重复且冗长。本文将介绍如何自定义 MATLAB 的默认绘图样式以简化绘图命令。</p>
+<h2 id="基本思路" class="headerLink">
+    <a href="#%e5%9f%ba%e6%9c%ac%e6%80%9d%e8%b7%af" class="header-mark"></a>基本思路</h2><p>MATLAB 绘图相关的默认选项由 <code>groot</code>（Graphics root object）的属性决定，使用 <code>get</code> 命令可以查看相应参数的默认值。例如，<code>plot</code> 的默认线宽可以使用以下代码查看：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">get</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="s">&#39;defaultLineLineWidth&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因此，自定义绘图样式的思路非常简单：只需要使用 <code>set</code> 命令重新设置 <code>groot</code> 的属性值即可。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="s">&#39;defaultLineLineWidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如此做，在关闭 MATLAB 之前，除非在绘图时显式地指定线宽，所有 <code>plot</code> 的线宽都将设置为 2。</p>
+<h2 id="自定义样式" class="headerLink">
+    <a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%a0%b7%e5%bc%8f" class="header-mark"></a>自定义样式</h2><p>为了查看 <code>groot</code> 的所有默认属性，可以使用如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">get</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="s">&#39;factory&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这些属性通常都是可以顾名思义的，为了修改其默认值，只需要结合 <code>set</code> 命令，并将属性开头的 <code>factory</code> 改为 <code>default</code> 即可，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% factoryFigureColor = [0.9400, 0.9400, 0.9400]     % 默认图片背景为灰色</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="s">&#39;defaultFigureColor&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>             <span class="c">% 设置图片背景为白色</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>根据个人喜好和常用的设置，可以编写一个脚本或者函数对默认值进行设置。特别地，可以将自定义的绘图样式写在特定的 <code>startup.m</code> 脚本文件中从而达到 MATLAB 启动时自动配置的目的。可行的示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">% 创建 startup.m 文件
+</span></span><span class="line"><span class="cl">edit(fullfile(userpath,&#39;startup.m&#39;))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">% setup.m 内容示例
+</span></span><span class="line"><span class="cl">set(groot,&#39;defaultFigureColor&#39;,[1,1,1])         % 背景颜色
+</span></span><span class="line"><span class="cl">set(groot,&#39;defaultLineLineWidth&#39;,2)             % 绘图线宽
+</span></span><span class="line"><span class="cl">set(groot,&#39;defaultAxesFontSize&#39;,20)             % 坐标字号
+</span></span><span class="line"><span class="cl">set(groot,&#39;defaultAxesXGrid&#39;,&#39;on&#39;)              % 横轴网格
+</span></span><span class="line"><span class="cl">set(groot,&#39;defaultAxesYGrid&#39;,&#39;on&#39;)              % 纵轴网格
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>简要介绍几个与 <code>plot</code> 相关的参数：</p>
+<ul>
+<li><code>defaultFigureColor</code>：绘图区的背景颜色，建议设置为白色以避免直接截图时出现灰色边框；</li>
+<li><code>defaultFigureWindowStyle</code>：绘图窗口样式，可选项有 <code>'normal'</code>、<code>'modal'</code> 和 <code>'docked'</code>；</li>
+<li><code>defaultAxesFontName</code>：坐标区字体；</li>
+<li><code>defaultAxesXGrid</code>：横轴网格；</li>
+<li><code>defaultAxesYGrid</code>：纵轴网格；</li>
+<li><code>defaultAxesZGrid</code>：竖轴网格；</li>
+<li><code>defaultAxesColorOrder</code>：曲线的颜色顺序，十六进制的字符串向量或 $N \times 3$ 数值矩阵。如果是数值矩阵，每行的三个元素分别对应颜色的归一化 RGB 值。绘图时将按照该颜色顺序渲染曲线；</li>
+<li><code>defaultAxesFontSize</code>：坐标区字号；</li>
+<li><code>defaultLineLineWidth</code>：线宽；</li>
+<li><code>defaultTextFontSize</code>：绘图区文本字号；</li>
+<li><code>defaultAxesTickLabelInterpreter</code>：坐标区标注的解释器，可选项有 <code>'tex'</code>、<code>'latex'</code> 和 <code>'none'</code>；</li>
+<li><code>defaultTextInterpreter</code>：文本解释器；</li>
+<li><code>defaultLegendInterpreter</code>：图例解释器。</li>
+</ul>
+<h2 id="封装函数" class="headerLink">
+    <a href="#%e5%b0%81%e8%a3%85%e5%87%bd%e6%95%b0" class="header-mark"></a>封装函数</h2><p>对于不同的操作系统和屏幕分辨率，相同设置下的绘图效果可能存在差异。例如相同线宽和字号的设置下，高分辨率屏幕显示的曲线偏细、字体偏小。为了解决这个问题，可以将绘图样式封装为函数，并将这些可变的样式作为函数的输入参数。例如：将线宽和字号留作设置的接口，自定义的函数形如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span><span class="nf">InitPlot</span><span class="p">(</span>linwidth,fontsize<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="s">&#39;defaultLineLineWidth&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="p">)</span>     <span class="c">% 绘图线宽</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="s">&#39;defaultAxesFontSize&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="p">)</span>       <span class="c">% 坐标字号</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% 其他设置</span>
+</span></span><span class="line"><span class="cl">    <span class="c">% ...</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如此做，对于不同的平台，<code>startup.m</code> 中使用不同的参数调用该函数即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">InitPlot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>  <span class="c">% Windows</span>
+</span></span><span class="line"><span class="cl"><span class="n">InitPlot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>  <span class="c">% Linux</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在某些特殊的情况下，我们希望将自定义的样式恢复为默认样式，这可以将参数值设置为 <code>‘remove’</code> 来恢复，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="s">&#39;defaultAxesFontSize&#39;</span><span class="p">,</span><span class="s">&#39;remove&#39;</span><span class="p">)</span>           <span class="c">% 恢复默认字号</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为了便于切换样式，我们可以将自定义的样式储存在 <code>cell</code> 数组中，每一行的两个参数分别为属性名称和自定义的属性值，通过 <code>for</code> 循环来批量设置和恢复，局部代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">mystyle</span> <span class="p">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#39;defaultFigureColor&#39;</span>   <span class="p">,</span> <span class="s">&#39;w&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#39;defaultAxesFontName&#39;</span>  <span class="p">,</span> <span class="s">&#39;Serif&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#39;defaultAxesXGrid&#39;</span>     <span class="p">,</span> <span class="s">&#39;on&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#39;defaultAxesYGrid&#39;</span>     <span class="p">,</span> <span class="s">&#39;on&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#39;defaultAxesZGrid&#39;</span>     <span class="p">,</span> <span class="s">&#39;on&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% --------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 设置自定义样式</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">myStyle</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="n">myStyle</span><span class="p">{</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="n">myStyle</span><span class="p">{</span><span class="n">k</span><span class="p">,</span><span class="mi">2</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% --------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c">% 恢复出厂设置</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">myStyle</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="n">myStyle</span><span class="p">{</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="s">&#39;remove&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后分享一下我自用的绘图设置函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">% Inilitialize plotting settings</span>
+</span></span><span class="line"><span class="cl"><span class="c">% InitPlot(linewidth,fontsize,windowstyle,interpreter)</span>
+</span></span><span class="line"><span class="cl"><span class="c">% InitPlot(&#39;remove&#39;) to restore factory settings</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% XiaoCY 2022-02-22</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%%</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span><span class="nf">InitPlot</span><span class="p">(</span>varargin<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">p</span> <span class="p">=</span> <span class="n">inputParser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">addOptional</span><span class="p">(</span><span class="s">&#39;linewidth&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">addOptional</span><span class="p">(</span><span class="s">&#39;fontsize&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">addOptional</span><span class="p">(</span><span class="s">&#39;windowstyle&#39;</span><span class="p">,</span><span class="s">&#39;docked&#39;</span><span class="p">,@(</span><span class="n">s</span><span class="p">)</span><span class="n">ischar</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">||</span><span class="n">isstring</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">ispc</span> <span class="c">% Windows</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interpreter</span> <span class="p">=</span> <span class="s">&#39;tex&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">interpreter</span> <span class="p">=</span> <span class="s">&#39;latex&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">addOptional</span><span class="p">(</span><span class="s">&#39;interpreter&#39;</span><span class="p">,</span><span class="n">interpreter</span><span class="p">,@(</span><span class="n">s</span><span class="p">)</span><span class="n">ischar</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">||</span><span class="n">isstring</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">nargin</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="p">(</span> <span class="n">ischar</span><span class="p">(</span><span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">})</span> <span class="o">||</span> <span class="n">isstring</span><span class="p">(</span><span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">})</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">strcmpi</span><span class="p">(</span><span class="n">varargin</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span><span class="s">&#39;remove&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">useMyStyle</span> <span class="p">=</span> <span class="n">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p</span><span class="p">.</span><span class="n">parse</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">useMyStyle</span> <span class="p">=</span> <span class="n">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">varargin</span><span class="p">{:});</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">linewidth</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">linewidth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fontsize</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">fontsize</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">windowstyle</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">windowstyle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">interpreter</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">interpreter</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">colorVec</span> <span class="p">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">0.1765</span>    <span class="mf">0.5216</span>    <span class="mf">0.9412</span>  <span class="c">% blue</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">0.9569</span>    <span class="mf">0.2627</span>    <span class="mf">0.2353</span>  <span class="c">% red</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">0.0392</span>    <span class="mf">0.6588</span>    <span class="mf">0.3451</span>  <span class="c">% green</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">1.0000</span>    <span class="mf">0.7373</span>    <span class="mf">0.1961</span>  <span class="c">% yellow</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">0.9843</span>    <span class="mf">0.4471</span>    <span class="mf">0.6000</span>  <span class="c">% pink</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">0.4980</span>    <span class="mf">0.4980</span>    <span class="mf">0.4980</span>  <span class="c">% gray</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">0.7373</span>    <span class="mf">0.7412</span>    <span class="mf">0.1333</span>  <span class="c">% olive</span>
+</span></span><span class="line"><span class="cl">        <span class="mf">0.0902</span>    <span class="mf">0.7451</span>    <span class="mf">0.8118</span>  <span class="c">% cyan</span>
+</span></span><span class="line"><span class="cl">        <span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c">% Run get(groot,&#39;factory&#39;) to see what you can change.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">myStyle</span> <span class="p">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c">% figure</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultFigureColor&#39;</span>                   <span class="p">,</span> <span class="s">&#39;w&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultAxesFontName&#39;</span>                  <span class="p">,</span> <span class="s">&#39;Serif&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultAxesXGrid&#39;</span>                     <span class="p">,</span> <span class="s">&#39;on&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultAxesYGrid&#39;</span>                     <span class="p">,</span> <span class="s">&#39;on&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultAxesZGrid&#39;</span>                     <span class="p">,</span> <span class="s">&#39;on&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultConstantLineAlpha&#39;</span>             <span class="p">,</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultAxesColorOrder&#39;</span>                <span class="p">,</span> <span class="n">colorVec</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultFigureWindowStyle&#39;</span>             <span class="p">,</span> <span class="n">windowstyle</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultAxesFontSize&#39;</span>                  <span class="p">,</span> <span class="n">fontsize</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultTextFontSize&#39;</span>                  <span class="p">,</span> <span class="n">fontsize</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultConstantLineFontSize&#39;</span>          <span class="p">,</span> <span class="n">fontsize</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultLineLineWidth&#39;</span>                 <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultConstantLineLineWidth&#39;</span>         <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultAnimatedlineLineWidth&#39;</span>         <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultStairLineWidth&#39;</span>                <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultStemLineWidth&#39;</span>                 <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultContourLineWidth&#39;</span>              <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultFunctionlineLineWidth&#39;</span>         <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultImplicitfunctionlineLineWidth&#39;</span> <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultErrorbarLineWidth&#39;</span>             <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultScatterLineWidth&#39;</span>              <span class="p">,</span> <span class="n">linewidth</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultAxesTickLabelInterpreter&#39;</span>      <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultConstantlineInterpreter&#39;</span>       <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultTextInterpreter&#39;</span>               <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultLegendInterpreter&#39;</span>             <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultColorbarTickLabelInterpreter&#39;</span>  <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultGraphplotInterpreter&#39;</span>          <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultPolaraxesTickLabelInterpreter&#39;</span> <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultTextarrowshapeInterpreter&#39;</span>     <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#39;defaultTextboxshapeInterpreter&#39;</span>       <span class="p">,</span> <span class="n">interpreter</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">useMyStyle</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">myStyle</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="n">myStyle</span><span class="p">{</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="n">myStyle</span><span class="p">{</span><span class="n">k</span><span class="p">,</span><span class="mi">2</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">k</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">myStyle</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">set</span><span class="p">(</span><span class="n">groot</span><span class="p">,</span><span class="n">myStyle</span><span class="p">{</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span><span class="s">&#39;remove&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-05-20&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/4ba0a4b7aac57b3bddc31d68dea2448d8c4db7ff" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 4ba0a4b7aac57b3bddc31d68dea2448d8c4db7ff: Add `initplot`" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>4ba0a4b</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/initplot/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share"></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/matlab/">MATLAB</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/fivepoints/" class="prev" rel="prev" title="基于五点的数据处理算法"><i class="fas fa-angle-left fa-fw"></i>基于五点的数据处理算法</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.111.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>
