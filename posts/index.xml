@@ -4,7 +4,14 @@
         <link>https://ichunyu.github.io/posts/</link>
         <description>所有文章 | 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 20 May 2023 18:54:52 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 31 May 2023 12:11:29 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>航天器姿态测量与确定</title>
+    <link>https://ichunyu.github.io/attitude/</link>
+    <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/attitude/</guid>
+    <description><![CDATA[<p>航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。</p>]]></description>
+</item><item>
     <title>MATLAB 自定义默认绘图样式</title>
     <link>https://ichunyu.github.io/initplot/</link>
     <pubDate>Sat, 20 May 2023 18:54:52 &#43;0800</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/newton2kepler/</guid>
     <description><![CDATA[<p>开普勒定律揭示了行星围绕中心天体运动的规律，随后牛顿提出的运动学定律和万有引力定律进一步从原理上进行了解释。本文从牛顿方程的角度出发，基于限制性二体问题推导开普勒运动定律，被简要介绍轨道六要素和开普勒方程。</p>]]></description>
-</item><item>
-    <title>四元数与三维旋转</title>
-    <link>https://ichunyu.github.io/quaternion/</link>
-    <pubDate>Wed, 16 Mar 2022 14:32:58 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/quaternion/</guid>
-    <description><![CDATA[<p>复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。</p>]]></description>
 </item></channel>
 </rss>

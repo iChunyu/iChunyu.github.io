@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>航天器姿态测量与确定 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="航天器姿态测量与确定" />
+<meta property="og:description" content="航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/attitude/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-31T12:11:29+08:00" />
+<meta property="article:modified_time" content="2023-05-31T13:49:18+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="航天器姿态测量与确定"/>
+<meta name="twitter:description" content="航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/attitude/" /><link rel="prev" href="https://ichunyu.github.io/initplot/" />
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "航天器姿态测量与确定",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/attitude\/"
+        },"genre": "posts","keywords": "航天器, 传感器, 姿态测量, 姿态确定","wordcount":  3902 ,
+        "url": "https:\/\/ichunyu.github.io\/attitude\/","datePublished": "2023-05-31T12:11:29+08:00","dateModified": "2023-05-31T13:49:18+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#姿态测量">姿态测量</a>
+      <ul>
+        <li><a href="#地球敏感器">地球敏感器</a></li>
+        <li><a href="#太阳敏感器">太阳敏感器</a></li>
+        <li><a href="#星敏感器">星敏感器</a></li>
+      </ul>
+    </li>
+    <li><a href="#姿态确定">姿态确定</a>
+      <ul>
+        <li><a href="#triad-算法">TRIAD 算法</a></li>
+        <li><a href="#quest-算法">QUEST 算法</a></li>
+        <li><a href="#状态估计器">状态估计器</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">航天器姿态测量与确定</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-05-31">2023-05-31</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-05-31">2023-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3902 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#姿态测量">姿态测量</a>
+      <ul>
+        <li><a href="#地球敏感器">地球敏感器</a></li>
+        <li><a href="#太阳敏感器">太阳敏感器</a></li>
+        <li><a href="#星敏感器">星敏感器</a></li>
+      </ul>
+    </li>
+    <li><a href="#姿态确定">姿态确定</a>
+      <ul>
+        <li><a href="#triad-算法">TRIAD 算法</a></li>
+        <li><a href="#quest-算法">QUEST 算法</a></li>
+        <li><a href="#状态估计器">状态估计器</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。</p>
+<h2 id="姿态测量" class="headerLink">
+    <a href="#%e5%a7%bf%e6%80%81%e6%b5%8b%e9%87%8f" class="header-mark"></a>姿态测量</h2><p>姿态传感器用于测量航天器当前姿态与参考方向之间的夹角，根据星表等信息获得参考方向在惯性系下的坐标，进一步可以确定航天器在惯性系下的姿态。对于航天器，常用的姿态传感器有地球敏感器、太阳敏感期、星敏感器等。</p>
+<h3 id="地球敏感器" class="headerLink">
+    <a href="#%e5%9c%b0%e7%90%83%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark"></a>地球敏感器</h3><p>对于近地轨道的卫星，地球的视角最大，立体角达到约 3.9 sr，因此不能使用点光源近似。地球敏感器旨在对地球的地平线进行测量，也称为地平仪（Horizon Sensor）。由于可见光范围内的地平线受到海洋、植物、沙漠等环境的影响，其表面并不均匀，而二氧化碳散发的 14.0 ~ 16.3 μm 范围的红外线更加均匀，所以大部分地平仪均对波长范围的红外线进行探测。</p>
+<p>根据地球敏感器是否能够进行动态测量，可以将其分为辐射平衡式、圆锥扫描式、摆动扫描式三种类型。核心原理是测量地球四个边缘点相对于参考像点的位移，如下图所示。</p>
+<div align=center>
+    <img src=./HorizonSensor.png width=40% />
+</div>
+<p>当航天器姿态相对地平面存在误差时，利用参考点的位移可以计算圆心的偏移，进而获得翻滚角和俯仰角。</p>
+<h3 id="太阳敏感器" class="headerLink">
+    <a href="#%e5%a4%aa%e9%98%b3%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark"></a>太阳敏感器</h3><p>太阳敏感器可分为模拟太阳敏感器和数字太阳敏感器，其中模拟太阳敏感器的基本元件为光电池，其输出电流与太阳光的入射角余弦成正比，常称为余弦传感器，基本方程为：</p>
+$$
+    I(\alpha) = I_0 \cos \alpha
+$$
+<p>由于余弦函数在零位附近的斜率趋近于零，对微小角度的变化不敏感。为此，可以使用一对光电池对称分布于瞄准方向进行差分测量，如下图所示。</p>
+<div align=center>
+    <img src=./AnalogSunSensor.png width=40% />
+</div>
+<p>在这种布局下，两个光电池电流信号的差为：</p>
+$$
+    \Delta I (\alpha) = I_0 \cos \left( \alpha_0 - \alpha \right) - I_0 \cos \left( \alpha_0 + \alpha \right) = 2I_0 \sin\alpha_0 \sin \alpha
+$$
+<p>此时传感器在零位附近具有 $2I_0\sin\alpha_0$ 的斜率，提高了小角度检测的灵敏度。</p>
+<div align=center>
+    <img src=./DigitalSunSensor.png width=50% />
+</div>
+<p>上图给出了数字太阳敏感器示意图：太阳光线首先通过顶层的狭缝变成线光源，以进行单方向入射角的测量。中间层具有不同尺寸的孔位用于编码（Gray Code），底层则是多个光电池用于检测太阳光是否透过编码孔位。由于光电池与入射角的余弦成正比，编码时的阈值会随之变动。因此，图中中间层最外侧的空隙允许所有视场（FoV：Field of View）内的光线透过，其下方光电池的电流作为阈值，作为其他光电池是否接收到光照的判据。第二个空隙为符号位，用于判断太阳光的入射方向；结合其他空隙的编码，可以将入射角进行量化，量化误差 $\rho_s$ 与位数 $\mu_s$ 的关系为：</p>
+$$
+    \rho_s = \frac{\alpha_\mathrm{max}}{2^{\mu_s-1}}
+$$
+<div align=center>
+    <img src=./DirectionMeasurement.png width=40% />
+</div>
+<p>使用两个正交布置的单自由度太阳敏感器可以分别获得太阳方向在两个测量平面内投影与瞄准方向的夹角。设太阳敏感器测量坐标系与本体系相同，如上图所示。本体系下太阳的方向坐标记为 $\mathbf{s}^b = [s_1,,s_2,,s_3]^\mathrm{T}$，可以根据测得的夹角 $\alpha$ 和 $\beta$ 按下式计算：</p>
+$$
+    \mathbf{s}^b = \begin{bmatrix} s_1 \\ s_2 \\ s_3\end{bmatrix} 
+        = \frac{1}{\sqrt{ 1 + \tan^2 \alpha + \tan^2 \beta}}
+            \begin{bmatrix} \tan\alpha \\ \tan\beta \\ 1 \end{bmatrix} 
+$$
+<h3 id="星敏感器" class="headerLink">
+    <a href="#%e6%98%9f%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark"></a>星敏感器</h3><p>星敏感器本质为数码相机，基本结构如下图所示。恒星发出的光线经过透镜汇聚与焦平面，焦平面由电荷耦合元件（CCD：Charge-Coupled Device）或者互补金属氧化物半导体（CMOS：Complementary Metal-Oxide Semiconductor）构成像素点对平面坐标进行量化。其中，CCD 具有更低的噪声，但更容易受到辐射的破坏；COMS 更能够抵抗环境的不利影响，且具有更大的视场。 CMOS 的技术与微处理器的技术相同，因此像素点兼具数据处理功能，称为有源像素传感器（APS：Active Pixel Sensor）。</p>
+<div align=center>
+    <img src=./CCDorAPS.png width=50% />
+</div>
+<p>不同于地球敏感器和太阳敏感器具有特定的参考对象，星敏感器能够针对亮度达到一定阈值的许多恒星同时进行探测。因此，为了确定航天器的姿态，还需要对恒星进行识别，这使得星敏感器的数据处理依赖于复杂的匹配算法。星敏感器的数据刷新率一般在 0.5 Hz 到 10 Hz 之间。根据星敏感器是否对准已知恒星，可以分为两种工作模式：</p>
+<ul>
+<li>初始姿态对准模式：该模式也被称为空间迷失模式（lost-in-space mode）。在这种情况下，星敏感器需要扫描整个视场，寻找最亮的像素簇，并至少计算三个簇的中心位置。根据间距、亮度以及其他特性在星表中搜索目标恒星。这个过程可以在数秒内完成；</li>
+<li>跟踪模式：在星敏感器识别了特定的恒星后，航天器的姿态可以确定。相比于初始姿态对准模式，由于提前知道了航天器的姿态，在进行星表匹配时会简单很多。</li>
+</ul>
+<p>星敏感器受到多种噪声的影响：其中光学失真可以通过标定进行校准；温度效应则可以通过温控将其影响最小化。除此之外，星敏感器还会受到散粒噪声的影响，可以通过增大望远镜孔径或延长积分时间来减小其影响。在没有光照时，暗电流也会引入误差，但可以通过对焦平面降温进行抑制；必要情况下，星敏感器的算法需要考虑暗电流引起的热像素的影响，将其在数据处理中予以扣除；另一方面，在确定姿态时，星表的误差也是姿态误差的一个来源，其中包括：恒星自身的微小运动、航天器位置引入的视差和恒星像差。下表给出了部分科学任务卫星的星敏感器性能对比：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">任务</th>
+<th style="text-align:center">时间</th>
+<th style="text-align:center">视场 [°]</th>
+<th style="text-align:center">精度（P/Y，R）[&quot;]</th>
+<th style="text-align:center">刷新率 [Hz]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">GRACE</td>
+<td style="text-align:center">2002</td>
+<td style="text-align:center">[±7, ±9.5]</td>
+<td style="text-align:center">[2.1, 16.5]</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">LISA Pathfinder</td>
+<td style="text-align:center">2015</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">[&lt;1, &lt;5]</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">GRACE-FO</td>
+<td style="text-align:center">2018</td>
+<td style="text-align:center">[±18, ±16]</td>
+<td style="text-align:center">[2.8, 23.7]</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="姿态确定" class="headerLink">
+    <a href="#%e5%a7%bf%e6%80%81%e7%a1%ae%e5%ae%9a" class="header-mark"></a>姿态确定</h2><p>姿态传感器给出了参考方向与传感器瞄准方向之间的夹角，结合传感器的安装信息，可以获得参考方向在航天器本体系下的坐标表示。为了进一步确定航天器的姿态，需要通过星表获得参考方向在惯性系下的坐标表示，并使用姿态确定算法计算姿态矩阵或四元数。本节简要介绍几种常用的定姿算法。</p>
+<h3 id="triad-算法" class="headerLink">
+    <a href="#triad-%e7%ae%97%e6%b3%95" class="header-mark"></a>TRIAD 算法</h3><p>TRIAD 算法（TRIaxial Attitude Determination）是最早发表的定姿算法，只需要对两个方向进行测量。其核心思想是根据两个参考矢量方向构造 TRIAD 坐标系，分别通过姿态传感器确定 TRIAD 坐标系与航天器本体坐标系的关系以及通过星表确定 TRIAD 坐标系与惯性系的关系，最后利用姿态矩阵的性质计算航天器的姿态。</p>
+<div align=center>
+    <img src=./AttitudeDetermination.png width=70% />
+</div>
+<p>如上图所示，将航天器到远方恒星的单位矢量分别记做 $\vec{s}_1$ 和 $\vec{s}_2$，则 TRIAD 坐标系定义为：</p>
+$$
+    \vec{t}_1 = \vec{s}_1 ,\quad 
+    \vec{t}_2 = \frac{\vec{s}_1 \times \vec{s}_2}{\left\|\vec{s}_1 \times \vec{s}_2\right\|} ,\quad
+    \vec{t}_3 = \vec{t}_1 \times \vec{t}_2
+$$
+<p>利用星敏感器可以计算恒星方向在本体参考系下的坐标 $\mathbf{s}_1^b$ 和 $\mathbf{s}_2^b$，因此 TRIAD 与本体系之间的坐标变换矩阵为：</p>
+$$
+    R_t^b = \begin{bmatrix} \mathbf{t}_1^b & \mathbf{t}_2^b & \mathbf{t}_3^b  \end{bmatrix}
+$$
+<p>同理，利用星表获得恒星方向在惯性系下的坐标，进而可以获得 TRIAD 与惯性系之间的关系：</p>
+$$
+    R_t^i = \begin{bmatrix} \mathbf{t}_1^i & \mathbf{t}_2^i & \mathbf{t}_3^i  \end{bmatrix}
+$$
+<p>因此航天器的姿态矩阵为：</p>
+$$
+    R_s^i =R_t^i R_b^t = R_t^i \left( R_t^b \right)^\mathrm{T}
+$$
+<h3 id="quest-算法" class="headerLink">
+    <a href="#quest-%e7%ae%97%e6%b3%95" class="header-mark"></a>QUEST 算法</h3><p>当可测的方向多于两个，且测量精度不同时，TRIAD 算法的使用将受到限制。这时的定姿问题可以转化为最优化问题：即寻找姿态矩阵 $R = R_b^i$ 使得误差的平方加权和最小，用数学表述为：</p>
+$$
+    \mathop{\arg\min}_R J(R),\quad
+    J(R) = \frac{1}{2} \sum_{j=1}^m w_j \left\| \breve{\mathbf{s}}_j^b - R^\mathrm{T}\breve{\mathbf{s}}_j^i \right\|^2 
+$$
+<p>这个问题被称为 Wahba 问题，其中 $w_j$ 为权值，一般有：</p>
+$$
+    \sum_{j=1}^m  w_j = w_0 = 1
+$$
+<p>考察优化目标函数：</p>
+$$
+    \begin{aligned}
+        J(R) &= \frac{1}{2} \sum_{j=1}^m  w_j \left( \breve{\mathbf{s}}_j^b - R^\mathrm{T}\breve{\mathbf{s}}_j^i \right)^\mathrm{T} 
+            \left( \breve{\mathbf{s}}_j^b - R^\mathrm{T}\breve{\mathbf{s}}_j^i \right) \\
+             &= \frac{1}{2} \sum_{j=1}^m \left(2 - 2  \bigl(\breve{\mathbf{s}}_j^i \bigr)^\mathrm{T} R \breve{\mathbf{s}}_j^b\right) \\
+             &= w_0 - \sum_{j=1}^m \bigl(\breve{\mathbf{s}}_j^i \bigr)^\mathrm{T} R \breve{\mathbf{s}}_j^b \\
+             &= w_0 - \sum_{j=1}^m \mathrm{tr} \left( w_j \breve{\mathbf{s}}_j^b \bigl( R^\mathrm{T} \breve{\mathbf{s}}_j^i  \bigr)^\mathrm{T}  \right) \\
+             &= w_0 - \mathrm{tr} \left( \sum_{j=1}^m \left( w_j \breve{\mathbf{s}}_j^b \bigl(\breve{\mathbf{s}}_j^i \bigr)^\mathrm{T} \right) R \right)
+    \end{aligned}
+$$
+<p>定义矩阵 $W$ 为：</p>
+$$
+    W = \sum_{j=1}^m \left( w_j \breve{\mathbf{s}}_j^b \bigl(\breve{\mathbf{s}}_j^i \bigr)^\mathrm{T} \right)
+$$
+<p>原优化目标可转化为：</p>
+$$
+    \mathop{\arg\min}_R J(R) \quad \rightarrow \quad
+    \mathop{\arg\max}_R \mathrm{tr}\bigl( WR \bigr) = \mathop{\arg\max}_R \mathrm{tr}\bigl( RW \bigr)
+$$
+<p>姿态矩阵 $R$ 有 $9$ 个参数，但只有 $3$ 个自由度，为了便于数值计算，矩阵表述转化为四元数 $\mathfrak{q} = \mathfrak{q}_s^i = [q_0,\,q_1,\,q_2,\,q_3]^\mathrm{T}$，上式可化为：</p>
+$$
+    \begin{aligned}
+        \mathrm{tr}\bigl( RW \bigr) &= \mathrm{tr}\Bigl( 
+            \bigl(2 \mathbf{q} \mathbf{q}^\mathrm{T} + (q_0^2 - \mathbf{q}^\mathrm{T} \mathbf{q})I + 2q_0 \mathbf{q} \times \bigr) 
+            W \Bigr) \\
+        &= \mathfrak{q}^\mathrm{T} \begin{bmatrix} w & \mathbf{w}^\mathrm{T} \\ \mathbf{w} & W + W^\mathrm{T} - wI \end{bmatrix} \mathfrak{q}
+    \end{aligned}
+$$
+<p>其中：</p>
+$$
+    w = \mathrm{tr}(W),\quad
+    \mathbf{w} = \sum_{j=1}^m w_j \breve{\mathbf{s}}_j^b \times \breve{\mathbf{s}}_j^i ,\quad
+    Q = \begin{bmatrix} w & \mathbf{w}^\mathrm{T} \\ \mathbf{w} & W + W^\mathrm{T} - wI \end{bmatrix}
+$$
+<p>在四元数表述下，Wahba 问题变为有约束条件下的极值问题：</p>
+$$
+     \mathop{\arg\max}_\mathfrak{q} \mathfrak{q}^\mathrm{T} Q \mathfrak{q} ,\quad
+     \mathfrak{q}^\mathrm{T} \mathfrak{q} = 1
+$$
+<p>这类问题可以利用拉格朗日乘数法进行求解，记：</p>
+$$
+    L(\mathfrak{q},\,\lambda) = \frac{1}{2} \mathfrak{q}^\mathrm{T} Q \mathfrak{q} + \lambda \bigl( 1 - \mathfrak{q}^\mathrm{T} \mathfrak{q} \bigr)
+$$
+<p>则优化问题的解由下述方程组给出：</p>
+$$
+    \left\{
+    \begin{aligned}
+        \frac{\partial L}{\mathfrak{q}} &= (Q-\lambda I) \mathfrak{q} = 0 \\
+        \frac{\partial L}{\lambda} &= 1 - \mathfrak{q}^\mathrm{T} \mathfrak{q} = 0
+    \end{aligned}
+    \right.
+$$
+<p>进一步分析可知，最优四元数为矩阵 $Q$ 最大特征值对应的特征向量。因此姿态四元数的获取可以依据矩阵的特征值分解得到，这种方法称为 Q 方法（Q-Method）。</p>
+<p>由于最优解只与 $Q$ 矩阵的最大特征值相关，分解全部特征值会增加不必要的计算量。QUEST 算法利用解的特性避免了特征值分解，其基本思想为：构造 $Q$ 矩阵后计算其特征多项式，取初值 $\hat{\lambda}_{\mathrm{max},0} = w_0 = 1$ 进行牛顿迭代计算最大特征值，利用 $(Q-\hat{\lambda}_\mathrm{max} I) \mathfrak{q} = 0$ 求解四元数。更进一步地，使用吉布斯参数 $\mathbf{p} = \mathbf{q}/q_0$ 可以简化计算，最后结果为：</p>
+$$
+    \begin{aligned}
+        \mathbf{p} &= \Bigl( \bigl( \hat{\lambda}_\mathrm{max} + w\bigr)I - \bigl( W + W^\mathrm{T} \bigr) \Bigr)^{-1} \mathbf{w} \\
+        \hat{\mathfrak{q}} &= \frac{1}{\sqrt{1+\mathbf{p}^\mathrm{T}\mathbf{p}}} \begin{bmatrix} 1 \\ \mathbf{p} \end{bmatrix}
+    \end{aligned}
+$$
+<h3 id="状态估计器" class="headerLink">
+    <a href="#%e7%8a%b6%e6%80%81%e4%bc%b0%e8%ae%a1%e5%99%a8" class="header-mark"></a>状态估计器</h3><p>QUEST 算法允许将多个姿态传感器的数据进行融合，使用状态估计器可以进一步将不同类型传感器的数据进行融合，如融合陀螺仪和星敏感器的数据对姿态进行估计。状态估计器的基本思路如下图所示，针对航天器的运动学模型构造实时运行的数值模型，将测得的角速度输入给数值模型，利用姿态估计误差 $\tilde{\mathfrak{q}}=\hat{\mathfrak{q}}^{-1}\otimes \breve{\mathfrak{q}}$ 进行反馈，可以对状态进行修正。进一步，如果对扰动进行建模，还能够对陀螺仪的零偏进行修正，进一步提高姿态的估计精度。</p>
+<div align=center>
+    <img src=./SensorFusion.png width=60% />
+</div>
+<p>图中的反馈可以使用卡尔曼增益以获得最优估计，参考之前讨论的<a href="https://ichunyu.github.io/kalmanfilter/" rel="">卡尔曼滤波简介</a>。需要注意的是，由于姿态的运动学方程是非线性的，应当基于上一次的后验估计对模型进行线性化，构成扩展卡尔曼滤波器（EKF：Extended Kalman Filter）。对于频域设计而言，可以使用适当的极点配置设计环路的灵敏度函数，这一点我们将在以后的模型嵌入控制（EMC：Embedded Model Control）中进行详细讨论。</p>
+<h2 id="参考文献" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+<li>吕振铎, 雷拥军. 卫星姿态测量与确定. 国防工业出版社. 2013.</li>
+<li>E. Canuto, C. Novara, D. Carlucci, et al. Spacecraft Dynamics and Control: The Embedded Model Control Approach. Butterworth-Heinemann. 2018.</li>
+<li>Spacecraft Sun Sensors. NASA Space Vehicle Design Criteria (Guidance and Control). 1970.</li>
+<li>F.L. Markley, J.L. Crassidis. Fundamentals of Spacecraft Attitude Determination and Control. Springer. 2014.</li>
+<li>C. Dunn, W. Bertiger, G. Franklin, et al. The Instrument on NASA’s GRACE Mission: Augmentation of GPS to Achieve Unprecedented Gravity Field Measurements. 15th International Technical Meeting of the Satellite Division of The Institute of Navigation. 2002.</li>
+<li>J. Herman, D. Presti, A. Codazzi, C. Belle. Attitude Control for GRACE the First Low-Flying Satellite Formation. 18th International Symposium on Space Flight Dynamics. 2004.</li>
+<li>L. Giulicchi, S.-F. Wu, T. Fenal. Attitude and orbit control systems for the LISA Pathfinder mission. Aerospace Science and Technology. 2013.</li>
+<li><a href="https://spaceflight101.com/lisa-pathfinder/li" target="_blank" rel="noopener noreferrer">LISA Pathfinder Spacecraft Overview</a>.</li>
+<li>C.R. Patel. Analyzing and monitoring GRACE-FO star camera performance in a changing environment. The University of Texas at Austin. 2020.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-05-31&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0df58f820119be888d2f1d6ea312569540ab11da" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 0df58f820119be888d2f1d6ea312569540ab11da: Brief introcution to spacecraft attitude measearment and determination." rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0df58f8</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/attitude/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share"></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/">航天器</a>,&nbsp;<a href="/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/">传感器</a>,&nbsp;<a href="/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/">姿态测量</a>,&nbsp;<a href="/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/">姿态确定</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/initplot/" class="prev" rel="prev" title="MATLAB 自定义默认绘图样式"><i class="fas fa-angle-left fa-fw"></i>MATLAB 自定义默认绘图样式</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>
