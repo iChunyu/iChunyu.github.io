@@ -14,18 +14,16 @@ draft: false
 
 有大小和方向的物理量称为矢量（Vector），通常用带箭头的符号表示，如 $\vec{r}$。为了定量描述与计算，需要选定基矢构成参考系，利用矢量合成原理进行表述。如下图所示，参考系 {{< math >}}$\mathscr{A} = \{O,\,\vec{a}_1,\,\vec{a}_2 \}${{< /math >}} 以 $O$ 为原点，$\vec{a}_1$ 和 $\vec{a}_2$ 为基矢。任意矢量 $\vec{r}$ 可以写作
 
-<div align=center>
-    <img src=coordinate.png width=25% />
-</div>
+{{< image src="./coordinate.png" caption="矢量的坐标分解" width="25%" >}}
 
 {{< math >}}$$
 \vec{r} = r_1^a \vec{a}_1 + r_2^a \vec{a}_2 
 = \begin{bmatrix} \vec{a}_1 & \vec{a}_2 \end{bmatrix}
     \begin{bmatrix} r_1^a \\ r_2^a \end{bmatrix}
-= \vec{A} \mathbf{r}^a
+= \vec{A} \bm{r}^a
 $${{< /math >}}
 
-这里我们使用带箭头的大写字母表示参考系基矢构成的行向量，即 $\vec{A} = [\vec{a}_1, \vec{a}_2]$；选定基矢后，基矢的组合系数构成列向量，为矢量的坐标（Coordinate），用加粗的字母表示，并将参考系标记在上标的位置，本例中为 $\mathbf{r}^a= [r_1^a, r_2^a]^\mathrm{T}$。在此记号下，我们可以使用矩阵的计算方法将适量表示为基矢与坐标的组合，即上式最后的等号。在后文的推导中，我们将使用更一般的三维形式，而为了方便理解，示意图保持为二维形式。
+这里我们使用带箭头的大写字母表示参考系基矢构成的行向量，即 $\vec{A} = [\vec{a}_1, \vec{a}_2]$；选定基矢后，基矢的组合系数构成列向量，为矢量的坐标（Coordinate），用加粗的字母表示，并将参考系标记在上标的位置，本例中为 $\bm{r}^a= [r_1^a, r_2^a]^\mathrm{T}$。在此记号下，我们可以使用矩阵的计算方法将适量表示为基矢与坐标的组合，即上式最后的等号。在后文的推导中，我们将使用更一般的三维形式，而为了方便理解，示意图保持为二维形式。
 
 {{< admonition info 注解 >}}
 在实际操作中，如果只涉及一个参考系，通常没有必要严格区分矢量与坐标之间的关系，因此在一般的教科书中会将上图所示的矢量直接记做 $\vec{r} = [r_1, r_2]^\mathrm{T}$。本文涉及多个参考系，务必区分矢量与坐标之间的关系：矢量是一个“不变量”，与参考系无关，而其坐标因参考系的不同而发生改变。因此，严格意义上说，只有将参考系（基矢）和坐标合起来才能准确表示一个矢量。
@@ -46,9 +44,9 @@ $${{< /math >}}
 由此我们可以获知坐标的计算方法：
 
 {{< math >}}$$
-\mathbf{r}^a = I_{3 \times 3} \mathbf{r}^a 
-= \left( \vec{A}^\mathrm{T} \cdot \vec{A} \right)  \mathbf{r}^a 
-= \vec{A}^\mathrm{T} \cdot \left( \vec{A} \mathbf{r}^a \right)
+\bm{r}^a = I_{3 \times 3} \bm{r}^a 
+= \left( \vec{A}^\mathrm{T} \cdot \vec{A} \right)  \bm{r}^a 
+= \vec{A}^\mathrm{T} \cdot \left( \vec{A} \bm{r}^a \right)
 = \vec{A}^\mathrm{T} \cdot \vec{r} 
 = \begin{bmatrix}
     \vec{a}_1 \cdot \vec{r} \\
@@ -65,23 +63,21 @@ $${{< /math >}}
 
 选取的参考系不同，相同矢量的坐标不同。参考系之间的平移可以简单地通过矢量加法实现，因此这里的坐标变换重点关注参考系之间的转动，设它们的原点重合（因此后文直接用基矢表示各参考系），如下图所示。
 
-<div align=center>
-    <img src=coordinateTransform.png width=35% />
-</div>
+{{< image src="./coordinateTransform.png" caption="坐标变换示意图" width="35%" >}}
 
 矢量 $\vec{r}$ 可以在两个参考系中分别表述为
 
 {{< math >}}$$
-\vec{r} = \vec{A} \mathbf{r}^a = \vec{B} \mathbf{r}^b
+\vec{r} = \vec{A} \bm{r}^a = \vec{B} \bm{r}^b
 $${{< /math >}}
 
 考察坐标之间的关系，不难得到
 
 {{< math >}}$$
-\mathbf{r}^b = \vec{B} \cdot \vec{r} 
-= \vec{B}^\mathrm{T} \cdot \left( \vec{A} \mathbf{r}^a \right)
-= \left( \vec{B}^\mathrm{T} \cdot \vec{A} \right) \mathbf{r}^a
-= R_a^b \mathbf{r}^a
+\bm{r}^b = \vec{B} \cdot \vec{r} 
+= \vec{B}^\mathrm{T} \cdot \left( \vec{A} \bm{r}^a \right)
+= \left( \vec{B}^\mathrm{T} \cdot \vec{A} \right) \bm{r}^a
+= R_a^b \bm{r}^a
 $${{< /math >}}
 
 其中 $R_a^b$ 为坐标变换矩阵，其表示从参考系 $\vec{A}$ 到参考系 $\vec{B}$ 的坐标变换（从下往上读）。从上式的两端可以发现，在这种表述方式下，角标形式上具有“相互抵消”的性质，即：如果左侧变量的下标与右侧变量的上标相同，则抵消两个角标并根据左侧变量的上标替换掉右侧变量的上标。后面讨论的连续坐标变换能够充分体现这种特性。
@@ -94,7 +90,7 @@ R_a^b &= \begin{bmatrix} \vec{B}^\mathrm{T} \cdot \vec{a}_1 &
     \vec{B}^\mathrm{T} \cdot \vec{a}_2 & 
     \vec{B}^\mathrm{T} \cdot \vec{a}_3 \end{bmatrix}
     = \begin{bmatrix}
-        \mathbf{a}_1^b & \mathbf{a}_2^b & \mathbf{a}_2^b
+        \bm{a}_1^b & \bm{a}_2^b & \bm{a}_2^b
     \end{bmatrix} \\
 &= \begin{bmatrix}
     \vec{b}_1 \cdot \vec{A} \\
@@ -102,9 +98,9 @@ R_a^b &= \begin{bmatrix} \vec{B}^\mathrm{T} \cdot \vec{a}_1 &
     \vec{b}_3 \cdot \vec{A} \\ 
 \end{bmatrix}
 = \begin{bmatrix}
-    \left(\mathbf{b}_1^a\right)^\mathrm{T} \\
-    \left(\mathbf{b}_2^a\right)^\mathrm{T} \\
-    \left(\mathbf{b}_3^a\right)^\mathrm{T}
+    \left(\bm{b}_1^a\right)^\mathrm{T} \\
+    \left(\bm{b}_2^a\right)^\mathrm{T} \\
+    \left(\bm{b}_3^a\right)^\mathrm{T}
 \end{bmatrix}
 \end{aligned}
 $${{< /math >}}
@@ -114,10 +110,10 @@ $${{< /math >}}
 考虑矢量 $\vec{r}$ 按照 {{< math >}}$\vec{A} \rightarrow \vec{B}_1 \rightarrow \vec{B}_2 \rightarrow \cdots \rightarrow \vec{B}_n${{< /math >}} 的顺序进行 $n$ 次坐标变换，有
 
 {{< math >}}$$
-\mathbf{r}^{b_n} = R_{b_{n-1}}^{b_n} \mathbf{r}^{b_{n-1}} 
-= R_{b_{n-1}}^b \left( R_{b_{n-2}}^{b_{n-1}}\mathbf{r}^{b_{n-2}} \right)
+\bm{r}^{b_n} = R_{b_{n-1}}^{b_n} \bm{r}^{b_{n-1}} 
+= R_{b_{n-1}}^b \left( R_{b_{n-2}}^{b_{n-1}}\bm{r}^{b_{n-2}} \right)
 = \cdots 
-= \left( R_{b_{n-1}}^b R_{b_{n-2}}^{b_{n-1}} \cdots R_a^{b_{1}} \right) \mathbf{r}^a
+= \left( R_{b_{n-1}}^b R_{b_{n-2}}^{b_{n-1}} \cdots R_a^{b_{1}} \right) \bm{r}^a
 $${{< /math >}}
 
 即
@@ -131,7 +127,7 @@ $${{< /math >}}
 最后，我们重新将坐标变换矩阵代回到矢量表达式中，得
 
 {{< math >}}$$
-\vec{r} = \vec{A} \mathbf{r}^a = \vec{B} \mathbf{r}^b = \vec{B} R_a^b \mathbf{r}^a 
+\vec{r} = \vec{A} \bm{r}^a = \vec{B} \bm{r}^b = \vec{B} R_a^b \bm{r}^a 
 \quad \Rightarrow \quad
 \vec{A} = \vec{B} R_a^b
 $${{< /math >}}
@@ -151,16 +147,14 @@ $${{< /math >}}
 
 ## 矢量旋转
 
-将目光限定在参考系 $\vec{A}$ 中，现在将矢量 $\vec{r}_1$ 进行一定的旋转，得到 $\vec{r}_2$ ，如何得到它们坐标 $\mathbf{r}_1^a$ 和 $\mathbf{r}_2^a$ 之间的关系？
+将目光限定在参考系 $\vec{A}$ 中，现在将矢量 $\vec{r}_1$ 进行一定的旋转，得到 $\vec{r}_2$ ，如何得到它们坐标 $\bm{r}_1^a$ 和 $\bm{r}_2^a$ 之间的关系？
 
-<div align=center>
-    <img src=rotation.png width=35% />
-</div>
+{{< image src="./rotation.png" caption="矢量旋转示意图" width="35%" >}}
 
-考虑 $\vec{r}_1$ 连同参考系（的基矢） $\vec{A}$ 一起旋转，当 $\vec{r}_1$ 转到 $\vec{r}_2$ 的位置时 $\vec{A}$ 相应地变成 $\vec{B}$。由于是一起旋转，相对关系保持不变，即 $\vec{r}_2$ 在 $\vec{B}$ 的坐标等于 $\vec{r}_1$ 在 $\vec{A}$ 的坐标，即 $\mathbf{r}_2^b = \mathbf{r}_1^a$，考虑到坐标变换有 $\mathbf{r}_2^a = R_b^a \mathbf{r}_2^b$，可以得到
+考虑 $\vec{r}_1$ 连同参考系（的基矢） $\vec{A}$ 一起旋转，当 $\vec{r}_1$ 转到 $\vec{r}_2$ 的位置时 $\vec{A}$ 相应地变成 $\vec{B}$。由于是一起旋转，相对关系保持不变，即 $\vec{r}_2$ 在 $\vec{B}$ 的坐标等于 $\vec{r}_1$ 在 $\vec{A}$ 的坐标，即 $\bm{r}_2^b = \bm{r}_1^a$，考虑到坐标变换有 $\bm{r}_2^a = R_b^a \bm{r}_2^b$，可以得到
 
 {{< math >}}$$
-\mathbf{r}_2^a = R_b^a \mathbf{r}_1^a
+\bm{r}_2^a = R_b^a \bm{r}_1^a
 $${{< /math >}}
 
 这就说明，坐标变换矩阵同时具有旋转的含义，也可称之为旋转矩阵， $R_b^a$ 表示从参考系 $\vec{A}$ 到参考系 $\vec{B}$ 的旋转（从上往下读，注意这里交换了角标）。
@@ -191,9 +185,7 @@ $${{< /math >}}
 
 最后我们来看一下坐标变换矩阵（或者说转动矩阵）的运动学特性。首先如下图所示，假设参考系 $\vec{B}$ （通常为刚体的本体参考系）的角速度为 $\bm{\omega}_b^b = [\omega_1,\omega_2,\omega_3]^\mathrm{T}$（注意角速度都是在本体坐标系下建立的，各分量省略了上标），以基矢 $\vec{b}_1$ 为例，在 $\mathrm{d}t$ 时间内其变化量为
 
-<div align=center>
-    <img src=rotating.png width=35% />
-</div>
+{{< image src="./rotating.png" caption="转动角速度示意图" width="35%" >}}
 
 {{< math >}}$$
 \mathrm{d}\vec{b}_1 =  (\omega_3 \mathrm{d} t) \vec{b}_2 -(\omega_2 \mathrm{d}t)\vec{b}_3 +

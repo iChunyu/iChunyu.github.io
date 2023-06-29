@@ -23,9 +23,7 @@ draft: false
 
 根据地球敏感器是否能够进行动态测量，可以将其分为辐射平衡式、圆锥扫描式、摆动扫描式三种类型。核心原理是测量地球四个边缘点相对于参考像点的位移，如下图所示。
 
-<div align=center>
-    <img src=./HorizonSensor.png width=40% />
-</div>
+{{< image src="./HorizonSensor.png" caption="地球敏感器原理示意图" width="40%" >}}
 
 当航天器姿态相对地平面存在误差时，利用参考点的位移可以计算圆心的偏移，进而获得翻滚角和俯仰角。
 
@@ -40,9 +38,7 @@ $${{< /math >}}
 
 由于余弦函数在零位附近的斜率趋近于零，对微小角度的变化不敏感。为此，可以使用一对光电池对称分布于瞄准方向进行差分测量，如下图所示。
 
-<div align=center>
-    <img src=./AnalogSunSensor.png width=40% />
-</div>
+{{< image src="./AnalogSunSensor.png" caption="模拟太阳敏感器原理示意图" width="40%" >}}
 
 在这种布局下，两个光电池电流信号的差为：
 
@@ -53,9 +49,7 @@ $${{< /math >}}
 此时传感器在零位附近具有 $2I_0\sin\alpha_0$ 的斜率，提高了小角度检测的灵敏度。
 
 
-<div align=center>
-    <img src=./DigitalSunSensor.png width=50% />
-</div>
+{{< image src="./DigitalSunSensor.png" caption="数字太阳敏感器原理示意图" width="50%" >}}
 
 上图给出了数字太阳敏感器示意图：太阳光线首先通过顶层的狭缝变成线光源，以进行单方向入射角的测量。中间层具有不同尺寸的孔位用于编码（Gray Code），底层则是多个光电池用于检测太阳光是否透过编码孔位。由于光电池与入射角的余弦成正比，编码时的阈值会随之变动。因此，图中中间层最外侧的空隙允许所有视场（FoV：Field of View）内的光线透过，其下方光电池的电流作为阈值，作为其他光电池是否接收到光照的判据。第二个空隙为符号位，用于判断太阳光的入射方向；结合其他空隙的编码，可以将入射角进行量化，量化误差 $\rho_s$ 与位数 $\mu_s$ 的关系为：
 
@@ -63,9 +57,7 @@ $${{< /math >}}
     \rho_s = \frac{\alpha_\mathrm{max}}{2^{\mu_s-1}}
 $${{< /math >}}
 
-<div align=center>
-    <img src=./DirectionMeasurement.png width=40% />
-</div>
+{{< image src="./DirectionMeasurement.png" caption="方位角测量示意图" width="40%" >}}
 
 使用两个正交布置的单自由度太阳敏感器可以分别获得太阳方向在两个测量平面内投影与瞄准方向的夹角。设太阳敏感器测量坐标系与本体系相同，如上图所示。本体系下太阳的方向坐标记为 $\mathbf{s}^b = [s_1,\,s_2,\,s_3]^\mathrm{T}$，可以根据测得的夹角 $\alpha$ 和 $\beta$ 按下式计算：
 
@@ -81,9 +73,7 @@ $${{< /math >}}
 
 星敏感器本质为数码相机，基本结构如下图所示。恒星发出的光线经过透镜汇聚与焦平面，焦平面由电荷耦合元件（CCD：Charge-Coupled Device）或者互补金属氧化物半导体（CMOS：Complementary Metal-Oxide Semiconductor）构成像素点对平面坐标进行量化。其中，CCD 具有更低的噪声，但更容易受到辐射的破坏；COMS 更能够抵抗环境的不利影响，且具有更大的视场。 CMOS 的技术与微处理器的技术相同，因此像素点兼具数据处理功能，称为有源像素传感器（APS：Active Pixel Sensor）。
 
-<div align=center>
-    <img src=./CCDorAPS.png width=50% />
-</div>
+{{< image src="./CCDorAPS.png" caption="星敏感器原理示意图" width="50%" >}}
 
 
 不同于地球敏感器和太阳敏感器具有特定的参考对象，星敏感器能够针对亮度达到一定阈值的许多恒星同时进行探测。因此，为了确定航天器的姿态，还需要对恒星进行识别，这使得星敏感器的数据处理依赖于复杂的匹配算法。星敏感器的数据刷新率一般在 0.5 Hz 到 10 Hz 之间。根据星敏感器是否对准已知恒星，可以分为两种工作模式：
@@ -111,9 +101,7 @@ $${{< /math >}}
 
 TRIAD 算法（TRIaxial Attitude Determination）是最早发表的定姿算法，只需要对两个方向进行测量。其核心思想是根据两个参考矢量方向构造 TRIAD 坐标系，分别通过姿态传感器确定 TRIAD 坐标系与航天器本体坐标系的关系以及通过星表确定 TRIAD 坐标系与惯性系的关系，最后利用姿态矩阵的性质计算航天器的姿态。
 
-<div align=center>
-    <img src=./AttitudeDetermination.png width=70% />
-</div>
+{{< image src="./AttitudeDetermination.png" caption="TRIAD 定姿算法示意图" width="70%" >}}
 
 如上图所示，将航天器到远方恒星的单位矢量分别记做 $\vec{s}_1$ 和 $\vec{s}_2$，则 TRIAD 坐标系定义为：
 
@@ -244,9 +232,7 @@ $${{< /math >}}
 
 QUEST 算法允许将多个姿态传感器的数据进行融合，使用状态估计器可以进一步将不同类型传感器的数据进行融合，如融合陀螺仪和星敏感器的数据对姿态进行估计。状态估计器的基本思路如下图所示，针对航天器的运动学模型构造实时运行的数值模型，将测得的角速度输入给数值模型，利用姿态估计误差 $\tilde{\mathfrak{q}}=\hat{\mathfrak{q}}^{-1}\otimes \breve{\mathfrak{q}}$ 进行反馈，可以对状态进行修正。进一步，如果对扰动进行建模，还能够对陀螺仪的零偏进行修正，进一步提高姿态的估计精度。
 
-<div align=center>
-    <img src=./SensorFusion.png width=60% />
-</div>
+{{< image src="./SensorFusion.png" caption="姿态状态估计器示意图" width="60%" >}}
 
 图中的反馈可以使用卡尔曼增益以获得最优估计，参考之前讨论的[卡尔曼滤波简介]({{< ref "../../control/KalmanFilter/index.md" >}})。需要注意的是，由于姿态的运动学方程是非线性的，应当基于上一次的后验估计对模型进行线性化，构成扩展卡尔曼滤波器（EKF：Extended Kalman Filter）。对于频域设计而言，可以使用适当的极点配置设计环路的灵敏度函数，这一点我们将在以后的模型嵌入控制（EMC：Embedded Model Control）中进行详细讨论。
 

@@ -18,8 +18,8 @@ draft: false
 {{< math >}}$$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x}
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x}
 \end{aligned}
 \right.
 $${{< /math >}}
@@ -28,8 +28,8 @@ $${{< /math >}}
 
 {{< math >}}$$
 \left\{ \begin{aligned}
-\dot{\hat{\mathbf{x}}} &= \left( {{A} - {LC} - {BK}} \right) \hat{\mathbf x} + {L}y + {M}r \\
-u &=  - K {\hat{\mathbf x}} + Nr
+\dot{\hat{\bm{x}}} &= \left( {{A} - {LC} - {BK}} \right) \hat{\bm x} + {L}y + {M}r \\
+u &=  - K {\hat{\bm x}} + Nr
 \end{aligned} \right.
 $${{< /math >}}
 
@@ -40,16 +40,16 @@ $${{< /math >}}
 从状态观测器的角度来考察，不希望参考信号的引入对状态估计产生影响，考察状态估计的误差为
 
 {{< math >}}$$
-\begin{aligned}\dot{\tilde{\mathbf{x}}} &= {A\mathbf{x}} + {B}\left( { - K{\hat{\mathbf x}} + Nr} \right) - \left[ {\left( {{A} - {LC} - {BK}} \right){\mathbf{\hat x}} + {L}y + {M}r} \right] \\
-&= \left( {{A} - {LC}} \right){\mathbf{\tilde x}} + \left( {{B}N - {M}} \right)r\end{aligned}
+\begin{aligned}\dot{\tilde{\bm{x}}} &= {A\bm{x}} + {B}\left( { - K{\hat{\bm x}} + Nr} \right) - \left[ {\left( {{A} - {LC} - {BK}} \right){\bm{\hat x}} + {L}y + {M}r} \right] \\
+&= \left( {{A} - {LC}} \right){\bm{\tilde x}} + \left( {{B}N - {M}} \right)r\end{aligned}
 $${{< /math >}}
 
 因此，通过补充约束条件： $M =  BN$，即可避免参考信号对状态估计引入任何扰动。此时控制器的状态空间可以进一步改写为
 
 {{< math >}}$$
 \left\{ \begin{aligned}
-\mathbf{\dot{\hat x}} &= \left( {{A} - {LC}} \right){\mathbf{\hat x}} + {B}u + {L}y \\
-u &=  - K{\hat{\mathbf x}} + Nr
+\bm{\dot{\hat x}} &= \left( {{A} - {LC}} \right){\bm{\hat x}} + {B}u + {L}y \\
+u &=  - K{\hat{\bm x}} + Nr
 \end{aligned} \right.
 $${{< /math >}}
 
@@ -58,14 +58,14 @@ $${{< /math >}}
 {{< math >}}$$
 \left\{ \begin{aligned}
 \begin{bmatrix}
-{{\mathbf{\dot{x}}}}\\
-{{\mathbf{\dot{\tilde x}}}}
+{{\bm{\dot{x}}}}\\
+{{\bm{\dot{\tilde x}}}}
 \end{bmatrix} &= \begin{bmatrix}
 {{A} - {BK}}&{{BK}}\\
 {0}&{{A} - {LC}}
 \end{bmatrix}\begin{bmatrix}
-{\mathbf{x}}\\
-{{\mathbf{\tilde x}}}
+{\bm{x}}\\
+{{\bm{\tilde x}}}
 \end{bmatrix}+ \begin{bmatrix}
 {B}\\
 {0}
@@ -73,8 +73,8 @@ $${{< /math >}}
 y &= \begin{bmatrix}
 {C}&0
 \end{bmatrix} \begin{bmatrix}
-{\mathbf{x}}\\
-{{\mathbf{\tilde x}}}
+{\bm{x}}\\
+{{\bm{\tilde x}}}
 \end{bmatrix}
 \end{aligned} \right.
 $${{< /math >}}
@@ -95,18 +95,14 @@ $${{< /math >}}
 
 这时整个系统的框图如下图所示。
 
-<div align=center>
-    <img src=mc05a.png width=70% />
-</div>
+{{< image src="./mc05a.png" caption="标准形式的参考输入" width="60%" >}}
 
 
 ## 误差控制 (Error Control Case)
 
 如果令 $N=0$ ， $M = -L$，即可得到基于误差控制的参考信号引入方式，这是经典控制中的常用方式，如下图所示。
 
-<div align=center>
-    <img src=mc05b.png width=70% />
-</div>
+{{< image src="./mc05b.png" caption="误差形式的参考输入" width="60%" >}}
 
 这种简单的方式可以用传递函数来证明其可靠性，设开环传递函数为 $H_{\rm open}$，则 $r\rightarrow y$ 的传递函数即为闭环传递函数
 
@@ -131,9 +127,7 @@ $${{< /math >}}
 
 因此，我们可以首先根据零点对进行 ${\bar{M}}=\frac{M}{N}$ 设计，再根据 $r\rightarrow y$ 的增益为 $1$ 计算得 $N$ 。这种方式的系统框图如下图所示。
 
-<div align=center>
-    <img src=mc05c.png width=70% />
-</div>
+{{< image src="./mc05c.png" caption="一般形式的参考输入" width="70%" >}}
 
 
 ## 参考文献

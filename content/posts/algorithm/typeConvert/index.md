@@ -19,9 +19,7 @@ IEEE 754 给出了浮点数的储存规范，其基本结构如下图所示（�
 - 指数位（E, Exponent）：表示 $2$ 的指数，可占据 $\mu_E = [8,11]$ 位；
 - 小数位（M, Mantissa）：科学计数法中的小数部位，可占据 $\mu_M = [23, 52]$ 位。
 
-<div align=center>
-    <img src=./storedData.png width=50% />
-</div>
+{{< image src="./storedData.png" caption="IEEE 754 浮点数储存规范" width="50%" >}}
 
 为了能够更精细地表示小数，指数位应当覆盖负数。为此，指数部分应当扣除偏移：
 
@@ -55,9 +53,7 @@ $${{< /math >}}
 
 考虑到 {{< math >}}$\frac{M}{M_0}\in [0,1)${{< /math >}}，在该区间内，对数函数可以取线性近似 {{< math >}}$\log_2(1+t) \approx t + k${{< /math >}}，例如取 $k=0.045$ 时，两者的对比如下图所示。
 
-<div align=center>
-    <img src=./log2approx.png width=50% />
-</div>
+{{< image src="./log2approx.png" caption="对数函数的线性近似" width="50%" >}}
 
 如此做，对数计算可以近似为
 
@@ -69,9 +65,7 @@ $${{< /math >}}
 
 由此我们可以得到一个重要结论：**浮点数的对数与其强制类型转化后的整数存在线性近似**，因此可以利用强制类型转换对对数计算进行快速估计。如下图所示，在 {{< math >}}$x\in[10^{-10}, 10^{10}]${{< /math >}} 范围内的估计误差不超过 $0.05$。
 
-<div align=center>
-    <img src=./log2calc.png width=60% />
-</div>
+{{< image src="./log2calc.png" caption="近似对数计算及其误差" width="60%" >}}
 
 {{< admonition note >}}
 我们在对 $\log_2 (1+t)$ 进行线性近似时人为规定了斜率为 $1$，只有这样 $\log_2 x$ 才与强制类型转化之后的结果 $EM_0 +M$ 相关。若取 $\log_2(1+t) \approx at + k, (a\ne 1)$，$M$ 将替换为 $aM$，需要对小数部分做额外的乘法，与直接进行强制数据类型转换相比引入了额外的计算，会降低程序效率。
@@ -139,9 +133,7 @@ $${{< /math >}}
 
 牛顿迭代的收敛速度很快，并且由于对数近似对初值的估计较为准确，所以只需要进行简单的一次或两次迭代就可以达到足够的精度。最后给出验证结果，如下图所示，可见利用强制类型转换已经获取足够的精度了，两次牛顿迭代后可以将误差进一步缩小到 $10^{-5}$ 以下，简单且高效。
 
-<div align=center>
-    <img src=./results.png width=60% />
-</div>
+{{< image src="./results.png" caption="多次迭代结果与误差" width="60%" >}}
 
 本文相关的 MATLAB 代码我放在了 [GitHub 仓库](https://github.com/iChunyu/signal-process-demo/blob/main/05_TryAlgorithms/Try04_rsqrt.m)，欢迎讨论交流。
 

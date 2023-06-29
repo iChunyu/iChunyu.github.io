@@ -64,13 +64,11 @@ $${{< /math >}}
     = \vec{0}
 $${{< /math >}}
 
-角动量守恒可以从两方面来看，首先，角动量的方向不变，意味着该方向可以作为（轨道）惯性参考系的基矢。习惯上取该方向为第三基矢 $\vec{p}_3=\vec{h}/h$，因此在该参考系下可以将角动量记为坐标形式，即 $\mathbf{h}^p = [0, 0, h]^\mathrm{T}$。
+角动量守恒可以从两方面来看，首先，角动量的方向不变，意味着该方向可以作为（轨道）惯性参考系的基矢。习惯上取该方向为第三基矢 $\vec{p}_3=\vec{h}/h$，因此在该参考系下可以将角动量记为坐标形式，即 $\bm{h}^p = [0, 0, h]^\mathrm{T}$。
 
 其次，角动量的大小不变。为了说明该性质的物理含义，考察下图所示在 $\mathrm{d}t$ 时间内运动质点与中心质点连线扫过的面积为
 
-<div align=center>
-    <img src=Kepler1.png width=30% />
-</div>
+{{< image src="./Kepler1.png" caption="质点瞬时运动示意图" width="30%" >}}
 
 {{< math >}}$$
 \mathrm{d}A = \frac{1}{2} |\vec{r}|  \left( |\vec{v}| \mathrm{d}t \right)  \sin\phi 
@@ -122,9 +120,7 @@ $${{< /math >}}
 
 在椭圆的近拱点，速度与位置垂直，可知离心率矢量 $\vec{e}$ 的方向与半长轴方向相同。在椭圆中心建立如下图所示的 $\vec{x}$-$\vec{y}$ 平面参考系，当 $\theta = \pi/2$ 时，带入坐标 $[c,p]^\mathrm{T}$ 到椭圆方程，有
 
-<div align=center>
-    <img src=ellipse.png width=50% />
-</div>
+{{< image src="./ellipse.png" caption="平面参考系下的椭圆轨道示意图" width="50%" >}}
 
 {{< math >}}$$
 \frac{c^2}{a^2} + \frac{p^2}{b^2} = 1 
@@ -154,13 +150,13 @@ $${{< /math >}}
 开普勒运动定律揭示了行星运动是以中心天体为焦点的椭圆，且角动量和离心率守恒决定了轨道平面的方向和椭圆的形状。只有真近点角 $\theta$ 是时间的变量，用于唯一地确定行星的位置。考察轨道参考系内，行星的位置坐标可以分解为
 
 {{< math >}}$$
-\mathbf{r}^p = r \begin{bmatrix} \cos\theta \\ \sin\theta \\ 0 \end{bmatrix}
+\bm{r}^p = r \begin{bmatrix} \cos\theta \\ \sin\theta \\ 0 \end{bmatrix}
 $${{< /math >}}
 
 因此有 
 
 {{< math >}}$$
-\mathbf{v}^p = \dot{\mathbf{r}}_p 
+\bm{v}^p = \dot{\bm{r}}_p 
 = \dot{r} \begin{bmatrix} \cos\theta \\ \sin\theta \\ 0 \end{bmatrix}
 + r \dot{\theta} \begin{bmatrix} -\sin\theta \\ \cos\theta \\ 0 \end{bmatrix}
 $${{< /math >}}
@@ -168,7 +164,7 @@ $${{< /math >}}
 带入角动量守恒
 
 {{< math >}}$$
-\mathbf{h}^p = \mathbf{r}^p \times \mathbf{v}^p = \begin{bmatrix} 0 \\ 0 \\ h \end{bmatrix} 
+\bm{h}^p = \bm{r}^p \times \bm{v}^p = \begin{bmatrix} 0 \\ 0 \\ h \end{bmatrix} 
 $${{< /math >}}
 
 得
@@ -195,19 +191,19 @@ $${{< /math >}}
 r\sin\theta = b \sin E = a \sqrt{1-e^2} \sin E
 $${{< /math >}}
 
-将上面两个等式代入 $\mathbf{r}^p$ 中，可以得到用角度 $E$ 表述的坐标：
+将上面两个等式代入 $\bm{r}^p$ 中，可以得到用角度 $E$ 表述的坐标：
 
 {{< math >}}$$
-\mathbf{r}^p = a \begin{bmatrix}  (\cos E -e) \\ \sqrt{1-e^2} \sin E \\ 0 \end{bmatrix}
+\bm{r}^p = a \begin{bmatrix}  (\cos E -e) \\ \sqrt{1-e^2} \sin E \\ 0 \end{bmatrix}
 $${{< /math >}}
 
 因此
 
 {{< math >}}$$
-\mathbf{v}^p = \dot{\mathbf{r}}_p = a \dot{E} \begin{bmatrix} -\sin E \\ \sqrt{1-e^2} \cos E \\ 0 \end{bmatrix}
+\bm{v}^p = \dot{\bm{r}}_p = a \dot{E} \begin{bmatrix} -\sin E \\ \sqrt{1-e^2} \cos E \\ 0 \end{bmatrix}
 $${{< /math >}}
 
-代入 $\mathbf{h}^p = \mathbf{r}^p \times \mathbf{v}^p$，整理可得
+代入 $\bm{h}^p = \bm{r}^p \times \bm{v}^p$，整理可得
 
 {{< math >}}$$
 \dot{E} \left( 1-e\cos E\right) = \frac{h}{a^2\sqrt{1-e^2}} = \sqrt{\frac{\mu}{a^3}} := \omega_0

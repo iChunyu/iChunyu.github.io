@@ -17,8 +17,8 @@ draft: false
 {{< math >}}$$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x}
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x}
 \end{aligned}
 \right.
 $${{< /math >}}
@@ -28,8 +28,8 @@ $${{< /math >}}
 {{< math >}}$$
 \left\{
 \begin{aligned}
-\dot{\hat{\mathbf{x}}} &= A \hat{\mathbf{x}} + Bu  \\
-\hat{y} &= C \hat{\mathbf{x}}
+\dot{\hat{\bm{x}}} &= A \hat{\bm{x}} + Bu  \\
+\hat{y} &= C \hat{\bm{x}}
 \end{aligned}
 \right.
 $${{< /math >}}
@@ -38,11 +38,11 @@ $${{< /math >}}
 
 **When in trouble, use feedback**。为了解决模型之间的差异，遵循这个控制的金科玉律，对理论模型引入反馈进行矫正，令：
 
-{{< math >}}$$\mathbf{\dot{\hat{x}}} = A\hat{\mathbf{x}} + { B}u + {L}\left( {y - \hat y} \right)$${{< /math >}}
+{{< math >}}$$\bm{\dot{\hat{x}}} = A\hat{\bm{x}} + { B}u + {L}\left( {y - \hat y} \right)$${{< /math >}}
 
-此时状态的估计误差 ${\mathbf{\tilde x}} = {\mathbf{x}} - {\mathbf{\hat{x}}}$ 满足：
+此时状态的估计误差 ${\bm{\tilde x}} = {\bm{x}} - {\bm{\hat{x}}}$ 满足：
 
-{{< math >}}$$\mathbf{\dot{\tilde{x}}} = \left( A - LC \right) \mathbf{\tilde{x}}$${{< /math >}}
+{{< math >}}$$\bm{\dot{\tilde{x}}} = \left( A - LC \right) \bm{\tilde{x}}$${{< /math >}}
 
 于是，只要合理设计 $L$ 令 $\left( A - LC \right)$ 所有特征值的实部均小于零即可使状态估计误差收敛到零，即状态估计值趋近于真是状态。
 
@@ -61,32 +61,28 @@ $${{< /math >}}
 {{< math >}}$$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= \begin{bmatrix}
+\dot{\bm{x}} &= \begin{bmatrix}
 0 & 1 \\
 -\omega_n^2 & -2\zeta \omega
 \end{bmatrix}
-\mathbf{x} + \begin{bmatrix}
+\bm{x} + \begin{bmatrix}
 0 \\ \omega_n^2
 \end{bmatrix}u  \\
 y &= \begin{bmatrix}
 1 & 0
-\end{bmatrix}\mathbf{x}\
+\end{bmatrix}\bm{x}\
 \end{aligned}
 \right.
 $${{< /math >}}
 
 其中，$\omega_n=1 {\rm  rad/s,}\\, \zeta=0.3$，基于Simulink搭建被控对象如图所示
 
-<div align=center>
-    <img src=mc03a.png width=70% />
-</div>
+{{< image src="./mc03a.png" caption="全维状态估计器框图" width="70%" >}}
 
 
 为了状态估计能够快速收敛，设的阻尼系数 $\zeta=0.7$ ，对应极点为 $-0.70\pm0.71j$ ，进而 $L=\left[0.80,\, -0.48\right]$。带入仿真，观察状态的实际值和估计值如下图所示：
 
-<div align=center>
-    <img src=mc03b.png width=50% />
-</div>
+{{< image src="./mc03b.png" caption="全维状态估计器仿真结果" width="50%" >}}
 
 第一个子图实线为真实状态，虚线为状态估计值，可见两者在大约5s后趋于一致。第二个子图则表示两个状态的估计误差，同样可以反应状态估计值的误差随时间收敛到零，状态估计值趋于真实值。
 
@@ -100,13 +96,13 @@ $${{< /math >}}
 \left\{ \begin{array}{l}
   \begin{bmatrix}
   \dot{x}_a \\
-  \dot{\mathbf{x}}_b
+  \dot{\bm{x}}_b
   \end{bmatrix}
    = \begin{bmatrix}
 A_{aa} & A_{ab} \\ A_{ba} & A_{bb}
 \end{bmatrix}\begin{bmatrix}
   x_a \\
-  \mathbf{x}_b
+  \bm{x}_b
   \end{bmatrix}
 +\begin{bmatrix} 
   B_a \\B_b
@@ -115,22 +111,22 @@ y = \begin{bmatrix}
   1&0
 \end{bmatrix}\begin{bmatrix}
   x_a \\
-  \mathbf{x}_b
+  \bm{x}_b
   \end{bmatrix}
 \end{array} \right.
 $${{< /math >}}
 
-系统的输出就是状态量 $x_a$ ，需要进行估计的状态为 $\mathbf{x}_b$ 。
+系统的输出就是状态量 $x_a$ ，需要进行估计的状态为 $\bm{x}_b$ 。
 
-为了实现降维，需要对原始的状态空间方程进行改造，构造新的系统，使其状态变量有且仅有 $\mathbf{x}_b$ 。
+为了实现降维，需要对原始的状态空间方程进行改造，构造新的系统，使其状态变量有且仅有 $\bm{x}_b$ 。
 
-首先从 $\dot{\mathbf{x}}_b$ 的方程中寻找新的系统输入方程：
+首先从 $\dot{\bm{x}}_b$ 的方程中寻找新的系统输入方程：
 
-{{< math >}}$$\dot{\mathbf{x}}_b = {{A}_{bb}}{{\mathbf{x}}_b} + \left( {{A_{ba}}{x_a} + {{ B}_b}u} \right)$${{< /math >}}
+{{< math >}}$$\dot{\bm{x}}_b = {{A}_{bb}}{{\bm{x}}_b} + \left( {{A_{ba}}{x_a} + {{ B}_b}u} \right)$${{< /math >}}
 
 将 $\dot{x}_a$ 换为输出的导数 $\dot{y}$ ，改写系统的输出方程：
 
-{{< math >}}$$\left( {\dot{y} - {A_{aa}}{x_a} - {B_a}u} \right) = {{A}_{ab}}{{\mathbf{x}}_b}$${{< /math >}}
+{{< math >}}$$\left( {\dot{y} - {A_{aa}}{x_a} - {B_a}u} \right) = {{A}_{ab}}{{\bm{x}}_b}$${{< /math >}}
 
 由上面两个式子，对比标准的状态空间方程，显然有以下转换关系：
 
@@ -148,28 +144,24 @@ $${{< /math >}}
 
 {{< math >}}$$
 \begin{aligned}
-\dot{\hat{\mathbf{x}}}_b &= {{A}_{bb}}{{{\bf{\hat x}}}_b} + \left( {{A_{ba}}{x_a} + {{B}_b}u} \right) + {{L}_b}\left[ {\left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right) - {{A}_{ab}}{{{\bf{\hat x}}}_b}} \right] \\
+\dot{\hat{\bm{x}}}_b &= {{A}_{bb}}{{{\bf{\hat x}}}_b} + \left( {{A_{ba}}{x_a} + {{B}_b}u} \right) + {{L}_b}\left[ {\left( {\dot y - {A_{aa}}{x_a} - {B_a}u} \right) - {{A}_{ab}}{{{\bf{\hat x}}}_b}} \right] \\
 &= \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right){{{\bf{\hat x}}}_b} + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u + {{L}_b}\dot y
 \end{aligned}
 $${{< /math >}}
 
-由此初步完成了降维估计器的构造，设计的目标只需令 $A_{bb} - L_bA_{ab}$ 的所有特征值实部为负。需要注意的是，上式中包含输出的导数 $\dot{y}$，实际中微分是不容易实现的，且容易放大高频噪声，应当避免这一项的存在。于是需要进一步构造辅助变量 $\mathbf{x}_c = \mathbf{\hat x}_b - L_by$ ，则上式改为：
+由此初步完成了降维估计器的构造，设计的目标只需令 $A_{bb} - L_bA_{ab}$ 的所有特征值实部为负。需要注意的是，上式中包含输出的导数 $\dot{y}$，实际中微分是不容易实现的，且容易放大高频噪声，应当避免这一项的存在。于是需要进一步构造辅助变量 $\bm{x}_c = \bm{\hat x}_b - L_by$ ，则上式改为：
 
 {{< math >}}$$
-\dot{\hat{\mathbf{x}}}_c = \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right)\left( {{{\bf{x}}_c} + {{L}_b}y} \right) + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u
+\dot{\hat{\bm{x}}}_c = \left( {{{A}_{bb}} - {{L}_b}{{A}_{ab}}} \right)\left( {{{\bf{x}}_c} + {{L}_b}y} \right) + \left( {{A_{ba}} - {{L}_b}{A_{aa}}} \right)y + \left( {{{B}_b} - {{L}_b}{B_a}} \right)u
 $${{< /math >}}
 
 至此，推导出降维状态估计器的可实现的形式。对于本文所提及的弹簧-质量-阻尼系统，其降维状态估计器结构如下图所示：
 
-<div align=center>
-    <img src=mc03c.png width=70% />
-</div>
+{{< image src="./mc03c.png" caption="降维状态估计器框图" width="70%" >}}
 
 对降维状态估计器进行参数设计，之后得到该估计器的响应如图：
 
-<div align=center>
-    <img src=mc03d.png width=50% />
-</div>
+{{< image src="./mc03d.png" caption="降维状态估计器仿真结果" width="50%" >}}
 
 该降维状态估计器仅对状态量 $x_2$ 进行估计，可见在 8s 左右估计的误差已收敛到合适的范围，随着时间的增长，状态估计误差收敛于零，状态估计值收敛于真实值。
 

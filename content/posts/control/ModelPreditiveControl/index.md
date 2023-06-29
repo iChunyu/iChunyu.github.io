@@ -16,9 +16,7 @@ draft: false
 
 如下图所示，上面的绿色曲线表示被控对象的输出，蓝色曲线为参考信号；下面的橙色曲线为相应施加的控制信号。在数字控制中，被控对象的输出和控制器的控制命令都被离散化，样本值如散点所示。
 
-<div align=center>
-    <img src=MPC.png width=70% />
-</div>
+{{< image src="./MPC.png" caption="控制指令与误差响应示意图" width="70%" >}}
 
 在 $k$ 时刻，模型预测控制根据当前被控对象的输出对后面的 $N$ 步进行预测，在将来的 $N$ 步内，要求控制命令和误差的平方加权和最小。即：寻找 $N$ 步控制命令（{{< math >}}$u(i),\, i=k,\,k+1,\,\dots,\,k+N-1${{< /math >}} ），使得下面的代价函数达到最小值
 
@@ -76,7 +74,7 @@ $${{< /math >}}
 {{< math >}}$$
 \underbrace{\begin{bmatrix}
         x(k|k) \\  x(k+1|k)  \\ \vdots \\ x(k+N|k)
-        \end{bmatrix}}_{\mathbf{X}(k)} 
+        \end{bmatrix}}_{\bm{X}(k)} 
         =   \underbrace{\begin{bmatrix}
                 I \\ A \\ A^2 \\ \vdots \\ A^N
             \end{bmatrix}}_{M} x(k)
@@ -89,7 +87,7 @@ $${{< /math >}}
             \end{bmatrix}}_{C}
             \underbrace{\begin{bmatrix}
                 u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N-1|k)
-    \end{bmatrix}}_{\mathbf{U}(k)}
+    \end{bmatrix}}_{\bm{U}(k)}
 $${{< /math >}}
 
 
@@ -97,7 +95,7 @@ $${{< /math >}}
 形式上这里有 $N+1$ 个方程 ，但应当注意状态量 $x$ 可以是 $n$ 维的，因此实际上有 $n(N+1)$ 个方程。
 {{< /admonition>}}
 
-即有 $\mathbf{X}(k) = Mx(k) + C\mathbf{U}(k)$。如此做，代价函数可以表示为
+即有 $\bm{X}(k) = Mx(k) + C\bm{U}(k)$。如此做，代价函数可以表示为
 
 {{< math >}}$$
 \begin{aligned}
@@ -127,17 +125,17 @@ $${{< /math >}}
     \begin{bmatrix}
         u(k|k) \\  u(k+1|k)  \\ \vdots \\ u(k+N-1|k)
     \end{bmatrix} \\
-    &= \mathbf{X}^\mathbf{T}(k) \bar{Q} \mathbf{X}(k) + \mathbf{U}^\mathrm{T}(k)\bar{R}\mathbf{U}(k) \\
-    &= \left(Mx(k) + C\mathbf{U}(k)\right)^\mathrm{T} \bar{Q} \left(Mx(k) + C\mathbf{U}(k)\right) + \mathbf{U}^\mathrm{T}(k)\bar{R}\mathbf{U}(k) \\
-    &= x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k) + x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} C \mathbf{U}(k)
-        + \mathbf{U}^\mathbf{T}(k) C^\mathbf{T} \bar{Q} M x(k) + \mathbf{U}^\mathbf{T}(k) C^\mathbf{T} \bar{Q} C \mathbf{U}(k) + \mathbf{U}^\mathrm{T}(k)
-\bar{R}\mathbf{U}(k) \\
-    &= \mathbf{U}^\mathrm{T}(k) \underbrace{\left(C^\mathbf{T} \bar{Q} C + \bar{R}\right)}_{H} \mathbf{U}(k) + 2 \underbrace{x^\mathbf{T}(k) M^\mathbf{T} 
-\bar{Q} C }_{f^\mathrm{T}} \mathbf{U}(k) +  x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k)
+    &= \bm{X}^\mathrm{T}(k) \bar{Q} \bm{X}(k) + \bm{U}^\mathrm{T}(k)\bar{R}\bm{U}(k) \\
+    &= \left(Mx(k) + C\bm{U}(k)\right)^\mathrm{T} \bar{Q} \left(Mx(k) + C\bm{U}(k)\right) + \bm{U}^\mathrm{T}(k)\bar{R}\bm{U}(k) \\
+    &= x^\mathrm{T}(k) M^\mathrm{T} \bar{Q} M x(k) + x^\mathrm{T}(k) M^\mathrm{T} \bar{Q} C \bm{U}(k)
+        + \bm{U}^\mathrm{T}(k) C^\mathrm{T} \bar{Q} M x(k) + \bm{U}^\mathrm{T}(k) C^\mathrm{T} \bar{Q} C \bm{U}(k) + \bm{U}^\mathrm{T}(k)
+\bar{R}\bm{U}(k) \\
+    &= \bm{U}^\mathrm{T}(k) \underbrace{\left(C^\mathrm{T} \bar{Q} C + \bar{R}\right)}_{H} \bm{U}(k) + 2 \underbrace{x^\mathrm{T}(k) M^\mathrm{T} 
+\bar{Q} C }_{f^\mathrm{T}} \bm{U}(k) +  x^\mathrm{T}(k) M^\mathrm{T} \bar{Q} M x(k)
 \end{aligned}
 $${{< /math >}}
 
-优化的对象为 $\mathbf{U}(k)$ 。注意代价函数的最后一项 $x^\mathbf{T}(k) M^\mathbf{T} \bar{Q} M x(k)$ 为常数，不影响优化结果，可以不做考虑。与二次规划的标准形式相比，代价函数存在二倍关系，应当注意 $H$ 和 $f^\mathrm{T}$ 的选择。最后使用 MATLAB `quadprog` 进行优化计算即可获得 $\mathbf{U}(k)$ 。
+优化的对象为 $\bm{U}(k)$ 。注意代价函数的最后一项 $x^\mathrm{T}(k) M^\mathrm{T} \bar{Q} M x(k)$ 为常数，不影响优化结果，可以不做考虑。与二次规划的标准形式相比，代价函数存在二倍关系，应当注意 $H$ 和 $f^\mathrm{T}$ 的选择。最后使用 MATLAB `quadprog` 进行优化计算即可获得 $\bm{U}(k)$ 。
 
 我在 [GitHub](https://github.com/iChunyu/LearnCtrlSys/tree/main/ModelPredictiveControl) 上传了一个简单的 MPC 例子，欢迎留言、讨论。
 
