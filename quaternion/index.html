@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/quaternion/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-16T14:32:58+08:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/quaternion\/"
-        },"genre": "posts","keywords": "四元数, 旋转","wordcount":  3088 ,
-        "url": "https:\/\/ichunyu.github.io\/quaternion\/","datePublished": "2022-03-16T14:32:58+08:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "四元数, 旋转","wordcount":  3067 ,
+        "url": "https:\/\/ichunyu.github.io\/quaternion\/","datePublished": "2022-03-16T14:32:58+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -151,8 +151,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>奇妙的数学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-16">2022-03-16</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3088 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-16">2022-03-16</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3067 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -170,9 +169,9 @@
 </nav></div>
             </div><div class="content" id="content"><p>复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。</p>
 <h2 id="复数与二维旋转" class="headerLink">
-    <a href="#%e5%a4%8d%e6%95%b0%e4%b8%8e%e4%ba%8c%e7%bb%b4%e6%97%8b%e8%bd%ac" class="header-mark"></a>复数与二维旋转</h2><p>在平面参考系 $\mathscr{E} = \{\vec{e}_1, \vec{e}_2 \}$ 中，设矢量 $\vec{a}$ 的坐标为 $\mathbf{a} = [a_1, a_2]^\mathrm{T}$。先将参考系基矢分别映射为复平面的实轴和虚轴，则矢量的坐标可以用复数表示为</p>
+    <a href="#%e5%a4%8d%e6%95%b0%e4%b8%8e%e4%ba%8c%e7%bb%b4%e6%97%8b%e8%bd%ac" class="header-mark"></a>复数与二维旋转</h2><p>在平面参考系 $\mathscr{E} = \{\vec{e}_1, \vec{e}_2 \}$ 中，设矢量 $\vec{a}$ 的坐标为 $\bm{a} = [a_1, a_2]^\mathrm{T}$。先将参考系基矢分别映射为复平面的实轴和虚轴，则矢量的坐标可以用复数表示为</p>
 $$
-\mathbf{a} = a_1 + a_2 i = a \mathrm{e}^{i \alpha}
+\bm{a} = a_1 + a_2 i = a \mathrm{e}^{i \alpha}
 $$
 <div class="details admonition info open">
         <div class="details-summary admonition-title">
@@ -184,15 +183,22 @@ $$
     </div>
 <p>其中 $a$ 为矢量 $\vec{a}$ 的模长，$\alpha$ 为其与实轴（即 $\vec{e}_1$）的夹角。利用指数的计算规则，将 $\vec{a}$ 逆时针旋转 $\varphi$ 后得到的向量 $\vec{b}$ 在同一参考系下的坐标可以表示为</p>
 $$
-\mathbf{b} = a \mathrm{e}^{i (\alpha+\varphi)} = \mathrm{e}^{i \varphi} a \mathrm{e}^{i \alpha} = \mathrm{e}^{i \varphi} \mathbf{a} 
+\bm{b} = a \mathrm{e}^{i (\alpha+\varphi)} = \mathrm{e}^{i \varphi} a \mathrm{e}^{i \alpha} = \mathrm{e}^{i \varphi} \bm{a} 
 $$
 <p>显然，单位模长的复数 $\mathrm{e}^{i\varphi}$ 可以很方便地处理平面内矢量的旋转。通常的复数只有一个实部和一个虚部，也就是只有两个自由度。然而空间旋转为三个自由度，因此需要对复数进行扩充，就有了本文将重点讨论的四元数。</p>
 <h2 id="矩阵形式的旋转" class="headerLink">
     <a href="#%e7%9f%a9%e9%98%b5%e5%bd%a2%e5%bc%8f%e7%9a%84%e6%97%8b%e8%bd%ac" class="header-mark"></a>矩阵形式的旋转</h2><p>在正式讨论四元数之前，有必要先推导矩阵形式下的矢量旋转，其结论将与后面四元数形式的旋转紧密结合。</p>
 <p>欧拉定理告诉我们，空间内的任意旋转都可以等价为绕一个方向旋转一个角度。设任意矢量 $\vec{a}$ 绕单位矢量 $\vec{v}$ 旋转 $\varphi$ 角度后得到 $\vec{b}$，如下图所示</p>
-<div align=center>
-    <img src=./rotation.png width=30% />
-</div>
+<figure><a class="lightgallery" href="./rotation.png" title="./rotation.png" data-thumbnail="./rotation.png" data-sub-html="<h2>向量旋转的分解</h2>">
+        <img
+            
+            loading="lazy"
+            src="./rotation.png"
+            srcset="./rotation.png, ./rotation.png 1.5x, ./rotation.png 2x"
+            sizes="auto"
+            alt="./rotation.png" width="30%" >
+    </a><figcaption class="image-caption">向量旋转的分解</figcaption>
+    </figure>
 <p>我们将矢量 $\vec{a}$ 分解为平行于 $\vec{v}$ 的 $\vec{a}_\parallel$ 和垂直于 $\vec{v}$ 的 $\vec{a}_\perp$，分别将其旋转后组合即可得到 $\vec{b}$。</p>
 <p>平行于转轴的分量 $\vec{a}_\parallel$ 旋转后保持不变，即</p>
 $$
@@ -200,7 +206,7 @@ $$
 $$
 <p>任意选定参考系，上式的坐标形式可以写为</p>
 $$
-\mathbf{b}_\parallel = \mathbf{a}_\parallel = (\mathbf{v}^\mathrm{T} \mathbf{a}) \mathbf{v} = \mathbf{v}(\mathbf{v}^\mathrm{T} \mathbf{a}) = (\mathbf{v} \mathbf{v}^\mathrm{T} )\mathbf{a} 
+\bm{b}_\parallel = \bm{a}_\parallel = (\bm{v}^\mathrm{T} \bm{a}) \bm{v} = \bm{v}(\bm{v}^\mathrm{T} \bm{a}) = (\bm{v} \bm{v}^\mathrm{T} )\bm{a} 
 $$
 <p>垂直于转轴的分量 $\vec{a}_\perp$ 旋转后，根据上图所示，在 $\vec{a}_\perp$ 和 $\vec{v}\times\vec{a}$ 构成的平面内（注意这两个基矢正交，且模长相等），有</p>
 $$
@@ -209,20 +215,20 @@ $$
 <p>两个等号分别考虑了投影面第二基矢的等价表述，即 $\vec{v}\times\vec{a}_\perp = \vec{v}\times\vec{a}$，写成坐标形式，有</p>
 $$
 \begin{aligned}
-    \mathbf{b}_\perp &= \cos\varphi \mathbf{a}_\perp + \sin\varphi \mathbf{v} \times \mathbf{a}_\perp
-        = \left( \cos\varphi + \sin\varphi \mathbf{v} \times \right) \mathbf{a}_\perp \\
-        &= \cos\varphi (\mathbf{a} - \mathbf{a}_\parallel ) + \sin\varphi \mathbf{v} \times \mathbf{a}
-        = \left( \cos\varphi \left(I -  \mathbf{v} \mathbf{v}^\mathrm{T}\right) + \sin\varphi \mathbf{v} \times \right)  \mathbf{a}
+    \bm{b}_\perp &= \cos\varphi \bm{a}_\perp + \sin\varphi \bm{v} \times \bm{a}_\perp
+        = \left( \cos\varphi + \sin\varphi \bm{v} \times \right) \bm{a}_\perp \\
+        &= \cos\varphi (\bm{a} - \bm{a}_\parallel ) + \sin\varphi \bm{v} \times \bm{a}
+        = \left( \cos\varphi \left(I -  \bm{v} \bm{v}^\mathrm{T}\right) + \sin\varphi \bm{v} \times \right)  \bm{a}
 \end{aligned}
 $$
 <p>上式第一行将与后面四元数推导进行对比，联立第二行结果与平行转轴分量的结果，旋转前后矢量的坐标关系为</p>
 $$
-\mathbf{b} = \mathbf{b}_\parallel + \mathbf{b}_\perp 
-= \left[ \left(1-\cos\varphi\right)\mathbf{v} \mathbf{v}^\mathrm{T} + \cos\varphi I + \sin\varphi \mathbf{v}\times \right] \mathbf{a}
+\bm{b} = \bm{b}_\parallel + \bm{b}_\perp 
+= \left[ \left(1-\cos\varphi\right)\bm{v} \bm{v}^\mathrm{T} + \cos\varphi I + \sin\varphi \bm{v}\times \right] \bm{a}
 $$
 <p>于是由 $\vec{a}$ 向 $\vec{b}$ 的转动对应的矩阵为</p>
 $$
-R_b^a = \left(1-\cos\varphi\right)\mathbf{v} \mathbf{v}^\mathrm{T} + \cos\varphi I + \sin\varphi \mathbf{v}\times
+R_b^a = \left(1-\cos\varphi\right)\bm{v} \bm{v}^\mathrm{T} + \cos\varphi I + \sin\varphi \bm{v}\times
 $$
 <h2 id="四元数基本运算" class="headerLink">
     <a href="#%e5%9b%9b%e5%85%83%e6%95%b0%e5%9f%ba%e6%9c%ac%e8%bf%90%e7%ae%97" class="header-mark"></a>四元数基本运算</h2><p>四元数由一个实部和三个虚部构成，设三个虚部分别为 $i,j,k$，其满足</p>
@@ -233,7 +239,7 @@ $$
 $$
 \mathfrak{q} = q_0 + q_1 i + q_2 j + q_3 k 
 \quad \rightarrow \quad \begin{bmatrix}
-    q_0 \\ \mathbf{q}
+    q_0 \\ \bm{q}
 \end{bmatrix}
 $$
 <p>箭头右侧为四元数的哈密顿表述，其将实部作为列向量的第一个参数，三个虚部构成四元数的矢量部分。</p>
@@ -252,116 +258,116 @@ $$
         b_0 \\ \hdashline b_1 \\ b_2 \\ b_3
     \end{bmatrix}
     = \begin{bmatrix}
-        a_0 & -\mathbf{a}^\mathrm{T} \\
-        \mathbf{a} & a_0 I + \mathbf{a}\times
+        a_0 & -\bm{a}^\mathrm{T} \\
+        \bm{a} & a_0 I + \bm{a}\times
     \end{bmatrix}
     \begin{bmatrix}
-        b_0 \\ \mathbf{b}
+        b_0 \\ \bm{b}
     \end{bmatrix}
 $$
 <p>类似于矩阵乘法，四元数乘法满足结合律，但一般不满足交换律。同样地，若两个四元数相乘得到 $1$，则称两个四元数互逆，记为 $\mathfrak{q} \otimes \mathfrak{q}^{-1} = \mathfrak{q}^{-1}  \otimes \mathfrak{q} = 1$。四元数的模定义为四个分量的平方和开方，即</p>
 $$
-|\mathfrak{q}| = \sqrt{q_0^2 + q_1^2 + q_2^2 + q_3^2} = \sqrt{ q_0^2 + \mathbf{q}^\mathrm{T}\mathbf{q}} = \sqrt{\mathfrak{q} \otimes \mathfrak{q}^*}
+|\mathfrak{q}| = \sqrt{q_0^2 + q_1^2 + q_2^2 + q_3^2} = \sqrt{ q_0^2 + \bm{q}^\mathrm{T}\bm{q}} = \sqrt{\mathfrak{q} \otimes \mathfrak{q}^*}
 $$
-<p>其中 $\mathfrak{q}^* = [q_0, -\mathbf{q}]$ 为 $\mathfrak{q} = [q_0, \mathbf{q}]$ 的共轭。特别地，单位四元数 $|\mathfrak{q}| = 1$ 的逆与共轭相等，即 $\mathfrak{q}^{-1}=\mathfrak{q}^*$，这另上式最后的等号为 $1$ 即可以得出。</p>
+<p>其中 $\mathfrak{q}^* = [q_0, -\bm{q}]$ 为 $\mathfrak{q} = [q_0, \bm{q}]$ 的共轭。特别地，单位四元数 $|\mathfrak{q}| = 1$ 的逆与共轭相等，即 $\mathfrak{q}^{-1}=\mathfrak{q}^*$，这另上式最后的等号为 $1$ 即可以得出。</p>
 <h2 id="四元数下的旋转" class="headerLink">
-    <a href="#%e5%9b%9b%e5%85%83%e6%95%b0%e4%b8%8b%e7%9a%84%e6%97%8b%e8%bd%ac" class="header-mark"></a>四元数下的旋转</h2><p>为了推导四元数与旋转之家的关系，不妨分别看看四元数乘以不同矢量的效果。在给定参考系下，设四元数矢量部分的坐标为 $\mathbf{q}$ ，将四元数表示为 $\mathfrak{q} = [q_0, \mathbf{q}]$。同样，将矢量 $\mathbf{a}$ 分解为平行于 $\mathbf{q}$ 的分量 $\mathbf{a}_\parallel$ 和垂直分量 $\mathbf{a}_\perp$。</p>
+    <a href="#%e5%9b%9b%e5%85%83%e6%95%b0%e4%b8%8b%e7%9a%84%e6%97%8b%e8%bd%ac" class="header-mark"></a>四元数下的旋转</h2><p>为了推导四元数与旋转之家的关系，不妨分别看看四元数乘以不同矢量的效果。在给定参考系下，设四元数矢量部分的坐标为 $\bm{q}$ ，将四元数表示为 $\mathfrak{q} = [q_0, \bm{q}]$。同样，将矢量 $\bm{a}$ 分解为平行于 $\bm{q}$ 的分量 $\bm{a}_\parallel$ 和垂直分量 $\bm{a}_\perp$。</p>
 <p>四元数平行分量的乘积为：</p>
 $$
-\mathfrak{q} \otimes \mathbf{a}_\parallel = 
+\mathfrak{q} \otimes \bm{a}_\parallel = 
     \begin{bmatrix}
-        q_0 & -\mathbf{q}^\mathrm{T} \\
-        \mathbf{q} & q_0 I + \mathbf{q}\times
+        q_0 & -\bm{q}^\mathrm{T} \\
+        \bm{q} & q_0 I + \bm{q}\times
     \end{bmatrix}
     \begin{bmatrix}
-        0 \\ \mathbf{a}_\parallel
+        0 \\ \bm{a}_\parallel
     \end{bmatrix}
     = \begin{bmatrix}
-        - \mathbf{q}^\mathrm{T} \mathbf{a}_\parallel \\
-        q_0 \mathbf{a}_\parallel
+        - \bm{q}^\mathrm{T} \bm{a}_\parallel \\
+        q_0 \bm{a}_\parallel
     \end{bmatrix}
     = \begin{bmatrix}
-        0 & -\mathbf{a}_\parallel^\mathrm{T} \\
-        \mathbf{a}_\parallel & \mathbf{a}_\parallel \times
+        0 & -\bm{a}_\parallel^\mathrm{T} \\
+        \bm{a}_\parallel & \bm{a}_\parallel \times
     \end{bmatrix}
     \begin{bmatrix}
-        q_0 \\ \mathbf{q}
+        q_0 \\ \bm{q}
     \end{bmatrix}
-    = \mathbf{a}_\parallel \otimes \mathfrak{q}
+    = \bm{a}_\parallel \otimes \mathfrak{q}
 $$
-<p>这个公式虽然没有表现出对 $\mathbf{a}_\parallel$ 的旋转作用，但得到了一个重要结论：如果矢量与四元数的矢量部分平行，那么两者的四元数乘法满足交换律，即 $\mathfrak{q} \otimes \mathbf{a}_\parallel = \mathbf{a}_\parallel \otimes \mathfrak{q}$。</p>
+<p>这个公式虽然没有表现出对 $\bm{a}_\parallel$ 的旋转作用，但得到了一个重要结论：如果矢量与四元数的矢量部分平行，那么两者的四元数乘法满足交换律，即 $\mathfrak{q} \otimes \bm{a}_\parallel = \bm{a}_\parallel \otimes \mathfrak{q}$。</p>
 <p>四元数垂直分量的乘积为：</p>
 $$
-\mathfrak{q} \otimes \mathbf{a}_\perp = 
+\mathfrak{q} \otimes \bm{a}_\perp = 
     \begin{bmatrix}
-        q_0 & -\mathbf{q}^\mathrm{T} \\
-        \mathbf{q} & q_0 I + \mathbf{q}\times
+        q_0 & -\bm{q}^\mathrm{T} \\
+        \bm{q} & q_0 I + \bm{q}\times
     \end{bmatrix}
     \begin{bmatrix}
-        0 \\ \mathbf{a}_\perp
+        0 \\ \bm{a}_\perp
     \end{bmatrix}
 = \begin{bmatrix}
         0 \\
-        \left(q_0  + \mathbf{q} \times \right)\mathbf{a}_\perp
+        \left(q_0  + \bm{q} \times \right)\bm{a}_\perp
     \end{bmatrix} 
 = \begin{bmatrix}
-        0 & -\mathbf{a}_\perp^\mathrm{T} \\
-        \mathbf{a}_\perp & \mathbf{a}_\perp \times
+        0 & -\bm{a}_\perp^\mathrm{T} \\
+        \bm{a}_\perp & \bm{a}_\perp \times
     \end{bmatrix}
     \begin{bmatrix}
-        q_0 \\ -\mathbf{q}
-    \end{bmatrix} = \mathbf{a}_\perp \otimes \mathfrak{q}^*
+        q_0 \\ -\bm{q}
+    \end{bmatrix} = \bm{a}_\perp \otimes \mathfrak{q}^*
 $$
-<p>从最两端的等号可以得到“共轭交换律”：如果矢量与四元数的矢量部分垂直，那么两者的四元数乘法满足“共轭交换律”，即 $\mathfrak{q} \otimes \mathbf{a}_\perp = \mathbf{a}_\perp \otimes \mathfrak{q}^*$。现在我们仔细观察中间结果，可以发现 $\mathfrak{q} \otimes \mathbf{a}_\perp$ 依然是纯四元数，其矢量部分与上述矩阵形式下的旋转具有非常相似的结构：</p>
+<p>从最两端的等号可以得到“共轭交换律”：如果矢量与四元数的矢量部分垂直，那么两者的四元数乘法满足“共轭交换律”，即 $\mathfrak{q} \otimes \bm{a}_\perp = \bm{a}_\perp \otimes \mathfrak{q}^*$。现在我们仔细观察中间结果，可以发现 $\mathfrak{q} \otimes \bm{a}_\perp$ 依然是纯四元数，其矢量部分与上述矩阵形式下的旋转具有非常相似的结构：</p>
 $$
-\left(q_0  + \mathbf{q} \times \right)\mathbf{a}_\perp \sim \left( \cos\varphi + \sin\varphi \mathbf{v} \times \right) \mathbf{a}_\perp
+\left(q_0  + \bm{q} \times \right)\bm{a}_\perp \sim \left( \cos\varphi + \sin\varphi \bm{v} \times \right) \bm{a}_\perp
 $$
-<p>由此可知，若取 $\mathfrak{q} = [\cos\varphi, \sin\varphi \mathbf{v}]$，则 $\mathfrak{q} \otimes \mathbf{a}_\perp$ 的矢量部分就是将  $\mathbf{a}_\perp$ 沿着矢量 $\mathbf{v}$ 转动 $\varphi$ 角度之后的结果。因此，形如 $\mathfrak{q}(\theta) = [\cos\theta, \sin\theta \mathbf{v}]$ （$\mathbf{v}$ 为单位矢量）的四元数可以用于矢量的旋转操作，容易证明这是一个单位四元数，且存在以下等式</p>
+<p>由此可知，若取 $\mathfrak{q} = [\cos\varphi, \sin\varphi \bm{v}]$，则 $\mathfrak{q} \otimes \bm{a}_\perp$ 的矢量部分就是将  $\bm{a}_\perp$ 沿着矢量 $\bm{v}$ 转动 $\varphi$ 角度之后的结果。因此，形如 $\mathfrak{q}(\theta) = [\cos\theta, \sin\theta \bm{v}]$ （$\bm{v}$ 为单位矢量）的四元数可以用于矢量的旋转操作，容易证明这是一个单位四元数，且存在以下等式</p>
 $$
 \mathfrak{q}(\theta) \otimes \mathfrak{q}(\theta) 
     = \begin{bmatrix}
-        \cos\theta & -\sin\theta\mathbf{v}^\mathrm{T} \\
-        \sin\theta\mathbf{v} & \cos\theta I + \sin\theta\mathbf{v}\times
+        \cos\theta & -\sin\theta\bm{v}^\mathrm{T} \\
+        \sin\theta\bm{v} & \cos\theta I + \sin\theta\bm{v}\times
     \end{bmatrix}
     \begin{bmatrix}
-        \cos\theta \\ \sin\theta \mathbf{v}
+        \cos\theta \\ \sin\theta \bm{v}
     \end{bmatrix}
     = \begin{bmatrix}
         \cos 2\theta \\
-        \sin 2\theta \mathbf{v}
+        \sin 2\theta \bm{v}
     \end{bmatrix}
 = \mathfrak{q}(2\theta) 
 $$
-<p>最后，为了得到更一般矢量的四元数旋转，结合上面的结论可知，将 $\mathbf{a}$ 绕 $\mathbf{v}$ 旋转 $\varphi$ 后的矢量的坐标 $\mathbf{b}$ 为</p>
+<p>最后，为了得到更一般矢量的四元数旋转，结合上面的结论可知，将 $\bm{a}$ 绕 $\bm{v}$ 旋转 $\varphi$ 后的矢量的坐标 $\bm{b}$ 为</p>
 $$
 \begin{aligned}
-\mathbf{b} &= \mathbf{b}_\parallel + \mathbf{b}_\perp \\
-    &= \mathbf{a}_\parallel + \mathfrak{q}(\varphi) \otimes \mathbf{a}_\perp \\
-    &= \mathfrak{q}(\frac{1}{2}\varphi) \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi) \otimes \mathbf{a}_\parallel
-        + \mathfrak{q}(\frac{1}{2}\varphi) \otimes \mathfrak{q}(\frac{1}{2}\varphi) \otimes \mathbf{a}_\perp \\
-    &= \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \mathbf{a}_\parallel \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi)
-        + \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \mathbf{a}_\perp \otimes \mathfrak{q}^*(\frac{1}{2}\varphi) \\
-    &= \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \mathbf{a}_\parallel \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi)
-        + \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \mathbf{a}_\perp \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi) \\
-    &= \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \left( \mathbf{a}_\parallel + \mathbf{a}_\perp \right)\otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi) \\
-    &= \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \mathbf{a} \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi)
+\bm{b} &= \bm{b}_\parallel + \bm{b}_\perp \\
+    &= \bm{a}_\parallel + \mathfrak{q}(\varphi) \otimes \bm{a}_\perp \\
+    &= \mathfrak{q}(\frac{1}{2}\varphi) \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi) \otimes \bm{a}_\parallel
+        + \mathfrak{q}(\frac{1}{2}\varphi) \otimes \mathfrak{q}(\frac{1}{2}\varphi) \otimes \bm{a}_\perp \\
+    &= \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \bm{a}_\parallel \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi)
+        + \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \bm{a}_\perp \otimes \mathfrak{q}^*(\frac{1}{2}\varphi) \\
+    &= \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \bm{a}_\parallel \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi)
+        + \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \bm{a}_\perp \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi) \\
+    &= \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \left( \bm{a}_\parallel + \bm{a}_\perp \right)\otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi) \\
+    &= \mathfrak{q}(\frac{1}{2}\varphi)  \otimes \bm{a} \otimes \mathfrak{q}^{-1}(\frac{1}{2}\varphi)
 \end{aligned}
 $$
-<p>上式的推导中用到了四元数与平行、垂直矢量相乘的交换律，以及“单位四元数的逆与其共轭相等”的结论。由此可见，任意矢量绕 $\mathbf{v}$ 旋转 $\varphi$ 应当由四元数 $\mathfrak{q}(\varphi/2) = [\cos(\varphi/2), \sin(\varphi/2) \mathbf{v}]$ 表述。由 $\mathbf{a}$ 到 $\mathbf{b}$ 的旋转可以由矩阵和四元数分别表示为</p>
+<p>上式的推导中用到了四元数与平行、垂直矢量相乘的交换律，以及“单位四元数的逆与其共轭相等”的结论。由此可见，任意矢量绕 $\bm{v}$ 旋转 $\varphi$ 应当由四元数 $\mathfrak{q}(\varphi/2) = [\cos(\varphi/2), \sin(\varphi/2) \bm{v}]$ 表述。由 $\bm{a}$ 到 $\bm{b}$ 的旋转可以由矩阵和四元数分别表示为</p>
 $$
-\mathbf{b} = R_b^a \mathbf{a} 
-= \mathfrak{q}_b^a  \otimes \mathbf{a} \otimes (\mathfrak{q}_b^a)^{-1} 
-= \mathfrak{q}_b^a  \otimes \mathbf{a} \otimes (\mathfrak{q}_a^b)
+\bm{b} = R_b^a \bm{a} 
+= \mathfrak{q}_b^a  \otimes \bm{a} \otimes (\mathfrak{q}_b^a)^{-1} 
+= \mathfrak{q}_b^a  \otimes \bm{a} \otimes (\mathfrak{q}_a^b)
 $$
 <p>最后，考虑旋转矩阵与四元数之间的关系为</p>
 $$
 \begin{aligned}
-    R(\mathfrak{q}_b^a) = R_b^a &= \left(1-\cos\varphi\right)\mathbf{v} \mathbf{v}^\mathrm{T} + \cos\varphi I + \sin\varphi \mathbf{v}\times \\
-    &= 2 \sin^2\frac{\varphi}{2} \mathbf{v} \mathbf{v}^\mathrm{T} 
+    R(\mathfrak{q}_b^a) = R_b^a &= \left(1-\cos\varphi\right)\bm{v} \bm{v}^\mathrm{T} + \cos\varphi I + \sin\varphi \bm{v}\times \\
+    &= 2 \sin^2\frac{\varphi}{2} \bm{v} \bm{v}^\mathrm{T} 
     + \left(\cos^2\frac{\varphi}{2} - \sin^2\frac{\varphi}{2}\right) I 
-    + 2 \sin\frac{\varphi}{2}\cos\frac{\varphi}{2} \mathbf{v}\times \\
-    &\downarrow \quad \bigl(  q_0=\cos\frac{\varphi}{2},\, \mathbf{q} = \sin\frac{\varphi}{2} \mathbf{v} \bigr) \\
-    &= 2 \mathbf{q}  \mathbf{q}^\mathrm{T} + \left(q_0^2 -  \mathbf{q}^\mathrm{T}  \mathbf{q} \right) + 2 q_0  \mathbf{q} \times \\
+    + 2 \sin\frac{\varphi}{2}\cos\frac{\varphi}{2} \bm{v}\times \\
+    &\downarrow \quad \bigl(  q_0=\cos\frac{\varphi}{2},\, \bm{q} = \sin\frac{\varphi}{2} \bm{v} \bigr) \\
+    &= 2 \bm{q}  \bm{q}^\mathrm{T} + \left(q_0^2 -  \bm{q}^\mathrm{T}  \bm{q} \right) + 2 q_0  \bm{q} \times \\
     &= \begin{bmatrix}
         q_0^2+q_1^2-q_2^2-q_3^2 & 2(q_1q_2-q_0q_3) & 2(q_0q_2+q_1q_3)\\ 
         2(q_0q_3+q_1q_2) & q_0^2-q_1^2+q_2^2-q_3^2 & 2(q_2q_3-q_0q_1)\\ 
@@ -378,7 +384,7 @@ $$
         </div>
     </div>
 <h2 id="连续旋转的讨论" class="headerLink">
-    <a href="#%e8%bf%9e%e7%bb%ad%e6%97%8b%e8%bd%ac%e7%9a%84%e8%ae%a8%e8%ae%ba" class="header-mark"></a>连续旋转的讨论</h2><p>一个物体多次旋转，旋转矩阵（或四元数）应当是左乘还是右乘？在 <a href="https://ichunyu.github.io/vectortransform/" rel="">坐标变换与矢量旋转</a> 中我们给出的结论是右乘（同参考资料1），而按照这次推导的逻辑：$\mathbf{v}_0$ 旋转一次得到 $\mathbf{v}_1 = R_1 \mathbf{v}_0$，再将 $\mathbf{v}_1$ 旋转得到 $\mathbf{v}_2 = R_2 \mathbf{v}_1 = R_2 R_1 \mathbf{v}_0$……以此类推，连续转动时似乎应当左乘（同参考资料2），与之前的结论相反。这应当作何解释？</p>
+    <a href="#%e8%bf%9e%e7%bb%ad%e6%97%8b%e8%bd%ac%e7%9a%84%e8%ae%a8%e8%ae%ba" class="header-mark"></a>连续旋转的讨论</h2><p>一个物体多次旋转，旋转矩阵（或四元数）应当是左乘还是右乘？在 <a href="https://ichunyu.github.io/vectortransform/" rel="">坐标变换与矢量旋转</a> 中我们给出的结论是右乘（同参考资料1），而按照这次推导的逻辑：$\bm{v}_0$ 旋转一次得到 $\bm{v}_1 = R_1 \bm{v}_0$，再将 $\bm{v}_1$ 旋转得到 $\bm{v}_2 = R_2 \bm{v}_1 = R_2 R_1 \bm{v}_0$……以此类推，连续转动时似乎应当左乘（同参考资料2），与之前的结论相反。这应当作何解释？</p>
 <ul>
 <li>两者的关注点不同</li>
 </ul>
@@ -386,7 +392,7 @@ $$
 <ul>
 <li>连续旋转的方向矢量坐标不同</li>
 </ul>
-<p>在得到“连续左乘”的结论时，我们实际上选定了同一个参考系。从四元数 $\mathfrak{q} = [\cos(\varphi/2), \sin(\varphi/2) \mathbf{v}]$ 的角度来看，每一次旋转的转轴方向 $\vec{v}$ 的坐标 $\mathbf{v}$ 都是在同一个参考系 $\mathscr{E}$ 进行表达的；而连续右乘时，后一次旋转的转轴方向是在上一次转动之后的参考系中表达的。</p>
+<p>在得到“连续左乘”的结论时，我们实际上选定了同一个参考系。从四元数 $\mathfrak{q} = [\cos(\varphi/2), \sin(\varphi/2) \bm{v}]$ 的角度来看，每一次旋转的转轴方向 $\vec{v}$ 的坐标 $\bm{v}$ 都是在同一个参考系 $\mathscr{E}$ 进行表达的；而连续右乘时，后一次旋转的转轴方向是在上一次转动之后的参考系中表达的。</p>
 $$
 
 $$
@@ -401,8 +407,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -426,7 +432,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

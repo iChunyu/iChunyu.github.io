@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/mc05-reference/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-08-08T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/mc05-reference\/"
-        },"genre": "posts","keywords": "参考信号, 现代控制","wordcount":  987 ,
-        "url": "https:\/\/ichunyu.github.io\/mc05-reference\/","datePublished": "2020-08-08T00:00:00+00:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "参考信号, 现代控制","wordcount":  1014 ,
+        "url": "https:\/\/ichunyu.github.io\/mc05-reference\/","datePublished": "2020-08-08T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -150,8 +150,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-08">2020-08-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 987 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-08">2020-08-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1014 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -172,44 +171,44 @@
 $$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x}
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x}
 \end{aligned}
 \right.
 $$
 <p>在实际的数字控制系统中，能够人为干涉的是状态的估计和控制律，因此，不失一般性地可以设参考信号 $r$ 的引入方式为</p>
 $$
 \left\{ \begin{aligned}
-\dot{\hat{\mathbf{x}}} &= \left( {{A} - {LC} - {BK}} \right) \hat{\mathbf x} + {L}y + {M}r \\
-u &=  - K {\hat{\mathbf x}} + Nr
+\dot{\hat{\bm{x}}} &= \left( {{A} - {LC} - {BK}} \right) \hat{\bm x} + {L}y + {M}r \\
+u &=  - K {\hat{\bm x}} + Nr
 \end{aligned} \right.
 $$
 <p>参数 $M$ 和 $N$ 的设计方法可分为如下三种情况。</p>
 <h2 id="标准形式-standard-case" class="headerLink">
     <a href="#%e6%a0%87%e5%87%86%e5%bd%a2%e5%bc%8f-standard-case" class="header-mark"></a>标准形式 (Standard Case)</h2><p>从状态观测器的角度来考察，不希望参考信号的引入对状态估计产生影响，考察状态估计的误差为</p>
 $$
-\begin{aligned}\dot{\tilde{\mathbf{x}}} &= {A\mathbf{x}} + {B}\left( { - K{\hat{\mathbf x}} + Nr} \right) - \left[ {\left( {{A} - {LC} - {BK}} \right){\mathbf{\hat x}} + {L}y + {M}r} \right] \\
-&= \left( {{A} - {LC}} \right){\mathbf{\tilde x}} + \left( {{B}N - {M}} \right)r\end{aligned}
+\begin{aligned}\dot{\tilde{\bm{x}}} &= {A\bm{x}} + {B}\left( { - K{\hat{\bm x}} + Nr} \right) - \left[ {\left( {{A} - {LC} - {BK}} \right){\bm{\hat x}} + {L}y + {M}r} \right] \\
+&= \left( {{A} - {LC}} \right){\bm{\tilde x}} + \left( {{B}N - {M}} \right)r\end{aligned}
 $$
 <p>因此，通过补充约束条件： $M =  BN$，即可避免参考信号对状态估计引入任何扰动。此时控制器的状态空间可以进一步改写为</p>
 $$
 \left\{ \begin{aligned}
-\mathbf{\dot{\hat x}} &= \left( {{A} - {LC}} \right){\mathbf{\hat x}} + {B}u + {L}y \\
-u &=  - K{\hat{\mathbf x}} + Nr
+\bm{\dot{\hat x}} &= \left( {{A} - {LC}} \right){\bm{\hat x}} + {B}u + {L}y \\
+u &=  - K{\hat{\bm x}} + Nr
 \end{aligned} \right.
 $$
 <p>这就意味着状态观测器的输入与被控对象完全一致。这时，只需要对参考信号的增益 $N$ 进行设计，设计的原则是令 $r\rightarrow y$ 的增益为 $1$ 即可。考察闭环系统的状态空间</p>
 $$
 \left\{ \begin{aligned}
 \begin{bmatrix}
-{{\mathbf{\dot{x}}}}\\
-{{\mathbf{\dot{\tilde x}}}}
+{{\bm{\dot{x}}}}\\
+{{\bm{\dot{\tilde x}}}}
 \end{bmatrix} &= \begin{bmatrix}
 {{A} - {BK}}&{{BK}}\\
 {0}&{{A} - {LC}}
 \end{bmatrix}\begin{bmatrix}
-{\mathbf{x}}\\
-{{\mathbf{\tilde x}}}
+{\bm{x}}\\
+{{\bm{\tilde x}}}
 \end{bmatrix}+ \begin{bmatrix}
 {B}\\
 {0}
@@ -217,8 +216,8 @@ $$
 y &= \begin{bmatrix}
 {C}&0
 \end{bmatrix} \begin{bmatrix}
-{\mathbf{x}}\\
-{{\mathbf{\tilde x}}}
+{\bm{x}}\\
+{{\bm{\tilde x}}}
 \end{bmatrix}
 \end{aligned} \right.
 $$
@@ -235,14 +234,28 @@ A - BK &BK\\
 \end{bmatrix} \right\}^{ - 1}
 $$
 <p>这时整个系统的框图如下图所示。</p>
-<div align=center>
-    <img src=mc05a.png width=70% />
-</div>
+<figure><a class="lightgallery" href="./mc05a.png" title="./mc05a.png" data-thumbnail="./mc05a.png" data-sub-html="<h2>标准形式的参考输入</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc05a.png"
+            srcset="./mc05a.png, ./mc05a.png 1.5x, ./mc05a.png 2x"
+            sizes="auto"
+            alt="./mc05a.png" width="60%" >
+    </a><figcaption class="image-caption">标准形式的参考输入</figcaption>
+    </figure>
 <h2 id="误差控制-error-control-case" class="headerLink">
     <a href="#%e8%af%af%e5%b7%ae%e6%8e%a7%e5%88%b6-error-control-case" class="header-mark"></a>误差控制 (Error Control Case)</h2><p>如果令 $N=0$ ， $M = -L$，即可得到基于误差控制的参考信号引入方式，这是经典控制中的常用方式，如下图所示。</p>
-<div align=center>
-    <img src=mc05b.png width=70% />
-</div>
+<figure><a class="lightgallery" href="./mc05b.png" title="./mc05b.png" data-thumbnail="./mc05b.png" data-sub-html="<h2>误差形式的参考输入</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc05b.png"
+            srcset="./mc05b.png, ./mc05b.png 1.5x, ./mc05b.png 2x"
+            sizes="auto"
+            alt="./mc05b.png" width="60%" >
+    </a><figcaption class="image-caption">误差形式的参考输入</figcaption>
+    </figure>
 <p>这种简单的方式可以用传递函数来证明其可靠性，设开环传递函数为 $H_{\rm open}$，则 $r\rightarrow y$ 的传递函数即为闭环传递函数</p>
 $$H_{close}=\frac{H_{\rm open}}{1+H_{\rm open}} \rightarrow 1$$
 <p>应当注意，上式成立的条件是 $H_{\rm open}$ 在带宽内具有足够的增益，这通常要求开环传递函数中存在一个或多个 $\frac{1}{s}$ 项，若被控对象本身无法满足这一条件，可考虑在控制器中增加积分环节。</p>
@@ -259,9 +272,16 @@ $$
 \end{gathered}
 $$
 <p>因此，我们可以首先根据零点对进行 ${\bar{M}}=\frac{M}{N}$ 设计，再根据 $r\rightarrow y$ 的增益为 $1$ 计算得 $N$ 。这种方式的系统框图如下图所示。</p>
-<div align=center>
-    <img src=mc05c.png width=70% />
-</div>
+<figure><a class="lightgallery" href="./mc05c.png" title="./mc05c.png" data-thumbnail="./mc05c.png" data-sub-html="<h2>一般形式的参考输入</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc05c.png"
+            srcset="./mc05c.png, ./mc05c.png 1.5x, ./mc05c.png 2x"
+            sizes="auto"
+            alt="./mc05c.png" width="70%" >
+    </a><figcaption class="image-caption">一般形式的参考输入</figcaption>
+    </figure>
 <h2 id="参考文献" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
 <li>G.F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. 2014.</li>
@@ -271,8 +291,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -296,7 +316,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

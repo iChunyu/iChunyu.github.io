@@ -16,9 +16,7 @@ $$ {{< /math >}}
 
 如果我们省略掉归一化系数 $R^{-1}$ ，如果直接实现上述过程，需要 $R-1$ 个寄存器进行单位延时，系统如下图所示。
 
-<div align=center>
-    <img src=CascadedDelay.png width=80% />
-</div>
+{{< image src="./CascadedDelay.png" caption="使用串联寄存器实现降采样" width="80%" >}}
 
 容易想象，当我们需要进行高倍数的降采样时，所需要的寄存器（单位延时）数量会大大增加，这对数字系统设计是非常不“经济”的。下面我们就来讨论 CIC 是如何使用更“经济”的方法实现上述系统。
 
@@ -57,15 +55,11 @@ $$ {{< /math >}}
 
 CIC 滤波器用于降采样时的系统框图如下
 
-<div align=center>
-    <img src=CICDecimator.png width=80% />
-</div>
+{{< image src="./CICDecimator.png" caption="CIC 抽取器结构示意图" width="80%" >}}
 
 用于升采样时，只需要将梳状部分和积分部分交换即可，如下图所示
 
-<div align=center>
-    <img src=CICInterpolator.png width=80% />
-</div>
+{{< image src="./CICInterpolator.png" caption="CIC 插值器结构示意图" width="80%" >}}
 
 
 小结：CIC 滤波器使用高速度累加和低速率差分，使用时根据降/升采样目标调整积分部分和梳状部分的顺序即可。

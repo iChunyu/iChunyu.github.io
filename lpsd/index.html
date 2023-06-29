@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/lpsd/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-02-23T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/lpsd\/"
-        },"genre": "posts","keywords": "功率谱, LPSD","wordcount":  3095 ,
-        "url": "https:\/\/ichunyu.github.io\/lpsd\/","datePublished": "2019-02-23T00:00:00+00:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "功率谱, LPSD","wordcount":  3157 ,
+        "url": "https:\/\/ichunyu.github.io\/lpsd\/","datePublished": "2019-02-23T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -156,8 +156,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-02-23">2019-02-23</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3095 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-02-23">2019-02-23</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3157 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -189,21 +188,42 @@ $$
 S(k) = \frac{2}{Nf_s}|X(k)|^2
 $$
 <p>式中，系数 $2$ 将双边谱转换到单边谱，这是因为负频率不具备实际的物理意义。</p>
-<div align=center>
-    <img src=lpsd01.jpg width=70% />
-</div>
+<figure><a class="lightgallery" href="./lpsd01.jpg" title="./lpsd01.jpg" data-thumbnail="./lpsd01.jpg" data-sub-html="<h2>常用谱估计算法流程图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./lpsd01.jpg"
+            srcset="./lpsd01.jpg, ./lpsd01.jpg 1.5x, ./lpsd01.jpg 2x"
+            sizes="auto"
+            alt="./lpsd01.jpg" width="70%" >
+    </a><figcaption class="image-caption">常用谱估计算法流程图</figcaption>
+    </figure>
 <p>Welch 方法相对于周期图法增加了分段平均的思想，其将数据等分为多段，并且允许各段数据之间具有一定的重叠率以补偿窗函数引入的数据不平权的影响。对每段数据采用周期图法，最后将各段分别计算的功率谱进算数平均，获得最终的谱估计值。</p>
-<div align=center>
-    <img src=lpsd02.jpg width=70% />
-</div>
+<figure><a class="lightgallery" href="./lpsd02.jpg" title="./lpsd02.jpg" data-thumbnail="./lpsd02.jpg" data-sub-html="<h2>周期图法和 Welch 法的谱估计结果示例</h2>">
+        <img
+            
+            loading="lazy"
+            src="./lpsd02.jpg"
+            srcset="./lpsd02.jpg, ./lpsd02.jpg 1.5x, ./lpsd02.jpg 2x"
+            sizes="auto"
+            alt="./lpsd02.jpg" width="60%" >
+    </a><figcaption class="image-caption">周期图法和 Welch 法的谱估计结果示例</figcaption>
+    </figure>
 <p>上图展示了周期图法和 Welch 方法对功率谱估计的结果。其中，蓝色曲线的周期图法一次性使用了全部的数据，因而有最高的频率分辨率，可以看到更低的频带。但是其高频部分的数据波动较大，且波动范围不会随着点数的增加而减小，即不满足所谓的一致性原则。橙色的 Welch 算法由于对数据进行了分段，直接进行 FFT 的数据相对较少，导致频率分辨率降低。但是分段平均使得高频波动的幅值大大减小，可以验证高频波动会随着分段次数的增加而进一步减小。</p>
 <h2 id="lpsd算法" class="headerLink">
     <a href="#lpsd%e7%ae%97%e6%b3%95" class="header-mark"></a>LPSD算法</h2><p>LPSD 算法的基本思想是采用对数分布的频率点，由于此时频率点的差值不是定值，即 DFT 的频率分辨率随频率点变化，因而在求取每个频率点对应的功率谱密度时应当对原始数据进行不同的分段。这就是说，LPSD 算法的每个频率点对应于不同分段次数下 Welch 算法中的相应点。</p>
 <h3 id="对数频率的选取" class="headerLink">
     <a href="#%e5%af%b9%e6%95%b0%e9%a2%91%e7%8e%87%e7%9a%84%e9%80%89%e5%8f%96" class="header-mark"></a>对数频率的选取</h3><p>记采集到的离散数据为 $x(n),n=0,1,2&hellip;N-1$，采样率为 $f_s$。假设希望计算 $J_{\rm des}$ 个点，其中第 $j$ 个点对应的频率为 $f(j)$、功率谱密度为 $P(j)$ 、频率分辨率为 $r(j)=f(j+1)-f(j)$。应当注意的是，这里的频率分辨率是指计算DFT的频率点之间的间隔，更一般的说法应当是栅栏效应。有限长数据的频率分辨率实际由 DTFT 定义，与数据的时间长度互为倒数，本文中称之为最小分辨率 $r_{\rm min}$。在 LPSD 算法中不能采用 <code>logspace</code> 生成对数分布的频率点，因为数值计算的频率间隔不应当小于最小分辨率，否则这种计算是没有意义的。</p>
-<div align=center>
-    <img src=lpsd03.jpg width=70% />
-</div>
+<figure><a class="lightgallery" href="./lpsd03.jpg" title="./lpsd03.jpg" data-thumbnail="./lpsd03.jpg" data-sub-html="<h2>对数频率的选取示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./lpsd03.jpg"
+            srcset="./lpsd03.jpg, ./lpsd03.jpg 1.5x, ./lpsd03.jpg 2x"
+            sizes="auto"
+            alt="./lpsd03.jpg" width="60%" >
+    </a><figcaption class="image-caption">对数频率的选取示意图</figcaption>
+    </figure>
 <p>为了计算频率点，首先考察严格对数均匀的频率点应当满足</p>
 $$\log f(j + 1) - \log f(j) = C$$
 <p>其中C为常数。频率范围受分辨率和采样率的影响，取</p>
@@ -245,9 +265,16 @@ $$
 <p>综上所述，对数频率的选取算法为：以 $f(1)=r_{\rm min}$ 为起点，根据频率和 $J_{\rm des}$ 求解分辨率 $r_0(j)$ ，并根据要求对分辨率进行调整，得到 $r(j)$，接着利用 $f(j+1)=f(j)+r(j)$ 进行迭代。当计算的频率达到奈奎斯特频率即可停止迭代。值得注意的是，由于对频率分辨率进行了修正，获得的频率点并不是严格的对数分布，同时也会导致实际获得的频率点 $J$ 与期望的点数 $J_{\rm des}$ 并不相等。</p>
 <h3 id="数据的分段处理" class="headerLink">
     <a href="#%e6%95%b0%e6%8d%ae%e7%9a%84%e5%88%86%e6%ae%b5%e5%a4%84%e7%90%86" class="header-mark"></a>数据的分段处理</h3><p>对于第 $j$ 个频率点，由前可知其频率分辨率为 $r(j)$，分段后的每段数据长度为 $L(j)$。为了减小窗函数导致的数据不等权，允许分段之间存在一定的重叠率 $\xi$，数据分段如下图所示。</p>
-<div align=center>
-    <img src=lpsd04.jpg width=70% />
-</div>
+<figure><a class="lightgallery" href="./lpsd04.jpg" title="./lpsd04.jpg" data-thumbnail="./lpsd04.jpg" data-sub-html="<h2>数据分段示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./lpsd04.jpg"
+            srcset="./lpsd04.jpg, ./lpsd04.jpg 1.5x, ./lpsd04.jpg 2x"
+            sizes="auto"
+            alt="./lpsd04.jpg" width="60%" >
+    </a><figcaption class="image-caption">数据分段示意图</figcaption>
+    </figure>
 <p>由图可知，每段数据未重叠部分长度为</p>
 $$D(j) = (1 - \xi ) \cdot L(j)$$
 <p>因而分段次数为</p>
@@ -288,13 +315,27 @@ ${\rm V}/\sqrt{ {\rm Hz} }$ 。</p>
 <p>至此，我们依据实现的功率谱的求取，以 $f(j)$ 为横轴， $P(j)$ 为纵轴即可绘制功率谱。</p>
 <h2 id="不同算法的对比" class="headerLink">
     <a href="#%e4%b8%8d%e5%90%8c%e7%ae%97%e6%b3%95%e7%9a%84%e5%af%b9%e6%af%94" class="header-mark"></a>不同算法的对比</h2><p>依然以本文开头的数据为例，周期图法、Welch 方法以及 LPSD 算法得到的功率谱如下图所示。</p>
-<div align=center>
-    <img src=lpsd05.jpg width=70% />
-</div>
+<figure><a class="lightgallery" href="./lpsd05.jpg" title="./lpsd05.jpg" data-thumbnail="./lpsd05.jpg" data-sub-html="<h2>不同谱估计算法对比</h2>">
+        <img
+            
+            loading="lazy"
+            src="./lpsd05.jpg"
+            srcset="./lpsd05.jpg, ./lpsd05.jpg 1.5x, ./lpsd05.jpg 2x"
+            sizes="auto"
+            alt="./lpsd05.jpg" width="60%" >
+    </a><figcaption class="image-caption">不同谱估计算法对比</figcaption>
+    </figure>
 <p>可见，LPSD 算法在低频出有更高的频率分辨率，在高频对谱密度的估计更准确，兼顾了周期图法和 Welch 方法的优点。然而 LPSD 算法牺牲了数值计算的速度，在一次利用400万个数据做谱的测试中，各算法的耗时如下。其中 <code>iParLPSD</code> 是利用了 MATLAB 并行工具包计算的 LPSD 算法。</p>
-<div align=center>
-    <img src=lpsd06.jpg width=70% />
-</div>
+<figure><a class="lightgallery" href="./lpsd06.jpg" title="./lpsd06.jpg" data-thumbnail="./lpsd06.jpg" data-sub-html="<h2>不同谱估计算法用时对比</h2>">
+        <img
+            
+            loading="lazy"
+            src="./lpsd06.jpg"
+            srcset="./lpsd06.jpg, ./lpsd06.jpg 1.5x, ./lpsd06.jpg 2x"
+            sizes="auto"
+            alt="./lpsd06.jpg" width="60%" >
+    </a><figcaption class="image-caption">不同谱估计算法用时对比</figcaption>
+    </figure>
 <h2 id="参考文献" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
 <li>Michael Tröbs, Gerhard Heinzel. <a href="https://www.sciencedirect.com/science/article/pii/S026322410500117X" target="_blank" rel="noopener noreferrer">Improved spectrum estimation from digitized time series on a logarithmic frequency axis</a>. Measurement. 2005.</li>
@@ -572,8 +613,8 @@ ${\rm V}/\sqrt{ {\rm Hz} }$ 。</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -597,7 +638,7 @@ ${\rm V}/\sqrt{ {\rm Hz} }$ 。</p>
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

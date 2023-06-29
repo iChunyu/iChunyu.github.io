@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/bangbang/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-08-21T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/bangbang\/"
-        },"genre": "posts","keywords": "相图, 砰砰控制, Bang Bang Control","wordcount":  1158 ,
-        "url": "https:\/\/ichunyu.github.io\/bangbang\/","datePublished": "2020-08-21T00:00:00+00:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "相图, 砰砰控制, Bang Bang Control","wordcount":  1210 ,
+        "url": "https:\/\/ichunyu.github.io\/bangbang\/","datePublished": "2020-08-21T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -148,8 +148,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-21">2020-08-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1158 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-21">2020-08-21</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1210 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -174,28 +173,56 @@ $$
 \right.
 $$
 <p>当外力 $F=0$，弹簧从某一初始位置自由释放时，质量块会在平衡位置来回震荡，其相图如下图所示</p>
-<div align=center>
-    <img src=bangbangctrl01.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./bangbangctrl01.png" title="./bangbangctrl01.png" data-thumbnail="./bangbangctrl01.png" data-sub-html="<h2>震荡过程的相图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./bangbangctrl01.png"
+            srcset="./bangbangctrl01.png, ./bangbangctrl01.png 1.5x, ./bangbangctrl01.png 2x"
+            sizes="auto"
+            alt="./bangbangctrl01.png" width="60%" >
+    </a><figcaption class="image-caption">震荡过程的相图</figcaption>
+    </figure>
 <p>相图表示了系统状态随时间的发展趋势，在分析系统动态时非常有用。此外，bilibili 的 up 主 DR_CAN 在他的一期视频里 <a href="https://www.bilibili.com/video/BV1ex411g7t3" target="_blank" rel="noopener noreferrer">利用相图分析了爱情</a>，很有意思，有兴趣的朋友可以看一下。</p>
 <h2 id="砰砰控制" class="headerLink">
     <a href="#%e7%a0%b0%e7%a0%b0%e6%8e%a7%e5%88%b6" class="header-mark"></a>砰砰控制</h2><p>砰砰控制（Bang Bang Control）又称开关控制，它的控制信号非正即负，系统响应要么全力加速要么全力减速，因而是一种最速控制。以二阶系统为例，为了确定控制信号（加速度）变号的时刻，考察系统在 $u=u_{\rm max}$ 和 $u=-u_{\rm max}$ 时的相图，如下图所示（设 $u_{\rm max}=1$ ）</p>
-<div align=center>
-    <img src=bangbangctrl02.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./bangbangctrl02.png" title="./bangbangctrl02.png" data-thumbnail="./bangbangctrl02.png" data-sub-html="<h2>匀加速运动的相图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./bangbangctrl02.png"
+            srcset="./bangbangctrl02.png, ./bangbangctrl02.png 1.5x, ./bangbangctrl02.png 2x"
+            sizes="auto"
+            alt="./bangbangctrl02.png" width="60%" >
+    </a><figcaption class="image-caption">匀加速运动的相图</figcaption>
+    </figure>
 <p>图中，蓝色曲线代表在某状态处施加正向最大控制量时系统状态的轨迹，其由第四象限拐向第一象限；红色曲线为施加负向最大控制量时状态的轨迹，由第二象限拐向第三象限。可见，存在一个临界的曲线，如图中绿色曲线所示，当初始状态在该曲线上方时，只要施加负向控制量可使状态回到绿色曲线，反之只要施加正向控制量即可回到绿色曲线。因此这个绿色的曲线就是控制信号的切换曲线。</p>
 <p>临界曲线的解析式分别对应从原点处分别按 $u = \pm u_{\rm max} = \pm 1$ 施加控制所形成的状态轨迹，其表达式为</p>
 $$x_1 + \frac{x_2 |x_2|}{2u_{\rm max}} = 0$$
 <p>因而控制信号可根据当前状态来确定</p>
 $$u = -u_{\rm max} \operatorname{sign}\left( x_1 + \frac{x_2 |x_2|}{2u_{\rm max}} \right)$$
 <p>设系统初始状态 $x_1=-2,, x_2=3$ ，控制过程的状态轨迹如下图紫色曲线所示</p>
-<div align=center>
-    <img src=bangbangctrl03.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./bangbangctrl03.png" title="./bangbangctrl03.png" data-thumbnail="./bangbangctrl03.png" data-sub-html="<h2>砰砰控制收敛过程的相轨迹</h2>">
+        <img
+            
+            loading="lazy"
+            src="./bangbangctrl03.png"
+            srcset="./bangbangctrl03.png, ./bangbangctrl03.png 1.5x, ./bangbangctrl03.png 2x"
+            sizes="auto"
+            alt="./bangbangctrl03.png" width="60%" >
+    </a><figcaption class="image-caption">砰砰控制收敛过程的相轨迹</figcaption>
+    </figure>
 <p>理想情况下，控制信号 $u$ 最多只需要一次切换就能达到控制效果，而实际的数字控制器中，离散状态的时间间隔限制了状态不可能正好达到相图的原点，状态轨迹会在原点附近出现高频&quot;颤振&quot;，如下图所示。相应地，控制信号不断进行正负切换，就像乒乓球来回碰撞，砰砰控制也因此得名。</p>
-<div align=center>
-    <img src=bangbangctrl04.png width=80% />
-</div>
+<figure><a class="lightgallery" href="./bangbangctrl04.png" title="./bangbangctrl04.png" data-thumbnail="./bangbangctrl04.png" data-sub-html="<h2>砰砰控制的位移收敛与指令颤振</h2>">
+        <img
+            
+            loading="lazy"
+            src="./bangbangctrl04.png"
+            srcset="./bangbangctrl04.png, ./bangbangctrl04.png 1.5x, ./bangbangctrl04.png 2x"
+            sizes="auto"
+            alt="./bangbangctrl04.png" width="80%" >
+    </a><figcaption class="image-caption">砰砰控制的位移收敛与指令颤振</figcaption>
+    </figure>
 <p>砰砰控制的高频颤振使其在实际应用中受到限制，为了解决这个问题，韩京清老师基于离散时间模型对控制信号进行了改进，提出了如下算法：</p>
 $$
 \mathrm{fhan} = \left\{
@@ -213,9 +240,16 @@ $$
 $$
 <p>式中， $r=u_{\rm max}$ 为控制器输出的最大控制信号，值越大响应越快，闭环的带宽也越大。 $h$
 为采样时间，实际使用时可取独立于 $h$ 的变量 $h_0 =n h$ 以抑制高频噪声，即 $u = \operatorname{fhan}\left( x_1, , x_2, , r, , h_0 \right)$。采用这种算法，砰砰控制不再出现高频颤振，如下图所示。</p>
-<div align=center>
-    <img src=bangbangctrl05.png width=80% />
-</div>
+<figure><a class="lightgallery" href="./bangbangctrl05.png" title="./bangbangctrl05.png" data-thumbnail="./bangbangctrl05.png" data-sub-html="<h2>fhan 最优综合下的砰砰控制</h2>">
+        <img
+            
+            loading="lazy"
+            src="./bangbangctrl05.png"
+            srcset="./bangbangctrl05.png, ./bangbangctrl05.png 1.5x, ./bangbangctrl05.png 2x"
+            sizes="auto"
+            alt="./bangbangctrl05.png" width="80%" >
+    </a><figcaption class="image-caption"><code>fhan</code> 最优综合下的砰砰控制</figcaption>
+    </figure>
 <h2 id="参考文献" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
 <li>G.F. Franklin, J. D. Powell, A. Emami-Naeini. Feedback Control of Dynamic Systems. 7th ed. 2014. p673-676.</li>
@@ -226,8 +260,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -251,7 +285,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

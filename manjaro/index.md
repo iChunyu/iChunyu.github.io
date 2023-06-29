@@ -24,9 +24,7 @@ sudo dd bs=4M if=[/path/to/manjaro.iso] of=/dev/sd[drive letter] status=progress
 
 准备好启动盘后，重启电脑，从U盘进入系统，顺着安装引导进行安装即可。
 
-<div align=center>
-    <img src=manjaro.png width=70% />
-</div>
+{{< image src="./manjaro.png" caption="Manjaro 安装界面" width="70%" >}}
 
 ## 更换镜像源
 

@@ -20,9 +20,7 @@ $${{< /math >}}
 
 当外力 $F=0$，弹簧从某一初始位置自由释放时，质量块会在平衡位置来回震荡，其相图如下图所示
 
-<div align=center>
-    <img src=bangbangctrl01.png width=60% />
-</div>
+{{< image src="./bangbangctrl01.png" caption="震荡过程的相图" width="60%" >}}
 
 相图表示了系统状态随时间的发展趋势，在分析系统动态时非常有用。此外，bilibili 的 up 主 DR_CAN 在他的一期视频里 [利用相图分析了爱情](https://www.bilibili.com/video/BV1ex411g7t3)，很有意思，有兴趣的朋友可以看一下。
 
@@ -31,9 +29,7 @@ $${{< /math >}}
 
 砰砰控制（Bang Bang Control）又称开关控制，它的控制信号非正即负，系统响应要么全力加速要么全力减速，因而是一种最速控制。以二阶系统为例，为了确定控制信号（加速度）变号的时刻，考察系统在 $u=u_{\rm max}$ 和 $u=-u_{\rm max}$ 时的相图，如下图所示（设 $u_{\rm max}=1$ ）
 
-<div align=center>
-    <img src=bangbangctrl02.png width=60% />
-</div>
+{{< image src="./bangbangctrl02.png" caption="匀加速运动的相图" width="60%" >}}
 
 
 图中，蓝色曲线代表在某状态处施加正向最大控制量时系统状态的轨迹，其由第四象限拐向第一象限；红色曲线为施加负向最大控制量时状态的轨迹，由第二象限拐向第三象限。可见，存在一个临界的曲线，如图中绿色曲线所示，当初始状态在该曲线上方时，只要施加负向控制量可使状态回到绿色曲线，反之只要施加正向控制量即可回到绿色曲线。因此这个绿色的曲线就是控制信号的切换曲线。
@@ -48,16 +44,12 @@ $${{< /math >}}
 
 设系统初始状态 $x_1=-2,\, x_2=3$ ，控制过程的状态轨迹如下图紫色曲线所示
 
-<div align=center>
-    <img src=bangbangctrl03.png width=60% />
-</div>
+{{< image src="./bangbangctrl03.png" caption="砰砰控制收敛过程的相轨迹" width="60%" >}}
 
 
 理想情况下，控制信号 $u$ 最多只需要一次切换就能达到控制效果，而实际的数字控制器中，离散状态的时间间隔限制了状态不可能正好达到相图的原点，状态轨迹会在原点附近出现高频"颤振"，如下图所示。相应地，控制信号不断进行正负切换，就像乒乓球来回碰撞，砰砰控制也因此得名。
 
-<div align=center>
-    <img src=bangbangctrl04.png width=80% />
-</div>
+{{< image src="./bangbangctrl04.png" caption="砰砰控制的位移收敛与指令颤振" width="80%" >}}
 
 
 砰砰控制的高频颤振使其在实际应用中受到限制，为了解决这个问题，韩京清老师基于离散时间模型对控制信号进行了改进，提出了如下算法：
@@ -80,9 +72,7 @@ $${{< /math >}}
 式中， $r=u_{\rm max}$ 为控制器输出的最大控制信号，值越大响应越快，闭环的带宽也越大。 $h$
 为采样时间，实际使用时可取独立于 $h$ 的变量 $h_0 =n h$ 以抑制高频噪声，即 $u = \operatorname{fhan}\left( x_1, \, x_2, \, r, \, h_0 \right)$。采用这种算法，砰砰控制不再出现高频颤振，如下图所示。
 
-<div align=center>
-    <img src=bangbangctrl05.png width=80% />
-</div>
+{{< image src="./bangbangctrl05.png" caption="`fhan` 最优综合下的砰砰控制" width="80%" >}}
 
 
 ## 参考文献

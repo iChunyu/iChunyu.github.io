@@ -40,6 +40,13 @@
     </author><guid>https://ichunyu.github.io/typeconvert/</guid>
     <description><![CDATA[<p>之前看到过一种快速求解平方根倒数的程序，里面包含了强制类型转换和一个神奇的常数，让人摸不着头脑。最近有兴趣了解了这个算法的细节，不禁叹为观止，以此文作为学习记录。</p>]]></description>
 </item><item>
+    <title>递增子序列的最大长度</title>
+    <link>https://ichunyu.github.io/increasingsubseq/</link>
+    <pubDate>Wed, 03 Aug 2022 15:01:06 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/increasingsubseq/</guid>
+    <description><![CDATA[<p>在给定的数组中进行抽取，保持元素的相对顺序不变，最长的递增序列包含多少个元素？为了求解这种递增子序列的问题，可以使用动态规划。本文简要介绍这种算法在该问题上的应用。</p>]]></description>
+</item><item>
     <title>使用反步法设计非线性控制器</title>
     <link>https://ichunyu.github.io/backstepping/</link>
     <pubDate>Thu, 28 Jul 2022 14:44:56 &#43;0800</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/matlab-inputparser/</guid>
     <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。</p>]]></description>
-</item><item>
-    <title>从牛顿方程到开普勒定律</title>
-    <link>https://ichunyu.github.io/newton2kepler/</link>
-    <pubDate>Sat, 26 Mar 2022 16:36:15 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/newton2kepler/</guid>
-    <description><![CDATA[<p>开普勒定律揭示了行星围绕中心天体运动的规律，随后牛顿提出的运动学定律和万有引力定律进一步从原理上进行了解释。本文从牛顿方程的角度出发，基于限制性二体问题推导开普勒运动定律，被简要介绍轨道六要素和开普勒方程。</p>]]></description>
 </item></channel>
 </rss>

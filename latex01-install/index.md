@@ -141,7 +141,5 @@ $\\LaTeX$ 的文档以 `.tex` 为后缀，因此我们可以创建一个名为 `
 
 使用 TeXstudio 的小伙伴可以点击运行并查看，使用 VS Code 的小伙伴可以仅使用 `xelatex` 编译，喜欢命令行的猛士也可以在当前目录下运行命令 `xelatex HelloWorld.tex` ，最后，我们打开编译生成的同名 pdf 文件，就可以看到以下效果，是不是非常神奇呢？
 
-<div align=center>
-    <img src=HelloWorld.png width=90% />
-</div>
+{{< image src="./HelloWorld.png" caption="$\LaTeX$ 排版结果" width="90%" >}}
 

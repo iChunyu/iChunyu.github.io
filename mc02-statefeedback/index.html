@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/mc02-statefeedback/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-08T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/mc02-statefeedback\/"
-        },"genre": "posts","keywords": "状态反馈, 现代控制","wordcount":  1313 ,
-        "url": "https:\/\/ichunyu.github.io\/mc02-statefeedback\/","datePublished": "2020-07-08T00:00:00+00:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "状态反馈, 现代控制","wordcount":  1351 ,
+        "url": "https:\/\/ichunyu.github.io\/mc02-statefeedback\/","datePublished": "2020-07-08T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -149,8 +149,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-08">2020-07-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1313 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-08">2020-07-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1351 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -170,14 +169,14 @@
 $$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x} + Du
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x} + Du
 \end{aligned}
 \right.
 $$
 <p>通常情况下 $D=0$ 。</p>
-<p>如果系统矩阵 $A$ 存在正实部的特征值而导致系统不稳定，或是系统虽然稳定但性能不满足需求，可以通过反馈控制来改变系统特性。现代控制理论采用的状态反馈区别于经典控制中利用输出和参考信号的误差进行反馈，其根据系统的状态来计算控制信号，对于线性系统，反馈信号可表述为 $u = -K{\mathbf{x}}$ ，此时系统的动态响应变为</p>
-$$\dot{\mathbf{x}} = \left( A-BK \right) \mathbf{x}$$
+<p>如果系统矩阵 $A$ 存在正实部的特征值而导致系统不稳定，或是系统虽然稳定但性能不满足需求，可以通过反馈控制来改变系统特性。现代控制理论采用的状态反馈区别于经典控制中利用输出和参考信号的误差进行反馈，其根据系统的状态来计算控制信号，对于线性系统，反馈信号可表述为 $u = -K{\bm{x}}$ ，此时系统的动态响应变为</p>
+$$\dot{\bm{x}} = \left( A-BK \right) \bm{x}$$
 <p>因此，只要我们合理设计反馈增益 $K$ ，使得 $A-BK$ 的特征值（对应传递函数的极点）均分布在复平面的左半平面，即可实现系统的稳定。</p>
 <p>常用的系统极点的配置方法有主导极点法和 LQR 设计法，下面用一些例子来介绍反馈增益的设计方法。</p>
 <h2 id="主导极点法" class="headerLink">
@@ -201,19 +200,33 @@ $$
 \end{aligned}
 $$
 <p>容易计算系统矩阵的特征值有： $[0,-0.5075,-0.9683,-0.6371\pm0.6669j]$ ，可见改系统具有四个稳定的极点和一个位于原点的极点，可以判定该系统为Ⅰ型系统：系统的阶跃响应收敛于斜直线，如下图所示：</p>
-<div align=center>
-    <img src=mc02a.png width=50% />
-</div>
+<figure><a class="lightgallery" href="./mc02a.png" title="./mc02a.png" data-thumbnail="./mc02a.png" data-sub-html="<h2>I 型系统的阶跃响应</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc02a.png"
+            srcset="./mc02a.png, ./mc02a.png 1.5x, ./mc02a.png 2x"
+            sizes="auto"
+            alt="./mc02a.png" width="50%" >
+    </a><figcaption class="image-caption">I 型系统的阶跃响应</figcaption>
+    </figure>
 <p>通过计算二阶系统的响应，我们发现在 $\omega_n = 1 \rm{ rad/s} ,  \zeta = 0.5$ 时二阶系统 $H(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$ 的响应接近需求，其极点为 $-0.5\pm0.866j$ 。</p>
 <p>因此，我们可以将该系统的主导极点设置为二阶系统的极点，其他极点的距离4倍于主导极点，设置为 $-4$ 。</p>
 <p>在 MATLAB 中使用函数 <code>acker</code> 或 <code>place</code> 均可以实现极点配置，前者由于容易引入数值误差，一般用于阶数较低（$\le10$）的系统；后者的算法是基于特征向量来的，应当避免使用重复极点，必要时可以使重复极点具有微妙的差别。设计时应当注意极点移动的距离越大，意味着反馈增益越大，即需要的能量越大，应当充分考虑执行机的能力。</p>
-<p>通过极点配置，反馈后系统矩阵 $A-BK$ 的特征值为：$[-0.5 \pm 0.866j,,-3.99,,-4,,-4.01]$。进而可以得到系统响应为（输出按20s处的值进行了归一化以便于对比）：</p>
-<div align=center>
-    <img src=mc02b.png width=50% />
-</div>
+<p>通过极点配置，反馈后系统矩阵 $A-BK$ 的特征值为：$[-0.5 \pm 0.866j,\,-3.99,\,-4,\,-4.01]$。进而可以得到系统响应为（输出按20s处的值进行了归一化以便于对比）：</p>
+<figure><a class="lightgallery" href="./mc02b.png" title="./mc02b.png" data-thumbnail="./mc02b.png" data-sub-html="<h2>主导极点法设计后系统的阶跃响应</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc02b.png"
+            srcset="./mc02b.png, ./mc02b.png 1.5x, ./mc02b.png 2x"
+            sizes="auto"
+            alt="./mc02b.png" width="50%" >
+    </a><figcaption class="image-caption">主导极点法设计后系统的阶跃响应</figcaption>
+    </figure>
 <h2 id="lqr设计法" class="headerLink">
     <a href="#lqr%e8%ae%be%e8%ae%a1%e6%b3%95" class="header-mark"></a>LQR设计法</h2><p>LQR设计旨在寻找合适 $K$ 的使得下面的积分取得最小值</p>
-$${\mathcal{J} } = \int_0^\infty  { { {\mathbf{x} }^T}Q{\mathbf{x  } }+{ {\mathbf{u} }^T}R{\mathbf{u} } } \,\mathrm{d} t$$
+$${\mathcal{J} } = \int_0^\infty  { { {\bm{x} }^T}Q{\bm{x  } }+{ {\bm{u} }^T}R{\bm{u} } } \,\mathrm{d} t$$
 <p>其中， $Q$ 和 $R$ 的选取是相对&quot;任意&quot;的，初次设计时，可以将其选择为对角矩阵，并令各对角元素为允许误差平方的导数，即：</p>
 $${Q_{ii} } = \frac{1}{ {\max (x_i^2)} },\quad {\text{ } }{R_{ii} } = \frac{1}{ {\max (u_i^2)} }$$
 <p>选定 $Q$ 和 $R$ 后，利用MATLAB函数 <code>lqr</code> 即可完成设计。</p>
@@ -236,9 +249,16 @@ $$
 \end{bmatrix} 
 \end{aligned}
 $$
-<div align=center>
-    <img src=mc02c.png width=50% />
-</div>
+<figure><a class="lightgallery" href="./mc02c.png" title="./mc02c.png" data-thumbnail="./mc02c.png" data-sub-html="<h2>LQR 设计后系统的阶跃响应</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc02c.png"
+            srcset="./mc02c.png, ./mc02c.png 1.5x, ./mc02c.png 2x"
+            sizes="auto"
+            alt="./mc02c.png" width="50%" >
+    </a><figcaption class="image-caption">LQR 设计后系统的阶跃响应</figcaption>
+    </figure>
 <p>下面给出参数设计的部分源码以供参考，本文所述工作已整理在 <a href="https://github.com/iChunyu/LearnCtrlSys" target="_blank" rel="noopener noreferrer">控制理论学习仓库</a> ，欢迎讨论！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -285,8 +305,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -310,7 +330,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

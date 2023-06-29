@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/mc04-regulator/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-08-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/mc04-regulator\/"
-        },"genre": "posts","keywords": "调节器, 分离原理","wordcount":  939 ,
-        "url": "https:\/\/ichunyu.github.io\/mc04-regulator\/","datePublished": "2020-08-02T00:00:00+00:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "调节器, 分离原理","wordcount":  958 ,
+        "url": "https:\/\/ichunyu.github.io\/mc04-regulator\/","datePublished": "2020-08-02T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -150,8 +150,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-02">2020-08-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 939 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-02">2020-08-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 958 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -168,35 +167,35 @@
 </nav></div>
             </div><div class="content" id="content"><p>状态估计器提供了状态的估计值，在分离原理的指导下，利用估计的状态进行状态反馈能够使系统稳定。本文讨论最基本的闭环设计，即调节器设计。</p>
 <h2 id="分离原理" class="headerLink">
-    <a href="#%e5%88%86%e7%a6%bb%e5%8e%9f%e7%90%86" class="header-mark"></a>分离原理</h2><p>状态反馈指出可以利用系统的状态变量的线性组合 $u=-K\mathbf{x}$ 作为被控对象的输入以稳定系统。由于系统的状态通常不易直接测得，需要通过状态估计器进行状态估计。容易想到实际的控制信号是由状态估计值提供，即 $u=-K\hat{\mathbf{x}}$ 。分离原理为这样做的可行性提供了理论依据。</p>
+    <a href="#%e5%88%86%e7%a6%bb%e5%8e%9f%e7%90%86" class="header-mark"></a>分离原理</h2><p>状态反馈指出可以利用系统的状态变量的线性组合 $u=-K\bm{x}$ 作为被控对象的输入以稳定系统。由于系统的状态通常不易直接测得，需要通过状态估计器进行状态估计。容易想到实际的控制信号是由状态估计值提供，即 $u=-K\hat{\bm{x}}$ 。分离原理为这样做的可行性提供了理论依据。</p>
 <p>设被控对象的状态空间表述为</p>
 $$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x}
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x}
 \end{aligned}
 \right.
 $$
 <p>相应构建状态估计器为</p>
-$$\dot{\hat{\mathbf{x}}} = A\hat{\mathbf{x}}+Bu+L\left(y-C\hat{\mathbf{x}}\right)$$
-<p>则状态误差 $\tilde{\mathbf{x}}=\hat{\mathbf{x}}-\mathbf{x}$ 满足</p>
-$$\dot{\tilde{\mathbf{x}}}=\left(A-LC\right)\tilde{\mathbf{x}}$$
+$$\dot{\hat{\bm{x}}} = A\hat{\bm{x}}+Bu+L\left(y-C\hat{\bm{x}}\right)$$
+<p>则状态误差 $\tilde{\bm{x}}=\hat{\bm{x}}-\bm{x}$ 满足</p>
+$$\dot{\tilde{\bm{x}}}=\left(A-LC\right)\tilde{\bm{x}}$$
 <p>控制律为</p>
-$$u=-K\hat{\mathbf{x}}=-K\left( \tilde{\mathbf{x}} + \mathbf{x} \right)$$
+$$u=-K\hat{\bm{x}}=-K\left( \tilde{\bm{x}} + \bm{x} \right)$$
 <p>综上，整个闭环系统的状态空间可表述为：</p>
 $$
 \begin{bmatrix}
-    \dot{\mathbf{x}} \\
-    \dot{\tilde{\mathbf{x}}}
+    \dot{\bm{x}} \\
+    \dot{\tilde{\bm{x}}}
 \end{bmatrix} =
 \begin{bmatrix}
     {A} - {BK} &  - {BK} \\
     0 & {A} - {LC}
 \end{bmatrix}
 \begin{bmatrix}
-    {\mathbf{x}} \\
-    \mathbf{\tilde x}
+    {\bm{x}} \\
+    \bm{\tilde x}
 \end{bmatrix}
 $$
 <p>闭环的系统矩阵为上三角矩阵，其特征值为 $A-BK$ 和 $A-LC$ 的特征值。因此得到分离原理：当理想控制器和状态估计器分别稳定时，构成的系统也一定是稳定的。</p>
@@ -205,22 +204,29 @@ $$
     <a href="#%e8%b0%83%e8%8a%82%e5%99%a8%e8%ae%be%e8%ae%a1%e7%a4%ba%e4%be%8b" class="header-mark"></a>调节器设计示例</h1><p>设一负弹簧系统的特征角频率为 $\omega_n = 2 \,\rm{rad/s}$ ，系统输入为加速度，输出为位移。则该系统的状态空间表述为</p>
 $$
 \left\{ \begin{aligned}
-\mathbf{\dot x} = \begin{bmatrix}
+\bm{\dot x} = \begin{bmatrix}
 0&1\\ 
 {\omega _n^2}&0
-\end{bmatrix}{\mathbf{x}} + \begin{bmatrix}
+\end{bmatrix}{\bm{x}} + \begin{bmatrix}
 0\\ 
 1
 \end{bmatrix} u \\ 
 y = \begin{bmatrix}
 1&0
-\end{bmatrix}{\mathbf{x}}
+\end{bmatrix}{\bm{x}}
 \end{aligned} \right.
 $$
 <p>仿真模型如下图所示，紫色区域为被控对象(Plant)，其输入为控制器的输出信号 $u$；黄色区域内为状态估计器，其内嵌一个与被控对象相同的模型，分别接收控制器输出信号 $u$ 和被控对象输出 $y=x_1$ ，通过参数 $L$ 将误差反馈到状态进行状态修正，输出状态的估计值；粉色控制律则基于理想状态反馈设计，由状态估计值和反馈增益 $K$ 计算反馈控制信号 $u$ 。</p>
-<div align=center>
-    <img src=mc04a.png width=70% />
-</div>
+<figure><a class="lightgallery" href="./mc04a.png" title="./mc04a.png" data-thumbnail="./mc04a.png" data-sub-html="<h2>被控对象与控制器仿真模型</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc04a.png"
+            srcset="./mc04a.png, ./mc04a.png 1.5x, ./mc04a.png 2x"
+            sizes="auto"
+            alt="./mc04a.png" width="70%" >
+    </a><figcaption class="image-caption">被控对象与控制器仿真模型</figcaption>
+    </figure>
 <p>为了稳定系统，可将控制器的极点布置在 $-0.5\pm0.866j$，将状态估计器的极点布置在 $-3.5\pm3.571j$ ，可以利用 MATLAB 的 <code>place</code> 函数实现，如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -253,9 +259,16 @@ $$
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>参数设计完成后带入仿真，运行后结果如下图所示。由于设计了被控对象初始状态非零，因而初期存在状态误差，该误差收状态估计器调节而收敛。系统的状态和估计受到控制律约束，克服负刚度造成的不稳定影响，最终各状态稳定到零位。对比两图可见，状态估计器的带宽大于控制器的带宽，因而状态误差的收敛比状态的收敛更快。</p>
-<div align=center>
-    <img src=mc04b.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./mc04b.png" title="./mc04b.png" data-thumbnail="./mc04b.png" data-sub-html="<h2>调节器仿真结果</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc04b.png"
+            srcset="./mc04b.png, ./mc04b.png 1.5x, ./mc04b.png 2x"
+            sizes="auto"
+            alt="./mc04b.png" width="60%" >
+    </a><figcaption class="image-caption">调节器仿真结果</figcaption>
+    </figure>
 <h2 id="参考文献" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
 <li>G.F. Franklin, J. D. Powell, and A. Emami-Naeini, Feedback Control of Dynamic Systems, 7th ed. 2014.</li>
@@ -265,8 +278,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -290,7 +303,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

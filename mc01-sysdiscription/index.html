@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/mc01-sysdiscription/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-06T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/mc01-sysdiscription\/"
-        },"genre": "posts","keywords": "传递函数, 状态空间, 现代控制","wordcount":  1953 ,
-        "url": "https:\/\/ichunyu.github.io\/mc01-sysdiscription\/","datePublished": "2020-07-06T00:00:00+00:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "传递函数, 状态空间, 现代控制","wordcount":  1958 ,
+        "url": "https:\/\/ichunyu.github.io\/mc01-sysdiscription\/","datePublished": "2020-07-06T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -149,8 +149,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-06">2020-07-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1953 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-06">2020-07-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1958 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -167,9 +166,16 @@
             </div><div class="content" id="content"><p>系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。</p>
 <h2 id="系统的微分方程" class="headerLink">
     <a href="#%e7%b3%bb%e7%bb%9f%e7%9a%84%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b" class="header-mark"></a>系统的微分方程</h2><p>由于系统是由元件构成的，而元件的特性通常满足一定的（微分）方程，考虑元件之间的约束后，系统的本质就可以看作是微分方程。以经典的弹簧-质量-阻尼系统为例，如下图所示。</p>
-<div align=center>
-    <img src=mc01.jpg width=40% />
-</div>
+<figure><a class="lightgallery" href="./mc01.png" title="./mc01.png" data-thumbnail="./mc01.png" data-sub-html="<h2>弹簧-质量-阻尼系统示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./mc01.png"
+            srcset="./mc01.png, ./mc01.png 1.5x, ./mc01.png 2x"
+            sizes="auto"
+            alt="./mc01.png" width="40%" >
+    </a><figcaption class="image-caption">弹簧-质量-阻尼系统示意图</figcaption>
+    </figure>
 <p>该系统由弹簧、阻尼器、质量三个元件构成，三个元件的特性分别由以下方程进行描述：</p>
 <ul>
 <li>弹簧满足胡克定律： $F_k = -kx$</li>
@@ -206,12 +212,12 @@ $$
 $$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x} + Du
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x} + Du
 \end{aligned}
 \right.
 $$
-<p>其中， $\mathbf{x}$ 为系统的状态变量， $A$ 称为系统矩阵， $B$ 为输入矩阵， $C$ 为输出矩阵， $D$ 为直接传输矩阵且通常 $D=0$。就本例而言：</p>
+<p>其中， $\bm{x}$ 为系统的状态变量， $A$ 称为系统矩阵， $B$ 为输入矩阵， $C$ 为输出矩阵， $D$ 为直接传输矩阵且通常 $D=0$。就本例而言：</p>
 $$
 A = \begin{bmatrix}
 0 & 1\\
@@ -226,8 +232,8 @@ $$
 $$
 \left\{ 
 \begin{aligned}
-\dot{\mathbf{x}} &= f(\mathbf{x},\mathbf{u},t)  \\
-y &= h(\mathbf{x},\mathbf{u},t)  \\
+\dot{\bm{x}} &= f(\bm{x},\bm{u},t)  \\
+y &= h(\bm{x},\bm{u},t)  \\
 \end{aligned}
 \right.
 $$
@@ -235,15 +241,15 @@ $$
 $$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x}
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x}
 \end{aligned}
 \right.
 $$
-<p>设辅助状态变量 $\mathbf{z}$ 满足线性变换 $\mathbf{x}=P\mathbf{z}$（ $P$ 为常矩阵），带入第一个方程，有：</p>
+<p>设辅助状态变量 $\bm{z}$ 满足线性变换 $\bm{x}=P\bm{z}$（ $P$ 为常矩阵），带入第一个方程，有：</p>
 $$
-P\dot{\mathbf{z}}=AP\mathbf{z}+B\mathbf{u}
-\quad \Rightarrow \quad \dot{\mathbf{z}}=P^{-1}AP\mathbf{z}+P^{-1}B\mathbf{u}
+P\dot{\bm{z}}=AP\bm{z}+B\bm{u}
+\quad \Rightarrow \quad \dot{\bm{z}}=P^{-1}AP\bm{z}+P^{-1}B\bm{u}
 $$
 <p>选取合适的变换矩阵 $P$ 使得 $P^{-1}AP$ 为矩阵 $A$ 的相似变换，即 $P^{-1}AP$ 为特征值对角矩阵：</p>
 $$
@@ -254,19 +260,19 @@ P^{-1}AP = \begin{bmatrix}
 {}&{}&{}&{{\lambda_n}}
 \end{bmatrix}
 $$
-<p>如此做，关于辅助状态变量 $\mathbf{z}$ 的微分方程组解耦为独立的一阶微分方程：</p>
+<p>如此做，关于辅助状态变量 $\bm{z}$ 的微分方程组解耦为独立的一阶微分方程：</p>
 $$
 \dot{z}_i = \lambda_i z_i + \tilde{u}_i
 \quad \Rightarrow \quad z_i(t) = C_i \mathrm(e)^{\lambda_i t} + \tilde{z}_i(t)
 $$
-<p>其中， $\tilde{u}_i$ 表示 $P^{-1}B\mathbf{u}$ 的第 $i$ 的分量，其对应的特解为 $\tilde{z}_i(t)$ 。最后代回 $\mathbf{x}=P\mathbf{z}$ 即可得到原状态变量，进而带入输出矩阵解得输出。</p>
+<p>其中， $\tilde{u}_i$ 表示 $P^{-1}B\bm{u}$ 的第 $i$ 的分量，其对应的特解为 $\tilde{z}_i(t)$ 。最后代回 $\bm{x}=P\bm{z}$ 即可得到原状态变量，进而带入输出矩阵解得输出。</p>
 <p>由微分方程的解可以看出，若系统矩阵 $A$ 存在某特征值 $\lambda_i$ 大于零，根据微分方程的通解，系统将存在某一状态量随时间趋于无穷，在实际系统中将是输出饱和，于是说该系统是不稳定的。若系统矩阵的特征值的实部均小于零，通解将收敛到零（若存在虚部，则是震荡收敛），意味着状态变量的初值将收敛，系统的输出由输入控制，称系统是（渐进）稳定的。特别地，若系统的特征值小于等于零，等于零的特征值将对应于某状态的等幅震荡，由于不会导致系统输出发散，因而也可以说系统是（临界）稳定的。对于实际工作的系统，都应当满足渐进稳定。</p>
 <div class="details admonition info open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">最近 3b1b 在 bilibili 上传的 <a href="https://www.bilibili.com/video/BV11y4y1b7c5" target="_blank" rel="noopener noreferrer">e的矩阵指数</a> 视频对应着状态空间的求解，有兴趣的同学可以作为扩展学习。</div>
+            <div class="admonition-content">最近 3b1b 在 bilibili 上传的 <a href="https://www.bilibili.com/video/BV11y4y1b7c5" target="_blank" rel="noopener noreferrer">e 的矩阵指数</a> 视频对应着状态空间的求解，有兴趣的同学可以作为扩展学习。</div>
         </div>
     </div>
 <h2 id="三种描述的对比" class="headerLink">
@@ -276,8 +282,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -301,7 +307,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/newton2kepler/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-26T16:36:15+08:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/newton2kepler\/"
-        },"genre": "posts","keywords": "牛顿方程, 开普勒定律, 开普勒方程","wordcount":  2005 ,
-        "url": "https:\/\/ichunyu.github.io\/newton2kepler\/","datePublished": "2022-03-26T16:36:15+08:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "牛顿方程, 开普勒定律, 开普勒方程","wordcount":  2024 ,
+        "url": "https:\/\/ichunyu.github.io\/newton2kepler\/","datePublished": "2022-03-26T16:36:15+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -150,8 +150,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>奇妙的数学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-26">2022-03-26</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2005 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-26">2022-03-26</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2024 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -204,11 +203,18 @@ $$
     = \vec{v} \times \vec{v} + \vec{r} \times \left( - \frac{\mu}{r^2} \frac{\vec{r}}{r} \right)
     = \vec{0}
 $$
-<p>角动量守恒可以从两方面来看，首先，角动量的方向不变，意味着该方向可以作为（轨道）惯性参考系的基矢。习惯上取该方向为第三基矢 $\vec{p}_3=\vec{h}/h$，因此在该参考系下可以将角动量记为坐标形式，即 $\mathbf{h}^p = [0, 0, h]^\mathrm{T}$。</p>
+<p>角动量守恒可以从两方面来看，首先，角动量的方向不变，意味着该方向可以作为（轨道）惯性参考系的基矢。习惯上取该方向为第三基矢 $\vec{p}_3=\vec{h}/h$，因此在该参考系下可以将角动量记为坐标形式，即 $\bm{h}^p = [0, 0, h]^\mathrm{T}$。</p>
 <p>其次，角动量的大小不变。为了说明该性质的物理含义，考察下图所示在 $\mathrm{d}t$ 时间内运动质点与中心质点连线扫过的面积为</p>
-<div align=center>
-    <img src=Kepler1.png width=30% />
-</div>
+<figure><a class="lightgallery" href="./Kepler1.png" title="./Kepler1.png" data-thumbnail="./Kepler1.png" data-sub-html="<h2>质点瞬时运动示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./Kepler1.png"
+            srcset="./Kepler1.png, ./Kepler1.png 1.5x, ./Kepler1.png 2x"
+            sizes="auto"
+            alt="./Kepler1.png" width="30%" >
+    </a><figcaption class="image-caption">质点瞬时运动示意图</figcaption>
+    </figure>
 $$
 \mathrm{d}A = \frac{1}{2} |\vec{r}|  \left( |\vec{v}| \mathrm{d}t \right)  \sin\phi 
 = \frac{1}{2} |\vec{r} \times \vec{v}| \mathrm{d}t 
@@ -247,9 +253,16 @@ r = \frac{p}{1+e\cos\theta}
 $$
 <p>这正是椭圆的表达式，且 $e = |\vec{e}|$ 为离心率，$\theta$ 称为真近点角。因此：行星的轨道是以太阳为一个焦点的椭圆轨道。这就是开普勒第一定律。</p>
 <p>在椭圆的近拱点，速度与位置垂直，可知离心率矢量 $\vec{e}$ 的方向与半长轴方向相同。在椭圆中心建立如下图所示的 $\vec{x}$-$\vec{y}$ 平面参考系，当 $\theta = \pi/2$ 时，带入坐标 $[c,p]^\mathrm{T}$ 到椭圆方程，有</p>
-<div align=center>
-    <img src=ellipse.png width=50% />
-</div>
+<figure><a class="lightgallery" href="./ellipse.png" title="./ellipse.png" data-thumbnail="./ellipse.png" data-sub-html="<h2>平面参考系下的椭圆轨道示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./ellipse.png"
+            srcset="./ellipse.png, ./ellipse.png 1.5x, ./ellipse.png 2x"
+            sizes="auto"
+            alt="./ellipse.png" width="50%" >
+    </a><figcaption class="image-caption">平面参考系下的椭圆轨道示意图</figcaption>
+    </figure>
 $$
 \frac{c^2}{a^2} + \frac{p^2}{b^2} = 1 
 \quad \Rightarrow \quad
@@ -268,17 +281,17 @@ $$
 <h2 id="开普勒方程" class="headerLink">
     <a href="#%e5%bc%80%e6%99%ae%e5%8b%92%e6%96%b9%e7%a8%8b" class="header-mark"></a>开普勒方程</h2><p>开普勒运动定律揭示了行星运动是以中心天体为焦点的椭圆，且角动量和离心率守恒决定了轨道平面的方向和椭圆的形状。只有真近点角 $\theta$ 是时间的变量，用于唯一地确定行星的位置。考察轨道参考系内，行星的位置坐标可以分解为</p>
 $$
-\mathbf{r}^p = r \begin{bmatrix} \cos\theta \\ \sin\theta \\ 0 \end{bmatrix}
+\bm{r}^p = r \begin{bmatrix} \cos\theta \\ \sin\theta \\ 0 \end{bmatrix}
 $$
 <p>因此有</p>
 $$
-\mathbf{v}^p = \dot{\mathbf{r}}_p 
+\bm{v}^p = \dot{\bm{r}}_p 
 = \dot{r} \begin{bmatrix} \cos\theta \\ \sin\theta \\ 0 \end{bmatrix}
 + r \dot{\theta} \begin{bmatrix} -\sin\theta \\ \cos\theta \\ 0 \end{bmatrix}
 $$
 <p>带入角动量守恒</p>
 $$
-\mathbf{h}^p = \mathbf{r}^p \times \mathbf{v}^p = \begin{bmatrix} 0 \\ 0 \\ h \end{bmatrix} 
+\bm{h}^p = \bm{r}^p \times \bm{v}^p = \begin{bmatrix} 0 \\ 0 \\ h \end{bmatrix} 
 $$
 <p>得</p>
 $$
@@ -297,15 +310,15 @@ $$
 \quad \Rightarrow \quad
 r\sin\theta = b \sin E = a \sqrt{1-e^2} \sin E
 $$
-<p>将上面两个等式代入 $\mathbf{r}^p$ 中，可以得到用角度 $E$ 表述的坐标：</p>
+<p>将上面两个等式代入 $\bm{r}^p$ 中，可以得到用角度 $E$ 表述的坐标：</p>
 $$
-\mathbf{r}^p = a \begin{bmatrix}  (\cos E -e) \\ \sqrt{1-e^2} \sin E \\ 0 \end{bmatrix}
+\bm{r}^p = a \begin{bmatrix}  (\cos E -e) \\ \sqrt{1-e^2} \sin E \\ 0 \end{bmatrix}
 $$
 <p>因此</p>
 $$
-\mathbf{v}^p = \dot{\mathbf{r}}_p = a \dot{E} \begin{bmatrix} -\sin E \\ \sqrt{1-e^2} \cos E \\ 0 \end{bmatrix}
+\bm{v}^p = \dot{\bm{r}}_p = a \dot{E} \begin{bmatrix} -\sin E \\ \sqrt{1-e^2} \cos E \\ 0 \end{bmatrix}
 $$
-<p>代入 $\mathbf{h}^p = \mathbf{r}^p \times \mathbf{v}^p$，整理可得</p>
+<p>代入 $\bm{h}^p = \bm{r}^p \times \bm{v}^p$，整理可得</p>
 $$
 \dot{E} \left( 1-e\cos E\right) = \frac{h}{a^2\sqrt{1-e^2}} = \sqrt{\frac{\mu}{a^3}} := \omega_0
 $$
@@ -323,8 +336,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -348,7 +361,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

@@ -23,9 +23,7 @@ f = @(x) exp(-x.^2/2)/sqrt(2*pi);
 
 在老版本中，与匿名函数非常相似的是内联函数，然而得知它在 MATLAB 以后的版本中将被移除，所以就不介绍了。
 
-<div align=center>
-    <img src=function.jpg width=70% />
-</div>
+{{< image src="./function.jpg" caption="MATLAB 内联函数" width="70%" >}}
 
 ## 自定义函数
 

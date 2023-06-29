@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/diffsignal/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-10-13T21:21:35+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/diffsignal\/"
-        },"genre": "posts","keywords": "数字微分, 跟踪微分","wordcount":  1910 ,
-        "url": "https:\/\/ichunyu.github.io\/diffsignal\/","datePublished": "2021-05-25T00:00:00+00:00","dateModified": "2022-10-13T21:21:35+08:00","publisher": {
+        },"genre": "posts","keywords": "数字微分, 跟踪微分","wordcount":  1970 ,
+        "url": "https:\/\/ichunyu.github.io\/diffsignal\/","datePublished": "2021-05-25T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -150,8 +150,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-10-13">2022-10-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1910 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1970 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -185,9 +184,16 @@ $$
 <p>可见数值差分与理想微分 $s$ 的传递函数存在差异，只有采样率远大于被微分信号的频率时才可以用差分代替微分。</p>
 <p>除此之外，在 Nyquist 采样定理的约束，即 $f &lt; \frac{1}{2} f_s$ 条件下，数值差分的幅频响应是单调递增的，这意味着信号中的高频噪声会被数值差分所放大，很容易导致时域的微分信号淹没在高频噪声之中。</p>
 <p>为了说明数值差分对噪声的放大，考察下面的信号：左图橙色曲线为理想的单频信号，蓝色曲线引入了白噪声并将其假设为实际采集到的信号，采样率设置为 $f_s = 200 , \mathrm{Hz}$ 。右图中蓝色曲线是数值差分的结果，可见微分信号完全淹没在高频噪声之中，单独的数值差分难以直接使用；配合低通滤波后的输出为橙色曲线所示，可以看到微分信号；理想的微分信号如绿色曲线所示。</p>
-<div align=center>
-    <img src=diff01.png width=90% />
-</div>
+<figure><a class="lightgallery" href="./diff01.png" title="./diff01.png" data-thumbnail="./diff01.png" data-sub-html="<h2>带噪声的正弦信号及其数值差分</h2>">
+        <img
+            
+            loading="lazy"
+            src="./diff01.png"
+            srcset="./diff01.png, ./diff01.png 1.5x, ./diff01.png 2x"
+            sizes="auto"
+            alt="./diff01.png" width="90%" >
+    </a><figcaption class="image-caption">带噪声的正弦信号及其数值差分</figcaption>
+    </figure>
 <p>虽然可以使用滤波器将数值差分后放大的高频噪声衰减下去，但是在实际应用，尤其是设计定点化数据时应当注意增益增益分配，以免导致数据溢出。例如可以考虑差分后先进行滤波，再乘以 $\frac{1}{Ts}$ 系数。当然，滤波器会引入延时，实际使用时应当考虑这一影响；如果只是对采集到的信号进行处理，可以使用非因果的零相位滤波，以避免滤波延时的影响。</p>
 <h2 id="从模拟微分中找找灵感" class="headerLink">
     <a href="#%e4%bb%8e%e6%a8%a1%e6%8b%9f%e5%be%ae%e5%88%86%e4%b8%ad%e6%89%be%e6%89%be%e7%81%b5%e6%84%9f" class="header-mark"></a>从模拟微分中找找灵感</h2><p>既然数值差分存在高频噪声放大的问题，不妨看看模拟微分器是如何实现的，或许能够从中找的一些新的灵感。</p>
@@ -207,9 +213,16 @@ $$
 \end{aligned}
 $$
 <p>这是一个带通滤波器！其幅频响应的&quot;左侧&quot;构成微分的功能，而&quot;右侧&quot;能够高频噪声进行抑制。下图展示了这两种微分器的效果。</p>
-<div align=center>
-    <img src=diff02.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./diff02.png" title="./diff02.png" data-thumbnail="./diff02.png" data-sub-html="<h2>两种模拟微分器的微分效果对比</h2>">
+        <img
+            
+            loading="lazy"
+            src="./diff02.png"
+            srcset="./diff02.png, ./diff02.png 1.5x, ./diff02.png 2x"
+            sizes="auto"
+            alt="./diff02.png" width="60%" >
+    </a><figcaption class="image-caption">两种模拟微分器的微分效果对比</figcaption>
+    </figure>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -219,19 +232,40 @@ $$
         </div>
     </div>
 <p>进一步，考察带通滤波形式微分器如下所示的结构框图：</p>
-<div align=center>
-    <img src=diff03.png width=70% />
-</div>
+<figure><a class="lightgallery" href="./diff03.png" title="./diff03.png" data-thumbnail="./diff03.png" data-sub-html="<h2>带通滤波器的基本结构框图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./diff03.png"
+            srcset="./diff03.png, ./diff03.png 1.5x, ./diff03.png 2x"
+            sizes="auto"
+            alt="./diff03.png" width="70%" >
+    </a><figcaption class="image-caption">带通滤波器的基本结构框图</figcaption>
+    </figure>
 <p>可以这么理解：构造串联积分作为&quot;被控对象&quot;，使其输出跟随系统的输入，即 $x_1 = u$；通过理想的状态反馈确保环路稳定，那么第二个状态量 $x_2 = \dot{x}_1$ 就是输入信号的微分。这实际上就是控制理论中的状态观测器！</p>
 <h2 id="跟踪微分器" class="headerLink">
     <a href="#%e8%b7%9f%e8%b8%aa%e5%be%ae%e5%88%86%e5%99%a8" class="header-mark"></a>跟踪微分器</h2><p>从模拟微分器中已经学到：利用状态观测器跟踪输入信号，那么各状态量就分别对应输入信号的各阶导数（不再局限于一次微分），因此这种微分器称为跟踪微分器。跟踪微分器的环路稳定性可以通过反馈控制来保证，因此具有以下通用的形式：</p>
-<div align=center>
-    <img src=diff04.png width=70% />
-</div>
+<figure><a class="lightgallery" href="./diff04.png" title="./diff04.png" data-thumbnail="./diff04.png" data-sub-html="<h2>跟踪微分器的一般形式</h2>">
+        <img
+            
+            loading="lazy"
+            src="./diff04.png"
+            srcset="./diff04.png, ./diff04.png 1.5x, ./diff04.png 2x"
+            sizes="auto"
+            alt="./diff04.png" width="70%" >
+    </a><figcaption class="image-caption">跟踪微分器的一般形式</figcaption>
+    </figure>
 <p>特别地，如果使用 <a href="https://ichunyu.github.io/bangbang/" rel="">相图与砰砰控制</a> 所讨论的砰砰控制来稳定环路，就构成了韩京清老师所定义的跟踪微分器。下图展示了这种跟踪微分器的微分效果。</p>
-<div align=center>
-    <img src=diff05.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./diff05.png" title="./diff05.png" data-thumbnail="./diff05.png" data-sub-html="<h2>跟踪微分器的微分效果</h2>">
+        <img
+            
+            loading="lazy"
+            src="./diff05.png"
+            srcset="./diff05.png, ./diff05.png 1.5x, ./diff05.png 2x"
+            sizes="auto"
+            alt="./diff05.png" width="60%" >
+    </a><figcaption class="image-caption">跟踪微分器的微分效果</figcaption>
+    </figure>
 <p>从控制的角度来看，完全可以使用其他控制器以达到对高频噪声更高阶次的抑制，这里就不再过多讨论了。</p>
 <h2 id="写在最后" class="headerLink">
     <a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e" class="header-mark"></a>写在最后</h2><p>本文仅介绍了几种常用的微分器及其实现方法，由于各形式下微分器的参数不同，并可以自由设计，故没有将这几种微分器合在一起对比，而且示例的微分器参数也未必是最优的。相关的仿真文件我放在了 <a href="https://github.com/iChunyu/signal-process-demo" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>，有兴趣的小伙伴可以自行取阅。</p>
@@ -244,8 +278,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-10-13&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/dce00c9adcf26f27e57c887702f3d4b97a830f02" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) dce00c9adcf26f27e57c887702f3d4b97a830f02: Correct `diffsignal` error and update theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>dce00c9</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -269,7 +303,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

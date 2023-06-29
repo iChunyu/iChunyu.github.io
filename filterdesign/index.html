@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/filterdesign/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/filterdesign\/"
-        },"genre": "posts","keywords": "滤波器","wordcount":  2062 ,
-        "url": "https:\/\/ichunyu.github.io\/filterdesign\/","datePublished": "2021-06-02T00:00:00+00:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "滤波器","wordcount":  2089 ,
+        "url": "https:\/\/ichunyu.github.io\/filterdesign\/","datePublished": "2021-06-02T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -149,8 +149,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><i class="far fa-folder fa-fw"></i>数字信号处理</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-02">2021-06-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2062 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-02">2021-06-02</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2089 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -174,9 +173,16 @@
 <li>阻带频率 $f_{\rm stop}$：在这个频率范围内，滤波器对信号的衰减达到阻带衰减倍数的需求。</li>
 </ul>
 <p>以低通滤波器为例，上述四个参数可以用下图来表示</p>
-<div align=center>
-    <img src=filter01.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./filter01.png" title="./filter01.png" data-thumbnail="./filter01.png" data-sub-html="<h2>滤波器基本参数示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./filter01.png"
+            srcset="./filter01.png, ./filter01.png 1.5x, ./filter01.png 2x"
+            sizes="auto"
+            alt="./filter01.png" width="50%" >
+    </a><figcaption class="image-caption">滤波器基本参数示意图</figcaption>
+    </figure>
 <p>在对延时比较敏感的实时系统中，还需要讨论滤波器的群延时，其定义为相频响应的负导数，即</p>
 $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 <p>根据滤波器实现方法的不同，可以将其分为模拟滤波器和数字滤波器，前者用于处理连续信号，主要通过模拟电路实现，以拉普拉斯变换为主要的分析工具；后者则用于处理采样后的离散信号，可以部署在各种数字器件，以 $z$ 变换为主要分析工具。</p>
@@ -217,9 +223,16 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 <p>上表中， <code>'s'</code> 选项对应的是模拟滤波器，这时 <code>Wp</code> 和 <code>Ws</code> 的单位都是 $\rm rad/s$ ， <code>Rp</code> 和 <code>Rs</code> 的单位均为 $\rm dB$。对于数字滤波器，调用函数时应当取消 <code>'s'</code> 选项，并且频率采用归一化的数字频率。</p>
 <p>对于 Python 用户， <code>scipy.signal</code> 提供了同名的函数，使用方法基本一致，但 <code>'s'</code> 选项应更换为关键字参数 <code>analog=True</code> 。</p>
 <p>以 <code>Wp=1</code> ， <code>Ws=3</code> ， <code>Rp=1</code> 和 <code>Rs=40</code> 为例设计模拟滤波器，幅频响应如下图所示</p>
-<div align=center>
-    <img src=filter02.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./filter02.png" title="./filter02.png" data-thumbnail="./filter02.png" data-sub-html="<h2>常用滤波器的幅频响应</h2>">
+        <img
+            
+            loading="lazy"
+            src="./filter02.png"
+            srcset="./filter02.png, ./filter02.png 1.5x, ./filter02.png 2x"
+            sizes="auto"
+            alt="./filter02.png" width="60%" >
+    </a><figcaption class="image-caption">常用滤波器的幅频响应</figcaption>
+    </figure>
 <p>可见，在相同参数设置下：</p>
 <ul>
 <li>巴特沃斯滤波器通带平坦，阻带无纹波，但阶数最高；</li>
@@ -248,9 +261,16 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 </ol>
 <p>从感性上看，第一次滤波是从前往后滤，因此向后引入了延时；第二次滤波是从后往前滤，向前引入的相同的&quot;延时&quot;。由于采用的是完全相同的滤波器，因而延时可以完全抵消。</p>
 <p>为了使用滤波器，在 MATLAB 中可以使用 <code>filter(b,a,x)</code> 进行滤波，也可以使用 <code>filtfilt(b,a,x)</code> 进行零相位滤波。在Python中，这两个函数分别对应于 <code>scipy.signal</code> 中的 <code>lfilter</code> 和 <code>filtfilt</code>。下图给出同一个滤波器使用两种滤波方法对带噪声的正弦信号滤波后的结果。</p>
-<div align=center>
-    <img src=filter03.png width=60% />
-</div>
+<figure><a class="lightgallery" href="./filter03.png" title="./filter03.png" data-thumbnail="./filter03.png" data-sub-html="<h2>零相位滤波示例</h2>">
+        <img
+            
+            loading="lazy"
+            src="./filter03.png"
+            srcset="./filter03.png, ./filter03.png 1.5x, ./filter03.png 2x"
+            sizes="auto"
+            alt="./filter03.png" width="60%" >
+    </a><figcaption class="image-caption">零相位滤波示例</figcaption>
+    </figure>
 <p>一般的滤波方法引入了可见的延时，而零相位滤波器没有引入明显延时。此外，相同滤波器下，零相位滤波器的输出结果更光滑，这是因为它对数据进行了两次滤波，其增益特性将是一次滤波的平方。需要注意的是，一般的滤波只在数据的开始阶段存在过渡过程，而零相位滤波在数据两端都有过渡过程。为了消除这些过渡过程，可以使用自适应技术提前对数据进行一定程度的预测。</p>
 <p>零相位滤波是在数据采集完成之后才能进行的操作，不能实时处理，这也就是所谓&quot;非因果系统&quot;的实际含义。对于实时系统，只能通过其他的手段对延时进行补偿。</p></div>
 
@@ -258,8 +278,8 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -283,7 +303,7 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

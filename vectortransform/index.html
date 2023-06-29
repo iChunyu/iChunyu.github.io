@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ichunyu.github.io/vectortransform/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-08T14:48:25+08:00" />
-<meta property="article:modified_time" content="2022-08-03T13:09:36+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
 
@@ -37,8 +37,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ichunyu.github.io\/vectortransform\/"
-        },"genre": "posts","keywords": "坐标变换, 矢量旋转","wordcount":  2670 ,
-        "url": "https:\/\/ichunyu.github.io\/vectortransform\/","datePublished": "2022-03-08T14:48:25+08:00","dateModified": "2022-08-03T13:09:36+08:00","publisher": {
+        },"genre": "posts","keywords": "坐标变换, 矢量旋转","wordcount":  2691 ,
+        "url": "https:\/\/ichunyu.github.io\/vectortransform\/","datePublished": "2022-03-08T14:48:25+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -150,8 +150,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>奇妙的数学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2670 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2691 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -169,16 +168,23 @@
             </div><div class="content" id="content"><p>在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。</p>
 <h2 id="矢量的坐标表示" class="headerLink">
     <a href="#%e7%9f%a2%e9%87%8f%e7%9a%84%e5%9d%90%e6%a0%87%e8%a1%a8%e7%a4%ba" class="header-mark"></a>矢量的坐标表示</h2><p>有大小和方向的物理量称为矢量（Vector），通常用带箭头的符号表示，如 $\vec{r}$。为了定量描述与计算，需要选定基矢构成参考系，利用矢量合成原理进行表述。如下图所示，参考系 $\mathscr{A} = \{O,\,\vec{a}_1,\,\vec{a}_2 \}$ 以 $O$ 为原点，$\vec{a}_1$ 和 $\vec{a}_2$ 为基矢。任意矢量 $\vec{r}$ 可以写作</p>
-<div align=center>
-    <img src=coordinate.png width=25% />
-</div>
+<figure><a class="lightgallery" href="./coordinate.png" title="./coordinate.png" data-thumbnail="./coordinate.png" data-sub-html="<h2>矢量的坐标分解</h2>">
+        <img
+            
+            loading="lazy"
+            src="./coordinate.png"
+            srcset="./coordinate.png, ./coordinate.png 1.5x, ./coordinate.png 2x"
+            sizes="auto"
+            alt="./coordinate.png" width="25%" >
+    </a><figcaption class="image-caption">矢量的坐标分解</figcaption>
+    </figure>
 $$
 \vec{r} = r_1^a \vec{a}_1 + r_2^a \vec{a}_2 
 = \begin{bmatrix} \vec{a}_1 & \vec{a}_2 \end{bmatrix}
     \begin{bmatrix} r_1^a \\ r_2^a \end{bmatrix}
-= \vec{A} \mathbf{r}^a
+= \vec{A} \bm{r}^a
 $$
-<p>这里我们使用带箭头的大写字母表示参考系基矢构成的行向量，即 $\vec{A} = [\vec{a}_1, \vec{a}_2]$；选定基矢后，基矢的组合系数构成列向量，为矢量的坐标（Coordinate），用加粗的字母表示，并将参考系标记在上标的位置，本例中为 $\mathbf{r}^a= [r_1^a, r_2^a]^\mathrm{T}$。在此记号下，我们可以使用矩阵的计算方法将适量表示为基矢与坐标的组合，即上式最后的等号。在后文的推导中，我们将使用更一般的三维形式，而为了方便理解，示意图保持为二维形式。</p>
+<p>这里我们使用带箭头的大写字母表示参考系基矢构成的行向量，即 $\vec{A} = [\vec{a}_1, \vec{a}_2]$；选定基矢后，基矢的组合系数构成列向量，为矢量的坐标（Coordinate），用加粗的字母表示，并将参考系标记在上标的位置，本例中为 $\bm{r}^a= [r_1^a, r_2^a]^\mathrm{T}$。在此记号下，我们可以使用矩阵的计算方法将适量表示为基矢与坐标的组合，即上式最后的等号。在后文的推导中，我们将使用更一般的三维形式，而为了方便理解，示意图保持为二维形式。</p>
 <div class="details admonition info open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-info-circle fa-fw"></i>注解<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -199,9 +205,9 @@ $$
 $$
 <p>由此我们可以获知坐标的计算方法：</p>
 $$
-\mathbf{r}^a = I_{3 \times 3} \mathbf{r}^a 
-= \left( \vec{A}^\mathrm{T} \cdot \vec{A} \right)  \mathbf{r}^a 
-= \vec{A}^\mathrm{T} \cdot \left( \vec{A} \mathbf{r}^a \right)
+\bm{r}^a = I_{3 \times 3} \bm{r}^a 
+= \left( \vec{A}^\mathrm{T} \cdot \vec{A} \right)  \bm{r}^a 
+= \vec{A}^\mathrm{T} \cdot \left( \vec{A} \bm{r}^a \right)
 = \vec{A}^\mathrm{T} \cdot \vec{r} 
 = \begin{bmatrix}
     \vec{a}_1 \cdot \vec{r} \\
@@ -212,19 +218,26 @@ $$
 <p>上式指出，为了获取矢量在给定参考系下的坐标，只需计算矢量与参考各基矢之间的点积即可，即：坐标是矢量在基矢方向的投影。</p>
 <h2 id="坐标变换" class="headerLink">
     <a href="#%e5%9d%90%e6%a0%87%e5%8f%98%e6%8d%a2" class="header-mark"></a>坐标变换</h2><p>选取的参考系不同，相同矢量的坐标不同。参考系之间的平移可以简单地通过矢量加法实现，因此这里的坐标变换重点关注参考系之间的转动，设它们的原点重合（因此后文直接用基矢表示各参考系），如下图所示。</p>
-<div align=center>
-    <img src=coordinateTransform.png width=35% />
-</div>
+<figure><a class="lightgallery" href="./coordinateTransform.png" title="./coordinateTransform.png" data-thumbnail="./coordinateTransform.png" data-sub-html="<h2>坐标变换示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./coordinateTransform.png"
+            srcset="./coordinateTransform.png, ./coordinateTransform.png 1.5x, ./coordinateTransform.png 2x"
+            sizes="auto"
+            alt="./coordinateTransform.png" width="35%" >
+    </a><figcaption class="image-caption">坐标变换示意图</figcaption>
+    </figure>
 <p>矢量 $\vec{r}$ 可以在两个参考系中分别表述为</p>
 $$
-\vec{r} = \vec{A} \mathbf{r}^a = \vec{B} \mathbf{r}^b
+\vec{r} = \vec{A} \bm{r}^a = \vec{B} \bm{r}^b
 $$
 <p>考察坐标之间的关系，不难得到</p>
 $$
-\mathbf{r}^b = \vec{B} \cdot \vec{r} 
-= \vec{B}^\mathrm{T} \cdot \left( \vec{A} \mathbf{r}^a \right)
-= \left( \vec{B}^\mathrm{T} \cdot \vec{A} \right) \mathbf{r}^a
-= R_a^b \mathbf{r}^a
+\bm{r}^b = \vec{B} \cdot \vec{r} 
+= \vec{B}^\mathrm{T} \cdot \left( \vec{A} \bm{r}^a \right)
+= \left( \vec{B}^\mathrm{T} \cdot \vec{A} \right) \bm{r}^a
+= R_a^b \bm{r}^a
 $$
 <p>其中 $R_a^b$ 为坐标变换矩阵，其表示从参考系 $\vec{A}$ 到参考系 $\vec{B}$ 的坐标变换（从下往上读）。从上式的两端可以发现，在这种表述方式下，角标形式上具有“相互抵消”的性质，即：如果左侧变量的下标与右侧变量的上标相同，则抵消两个角标并根据左侧变量的上标替换掉右侧变量的上标。后面讨论的连续坐标变换能够充分体现这种特性。</p>
 <p>坐标变换矩阵 $R_a^b$ 具体展开为</p>
@@ -234,7 +247,7 @@ R_a^b &= \begin{bmatrix} \vec{B}^\mathrm{T} \cdot \vec{a}_1 &
     \vec{B}^\mathrm{T} \cdot \vec{a}_2 & 
     \vec{B}^\mathrm{T} \cdot \vec{a}_3 \end{bmatrix}
     = \begin{bmatrix}
-        \mathbf{a}_1^b & \mathbf{a}_2^b & \mathbf{a}_2^b
+        \bm{a}_1^b & \bm{a}_2^b & \bm{a}_2^b
     \end{bmatrix} \\
 &= \begin{bmatrix}
     \vec{b}_1 \cdot \vec{A} \\
@@ -242,19 +255,19 @@ R_a^b &= \begin{bmatrix} \vec{B}^\mathrm{T} \cdot \vec{a}_1 &
     \vec{b}_3 \cdot \vec{A} \\ 
 \end{bmatrix}
 = \begin{bmatrix}
-    \left(\mathbf{b}_1^a\right)^\mathrm{T} \\
-    \left(\mathbf{b}_2^a\right)^\mathrm{T} \\
-    \left(\mathbf{b}_3^a\right)^\mathrm{T}
+    \left(\bm{b}_1^a\right)^\mathrm{T} \\
+    \left(\bm{b}_2^a\right)^\mathrm{T} \\
+    \left(\bm{b}_3^a\right)^\mathrm{T}
 \end{bmatrix}
 \end{aligned}
 $$
 <p>上式中，第一行说明坐标变换矩阵可以按列解释：每一列分别由参考系 $\vec{A}$ 的各基矢在参考系 $\vec{B}$ 中的坐标组成；第二行说明该矩阵也可以按行解释：每一行为参考系 $\vec{B}$ 的各基矢在参考系 $\vec{A}$ 中的坐标（的转制）组成 。我们通常倾向于按列解释，这样可以保持上标的一致性。由于单位向量的点积等于夹角的余弦，因此坐标变换矩阵也称作方向余弦矩阵（DCM, Direction Cosine Matrix）。</p>
 <p>考虑矢量 $\vec{r}$ 按照 $\vec{A} \rightarrow \vec{B}_1 \rightarrow \vec{B}_2 \rightarrow \cdots \rightarrow \vec{B}_n$ 的顺序进行 $n$ 次坐标变换，有</p>
 $$
-\mathbf{r}^{b_n} = R_{b_{n-1}}^{b_n} \mathbf{r}^{b_{n-1}} 
-= R_{b_{n-1}}^b \left( R_{b_{n-2}}^{b_{n-1}}\mathbf{r}^{b_{n-2}} \right)
+\bm{r}^{b_n} = R_{b_{n-1}}^{b_n} \bm{r}^{b_{n-1}} 
+= R_{b_{n-1}}^b \left( R_{b_{n-2}}^{b_{n-1}}\bm{r}^{b_{n-2}} \right)
 = \cdots 
-= \left( R_{b_{n-1}}^b R_{b_{n-2}}^{b_{n-1}} \cdots R_a^{b_{1}} \right) \mathbf{r}^a
+= \left( R_{b_{n-1}}^b R_{b_{n-2}}^{b_{n-1}} \cdots R_a^{b_{1}} \right) \bm{r}^a
 $$
 <p>即</p>
 $$
@@ -263,7 +276,7 @@ $$
 <p>说明连续坐标变换矩阵为各坐标变换矩阵按顺序左乘的结果。</p>
 <p>最后，我们重新将坐标变换矩阵代回到矢量表达式中，得</p>
 $$
-\vec{r} = \vec{A} \mathbf{r}^a = \vec{B} \mathbf{r}^b = \vec{B} R_a^b \mathbf{r}^a 
+\vec{r} = \vec{A} \bm{r}^a = \vec{B} \bm{r}^b = \vec{B} R_a^b \bm{r}^a 
 \quad \Rightarrow \quad
 \vec{A} = \vec{B} R_a^b
 $$
@@ -276,13 +289,20 @@ I_{3 \times 3} = \vec{A}^\mathrm{T} \cdot \vec{A}
 $$
 <p>这说明坐标变换矩阵 $R_a^b$ 为正交矩阵，即 $\left(R_a^b \right)^{-1} = \left(R_a^b \right)^\mathrm{T}$。我们可以令 $R_b^a = \left(R_a^b \right)^{-1}$，则 $R_a^b R_b^a = R_b^a R_a^b = I$ 意味着来回变换之后坐标保持不变（这里可以再次看到角标之间的“抵消”性质）。</p>
 <h2 id="矢量旋转" class="headerLink">
-    <a href="#%e7%9f%a2%e9%87%8f%e6%97%8b%e8%bd%ac" class="header-mark"></a>矢量旋转</h2><p>将目光限定在参考系 $\vec{A}$ 中，现在将矢量 $\vec{r}_1$ 进行一定的旋转，得到 $\vec{r}_2$ ，如何得到它们坐标 $\mathbf{r}_1^a$ 和 $\mathbf{r}_2^a$ 之间的关系？</p>
-<div align=center>
-    <img src=rotation.png width=35% />
-</div>
-<p>考虑 $\vec{r}_1$ 连同参考系（的基矢） $\vec{A}$ 一起旋转，当 $\vec{r}_1$ 转到 $\vec{r}_2$ 的位置时 $\vec{A}$ 相应地变成 $\vec{B}$。由于是一起旋转，相对关系保持不变，即 $\vec{r}_2$ 在 $\vec{B}$ 的坐标等于 $\vec{r}_1$ 在 $\vec{A}$ 的坐标，即 $\mathbf{r}_2^b = \mathbf{r}_1^a$，考虑到坐标变换有 $\mathbf{r}_2^a = R_b^a \mathbf{r}_2^b$，可以得到</p>
+    <a href="#%e7%9f%a2%e9%87%8f%e6%97%8b%e8%bd%ac" class="header-mark"></a>矢量旋转</h2><p>将目光限定在参考系 $\vec{A}$ 中，现在将矢量 $\vec{r}_1$ 进行一定的旋转，得到 $\vec{r}_2$ ，如何得到它们坐标 $\bm{r}_1^a$ 和 $\bm{r}_2^a$ 之间的关系？</p>
+<figure><a class="lightgallery" href="./rotation.png" title="./rotation.png" data-thumbnail="./rotation.png" data-sub-html="<h2>矢量旋转示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./rotation.png"
+            srcset="./rotation.png, ./rotation.png 1.5x, ./rotation.png 2x"
+            sizes="auto"
+            alt="./rotation.png" width="35%" >
+    </a><figcaption class="image-caption">矢量旋转示意图</figcaption>
+    </figure>
+<p>考虑 $\vec{r}_1$ 连同参考系（的基矢） $\vec{A}$ 一起旋转，当 $\vec{r}_1$ 转到 $\vec{r}_2$ 的位置时 $\vec{A}$ 相应地变成 $\vec{B}$。由于是一起旋转，相对关系保持不变，即 $\vec{r}_2$ 在 $\vec{B}$ 的坐标等于 $\vec{r}_1$ 在 $\vec{A}$ 的坐标，即 $\bm{r}_2^b = \bm{r}_1^a$，考虑到坐标变换有 $\bm{r}_2^a = R_b^a \bm{r}_2^b$，可以得到</p>
 $$
-\mathbf{r}_2^a = R_b^a \mathbf{r}_1^a
+\bm{r}_2^a = R_b^a \bm{r}_1^a
 $$
 <p>这就说明，坐标变换矩阵同时具有旋转的含义，也可称之为旋转矩阵， $R_b^a$ 表示从参考系 $\vec{A}$ 到参考系 $\vec{B}$ 的旋转（从上往下读，注意这里交换了角标）。</p>
 <p>在对实际物体旋转的描述中，通常使用本体坐标系之间的关系。在上文我们实际上已经得到了 $\vec{A} = \vec{B} R_a^b$，这同样可以“从上往下”地解读为 $\vec{B}$ 旋转到 $\vec{A}$。</p>
@@ -300,9 +320,16 @@ $$
 <p>最终的旋转矩阵 $R_b^a$ 为各次旋转矩阵按顺序右乘的结果。</p>
 <h2 id="转动的描述" class="headerLink">
     <a href="#%e8%bd%ac%e5%8a%a8%e7%9a%84%e6%8f%8f%e8%bf%b0" class="header-mark"></a>转动的描述</h2><p>最后我们来看一下坐标变换矩阵（或者说转动矩阵）的运动学特性。首先如下图所示，假设参考系 $\vec{B}$ （通常为刚体的本体参考系）的角速度为 $\bm{\omega}_b^b = [\omega_1,\omega_2,\omega_3]^\mathrm{T}$（注意角速度都是在本体坐标系下建立的，各分量省略了上标），以基矢 $\vec{b}_1$ 为例，在 $\mathrm{d}t$ 时间内其变化量为</p>
-<div align=center>
-    <img src=rotating.png width=35% />
-</div>
+<figure><a class="lightgallery" href="./rotating.png" title="./rotating.png" data-thumbnail="./rotating.png" data-sub-html="<h2>转动角速度示意图</h2>">
+        <img
+            
+            loading="lazy"
+            src="./rotating.png"
+            srcset="./rotating.png, ./rotating.png 1.5x, ./rotating.png 2x"
+            sizes="auto"
+            alt="./rotating.png" width="35%" >
+    </a><figcaption class="image-caption">转动角速度示意图</figcaption>
+    </figure>
 $$
 \mathrm{d}\vec{b}_1 =  (\omega_3 \mathrm{d} t) \vec{b}_2 -(\omega_2 \mathrm{d}t)\vec{b}_3 +
 \quad \Rightarrow \quad 
@@ -365,8 +392,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/81f4647af2b4ff1809a53f018aaf7214b6d714bb" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 81f4647af2b4ff1809a53f018aaf7214b6d714bb: update directory structure and theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>81f4647</a></span>
+                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -390,7 +417,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.112.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.3.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.114.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

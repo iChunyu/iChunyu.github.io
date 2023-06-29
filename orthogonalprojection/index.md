@@ -13,9 +13,7 @@
 
 由于点到平面内的距离最短，那么这个极小化问题的解就是向量 $\vec{v}$ 在给定平面内的正交投影，即 $\vec{u}=\vec{v}_p$ 。
 
-<div align=center>
-    <img src=projection1.png width=70% />
-</div>
+{{< image src="./projection1.png" caption="空间向量的正交投影示意图" width="70%" >}}
 
 
 为了定量表述向量 $\vec{v}$ 的正交投影，需要选取基向量，如图中的 $\vec{e}_1$ 和 $\vec{e}_2$。特别地，所选取的基向量为标准正交基，即满足：
@@ -111,9 +109,7 @@ $${{< /math >}}
 
 将三者绘制在同一张图上，如下图所示，可见正交投影的方式获取的多项式更加逼近原始正弦函数，在 $\pm\pi$ 处的误差远小于泰勒展开导致的误差。
 
-<div align=center>
-    <img src=projection2.png width=70% />
-</div>
+{{< image src="./projection2.png" caption="正弦函数的多项式近似" width="70%" >}}
 
 本文所涉及的相关符号计算源码如下
 

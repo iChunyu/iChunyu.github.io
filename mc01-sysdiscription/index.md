@@ -10,9 +10,7 @@
 
 由于系统是由元件构成的，而元件的特性通常满足一定的（微分）方程，考虑元件之间的约束后，系统的本质就可以看作是微分方程。以经典的弹簧-质量-阻尼系统为例，如下图所示。
 
-<div align=center>
-    <img src=mc01.jpg width=40% />
-</div>
+{{< image src="./mc01.png" caption="弹簧-质量-阻尼系统示意图" width="40%" >}}
 
 
 该系统由弹簧、阻尼器、质量三个元件构成，三个元件的特性分别由以下方程进行描述：
@@ -68,13 +66,13 @@ $${{< /math >}}
 {{< math >}}$$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x} + Du
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x} + Du
 \end{aligned}
 \right.
 $${{< /math >}}
 
-其中， $\mathbf{x}$ 为系统的状态变量， $A$ 称为系统矩阵， $B$ 为输入矩阵， $C$ 为输出矩阵， $D$ 为直接传输矩阵且通常 $D=0$。就本例而言：
+其中， $\bm{x}$ 为系统的状态变量， $A$ 称为系统矩阵， $B$ 为输入矩阵， $C$ 为输出矩阵， $D$ 为直接传输矩阵且通常 $D=0$。就本例而言：
 
 {{< math >}}$$
 A = \begin{bmatrix}
@@ -92,8 +90,8 @@ $${{< /math >}}
 {{< math >}}$$
 \left\{ 
 \begin{aligned}
-\dot{\mathbf{x}} &= f(\mathbf{x},\mathbf{u},t)  \\
-y &= h(\mathbf{x},\mathbf{u},t)  \\
+\dot{\bm{x}} &= f(\bm{x},\bm{u},t)  \\
+y &= h(\bm{x},\bm{u},t)  \\
 \end{aligned}
 \right.
 $${{< /math >}}
@@ -103,17 +101,17 @@ $${{< /math >}}
 {{< math >}}$$
 \left\{
 \begin{aligned}
-\dot{\mathbf{x}} &= A \mathbf{x} + Bu  \\
-y &= C \mathbf{x}
+\dot{\bm{x}} &= A \bm{x} + Bu  \\
+y &= C \bm{x}
 \end{aligned}
 \right.
 $${{< /math >}}
 
-设辅助状态变量 $\mathbf{z}$ 满足线性变换 $\mathbf{x}=P\mathbf{z}$（ $P$ 为常矩阵），带入第一个方程，有：
+设辅助状态变量 $\bm{z}$ 满足线性变换 $\bm{x}=P\bm{z}$（ $P$ 为常矩阵），带入第一个方程，有：
 
 {{< math >}}$$
-P\dot{\mathbf{z}}=AP\mathbf{z}+B\mathbf{u}
-\quad \Rightarrow \quad \dot{\mathbf{z}}=P^{-1}AP\mathbf{z}+P^{-1}B\mathbf{u}
+P\dot{\bm{z}}=AP\bm{z}+B\bm{u}
+\quad \Rightarrow \quad \dot{\bm{z}}=P^{-1}AP\bm{z}+P^{-1}B\bm{u}
 $${{< /math >}}
 
 选取合适的变换矩阵 $P$ 使得 $P^{-1}AP$ 为矩阵 $A$ 的相似变换，即 $P^{-1}AP$ 为特征值对角矩阵：
@@ -127,19 +125,19 @@ P^{-1}AP = \begin{bmatrix}
 \end{bmatrix}
 $${{< /math >}}
 
-如此做，关于辅助状态变量 $\mathbf{z}$ 的微分方程组解耦为独立的一阶微分方程：
+如此做，关于辅助状态变量 $\bm{z}$ 的微分方程组解耦为独立的一阶微分方程：
 
 {{< math >}}$$
 \dot{z}_i = \lambda_i z_i + \tilde{u}_i
 \quad \Rightarrow \quad z_i(t) = C_i \mathrm(e)^{\lambda_i t} + \tilde{z}_i(t)
 $${{< /math >}}
 
-其中， $\tilde{u}_i$ 表示 $P^{-1}B\mathbf{u}$ 的第 $i$ 的分量，其对应的特解为 $\tilde{z}_i(t)$ 。最后代回 $\mathbf{x}=P\mathbf{z}$ 即可得到原状态变量，进而带入输出矩阵解得输出。
+其中， $\tilde{u}_i$ 表示 $P^{-1}B\bm{u}$ 的第 $i$ 的分量，其对应的特解为 $\tilde{z}_i(t)$ 。最后代回 $\bm{x}=P\bm{z}$ 即可得到原状态变量，进而带入输出矩阵解得输出。
 
 由微分方程的解可以看出，若系统矩阵 $A$ 存在某特征值 $\lambda_i$ 大于零，根据微分方程的通解，系统将存在某一状态量随时间趋于无穷，在实际系统中将是输出饱和，于是说该系统是不稳定的。若系统矩阵的特征值的实部均小于零，通解将收敛到零（若存在虚部，则是震荡收敛），意味着状态变量的初值将收敛，系统的输出由输入控制，称系统是（渐进）稳定的。特别地，若系统的特征值小于等于零，等于零的特征值将对应于某状态的等幅震荡，由于不会导致系统输出发散，因而也可以说系统是（临界）稳定的。对于实际工作的系统，都应当满足渐进稳定。
 
 {{< admonition info >}}
-最近 3b1b 在 bilibili 上传的 [e的矩阵指数](https://www.bilibili.com/video/BV11y4y1b7c5) 视频对应着状态空间的求解，有兴趣的同学可以作为扩展学习。
+最近 3b1b 在 bilibili 上传的 [e 的矩阵指数](https://www.bilibili.com/video/BV11y4y1b7c5) 视频对应着状态空间的求解，有兴趣的同学可以作为扩展学习。
 {{< /admonition >}}
 
 ## 三种描述的对比

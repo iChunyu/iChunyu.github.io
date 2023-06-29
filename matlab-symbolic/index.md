@@ -110,9 +110,7 @@ $${{< /math >}}
 
 如果采用 MATLAB 的实时脚本运行上面的代码，MATLAB 将会自动将公式转化为 $\\LaTeX$ 公式，如下图所示：
 
-<div align=center>
-    <img src=symbolic.png width=80% />
-</div>
+{{< image src="./symbolic.png" caption="实时脚本下符号计算结果的渲染" width="80%" >}}
 
 更一般地，我们更希望将计算结果转化为 $\\LaTeX$ 代码，通过 MathType 或 $\\LaTeX$ 整合到文档中，这时可以使用 `latex` ，如：
 
