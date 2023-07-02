@@ -4,9 +4,16 @@
         <link>https://ichunyu.github.io/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 31 May 2023 12:11:29 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</lastBuildDate>
             <atom:link href="https://ichunyu.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>模型嵌入控制（1）：简介与符号约定</title>
+    <link>https://ichunyu.github.io/emc01-introduction/</link>
+    <pubDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc01-introduction/</guid>
+    <description><![CDATA[<p>模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。</p>]]></description>
+</item><item>
     <title>航天器姿态测量与确定</title>
     <link>https://ichunyu.github.io/attitude/</link>
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/neovim/</guid>
     <description><![CDATA[<p>Vim 被称之为神之编辑器，与其强大的可配置性脱不了关系。NeoVim 是 Vim 的一个复刻，更多强大的插件也随之诞生。本文简要介绍 NeoVim 的配置，包括软件基本的设置和常用插件的安装与配置。</p>]]></description>
-</item><item>
-    <title>MATLAB 解析输入参数</title>
-    <link>https://ichunyu.github.io/matlab-inputparser/</link>
-    <pubDate>Fri, 29 Apr 2022 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/matlab-inputparser/</guid>
-    <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。</p>]]></description>
 </item></channel>
 </rss>

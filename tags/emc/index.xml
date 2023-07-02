@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>EMC - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/emc/</link>
+        <description>EMC - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/emc/" rel="self" type="application/rss+xml" /><item>
+    <title>模型嵌入控制（1）：简介与符号约定</title>
+    <link>https://ichunyu.github.io/emc01-introduction/</link>
+    <pubDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc01-introduction/</guid>
+    <description><![CDATA[<p>模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。</p>]]></description>
+</item></channel>
+</rss>

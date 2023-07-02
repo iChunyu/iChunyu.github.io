@@ -4,7 +4,21 @@
         <link>https://ichunyu.github.io/tags/</link>
         <description>Tags - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 31 May 2023 12:11:29 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>EMC</title>
+    <link>https://ichunyu.github.io/tags/emc/</link>
+    <pubDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/tags/emc/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>模型嵌入控制</title>
+    <link>https://ichunyu.github.io/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/</link>
+    <pubDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>传感器</title>
     <link>https://ichunyu.github.io/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/</link>
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
@@ -59,20 +73,6 @@
     <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/tags/%E5%BE%AE%E5%88%86/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>五点法</title>
-    <link>https://ichunyu.github.io/tags/%E4%BA%94%E7%82%B9%E6%B3%95/</link>
-    <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E4%BA%94%E7%82%B9%E6%B3%95/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>LaTeX</title>
-    <link>https://ichunyu.github.io/tags/latex/</link>
-    <pubDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/latex/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
