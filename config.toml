@@ -1,6 +1,6 @@
 # Configuration copied from: https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/
 
-baseURL = "https://ichunyu.github.io/"
+baseURL = "https://chunyu.site/"
 # [en, zh-cn, fr, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
 # 网站语言, 仅在这里 CN 大写
@@ -64,7 +64,7 @@ enableGitInfo = true
   #  网站默认主题样式 ("light", "dark", "black", "auto")
   defaultTheme = "auto"
   # 公共 git 仓库路径, 仅在 enableGitInfo 设为 true 时有效
-  gitRepo = "https://github.com/iChunyu/iChunyu.github.io"
+  gitRepo = ""
   #  哪种哈希函数用来 SRI, 为空时表示不使用 SRI
   # ("sha256", "sha384", "sha512", "md5")
   fingerprint = ""
@@ -220,7 +220,7 @@ enableGitInfo = true
 
   # 作者的社交信息设置
   [params.social]
-    GitHub = "iChunyu"
+    GitHub = ""
     Linkedin = ""
     Twitter = ""
     Instagram = ""
@@ -289,8 +289,8 @@ enableGitInfo = true
     Linktree = ""
     QQ = ""
     QQGroup = ""
-    Email = "chunyu.hust@gmail.com"
-    RSS = true # 
+    Email = ""
+    RSS = false # 
 
   #  文章页面配置
   [params.page]
