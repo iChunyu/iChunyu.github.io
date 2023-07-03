@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>模型嵌入控制（2）：被控对象建模 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型嵌入控制（2）：被控对象建模" />
+<meta property="og:description" content="被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ichunyu.github.io/emc02-embeddedmodel/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-03T13:43:36+08:00" />
+<meta property="article:modified_time" content="2023-07-03T17:12:22+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="模型嵌入控制（2）：被控对象建模"/>
+<meta name="twitter:description" content="被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/emc02-embeddedmodel/" /><link rel="prev" href="https://ichunyu.github.io/emc01-introduction/" />
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "模型嵌入控制（2）：被控对象建模",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ichunyu.github.io\/emc02-embeddedmodel\/"
+        },"genre": "posts","keywords": "EMC, 模型嵌入控制","wordcount":  2408 ,
+        "url": "https:\/\/ichunyu.github.io\/emc02-embeddedmodel\/","datePublished": "2023-07-03T13:43:36+08:00","dateModified": "2023-07-03T17:12:22+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script><script src="//instant.page/5.2.0" defer type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
+</head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#可控动态建模">可控动态建模</a></li>
+    <li><a href="#扰动动态建模">扰动动态建模</a></li>
+    <li><a href="#示例二阶系统建模">示例：二阶系统建模</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">模型嵌入控制（2）：被控对象建模</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/embedded-model-control/"><i class="far fa-folder fa-fw"></i>Embedded Model Control</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-07-03">2023-07-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-07-03">2023-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2408 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#可控动态建模">可控动态建模</a></li>
+    <li><a href="#扰动动态建模">扰动动态建模</a></li>
+    <li><a href="#示例二阶系统建模">示例：二阶系统建模</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。</p>
+<h2 id="可控动态建模" class="headerLink">
+    <a href="#%e5%8f%af%e6%8e%a7%e5%8a%a8%e6%80%81%e5%bb%ba%e6%a8%a1" class="header-mark"></a>可控动态建模</h2><p>可控动态是对被控对象物理特性的描述，我们之前在<a href="https://ichunyu.github.io/mc01-sysdiscription/" rel="">系统的描述</a>中讨论过线性时不变系统的三种描述方法，在此简要复述为：</p>
+<ul>
+<li>微分方程：被控对象的特性通常可以根据一定的物理原理建立微分方程，这是描述系统特性最基本的数学手段；</li>
+<li>传递函数（或传递函数矩阵）：系统微分方程的拉普拉斯变换，直接地给出了输入输出关系，是频域设计和分析的依据；</li>
+<li>状态空间方程：微分方程的等价描述，由于进一步定义了系统状态而能够对系统进行更加精细的描述。离散形式的状态空间还有给出了数值系统的具体实现。</li>
+</ul>
+<p>我们假设读者已经具备连续时间系统的建模能力，设被控对象的状态空间微分方程为：</p>
+$$
+\left\{\begin{aligned}
+    \dot{\bm{x}} &= A \bm{x} + B \bm{u} \\
+    \bm{y} &= C \bm{x} + D \bm{u}
+\end{aligned}\right.
+$$
+<p>其中 $\bm{x}$ 为系统的状态向量，$\bm{y}$ 为输出，$A$、$B$、$C$、$D$ 分别为状态矩阵、输入矩阵、输出矩阵和直馈矩阵。通常情况下 $D=0$，在后面的讨论中将省略。</p>
+<p>可控动态是对被控对象在离散时间下的建模，换言之，需要将上述连续时间的状态空间方程依据采样时间 $T$ 离散化。在一阶近似下，状态微分可以由微分代替，为：</p>
+$$
+    \dot{\bm{x}} \approx \frac{1}{T} \bigl( \bm{x}_c(iT+T) - \bm{x}_c(iT) \bigr)
+$$
+<p>记 $\bm{x}_c$ 为可控动态的状态变量。为了表述的方便，后续离散时间状态变量的索引中将省略采样时间 $T$，改写为 $\bm{x}_c(iT) \rightarrow \bm{x}_c(i)$。如此做，可控动态的状态空间方程为：</p>
+$$
+\left\{\begin{aligned}
+    & \bm{x}_c(i+1) = A_c \bm{x}_c(i) + B_c \bm{u}(i) + \bm{d}(i) \\
+    & \bm{y}(i) = C_c \bm{x}_c(i) + C_d \bm{x}_d(i)
+\end{aligned}\right.
+$$
+<p>其中，$A_c = I+AT$，$B_c = BT$，$C_c = C$。可控动态中引入了输入端扰动 $\bm{d}$ 和输出端扰动 $C_d \bm{x}_d$。在一定的情况下（通常是多个传感器同时测量时），状态预测器能够对被控对象输出端的扰动（如传感器零偏）进行预测，因此不失一般性地可以在输出端引入 $C_d \bm{x}_d$ 以显式表达该扰动的影响，后面将通过控制律设计对这部分扰动进行补偿。</p>
+<p>在连续时间系统的离散化中，如果一阶近似带来较大误差，严格的建模应当从微分方程通解的积分中获得。对于线性时不变系统，状态方程的通解为：</p>
+$$
+\bm{x}(t) = \mathrm{e}^{A(t-t_0)} \bm{x}(t_0) + \int_{t_0}^t \mathrm{e}^{A(t-\tau)} B \bm{u}(\tau) \,\mathrm{d} \tau
+$$
+<p>取 $t_0 = iT$，$t = (i+1)T$，并设在 $iT \le t < (i+1)T$ 时间内指令 $\bm{u}(t)$ 保持不变，因此离散后的矩阵为：</p>
+$$
+A_c = \mathrm{e}^{AT} ,\quad B_c = \int_0^T \mathrm{e}^{A\tau} B \, \mathrm{d} \tau
+$$
+<h2 id="扰动动态建模" class="headerLink">
+    <a href="#%e6%89%b0%e5%8a%a8%e5%8a%a8%e6%80%81%e5%bb%ba%e6%a8%a1" class="header-mark"></a>扰动动态建模</h2><p>由于扰动具有一定的随机性，扰动动态通常依赖于扰动的统计特性。将扰动看作随机噪声 $\bm{w}$ 经过扰动动态的输出，于是从频域上可以将扰动动态看作噪声滤波器，其幅频响应与扰动的功率谱密度一致。例如通过某种手段测得外部扰动的功率谱密度呈现 $1/f$ 的特性，意味着扰动动态可以建模为一阶积分器。</p>
+<p>此外，如果可预测部分的扰动具有较强的时域特性，例如零偏或者震荡等，可以将扰动在局部时间内看作某个微分方程的解，因此总体扰动可以看作该微分方程的通解。例如对于未知的常值扰动，可以看作微分方程 $\dot{d} = 0$ 的某一个解，根据微分方程可以将扰动动态建模为一阶积分器。</p>
+<p>不失一般性，扰动动态的状态空间方程可以写为：</p>
+$$
+\left\{\begin{aligned}
+    &\bm{x}_d(i+1) = A_d \bm{x}_d(i) + G_d \bm{w}_d(i) \\
+    &\bm{d}(i) = H_c \bm{x}_d(i) + G_c \bm{w}_c(i)
+\end{aligned}\right.
+$$
+<p>式中 $\bm{x}_d$ 为扰动动态的状态向量。为了对扰动进行充分的预测，扰动动态的极点（$A_d$ 的特征值）应当分布在单位圆上，这存在两种基本形式：</p>
+<ul>
+<li>极点为 $1$：串联积分形式，频域上可以解释为低频扰动的预测，时域上根据积分阶数可以解释为分段常值（一阶积分）、分段线性（二阶积分）扰动等；</li>
+<li>共轭极点 $\mathrm{e}^{j 2\pi f_0 T}, \,(f_0 < f_s/2)$：震荡模型，对应呈现周期特性的扰动。</li>
+</ul>
+<p>需要说明的是，随机噪声 $\bm{w}$ 分为扰动动态的驱动噪声 $\bm{w}_d$ 和直接作用于可控动态的噪声 $\bm{w}_c$。其中，$\bm{w}_d$ 驱动扰动动态，基于模型的输出部分 $H_c \bm{x}_d$ 对应可预测部分的扰动，而 $\bm{w}_c$ 完全随机而无法预测（或者说随机噪声的期望值为 $0$，无法提供有效的预测值）。</p>
+<p>扰动动态中的矩阵 $G_d$ 和 $G_c$ 决定了随机噪声如何对被控对象产生影响，换句话说，被控对象的哪些状态会受到随机扰动的影响？假设驱动噪声 $\bm{w}$ 各个分量是相互独立的，对于扰动动态，其状态变量不失一般性地都会受到 $\bm{w}_d$ 的影响。而 $G_c$ 的设计应当根据可控动态的物理条件决定。</p>
+<h2 id="示例二阶系统建模" class="headerLink">
+    <a href="#%e7%a4%ba%e4%be%8b%e4%ba%8c%e9%98%b6%e7%b3%bb%e7%bb%9f%e5%bb%ba%e6%a8%a1" class="header-mark"></a>示例：二阶系统建模</h2><p>我们以单自由度弹簧-质量系统为例展示可控动态和扰动动态的建模。设弹簧的特征角频率为 $\omega_0$，在控制加速度 $a_u$ 和扰动加速度 $a_d$ 的作用下，质点相对平衡位置的位移 $z$ 的微分方程为：</p>
+$$
+\ddot{z} + \omega_0^2 z = a_u + a_d
+$$
+<p>选取连续时间的状态变量为 $\bm{x} = [z, \dot{z}]$，连续时间的状态空间方程可以写为：</p>
+$$
+\left\{\begin{aligned}
+    \dot{\bm{x}} &= \begin{bmatrix} 0 & 1 \\ -\omega_0^2 & 0 \end{bmatrix} \bm{x} + \begin{bmatrix} 0 \\ 1 \end{bmatrix} \left( a_u + a_d \right) \\
+    y &= \begin{bmatrix} 1 & 0 \end{bmatrix} \bm{x}
+\end{aligned}\right.
+,\quad \bm{x}(0) = \bm{x}_0
+$$
+<p>如果使用差分近似微分，可控动态的各个系数矩阵可以写为：</p>
+$$
+A_c = I+AT = \begin{bmatrix} 1 & T \\ -\omega_0^2 T & 1  \end{bmatrix} , \quad B_c = BT = \begin{bmatrix} 0 \\ T \end{bmatrix}
+$$
+<p>如果使用积分做准确计算，可控动态的系数矩阵为：</p>
+$$
+\begin{gathered}
+A_c = \mathrm{e}^{AT} = \begin{bmatrix} \cos(\omega_0T) & \sin(\omega_0T)/\omega_0 \\ -\omega_0 \sin(\omega_0T) & \cos(\omega_0T) \end{bmatrix} \\
+B_c = \int_0^T \mathrm{e}^{A\tau} B \, \mathrm{d} \tau = \begin{bmatrix} 2 \sin^2(\omega_0T/2) /\omega_0^2 \\ \sin(\omega_0T)/\omega_0 \end{bmatrix}
+\end{gathered}
+$$
+<p>当 $\omega_0T \ll 1$ 且忽略 $T^2$ 项后，两种方法得到的可控动态一致。</p>
+<p>实际中，我们希望将数字积分器改为累加器以节约时间步长 $T$ 引入的乘法计算。因此，取可控动态的状态向量为 $\bm{x}_c = [z, \dot{z}T]$，可控动态变为：</p>
+$$
+\left\{\begin{aligned}
+    & \bm{x}_c(i+1) = \begin{bmatrix} 1 & 1 \\ -\omega_0^2 T^2 & 1 \end{bmatrix} \bm{x}_c(i) + \begin{bmatrix} 0 \\ 1 \end{bmatrix} u + \bm{d}(i) \\
+    & y(i) = \begin{bmatrix} 1 & 0 \end{bmatrix} \bm{x}_c(i)
+\end{aligned}\right.
+,\quad \bm{x}_c(0) = \bm{x}_{c0}
+$$
+<p>其中 $u = T^2 a_u$ 为数字形式的指令加速度。</p>
+<p>假设质点受到的外部扰动时缓变的信号，可以认为具有分段线性特性，因而扰动动态可以取二阶积分器（实际上是累加器），其状态空间方程为：</p>
+$$
+\left\{\begin{aligned}
+    & \bm{x}_d(i+1) = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \bm{x}_d(i) + \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \bm{w}_d(i) \\
+    & \bm{d}(i) = \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix} \bm{x}_d(i) + \begin{bmatrix} 0 \\ 1 \end{bmatrix} w_c(i)
+\end{aligned}\right.
+$$
+<p>其中，$\bm{w}_d$ 的系数矩阵为单位矩阵，意味着驱动噪声 $\bm{w}_d$ 的两个分量可以分别对扰动状态 $\bm{x}_d$ 的两个分量产生影响；$\bm{d}$ 的第一个分量为零，是因为外部扰动时加速度形式，不会直接对质点的速度产生影响；噪声 $w_c$ 表示不可预测的随机扰动加速度。</p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-07-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/d7ac4d8fc94b053dfd5edac8c8dfe18aa535dd6b" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) d7ac4d8fc94b053dfd5edac8c8dfe18aa535dd6b: Add EMC-02: embedded model" rel="noopener noreferrer">
+                                    <i class="fas fa-hashtag fa-fw"></i>d7ac4d8</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/emc02-embeddedmodel/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share"></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/emc/">EMC</a>,&nbsp;<a href="/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/">模型嵌入控制</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/emc01-introduction/" class="prev" rel="prev" title="模型嵌入控制（1）：简介与符号约定"><i class="fas fa-angle-left fa-fw"></i>模型嵌入控制（1）：简介与符号约定</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.115.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

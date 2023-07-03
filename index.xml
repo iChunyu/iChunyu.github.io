@@ -4,9 +4,16 @@
         <link>https://ichunyu.github.io/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</lastBuildDate>
             <atom:link href="https://ichunyu.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>模型嵌入控制（2）：被控对象建模</title>
+    <link>https://ichunyu.github.io/emc02-embeddedmodel/</link>
+    <pubDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc02-embeddedmodel/</guid>
+    <description><![CDATA[<p>被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。</p>]]></description>
+</item><item>
     <title>模型嵌入控制（1）：简介与符号约定</title>
     <link>https://ichunyu.github.io/emc01-introduction/</link>
     <pubDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/latexsnips/</guid>
     <description><![CDATA[<p>LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。</p>]]></description>
-</item><item>
-    <title>NeoVim 基本配置</title>
-    <link>https://ichunyu.github.io/neovim/</link>
-    <pubDate>Fri, 06 May 2022 18:12:48 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/neovim/</guid>
-    <description><![CDATA[<p>Vim 被称之为神之编辑器，与其强大的可配置性脱不了关系。NeoVim 是 Vim 的一个复刻，更多强大的插件也随之诞生。本文简要介绍 NeoVim 的配置，包括软件基本的设置和常用插件的安装与配置。</p>]]></description>
 </item></channel>
 </rss>
