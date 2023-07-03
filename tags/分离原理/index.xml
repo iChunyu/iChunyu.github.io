@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>分离原理 - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/%E5%88%86%E7%A6%BB%E5%8E%9F%E7%90%86/</link>
+        <link>https://chunyu.site/tags/%E5%88%86%E7%A6%BB%E5%8E%9F%E7%90%86/</link>
         <description>分离原理 - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 02 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%88%86%E7%A6%BB%E5%8E%9F%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 02 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/%E5%88%86%E7%A6%BB%E5%8E%9F%E7%90%86/" rel="self" type="application/rss+xml" /><item>
     <title>现代控制理论（4）：调节器设计</title>
-    <link>https://ichunyu.github.io/mc04-regulator/</link>
+    <link>https://chunyu.site/mc04-regulator/</link>
     <pubDate>Sun, 02 Aug 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/mc04-regulator/</guid>
+    </author><guid>https://chunyu.site/mc04-regulator/</guid>
     <description><![CDATA[<p>状态估计器提供了状态的估计值，在分离原理的指导下，利用估计的状态进行状态反馈能够使系统稳定。本文讨论最基本的闭环设计，即调节器设计。</p>]]></description>
 </item></channel>
 </rss>

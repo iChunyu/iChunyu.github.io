@@ -1,36 +1,36 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>奇妙的数学 - 分类 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/</link>
+        <link>https://chunyu.site/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/</link>
         <description>奇妙的数学 - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 26 Mar 2022 16:36:15 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 26 Mar 2022 16:36:15 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
     <title>从牛顿方程到开普勒定律</title>
-    <link>https://ichunyu.github.io/newton2kepler/</link>
+    <link>https://chunyu.site/newton2kepler/</link>
     <pubDate>Sat, 26 Mar 2022 16:36:15 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/newton2kepler/</guid>
+    </author><guid>https://chunyu.site/newton2kepler/</guid>
     <description><![CDATA[<p>开普勒定律揭示了行星围绕中心天体运动的规律，随后牛顿提出的运动学定律和万有引力定律进一步从原理上进行了解释。本文从牛顿方程的角度出发，基于限制性二体问题推导开普勒运动定律，被简要介绍轨道六要素和开普勒方程。</p>]]></description>
 </item><item>
     <title>四元数与三维旋转</title>
-    <link>https://ichunyu.github.io/quaternion/</link>
+    <link>https://chunyu.site/quaternion/</link>
     <pubDate>Wed, 16 Mar 2022 14:32:58 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/quaternion/</guid>
+    </author><guid>https://chunyu.site/quaternion/</guid>
     <description><![CDATA[<p>复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。</p>]]></description>
 </item><item>
     <title>坐标变换与矢量旋转</title>
-    <link>https://ichunyu.github.io/vectortransform/</link>
+    <link>https://chunyu.site/vectortransform/</link>
     <pubDate>Tue, 08 Mar 2022 14:48:25 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/vectortransform/</guid>
+    </author><guid>https://chunyu.site/vectortransform/</guid>
     <description><![CDATA[<p>在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。</p>]]></description>
 </item><item>
     <title>正交投影——极小化问题的解决方案</title>
-    <link>https://ichunyu.github.io/orthogonalprojection/</link>
+    <link>https://chunyu.site/orthogonalprojection/</link>
     <pubDate>Sun, 16 Aug 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/orthogonalprojection/</guid>
+    </author><guid>https://chunyu.site/orthogonalprojection/</guid>
     <description><![CDATA[<p>“近似”是非常常用的数学手段，其中包括利用多项式来作为其他函数的近似，并使得两个函数之间的某个误差最小，这类极小化问题应当如何求解？本文从一个几何例子开始，以数形结合的思想初步给出极小化问题与正交投影之间的关系；然后介绍多项式的内积定义，给出函数在多项式线性空间的正交投影计算方法；最后以正弦函数的多项式近似给出一个极小化问题的实例。</p>]]></description>
 </item></channel>
 </rss>

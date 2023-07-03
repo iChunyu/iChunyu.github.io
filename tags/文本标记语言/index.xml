@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>文本标记语言 - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/</link>
+        <link>https://chunyu.site/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/</link>
         <description>文本标记语言 - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 13 Apr 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 13 Apr 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/" rel="self" type="application/rss+xml" /><item>
     <title>reStructuredText 简介</title>
-    <link>https://ichunyu.github.io/restructuredtext/</link>
+    <link>https://chunyu.site/restructuredtext/</link>
     <pubDate>Tue, 13 Apr 2021 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/restructuredtext/</guid>
+    </author><guid>https://chunyu.site/restructuredtext/</guid>
     <description><![CDATA[<p>reStructuredText 是一个不同于 Markdown 的文本标记语言，通常结合 Sphinx 构建静态网站，特别适合帮助类文档的编写。这篇文章简要介绍其基本用法。</p>]]></description>
 </item></channel>
 </rss>

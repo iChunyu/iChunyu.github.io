@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>频域分析 - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90/</link>
+        <link>https://chunyu.site/tags/%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90/</link>
         <description>频域分析 - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Thu, 02 Dec 2021 14:36:16 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Thu, 02 Dec 2021 14:36:16 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90/" rel="self" type="application/rss+xml" /><item>
     <title>傅立叶变换与频域分析简介</title>
-    <link>https://ichunyu.github.io/introspectrum/</link>
+    <link>https://chunyu.site/introspectrum/</link>
     <pubDate>Thu, 02 Dec 2021 14:36:16 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/introspectrum/</guid>
+    </author><guid>https://chunyu.site/introspectrum/</guid>
     <description><![CDATA[<p>广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。</p>]]></description>
 </item></channel>
 </rss>

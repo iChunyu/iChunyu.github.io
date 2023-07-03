@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Authors - 作者 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/authors/</link>
+        <link>https://chunyu.site/authors/</link>
         <description>Authors - 作者 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><atom:link href="https://ichunyu.github.io/authors/" rel="self" type="application/rss+xml" /></channel>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><atom:link href="https://chunyu.site/authors/" rel="self" type="application/rss+xml" /></channel>
 </rss>

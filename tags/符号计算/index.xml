@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>符号计算 - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/%E7%AC%A6%E5%8F%B7%E8%AE%A1%E7%AE%97/</link>
+        <link>https://chunyu.site/tags/%E7%AC%A6%E5%8F%B7%E8%AE%A1%E7%AE%97/</link>
         <description>符号计算 - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 10 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E7%AC%A6%E5%8F%B7%E8%AE%A1%E7%AE%97/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 10 May 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/%E7%AC%A6%E5%8F%B7%E8%AE%A1%E7%AE%97/" rel="self" type="application/rss+xml" /><item>
     <title>MATLAB 符号计算</title>
-    <link>https://ichunyu.github.io/matlab-symbolic/</link>
+    <link>https://chunyu.site/matlab-symbolic/</link>
     <pubDate>Sun, 10 May 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/matlab-symbolic/</guid>
+    </author><guid>https://chunyu.site/matlab-symbolic/</guid>
     <description><![CDATA[<p>理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用 MATLAB 的符号计算工具包辅助完成。本文对此工具包进行简要介绍。</p>]]></description>
 </item></channel>
 </rss>

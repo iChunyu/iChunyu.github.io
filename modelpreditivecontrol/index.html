@@ -10,18 +10,18 @@
     <title>模型预测控制简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型预测控制简介" />
 <meta property="og:description" content="最近在 DR_CAN 的视频中学到了模型预测控制，于是打算写篇博客记记笔记，权当公式推导的练习。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/modelpreditivecontrol/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://chunyu.site/modelpreditivecontrol/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-11-26T21:39:17+08:00" />
 <meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+<meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
 
 <meta name="twitter:title" content="模型预测控制简介"/>
 <meta name="twitter:description" content="最近在 DR_CAN 的视频中学到了模型预测控制，于是打算写篇博客记记笔记，权当公式推导的练习。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/modelpreditivecontrol/" /><link rel="prev" href="https://ichunyu.github.io/kalmanfilter/" /><link rel="next" href="https://ichunyu.github.io/introspectrum/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/modelpreditivecontrol/" /><link rel="prev" href="https://chunyu.site/kalmanfilter/" /><link rel="next" href="https://chunyu.site/introspectrum/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
@@ -36,13 +36,13 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ichunyu.github.io\/modelpreditivecontrol\/"
+            "@id": "https:\/\/chunyu.site\/modelpreditivecontrol\/"
         },"genre": "posts","keywords": "模型预测控制, MPC","wordcount":  1380 ,
-        "url": "https:\/\/ichunyu.github.io\/modelpreditivecontrol\/","datePublished": "2021-11-26T21:39:17+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
+        "url": "https:\/\/chunyu.site\/modelpreditivecontrol\/","datePublished": "2021-11-26T21:39:17+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
-                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "url": "https:\/\/chunyu.site\/images\/avatar.png",
                     "width":  1024 ,
                     "height":  1024 
                 }},"author": {
@@ -163,7 +163,7 @@
 </nav></div>
             </div><div class="content" id="content"><p>最近在 DR_CAN 的视频中学到了模型预测控制，于是打算写篇博客记记笔记，权当公式推导的练习。</p>
 <h2 id="基本原理" class="headerLink">
-    <a href="#%e5%9f%ba%e6%9c%ac%e5%8e%9f%e7%90%86" class="header-mark"></a>基本原理</h2><p>之前在 <a href="https://ichunyu.github.io/mc02-statefeedback/" rel="">状态反馈</a> 里简单介绍了 LQR 设计法，这是一种最优设计，旨在使控制命令与误差的&quot;功率&quot;加权之和最小。然而，实际系统在扰动的影响下无法按照我们期望的那样运行，也就说外扰打破了理想的最优状态。为了解决这个问题，我们可以使用一个&quot;滑动的窗口&quot;，在这个窗口内进行类似 LQR 的最优设计，这便是 MPC 的基本思路。</p>
+    <a href="#%e5%9f%ba%e6%9c%ac%e5%8e%9f%e7%90%86" class="header-mark"></a>基本原理</h2><p>之前在 <a href="https://chunyu.site/mc02-statefeedback/" rel="">状态反馈</a> 里简单介绍了 LQR 设计法，这是一种最优设计，旨在使控制命令与误差的&quot;功率&quot;加权之和最小。然而，实际系统在扰动的影响下无法按照我们期望的那样运行，也就说外扰打破了理想的最优状态。为了解决这个问题，我们可以使用一个&quot;滑动的窗口&quot;，在这个窗口内进行类似 LQR 的最优设计，这便是 MPC 的基本思路。</p>
 <p>如下图所示，上面的绿色曲线表示被控对象的输出，蓝色曲线为参考信号；下面的橙色曲线为相应施加的控制信号。在数字控制中，被控对象的输出和控制器的控制命令都被离散化，样本值如散点所示。</p>
 <figure><a class="lightgallery" href="./MPC.png" title="./MPC.png" data-thumbnail="./MPC.png" data-sub-html="<h2>控制指令与误差响应示意图</h2>">
         <img
@@ -290,8 +290,7 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
+                <span>更新于 2023-06-29</span>
             </div>
             <div class="post-info-license"></div>
         </div>

@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>鲁棒跟踪 - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/%E9%B2%81%E6%A3%92%E8%B7%9F%E8%B8%AA/</link>
+        <link>https://chunyu.site/tags/%E9%B2%81%E6%A3%92%E8%B7%9F%E8%B8%AA/</link>
         <description>鲁棒跟踪 - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 15 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E9%B2%81%E6%A3%92%E8%B7%9F%E8%B8%AA/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 15 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/%E9%B2%81%E6%A3%92%E8%B7%9F%E8%B8%AA/" rel="self" type="application/rss+xml" /><item>
     <title>鲁棒跟踪控制</title>
-    <link>https://ichunyu.github.io/robusttracking/</link>
+    <link>https://chunyu.site/robusttracking/</link>
     <pubDate>Sat, 15 Aug 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/robusttracking/</guid>
+    </author><guid>https://chunyu.site/robusttracking/</guid>
     <description><![CDATA[<p>对于被引入到系统的参考信号，如果其特征是已知的，还可以采用所谓的鲁棒跟踪控制进一步提高系统对该类信号的跟踪能力。本文将介绍这种方法的设计。</p>]]></description>
 </item></channel>
 </rss>

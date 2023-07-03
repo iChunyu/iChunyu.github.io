@@ -10,18 +10,18 @@
     <title>四元数与三维旋转 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="四元数与三维旋转" />
 <meta property="og:description" content="复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/quaternion/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://chunyu.site/quaternion/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-16T14:32:58+08:00" />
 <meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+<meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
 
 <meta name="twitter:title" content="四元数与三维旋转"/>
 <meta name="twitter:description" content="复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/quaternion/" /><link rel="prev" href="https://ichunyu.github.io/vectortransform/" /><link rel="next" href="https://ichunyu.github.io/newton2kepler/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/quaternion/" /><link rel="prev" href="https://chunyu.site/vectortransform/" /><link rel="next" href="https://chunyu.site/newton2kepler/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
@@ -36,13 +36,13 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ichunyu.github.io\/quaternion\/"
+            "@id": "https:\/\/chunyu.site\/quaternion\/"
         },"genre": "posts","keywords": "四元数, 旋转","wordcount":  3067 ,
-        "url": "https:\/\/ichunyu.github.io\/quaternion\/","datePublished": "2022-03-16T14:32:58+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
+        "url": "https:\/\/chunyu.site\/quaternion\/","datePublished": "2022-03-16T14:32:58+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
-                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "url": "https:\/\/chunyu.site\/images\/avatar.png",
                     "width":  1024 ,
                     "height":  1024 
                 }},"author": {
@@ -178,7 +178,7 @@ $$
             <i class="icon fas fa-info-circle fa-fw"></i>提示<i class="details-icon fas fa-angle-right fa-fw"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">我们之前在 <a href="https://ichunyu.github.io/vectortransform/" target="_blank" rel="noopener noreferrer">坐标变换与矢量旋转</a> 中指出矢量的坐标应当与参考系联系起来，即将参考系作为坐标的上标。在本文的大部分讨论中只涉及一个参考系，故省略上标表示，仅在有必要的情况下显式标记。</div>
+            <div class="admonition-content">我们之前在 <a href="https://chunyu.site/vectortransform/" target="_blank" rel="noopener noreferrer">坐标变换与矢量旋转</a> 中指出矢量的坐标应当与参考系联系起来，即将参考系作为坐标的上标。在本文的大部分讨论中只涉及一个参考系，故省略上标表示，仅在有必要的情况下显式标记。</div>
         </div>
     </div>
 <p>其中 $a$ 为矢量 $\vec{a}$ 的模长，$\alpha$ 为其与实轴（即 $\vec{e}_1$）的夹角。利用指数的计算规则，将 $\vec{a}$ 逆时针旋转 $\varphi$ 后得到的向量 $\vec{b}$ 在同一参考系下的坐标可以表示为</p>
@@ -384,7 +384,7 @@ $$
         </div>
     </div>
 <h2 id="连续旋转的讨论" class="headerLink">
-    <a href="#%e8%bf%9e%e7%bb%ad%e6%97%8b%e8%bd%ac%e7%9a%84%e8%ae%a8%e8%ae%ba" class="header-mark"></a>连续旋转的讨论</h2><p>一个物体多次旋转，旋转矩阵（或四元数）应当是左乘还是右乘？在 <a href="https://ichunyu.github.io/vectortransform/" rel="">坐标变换与矢量旋转</a> 中我们给出的结论是右乘（同参考资料1），而按照这次推导的逻辑：$\bm{v}_0$ 旋转一次得到 $\bm{v}_1 = R_1 \bm{v}_0$，再将 $\bm{v}_1$ 旋转得到 $\bm{v}_2 = R_2 \bm{v}_1 = R_2 R_1 \bm{v}_0$……以此类推，连续转动时似乎应当左乘（同参考资料2），与之前的结论相反。这应当作何解释？</p>
+    <a href="#%e8%bf%9e%e7%bb%ad%e6%97%8b%e8%bd%ac%e7%9a%84%e8%ae%a8%e8%ae%ba" class="header-mark"></a>连续旋转的讨论</h2><p>一个物体多次旋转，旋转矩阵（或四元数）应当是左乘还是右乘？在 <a href="https://chunyu.site/vectortransform/" rel="">坐标变换与矢量旋转</a> 中我们给出的结论是右乘（同参考资料1），而按照这次推导的逻辑：$\bm{v}_0$ 旋转一次得到 $\bm{v}_1 = R_1 \bm{v}_0$，再将 $\bm{v}_1$ 旋转得到 $\bm{v}_2 = R_2 \bm{v}_1 = R_2 R_1 \bm{v}_0$……以此类推，连续转动时似乎应当左乘（同参考资料2），与之前的结论相反。这应当作何解释？</p>
 <ul>
 <li>两者的关注点不同</li>
 </ul>
@@ -407,8 +407,7 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
+                <span>更新于 2023-06-29</span>
             </div>
             <div class="post-info-license"></div>
         </div>

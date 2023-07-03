@@ -1,36 +1,36 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>MATLAB - 分类 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/categories/matlab/</link>
+        <link>https://chunyu.site/categories/matlab/</link>
         <description>MATLAB - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 20 May 2023 18:54:52 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/matlab/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 20 May 2023 18:54:52 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/categories/matlab/" rel="self" type="application/rss+xml" /><item>
     <title>MATLAB 自定义默认绘图样式</title>
-    <link>https://ichunyu.github.io/initplot/</link>
+    <link>https://chunyu.site/initplot/</link>
     <pubDate>Sat, 20 May 2023 18:54:52 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/initplot/</guid>
+    </author><guid>https://chunyu.site/initplot/</guid>
     <description><![CDATA[<p>为了让 MATLAB 绘制的曲线好看，通常需要使用各种参数设置绘图样式，这会使得绘图代码重复且冗长。本文将介绍如何自定义 MATLAB 的默认绘图样式以简化绘图命令。</p>]]></description>
 </item><item>
     <title>MATLAB 解析输入参数</title>
-    <link>https://ichunyu.github.io/matlab-inputparser/</link>
+    <link>https://chunyu.site/matlab-inputparser/</link>
     <pubDate>Fri, 29 Apr 2022 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/matlab-inputparser/</guid>
+    </author><guid>https://chunyu.site/matlab-inputparser/</guid>
     <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。</p>]]></description>
 </item><item>
     <title>MATLAB 符号计算</title>
-    <link>https://ichunyu.github.io/matlab-symbolic/</link>
+    <link>https://chunyu.site/matlab-symbolic/</link>
     <pubDate>Sun, 10 May 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/matlab-symbolic/</guid>
+    </author><guid>https://chunyu.site/matlab-symbolic/</guid>
     <description><![CDATA[<p>理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用 MATLAB 的符号计算工具包辅助完成。本文对此工具包进行简要介绍。</p>]]></description>
 </item><item>
     <title>MATLAB 编写函数</title>
-    <link>https://ichunyu.github.io/matlab-function/</link>
+    <link>https://chunyu.site/matlab-function/</link>
     <pubDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/matlab-function/</guid>
+    </author><guid>https://chunyu.site/matlab-function/</guid>
     <description><![CDATA[<p>编写程序的时候会经常用到相似的代码片段，为了使代码整洁，可以将这些代码片段封装为函数使用。本文介绍 MATLAB 编写函数的一般方法。</p>]]></description>
 </item></channel>
 </rss>

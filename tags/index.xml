@@ -1,78 +1,78 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Tags - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/</link>
+        <link>https://chunyu.site/tags/</link>
         <description>Tags - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/" rel="self" type="application/rss+xml" /><item>
     <title>EMC</title>
-    <link>https://ichunyu.github.io/tags/emc/</link>
+    <link>https://chunyu.site/tags/emc/</link>
     <pubDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/emc/</guid>
+    </author><guid>https://chunyu.site/tags/emc/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>模型嵌入控制</title>
-    <link>https://ichunyu.github.io/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/</link>
+    <link>https://chunyu.site/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/</link>
     <pubDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/</guid>
+    </author><guid>https://chunyu.site/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>传感器</title>
-    <link>https://ichunyu.github.io/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/</link>
+    <link>https://chunyu.site/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/</link>
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/</guid>
+    </author><guid>https://chunyu.site/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>航天器</title>
-    <link>https://ichunyu.github.io/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/</link>
+    <link>https://chunyu.site/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/</link>
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/</guid>
+    </author><guid>https://chunyu.site/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>姿态测量</title>
-    <link>https://ichunyu.github.io/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/</link>
+    <link>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/</link>
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/</guid>
+    </author><guid>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>姿态确定</title>
-    <link>https://ichunyu.github.io/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</link>
+    <link>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</link>
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</guid>
+    </author><guid>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>MATLAB</title>
-    <link>https://ichunyu.github.io/tags/matlab/</link>
+    <link>https://chunyu.site/tags/matlab/</link>
     <pubDate>Sat, 20 May 2023 18:54:52 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/matlab/</guid>
+    </author><guid>https://chunyu.site/tags/matlab/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>滤波</title>
-    <link>https://ichunyu.github.io/tags/%E6%BB%A4%E6%B3%A2/</link>
+    <link>https://chunyu.site/tags/%E6%BB%A4%E6%B3%A2/</link>
     <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E6%BB%A4%E6%B3%A2/</guid>
+    </author><guid>https://chunyu.site/tags/%E6%BB%A4%E6%B3%A2/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>平滑</title>
-    <link>https://ichunyu.github.io/tags/%E5%B9%B3%E6%BB%91/</link>
+    <link>https://chunyu.site/tags/%E5%B9%B3%E6%BB%91/</link>
     <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E5%B9%B3%E6%BB%91/</guid>
+    </author><guid>https://chunyu.site/tags/%E5%B9%B3%E6%BB%91/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>微分</title>
-    <link>https://ichunyu.github.io/tags/%E5%BE%AE%E5%88%86/</link>
+    <link>https://chunyu.site/tags/%E5%BE%AE%E5%88%86/</link>
     <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/tags/%E5%BE%AE%E5%88%86/</guid>
+    </author><guid>https://chunyu.site/tags/%E5%BE%AE%E5%88%86/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

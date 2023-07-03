@@ -10,18 +10,18 @@
     <title>LaTeX 学习记录（1）：安装与配置 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="LaTeX 学习记录（1）：安装与配置" />
 <meta property="og:description" content="$\LaTeX$ 是一个非常优秀的开源排版软件，特别适合于大量公式、代码的理工类文档的排版。本文介绍其安装方法并给出最小示例。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/latex01-install/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://chunyu.site/latex01-install/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-13T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+<meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
 
 <meta name="twitter:title" content="LaTeX 学习记录（1）：安装与配置"/>
 <meta name="twitter:description" content="$\LaTeX$ 是一个非常优秀的开源排版软件，特别适合于大量公式、代码的理工类文档的排版。本文介绍其安装方法并给出最小示例。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/latex01-install/" /><link rel="prev" href="https://ichunyu.github.io/intropid/" /><link rel="next" href="https://ichunyu.github.io/latex02-document/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/latex01-install/" /><link rel="prev" href="https://chunyu.site/intropid/" /><link rel="next" href="https://chunyu.site/latex02-document/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
@@ -36,13 +36,13 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ichunyu.github.io\/latex01-install\/"
+            "@id": "https:\/\/chunyu.site\/latex01-install\/"
         },"genre": "posts","keywords": "LaTeX","wordcount":  1440 ,
-        "url": "https:\/\/ichunyu.github.io\/latex01-install\/","datePublished": "2020-10-13T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
+        "url": "https:\/\/chunyu.site\/latex01-install\/","datePublished": "2020-10-13T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
-                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "url": "https:\/\/chunyu.site\/images\/avatar.png",
                     "width":  1024 ,
                     "height":  1024 
                 }},"author": {
@@ -168,7 +168,7 @@
     <a href="#latex-%e7%ae%80%e4%bb%8b" class="header-mark"></a>$\LaTeX$ 简介</h2><p>$\LaTeX$ 是一款开源排版软件，区别于 Word 的所见即所得，使用 $\LaTeX$ 编写文档更像是编写代码，需要经过编译才能生成pdf格式的文档。初学者可能会止步于这种代码式的文档编写方法，但随着使用的熟练，在科技报告、论文方面，其至少在下面几个方面碾压 Word ：</p>
 <ul>
 <li>数学公式支持：$\LaTeX$ 天然支持数学公式，而 Word 内置的公式编辑器一般不好用，需借助 Mathtype、AxMath 等公式编辑软件；</li>
-<li>文献应用支持：$\LaTeX$ 天然支持文献引用，并提供了常见各种期刊标准样式，而 Word 内置的参考文献录入麻烦，常需借助文献管理软件如 <a href="https://ichunyu.github.io/zotero/" rel="">Zotero</a>、Endnote 等；</li>
+<li>文献应用支持：$\LaTeX$ 天然支持文献引用，并提供了常见各种期刊标准样式，而 Word 内置的参考文献录入麻烦，常需借助文献管理软件如 <a href="https://chunyu.site/zotero/" rel="">Zotero</a>、Endnote 等；</li>
 <li>快速模板切换：$\LaTeX$ 仅需要对导言区的样式进行更改即可实现全文格式的变更，而 Word 一般需要重新定义样式。</li>
 </ul>
 <p>那，话不多说，开整。</p>
@@ -400,8 +400,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-06-29&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/0487748dc401586a521753cb7f4541bf73ec40a9" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) 0487748dc401586a521753cb7f4541bf73ec40a9: Put all images into shortcode environment, update theme" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>0487748</a></span>
+                <span>更新于 2023-06-29</span>
             </div>
             <div class="post-info-license"></div>
         </div>

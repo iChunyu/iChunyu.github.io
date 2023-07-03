@@ -10,18 +10,18 @@
     <title>使用代码片段编写 LaTeX 文档 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="使用代码片段编写 LaTeX 文档" />
 <meta property="og:description" content="LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/latexsnips/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://chunyu.site/latexsnips/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-16T08:43:47+08:00" />
 <meta property="article:modified_time" content="2023-03-07T19:31:26+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+<meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
 
 <meta name="twitter:title" content="使用代码片段编写 LaTeX 文档"/>
 <meta name="twitter:description" content="LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/latexsnips/" /><link rel="prev" href="https://ichunyu.github.io/neovim/" /><link rel="next" href="https://ichunyu.github.io/backstepping/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/latexsnips/" /><link rel="prev" href="https://chunyu.site/neovim/" /><link rel="next" href="https://chunyu.site/backstepping/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
@@ -36,13 +36,13 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ichunyu.github.io\/latexsnips\/"
+            "@id": "https:\/\/chunyu.site\/latexsnips\/"
         },"genre": "posts","keywords": "LaTeX, 代码片段","wordcount":  3130 ,
-        "url": "https:\/\/ichunyu.github.io\/latexsnips\/","datePublished": "2022-06-16T08:43:47+08:00","dateModified": "2023-03-07T19:31:26+08:00","publisher": {
+        "url": "https:\/\/chunyu.site\/latexsnips\/","datePublished": "2022-06-16T08:43:47+08:00","dateModified": "2023-03-07T19:31:26+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
-                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "url": "https:\/\/chunyu.site\/images\/avatar.png",
                     "width":  1024 ,
                     "height":  1024 
                 }},"author": {
@@ -179,7 +179,7 @@
 <h2 id="插件介绍与使用" class="headerLink">
     <a href="#%e6%8f%92%e4%bb%b6%e4%bb%8b%e7%bb%8d%e4%b8%8e%e4%bd%bf%e7%94%a8" class="header-mark"></a>插件介绍与使用</h2><p>顾名思义，代码片段就是一小段可以重复利用的代码。使用代码片段本质上类似于复制粘贴并修改的操作，但利用关键字触发可以避免复制代码的过程；不仅如此，通过插件可以对设定的代码片段进行进一步操作，大大提高编程效率。</p>
 <h3 id="插件简介" class="headerLink">
-    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>插件简介</h3><p>对于 Vim 或者 NeoVim 用户，可以使用 <a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreferrer">UltiSnips</a>，我在之前的 <a href="https://ichunyu.github.io/neovim/" rel="">NeoVim 基本配置</a> 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 <a href="https://marketplace.visualstudio.com/items?itemName=draivin.hsnips" target="_blank" rel="noopener noreferrer">HyperSnips</a> 插件。这两款插件之间的对比如下表所示：</p>
+    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>插件简介</h3><p>对于 Vim 或者 NeoVim 用户，可以使用 <a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreferrer">UltiSnips</a>，我在之前的 <a href="https://chunyu.site/neovim/" rel="">NeoVim 基本配置</a> 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 <a href="https://marketplace.visualstudio.com/items?itemName=draivin.hsnips" target="_blank" rel="noopener noreferrer">HyperSnips</a> 插件。这两款插件之间的对比如下表所示：</p>
 <table>
 <thead>
 <tr>
@@ -242,7 +242,7 @@
 <li><code>r</code>：（只在 UltiSnips 中有该选项）启用正则表达式；</li>
 <li><code>A</code>：自动展开。当关键字可以触发代码片段时自动展开，通常与其他选项结合使用。</li>
 </ul>
-<p><code>snippet body</code> 是自定义的代码片段，即触发关键字后展开的内容。代码片段内可以使用 <code>$</code> 和数字设置跳点，这样可以使用设置的快捷键快速跳转：UltiSnips 需要自行设置，见 <a href="https://ichunyu.github.io/neovim/" rel="">NeoVim 基本配置</a>；VS Code 使用 <code>&lt;Tab&gt;</code> 键跳至下一个跳点，使用 <code>&lt;Shift&gt;&lt;Tab&gt;</code> 跳到上一个跳点。特别地，<code>$0</code> 为最后一个跳点，跳至这里后无法再进行回跳。代码片段内的跳点可以进一步使用花括号和冒号设置默认值。</p>
+<p><code>snippet body</code> 是自定义的代码片段，即触发关键字后展开的内容。代码片段内可以使用 <code>$</code> 和数字设置跳点，这样可以使用设置的快捷键快速跳转：UltiSnips 需要自行设置，见 <a href="https://chunyu.site/neovim/" rel="">NeoVim 基本配置</a>；VS Code 使用 <code>&lt;Tab&gt;</code> 键跳至下一个跳点，使用 <code>&lt;Shift&gt;&lt;Tab&gt;</code> 跳到上一个跳点。特别地，<code>$0</code> 为最后一个跳点，跳至这里后无法再进行回跳。代码片段内的跳点可以进一步使用花括号和冒号设置默认值。</p>
 <p>下面用一个例子进行解释（两个插件通用）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -592,8 +592,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-03-07&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/9c39d06dd8d7015c7b184dcf6389b8d5aa49e61d" target="_blank" title="commit by Chunyu(chunyu2018@foxmail.com) 9c39d06dd8d7015c7b184dcf6389b8d5aa49e61d: Chore: update theme, content, links, etc." rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>9c39d06</a></span>
+                <span>更新于 2023-03-07</span>
             </div>
             <div class="post-info-license"></div>
         </div>

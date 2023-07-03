@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>跟踪微分 - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86/</link>
+        <link>https://chunyu.site/tags/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86/</link>
         <description>跟踪微分 - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 25 May 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 25 May 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/%E8%B7%9F%E8%B8%AA%E5%BE%AE%E5%88%86/" rel="self" type="application/rss+xml" /><item>
     <title>信号的微分</title>
-    <link>https://ichunyu.github.io/diffsignal/</link>
+    <link>https://chunyu.site/diffsignal/</link>
     <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/diffsignal/</guid>
+    </author><guid>https://chunyu.site/diffsignal/</guid>
     <description><![CDATA[<p>数字信号处理中经常会用到微分，典型的例子就是数字 PID 控制器中的微分环节。然而理想的微分是不存在的，即使存在，其对高频噪声的放大也约束了它的实际应用。这篇文章我们将讨论并对比一些常见的微分算法。</p>]]></description>
 </item></channel>
 </rss>

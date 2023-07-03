@@ -10,18 +10,18 @@
     <title>模型嵌入控制（1）：简介与符号约定 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型嵌入控制（1）：简介与符号约定" />
 <meta property="og:description" content="模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/emc01-introduction/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://chunyu.site/emc01-introduction/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-02T22:40:00+08:00" />
 <meta property="article:modified_time" content="2023-07-03T01:24:39+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+<meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
 
 <meta name="twitter:title" content="模型嵌入控制（1）：简介与符号约定"/>
 <meta name="twitter:description" content="模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/emc01-introduction/" /><link rel="prev" href="https://ichunyu.github.io/attitude/" /><link rel="next" href="https://ichunyu.github.io/emc02-embeddedmodel/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/emc01-introduction/" /><link rel="prev" href="https://chunyu.site/attitude/" /><link rel="next" href="https://chunyu.site/emc02-embeddedmodel/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
@@ -36,13 +36,13 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ichunyu.github.io\/emc01-introduction\/"
+            "@id": "https:\/\/chunyu.site\/emc01-introduction\/"
         },"genre": "posts","keywords": "EMC, 模型嵌入控制","wordcount":  2691 ,
-        "url": "https:\/\/ichunyu.github.io\/emc01-introduction\/","datePublished": "2023-07-02T22:40:00+08:00","dateModified": "2023-07-03T01:24:39+08:00","publisher": {
+        "url": "https:\/\/chunyu.site\/emc01-introduction\/","datePublished": "2023-07-02T22:40:00+08:00","dateModified": "2023-07-03T01:24:39+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
-                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "url": "https:\/\/chunyu.site\/images\/avatar.png",
                     "width":  1024 ,
                     "height":  1024 
                 }},"author": {
@@ -427,8 +427,7 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-07-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/a7f5775db40c03bc0f3898a6d730beead3f7353e" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) a7f5775db40c03bc0f3898a6d730beead3f7353e: Add EMC-01, introduction." rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>a7f5775</a></span>
+                <span>更新于 2023-07-03</span>
             </div>
             <div class="post-info-license"></div>
         </div>

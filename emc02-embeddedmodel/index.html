@@ -10,18 +10,18 @@
     <title>模型嵌入控制（2）：被控对象建模 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型嵌入控制（2）：被控对象建模" />
 <meta property="og:description" content="被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ichunyu.github.io/emc02-embeddedmodel/" /><meta property="og:image" content="https://ichunyu.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://chunyu.site/emc02-embeddedmodel/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-03T13:43:36+08:00" />
 <meta property="article:modified_time" content="2023-07-03T17:12:22+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png"/>
+<meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
 
 <meta name="twitter:title" content="模型嵌入控制（2）：被控对象建模"/>
 <meta name="twitter:description" content="被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ichunyu.github.io/emc02-embeddedmodel/" /><link rel="prev" href="https://ichunyu.github.io/emc01-introduction/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/emc02-embeddedmodel/" /><link rel="prev" href="https://chunyu.site/emc01-introduction/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
@@ -36,13 +36,13 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/ichunyu.github.io\/emc02-embeddedmodel\/"
+            "@id": "https:\/\/chunyu.site\/emc02-embeddedmodel\/"
         },"genre": "posts","keywords": "EMC, 模型嵌入控制","wordcount":  2408 ,
-        "url": "https:\/\/ichunyu.github.io\/emc02-embeddedmodel\/","datePublished": "2023-07-03T13:43:36+08:00","dateModified": "2023-07-03T17:12:22+08:00","publisher": {
+        "url": "https:\/\/chunyu.site\/emc02-embeddedmodel\/","datePublished": "2023-07-03T13:43:36+08:00","dateModified": "2023-07-03T17:12:22+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
-                    "url": "https:\/\/ichunyu.github.io\/images\/avatar.png",
+                    "url": "https:\/\/chunyu.site\/images\/avatar.png",
                     "width":  1024 ,
                     "height":  1024 
                 }},"author": {
@@ -163,7 +163,7 @@
 </nav></div>
             </div><div class="content" id="content"><p>被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。</p>
 <h2 id="可控动态建模" class="headerLink">
-    <a href="#%e5%8f%af%e6%8e%a7%e5%8a%a8%e6%80%81%e5%bb%ba%e6%a8%a1" class="header-mark"></a>可控动态建模</h2><p>可控动态是对被控对象物理特性的描述，我们之前在<a href="https://ichunyu.github.io/mc01-sysdiscription/" rel="">系统的描述</a>中讨论过线性时不变系统的三种描述方法，在此简要复述为：</p>
+    <a href="#%e5%8f%af%e6%8e%a7%e5%8a%a8%e6%80%81%e5%bb%ba%e6%a8%a1" class="header-mark"></a>可控动态建模</h2><p>可控动态是对被控对象物理特性的描述，我们之前在<a href="https://chunyu.site/mc01-sysdiscription/" rel="">系统的描述</a>中讨论过线性时不变系统的三种描述方法，在此简要复述为：</p>
 <ul>
 <li>微分方程：被控对象的特性通常可以根据一定的物理原理建立微分方程，这是描述系统特性最基本的数学手段；</li>
 <li>传递函数（或传递函数矩阵）：系统微分方程的拉普拉斯变换，直接地给出了输入输出关系，是频域设计和分析的依据；</li>
@@ -261,8 +261,7 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-07-03&nbsp;<a class="git-hash" href="https://github.com/iChunyu/iChunyu.github.io/commit/d7ac4d8fc94b053dfd5edac8c8dfe18aa535dd6b" target="_blank" title="commit by chunyu(chunyu2018@foxmail.com) d7ac4d8fc94b053dfd5edac8c8dfe18aa535dd6b: Add EMC-02: embedded model" rel="noopener noreferrer">
-                                    <i class="fas fa-hashtag fa-fw"></i>d7ac4d8</a></span>
+                <span>更新于 2023-07-03</span>
             </div>
             <div class="post-info-license"></div>
         </div>

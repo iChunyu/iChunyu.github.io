@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>参考信号 - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/</link>
+        <link>https://chunyu.site/tags/%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/</link>
         <description>参考信号 - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 08 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 08 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/%E5%8F%82%E8%80%83%E4%BF%A1%E5%8F%B7/" rel="self" type="application/rss+xml" /><item>
     <title>现代控制理论（5）：参考信号的引入</title>
-    <link>https://ichunyu.github.io/mc05-reference/</link>
+    <link>https://chunyu.site/mc05-reference/</link>
     <pubDate>Sat, 08 Aug 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/mc05-reference/</guid>
+    </author><guid>https://chunyu.site/mc05-reference/</guid>
     <description><![CDATA[<p>调节器只能将系统的各状态拉回到零位，而控制系统的根本目的是使被控对象的输出跟随参考信号，因此在调节器设计完成的基础上，还需要正确地引入参考信号。本文介绍三种常用的方式将参考信号引入到控制系统。</p>]]></description>
 </item></channel>
 </rss>

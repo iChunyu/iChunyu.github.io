@@ -1,57 +1,57 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>LaTeX - 分类 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/categories/latex/</link>
+        <link>https://chunyu.site/categories/latex/</link>
         <description>LaTeX - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/latex/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/categories/latex/" rel="self" type="application/rss+xml" /><item>
     <title>LaTeX 常用宏包简介</title>
-    <link>https://ichunyu.github.io/packages/</link>
+    <link>https://chunyu.site/packages/</link>
     <pubDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/packages/</guid>
+    </author><guid>https://chunyu.site/packages/</guid>
     <description><![CDATA[<p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>]]></description>
 </item><item>
     <title>使用代码片段编写 LaTeX 文档</title>
-    <link>https://ichunyu.github.io/latexsnips/</link>
+    <link>https://chunyu.site/latexsnips/</link>
     <pubDate>Thu, 16 Jun 2022 08:43:47 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/latexsnips/</guid>
+    </author><guid>https://chunyu.site/latexsnips/</guid>
     <description><![CDATA[<p>LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。</p>]]></description>
 </item><item>
     <title>LaTeX 学习记录（5）：自动化引用</title>
-    <link>https://ichunyu.github.io/latex05-cite/</link>
+    <link>https://chunyu.site/latex05-cite/</link>
     <pubDate>Thu, 24 Dec 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/latex05-cite/</guid>
+    </author><guid>https://chunyu.site/latex05-cite/</guid>
     <description><![CDATA[<p>写文档的时候会在必要位置插入脚注进行补充说明，也会引用已经出现的图、表、章节等，即交叉引用。对于科技论文写作，会进一步涉及到参考文献引用；少数情况下，还会使用到外部超链接。被引对象的编号问题无疑是手动引用的繁琐之处，这篇文章向大家展示如何在 $\LaTeX$ 中实现自动化引用。</p>]]></description>
 </item><item>
     <title>LaTeX 学习记录（4）：数学公式</title>
-    <link>https://ichunyu.github.io/latex04-math/</link>
+    <link>https://chunyu.site/latex04-math/</link>
     <pubDate>Sat, 05 Dec 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/latex04-math/</guid>
+    </author><guid>https://chunyu.site/latex04-math/</guid>
     <description><![CDATA[<p>对于理工科类的报告或论文，除了图表以外，还经常使用到各种公式。 $\LaTeX$ 对数学公式提供了非常好的支持，本文重点对几种常用的数学环境进行介绍。</p>]]></description>
 </item><item>
     <title>LaTeX 学习记录（3）：使用图表</title>
-    <link>https://ichunyu.github.io/latex03-tablefigure/</link>
+    <link>https://chunyu.site/latex03-tablefigure/</link>
     <pubDate>Sat, 14 Nov 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/latex03-tablefigure/</guid>
+    </author><guid>https://chunyu.site/latex03-tablefigure/</guid>
     <description><![CDATA[<p>很多朋友使用 $\LaTeX$ 处理图表是都会感觉达不到期望的状态，这篇文章我们来看看如何正确使用图表。</p>]]></description>
 </item><item>
     <title>LaTeX 学习记录（2）：编写文档</title>
-    <link>https://ichunyu.github.io/latex02-document/</link>
+    <link>https://chunyu.site/latex02-document/</link>
     <pubDate>Tue, 27 Oct 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/latex02-document/</guid>
+    </author><guid>https://chunyu.site/latex02-document/</guid>
     <description><![CDATA[<p>这回我们来看看如何用 $\LaTeX$ 编写文档。</p>]]></description>
 </item><item>
     <title>LaTeX 学习记录（1）：安装与配置</title>
-    <link>https://ichunyu.github.io/latex01-install/</link>
+    <link>https://chunyu.site/latex01-install/</link>
     <pubDate>Tue, 13 Oct 2020 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/latex01-install/</guid>
+    </author><guid>https://chunyu.site/latex01-install/</guid>
     <description><![CDATA[<p>$\LaTeX$ 是一个非常优秀的开源排版软件，特别适合于大量公式、代码的理工类文档的排版。本文介绍其安装方法并给出最小示例。</p>]]></description>
 </item></channel>
 </rss>

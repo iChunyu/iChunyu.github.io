@@ -1,22 +1,22 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Linux - 标签 - 某春雨的后花园</title>
-        <link>https://ichunyu.github.io/tags/linux/</link>
+        <link>https://chunyu.site/tags/linux/</link>
         <description>Linux - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/linux/" rel="self" type="application/rss+xml" /><item>
     <title>Arch Linux 系统安装</title>
-    <link>https://ichunyu.github.io/installarch/</link>
+    <link>https://chunyu.site/installarch/</link>
     <pubDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/installarch/</guid>
+    </author><guid>https://chunyu.site/installarch/</guid>
     <description><![CDATA[<p>最近有兴趣折腾了一下 Arch Linux，并在虚拟机中成功安装。将安装步骤记录于此，下一次就真机实战。</p>]]></description>
 </item><item>
     <title>Manjaro 系统安装</title>
-    <link>https://ichunyu.github.io/manjaro/</link>
+    <link>https://chunyu.site/manjaro/</link>
     <pubDate>Wed, 12 May 2021 00:00:00 &#43;0000</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/manjaro/</guid>
+    </author><guid>https://chunyu.site/manjaro/</guid>
     <description><![CDATA[<p>尝试过 Debian 系的 deepin、Ubuntu 和它的衍生版 Pop!_OS，都被各种各样的 Bug 劝退。后来尝试了 Arch 系的 Manjaro，唔，这真的是一款非常令人舒适的 Linux 发行版！来跟我一起折腾吧！</p>]]></description>
 </item></channel>
 </rss>
