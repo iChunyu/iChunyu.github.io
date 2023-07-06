@@ -4,9 +4,16 @@
         <link>https://chunyu.site/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Thu, 06 Jul 2023 21:45:19 &#43;0800</lastBuildDate>
             <atom:link href="https://chunyu.site/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>模型嵌入控制（3）：不确定性表述</title>
+    <link>https://chunyu.site/emc03-uncertainties/</link>
+    <pubDate>Thu, 06 Jul 2023 21:45:19 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/emc03-uncertainties/</guid>
+    <description><![CDATA[<p>针对被控对象建立的数学模型在使用时会受到各种不确定性的影响，从而产生模型误差影响状态预测。为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性表述。</p>]]></description>
+</item><item>
     <title>模型嵌入控制（2）：被控对象建模</title>
     <link>https://chunyu.site/emc02-plant/</link>
     <pubDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://chunyu.site/backstepping/</guid>
     <description><![CDATA[<p>反步法（Backstepping）通过拼凑李雅普诺夫函数得到控制律，可用于非线性被控对象的控制器设计。本文是对 DR_CAN 系列视频的学习，并以一个开环不稳定的非线性系统为例进行设计与仿真。</p>]]></description>
-</item><item>
-    <title>使用代码片段编写 LaTeX 文档</title>
-    <link>https://chunyu.site/latexsnips/</link>
-    <pubDate>Thu, 16 Jun 2022 08:43:47 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/latexsnips/</guid>
-    <description><![CDATA[<p>LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。</p>]]></description>
 </item></channel>
 </rss>
