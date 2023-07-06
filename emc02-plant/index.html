@@ -10,9 +10,9 @@
     <title>模型嵌入控制（2）：被控对象建模 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型嵌入控制（2）：被控对象建模" />
 <meta property="og:description" content="被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://chunyu.site/emc02-embeddedmodel/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://chunyu.site/emc02-plant/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-03T13:43:36+08:00" />
-<meta property="article:modified_time" content="2023-07-03T17:12:22+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-07-06T22:54:40+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
 
@@ -21,7 +21,7 @@
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/emc02-embeddedmodel/" /><link rel="prev" href="https://chunyu.site/emc01-introduction/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/emc02-plant/" /><link rel="prev" href="https://chunyu.site/emc01-introduction/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
@@ -36,9 +36,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/chunyu.site\/emc02-embeddedmodel\/"
-        },"genre": "posts","keywords": "EMC, 模型嵌入控制","wordcount":  2408 ,
-        "url": "https:\/\/chunyu.site\/emc02-embeddedmodel\/","datePublished": "2023-07-03T13:43:36+08:00","dateModified": "2023-07-03T17:12:22+08:00","publisher": {
+            "@id": "https:\/\/chunyu.site\/emc02-plant\/"
+        },"genre": "posts","keywords": "EMC, 模型嵌入控制","wordcount":  2643 ,
+        "url": "https:\/\/chunyu.site\/emc02-plant\/","datePublished": "2023-07-03T13:43:36+08:00","dateModified": "2023-07-06T22:54:40+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -148,7 +148,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/embedded-model-control/"><i class="far fa-folder fa-fw"></i>Embedded Model Control</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-07-03">2023-07-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-07-03">2023-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2408 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-07-03">2023-07-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2643 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -169,7 +169,7 @@
 <li>传递函数（或传递函数矩阵）：系统微分方程的拉普拉斯变换，直接地给出了输入输出关系，是频域设计和分析的依据；</li>
 <li>状态空间方程：微分方程的等价描述，由于进一步定义了系统状态而能够对系统进行更加精细的描述。离散形式的状态空间还有给出了数值系统的具体实现。</li>
 </ul>
-<p>我们假设读者已经具备连续时间系统的建模能力，设被控对象的状态空间微分方程为：</p>
+<p>我们假设读者已经具备连续时间系统的建模能力，设被控对象在连续时间下的状态空间微分方程为：</p>
 $$
 \left\{\begin{aligned}
     \dot{\bm{x}} &= A \bm{x} + B \bm{u} \\
@@ -184,11 +184,11 @@ $$
 <p>记 $\bm{x}_c$ 为可控动态的状态变量。为了表述的方便，后续离散时间状态变量的索引中将省略采样时间 $T$，改写为 $\bm{x}_c(iT) \rightarrow \bm{x}_c(i)$。如此做，可控动态的状态空间方程为：</p>
 $$
 \left\{\begin{aligned}
-    & \bm{x}_c(i+1) = A_c \bm{x}_c(i) + B_c \bm{u}(i) + \bm{d}(i) \\
+    & \bm{x}_c(i+1) = A_c \bm{x}_c(i) + B_c \Bigl( \bm{u}(i) + \bm{h}(\bm{x}_c(i) \Bigr) + \bm{d}(i) \\
     & \bm{y}(i) = C_c \bm{x}_c(i) + C_d \bm{x}_d(i)
 \end{aligned}\right.
 $$
-<p>其中，$A_c = I+AT$，$B_c = BT$，$C_c = C$。可控动态中引入了输入端扰动 $\bm{d}$ 和输出端扰动 $C_d \bm{x}_d$。在一定的情况下（通常是多个传感器同时测量时），状态预测器能够对被控对象输出端的扰动（如传感器零偏）进行预测，因此不失一般性地可以在输出端引入 $C_d \bm{x}_d$ 以显式表达该扰动的影响，后面将通过控制律设计对这部分扰动进行补偿。</p>
+<p>其中，$A_c = I+AT$，$B_c = BT$，$C_c = C$。为了更加准确地对被控对象进行描述，可控动态补充了 $\bm{h}(\cdot)$ 以隐式地描述状态之间可能的未知或非线性耦合和输入端扰动 $\bm{d}$。在一定的情况下（通常是多个传感器同时测量时），状态预测器能够对被控对象输出端的扰动（如传感器零偏）进行预测，因此不失一般性地可以在输出端增加 $C_d \bm{x}_d$ 以表述该扰动的影响，后面将通过控制律设计对这部分扰动进行补偿。</p>
 <p>在连续时间系统的离散化中，如果一阶近似带来较大误差，严格的建模应当从微分方程通解的积分中获得。对于线性时不变系统，状态方程的通解为：</p>
 $$
 \bm{x}(t) = \mathrm{e}^{A(t-t_0)} \bm{x}(t_0) + \int_{t_0}^t \mathrm{e}^{A(t-\tau)} B \bm{u}(\tau) \,\mathrm{d} \tau
@@ -212,8 +212,9 @@ $$
 <li>极点为 $1$：串联积分形式，频域上可以解释为低频扰动的预测，时域上根据积分阶数可以解释为分段常值（一阶积分）、分段线性（二阶积分）扰动等；</li>
 <li>共轭极点 $\mathrm{e}^{j 2\pi f_0 T}, \,(f_0 < f_s/2)$：震荡模型，对应呈现周期特性的扰动。</li>
 </ul>
-<p>需要说明的是，随机噪声 $\bm{w}$ 分为扰动动态的驱动噪声 $\bm{w}_d$ 和直接作用于可控动态的噪声 $\bm{w}_c$。其中，$\bm{w}_d$ 驱动扰动动态，基于模型的输出部分 $H_c \bm{x}_d$ 对应可预测部分的扰动，而 $\bm{w}_c$ 完全随机而无法预测（或者说随机噪声的期望值为 $0$，无法提供有效的预测值）。</p>
-<p>扰动动态中的矩阵 $G_d$ 和 $G_c$ 决定了随机噪声如何对被控对象产生影响，换句话说，被控对象的哪些状态会受到随机扰动的影响？假设驱动噪声 $\bm{w}$ 各个分量是相互独立的，对于扰动动态，其状态变量不失一般性地都会受到 $\bm{w}_d$ 的影响。而 $G_c$ 的设计应当根据可控动态的物理条件决定。</p>
+<p>需要说明的是，随机噪声 $\bm{w}$ 分为扰动动态的驱动噪声 $\bm{w}_d$ 和直接作用于可控动态的噪声 $\bm{w}_c$。其中，$\bm{w}_d$ 驱动扰动动态，基于模型的输出部分 $H_c \bm{x}_d$ 对应可预测部分的扰动，而 $\bm{w}_c$ 完全随机而无法预测。</p>
+<p>为了进一步解释可预测扰动和不可预测扰动，我们可以考察一个随机游走的例子：考虑有一个正态分布随机数生成器，每生成一次随机数，一个质点就会沿着数轴移动相应的距离。该随机过程可以由 $x(i+1) = x(i) + w(i)$ 描述。假设现在这个质点的坐标值为 $7$，通过数学期望可以得到下一次移动的距离平均为 $0$，当需要对位置进行反馈时，这个值不会提供任何有用的信息，因而说“移动的距离不可预测”；然而，由于位移的均值为 $0$，可以预测下一时刻质点最可能的位置坐标将保持在 $7$，即“下一时刻的位置是可以预测的”。</p>
+<p>假设驱动噪声 $\bm{w} = [\bm{w}_c,\,\bm{w}_d]$ 的各个分量相互独立，对于扰动动态，其状态 $\bm{x}_d$ 不失一般性地都会受到 $\bm{w}_d$ 的影响。设计输入扰动 $\bm{d}$ 时需要考虑扰动的注入点，换句话说，被控对象的哪些状态会受到扰动的影响？因此 $G_c$ 的设计应当根据可控动态的物理条件决定。</p>
 <h2 id="示例二阶系统建模" class="headerLink">
     <a href="#%e7%a4%ba%e4%be%8b%e4%ba%8c%e9%98%b6%e7%b3%bb%e7%bb%9f%e5%bb%ba%e6%a8%a1" class="header-mark"></a>示例：二阶系统建模</h2><p>我们以单自由度弹簧-质量系统为例展示可控动态和扰动动态的建模。设弹簧的特征角频率为 $\omega_0$，在控制加速度 $a_u$ 和扰动加速度 $a_d$ 的作用下，质点相对平衡位置的位移 $z$ 的微分方程为：</p>
 $$
@@ -261,12 +262,12 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-07-03</span>
+                <span>更新于 2023-07-06</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span><a class="link-to-mardown" href=/emc02-embeddedmodel/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/emc02-plant/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                     </span></div>
             <div class="post-info-share"></div>
         </div>
@@ -284,7 +285,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.115.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.115.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">

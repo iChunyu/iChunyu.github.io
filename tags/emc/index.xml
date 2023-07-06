@@ -6,10 +6,10 @@
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
             <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/emc/" rel="self" type="application/rss+xml" /><item>
     <title>模型嵌入控制（2）：被控对象建模</title>
-    <link>https://chunyu.site/emc02-embeddedmodel/</link>
+    <link>https://chunyu.site/emc02-plant/</link>
     <pubDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/emc02-embeddedmodel/</guid>
+    </author><guid>https://chunyu.site/emc02-plant/</guid>
     <description><![CDATA[<p>被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。</p>]]></description>
 </item><item>
     <title>模型嵌入控制（1）：简介与符号约定</title>
