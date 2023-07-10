@@ -191,80 +191,160 @@ ${\rm V}/\sqrt{ {\rm Hz} }$ 。
 ## MATLAB 源码
 
 ```matlab
-% Use LPSD mothod to plot power spectral density
-% [Pxx,f] = iLPSD(Data,fs,Jdes)
-%    Data --- Input data, processed by column
-%    fs   --- Sample frequency, unit: Hz
-%    Jdes --- Desired frequency points, default: 1000
-%    Pxx  --- One-sided PSD, unit: *^2/Hz
-%    f    --- Frequency points related to PSD points, unit: Hz
-%    Default window function is hanning window.
-% Demo:
-%    iLPSD(data,fs)
-%       Plot PSD using default settings.
-%    h = iLPSD(data,fs,Jdes)
-%       Plot PSD with desired points of 1000
-%    [Pxx,f] = iLPSD(data,fs)
-%       Return PSD points, not plot any figure
-
+% Use LPSD mothod to calculate power spectral density
+% Usage:
+%    h = iLPSD(data,fs,_)
+%    [pxx,f] = iLPSD(data,fs,_)
+% Required paramters:
+%    data --- input data, processed by column
+%    fs   --- sample frequency, unit: Hz
+% Optional paramters:
+%    Jdes --- desired frequency points, default: 1000
+%    Kdes --- desired number of segments, default: 100
+%    xi   --- overlap ratio, default: 0.5
+%    win  --- window function handle, default: @hann
+%    par  --- enable parallel compution, default: false
+%    type --- type of the sepctrum: PSD|RMS|Amp, default: PSD
+%    Extra paramters to control plotting are allowed (e.g. 'LineWidth')
+% Output paramters
+%    h    --- line handle of the plotted PSD
+%    pxx  --- [PSD] one-sided PSD, unit: *^2/Hz
+%             [RMS| Amp] RMS or amplitude, unit: *
+%    f    --- frequency points related to PSD points, unit: Hz
+%
 % Ref: Improved spectrum estimation from digitized time series on a logarithmic frequency axis
 %      Article DOI: 10.1016/j.measurement.2005.10.010
+%
+% For more information, see <a href="https://ichunyu.github.io/helps/functions/ilpsd"
+% >online documentation</a>.
 
-% XiaoCY 2020-04-21
+% XiaoCY 2019-02-23, first version (date from PPT report)
+% XiaoCY 2020-04-21, support matrix data: treated as columns
+% XiaoCY 2021-11-06, add inputParser to parse parameters
+% XiaoCY 2022-03-28, add parameters: 'parallel', 'type'
+% XiaoCY 2022-05-08, bug fix: window function in parallel mode
 
 %% Main
 function varargout = iLPSD(varargin)
 
-    nargoutchk(0,2);
-    narginchk(2,3);
+    % parse input paramters
+    p = inputParser;
+    p.FunctionName = 'iLPSD';
+    p.KeepUnmatched = true;
 
-    data = varargin{1};
-    fs = varargin{2};
-    if nargin == 3
-        Jdes = varargin{3};
-    else
-        Jdes = 1000;
-    end
+    p.addRequired('data');
+    p.addRequired('fs');
+    p.addParameter('Jdes',1000);
+    p.addParameter('Kdes',100);
+    p.addParameter('xi',0.5);
+    p.addParameter('window',@hann);
+    p.addParameter('parallel',false);
+    p.addParameter('type','PSD');
+    p.parse(varargin{:});
 
-    Kdes = 100;
-    ksai = 0.5;
-
+    % unpack necessary parameters
+    data = p.Results.data;
+    fs = p.Results.fs;
+    Jdes = p.Results.Jdes;
+    Kdes = p.Results.Kdes;
+    xi = p.Results.xi;
+    win = p.Results.window;
+    type = validatestring(p.Results.type,{'PSD','RMS','Amp'});
+    opts = p.Unmatched;
+    
+    % ensure input data as column vector(s)
     [N,nCol] = size(data);
     if N==1 && nCol~=1
-       data = data';
-       N = nCol;
-       nCol = 1;
+        data = data';
+        N = nCol;
+        nCol = 1;
     end
 
-    [f,L,m] = getFreqs(N,fs,Jdes,Kdes,ksai);
+    [f,L,m] = getFreqs(N,fs,Jdes,Kdes,xi);
 
     J = length(f);
     P = zeros(J,nCol);
-    for j = 1:J
-        Dj = floor((1-ksai)*L(j));
-        Kj = floor((N-L(j))/Dj+1);
-        w = hann(L(j));
-        C_PSD = 2/fs/sum(w.^2);
-        l = (0:L(j)-1)';
-        W1 = cos(-2*pi*m(j)/L(j).*l);
-        W2 = sin(-2*pi*m(j)/L(j).*l);
-        A = zeros(1,nCol);
-        for k = 0:Kj-1
-            G = data(k*Dj+1:k*Dj+L(j),:);
-            G = G-mean(G);        % G = detrend(G);
-            G = G.*w;
-            A = A + sum(G.*W1).^2+sum(G.*W2).^2;
+    if p.Results.parallel
+        parfor j = 1:J
+            Dj = floor((1-xi)*L(j));
+            Kj = floor((N-L(j))/Dj+1);
+            w = win(L(j));
+            l = (0:L(j)-1)';
+            W1 = cos(-2*pi*m(j)/L(j).*l);
+            W2 = sin(-2*pi*m(j)/L(j).*l);
+            A = zeros(1,nCol);
+            for k = 0:Kj-1
+                G = data(k*Dj+1:k*Dj+L(j),:);
+                G = G-mean(G);        % G = detrend(G);
+                G = G.*w;
+                A = A + sum(G.*W1).^2+sum(G.*W2).^2;
+            end
+            switch type
+                case 'PSD'
+                    P(j,:) = A/Kj*(2/fs/sum(w.^2));
+                case 'RMS'
+                    P(j,:) = A/Kj*(2/sum(w)^2);
+                otherwise
+                    P(j,:) = 2*A/Kj*(2/sum(w)^2);
+            end
         end
-        P(j,:) = A/Kj*C_PSD;
+    else
+        for j = 1:J
+            Dj = floor((1-xi)*L(j));
+            Kj = floor((N-L(j))/Dj+1);
+            w = win(L(j));
+            l = (0:L(j)-1)';
+            W1 = cos(-2*pi*m(j)/L(j).*l);
+            W2 = sin(-2*pi*m(j)/L(j).*l);
+            A = zeros(1,nCol);
+            for k = 0:Kj-1
+                G = data(k*Dj+1:k*Dj+L(j),:);
+                G = G-mean(G);        % G = detrend(G);
+                G = G.*w;
+                A = A + sum(G.*W1).^2+sum(G.*W2).^2;
+            end
+            switch type
+                case 'PSD'
+                    P(j,:) = A/Kj*(2/fs/sum(w.^2));
+                case 'RMS'
+                    P(j,:) = A/Kj*(2/sum(w)^2);
+                otherwise
+                    P(j,:) = 2*A/Kj*(2/sum(w)^2);
+            end
+        end
     end
 
     switch nargout
         case 0
-            PlotPSD(P,f)
+            loglog(f,sqrt(P),opts);
+            grid on
+            xlabel('Frequency [Hz]','interpreter','latex')
+            switch type
+                case 'PSD'
+                    ylabel('PSD [$\mathrm{*/\sqrt{Hz}}$]','interpreter','latex')
+                case 'RMS'
+                    ylabel('RMS [$\mathrm{*}$]','interpreter','latex')
+                otherwise
+                    ylabel('Amp [$\mathrm{*}$]','interpreter','latex')
+            end
         case 1
-            varargout{1} = PlotPSD(P,f);
+            varargout{1} = loglog(f,sqrt(P),opts);
+            grid on
+            xlabel('Frequency [Hz]','interpreter','latex')
+            switch type
+                case 'PSD'
+                    ylabel('PSD [$\mathrm{*/\sqrt{Hz}}$]','interpreter','latex')
+                case 'RMS'
+                    ylabel('RMS [$\mathrm{*}$]','interpreter','latex')
+                otherwise
+                    ylabel('Amp [$\mathrm{*}$]','interpreter','latex')
+            end
         case 2
-            varargout{1} = P;
+            if strcmp(type,'PSD')
+                varargout{1} = P;
+            else
+                varargout{1} = sqrt(P);
+            end
             varargout{2} = f;
         otherwise
             % Do Nothing
@@ -273,10 +353,10 @@ end
 
 %% Subfunctions
 % get logarithmic frequency points
-function [f,L,m] = getFreqs(N,fs,Jdes,Kdes,ksai)
+function [f,L,m] = getFreqs(N,fs,Jdes,Kdes,xi)
     fmin = fs/N;
     fmax = fs/2;
-    r_avg = fs/N*(1+(1-ksai)*(Kdes-1));
+    r_avg = fs/N*(1+(1-xi)*(Kdes-1));
 
     g = (N/2)^(1/(Jdes-1))-1;
 
@@ -308,17 +388,5 @@ function [f,L,m] = getFreqs(N,fs,Jdes,Kdes,ksai)
     f(f<0) = [];
     L(L<0) = [];
     m(m<0) = [];
-end
-
-% plot PSD
-function varargout = PlotPSD(P,f)
-    hLine = loglog(f,sqrt(P));
-    grid on
-    xlabel('Frequency (Hz)')
-    ylabel('PSD ([Unit]/Hz^{1/2})')
-
-    if nargout == 1
-        varargout{1} = hLine;
-    end
 end
 ```
