@@ -7,21 +7,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>模型嵌入控制（3）：不确定性表述 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型嵌入控制（3）：不确定性表述" />
-<meta property="og:description" content="针对被控对象建立的数学模型在使用时会受到各种不确定性的影响，从而产生模型误差影响状态预测。为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性表述。" />
+    <title>模型嵌入控制（3）：不确定性建模 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型嵌入控制（3）：不确定性建模" />
+<meta property="og:description" content="被控对象模型的各种不确定性会产生模型误差而影响状态预测，为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性建模。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chunyu.site/emc03-uncertainties/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-07-06T21:45:19+08:00" />
-<meta property="article:modified_time" content="2023-07-07T01:00:52+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-07-16T23:37:26+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
 
-<meta name="twitter:title" content="模型嵌入控制（3）：不确定性表述"/>
-<meta name="twitter:description" content="针对被控对象建立的数学模型在使用时会受到各种不确定性的影响，从而产生模型误差影响状态预测。为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性表述。"/>
+<meta name="twitter:title" content="模型嵌入控制（3）：不确定性建模"/>
+<meta name="twitter:description" content="被控对象模型的各种不确定性会产生模型误差而影响状态预测，为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性建模。"/>
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/emc03-uncertainties/" /><link rel="prev" href="https://chunyu.site/emc02-plant/" />
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/emc03-uncertainties/" /><link rel="prev" href="https://chunyu.site/emc02-plant/" /><link rel="next" href="https://chunyu.site/emc04-statepredictor/" />
 <link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
@@ -32,13 +32,13 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "模型嵌入控制（3）：不确定性表述",
+        "headline": "模型嵌入控制（3）：不确定性建模",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/chunyu.site\/emc03-uncertainties\/"
-        },"genre": "posts","keywords": "EMC, 模型嵌入控制","wordcount":  1871 ,
-        "url": "https:\/\/chunyu.site\/emc03-uncertainties\/","datePublished": "2023-07-06T21:45:19+08:00","dateModified": "2023-07-07T01:00:52+08:00","publisher": {
+        },"genre": "posts","keywords": "EMC, 模型嵌入控制","wordcount":  1854 ,
+        "url": "https:\/\/chunyu.site\/emc03-uncertainties\/","datePublished": "2023-07-06T21:45:19+08:00","dateModified": "2023-07-16T23:37:26+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -154,11 +154,11 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">模型嵌入控制（3）：不确定性表述</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">模型嵌入控制（3）：不确定性建模</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/embedded-model-control/"><i class="far fa-folder fa-fw"></i>Embedded Model Control</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-07-07">2023-07-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1871 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-07-06">2023-07-06</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-07-16">2023-07-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1854 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -181,7 +181,7 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>针对被控对象建立的数学模型在使用时会受到各种不确定性的影响，从而产生模型误差影响状态预测。为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性表述。</p>
+            </div><div class="content" id="content"><p>被控对象模型的各种不确定性会产生模型误差而影响状态预测，为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性建模。</p>
 <h2 id="鲁棒控制基础" class="headerLink">
     <a href="#%e9%b2%81%e6%a3%92%e6%8e%a7%e5%88%b6%e5%9f%ba%e7%a1%80" class="header-mark"></a>鲁棒控制基础</h2><p>鲁棒控制采用范数的形式对信号和系统进行描述，通过约束最不利情况来实现系统鲁棒性约束。不确定性的建模和考量将采用鲁棒控制的思路，因此先简要补充鲁棒控制的基础知识。</p>
 <h3 id="范数的引入" class="headerLink">
@@ -241,7 +241,7 @@ $$
 $$
 <p>则由 $M$ 和 $\Delta$ 构成的闭环系统稳定，并记 $\eta^{-1}$ 为增益裕度。</p>
 <h2 id="被控对象的不确定性" class="headerLink">
-    <a href="#%e8%a2%ab%e6%8e%a7%e5%af%b9%e8%b1%a1%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7" class="header-mark"></a>被控对象的不确定性</h2><p>在小增益定理的加持下，对于未知的 $\Delta$，我们可以将其看作最不利包络（加权函数）$W$ 与形式未知但 $\mathcal{H}_\infty$ 范数小于 $1$ 的 $\delta$ 的组合，即 $\Delta = W \delta$。于是 $M$-$\Delta$ 系统可以分解为 $MW$-$\delta$，环路稳定性可以根据 $\left\lVert MW \right\rVert_\infty$ 判断。因此，不确定性表述的核心在于其传递函数矩阵包络的确定。</p>
+    <a href="#%e8%a2%ab%e6%8e%a7%e5%af%b9%e8%b1%a1%e7%9a%84%e4%b8%8d%e7%a1%ae%e5%ae%9a%e6%80%a7" class="header-mark"></a>被控对象的不确定性</h2><p>在小增益定理的加持下，对于未知的 $\Delta$，我们可以将其看作最不利包络（加权函数）$W$ 与形式未知但 $\mathcal{H}_\infty$ 范数小于 $1$ 的 $\delta$ 的组合，即 $\Delta = W \delta$。于是 $M$-$\Delta$ 系统可以分解为 $MW$-$\delta$，环路稳定性可以根据 $\left\lVert MW \right\rVert_\infty$ 判断。因此，不确定性建模的核心在于其传递函数矩阵包络的确定。</p>
 <h3 id="参数不确定" class="headerLink">
     <a href="#%e5%8f%82%e6%95%b0%e4%b8%8d%e7%a1%ae%e5%ae%9a" class="header-mark"></a>参数不确定</h3><p>我们再次重复 <a href="https://chunyu.site/emc02-plant/" rel="">被控对象建模</a> 所讨论的可控动态模型的状态空间方程：</p>
 $$
@@ -316,7 +316,7 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-07-07</span>
+                <span>更新于 2023-07-16</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -334,12 +334,13 @@ $$
         </section>
     </div>
 
-    <div class="post-nav"><a href="/emc02-plant/" class="prev" rel="prev" title="模型嵌入控制（2）：被控对象建模"><i class="fas fa-angle-left fa-fw"></i>模型嵌入控制（2）：被控对象建模</a></div>
+    <div class="post-nav"><a href="/emc02-plant/" class="prev" rel="prev" title="模型嵌入控制（2）：被控对象建模"><i class="fas fa-angle-left fa-fw"></i>模型嵌入控制（2）：被控对象建模</a>
+            <a href="/emc04-statepredictor/" class="next" rel="next" title="模型嵌入控制（4）：状态预测器设计">模型嵌入控制（4）：状态预测器设计<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.115.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.115.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
