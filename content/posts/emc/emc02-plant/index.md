@@ -39,7 +39,7 @@ $${{< /math >}}
 
 {{< math >}}$$
 \left\{\begin{aligned}
-    & \bm{x}_c(i+1) = A_c \bm{x}_c(i) + B_c \Bigl( \bm{u}(i) + \bm{h}(\bm{x}_c(i) \Bigr) + \bm{d}(i) \\
+    & \bm{x}_c(i+1) = A_c \bm{x}_c(i) + B_c \Bigl( \bm{u}(i) + \bm{h}(\bm{x}_c(i)) \Bigr) + \bm{d}(i) \\
     & \bm{y}(i) = C_c \bm{x}_c(i) + C_d \bm{x}_d(i)
 \end{aligned}\right.
 $${{< /math >}}
