@@ -4,15 +4,15 @@
         <link>https://chunyu.site/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 16 Jul 2023 22:59:06 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 17 Jul 2023 00:29:04 &#43;0800</lastBuildDate>
             <atom:link href="https://chunyu.site/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>模型嵌入控制（5）：控制律设计</title>
     <link>https://chunyu.site/emc05-controllaw/</link>
-    <pubDate>Sun, 16 Jul 2023 22:59:06 &#43;0800</pubDate><author>
+    <pubDate>Mon, 17 Jul 2023 00:29:04 &#43;0800</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://chunyu.site/emc05-controllaw/</guid>
-    <description><![CDATA[<p>(WIP)</p>]]></description>
+    <description><![CDATA[<p>模型嵌入控制的控制律可以利用预测的状态和扰动实现反馈，此外，利用参考发生器还可以先验地给出前馈指令。本文将对控制律进行具体推导，实现模型嵌入控制的结构设计。</p>]]></description>
 </item><item>
     <title>模型嵌入控制（4）：状态预测器设计</title>
     <link>https://chunyu.site/emc04-statepredictor/</link>
