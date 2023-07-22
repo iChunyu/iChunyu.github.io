@@ -4,7 +4,14 @@
         <link>https://chunyu.site/categories/embedded-model-control/</link>
         <description>Embedded Model Control - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 17 Jul 2023 00:29:04 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/categories/embedded-model-control/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 22 Jul 2023 22:24:10 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/categories/embedded-model-control/" rel="self" type="application/rss+xml" /><item>
+    <title>模型嵌入控制（6）：带宽与极点配置</title>
+    <link>https://chunyu.site/emc06-poleplacement/</link>
+    <pubDate>Sat, 22 Jul 2023 22:24:10 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/emc06-poleplacement/</guid>
+    <description><![CDATA[<p>依据模型完成状态预测器和控制律设计后，控制器结构基本确定，环路性能将由参数决定。在分离原理的加持下，本文首先讨论理想控制环路和状态预测环路的带宽约束，最后给出极点配置的具体实现。</p>]]></description>
+</item><item>
     <title>模型嵌入控制（5）：控制律设计</title>
     <link>https://chunyu.site/emc05-controllaw/</link>
     <pubDate>Mon, 17 Jul 2023 00:29:04 &#43;0800</pubDate><author>
