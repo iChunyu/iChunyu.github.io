@@ -4,7 +4,14 @@
         <link>https://chunyu.site/posts/</link>
         <description>所有文章 | 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 22 Jul 2023 22:24:10 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>最小二乘法与参数估计</title>
+    <link>https://chunyu.site/leastsquare/</link>
+    <pubDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/leastsquare/</guid>
+    <description><![CDATA[<p>最小二乘法（Least-Squares Method）是一种常用的参数估计方法，本文将介绍最小二乘法的基本原理，并推导其递归形式，讨论时变参数的估计策略。</p>]]></description>
+</item><item>
     <title>模型嵌入控制（6）：带宽与极点配置</title>
     <link>https://chunyu.site/emc06-poleplacement/</link>
     <pubDate>Sat, 22 Jul 2023 22:24:10 &#43;0800</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://chunyu.site/fivepoints/</guid>
     <description><![CDATA[<p>五点法是采用五个样本点对数据进行处理的一类方法，可以对数据进行平滑或微分处理。本文将讨论五点法的基本思路，并介绍 LISA 团队使用五点法处理二阶微分时的改进。</p>]]></description>
-</item><item>
-    <title>LaTeX 常用宏包简介</title>
-    <link>https://chunyu.site/packages/</link>
-    <pubDate>Fri, 24 Mar 2023 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/packages/</guid>
-    <description><![CDATA[<p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>]]></description>
 </item></channel>
 </rss>

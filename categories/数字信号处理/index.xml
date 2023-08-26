@@ -4,7 +4,14 @@
         <link>https://chunyu.site/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</link>
         <description>数字信号处理 - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 31 May 2023 12:11:29 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+    <title>最小二乘法与参数估计</title>
+    <link>https://chunyu.site/leastsquare/</link>
+    <pubDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/leastsquare/</guid>
+    <description><![CDATA[<p>最小二乘法（Least-Squares Method）是一种常用的参数估计方法，本文将介绍最小二乘法的基本原理，并推导其递归形式，讨论时变参数的估计策略。</p>]]></description>
+</item><item>
     <title>航天器姿态测量与确定</title>
     <link>https://chunyu.site/attitude/</link>
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>

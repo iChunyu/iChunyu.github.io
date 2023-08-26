@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>最小二乘法 - 标签 - 某春雨的后花园</title>
+        <link>https://chunyu.site/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/</link>
+        <description>最小二乘法 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" rel="self" type="application/rss+xml" /><item>
+    <title>最小二乘法与参数估计</title>
+    <link>https://chunyu.site/leastsquare/</link>
+    <pubDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/leastsquare/</guid>
+    <description><![CDATA[<p>最小二乘法（Least-Squares Method）是一种常用的参数估计方法，本文将介绍最小二乘法的基本原理，并推导其递归形式，讨论时变参数的估计策略。</p>]]></description>
+</item></channel>
+</rss>
