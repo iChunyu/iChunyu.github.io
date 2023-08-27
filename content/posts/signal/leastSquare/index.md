@@ -42,13 +42,13 @@ $${{< /math >}}
 显然，当观测次数 {{< math >}}$i < n${{< /math >}} 时，方程数小于变量数，存在多解；当 {{< math >}}$i=n${{< /math >}} 且观测相互独立时，上述方程组可以定解；当 {{< math >}}$i > n${{< /math >}} 时，由于噪声的存在，方程通常是相互矛盾的，为了对参数 {{< math >}}$\bm{\theta}${{< /math >}} 进行估计，考虑误差的平方和最小，即：
 
 {{< math >}}$$
-\hat{\bm{\theta}}(i) = \mathop{\mathrm{argmin}}\limits_{\bm{\theta}} J(\bm{\theta},i) ,\quad J(\bm{\theta},i) = \frac{1}{2} \bigl( \Phi(i) \bm{\theta} - Y(i) \bigr)^\mathrm{T}\bigl( \Phi(i) \bm{\theta} - Y(i) \bigr)
+\hat{\bm{\theta}}(i) = \mathop{\mathrm{argmin}}\limits_{\bm{\theta}} J(\bm{\theta},i) ,\quad J(\bm{\theta},i) = \frac{1}{2} \bigl( Y(i) - \Phi(i) \bm{\theta} \bigr)^\mathrm{T}\bigl( Y(i) - \Phi(i) \bm{\theta} \bigr)
 $${{< /math >}}
 
 令上式关于 $\bm{\theta}$ 的导数为零，可得：
 
 {{< math >}}$$
-\frac{\partial J(i)}{\partial \bm{\theta}} = 0 \quad \Rightarrow \quad \Phi^\mathrm{T}(i) \Phi(i) \bm{\theta} = \Phi^\mathrm{T} Y(i)
+\frac{\partial J(\bm{\theta},i)}{\partial \bm{\theta}} = 0 \quad \Rightarrow \quad \Phi^\mathrm{T}(i) \Phi(i) \bm{\theta} = \Phi^\mathrm{T} Y(i)
 $${{< /math >}}
 
 由此可以解得：
@@ -62,7 +62,7 @@ $${{< /math >}}
 
 ## 递归最小二乘法
 
-如果将 {{< math >}}$i${{< /math >}} 看作离散时间系统的时间索引（从 0 开始计数），根据上面最小二乘法的表达式可以实时对参数进行估计。为此，我们通常需要将上式转化为递归形式，即递归最小二乘法（Recursive Least-Squares）。
+如果将 {{< math >}}$i${{< /math >}} 看作离散时间系统的时间索引（后面将从 0 开始计数），根据上面最小二乘法的表达式可以实时对参数进行估计。为此，我们通常需要将上式转化为递归形式，即递归最小二乘法（Recursive Least-Squares）。
 
 首先考虑将矩阵 {{< math >}}$\Phi^\mathrm{T}(i)\Phi(i)${{< /math >}} 进行分解：
 
@@ -155,10 +155,74 @@ $${{< /math >}}
 如果参数 {{< math >}}$\bm{\theta}${{< /math >}} 会随着时间发生缓慢的变化，我们在考虑误差可以对最近时刻的测量引入更高的权重。引入指数形式的遗忘因子 {{< math >}}$0 < \lambda \le 1${{< /math >}}，最小二乘法的代价函数变为：
 
 {{< math >}}$$
-J(\bm{\theta}, i) = \frac{1}{2} \bigl( \Phi(i) \bm{\theta} - Y(i) \bigr)^\mathrm{T} \Lambda \bigl( \Phi(i) \bm{\theta} - Y(i) \bigr) = \frac{1}{2} \sum_{k=0}^i \lambda^{i-k} \left( y(k) - \bm{\varphi}^\mathrm{T}(k) \bm{\theta} \right)^2
+J(\bm{\theta}, i) = \frac{1}{2} \bigl( \Phi(i) \bm{\theta} - Y(i) \bigr)^\mathrm{T} \Lambda(i) \bigl( \Phi(i) \bm{\theta} - Y(i) \bigr) = \frac{1}{2} \sum_{k=0}^i \lambda^{i-k} \left( y(k) - \bm{\varphi}^\mathrm{T}(k) \bm{\theta} \right)^2
 $${{< /math >}}
 
-相似的推导可以得到时变参数的最小二乘估计为：
+类似地，令代价函数对参数的偏导为零可得：
+
+{{< math >}}$$
+\frac{\partial J(\bm{\theta},i)}{\partial \bm{\theta}} = 0
+\quad \Rightarrow \quad
+\Phi^\mathrm{T}(i) \Lambda(i) \Phi(i) \bm{\theta} = \Phi^\mathrm{T}(i) \Lambda(i) Y(i)
+$${{< /math >}}
+
+其中，加权矩阵 {{< math >}}$\Lambda(i)${{< /math >}} 为对角矩阵：
+
+{{< math >}}$$
+\Lambda(i) = \begin{bmatrix} 
+\lambda^{i} & 0 & \cdots & 0 \\
+0 & \lambda^{i-1} & \cdots & 0 \\
+0 & \vdots  & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda^0
+\end{bmatrix}
+$${{< /math >}}
+
+于是参数估计值为：
+
+{{< math >}}$$
+\hat{\bm{\theta}}(i) = \bigl( \Phi^\mathrm{T}(i) \Lambda(i) \Phi(i) \bigr)^{-1} \Phi^\mathrm{T}(i) \Lambda(i) Y(i)
+$${{< /math >}}
+
+定义 {{< math >}}$P(i) =\bigl( \Phi^\mathrm{T}(i) \Lambda(i) \Phi(i) \bigr)^{-1}${{< /math >}}，有：
+
+{{< math >}}$$
+\begin{aligned}
+P^{-1}(i) &= \sum_{k=0}^i \lambda^{i-k}\bm{\varphi}(k) \bm{\varphi}^\mathrm{T}(k) \\
+& = \lambda \left( \sum_{k=0}^{i-1} \lambda^{i-k}\bm{\varphi}(k) \bm{\varphi}^\mathrm{T}(k) \right) + \bm{\varphi}(i) \bm{\varphi}^\mathrm{T}(i) \\
+&= \lambda P^{-1}(i-1) + \bm{\varphi}(i) \bm{\varphi}^\mathrm{T}(i)
+\end{aligned}
+$${{< /math >}}
+
+据此将参数估计写成迭代形式为：
+
+{{< math >}}$$
+\begin{aligned}
+\hat{\bm{\theta}}(i) &= P(i) \sum_{k=0}^{i} \lambda^{i-k} \bm{\varphi}(k) y(k) \\
+&= P(i) \left( \lambda \sum_{k=0}^{i-1} \lambda^{i-k} \bm{\varphi}(k) y(k) + \bm{\varphi}(i) y(i)  \right) \\
+&= P(i) \left( \lambda P^{-1}(i-1) \hat{\bm{\theta}}(i-1) + \bm{\varphi}(i)y(i) \right) \\
+&= P(i) \left( \left( P^{-1}(i) - \bm{\varphi}(i) \bm{\varphi}^\mathrm{T}(i) \right) \hat{\bm{\theta}}(i-1) + \bm{\varphi}(i)y(i) \right) \\
+&= \hat{\bm{\theta}}(i-1) + \underbrace{P(i) \bm{\varphi}(i)}_{K(i)} \left( y(i) - \bm{\varphi}^\mathrm{T}(i) \hat{\bm{\theta}}(i-1) \right)
+\end{aligned}
+$${{< /math >}}
+
+与没有遗忘因子的迭代具有完全相同的形式。进一步根据矩阵求逆公式考虑 {{< math >}}$P(i)${{< /math >}} 的递归方程为：
+
+{{< math >}}$$
+P(i) = \lambda^{-1} P(i-1) - \lambda^{-1} P(i-1) \bm{\varphi}(i) \left( I + \bm{\varphi}^\mathrm{T}(i) \lambda^{-1} P(i-1) \bm{\varphi}(i) \right)^{-1} \bm{\varphi}^\mathrm{T}(i) \lambda^{-1} P(i-1)
+$${{< /math >}}
+
+进一步有：
+
+{{< math >}}$$
+\begin{aligned}
+K(i) &= P(i) \bm{\varphi}(i) \\
+&= \lambda^{-1} P(i-1) \bm{\varphi}(i) \left( I - \left( I + \bm{\varphi}^\mathrm{T}(i) \lambda^{-1} P(i-1) \bm{\varphi}(i) \right)^{-1} \bm{\varphi}^\mathrm{T}(i) \lambda^{-1} P(i-1) \right) \\
+&= \lambda^{-1} P(i-1) \left( I + \bm{\varphi}^\mathrm{T}(i) \lambda^{-1} P(i-1) \bm{\varphi}(i) \right)^{-1} \\
+&= P(i-1) \left( \lambda + \bm{\varphi}^\mathrm{T}(i)P(i-1) \bm{\varphi}(i) \right)^{-1}
+\end{aligned}
+$${{< /math >}}
+
+整理后得到时变参数的最小二乘估计为：
 
 {{< math >}}$$
 \left\{\begin{aligned}
@@ -188,6 +252,6 @@ $${{< /math >}}
 $${{< /math >}}
 
 
-## 参考资料
+## 参考文献
 
 1. Karl Johan Åström, Björn Wittenmark. Adaptive Control. 2nd Edition. Dover Publications. 2008.
