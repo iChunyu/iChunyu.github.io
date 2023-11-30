@@ -12,7 +12,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chunyu.site/lyapunov/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-29T20:36:46+08:00" />
-<meta property="article:modified_time" content="2023-11-29T22:57:57+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+<meta property="article:modified_time" content="2023-11-30T23:19:49+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://chunyu.site/images/avatar.png"/>
@@ -38,8 +38,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/chunyu.site\/lyapunov\/"
-        },"genre": "posts","keywords": "Lyapunov, 直接法","wordcount":  1499 ,
-        "url": "https:\/\/chunyu.site\/lyapunov\/","datePublished": "2023-11-29T20:36:46+08:00","dateModified": "2023-11-29T22:57:57+08:00","publisher": {
+        },"genre": "posts","keywords": "Lyapunov, 直接法","wordcount":  1255 ,
+        "url": "https:\/\/chunyu.site\/lyapunov\/","datePublished": "2023-11-29T20:36:46+08:00","dateModified": "2023-11-30T23:19:49+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -149,7 +149,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-11-29">2023-11-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-11-29">2023-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1499 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-11-29">2023-11-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-11-30">2023-11-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1255 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -183,7 +183,7 @@ $$
 <h2 id="拉萨尔不变性原理" class="headerLink">
     <a href="#%e6%8b%89%e8%90%a8%e5%b0%94%e4%b8%8d%e5%8f%98%e6%80%a7%e5%8e%9f%e7%90%86" class="header-mark"></a>拉萨尔不变性原理</h2><p>某些系统的李雅普诺夫函数在求导之后丢失了某些状态变量，因而 $\dot{V}(\bm{x})$ 只能是半负定的。为了进一步证明系统是渐进稳定的，需要引入如下拉萨尔不变性原理（LaSalle&rsquo;s Invariance Principle）：</p>
 <p>假设 $V(\bm{x})$ 是系统 $\dot{\bm{x}} = f(\bm{x})$ 的李雅普诺夫函数。记满足 $\dot{V}(\bm{x})$ 的点构成集合 $\mathcal{V}$，且 $\mathcal{V}$ 的最大不变集只包含平衡点 $\underline{\bm{x}}$，则系统是渐进稳定的。</p>
-<p>为了定性地说明这一点，我们将李雅普诺夫函数想象成是一个碗状的曲面（例如二阶系统常取 $V(x_1,x_2) = \frac{1}{2} x_1^2 + \frac{1}{2} x_2^2$），当 $\dot{V}(x_1,x_2) < 0$ 时，$V$ 将逐渐趋近于 $0$，因而两个状态也都将收敛到原点，为渐进稳定。如果存在 $\dot{V}=0$，意味着这个碗状的曲面存在某个平坦的路径，因而当系统的状态恰好落在这个路径上时，$V$ 的值将不在发生变动，但状态可能在这个路径上移动。拉萨尔不变性指出，如果满足 $\dot{V}=0$ 的集合只有平衡点 $\underline{\bm{x}}$，那么状态只可能维持在平衡点，因此系统为渐进稳定。</p>
+<!-- 为了定性地说明这一点，我们将李雅普诺夫函数想象成是一个碗状的曲面（例如二阶系统常取 $V(x_1,x_2) = \frac{1}{2} x_1^2 + \frac{1}{2} x_2^2$），当 $\dot{V}(x_1,x_2) < 0$ 时，$V$ 将逐渐趋近于 $0$，因而两个状态也都将收敛到原点，为渐进稳定。如果存在 $\dot{V}=0$，意味着这个碗状的曲面存在某个平坦的路径，因而当系统的状态恰好落在这个路径上时，$V$ 的值将不在发生变动，但状态可能在这个路径上移动。拉萨尔不变性指出，如果满足 $\dot{V}=0$ 的集合只有平衡点 $\underline{\bm{x}}$，那么状态只可能维持在平衡点，因此系统为渐进稳定。 -->
 <h2 id="芭芭拉引理" class="headerLink">
     <a href="#%e8%8a%ad%e8%8a%ad%e6%8b%89%e5%bc%95%e7%90%86" class="header-mark"></a>芭芭拉引理</h2><p>在以自适应控制为例的场景下，我们更希望系统的跟踪误差收敛，而对系统中的可变参数放松约束，这就需要使用芭芭拉引理（Barbalat Lemma）：</p>
 <p>假设定义在 $t\ge 0$ 上的实值函数 $g(t)$ 一致连续，且满足</p>
@@ -206,7 +206,7 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-11-29</span>
+                <span>更新于 2023-11-30</span>
             </div>
             <div class="post-info-license"></div>
         </div>
