@@ -4,21 +4,7 @@
         <link>https://chunyu.site/tags/</link>
         <description>Tags - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 29 Nov 2023 20:36:46 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>Lyapunov</title>
-    <link>https://chunyu.site/tags/lyapunov/</link>
-    <pubDate>Wed, 29 Nov 2023 20:36:46 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/lyapunov/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>直接法</title>
-    <link>https://chunyu.site/tags/%E7%9B%B4%E6%8E%A5%E6%B3%95/</link>
-    <pubDate>Wed, 29 Nov 2023 20:36:46 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/%E7%9B%B4%E6%8E%A5%E6%B3%95/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/" rel="self" type="application/rss+xml" /><item>
     <title>参数估计</title>
     <link>https://chunyu.site/tags/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</link>
     <pubDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</pubDate><author>
@@ -73,6 +59,20 @@
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>MATLAB</title>
+    <link>https://chunyu.site/tags/matlab/</link>
+    <pubDate>Sat, 20 May 2023 18:54:52 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/matlab/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>滤波</title>
+    <link>https://chunyu.site/tags/%E6%BB%A4%E6%B3%A2/</link>
+    <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/%E6%BB%A4%E6%B3%A2/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

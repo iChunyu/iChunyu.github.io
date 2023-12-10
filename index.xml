@@ -4,16 +4,9 @@
         <link>https://chunyu.site/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 29 Nov 2023 20:36:46 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</lastBuildDate>
             <atom:link href="https://chunyu.site/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>李雅普诺夫稳定性</title>
-    <link>https://chunyu.site/lyapunov/</link>
-    <pubDate>Wed, 29 Nov 2023 20:36:46 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/lyapunov/</guid>
-    <description><![CDATA[<p>线性时不变系统的稳定性可以通过计算极点、绘制奈奎斯特图或伯德图等多种方式进行判定，对于非线性系统，通常采用李雅普诺夫稳定性判据。本文将简要介绍李雅普诺夫直接法，并介绍实践中常用的引理。</p>]]></description>
-</item><item>
     <title>最小二乘法与参数估计</title>
     <link>https://chunyu.site/leastsquare/</link>
     <pubDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</pubDate><author>
@@ -76,5 +69,12 @@
         <name>大春雨</name>
     </author><guid>https://chunyu.site/initplot/</guid>
     <description><![CDATA[<p>为了让 MATLAB 绘制的曲线好看，通常需要使用各种参数设置绘图样式，这会使得绘图代码重复且冗长。本文将介绍如何自定义 MATLAB 的默认绘图样式以简化绘图命令。</p>]]></description>
+</item><item>
+    <title>基于五点的数据处理算法</title>
+    <link>https://chunyu.site/fivepoints/</link>
+    <pubDate>Wed, 05 Apr 2023 15:44:26 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/fivepoints/</guid>
+    <description><![CDATA[<p>五点法是采用五个样本点对数据进行处理的一类方法，可以对数据进行平滑或微分处理。本文将讨论五点法的基本思路，并介绍 LISA 团队使用五点法处理二阶微分时的改进。</p>]]></description>
 </item></channel>
 </rss>
