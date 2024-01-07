@@ -11,7 +11,7 @@
 <meta property="og:description" content="线性时不变系统的稳定性可以通过计算极点、绘制奈奎斯特图或伯德图等多种方式进行判定，对于非线性系统，通常采用李雅普诺夫稳定性判据。本文将简要介绍李雅普诺夫直接法，并介绍实践中常用的引理。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://chunyu.site/lyapunov/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-11-29T20:36:46+08:00" />
+<meta property="article:published_time" content="2024-01-07T22:36:46+08:00" />
 <meta property="article:modified_time" content="2024-01-07T22:30:10+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
 
 <meta name="twitter:card" content="summary_large_image" />
@@ -36,8 +36,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https://chunyu.site/lyapunov/"
-        },"genre": "posts","keywords": "Lyapunov, 直接法","wordcount":  2131 ,
-        "url": "https://chunyu.site/lyapunov/","datePublished": "2023-11-29T20:36:46+08:00","dateModified": "2024-01-07T22:30:10+08:00","publisher": {
+        },"genre": "posts","keywords": "Lyapunov, 直接法","wordcount":  2150 ,
+        "url": "https://chunyu.site/lyapunov/","datePublished": "2024-01-07T22:36:46+08:00","dateModified": "2024-01-07T22:30:10+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -146,7 +146,7 @@
             <div class="post-meta-line">
                 <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-11-29">2023-11-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2024-01-07">2024-01-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2131 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2024-01-07">2024-01-07</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2024-01-07">2024-01-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2150 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -219,8 +219,8 @@ $$
 $$
 \lim_{t \to \infty} f(t) = 0
 $$
-<p>其中，函数 $f(t)$ 一致连续是指： $\forall \varepsilon > 0$，$\exist \delta > 0$，使得 $\forall \left\lvert t_1 - t_2 \right\rvert < \delta$ 时恒有 $\left\lvert f(t_1) - f(t_2) \right\rvert < \varepsilon$。对于实际的物理系统，状态的一致连续性通常都是可以保证的。</p>
-<p>在判断平衡点稳定性的时候，更常用的是芭芭拉引理的推论：如果标量函数 $V(t,\bm{x}(t))$ 同时满足（1）$V(t,\bm{x}(t))$ 存在下界；（2）$\dot{V}(t,\bm{x}(t))$ 是半负定的；（3）$\dot{V}(t,\bm{x}(t))$ 关于时间一致连续。则有 $\lim_{t \to \infty} \dot{V}(t,\bm{x}(t)) = 0$。</p>
+<p>其中，函数 $f(t)$ 一致连续是指： $\forall \varepsilon > 0$，$\exist \delta > 0$，使得 $\forall \left\lvert t_1 - t_2 \right\rvert < \delta$ 时恒有 $\left\lvert f(t_1) - f(t_2) \right\rvert < \varepsilon$。函数的一致连续性可以通过判断其导数是否有界来判定，对于实际的物理系统，状态的一致连续性通常都是可以保证的。</p>
+<p>在判断平衡点稳定性的时候，更常用的是芭芭拉引理的推论：如果标量函数 $V(\bm{x}(t))$ 同时满足（1）$V(\bm{x}(t))$ 存在下界；（2）$\dot{V}(\bm{x}(t))$ 是半负定的；（3）$\dot{V}(\bm{x}(t))$ 关于时间一致连续。则有 $\lim_{t \to \infty} \dot{V}(\bm{x}(t)) = 0$。</p>
 <p>我们可以用下面一阶系统的模型参考自适应控制（MRAC：Model Reference Adaptive Control）来说明芭芭拉引理的应用。</p>
 <p>设一阶系统的微分方程为：</p>
 $$

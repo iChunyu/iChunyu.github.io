@@ -92,9 +92,9 @@ $${{< /math >}}
 \lim_{t \to \infty} f(t) = 0
 $${{< /math >}}
 
-其中，函数 {{< math >}}$f(t)${{< /math >}} 一致连续是指： {{< math >}}$\forall \varepsilon > 0${{< /math >}}，{{< math >}}$\exist \delta > 0${{< /math >}}，使得 {{< math >}}$\forall \left\lvert t_1 - t_2 \right\rvert < \delta${{< /math >}} 时恒有 {{< math >}}$\left\lvert f(t_1) - f(t_2) \right\rvert < \varepsilon${{< /math >}}。对于实际的物理系统，状态的一致连续性通常都是可以保证的。
+其中，函数 {{< math >}}$f(t)${{< /math >}} 一致连续是指： {{< math >}}$\forall \varepsilon > 0${{< /math >}}，{{< math >}}$\exist \delta > 0${{< /math >}}，使得 {{< math >}}$\forall \left\lvert t_1 - t_2 \right\rvert < \delta${{< /math >}} 时恒有 {{< math >}}$\left\lvert f(t_1) - f(t_2) \right\rvert < \varepsilon${{< /math >}}。函数的一致连续性可以通过判断其导数是否有界来判定，对于实际的物理系统，状态的一致连续性通常都是可以保证的。
 
-在判断平衡点稳定性的时候，更常用的是芭芭拉引理的推论：如果标量函数 {{< math >}}$V(t,\bm{x}(t))${{< /math >}} 同时满足（1）{{< math >}}$V(t,\bm{x}(t))${{< /math >}} 存在下界；（2）{{< math >}}$\dot{V}(t,\bm{x}(t))${{< /math >}} 是半负定的；（3）{{< math >}}$\dot{V}(t,\bm{x}(t))${{< /math >}} 关于时间一致连续。则有 {{< math >}}$\lim_{t \to \infty} \dot{V}(t,\bm{x}(t)) = 0${{< /math >}}。
+在判断平衡点稳定性的时候，更常用的是芭芭拉引理的推论：如果标量函数 {{< math >}}$V(\bm{x}(t))${{< /math >}} 同时满足（1）{{< math >}}$V(\bm{x}(t))${{< /math >}} 存在下界；（2）{{< math >}}$\dot{V}(\bm{x}(t))${{< /math >}} 是半负定的；（3）{{< math >}}$\dot{V}(\bm{x}(t))${{< /math >}} 关于时间一致连续。则有 {{< math >}}$\lim_{t \to \infty} \dot{V}(\bm{x}(t)) = 0${{< /math >}}。
 
 我们可以用下面一阶系统的模型参考自适应控制（MRAC：Model Reference Adaptive Control）来说明芭芭拉引理的应用。
 
