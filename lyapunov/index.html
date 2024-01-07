@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>李雅普诺夫稳定性简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="李雅普诺夫稳定性简介" />
+<meta property="og:description" content="线性时不变系统的稳定性可以通过计算极点、绘制奈奎斯特图或伯德图等多种方式进行判定，对于非线性系统，通常采用李雅普诺夫稳定性判据。本文将简要介绍李雅普诺夫直接法，并介绍实践中常用的引理。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chunyu.site/lyapunov/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-29T20:36:46+08:00" />
+<meta property="article:modified_time" content="2024-01-07T22:30:10+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://chunyu.site/images/avatar.png" /><meta name="twitter:title" content="李雅普诺夫稳定性简介"/>
+<meta name="twitter:description" content="线性时不变系统的稳定性可以通过计算极点、绘制奈奎斯特图或伯德图等多种方式进行判定，对于非线性系统，通常采用李雅普诺夫稳定性判据。本文将简要介绍李雅普诺夫直接法，并介绍实践中常用的引理。"/>
+<meta name="application-name" content="某春雨的后花园">
+<meta name="apple-mobile-web-app-title" content="某春雨的后花园">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://chunyu.site/lyapunov/" /><link rel="prev" href="https://chunyu.site/leastsquare/" />
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/color.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "李雅普诺夫稳定性简介",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://chunyu.site/lyapunov/"
+        },"genre": "posts","keywords": "Lyapunov, 直接法","wordcount":  2131 ,
+        "url": "https://chunyu.site/lyapunov/","datePublished": "2023-11-29T20:36:46+08:00","dateModified": "2024-01-07T22:30:10+08:00","publisher": {
+            "@type": "Organization",
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https://chunyu.site/images/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
+                "@type": "Person",
+                "name": "大春雨"
+            },"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark'); window.theme = theme;   window.isDark = window.theme !== 'light' }
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+        window.switchThemeEventSet = new Set()
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="某春雨的后花园"><span id="desktop-header-typeit" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-select" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="切换主题">
+                        <option value="light">浅色</option>
+                        <option value="dark">深色</option>
+                        <option value="black">黑色</option>
+                        <option value="auto">跟随系统</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="某春雨的后花园"><span id="mobile-header-typeit" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-select" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="切换主题">
+                    <option value="light">浅色</option>
+                    <option value="dark">深色</option>
+                    <option value="black">黑色</option>
+                    <option value="auto">跟随系统</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本定义">基本定义</a></li>
+    <li><a href="#芭芭拉引理">芭芭拉引理</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">李雅普诺夫稳定性简介</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class="author fas fa-user-circle fa-fw"></span><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw"></i>控制理论基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-11-29">2023-11-29</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2024-01-07">2024-01-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2131 字&nbsp;<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本定义">基本定义</a></li>
+    <li><a href="#芭芭拉引理">芭芭拉引理</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>线性时不变系统的稳定性可以通过计算极点、绘制奈奎斯特图或伯德图等多种方式进行判定，对于非线性系统，通常采用李雅普诺夫稳定性判据。本文将简要介绍李雅普诺夫直接法，并介绍实践中常用的引理。</p>
+<h2 id="基本定义" class="headerLink">
+    <a href="#%e5%9f%ba%e6%9c%ac%e5%ae%9a%e4%b9%89" class="header-mark"></a>基本定义</h2><p>记自洽系统（Autonomous System）的微分方程为：</p>
+$$
+\dot{\bm{x}}(t) = f(\bm{x}(t)), \quad \bm{x}(0) = \bm{x}_0
+$$
+<p>设 $f(0)=0$，此时系统将不会发生动态变化，称 $\bm{x} = 0$ 是该系统的一个平衡点（Equilibrium）。考察系统在平衡点附近邻域的特性：对于任意 $\varepsilon > 0$，如果存在 $\delta > 0$，使得当系统的初始状态满足 $\left\lVert \bm{x}_0 \right\rVert < \delta$ 时，在 $t \ge 0$ 内均有 $\left\lVert \bm{x}(t) \right\rVert < \varepsilon$，则称该平衡点是稳定的（Stable）；进一步，如果随着时间的推移，有 $\lim_{t \to \infty} \left\lVert \bm{x}(t) \right\rVert = 0$，则称系统是局部渐进稳定的（Locally Asymptotically Stable）；更进一步，如果对于任意初始状态 $\bm{x}_0 \in \mathbb{R}^n$ 均有 $\lim_{t \to \infty} \left\lVert \bm{x}(t) \right\rVert = 0$，则称该平衡点是全局稳定的（Globally Asymptotically Stable）。反之，则称系统是不稳定的（Unstable）。</p>
+<p>我们进一步定义正定函数：假设函数 $V(\bm{x}):\, \mathbb{R}^n \to \mathbb{R}$ 在某个包含原点的定义域 $\mathcal{X}$ 内同时满足：</p>
+$$
+\left\{\begin{aligned}
+    V(\bm{x}) &= 0 ,\quad \bm{x} = 0 \\
+    V(\bm{x}) &> 0 ,\quad \bm{x} \ne 0,\; \bm{x} \in \mathcal{X}
+\end{aligned}\right.
+$$
+<p>则称函数 $V(\bm{x})$ 是正定的（Positive Definite）；如果 $\mathcal{X} = \mathbb{R}^n$，则称为全局正定（Globally Positive Definite）。特别地，如果第二个式子只能满足 $V(\bm{x}) \ge 0$，则称函数 $V(\bm{x})$ 为半正定的（Positive Semidefinite）。若将第二个条件改为 $V(x)<0$ 或 $V(\bm{x}) \le 0$，则分别称函数为负定（Negative Definite） 和半负定（Negative Semidefinite）。</p>
+<p>在上面的定义下，我们可以通过李雅普诺夫直接法（又称第二法）来判断平衡点的稳定性：对于自洽系统，如果存在一个连续可微的正定函数 $V(\bm{x}(t))$，进一步，如果有 $\dot{V}(\bm{x}(t))$ 是半负定的，则 $\bm{x}=0$ 是一个稳定的平衡点；如果 $\dot{V}(\bm{x}(t))$ 是负定的，则 $\bm{x}=0$ 是一个渐进稳定平衡点。相应的函数 $V(\bm{x}(t))$ 称为李雅普诺夫函数。</p>
+<p>下面我们用一个例子来说明李雅普诺夫稳定性判定。</p>
+<p>刚体的姿态运动可以使用四元数的微分方程表示为：</p>
+$$
+    \dot{\mathfrak{q}} = \frac{1}{2} \mathfrak{q} \otimes \bm{\omega}
+    = \frac{1}{2} \left[ \begin{gathered}
+        q_0 \\ \bm{q}
+    \end{gathered} \right] \otimes \left[ \begin{gathered}
+        0 \\ \bm{\omega}
+    \end{gathered} \right]
+    = \frac{1}{2} \left[ \begin{gathered}
+        - \bm{q}^{\mathrm{T}} \bm{\omega} \\
+        q_0 \bm{\omega} + \bm{q} \times \bm{\omega}
+    \end{gathered} \right]
+$$
+<p>其中四元数表示为 $\mathfrak{q} = [q_0, \bm{q}] = [q_0, q_1, q_2, q_3]$。考虑反馈的角速度为：</p>
+$$
+\bm{\omega} = -K \mathrm{sign}(q_0) \bm{q} ,\quad  K>0
+$$
+<p>此时姿态运动变为：</p>
+$$
+\dot{\mathfrak{q}} = \frac{1}{2} K \mathrm{sign}(q_0) \left[\begin{gathered}
+    \bm{q}^{\mathrm{T}} \bm{q} \\
+    -q_0 \bm{q}
+    \end{gathered}\right]
+$$
+<p>可知 $\mathfrak{q} = [\pm 1, 0, 0, 0]$ 是系统的平衡点。取正定函数：</p>
+$$
+V(\mathfrak{q}(t)) = 2 \left( 1 - \sqrt{1-\bm{q}^\mathrm{T} \bm{q}} \right) = 2 \left( 1 - \left\lvert q_0 \right\rvert \right)
+$$
+<p>可知</p>
+$$
+\dot{V}(\mathfrak{q}(t)) = - 2 \mathrm{sign}(q_0) \dot{q}_0 = - K \bm{q}^{\mathrm{T}} \bm{q}
+$$
+<p>为负定的。因此 $\mathfrak{q}=[\pm 1, 0, 0, 0]$ 是渐进稳定的平衡点。这种结合四元数标量符号的反馈策略称为有符号反馈，可用于姿态控制器设计。</p>
+<h2 id="芭芭拉引理" class="headerLink">
+    <a href="#%e8%8a%ad%e8%8a%ad%e6%8b%89%e5%bc%95%e7%90%86" class="header-mark"></a>芭芭拉引理</h2><p>实际在构造李雅普诺夫函数时经常会遇到 $\dot{V}(\bm{x}(t))$ 是半负定的情况，因而只能判断平衡点是稳定的。为了进一步了解部分状态的收敛特性，需要使用芭芭拉引理（Barbalat&rsquo;s Lemma）。</p>
+<p>假设定义在 $t\ge 0$ 上的实值函数 $f(t)$ 一致连续（Uniformly Continuous），且满足：</p>
+$$
+\lim_{T \to \infty} \,\int_0^T f(t) \,\mathrm{d}t < \infty
+$$
+<p>则有：</p>
+$$
+\lim_{t \to \infty} f(t) = 0
+$$
+<p>其中，函数 $f(t)$ 一致连续是指： $\forall \varepsilon > 0$，$\exist \delta > 0$，使得 $\forall \left\lvert t_1 - t_2 \right\rvert < \delta$ 时恒有 $\left\lvert f(t_1) - f(t_2) \right\rvert < \varepsilon$。对于实际的物理系统，状态的一致连续性通常都是可以保证的。</p>
+<p>在判断平衡点稳定性的时候，更常用的是芭芭拉引理的推论：如果标量函数 $V(t,\bm{x}(t))$ 同时满足（1）$V(t,\bm{x}(t))$ 存在下界；（2）$\dot{V}(t,\bm{x}(t))$ 是半负定的；（3）$\dot{V}(t,\bm{x}(t))$ 关于时间一致连续。则有 $\lim_{t \to \infty} \dot{V}(t,\bm{x}(t)) = 0$。</p>
+<p>我们可以用下面一阶系统的模型参考自适应控制（MRAC：Model Reference Adaptive Control）来说明芭芭拉引理的应用。</p>
+<p>设一阶系统的微分方程为：</p>
+$$
+\dot{y} = -a y + b u , \quad a > 0
+$$
+<p>其中 $u$ 和 $y$ 分别为系统的输入、输出，$a$ 和 $b$ 是未知的系统参数。给定参考模型为：</p>
+$$
+\dot{y}_m = -a_m y_m + b_m u_m ,\quad a_m > 0
+$$
+<p>其中 $a_m$ 和 $b_m$ 为已知参数。假设被控对象的控制指令为：</p>
+$$
+u = \theta_1 u_m - \theta_2 y
+$$
+<p>且定义系统输出与参考模型输出的误差为：</p>
+$$
+e = y - y_m
+$$
+<p>于是有：</p>
+$$
+\dot{e} = -a_m e - \left( b \theta_2 + a - a_m \right) y + \left( b\theta_1 - b_m \right) u_m
+$$
+<p>理想情况下，我们希望被控对象与参考模型完全对齐，即 $y = y_m$、$b\theta_1 = b_m$、$b\theta_2 = a_m - a$，因此 $\theta_1$ 和 $\theta_2$ 也应当自适应地进行调整。设</p>
+$$
+V(e,\theta_1,\theta_2) = \frac{1}{2} e^2 + \frac{1}{2 b \gamma} \left( b\theta_1 - b_m \right)^2 + \frac{1}{2 b \gamma} \left( b\theta_2 + a - a_m \right)^2 , \quad \gamma > 0
+$$
+<p>则有：</p>
+$$
+\dot{V}(e,\theta_1,\theta_2) = -a_m e^2 + \frac{1}{\gamma} \left( b \theta_1 - b_m \right) \left( \dot{\theta}_1 + \gamma u_m e \right) + \frac{1}{\gamma} \left( b\theta_2 + a-a_m \right)\left( \dot{\theta}_2 - \gamma y e \right)
+$$
+<p>如果取自适应律为：</p>
+$$
+\left\{\begin{aligned}
+    \dot{\theta}_1 &= - \gamma u_m e \\
+    \dot{\theta}_2 &= \gamma y e
+\end{aligned}\right.
+$$
+<p>则 $\dot{V}(e,\theta_1,\theta_2) = e^2/2$ 是半负定的。利用李雅普诺夫稳定性判据只能知道 $e=0$ 是个稳定的平衡点，即误差是有界的。</p>
+<p>对于实际的物理系统，状态及其微分都可以满足一致连续的条件，因此根据芭芭拉引理的推论，可知 $\lim_{t \to \infty}\dot{V}(e,\theta_1,\theta_2) = 0$。因此在给定的自适应律下，可以进一步判定模型的跟踪误差将收敛到 $0$，被控对象的输出将能够理想地跟随参考模型。注意，芭芭拉引理并没有给出参数的收敛特性，因而尽管输出表现了良好的跟随，内部的参数可能并不会收敛到真实值。</p>
+<!-- ## 拉萨尔不变性原理 -->
+<!---->
+<!-- 某些系统的李雅普诺夫函数在求导之后丢失了某些状态变量，因而 $\dot{V}(\bm{x})$ 只能是半负定的。为了进一步证明系统是渐进稳定的，需要引入如下拉萨尔不变性原理（LaSalle's Invariance Principle）： -->
+<!---->
+<!-- 假设 $V(\bm{x})$ 是系统 $\dot{\bm{x}} = f(\bm{x})$ 的李雅普诺夫函数。记满足 $\dot{V}(\bm{x})$ 的点构成集合 $\mathcal{V}$，且 $\mathcal{V}$ 的最大不变集只包含平衡点 $\bm{x}$，则系统是渐进稳定的。 -->
+<h2 id="参考文献" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+<li>Karl Johan Åström, Björn Wittenmark. Adaptive Control. 2nd Edition. Dover Publications. 2008.</li>
+<li>Enrico Canuto, Carlo Novara, Luca Massotti, et al. Spacecraft Dynamics and Control: The Embedded Model Control Approach. Butterworth-Heinemann. 2018.</li>
+<li>Naira Hovakimyan, Chengyu Gao. $\mathcal{L}_1$ Adaptive Control Theory: Guaranteed Robustness with Fast Adaptation. Society for Industrial and Applied Mathematics. 2010.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-01-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/lyapunov/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share"></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/lyapunov/">Lyapunov</a>,&nbsp;<a href="/tags/%E7%9B%B4%E6%8E%A5%E6%B3%95/">直接法</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/leastsquare/" class="prev" rel="prev" title="最小二乘法与参数估计"><i class="fas fa-angle-left fa-fw"></i>最小二乘法与参数估计</a></div>
+</div>
+</article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.121.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div><script>
+                    if('serviceWorker' in navigator) {
+                        navigator.serviceWorker
+                            .register('/sw.min.js', { scope: '/' })
+                            .then(function(registration) {
+                            });
+                
+                        navigator.serviceWorker
+                            .ready
+                            .then(function(registration) {
+                            });
+                    }
+                </script></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/js/katex.min.js" defer></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/js/theme.min.js" defer></script></div>
+</body>
+
+</html>
