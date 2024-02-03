@@ -170,7 +170,7 @@ $${{< /math >}}
 带阻尼的单摆系统可以由如下微分方程进行描述：
 
 {{< math >}}$$
-mgl \ddot{\theta} = - mg \sin \theta - kl \theta
+ml \ddot{\theta} = - mg \sin \theta - kl \dot{\theta}
 $${{< /math >}}
 
 取状态变量 {{< math >}}$x_1=\theta${{< /math >}}、{{< math >}}$x_2 = \dot{\theta}${{< /math >}}，则系统的状态空间方程可写为：
