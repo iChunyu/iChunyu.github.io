@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>reStructuredText - 标签 - 某春雨的后花园</title>
+        <title>ReStructuredText - 标签 - 某春雨的后花园</title>
         <link>https://chunyu.site/tags/restructuredtext/</link>
-        <description>reStructuredText - 标签 - 某春雨的后花园</description>
+        <description>ReStructuredText - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
             <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 13 Apr 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/restructuredtext/" rel="self" type="application/rss+xml" /><item>
     <title>reStructuredText 简介</title>

@@ -4,7 +4,14 @@
         <link>https://chunyu.site/posts/</link>
         <description>所有文章 | 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>系统频率响应估计</title>
+    <link>https://chunyu.site/freqrespest/</link>
+    <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/freqrespest/</guid>
+    <description><![CDATA[<p>系统的频率响应是控制器设计的重要依据之一，在工程上，我们常使用扫频测试来获得系统的幅频响应和相频响应，以构建经验传递函数（Empirical Transfer Functions）。本文将简要讨论系统频率响应的估计算法。</p>]]></description>
+</item><item>
     <title>李雅普诺夫稳定性简介</title>
     <link>https://chunyu.site/lyapunov/</link>
     <pubDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://chunyu.site/attitude/</guid>
     <description><![CDATA[<p>航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。</p>]]></description>
-</item><item>
-    <title>MATLAB 自定义默认绘图样式</title>
-    <link>https://chunyu.site/initplot/</link>
-    <pubDate>Sat, 20 May 2023 18:54:52 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/initplot/</guid>
-    <description><![CDATA[<p>为了让 MATLAB 绘制的曲线好看，通常需要使用各种参数设置绘图样式，这会使得绘图代码重复且冗长。本文将介绍如何自定义 MATLAB 的默认绘图样式以简化绘图命令。</p>]]></description>
 </item></channel>
 </rss>

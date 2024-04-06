@@ -4,7 +4,28 @@
         <link>https://chunyu.site/tags/</link>
         <description>Tags - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>幅频响应</title>
+    <link>https://chunyu.site/tags/%E5%B9%85%E9%A2%91%E5%93%8D%E5%BA%94/</link>
+    <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/%E5%B9%85%E9%A2%91%E5%93%8D%E5%BA%94/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>经验传递函数</title>
+    <link>https://chunyu.site/tags/%E7%BB%8F%E9%AA%8C%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/</link>
+    <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/%E7%BB%8F%E9%AA%8C%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>相频响应</title>
+    <link>https://chunyu.site/tags/%E7%9B%B8%E9%A2%91%E5%93%8D%E5%BA%94/</link>
+    <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/%E7%9B%B8%E9%A2%91%E5%93%8D%E5%BA%94/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Lyapunov</title>
     <link>https://chunyu.site/tags/lyapunov/</link>
     <pubDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</pubDate><author>
@@ -52,27 +73,6 @@
     <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://chunyu.site/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>航天器</title>
-    <link>https://chunyu.site/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/</link>
-    <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>姿态测量</title>
-    <link>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/</link>
-    <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>姿态确定</title>
-    <link>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</link>
-    <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
