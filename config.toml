@@ -594,9 +594,9 @@ enableGitInfo = true
       id = ""
     #  Umami Analytics
     [params.analytics.umami]
-      data_website_id = ""
-      src = ""
-      data_domains = ""
+      data_website_id = "ce258e61-9ff3-448b-849f-9a0be03eb59b"
+      src = "https://analytics.us.umami.is/script.js"
+      data_domains = "chunyu.site"
     #  Plausible Analytics
     [params.analytics.plausible]
       data_domain = ""
