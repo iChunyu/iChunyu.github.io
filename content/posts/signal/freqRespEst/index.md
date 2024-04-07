@@ -68,18 +68,18 @@ $${{< /math >}}
 {{< image src="./demo_results.png" caption="经验传递函数估计结果" width="60%" >}}
 
 ```matlab
-% mdl = my_spafdr(y, u, fs, f)
+% mdl = my_spafdr(y, u, f, fs)
 % A simplifed function for MATLAB `spafdr` used for algorithm demonstration
 % ASSUME: SISO system, meaning that y and u are scalar input (recorded as column vectors)
 %    y --- [column vector] system output
 %    u --- [column vector] system input
-%   fs --- [Hz]sampling frequency
 %   fr --- [Hz, column vector] frequency bins where to get system response
+%   fs --- [Hz]sampling frequency
 
 % XiaoCY 2024-04-06
 
 %%
-function mdl = my_spafdr(y, u, fs, fr)
+function mdl = my_spafdr(y, u, fr, fs)
     % y and u must be the same length, but I don't check here
     nfft = length(y);
 
@@ -101,7 +101,7 @@ function mdl = my_spafdr(y, u, fs, fr)
         idx = abs(f - fr(k)) < fres(k);
         
         % set weighting function
-        weight = cos((f(idx)-fr(k))/fr(k)*pi/2);
+        weight = cos((f(idx)-fr(k))/fres(k)*pi/2);
         % weight = weight / sum(weight);            % not necessary here, we will divide this common factor
 
         % calculate weight-averaged correlation
