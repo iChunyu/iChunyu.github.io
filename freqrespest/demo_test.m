@@ -40,7 +40,7 @@ fres = 0.1;
 fr = (fstart:fres:fstop)';
 
 H11 = spafdr(iddata(y, u, 1/fs), [], 2*pi*fr);
-H12 = my_spafdr(y, u, fs, fr);
+H12 = my_spafdr(y, u, fr, fs);
 
 figure
 bode(H11, H12, H, {fstart*2*pi, fstop*2*pi})
@@ -49,7 +49,7 @@ bode(H11, H12, H, {fstart*2*pi, fstop*2*pi})
 fr = logspace(log10(fstart), log10(fstop), 100)';
 
 H21 = spafdr(iddata(y, u, 1/fs), [], 2*pi*fr);
-H22 = my_spafdr(y, u, fs, fr);
+H22 = my_spafdr(y, u, fr, fs);
 
 figure
 bode(H21, H22, H, {fstart*2*pi, fstop*2*pi})
