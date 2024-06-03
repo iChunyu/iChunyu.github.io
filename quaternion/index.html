@@ -6,23 +6,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>四元数与三维旋转 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="四元数与三维旋转" />
-<meta property="og:description" content="复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://chunyu.site/quaternion/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-03-16T14:32:58+08:00" />
-<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://chunyu.site/images/avatar.png" /><meta name="twitter:title" content="四元数与三维旋转"/>
-<meta name="twitter:description" content="复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。"/>
+    <meta name="robots" content="noodp" /><title>四元数与三维旋转 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/quaternion/">
+  <meta property="og:site_name" content="某春雨的后花园">
+  <meta property="og:title" content="四元数与三维旋转">
+  <meta property="og:description" content="复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-03-16T14:32:58+08:00">
+    <meta property="article:modified_time" content="2023-06-29T11:56:55+08:00">
+    <meta property="article:tag" content="四元数">
+    <meta property="article:tag" content="旋转">
+    <meta property="og:image" content="https://chunyu.site/images/avatar.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://chunyu.site/images/avatar.png">
+  <meta name="twitter:title" content="四元数与三维旋转">
+  <meta name="twitter:description" content="复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。">
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
 <link rel="canonical" href="https://chunyu.site/quaternion/" /><link rel="prev" href="https://chunyu.site/vectortransform/" /><link rel="next" href="https://chunyu.site/newton2kepler/" />
-<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
     
@@ -47,9 +54,11 @@
             },"description": ""
     }</script></head>
 
-<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+
+<body data-instant-intensity="viewport" ><script type="text/javascript">
         function setTheme(theme) {
           document.body.setAttribute('theme', theme); 
+          document.documentElement.className = theme;
           document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
           if (theme === 'light') {
             document.documentElement.classList.remove('tw-dark')
@@ -61,8 +70,23 @@
         }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
-        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        if (window.localStorage && localStorage.getItem('theme')) {
+            let theme = localStorage.getItem('theme');
+            if (theme === 'light' || theme === 'dark') {
+            setTheme(theme);
+            } else {
+                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    setTheme('dark');
+                } else {
+                    setTheme('light');
+                }
+            }
+         } else { 
+            if ('auto' === 'light' || 'auto' === 'dark') 
+                setTheme('auto'), saveTheme('auto'); 
+            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+        }
+        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
         window.switchThemeEventSet = new Set()
     </script>
@@ -99,7 +123,6 @@
                     <select class="color-theme-select" id="theme-select-desktop" aria-label="切换主题">
                         <option value="light">浅色</option>
                         <option value="dark">深色</option>
-                        <option value="black">黑色</option>
                         <option value="auto">跟随系统</option>
                     </select>
                 </button></div>
@@ -142,7 +165,6 @@
                 <select class="color-theme-select" id="theme-select-mobile" aria-label="切换主题">
                     <option value="light">浅色</option>
                     <option value="dark">深色</option>
-                    <option value="black">黑色</option>
                     <option value="auto">跟随系统</option>
                 </select>
             </button></div>
@@ -166,9 +188,9 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title animate__animated animate__flipInX">四元数与三维旋转</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">四元数与三维旋转</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img src="https://chunyu.site/images/avatar.png" alt="大春雨 avatar" class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>奇妙的数学</a></span></div>
             <div class="post-meta-line"><svg class="icon"
@@ -194,38 +216,27 @@
 </nav></div>
             </div><div class="content" id="content"><p>复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。</p>
 <h2 id="复数与二维旋转" class="headerLink">
-    <a href="#%e5%a4%8d%e6%95%b0%e4%b8%8e%e4%ba%8c%e7%bb%b4%e6%97%8b%e8%bd%ac" class="header-mark"></a>复数与二维旋转</h2><p>在平面参考系 $\mathscr{E} = \{\vec{e}_1, \vec{e}_2 \}$ 中，设矢量 $\vec{a}$ 的坐标为 $\bm{a} = [a_1, a_2]^\mathrm{T}$。先将参考系基矢分别映射为复平面的实轴和虚轴，则矢量的坐标可以用复数表示为</p>
+    <a href="#%e5%a4%8d%e6%95%b0%e4%b8%8e%e4%ba%8c%e7%bb%b4%e6%97%8b%e8%bd%ac" class="header-mark" aria-label="Header mark for '复数与二维旋转'"></a>复数与二维旋转</h2><p>在平面参考系 $\mathscr{E} = \{\vec{e}_1, \vec{e}_2 \}$ 中，设矢量 $\vec{a}$ 的坐标为 $\bm{a} = [a_1, a_2]^\mathrm{T}$。先将参考系基矢分别映射为复平面的实轴和虚轴，则矢量的坐标可以用复数表示为</p>
 $$
 \bm{a} = a_1 + a_2 i = a \mathrm{e}^{i \alpha}
 $$
 <div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>
-            提示
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>提示<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">我们之前在 <a href="https://chunyu.site/vectortransform/" target="_blank" rel="noopener noreferrer">坐标变换与矢量旋转</a> 中指出矢量的坐标应当与参考系联系起来，即将参考系作为坐标的上标。在本文的大部分讨论中只涉及一个参考系，故省略上标表示，仅在有必要的情况下显式标记。</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">我们之前在 <a href="https://chunyu.site/vectortransform/" target="_blank" rel="noopener noreferrer">坐标变换与矢量旋转</a> 中指出矢量的坐标应当与参考系联系起来，即将参考系作为坐标的上标。在本文的大部分讨论中只涉及一个参考系，故省略上标表示，仅在有必要的情况下显式标记。</div></div></div>
 <p>其中 $a$ 为矢量 $\vec{a}$ 的模长，$\alpha$ 为其与实轴（即 $\vec{e}_1$）的夹角。利用指数的计算规则，将 $\vec{a}$ 逆时针旋转 $\varphi$ 后得到的向量 $\vec{b}$ 在同一参考系下的坐标可以表示为</p>
 $$
 \bm{b} = a \mathrm{e}^{i (\alpha+\varphi)} = \mathrm{e}^{i \varphi} a \mathrm{e}^{i \alpha} = \mathrm{e}^{i \varphi} \bm{a} 
 $$
 <p>显然，单位模长的复数 $\mathrm{e}^{i\varphi}$ 可以很方便地处理平面内矢量的旋转。通常的复数只有一个实部和一个虚部，也就是只有两个自由度。然而空间旋转为三个自由度，因此需要对复数进行扩充，就有了本文将重点讨论的四元数。</p>
 <h2 id="矩阵形式的旋转" class="headerLink">
-    <a href="#%e7%9f%a9%e9%98%b5%e5%bd%a2%e5%bc%8f%e7%9a%84%e6%97%8b%e8%bd%ac" class="header-mark"></a>矩阵形式的旋转</h2><p>在正式讨论四元数之前，有必要先推导矩阵形式下的矢量旋转，其结论将与后面四元数形式的旋转紧密结合。</p>
+    <a href="#%e7%9f%a9%e9%98%b5%e5%bd%a2%e5%bc%8f%e7%9a%84%e6%97%8b%e8%bd%ac" class="header-mark" aria-label="Header mark for '矩阵形式的旋转'"></a>矩阵形式的旋转</h2><p>在正式讨论四元数之前，有必要先推导矩阵形式下的矢量旋转，其结论将与后面四元数形式的旋转紧密结合。</p>
 <p>欧拉定理告诉我们，空间内的任意旋转都可以等价为绕一个方向旋转一个角度。设任意矢量 $\vec{a}$ 绕单位矢量 $\vec{v}$ 旋转 $\varphi$ 角度后得到 $\vec{b}$，如下图所示</p>
-<figure><a class="lightgallery" href="./rotation.png" title="./rotation.png" data-thumbnail="./rotation.png" data-sub-html="<h2>向量旋转的分解</h2>">
-        <img
-            
-            loading="lazy"
-            src="./rotation.png"
-            srcset="./rotation.png, ./rotation.png 1.5x, ./rotation.png 2x"
-            alt="./rotation.png" width="30%" >
-    </a><figcaption class="image-caption">向量旋转的分解</figcaption>
+<figure><a class="lightgallery" href="./rotation.png" title="" data-thumbnail="./rotation.png" data-sub-html="<h2>向量旋转的分解</h2>"><img  loading="lazy" src="./rotation.png"  sizes="auto"   width="30%"></a><figcaption class="image-caption">向量旋转的分解</figcaption>
     </figure>
 <p>我们将矢量 $\vec{a}$ 分解为平行于 $\vec{v}$ 的 $\vec{a}_\parallel$ 和垂直于 $\vec{v}$ 的 $\vec{a}_\perp$，分别将其旋转后组合即可得到 $\vec{b}$。</p>
 <p>平行于转轴的分量 $\vec{a}_\parallel$ 旋转后保持不变，即</p>
@@ -259,7 +270,7 @@ $$
 R_b^a = \left(1-\cos\varphi\right)\bm{v} \bm{v}^\mathrm{T} + \cos\varphi I + \sin\varphi \bm{v}\times
 $$
 <h2 id="四元数基本运算" class="headerLink">
-    <a href="#%e5%9b%9b%e5%85%83%e6%95%b0%e5%9f%ba%e6%9c%ac%e8%bf%90%e7%ae%97" class="header-mark"></a>四元数基本运算</h2><p>四元数由一个实部和三个虚部构成，设三个虚部分别为 $i,j,k$，其满足</p>
+    <a href="#%e5%9b%9b%e5%85%83%e6%95%b0%e5%9f%ba%e6%9c%ac%e8%bf%90%e7%ae%97" class="header-mark" aria-label="Header mark for '四元数基本运算'"></a>四元数基本运算</h2><p>四元数由一个实部和三个虚部构成，设三个虚部分别为 $i,j,k$，其满足</p>
 $$
 i^2 = j^2 = k^2 = ijk = -1
 $$
@@ -299,7 +310,7 @@ $$
 $$
 <p>其中 $\mathfrak{q}^* = [q_0, -\bm{q}]$ 为 $\mathfrak{q} = [q_0, \bm{q}]$ 的共轭。特别地，单位四元数 $|\mathfrak{q}| = 1$ 的逆与共轭相等，即 $\mathfrak{q}^{-1}=\mathfrak{q}^*$，这另上式最后的等号为 $1$ 即可以得出。</p>
 <h2 id="四元数下的旋转" class="headerLink">
-    <a href="#%e5%9b%9b%e5%85%83%e6%95%b0%e4%b8%8b%e7%9a%84%e6%97%8b%e8%bd%ac" class="header-mark"></a>四元数下的旋转</h2><p>为了推导四元数与旋转之家的关系，不妨分别看看四元数乘以不同矢量的效果。在给定参考系下，设四元数矢量部分的坐标为 $\bm{q}$ ，将四元数表示为 $\mathfrak{q} = [q_0, \bm{q}]$。同样，将矢量 $\bm{a}$ 分解为平行于 $\bm{q}$ 的分量 $\bm{a}_\parallel$ 和垂直分量 $\bm{a}_\perp$。</p>
+    <a href="#%e5%9b%9b%e5%85%83%e6%95%b0%e4%b8%8b%e7%9a%84%e6%97%8b%e8%bd%ac" class="header-mark" aria-label="Header mark for '四元数下的旋转'"></a>四元数下的旋转</h2><p>为了推导四元数与旋转之家的关系，不妨分别看看四元数乘以不同矢量的效果。在给定参考系下，设四元数矢量部分的坐标为 $\bm{q}$ ，将四元数表示为 $\mathfrak{q} = [q_0, \bm{q}]$。同样，将矢量 $\bm{a}$ 分解为平行于 $\bm{q}$ 的分量 $\bm{a}_\parallel$ 和垂直分量 $\bm{a}_\perp$。</p>
 <p>四元数平行分量的乘积为：</p>
 $$
 \mathfrak{q} \otimes \bm{a}_\parallel = 
@@ -404,19 +415,15 @@ $$
 \end{aligned}
 $$
 <div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>
-            注意
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>注意<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">本文推导的 $R(\mathfrak{q}_b^a)=R_b^a$ 确保了上下脚标的一致性，并且满足矩阵乘法与四元数乘法的等价表述（因此四元数也可以用于坐标变换）。在一些工程应用中，四元数 $\mathfrak{q}^a_b$ 通常只用来描述姿态，而方向余弦矩阵 $\mathrm{DCM} = R^b_a = R^\mathrm{T}(\mathfrak{q}_b^a)$ 只用于坐标变换。因此会出现与上式不同的转换算法（例如 Simulink 中的 <a href="https://ww2.mathworks.cn/help/aeroblks/quaternionstodirectioncosinematrix.html#responsive_offcanvas" target="_blank" rel="noopener noreferrer">四元数转化模块</a>），使用时应当注意。</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">本文推导的 $R(\mathfrak{q}_b^a)=R_b^a$ 确保了上下脚标的一致性，并且满足矩阵乘法与四元数乘法的等价表述（因此四元数也可以用于坐标变换）。在一些工程应用中，四元数 $\mathfrak{q}^a_b$ 通常只用来描述姿态，而方向余弦矩阵 $\mathrm{DCM} = R^b_a = R^\mathrm{T}(\mathfrak{q}_b^a)$ 只用于坐标变换。因此会出现与上式不同的转换算法（例如 Simulink 中的 <a href="https://ww2.mathworks.cn/help/aeroblks/quaternionstodirectioncosinematrix.html#responsive_offcanvas" target="_blank" rel="noopener noreferrer">四元数转化模块</a>），使用时应当注意。</div></div></div>
 <h2 id="连续旋转的讨论" class="headerLink">
-    <a href="#%e8%bf%9e%e7%bb%ad%e6%97%8b%e8%bd%ac%e7%9a%84%e8%ae%a8%e8%ae%ba" class="header-mark"></a>连续旋转的讨论</h2><p>一个物体多次旋转，旋转矩阵（或四元数）应当是左乘还是右乘？在 <a href="https://chunyu.site/vectortransform/" rel="">坐标变换与矢量旋转</a> 中我们给出的结论是右乘（同参考资料1），而按照这次推导的逻辑：$\bm{v}_0$ 旋转一次得到 $\bm{v}_1 = R_1 \bm{v}_0$，再将 $\bm{v}_1$ 旋转得到 $\bm{v}_2 = R_2 \bm{v}_1 = R_2 R_1 \bm{v}_0$……以此类推，连续转动时似乎应当左乘（同参考资料2），与之前的结论相反。这应当作何解释？</p>
+    <a href="#%e8%bf%9e%e7%bb%ad%e6%97%8b%e8%bd%ac%e7%9a%84%e8%ae%a8%e8%ae%ba" class="header-mark" aria-label="Header mark for '连续旋转的讨论'"></a>连续旋转的讨论</h2><p>一个物体多次旋转，旋转矩阵（或四元数）应当是左乘还是右乘？在 <a href="https://chunyu.site/vectortransform/" rel="">坐标变换与矢量旋转</a> 中我们给出的结论是右乘（同参考资料1），而按照这次推导的逻辑：$\bm{v}_0$ 旋转一次得到 $\bm{v}_1 = R_1 \bm{v}_0$，再将 $\bm{v}_1$ 旋转得到 $\bm{v}_2 = R_2 \bm{v}_1 = R_2 R_1 \bm{v}_0$……以此类推，连续转动时似乎应当左乘（同参考资料2），与之前的结论相反。这应当作何解释？</p>
 <ul>
 <li>两者的关注点不同</li>
 </ul>
@@ -429,7 +436,7 @@ $$
 
 $$
 <h2 id="参考文献" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark" aria-label="Header mark for '参考文献'"></a>参考文献</h2><ol>
 <li>E. Canuto, C. Novara, D. Carlucci, C.P. Montenegro, L. Massotti, Spacecraft Dynamics and Control: The Embedded Model Control Approach, Butterworth-Heinemann, 2018.</li>
 <li>Krasjet, <a href="https://github.com/Krasjet/quaternion" target="_blank" rel="noopener noreferrer">A brief introduction to the quaternions and its applications in 3D geometry</a>.</li>
 <li>3Blue1Brown, <a href="https://www.bilibili.com/video/BV1SW411y7W1" target="_blank" rel="noopener noreferrer">四元数的可视化</a>.</li>
@@ -454,7 +461,7 @@ $$
         <section class="post-tags"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/%E5%9B%9B%E5%85%83%E6%95%B0/">四元数</a>,&nbsp;<a href="/tags/%E6%97%8B%E8%BD%AC/">旋转</a></section>
         <section class="print:!tw-hidden">
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+            <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">返回</button></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
@@ -466,7 +473,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.124.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.126.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
@@ -487,18 +494,12 @@ $$
                     }
                 </script></footer></div>
 
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="回到顶部">
             <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-            <svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
-    src="/lib/clipboard/clipboard.min.js"
-    
-  ></script><script
+        </a></div><div id="cookieconsent-container"></div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css">
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
     src="/lib/typeit/typeit.min.js"
     
   ></script><script
@@ -541,7 +542,19 @@ $$
     
       defer
     
-  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script></div>
+  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script>
+    
+    <script type="speculationrules">
+        {
+          "prerender": [
+            {
+              "where": { "href_matches": "/*" },
+              "eagerness": "moderate"
+            }
+          ]
+        }
+    </script>
+      
 </body>
 
 </html>

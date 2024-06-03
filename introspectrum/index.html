@@ -6,23 +6,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>傅立叶变换与频域分析简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="傅立叶变换与频域分析简介" />
-<meta property="og:description" content="广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://chunyu.site/introspectrum/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-12-02T14:36:16+08:00" />
-<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://chunyu.site/images/avatar.png" /><meta name="twitter:title" content="傅立叶变换与频域分析简介"/>
-<meta name="twitter:description" content="广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。"/>
+    <meta name="robots" content="noodp" /><title>傅立叶变换与频域分析简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/introspectrum/">
+  <meta property="og:site_name" content="某春雨的后花园">
+  <meta property="og:title" content="傅立叶变换与频域分析简介">
+  <meta property="og:description" content="广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-12-02T14:36:16+08:00">
+    <meta property="article:modified_time" content="2023-06-29T11:56:55+08:00">
+    <meta property="article:tag" content="傅立叶变换">
+    <meta property="article:tag" content="频域分析">
+    <meta property="og:image" content="https://chunyu.site/images/avatar.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://chunyu.site/images/avatar.png">
+  <meta name="twitter:title" content="傅立叶变换与频域分析简介">
+  <meta name="twitter:description" content="广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。">
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
 <link rel="canonical" href="https://chunyu.site/introspectrum/" /><link rel="prev" href="https://chunyu.site/modelpreditivecontrol/" /><link rel="next" href="https://chunyu.site/installwindows/" />
-<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
     
@@ -47,9 +54,11 @@
             },"description": ""
     }</script></head>
 
-<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+
+<body data-instant-intensity="viewport" ><script type="text/javascript">
         function setTheme(theme) {
           document.body.setAttribute('theme', theme); 
+          document.documentElement.className = theme;
           document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
           if (theme === 'light') {
             document.documentElement.classList.remove('tw-dark')
@@ -61,8 +70,23 @@
         }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
-        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        if (window.localStorage && localStorage.getItem('theme')) {
+            let theme = localStorage.getItem('theme');
+            if (theme === 'light' || theme === 'dark') {
+            setTheme(theme);
+            } else {
+                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    setTheme('dark');
+                } else {
+                    setTheme('light');
+                }
+            }
+         } else { 
+            if ('auto' === 'light' || 'auto' === 'dark') 
+                setTheme('auto'), saveTheme('auto'); 
+            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+        }
+        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
         window.switchThemeEventSet = new Set()
     </script>
@@ -99,7 +123,6 @@
                     <select class="color-theme-select" id="theme-select-desktop" aria-label="切换主题">
                         <option value="light">浅色</option>
                         <option value="dark">深色</option>
-                        <option value="black">黑色</option>
                         <option value="auto">跟随系统</option>
                     </select>
                 </button></div>
@@ -142,7 +165,6 @@
                 <select class="color-theme-select" id="theme-select-mobile" aria-label="切换主题">
                     <option value="light">浅色</option>
                     <option value="dark">深色</option>
-                    <option value="black">黑色</option>
                     <option value="auto">跟随系统</option>
                 </select>
             </button></div>
@@ -176,9 +198,9 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title animate__animated animate__flipInX">傅立叶变换与频域分析简介</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">傅立叶变换与频域分析简介</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img src="https://chunyu.site/images/avatar.png" alt="大春雨 avatar" class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>数字信号处理</a></span></div>
             <div class="post-meta-line"><svg class="icon"
@@ -214,40 +236,22 @@
 </nav></div>
             </div><div class="content" id="content"><p>广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。</p>
 <h2 id="连续信号频域分析" class="headerLink">
-    <a href="#%e8%bf%9e%e7%bb%ad%e4%bf%a1%e5%8f%b7%e9%a2%91%e5%9f%9f%e5%88%86%e6%9e%90" class="header-mark"></a>连续信号频域分析</h2><h3 id="傅立叶级数" class="headerLink">
-    <a href="#%e5%82%85%e7%ab%8b%e5%8f%b6%e7%ba%a7%e6%95%b0" class="header-mark"></a>傅立叶级数</h3><p>首先我们从一个问题开始：假设现在有一个周期信号，不妨假设为下图蓝色曲线所示的方波。凭借朴素的直觉，这个周期信号应当能够分解为另一系列周期信号的叠加。如果选择正弦信号为基准，如何将给定的方波信号分解为正弦信号的叠加？</p>
-<figure><a class="lightgallery" href="./FourierSeriesShow.png" title="./FourierSeriesShow.png" data-thumbnail="./FourierSeriesShow.png" data-sub-html="<h2>周期信号的正弦分解示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./FourierSeriesShow.png"
-            srcset="./FourierSeriesShow.png, ./FourierSeriesShow.png 1.5x, ./FourierSeriesShow.png 2x"
-            alt="./FourierSeriesShow.png" width="70%" >
-    </a><figcaption class="image-caption">周期信号的正弦分解示意图</figcaption>
+    <a href="#%e8%bf%9e%e7%bb%ad%e4%bf%a1%e5%8f%b7%e9%a2%91%e5%9f%9f%e5%88%86%e6%9e%90" class="header-mark" aria-label="Header mark for '连续信号频域分析'"></a>连续信号频域分析</h2><h3 id="傅立叶级数" class="headerLink">
+    <a href="#%e5%82%85%e7%ab%8b%e5%8f%b6%e7%ba%a7%e6%95%b0" class="header-mark" aria-label="Header mark for '傅立叶级数'"></a>傅立叶级数</h3><p>首先我们从一个问题开始：假设现在有一个周期信号，不妨假设为下图蓝色曲线所示的方波。凭借朴素的直觉，这个周期信号应当能够分解为另一系列周期信号的叠加。如果选择正弦信号为基准，如何将给定的方波信号分解为正弦信号的叠加？</p>
+<figure><a class="lightgallery" href="./FourierSeriesShow.png" title="" data-thumbnail="./FourierSeriesShow.png" data-sub-html="<h2>周期信号的正弦分解示意图</h2>"><img  loading="lazy" src="./FourierSeriesShow.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">周期信号的正弦分解示意图</figcaption>
     </figure>
 <p>提到分解，不免会想到矢量的分解。对于一个给定的矢量，如果想将它分解为不同矢量的叠加，通常需要选择一组正交的单位基矢（坐标系），然后通过内积计算向量在不同基矢上的投影（坐标），最后就可以通过投影和基矢来表达原来的矢量。</p>
-<figure><a class="lightgallery" href="./vecProj.png" title="./vecProj.png" data-thumbnail="./vecProj.png" data-sub-html="<h2>矢量的分解</h2>">
-        <img
-            
-            loading="lazy"
-            src="./vecProj.png"
-            srcset="./vecProj.png, ./vecProj.png 1.5x, ./vecProj.png 2x"
-            alt="./vecProj.png" width="35%" >
-    </a><figcaption class="image-caption">矢量的分解</figcaption>
+<figure><a class="lightgallery" href="./vecProj.png" title="" data-thumbnail="./vecProj.png" data-sub-html="<h2>矢量的分解</h2>"><img  loading="lazy" src="./vecProj.png"  sizes="auto"   width="35%"></a><figcaption class="image-caption">矢量的分解</figcaption>
     </figure>
 <p>于是，我们可以类比地选择 $\cos n \omega_0 t$ 和 $\sin n \omega_0 t$ 为函数空间的基；矢量内积的相乘、相加运算类比过来就是相乘、积分，而由于是周期信号，因此积分区间只取一个周期即可；最后只要按照内积的定义计算相应的“坐标”即可知道各个正弦信号对应的幅值。这就是函数的 <a href="https://chunyu.site/orthogonalprojection/" rel="">正交投影</a>。</p>
 <div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>
-            注意
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>注意<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">可以通过内积进行验证：倍频正弦（包括余弦）是在周期内是正交的，即任意两个相乘在周期内积分为零。实际上这样的正交基并不局限于正弦，由于傅立叶变换是基于正弦信号展开，故此处仅讨论正弦的情况。</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">可以通过内积进行验证：倍频正弦（包括余弦）是在周期内是正交的，即任意两个相乘在周期内积分为零。实际上这样的正交基并不局限于正弦，由于傅立叶变换是基于正弦信号展开，故此处仅讨论正弦的情况。</div></div></div>
 <p>根据这个思路，实际上我们已经自己推导出了傅立叶变换，用公式表示为</p>
 <ul>
 <li>综合公式</li>
@@ -279,14 +283,7 @@ x(t) = \sum_{k=-\infty}^{+\infty} A_k \mathrm{e}^{\mathrm{j}k\omega_0t}
 A_k = \frac{1}{T} \int_T x(t) \mathrm{e}^{-\mathrm{j}k\omega_0t}\,\mathrm{d}t
 $$
 <p>方波的傅立叶级数分解如下图所示。</p>
-<figure><a class="lightgallery" href="./FourierSeries.png" title="./FourierSeries.png" data-thumbnail="./FourierSeries.png" data-sub-html="<h2>方波的傅里叶级数示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./FourierSeries.png"
-            srcset="./FourierSeries.png, ./FourierSeries.png 1.5x, ./FourierSeries.png 2x"
-            alt="./FourierSeries.png" width="70%" >
-    </a><figcaption class="image-caption">方波的傅里叶级数示意图</figcaption>
+<figure><a class="lightgallery" href="./FourierSeries.png" title="" data-thumbnail="./FourierSeries.png" data-sub-html="<h2>方波的傅里叶级数示意图</h2>"><img  loading="lazy" src="./FourierSeries.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">方波的傅里叶级数示意图</figcaption>
     </figure>
 <p>傅立叶级数存在收敛条件，实际上是约束信号真实存在，这里我不做过多解释，直接给出（后边的傅立叶变换也有相似的条件）：</p>
 <ul>
@@ -301,7 +298,7 @@ $$
 <li>时域周期对应频域离散</li>
 </ul>
 <h3 id="傅立叶变换" class="headerLink">
-    <a href="#%e5%82%85%e7%ab%8b%e5%8f%b6%e5%8f%98%e6%8d%a2" class="header-mark"></a>傅立叶变换</h3><p>为了将傅立叶级数应用到非周期信号，只需要重新理解一下什么是非周期信号即可：非周期嘛，不就是周期无限大吗？将傅立叶变换的综合公式取极限，有</p>
+    <a href="#%e5%82%85%e7%ab%8b%e5%8f%b6%e5%8f%98%e6%8d%a2" class="header-mark" aria-label="Header mark for '傅立叶变换'"></a>傅立叶变换</h3><p>为了将傅立叶级数应用到非周期信号，只需要重新理解一下什么是非周期信号即可：非周期嘛，不就是周期无限大吗？将傅立叶变换的综合公式取极限，有</p>
 $$
 \begin{aligned}
     x(t) &= \sum_{k=-\infty}^{+\infty} A_k \mathrm{e}^{\mathrm{j}k\omega_0t}  \\
@@ -322,18 +319,11 @@ $$
 <li>$X(\mathrm{j}\omega)$ 共轭对称</li>
 <li>时域非周期对应于频域连续</li>
 </ul>
-<figure><a class="lightgallery" href="./FourierTransform.png" title="./FourierTransform.png" data-thumbnail="./FourierTransform.png" data-sub-html="<h2>非周期信号的傅里叶变换示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./FourierTransform.png"
-            srcset="./FourierTransform.png, ./FourierTransform.png 1.5x, ./FourierTransform.png 2x"
-            alt="./FourierTransform.png" width="70%" >
-    </a><figcaption class="image-caption">非周期信号的傅里叶变换示意图</figcaption>
+<figure><a class="lightgallery" href="./FourierTransform.png" title="" data-thumbnail="./FourierTransform.png" data-sub-html="<h2>非周期信号的傅里叶变换示意图</h2>"><img  loading="lazy" src="./FourierTransform.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">非周期信号的傅里叶变换示意图</figcaption>
     </figure>
 <p>至此，我们得到了两个非常重要的定性的结论：周期对应离散，非周期对应连续。实际上这个结论是“对称”的。例如在后面我们会讨论到，如果时域是离散的，那么频域就是周期的。</p>
 <h3 id="两者的统一" class="headerLink">
-    <a href="#%e4%b8%a4%e8%80%85%e7%9a%84%e7%bb%9f%e4%b8%80" class="header-mark"></a>两者的统一</h3><p>现在我们有了傅立叶级数用于处理连续的周期信号，还有傅立叶变换处理连续的非周期信号。然而，无论是数学“抽象归纳”的思想，或者逻辑上傅立叶变换是傅立叶级数的延拓，我们都希望这两者能够在表达上统一。为此，引入狄拉克函数，用 $\delta (t)$ 表示。它是一个广义函数，形式上可以定义为单位阶跃函数 $u(t)$ 的导数：</p>
+    <a href="#%e4%b8%a4%e8%80%85%e7%9a%84%e7%bb%9f%e4%b8%80" class="header-mark" aria-label="Header mark for '两者的统一'"></a>两者的统一</h3><p>现在我们有了傅立叶级数用于处理连续的周期信号，还有傅立叶变换处理连续的非周期信号。然而，无论是数学“抽象归纳”的思想，或者逻辑上傅立叶变换是傅立叶级数的延拓，我们都希望这两者能够在表达上统一。为此，引入狄拉克函数，用 $\delta (t)$ 表示。它是一个广义函数，形式上可以定义为单位阶跃函数 $u(t)$ 的导数：</p>
 $$
 u(t) = \left\{\begin{array}{cl}
             0 & t < 0 \\
@@ -359,33 +349,22 @@ $$
 \end{gathered}
 $$
 <div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>
-            注意
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg></span>注意<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p>需要注意的是，这种表述方法常用于分析频谱。对于实际的周期信号，还是应当使用傅里叶级数计算系数，然后改写成狄拉克函数。直接依据傅立叶变换计算会得到无穷大，无法获知狄拉克函数的系数。</p>
-<p>正弦函数利用傅立叶变换得到的无穷大可以作为狄拉克函数的另一种定义方法。</p>
-</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content"><p>需要注意的是，这种表述方法常用于分析频谱。对于实际的周期信号，还是应当使用傅里叶级数计算系数，然后改写成狄拉克函数。直接依据傅立叶变换计算会得到无穷大，无法获知狄拉克函数的系数。</p>
+<p>正弦函数利用傅立叶变换得到的无穷大可以作为狄拉克函数的另一种定义方法。</p>
+</div></div></div>
 <h2 id="离散信号频域分析" class="headerLink">
-    <a href="#%e7%a6%bb%e6%95%a3%e4%bf%a1%e5%8f%b7%e9%a2%91%e5%9f%9f%e5%88%86%e6%9e%90" class="header-mark"></a>离散信号频域分析</h2><h3 id="时域采样与频率混叠" class="headerLink">
-    <a href="#%e6%97%b6%e5%9f%9f%e9%87%87%e6%a0%b7%e4%b8%8e%e9%a2%91%e7%8e%87%e6%b7%b7%e5%8f%a0" class="header-mark"></a>时域采样与频率混叠</h3><p>为了将连续信号离散化，可以采用冲击串进行采样，冲击串用狄拉克函数表达为</p>
+    <a href="#%e7%a6%bb%e6%95%a3%e4%bf%a1%e5%8f%b7%e9%a2%91%e5%9f%9f%e5%88%86%e6%9e%90" class="header-mark" aria-label="Header mark for '离散信号频域分析'"></a>离散信号频域分析</h2><h3 id="时域采样与频率混叠" class="headerLink">
+    <a href="#%e6%97%b6%e5%9f%9f%e9%87%87%e6%a0%b7%e4%b8%8e%e9%a2%91%e7%8e%87%e6%b7%b7%e5%8f%a0" class="header-mark" aria-label="Header mark for '时域采样与频率混叠'"></a>时域采样与频率混叠</h3><p>为了将连续信号离散化，可以采用冲击串进行采样，冲击串用狄拉克函数表达为</p>
 $$
 p(t) = \sum_{n=-\infty}^{+\infty} \delta (t - n T_s) 
 $$
-<figure><a class="lightgallery" href="./sample.png" title="./sample.png" data-thumbnail="./sample.png" data-sub-html="<h2>时域信号的采样</h2>">
-        <img
-            
-            loading="lazy"
-            src="./sample.png"
-            srcset="./sample.png, ./sample.png 1.5x, ./sample.png 2x"
-            alt="./sample.png" width="50%" >
-    </a><figcaption class="image-caption">时域信号的采样</figcaption>
+<figure><a class="lightgallery" href="./sample.png" title="" data-thumbnail="./sample.png" data-sub-html="<h2>时域信号的采样</h2>"><img  loading="lazy" src="./sample.png"  sizes="auto"   width="50%"></a><figcaption class="image-caption">时域信号的采样</figcaption>
     </figure>
 <p>代入傅立叶变换的表达式，进一步可以整理出离散时间傅立叶变换（Discrete-Time Fourier Transform）：</p>
 $$
@@ -400,49 +379,21 @@ $$
 <li>时域冲击串的频谱也是冲击串，且频域冲击间隔为采样率。</li>
 </ul>
 <p>根据这两个结论，我们可以从下图直观地感受到频谱混叠的含义：首先，第一个图中的三角形假设为原连续信号的频谱，冲击串为采样函数的频谱；当进行采样，时域相乘，频域卷积。根据前面提到狄拉克函数的卷积性质，实际上是将原来的频谱按照采样率为间隔进行复制粘贴，如第二个图所示；如果原信号的带宽过大，复制粘贴之后的频谱重叠，合成之后的频谱就会发生改变，如第三个图所示，这就是所谓的频谱混叠。</p>
-<figure><a class="lightgallery" href="./aliasing.png" title="./aliasing.png" data-thumbnail="./aliasing.png" data-sub-html="<h2>频率混叠示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./aliasing.png"
-            srcset="./aliasing.png, ./aliasing.png 1.5x, ./aliasing.png 2x"
-            alt="./aliasing.png" width="70%" >
-    </a><figcaption class="image-caption">频率混叠示意图</figcaption>
+<figure><a class="lightgallery" href="./aliasing.png" title="" data-thumbnail="./aliasing.png" data-sub-html="<h2>频率混叠示意图</h2>"><img  loading="lazy" src="./aliasing.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">频率混叠示意图</figcaption>
     </figure>
 <p>可见，要想避免混叠，信号的带宽不应当超过采样率的一半。对于实际数据，如果混叠来自高频噪声，可以使用滤波器进行滤除，相应的滤波器称为抗混叠滤波器；如果是由于信号的频率较大，那么应当适当提高采样率。</p>
 <h3 id="有限窗长与频率泄露" class="headerLink">
-    <a href="#%e6%9c%89%e9%99%90%e7%aa%97%e9%95%bf%e4%b8%8e%e9%a2%91%e7%8e%87%e6%b3%84%e9%9c%b2" class="header-mark"></a>有限窗长与频率泄露</h3><p>除了频谱混叠，由于实际采样的时间有限，还会有频率泄露的效应。为了说明这个问题，定义一个窗函数，其在采样持续时间内为正值，否则为零。最常见的窗函数就是矩形窗，如下图所示</p>
-<figure><a class="lightgallery" href="./window.png" title="./window.png" data-thumbnail="./window.png" data-sub-html="<h2>实际信号的有限窗长示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./window.png"
-            srcset="./window.png, ./window.png 1.5x, ./window.png 2x"
-            alt="./window.png" width="50%" >
-    </a><figcaption class="image-caption">实际信号的有限窗长示意图</figcaption>
+    <a href="#%e6%9c%89%e9%99%90%e7%aa%97%e9%95%bf%e4%b8%8e%e9%a2%91%e7%8e%87%e6%b3%84%e9%9c%b2" class="header-mark" aria-label="Header mark for '有限窗长与频率泄露'"></a>有限窗长与频率泄露</h3><p>除了频谱混叠，由于实际采样的时间有限，还会有频率泄露的效应。为了说明这个问题，定义一个窗函数，其在采样持续时间内为正值，否则为零。最常见的窗函数就是矩形窗，如下图所示</p>
+<figure><a class="lightgallery" href="./window.png" title="" data-thumbnail="./window.png" data-sub-html="<h2>实际信号的有限窗长示意图</h2>"><img  loading="lazy" src="./window.png"  sizes="auto"   width="50%"></a><figcaption class="image-caption">实际信号的有限窗长示意图</figcaption>
     </figure>
 <p>同样，时域上信号与窗函数相乘，频域表现为原信号的频谱与窗函数频谱做卷积，这会在一定程度上影响原信号的频谱，使采样后的结果存在误差。这也是通常我们说谱估计而不是谱计算的原因。</p>
 <p>一般情况下，窗函数具有如下图所示的频谱特征：其具有一个主瓣和多个旁瓣。为了好理解，假设原始信号就是正弦，那么与窗函数相乘之后的频谱的形状与窗函数的频谱相同（但中心频率点不同）。显然，窗函数的主瓣宽度会影响单频信号的频率分辨率，而旁瓣则容易产生出“误解”，错误地认为存在对应频率点的信号。</p>
-<figure><a class="lightgallery" href="./window-function.png" title="./window-function.png" data-thumbnail="./window-function.png" data-sub-html="<h2>频率泄露示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./window-function.png"
-            srcset="./window-function.png, ./window-function.png 1.5x, ./window-function.png 2x"
-            alt="./window-function.png" width="40%" >
-    </a><figcaption class="image-caption">频率泄露示意图</figcaption>
+<figure><a class="lightgallery" href="./window-function.png" title="" data-thumbnail="./window-function.png" data-sub-html="<h2>频率泄露示意图</h2>"><img  loading="lazy" src="./window-function.png"  sizes="auto"   width="40%"></a><figcaption class="image-caption">频率泄露示意图</figcaption>
     </figure>
 <p>由于采样总是有限时常，窗函数引入的频率泄露无法避免。为了尽可能减小这个效应，可以使用非矩形窗如汗宁窗、海明窗等，它们通常表现为窗的两端小，中间大。具体可以在 MATLAB 中使用 <code>hann</code> 等函数查看。</p>
 <h3 id="频域采样与栅栏效应" class="headerLink">
-    <a href="#%e9%a2%91%e5%9f%9f%e9%87%87%e6%a0%b7%e4%b8%8e%e6%a0%85%e6%a0%8f%e6%95%88%e5%ba%94" class="header-mark"></a>频域采样与栅栏效应</h3><p>至此我们已经分析了时域离散的情况，距离使用计算机计算之差最后一步：频域离散化。前面讨论了离散化是冲击串相乘，时域离散对应着频域周期延拓。反过来，频域离散对应这时域周期延拓，如下图所示，为了避免利用采样后的频谱恢复时域数据时发生混叠，频率间隔应当不大于采样时长的倒数。</p>
-<figure><a class="lightgallery" href="./freqDiscrete.png" title="./freqDiscrete.png" data-thumbnail="./freqDiscrete.png" data-sub-html="<h2>频域采样与栅栏效应示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./freqDiscrete.png"
-            srcset="./freqDiscrete.png, ./freqDiscrete.png 1.5x, ./freqDiscrete.png 2x"
-            alt="./freqDiscrete.png" width="70%" >
-    </a><figcaption class="image-caption">频域采样与栅栏效应示意图</figcaption>
+    <a href="#%e9%a2%91%e5%9f%9f%e9%87%87%e6%a0%b7%e4%b8%8e%e6%a0%85%e6%a0%8f%e6%95%88%e5%ba%94" class="header-mark" aria-label="Header mark for '频域采样与栅栏效应'"></a>频域采样与栅栏效应</h3><p>至此我们已经分析了时域离散的情况，距离使用计算机计算之差最后一步：频域离散化。前面讨论了离散化是冲击串相乘，时域离散对应着频域周期延拓。反过来，频域离散对应这时域周期延拓，如下图所示，为了避免利用采样后的频谱恢复时域数据时发生混叠，频率间隔应当不大于采样时长的倒数。</p>
+<figure><a class="lightgallery" href="./freqDiscrete.png" title="" data-thumbnail="./freqDiscrete.png" data-sub-html="<h2>频域采样与栅栏效应示意图</h2>"><img  loading="lazy" src="./freqDiscrete.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">频域采样与栅栏效应示意图</figcaption>
     </figure>
 <p>取 $\Delta f = \frac{1}{T}$ 时，恰好不发生混叠，频域样本点数与时域数据点数相同。此时有离散傅立叶变换（Discrete Fourier Transform）</p>
 $$
@@ -452,25 +403,18 @@ x(n) = \frac{1}{N} \sum_{k=0}^{N-1} X(k) \mathrm{e}^{\mathrm{j} 2\pi\frac{k}{N} 
 $$
 <p>此时，频域离散，得到的频谱都是离散的点，似乎是通过栅栏在进行观察，因此叫做栅栏效应。</p>
 <h3 id="频率分辨率与计算分辨率" class="headerLink">
-    <a href="#%e9%a2%91%e7%8e%87%e5%88%86%e8%be%a8%e7%8e%87%e4%b8%8e%e8%ae%a1%e7%ae%97%e5%88%86%e8%be%a8%e7%8e%87" class="header-mark"></a>频率分辨率与计算分辨率</h3><p>最后，对两个概念进行梳理</p>
+    <a href="#%e9%a2%91%e7%8e%87%e5%88%86%e8%be%a8%e7%8e%87%e4%b8%8e%e8%ae%a1%e7%ae%97%e5%88%86%e8%be%a8%e7%8e%87" class="header-mark" aria-label="Header mark for '频率分辨率与计算分辨率'"></a>频率分辨率与计算分辨率</h3><p>最后，对两个概念进行梳理</p>
 <ul>
 <li>离散时间傅立叶变换中能够分辨的最小频率间隔 $f_{\rm res} = \frac{1}{T}$</li>
 <li>离散傅立叶变换的频率间隔（栅栏效应）$\Delta f = \frac{f_s}{N}$</li>
 </ul>
 <p>两个概念可以用下面的图粗糙地进行示意。</p>
-<figure><a class="lightgallery" href="./freqs-resolution.png" title="./freqs-resolution.png" data-thumbnail="./freqs-resolution.png" data-sub-html="<h2>频率分辨率示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./freqs-resolution.png"
-            srcset="./freqs-resolution.png, ./freqs-resolution.png 1.5x, ./freqs-resolution.png 2x"
-            alt="./freqs-resolution.png" width="70%" >
-    </a><figcaption class="image-caption">频率分辨率示意图</figcaption>
+<figure><a class="lightgallery" href="./freqs-resolution.png" title="" data-thumbnail="./freqs-resolution.png" data-sub-html="<h2>频率分辨率示意图</h2>"><img  loading="lazy" src="./freqs-resolution.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">频率分辨率示意图</figcaption>
     </figure>
 <p>在大多数情况下，两个概念并不需要进行区分，这是有 $\Delta f = \frac{f_s}{N} = \frac{1}{N T_s} = \frac{1}{T} = f_{\rm res}$ 。快速傅立叶变化的算法得到的频率点数与时域样本点数相同，可以在时域数据后补若干 $0$ 增加计算点数，从而改善计算分辨率。但是这种补 $0$ 的操作并不影响离散时间傅立叶变换，因此不会改变实际的频率分辨率。</p>
 <p>此外，通常的频域采样是为了确保采样后的数据能够根据逆变换公式反演出时域数据，如果只关注频域特性，对频域采样不会具有太高的要求。例如 <a href="https://chunyu.site/lpsd/" rel="">LPSD 功率谱估计</a> 就采用了非均匀的频域采样。</p>
 <h2 id="参考文献" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark" aria-label="Header mark for '参考文献'"></a>参考文献</h2><ol>
 <li>Alan V. Oppenheim 等, 刘树棠译. 信号与系统. 第二版. 电子工业出版社. 2014.</li>
 <li>程佩清. 数字信号处理. 第四版. 清华大学出版社. 2013.</li>
 </ol></div>
@@ -494,7 +438,7 @@ $$
         <section class="post-tags"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2/">傅立叶变换</a>,&nbsp;<a href="/tags/%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90/">频域分析</a></section>
         <section class="print:!tw-hidden">
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+            <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">返回</button></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
@@ -506,7 +450,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.124.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.126.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
@@ -527,18 +471,12 @@ $$
                     }
                 </script></footer></div>
 
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="回到顶部">
             <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-            <svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
-    src="/lib/clipboard/clipboard.min.js"
-    
-  ></script><script
+        </a></div><div id="cookieconsent-container"></div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css">
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
     src="/lib/typeit/typeit.min.js"
     
   ></script><script
@@ -581,7 +519,19 @@ $$
     
       defer
     
-  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script></div>
+  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script>
+    
+    <script type="speculationrules">
+        {
+          "prerender": [
+            {
+              "where": { "href_matches": "/*" },
+              "eagerness": "moderate"
+            }
+          ]
+        }
+    </script>
+      
 </body>
 
 </html>

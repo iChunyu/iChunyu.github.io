@@ -6,23 +6,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>模型嵌入控制（4）：状态预测器设计 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型嵌入控制（4）：状态预测器设计" />
-<meta property="og:description" content="状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://chunyu.site/emc04-statepredictor/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-07-16T21:31:40+08:00" />
-<meta property="article:modified_time" content="2023-07-16T23:37:26+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://chunyu.site/images/avatar.png" /><meta name="twitter:title" content="模型嵌入控制（4）：状态预测器设计"/>
-<meta name="twitter:description" content="状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。"/>
+    <meta name="robots" content="noodp" /><title>模型嵌入控制（4）：状态预测器设计 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/emc04-statepredictor/">
+  <meta property="og:site_name" content="某春雨的后花园">
+  <meta property="og:title" content="模型嵌入控制（4）：状态预测器设计">
+  <meta property="og:description" content="状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-07-16T21:31:40+08:00">
+    <meta property="article:modified_time" content="2023-07-16T23:37:26+08:00">
+    <meta property="article:tag" content="EMC">
+    <meta property="article:tag" content="模型嵌入控制">
+    <meta property="og:image" content="https://chunyu.site/images/avatar.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://chunyu.site/images/avatar.png">
+  <meta name="twitter:title" content="模型嵌入控制（4）：状态预测器设计">
+  <meta name="twitter:description" content="状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。">
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
 <link rel="canonical" href="https://chunyu.site/emc04-statepredictor/" /><link rel="prev" href="https://chunyu.site/emc03-uncertainties/" /><link rel="next" href="https://chunyu.site/emc05-controllaw/" />
-<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
     
@@ -47,9 +54,11 @@
             },"description": ""
     }</script></head>
 
-<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+
+<body data-instant-intensity="viewport" ><script type="text/javascript">
         function setTheme(theme) {
           document.body.setAttribute('theme', theme); 
+          document.documentElement.className = theme;
           document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
           if (theme === 'light') {
             document.documentElement.classList.remove('tw-dark')
@@ -61,8 +70,23 @@
         }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
-        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        if (window.localStorage && localStorage.getItem('theme')) {
+            let theme = localStorage.getItem('theme');
+            if (theme === 'light' || theme === 'dark') {
+            setTheme(theme);
+            } else {
+                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    setTheme('dark');
+                } else {
+                    setTheme('light');
+                }
+            }
+         } else { 
+            if ('auto' === 'light' || 'auto' === 'dark') 
+                setTheme('auto'), saveTheme('auto'); 
+            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+        }
+        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
         window.switchThemeEventSet = new Set()
     </script>
@@ -99,7 +123,6 @@
                     <select class="color-theme-select" id="theme-select-desktop" aria-label="切换主题">
                         <option value="light">浅色</option>
                         <option value="dark">深色</option>
-                        <option value="black">黑色</option>
                         <option value="auto">跟随系统</option>
                     </select>
                 </button></div>
@@ -142,7 +165,6 @@
                 <select class="color-theme-select" id="theme-select-mobile" aria-label="切换主题">
                     <option value="light">浅色</option>
                     <option value="dark">深色</option>
-                    <option value="black">黑色</option>
                     <option value="auto">跟随系统</option>
                 </select>
             </button></div>
@@ -163,9 +185,9 @@
     <li><a href="#示例二阶系统的状态预测器">示例：二阶系统的状态预测器</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title animate__animated animate__flipInX">模型嵌入控制（4）：状态预测器设计</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">模型嵌入控制（4）：状态预测器设计</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img src="https://chunyu.site/images/avatar.png" alt="大春雨 avatar" class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/embedded-model-control/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Embedded Model Control</a></span></div>
             <div class="post-meta-line"><svg class="icon"
@@ -188,7 +210,7 @@
 </nav></div>
             </div><div class="content" id="content"><p>状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。</p>
 <h2 id="基于模型的状态预测器设计" class="headerLink">
-    <a href="#%e5%9f%ba%e4%ba%8e%e6%a8%a1%e5%9e%8b%e7%9a%84%e7%8a%b6%e6%80%81%e9%a2%84%e6%b5%8b%e5%99%a8%e8%ae%be%e8%ae%a1" class="header-mark"></a>基于模型的状态预测器设计</h2><p>状态预测器设计的核心目标是数字控制器内给出的状态收敛于被控对象的真实状态。考虑到被控对象受到的随机扰动无法完全补偿，设计的目标应当修正为状态预测误差有界。可控动态和扰动动态的状态预测误差分别定义为：</p>
+    <a href="#%e5%9f%ba%e4%ba%8e%e6%a8%a1%e5%9e%8b%e7%9a%84%e7%8a%b6%e6%80%81%e9%a2%84%e6%b5%8b%e5%99%a8%e8%ae%be%e8%ae%a1" class="header-mark" aria-label="Header mark for '基于模型的状态预测器设计'"></a>基于模型的状态预测器设计</h2><p>状态预测器设计的核心目标是数字控制器内给出的状态收敛于被控对象的真实状态。考虑到被控对象受到的随机扰动无法完全补偿，设计的目标应当修正为状态预测误差有界。可控动态和扰动动态的状态预测误差分别定义为：</p>
 $$
 \tilde{\bm{x}}_c = \bm{x}_c - \hat{\bm{x}}_c, \quad \tilde{\bm{x}}_d = \bm{x}_d - \hat{\bm{x}}_d
 $$
@@ -223,14 +245,7 @@ $$
 $$
 <p>其中，第一项的影响在状态预测误差 $\tilde{\bm{x}}_c$ 收敛时有界，可以并为随机扰动 $\bm{w}$ 的影响；第二项 $\tilde{\bm{h}}(\bm{x}_c)$ 是未知的耦合，后面将按照参数不确定性进行讨论。基于模型的环路设计中可以假设 $\Delta \bm{h} = 0$，即认为模型准确可知。</p>
 <p>分别记可控动态和扰动动态的传递函数矩阵为 $M(z)$ 和 $D(z)$，则状态预测误差的动态可以由下图给出：</p>
-<figure><a class="lightgallery" href="./sp_error.png" title="./sp_error.png" data-thumbnail="./sp_error.png" data-sub-html="<h2>状态预测误差动态框图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./sp_error.png"
-            srcset="./sp_error.png, ./sp_error.png 1.5x, ./sp_error.png 2x"
-            alt="./sp_error.png" width="60%" >
-    </a><figcaption class="image-caption">状态预测误差动态框图</figcaption>
+<figure><a class="lightgallery" href="./sp_error.png" title="" data-thumbnail="./sp_error.png" data-sub-html="<h2>状态预测误差动态框图</h2>"><img  loading="lazy" src="./sp_error.png"  sizes="auto"   width="60%"></a><figcaption class="image-caption">状态预测误差动态框图</figcaption>
     </figure>
 <p>为了在随机噪声输入下使状态预测误差有界，必须构成稳定的闭环系统。由上图可知，闭环的关键是利用输出的预测误差 $\tilde{\bm{y}}$ 对驱动噪声 $\bar{\bm{w}} = [\bar{\bm{w}}_c ,\, \bar{\bm{w}}_d]$ 进行估计。不失一般性地，构造噪声估计器为：</p>
 $$
@@ -243,17 +258,10 @@ $$
 $$
 <p>可控动态和扰动动态分别根据被控对象和外部扰动的基本特征建模，具有特定的结构和标称参数，故状态预测器的待调参数集中在噪声估计器。从极点配置上看，噪声估计器的设计原则是引入合适数量的状态和待调参数，确保状态预测环路的总状态数量和待调参数的数量相同，从而可以对极点进行任意配置。</p>
 <p>记噪声估计器的传递函数矩阵为 $N(z)$，并采用 <a href="https://chunyu.site/emc03-uncertainties/" rel="">不确定性建模</a> 中将扰动折合到输出端的表述，被控对象和状态预测器的环路框图如下图所示。在实际应用中，输入到状态预测器的是传感器的测量值 $\breve{\bm{y}}$，因此用于噪声估计的误差由预测误差 $\tilde{\bm{y}}$ 变更为测得的模型误差 $\bm{e}_m$。</p>
-<figure><a class="lightgallery" href="./sp_transfer.png" title="./sp_transfer.png" data-thumbnail="./sp_transfer.png" data-sub-html="<h2>被控对象和状态预测环路</h2>">
-        <img
-            
-            loading="lazy"
-            src="./sp_transfer.png"
-            srcset="./sp_transfer.png, ./sp_transfer.png 1.5x, ./sp_transfer.png 2x"
-            alt="./sp_transfer.png" width="70%" >
-    </a><figcaption class="image-caption">被控对象和状态预测环路</figcaption>
+<figure><a class="lightgallery" href="./sp_transfer.png" title="" data-thumbnail="./sp_transfer.png" data-sub-html="<h2>被控对象和状态预测环路</h2>"><img  loading="lazy" src="./sp_transfer.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">被控对象和状态预测环路</figcaption>
     </figure>
 <h2 id="基于不确定行的设计约束" class="headerLink">
-    <a href="#%e5%9f%ba%e4%ba%8e%e4%b8%8d%e7%a1%ae%e5%ae%9a%e8%a1%8c%e7%9a%84%e8%ae%be%e8%ae%a1%e7%ba%a6%e6%9d%9f" class="header-mark"></a>基于不确定行的设计约束</h2><p>根据上图给出的环路结构，省略 $z$ 变换后的自变量，被控对象的输出和传感器测量值分别为：</p>
+    <a href="#%e5%9f%ba%e4%ba%8e%e4%b8%8d%e7%a1%ae%e5%ae%9a%e8%a1%8c%e7%9a%84%e8%ae%be%e8%ae%a1%e7%ba%a6%e6%9d%9f" class="header-mark" aria-label="Header mark for '基于不确定行的设计约束'"></a>基于不确定行的设计约束</h2><p>根据上图给出的环路结构，省略 $z$ 变换后的自变量，被控对象的输出和传感器测量值分别为：</p>
 $$
 \bm{y} = M \bm{u} + \bm{d}_y ,\quad
 \breve{\bm{y}} = \bm{y} + \tilde{\bm{y}}_m
@@ -303,7 +311,7 @@ $$
 <p>其中第一个不等式的防缩使设计更加保守，$\eta_m^{-1}$ 为状态预测器在不确定性下的增益裕度。</p>
 <p>从设计方程可知，预测误差 $\tilde{\bm{y}}$ 会受到测得的跟踪误差 $\bm{e}_r$ 的影响，意味着不确定性会导致状态预测器与控制律之间存在弱耦合。一方面，$\partial H C_c \bm{e}_r$ 和 $\partial P C_c \bm{e}_r$ 可以分别看作 $D_y \bm{w}$ 和 $\bm{w}_m$ 的一部分，作为额外的扰动和测量噪声并通过状态预测器的环路设计进行抑制；另一方面，$\bm{e}_r$ 可以被控制律约束在充分小的范围，这就要求理想控制环路的带宽大于状态预测环路带宽，，称之为模型嵌入控制的标准设计（Standard Design）。</p>
 <h2 id="示例二阶系统的状态预测器" class="headerLink">
-    <a href="#%e7%a4%ba%e4%be%8b%e4%ba%8c%e9%98%b6%e7%b3%bb%e7%bb%9f%e7%9a%84%e7%8a%b6%e6%80%81%e9%a2%84%e6%b5%8b%e5%99%a8" class="header-mark"></a>示例：二阶系统的状态预测器</h2><p>从上面的推导可以看到，在假设模型准确时，被控对象、嵌入模型和状态预测误差具有相同的状态空间方程，实际设计时通常可以不必再推导状态预测误差的方程，直接基于被控对象模型进行设计。</p>
+    <a href="#%e7%a4%ba%e4%be%8b%e4%ba%8c%e9%98%b6%e7%b3%bb%e7%bb%9f%e7%9a%84%e7%8a%b6%e6%80%81%e9%a2%84%e6%b5%8b%e5%99%a8" class="header-mark" aria-label="Header mark for '示例：二阶系统的状态预测器'"></a>示例：二阶系统的状态预测器</h2><p>从上面的推导可以看到，在假设模型准确时，被控对象、嵌入模型和状态预测误差具有相同的状态空间方程，实际设计时通常可以不必再推导状态预测误差的方程，直接基于被控对象模型进行设计。</p>
 <p>继续 <a href="https://chunyu.site/emc02-plant/" rel="">被控对象建模</a> 示例中二阶系统的设计，其状态预测误差的方程为：</p>
 $$
 \left\{\begin{aligned}
@@ -324,14 +332,7 @@ $$
 \end{aligned}\right.
 $$
 <p>此时状态预测器共有五个状态变量，同时具备五个待调参数 $\{ \beta, \, l_0,\, m_0,\, m_1,\, m_2\}$，可以证明闭环极点任意调整，因而闭环性能可以通过参数调整来满足。该二阶系统的状态预测器环路如下图所示，五个绿色模块为待调参数。</p>
-<figure><a class="lightgallery" href="./sp_demo.png" title="./sp_demo.png" data-thumbnail="./sp_demo.png" data-sub-html="<h2>二阶系统状态预测器</h2>">
-        <img
-            
-            loading="lazy"
-            src="./sp_demo.png"
-            srcset="./sp_demo.png, ./sp_demo.png 1.5x, ./sp_demo.png 2x"
-            alt="./sp_demo.png" width="70%" >
-    </a><figcaption class="image-caption">二阶系统状态预测器</figcaption>
+<figure><a class="lightgallery" href="./sp_demo.png" title="" data-thumbnail="./sp_demo.png" data-sub-html="<h2>二阶系统状态预测器</h2>"><img  loading="lazy" src="./sp_demo.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">二阶系统状态预测器</figcaption>
     </figure></div>
 
         <div class="post-footer" id="post-footer">
@@ -353,7 +354,7 @@ $$
         <section class="post-tags"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/emc/">EMC</a>,&nbsp;<a href="/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/">模型嵌入控制</a></section>
         <section class="print:!tw-hidden">
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+            <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">返回</button></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
@@ -365,7 +366,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.124.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.126.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
@@ -386,18 +387,12 @@ $$
                     }
                 </script></footer></div>
 
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="回到顶部">
             <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-            <svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
-    src="/lib/clipboard/clipboard.min.js"
-    
-  ></script><script
+        </a></div><div id="cookieconsent-container"></div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css">
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
     src="/lib/typeit/typeit.min.js"
     
   ></script><script
@@ -440,7 +435,19 @@ $$
     
       defer
     
-  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script></div>
+  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script>
+    
+    <script type="speculationrules">
+        {
+          "prerender": [
+            {
+              "where": { "href_matches": "/*" },
+              "eagerness": "moderate"
+            }
+          ]
+        }
+    </script>
+      
 </body>
 
 </html>

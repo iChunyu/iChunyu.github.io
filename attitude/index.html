@@ -6,23 +6,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>航天器姿态测量与确定 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="航天器姿态测量与确定" />
-<meta property="og:description" content="航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://chunyu.site/attitude/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-05-31T12:11:29+08:00" />
-<meta property="article:modified_time" content="2023-06-29T11:56:55+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://chunyu.site/images/avatar.png" /><meta name="twitter:title" content="航天器姿态测量与确定"/>
-<meta name="twitter:description" content="航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。"/>
+    <meta name="robots" content="noodp" /><title>航天器姿态测量与确定 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/attitude/">
+  <meta property="og:site_name" content="某春雨的后花园">
+  <meta property="og:title" content="航天器姿态测量与确定">
+  <meta property="og:description" content="航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-05-31T12:11:29+08:00">
+    <meta property="article:modified_time" content="2023-06-29T11:56:55+08:00">
+    <meta property="article:tag" content="航天器">
+    <meta property="article:tag" content="传感器">
+    <meta property="article:tag" content="姿态测量">
+    <meta property="article:tag" content="姿态确定">
+    <meta property="og:image" content="https://chunyu.site/images/avatar.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://chunyu.site/images/avatar.png">
+  <meta name="twitter:title" content="航天器姿态测量与确定">
+  <meta name="twitter:description" content="航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。">
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
 <link rel="canonical" href="https://chunyu.site/attitude/" /><link rel="prev" href="https://chunyu.site/initplot/" /><link rel="next" href="https://chunyu.site/emc01-introduction/" />
-<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
     
@@ -47,9 +56,11 @@
             },"description": ""
     }</script></head>
 
-<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+
+<body data-instant-intensity="viewport" ><script type="text/javascript">
         function setTheme(theme) {
           document.body.setAttribute('theme', theme); 
+          document.documentElement.className = theme;
           document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
           if (theme === 'light') {
             document.documentElement.classList.remove('tw-dark')
@@ -61,8 +72,23 @@
         }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
-        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        if (window.localStorage && localStorage.getItem('theme')) {
+            let theme = localStorage.getItem('theme');
+            if (theme === 'light' || theme === 'dark') {
+            setTheme(theme);
+            } else {
+                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    setTheme('dark');
+                } else {
+                    setTheme('light');
+                }
+            }
+         } else { 
+            if ('auto' === 'light' || 'auto' === 'dark') 
+                setTheme('auto'), saveTheme('auto'); 
+            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+        }
+        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
         window.switchThemeEventSet = new Set()
     </script>
@@ -99,7 +125,6 @@
                     <select class="color-theme-select" id="theme-select-desktop" aria-label="切换主题">
                         <option value="light">浅色</option>
                         <option value="dark">深色</option>
-                        <option value="black">黑色</option>
                         <option value="auto">跟随系统</option>
                     </select>
                 </button></div>
@@ -142,7 +167,6 @@
                 <select class="color-theme-select" id="theme-select-mobile" aria-label="切换主题">
                     <option value="light">浅色</option>
                     <option value="dark">深色</option>
-                    <option value="black">黑色</option>
                     <option value="auto">跟随系统</option>
                 </select>
             </button></div>
@@ -175,9 +199,9 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title animate__animated animate__flipInX">航天器姿态测量与确定</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">航天器姿态测量与确定</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img src="https://chunyu.site/images/avatar.png" alt="大春雨 avatar" class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>数字信号处理</a></span></div>
             <div class="post-meta-line"><svg class="icon"
@@ -212,61 +236,33 @@
 </nav></div>
             </div><div class="content" id="content"><p>航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。</p>
 <h2 id="姿态测量" class="headerLink">
-    <a href="#%e5%a7%bf%e6%80%81%e6%b5%8b%e9%87%8f" class="header-mark"></a>姿态测量</h2><p>姿态传感器用于测量航天器当前姿态与参考方向之间的夹角，根据星表等信息获得参考方向在惯性系下的坐标，进一步可以确定航天器在惯性系下的姿态。对于航天器，常用的姿态传感器有地球敏感器、太阳敏感期、星敏感器等。</p>
+    <a href="#%e5%a7%bf%e6%80%81%e6%b5%8b%e9%87%8f" class="header-mark" aria-label="Header mark for '姿态测量'"></a>姿态测量</h2><p>姿态传感器用于测量航天器当前姿态与参考方向之间的夹角，根据星表等信息获得参考方向在惯性系下的坐标，进一步可以确定航天器在惯性系下的姿态。对于航天器，常用的姿态传感器有地球敏感器、太阳敏感期、星敏感器等。</p>
 <h3 id="地球敏感器" class="headerLink">
-    <a href="#%e5%9c%b0%e7%90%83%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark"></a>地球敏感器</h3><p>对于近地轨道的卫星，地球的视角最大，立体角达到约 3.9 sr，因此不能使用点光源近似。地球敏感器旨在对地球的地平线进行测量，也称为地平仪（Horizon Sensor）。由于可见光范围内的地平线受到海洋、植物、沙漠等环境的影响，其表面并不均匀，而二氧化碳散发的 14.0 ~ 16.3 μm 范围的红外线更加均匀，所以大部分地平仪均对波长范围的红外线进行探测。</p>
+    <a href="#%e5%9c%b0%e7%90%83%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark" aria-label="Header mark for '地球敏感器'"></a>地球敏感器</h3><p>对于近地轨道的卫星，地球的视角最大，立体角达到约 3.9 sr，因此不能使用点光源近似。地球敏感器旨在对地球的地平线进行测量，也称为地平仪（Horizon Sensor）。由于可见光范围内的地平线受到海洋、植物、沙漠等环境的影响，其表面并不均匀，而二氧化碳散发的 14.0 ~ 16.3 μm 范围的红外线更加均匀，所以大部分地平仪均对波长范围的红外线进行探测。</p>
 <p>根据地球敏感器是否能够进行动态测量，可以将其分为辐射平衡式、圆锥扫描式、摆动扫描式三种类型。核心原理是测量地球四个边缘点相对于参考像点的位移，如下图所示。</p>
-<figure><a class="lightgallery" href="./HorizonSensor.png" title="./HorizonSensor.png" data-thumbnail="./HorizonSensor.png" data-sub-html="<h2>地球敏感器原理示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./HorizonSensor.png"
-            srcset="./HorizonSensor.png, ./HorizonSensor.png 1.5x, ./HorizonSensor.png 2x"
-            alt="./HorizonSensor.png" width="40%" >
-    </a><figcaption class="image-caption">地球敏感器原理示意图</figcaption>
+<figure><a class="lightgallery" href="./HorizonSensor.png" title="" data-thumbnail="./HorizonSensor.png" data-sub-html="<h2>地球敏感器原理示意图</h2>"><img  loading="lazy" src="./HorizonSensor.png"  sizes="auto"   width="40%"></a><figcaption class="image-caption">地球敏感器原理示意图</figcaption>
     </figure>
 <p>当航天器姿态相对地平面存在误差时，利用参考点的位移可以计算圆心的偏移，进而获得翻滚角和俯仰角。</p>
 <h3 id="太阳敏感器" class="headerLink">
-    <a href="#%e5%a4%aa%e9%98%b3%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark"></a>太阳敏感器</h3><p>太阳敏感器可分为模拟太阳敏感器和数字太阳敏感器，其中模拟太阳敏感器的基本元件为光电池，其输出电流与太阳光的入射角余弦成正比，常称为余弦传感器，基本方程为：</p>
+    <a href="#%e5%a4%aa%e9%98%b3%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark" aria-label="Header mark for '太阳敏感器'"></a>太阳敏感器</h3><p>太阳敏感器可分为模拟太阳敏感器和数字太阳敏感器，其中模拟太阳敏感器的基本元件为光电池，其输出电流与太阳光的入射角余弦成正比，常称为余弦传感器，基本方程为：</p>
 $$
     I(\alpha) = I_0 \cos \alpha
 $$
 <p>由于余弦函数在零位附近的斜率趋近于零，对微小角度的变化不敏感。为此，可以使用一对光电池对称分布于瞄准方向进行差分测量，如下图所示。</p>
-<figure><a class="lightgallery" href="./AnalogSunSensor.png" title="./AnalogSunSensor.png" data-thumbnail="./AnalogSunSensor.png" data-sub-html="<h2>模拟太阳敏感器原理示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./AnalogSunSensor.png"
-            srcset="./AnalogSunSensor.png, ./AnalogSunSensor.png 1.5x, ./AnalogSunSensor.png 2x"
-            alt="./AnalogSunSensor.png" width="40%" >
-    </a><figcaption class="image-caption">模拟太阳敏感器原理示意图</figcaption>
+<figure><a class="lightgallery" href="./AnalogSunSensor.png" title="" data-thumbnail="./AnalogSunSensor.png" data-sub-html="<h2>模拟太阳敏感器原理示意图</h2>"><img  loading="lazy" src="./AnalogSunSensor.png"  sizes="auto"   width="40%"></a><figcaption class="image-caption">模拟太阳敏感器原理示意图</figcaption>
     </figure>
 <p>在这种布局下，两个光电池电流信号的差为：</p>
 $$
     \Delta I (\alpha) = I_0 \cos \left( \alpha_0 - \alpha \right) - I_0 \cos \left( \alpha_0 + \alpha \right) = 2I_0 \sin\alpha_0 \sin \alpha
 $$
 <p>此时传感器在零位附近具有 $2I_0\sin\alpha_0$ 的斜率，提高了小角度检测的灵敏度。</p>
-<figure><a class="lightgallery" href="./DigitalSunSensor.png" title="./DigitalSunSensor.png" data-thumbnail="./DigitalSunSensor.png" data-sub-html="<h2>数字太阳敏感器原理示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./DigitalSunSensor.png"
-            srcset="./DigitalSunSensor.png, ./DigitalSunSensor.png 1.5x, ./DigitalSunSensor.png 2x"
-            alt="./DigitalSunSensor.png" width="50%" >
-    </a><figcaption class="image-caption">数字太阳敏感器原理示意图</figcaption>
+<figure><a class="lightgallery" href="./DigitalSunSensor.png" title="" data-thumbnail="./DigitalSunSensor.png" data-sub-html="<h2>数字太阳敏感器原理示意图</h2>"><img  loading="lazy" src="./DigitalSunSensor.png"  sizes="auto"   width="50%"></a><figcaption class="image-caption">数字太阳敏感器原理示意图</figcaption>
     </figure>
 <p>上图给出了数字太阳敏感器示意图：太阳光线首先通过顶层的狭缝变成线光源，以进行单方向入射角的测量。中间层具有不同尺寸的孔位用于编码（Gray Code），底层则是多个光电池用于检测太阳光是否透过编码孔位。由于光电池与入射角的余弦成正比，编码时的阈值会随之变动。因此，图中中间层最外侧的空隙允许所有视场（FoV：Field of View）内的光线透过，其下方光电池的电流作为阈值，作为其他光电池是否接收到光照的判据。第二个空隙为符号位，用于判断太阳光的入射方向；结合其他空隙的编码，可以将入射角进行量化，量化误差 $\rho_s$ 与位数 $\mu_s$ 的关系为：</p>
 $$
     \rho_s = \frac{\alpha_\mathrm{max}}{2^{\mu_s-1}}
 $$
-<figure><a class="lightgallery" href="./DirectionMeasurement.png" title="./DirectionMeasurement.png" data-thumbnail="./DirectionMeasurement.png" data-sub-html="<h2>方位角测量示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./DirectionMeasurement.png"
-            srcset="./DirectionMeasurement.png, ./DirectionMeasurement.png 1.5x, ./DirectionMeasurement.png 2x"
-            alt="./DirectionMeasurement.png" width="40%" >
-    </a><figcaption class="image-caption">方位角测量示意图</figcaption>
+<figure><a class="lightgallery" href="./DirectionMeasurement.png" title="" data-thumbnail="./DirectionMeasurement.png" data-sub-html="<h2>方位角测量示意图</h2>"><img  loading="lazy" src="./DirectionMeasurement.png"  sizes="auto"   width="40%"></a><figcaption class="image-caption">方位角测量示意图</figcaption>
     </figure>
 <p>使用两个正交布置的单自由度太阳敏感器可以分别获得太阳方向在两个测量平面内投影与瞄准方向的夹角。设太阳敏感器测量坐标系与本体系相同，如上图所示。本体系下太阳的方向坐标记为 $\mathbf{s}^b = [s_1,,s_2,,s_3]^\mathrm{T}$，可以根据测得的夹角 $\alpha$ 和 $\beta$ 按下式计算：</p>
 $$
@@ -275,15 +271,8 @@ $$
             \begin{bmatrix} \tan\alpha \\ \tan\beta \\ 1 \end{bmatrix} 
 $$
 <h3 id="星敏感器" class="headerLink">
-    <a href="#%e6%98%9f%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark"></a>星敏感器</h3><p>星敏感器本质为数码相机，基本结构如下图所示。恒星发出的光线经过透镜汇聚与焦平面，焦平面由电荷耦合元件（CCD：Charge-Coupled Device）或者互补金属氧化物半导体（CMOS：Complementary Metal-Oxide Semiconductor）构成像素点对平面坐标进行量化。其中，CCD 具有更低的噪声，但更容易受到辐射的破坏；COMS 更能够抵抗环境的不利影响，且具有更大的视场。 CMOS 的技术与微处理器的技术相同，因此像素点兼具数据处理功能，称为有源像素传感器（APS：Active Pixel Sensor）。</p>
-<figure><a class="lightgallery" href="./CCDorAPS.png" title="./CCDorAPS.png" data-thumbnail="./CCDorAPS.png" data-sub-html="<h2>星敏感器原理示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./CCDorAPS.png"
-            srcset="./CCDorAPS.png, ./CCDorAPS.png 1.5x, ./CCDorAPS.png 2x"
-            alt="./CCDorAPS.png" width="50%" >
-    </a><figcaption class="image-caption">星敏感器原理示意图</figcaption>
+    <a href="#%e6%98%9f%e6%95%8f%e6%84%9f%e5%99%a8" class="header-mark" aria-label="Header mark for '星敏感器'"></a>星敏感器</h3><p>星敏感器本质为数码相机，基本结构如下图所示。恒星发出的光线经过透镜汇聚与焦平面，焦平面由电荷耦合元件（CCD：Charge-Coupled Device）或者互补金属氧化物半导体（CMOS：Complementary Metal-Oxide Semiconductor）构成像素点对平面坐标进行量化。其中，CCD 具有更低的噪声，但更容易受到辐射的破坏；COMS 更能够抵抗环境的不利影响，且具有更大的视场。 CMOS 的技术与微处理器的技术相同，因此像素点兼具数据处理功能，称为有源像素传感器（APS：Active Pixel Sensor）。</p>
+<figure><a class="lightgallery" href="./CCDorAPS.png" title="" data-thumbnail="./CCDorAPS.png" data-sub-html="<h2>星敏感器原理示意图</h2>"><img  loading="lazy" src="./CCDorAPS.png"  sizes="auto"   width="50%"></a><figcaption class="image-caption">星敏感器原理示意图</figcaption>
     </figure>
 <p>不同于地球敏感器和太阳敏感器具有特定的参考对象，星敏感器能够针对亮度达到一定阈值的许多恒星同时进行探测。因此，为了确定航天器的姿态，还需要对恒星进行识别，这使得星敏感器的数据处理依赖于复杂的匹配算法。星敏感器的数据刷新率一般在 0.5 Hz 到 10 Hz 之间。根据星敏感器是否对准已知恒星，可以分为两种工作模式：</p>
 <ul>
@@ -326,17 +315,10 @@ $$
 </tbody>
 </table>
 <h2 id="姿态确定" class="headerLink">
-    <a href="#%e5%a7%bf%e6%80%81%e7%a1%ae%e5%ae%9a" class="header-mark"></a>姿态确定</h2><p>姿态传感器给出了参考方向与传感器瞄准方向之间的夹角，结合传感器的安装信息，可以获得参考方向在航天器本体系下的坐标表示。为了进一步确定航天器的姿态，需要通过星表获得参考方向在惯性系下的坐标表示，并使用姿态确定算法计算姿态矩阵或四元数。本节简要介绍几种常用的定姿算法。</p>
+    <a href="#%e5%a7%bf%e6%80%81%e7%a1%ae%e5%ae%9a" class="header-mark" aria-label="Header mark for '姿态确定'"></a>姿态确定</h2><p>姿态传感器给出了参考方向与传感器瞄准方向之间的夹角，结合传感器的安装信息，可以获得参考方向在航天器本体系下的坐标表示。为了进一步确定航天器的姿态，需要通过星表获得参考方向在惯性系下的坐标表示，并使用姿态确定算法计算姿态矩阵或四元数。本节简要介绍几种常用的定姿算法。</p>
 <h3 id="triad-算法" class="headerLink">
-    <a href="#triad-%e7%ae%97%e6%b3%95" class="header-mark"></a>TRIAD 算法</h3><p>TRIAD 算法（TRIaxial Attitude Determination）是最早发表的定姿算法，只需要对两个方向进行测量。其核心思想是根据两个参考矢量方向构造 TRIAD 坐标系，分别通过姿态传感器确定 TRIAD 坐标系与航天器本体坐标系的关系以及通过星表确定 TRIAD 坐标系与惯性系的关系，最后利用姿态矩阵的性质计算航天器的姿态。</p>
-<figure><a class="lightgallery" href="./AttitudeDetermination.png" title="./AttitudeDetermination.png" data-thumbnail="./AttitudeDetermination.png" data-sub-html="<h2>TRIAD 定姿算法示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./AttitudeDetermination.png"
-            srcset="./AttitudeDetermination.png, ./AttitudeDetermination.png 1.5x, ./AttitudeDetermination.png 2x"
-            alt="./AttitudeDetermination.png" width="70%" >
-    </a><figcaption class="image-caption">TRIAD 定姿算法示意图</figcaption>
+    <a href="#triad-%e7%ae%97%e6%b3%95" class="header-mark" aria-label="Header mark for 'TRIAD 算法'"></a>TRIAD 算法</h3><p>TRIAD 算法（TRIaxial Attitude Determination）是最早发表的定姿算法，只需要对两个方向进行测量。其核心思想是根据两个参考矢量方向构造 TRIAD 坐标系，分别通过姿态传感器确定 TRIAD 坐标系与航天器本体坐标系的关系以及通过星表确定 TRIAD 坐标系与惯性系的关系，最后利用姿态矩阵的性质计算航天器的姿态。</p>
+<figure><a class="lightgallery" href="./AttitudeDetermination.png" title="" data-thumbnail="./AttitudeDetermination.png" data-sub-html="<h2>TRIAD 定姿算法示意图</h2>"><img  loading="lazy" src="./AttitudeDetermination.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">TRIAD 定姿算法示意图</figcaption>
     </figure>
 <p>如上图所示，将航天器到远方恒星的单位矢量分别记做 $\vec{s}_1$ 和 $\vec{s}_2$，则 TRIAD 坐标系定义为：</p>
 $$
@@ -357,7 +339,7 @@ $$
     R_s^i =R_t^i R_b^t = R_t^i \left( R_t^b \right)^\mathrm{T}
 $$
 <h3 id="quest-算法" class="headerLink">
-    <a href="#quest-%e7%ae%97%e6%b3%95" class="header-mark"></a>QUEST 算法</h3><p>当可测的方向多于两个，且测量精度不同时，TRIAD 算法的使用将受到限制。这时的定姿问题可以转化为最优化问题：即寻找姿态矩阵 $R = R_b^i$ 使得误差的平方加权和最小，用数学表述为：</p>
+    <a href="#quest-%e7%ae%97%e6%b3%95" class="header-mark" aria-label="Header mark for 'QUEST 算法'"></a>QUEST 算法</h3><p>当可测的方向多于两个，且测量精度不同时，TRIAD 算法的使用将受到限制。这时的定姿问题可以转化为最优化问题：即寻找姿态矩阵 $R = R_b^i$ 使得误差的平方加权和最小，用数学表述为：</p>
 $$
     \mathop{\arg\min}_R J(R),\quad
     J(R) = \frac{1}{2} \sum_{j=1}^m w_j \left\| \breve{\mathbf{s}}_j^b - R^\mathrm{T}\breve{\mathbf{s}}_j^i \right\|^2 
@@ -428,19 +410,12 @@ $$
     \end{aligned}
 $$
 <h3 id="状态估计器" class="headerLink">
-    <a href="#%e7%8a%b6%e6%80%81%e4%bc%b0%e8%ae%a1%e5%99%a8" class="header-mark"></a>状态估计器</h3><p>QUEST 算法允许将多个姿态传感器的数据进行融合，使用状态估计器可以进一步将不同类型传感器的数据进行融合，如融合陀螺仪和星敏感器的数据对姿态进行估计。状态估计器的基本思路如下图所示，针对航天器的运动学模型构造实时运行的数值模型，将测得的角速度输入给数值模型，利用姿态估计误差 $\tilde{\mathfrak{q}}=\hat{\mathfrak{q}}^{-1}\otimes \breve{\mathfrak{q}}$ 进行反馈，可以对状态进行修正。进一步，如果对扰动进行建模，还能够对陀螺仪的零偏进行修正，进一步提高姿态的估计精度。</p>
-<figure><a class="lightgallery" href="./SensorFusion.png" title="./SensorFusion.png" data-thumbnail="./SensorFusion.png" data-sub-html="<h2>姿态状态估计器示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./SensorFusion.png"
-            srcset="./SensorFusion.png, ./SensorFusion.png 1.5x, ./SensorFusion.png 2x"
-            alt="./SensorFusion.png" width="60%" >
-    </a><figcaption class="image-caption">姿态状态估计器示意图</figcaption>
+    <a href="#%e7%8a%b6%e6%80%81%e4%bc%b0%e8%ae%a1%e5%99%a8" class="header-mark" aria-label="Header mark for '状态估计器'"></a>状态估计器</h3><p>QUEST 算法允许将多个姿态传感器的数据进行融合，使用状态估计器可以进一步将不同类型传感器的数据进行融合，如融合陀螺仪和星敏感器的数据对姿态进行估计。状态估计器的基本思路如下图所示，针对航天器的运动学模型构造实时运行的数值模型，将测得的角速度输入给数值模型，利用姿态估计误差 $\tilde{\mathfrak{q}}=\hat{\mathfrak{q}}^{-1}\otimes \breve{\mathfrak{q}}$ 进行反馈，可以对状态进行修正。进一步，如果对扰动进行建模，还能够对陀螺仪的零偏进行修正，进一步提高姿态的估计精度。</p>
+<figure><a class="lightgallery" href="./SensorFusion.png" title="" data-thumbnail="./SensorFusion.png" data-sub-html="<h2>姿态状态估计器示意图</h2>"><img  loading="lazy" src="./SensorFusion.png"  sizes="auto"   width="60%"></a><figcaption class="image-caption">姿态状态估计器示意图</figcaption>
     </figure>
 <p>图中的反馈可以使用卡尔曼增益以获得最优估计，参考之前讨论的<a href="https://chunyu.site/kalmanfilter/" rel="">卡尔曼滤波简介</a>。需要注意的是，由于姿态的运动学方程是非线性的，应当基于上一次的后验估计对模型进行线性化，构成扩展卡尔曼滤波器（EKF：Extended Kalman Filter）。对于频域设计而言，可以使用适当的极点配置设计环路的灵敏度函数，这一点我们将在以后的模型嵌入控制（EMC：Embedded Model Control）中进行详细讨论。</p>
 <h2 id="参考文献" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark" aria-label="Header mark for '参考文献'"></a>参考文献</h2><ol>
 <li>吕振铎, 雷拥军. 卫星姿态测量与确定. 国防工业出版社. 2013.</li>
 <li>E. Canuto, C. Novara, D. Carlucci, et al. Spacecraft Dynamics and Control: The Embedded Model Control Approach. Butterworth-Heinemann. 2018.</li>
 <li>Spacecraft Sun Sensors. NASA Space Vehicle Design Criteria (Guidance and Control). 1970.</li>
@@ -471,7 +446,7 @@ $$
         <section class="post-tags"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/">航天器</a>,&nbsp;<a href="/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/">传感器</a>,&nbsp;<a href="/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/">姿态测量</a>,&nbsp;<a href="/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/">姿态确定</a></section>
         <section class="print:!tw-hidden">
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+            <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">返回</button></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
@@ -483,7 +458,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.124.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.126.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
@@ -504,18 +479,12 @@ $$
                     }
                 </script></footer></div>
 
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="回到顶部">
             <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-            <svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
-    src="/lib/clipboard/clipboard.min.js"
-    
-  ></script><script
+        </a></div><div id="cookieconsent-container"></div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css">
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
     src="/lib/typeit/typeit.min.js"
     
   ></script><script
@@ -558,7 +527,19 @@ $$
     
       defer
     
-  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script></div>
+  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script>
+    
+    <script type="speculationrules">
+        {
+          "prerender": [
+            {
+              "where": { "href_matches": "/*" },
+              "eagerness": "moderate"
+            }
+          ]
+        }
+    </script>
+      
 </body>
 
 </html>

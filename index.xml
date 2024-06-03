@@ -4,9 +4,16 @@
         <link>https://chunyu.site/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 03 Jun 2024 23:33:22 &#43;0800</lastBuildDate>
             <atom:link href="https://chunyu.site/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>MATLAB 自定义交互式图例</title>
+    <link>https://chunyu.site/legend-callback/</link>
+    <pubDate>Mon, 03 Jun 2024 23:33:22 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/legend-callback/</guid>
+    <description><![CDATA[<p>在进行数据分析时，有时我们会将一系列相关的曲线画到一起进行对比，对于数据存在部分重叠的情况，我们希望临时地将某些曲线隐藏。为了在 MATLAB 中实现这个功能，可以使用 <code>legend</code> 的回调函数。本文将简要讨论这种交互式功能的实现。</p>]]></description>
+</item><item>
     <title>系统频率响应估计</title>
     <link>https://chunyu.site/freqrespest/</link>
     <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://chunyu.site/emc01-introduction/</guid>
     <description><![CDATA[<p>模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。</p>]]></description>
-</item><item>
-    <title>航天器姿态测量与确定</title>
-    <link>https://chunyu.site/attitude/</link>
-    <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/attitude/</guid>
-    <description><![CDATA[<p>航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。</p>]]></description>
 </item></channel>
 </rss>

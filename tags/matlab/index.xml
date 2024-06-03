@@ -4,7 +4,14 @@
         <link>https://chunyu.site/tags/matlab/</link>
         <description>MATLAB - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 20 May 2023 18:54:52 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/matlab/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 03 Jun 2024 23:33:22 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/matlab/" rel="self" type="application/rss+xml" /><item>
+    <title>MATLAB 自定义交互式图例</title>
+    <link>https://chunyu.site/legend-callback/</link>
+    <pubDate>Mon, 03 Jun 2024 23:33:22 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/legend-callback/</guid>
+    <description><![CDATA[<p>在进行数据分析时，有时我们会将一系列相关的曲线画到一起进行对比，对于数据存在部分重叠的情况，我们希望临时地将某些曲线隐藏。为了在 MATLAB 中实现这个功能，可以使用 <code>legend</code> 的回调函数。本文将简要讨论这种交互式功能的实现。</p>]]></description>
+</item><item>
     <title>MATLAB 自定义默认绘图样式</title>
     <link>https://chunyu.site/initplot/</link>
     <pubDate>Sat, 20 May 2023 18:54:52 &#43;0800</pubDate><author>

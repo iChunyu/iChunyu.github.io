@@ -6,23 +6,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>模型嵌入控制（1）：简介与符号约定 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:title" content="模型嵌入控制（1）：简介与符号约定" />
-<meta property="og:description" content="模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://chunyu.site/emc01-introduction/" /><meta property="og:image" content="https://chunyu.site/images/avatar.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-07-02T22:40:00+08:00" />
-<meta property="article:modified_time" content="2023-07-16T23:37:26+08:00" /><meta property="og:site_name" content="某春雨的后花园" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://chunyu.site/images/avatar.png" /><meta name="twitter:title" content="模型嵌入控制（1）：简介与符号约定"/>
-<meta name="twitter:description" content="模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。"/>
+    <meta name="robots" content="noodp" /><title>模型嵌入控制（1）：简介与符号约定 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/emc01-introduction/">
+  <meta property="og:site_name" content="某春雨的后花园">
+  <meta property="og:title" content="模型嵌入控制（1）：简介与符号约定">
+  <meta property="og:description" content="模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-07-02T22:40:00+08:00">
+    <meta property="article:modified_time" content="2023-07-16T23:37:26+08:00">
+    <meta property="article:tag" content="EMC">
+    <meta property="article:tag" content="模型嵌入控制">
+    <meta property="og:image" content="https://chunyu.site/images/avatar.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://chunyu.site/images/avatar.png">
+  <meta name="twitter:title" content="模型嵌入控制（1）：简介与符号约定">
+  <meta name="twitter:description" content="模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。">
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
 <link rel="canonical" href="https://chunyu.site/emc01-introduction/" /><link rel="prev" href="https://chunyu.site/attitude/" /><link rel="next" href="https://chunyu.site/emc02-plant/" />
-<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/animate/animate.min.css">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript>
+<link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
     
@@ -47,9 +54,11 @@
             },"description": ""
     }</script></head>
 
-<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+
+<body data-instant-intensity="viewport" ><script type="text/javascript">
         function setTheme(theme) {
           document.body.setAttribute('theme', theme); 
+          document.documentElement.className = theme;
           document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');
           if (theme === 'light') {
             document.documentElement.classList.remove('tw-dark')
@@ -61,8 +70,23 @@
         }
         function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
         function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
-        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
-        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        if (window.localStorage && localStorage.getItem('theme')) {
+            let theme = localStorage.getItem('theme');
+            if (theme === 'light' || theme === 'dark') {
+            setTheme(theme);
+            } else {
+                if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    setTheme('dark');
+                } else {
+                    setTheme('light');
+                }
+            }
+         } else { 
+            if ('auto' === 'light' || 'auto' === 'dark') 
+                setTheme('auto'), saveTheme('auto'); 
+            else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');
+        }
+        let metaColors = {'light': '#f8f8f8','dark': '#161b22'}
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
         window.switchThemeEventSet = new Set()
     </script>
@@ -99,7 +123,6 @@
                     <select class="color-theme-select" id="theme-select-desktop" aria-label="切换主题">
                         <option value="light">浅色</option>
                         <option value="dark">深色</option>
-                        <option value="black">黑色</option>
                         <option value="auto">跟随系统</option>
                     </select>
                 </button></div>
@@ -142,7 +165,6 @@
                 <select class="color-theme-select" id="theme-select-mobile" aria-label="切换主题">
                     <option value="light">浅色</option>
                     <option value="dark">深色</option>
-                    <option value="black">黑色</option>
                     <option value="auto">跟随系统</option>
                 </select>
             </button></div>
@@ -169,9 +191,9 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title animate__animated animate__flipInX">模型嵌入控制（1）：简介与符号约定</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">模型嵌入控制（1）：简介与符号约定</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img src="https://chunyu.site/images/avatar.png" alt="大春雨 avatar" class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/embedded-model-control/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Embedded Model Control</a></span></div>
             <div class="post-meta-line"><svg class="icon"
@@ -200,67 +222,35 @@
 </nav></div>
             </div><div class="content" id="content"><p>模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。</p>
 <h2 id="模型嵌入控制简介" class="headerLink">
-    <a href="#%e6%a8%a1%e5%9e%8b%e5%b5%8c%e5%85%a5%e6%8e%a7%e5%88%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>模型嵌入控制简介</h2><p>模型嵌入控制基于状态空间进行建模与设计，当建模准确，在分离原理的加持下，闭环系统的环路设计可以分解为状态估计/预测环路和理想控制环路。模型嵌入控制以嵌入模型为核心，构建状态预测器，并基于预测的状态综合控制指令，构成完整的数字控制器。下面我们将对各个组成部分进行介绍。</p>
+    <a href="#%e6%a8%a1%e5%9e%8b%e5%b5%8c%e5%85%a5%e6%8e%a7%e5%88%b6%e7%ae%80%e4%bb%8b" class="header-mark" aria-label="Header mark for '模型嵌入控制简介'"></a>模型嵌入控制简介</h2><p>模型嵌入控制基于状态空间进行建模与设计，当建模准确，在分离原理的加持下，闭环系统的环路设计可以分解为状态估计/预测环路和理想控制环路。模型嵌入控制以嵌入模型为核心，构建状态预测器，并基于预测的状态综合控制指令，构成完整的数字控制器。下面我们将对各个组成部分进行介绍。</p>
 <h3 id="被控对象与嵌入模型" class="headerLink">
-    <a href="#%e8%a2%ab%e6%8e%a7%e5%af%b9%e8%b1%a1%e4%b8%8e%e5%b5%8c%e5%85%a5%e6%a8%a1%e5%9e%8b" class="header-mark"></a>被控对象与嵌入模型</h3><p>基于模型的控制器设计首先需要对被控对象进行建模，在给定输入下，被控对象可能存在不可控的状态，实际建模时主要考虑其中可控状态的建模，相应的模型称为可控动态（Controllable Dynamics）。此外，区分可控动态和被控对象将有利于以后对模型误差的讨论。</p>
+    <a href="#%e8%a2%ab%e6%8e%a7%e5%af%b9%e8%b1%a1%e4%b8%8e%e5%b5%8c%e5%85%a5%e6%a8%a1%e5%9e%8b" class="header-mark" aria-label="Header mark for '被控对象与嵌入模型'"></a>被控对象与嵌入模型</h3><p>基于模型的控制器设计首先需要对被控对象进行建模，在给定输入下，被控对象可能存在不可控的状态，实际建模时主要考虑其中可控状态的建模，相应的模型称为可控动态（Controllable Dynamics）。此外，区分可控动态和被控对象将有利于以后对模型误差的讨论。</p>
 <p>如下图所示，蓝色阴影区内表示实际的被控对象，黄色阴影区内表示同时运行的数字计算单元。假设可控动态对被控对象的建模准确，并在数字计算单元内引入相同的可控动态，当两者同时接受相同的控制指令 $\bm{u}$ 时，被控对象的输出 $\bm{y}$ 应当与数字单元内可控动态的输出 $\hat{\bm{y}}$ 相同。然而，实际的被控对象会受到未知的外部扰动 $\bm{d}$ 的影响，从而使两个输出之间存在误差。如果将扰动看作被控对象的一部分，那么这一误差可以解释为被控对象建模时忽略了扰动模型而引入的，因此将其称为模型误差，定义为 $\bm{e}_m = \bm{y} - \hat{\bm{y}}$。</p>
-<figure><a class="lightgallery" href="./em.png" title="./em.png" data-thumbnail="./em.png" data-sub-html="<h2>被控对象与嵌入模型示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./em.png"
-            srcset="./em.png, ./em.png 1.5x, ./em.png 2x"
-            alt="./em.png" width="60%" >
-    </a><figcaption class="image-caption">被控对象与嵌入模型示意图</figcaption>
+<figure><a class="lightgallery" href="./em.png" title="" data-thumbnail="./em.png" data-sub-html="<h2>被控对象与嵌入模型示意图</h2>"><img  loading="lazy" src="./em.png"  sizes="auto"   width="60%"></a><figcaption class="image-caption">被控对象与嵌入模型示意图</figcaption>
     </figure>
 <p>为了减小模型误差，在数字计算单元内进一步引入扰动动态（Disturbance Dynamics），与可控动态一同构成所谓的嵌入模型（Embedded Model）。扰动的建模是将扰动看作随机驱动噪声 $\bar{\bm{w}}$ 经过扰动动态后的输出。特别地，被控对象受到的扰动可以分为可预测和不可预测（完全随机）两个部分，前者可以根据扰动的特性进行建模，基于模型进行预测并通过反馈实现补偿；后者只能通过环路特性进行估计，是影响系统性能的主要因素。这将在以后状态预测器设计中详细讨论。</p>
 <h3 id="状态预测器" class="headerLink">
-    <a href="#%e7%8a%b6%e6%80%81%e9%a2%84%e6%b5%8b%e5%99%a8" class="header-mark"></a>状态预测器</h3><p>状态预测的实现依赖于对嵌入模型的驱动噪声 $\bar{\bm{w}}$ 的估计。引入噪声估计器从模型误差 $\bm{e}_m$ 中估计驱动噪声，状态预测环路的基本结构如下图黄色区域所示。</p>
-<figure><a class="lightgallery" href="./sp.png" title="./sp.png" data-thumbnail="./sp.png" data-sub-html="<h2>状态预测器结构框图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./sp.png"
-            srcset="./sp.png, ./sp.png 1.5x, ./sp.png 2x"
-            alt="./sp.png" width="75%" >
-    </a><figcaption class="image-caption">状态预测器结构框图</figcaption>
+    <a href="#%e7%8a%b6%e6%80%81%e9%a2%84%e6%b5%8b%e5%99%a8" class="header-mark" aria-label="Header mark for '状态预测器'"></a>状态预测器</h3><p>状态预测的实现依赖于对嵌入模型的驱动噪声 $\bar{\bm{w}}$ 的估计。引入噪声估计器从模型误差 $\bm{e}_m$ 中估计驱动噪声，状态预测环路的基本结构如下图黄色区域所示。</p>
+<figure><a class="lightgallery" href="./sp.png" title="" data-thumbnail="./sp.png" data-sub-html="<h2>状态预测器结构框图</h2>"><img  loading="lazy" src="./sp.png"  sizes="auto"   width="75%"></a><figcaption class="image-caption">状态预测器结构框图</figcaption>
     </figure>
 <p>在以后的讨论中我们将指出：模型嵌入控制的设计结果能够驱动被控对象收敛于嵌入模型，换言之，完整控制环路的灵敏度函数将收敛于状态预测器。因此状态预测环路是模型嵌入控制设计的核心要素。状态预测环路的性能会受到被控对象不确定性的影响，模型嵌入控制将其归纳为四类：（1）初始状态的不确定性：被控对象的初始状态通常是未知的，相较于嵌入模型中人为给定的初始状态存在不确定性；（2）随机扰动：包括被控对象输入端的扰动以及传感噪声对输出的影响；（3）参数不确定性：被控对象的实际参数相较于可控动态建模使用的参数存在不确定性；（4）未建模动态：由于对被控对象的认识不充分，或者为了简化设计而忽略一部分特性，可控动态存在未建模动态。状态预测器的设计需要充分考虑各种不确定性带来的约束。</p>
 <p>模型嵌入控制中的状态预测器（State Predictor）与一般控制器中的状态估计器（State Estimator）或着状态观测器（State Observer）具有相似的地位。考虑到数字控制存在单位延时，如下图所示。假设数字控制器的时间步长为 $T$，当其在 $iT$ 时刻接收到测量值 $\breve{\bm{y}}(i)$ 后，应当在 $\tau < T$ 时间内完成计算，并只能在 $(i+1)T$ 时刻输出。为了补偿该延时，必须对状态进行一步预测，并提前一步综合控制指令，因此我们更加倾向于使用状态预测器一词。</p>
-<figure><a class="lightgallery" href="./DTinterval.png" title="./DTinterval.png" data-thumbnail="./DTinterval.png" data-sub-html="<h2>数字控制的单位延时</h2>">
-        <img
-            
-            loading="lazy"
-            src="./DTinterval.png"
-            srcset="./DTinterval.png, ./DTinterval.png 1.5x, ./DTinterval.png 2x"
-            alt="./DTinterval.png" width="45%" >
-    </a><figcaption class="image-caption">数字控制的单位延时</figcaption>
+<figure><a class="lightgallery" href="./DTinterval.png" title="" data-thumbnail="./DTinterval.png" data-sub-html="<h2>数字控制的单位延时</h2>"><img  loading="lazy" src="./DTinterval.png"  sizes="auto"   width="45%"></a><figcaption class="image-caption">数字控制的单位延时</figcaption>
     </figure>
 <h3 id="模型嵌入控制架构" class="headerLink">
-    <a href="#%e6%a8%a1%e5%9e%8b%e5%b5%8c%e5%85%a5%e6%8e%a7%e5%88%b6%e6%9e%b6%e6%9e%84" class="header-mark"></a>模型嵌入控制架构</h3><p>控制律依据状态预测器提供的状态预测值综合得到控制指令。不失一般性地，控制律可以由三个部分构成：（1）状态反馈：这是确保闭环系统稳定的基本条件，同时用于约束随机噪声对闭环性能的影响；（2）扰动补偿：将可预测部分的扰动进行反馈与补偿有利于提高被控对象的抗扰能力；（3）参考跟随：利用参考动态和特定的反馈律构成参考发生器，可以为被控对象提供合适的参考状态和参考指令，参考动态将以状态误差的形式进入控制律以确保被控对象对参考信号进行跟随，而参考指令作为开环指令有利于改善系统的动态过程。模型嵌入控制完整的架构如下图所示。</p>
-<figure><a class="lightgallery" href="./emc.png" title="./emc.png" data-thumbnail="./emc.png" data-sub-html="<h2>模型嵌入控制结构示意图</h2>">
-        <img
-            
-            loading="lazy"
-            src="./emc.png"
-            srcset="./emc.png, ./emc.png 1.5x, ./emc.png 2x"
-            alt="./emc.png" width="75%" >
-    </a><figcaption class="image-caption">模型嵌入控制结构示意图</figcaption>
+    <a href="#%e6%a8%a1%e5%9e%8b%e5%b5%8c%e5%85%a5%e6%8e%a7%e5%88%b6%e6%9e%b6%e6%9e%84" class="header-mark" aria-label="Header mark for '模型嵌入控制架构'"></a>模型嵌入控制架构</h3><p>控制律依据状态预测器提供的状态预测值综合得到控制指令。不失一般性地，控制律可以由三个部分构成：（1）状态反馈：这是确保闭环系统稳定的基本条件，同时用于约束随机噪声对闭环性能的影响；（2）扰动补偿：将可预测部分的扰动进行反馈与补偿有利于提高被控对象的抗扰能力；（3）参考跟随：利用参考动态和特定的反馈律构成参考发生器，可以为被控对象提供合适的参考状态和参考指令，参考动态将以状态误差的形式进入控制律以确保被控对象对参考信号进行跟随，而参考指令作为开环指令有利于改善系统的动态过程。模型嵌入控制完整的架构如下图所示。</p>
+<figure><a class="lightgallery" href="./emc.png" title="" data-thumbnail="./emc.png" data-sub-html="<h2>模型嵌入控制结构示意图</h2>"><img  loading="lazy" src="./emc.png"  sizes="auto"   width="75%"></a><figcaption class="image-caption">模型嵌入控制结构示意图</figcaption>
     </figure>
 <div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <span class="icon"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>
-            关于译名
-            <span class="details-icon"><svg class="icon"
+    <div class="details-summary admonition-title">
+        <span class="icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></svg></span>关于译名<span class="details-icon"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">在多数中文文章的直译下，“Embedded Model Control” 翻译为“嵌入（式）模型控制”。然而，该算法的提出者 Enrico Canuto 教授在他的博客中将中文名解释为“模型嵌入控制”，本系列文章采用这一译名。</div>
-        </div>
     </div>
+    <div class="details-content">
+        <div class="admonition-content">在多数中文文章的直译下，“Embedded Model Control” 翻译为“嵌入（式）模型控制”。然而，该算法的提出者 Enrico Canuto 教授在他的博客中将中文名解释为“模型嵌入控制”，本系列文章采用这一译名。</div></div></div>
 <h2 id="符号约定" class="headerLink">
-    <a href="#%e7%ac%a6%e5%8f%b7%e7%ba%a6%e5%ae%9a" class="header-mark"></a>符号约定</h2><p>为了讨论的便利，本系列文章将采用以下符号约定：</p>
+    <a href="#%e7%ac%a6%e5%8f%b7%e7%ba%a6%e5%ae%9a" class="header-mark" aria-label="Header mark for '符号约定'"></a>符号约定</h2><p>为了讨论的便利，本系列文章将采用以下符号约定：</p>
 <ul>
 <li>为了不失一般性，粗体小写字母表示矢量，对应多输入多输出系统；普通小写字母表示标量；</li>
 <li>相似地位的物理量采用相同的符号，但使用不同的帽子加以区分，使用的帽子有：
@@ -443,7 +433,7 @@ $$
 </tbody>
 </table>
 <h2 id="参考文献" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark" aria-label="Header mark for '参考文献'"></a>参考文献</h2><ol>
 <li>E. Canuto, C. Novara, D. Carlucci, et al. Spacecraft Dynamics and Control: The Embedded Model Control Approach. Butterworth-Heinemann. 2018.</li>
 <li>E. Canuto. Embedded Model Control: Outline of the theory. ISA Transactions. 2007(46). 363–377.</li>
 <li>E. Canuto, C. Novara, L. Colangelo. Embedded model control: Reconciling modern control theory and error-based control design. Control Theory Technol. 2018(16). 261–283.</li>
@@ -468,7 +458,7 @@ $$
         <section class="post-tags"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/emc/">EMC</a>,&nbsp;<a href="/tags/%E6%A8%A1%E5%9E%8B%E5%B5%8C%E5%85%A5%E6%8E%A7%E5%88%B6/">模型嵌入控制</a></section>
         <section class="print:!tw-hidden">
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+            <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">返回</button></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
@@ -480,7 +470,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.124.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.126.3">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
@@ -501,18 +491,12 @@ $$
                     }
                 </script></footer></div>
 
-    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="回到顶部">
+    <div id="fixed-buttons" class="print:!tw-hidden"><a href="#back-to-top" id="back-to-top-button" class="fixed-button tw-transition-opacity tw-opacity-0" title="回到顶部">
             <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
-        </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-            <svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"/></svg>
-        </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":42},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
-    src="/lib/clipboard/clipboard.min.js"
-    
-  ></script><script
+        </a></div><div id="cookieconsent-container"></div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css">
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
     src="/lib/typeit/typeit.min.js"
     
   ></script><script
@@ -555,7 +539,19 @@ $$
     
       defer
     
-  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script></div>
+  ></script><script async defer data-website-id="ce258e61-9ff3-448b-849f-9a0be03eb59b" src="https://analytics.us.umami.is/script.js"   data-domains="chunyu.site" ></script>
+    
+    <script type="speculationrules">
+        {
+          "prerender": [
+            {
+              "where": { "href_matches": "/*" },
+              "eagerness": "moderate"
+            }
+          ]
+        }
+    </script>
+      
 </body>
 
 </html>
