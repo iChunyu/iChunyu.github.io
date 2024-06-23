@@ -153,7 +153,18 @@ function my_legend_callback(hSrc,eventData)
     % mid click to show only the selected object or show all
     if strcmp(eventData.SelectionType, 'extend') && strcmp(eventData.Region, 'icon')
         % get all graphic objects displayed in legend
+        % results may contain 'group' object create by 'bode', ignore their children
         go = findobj(eventData.Peer.Parent, '-property', 'DisplayName');
+        K = length(go);
+        idx = true(K,1);
+        for k = 1:K
+            if isprop(go(k), 'Children')
+                if isprop(go(k).Children, 'Visible')
+                    idx(go == go(k).Children) = false;
+                end
+            end
+        end
+        go = go(idx);
         go_visible = [go.Visible];
         if sum(go_visible) == 1 && isequal(go(go_visible), eventData.Peer)
             for k = 1:length(go)
