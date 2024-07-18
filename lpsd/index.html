@@ -235,17 +235,17 @@ $$
 S(k) = \frac{2}{Nf_s}|X(k)|^2
 $$
 <p>式中，系数 $2$ 将双边谱转换到单边谱，这是因为负频率不具备实际的物理意义。</p>
-<figure><a class="lightgallery" href="./lpsd01.jpg" title="" data-thumbnail="./lpsd01.jpg" data-sub-html="<h2>常用谱估计算法流程图</h2>"><img  loading="lazy" src="./lpsd01.jpg"  sizes="auto"   width="70%"></a><figcaption class="image-caption">常用谱估计算法流程图</figcaption>
+<figure><a class="lightgallery" href="./lpsd01.jpg" title="" data-thumbnail="./lpsd01.jpg" data-sub-html="<h2>常用谱估计算法流程图</h2>"><img  loading="lazy" src="./lpsd01.jpg"     width="70%"></a><figcaption class="image-caption">常用谱估计算法流程图</figcaption>
     </figure>
 <p>Welch 方法相对于周期图法增加了分段平均的思想，其将数据等分为多段，并且允许各段数据之间具有一定的重叠率以补偿窗函数引入的数据不平权的影响。对每段数据采用周期图法，最后将各段分别计算的功率谱进算数平均，获得最终的谱估计值。</p>
-<figure><a class="lightgallery" href="./lpsd02.jpg" title="" data-thumbnail="./lpsd02.jpg" data-sub-html="<h2>周期图法和 Welch 法的谱估计结果示例</h2>"><img  loading="lazy" src="./lpsd02.jpg"  sizes="auto"   width="60%"></a><figcaption class="image-caption">周期图法和 Welch 法的谱估计结果示例</figcaption>
+<figure><a class="lightgallery" href="./lpsd02.jpg" title="" data-thumbnail="./lpsd02.jpg" data-sub-html="<h2>周期图法和 Welch 法的谱估计结果示例</h2>"><img  loading="lazy" src="./lpsd02.jpg"     width="60%"></a><figcaption class="image-caption">周期图法和 Welch 法的谱估计结果示例</figcaption>
     </figure>
 <p>上图展示了周期图法和 Welch 方法对功率谱估计的结果。其中，蓝色曲线的周期图法一次性使用了全部的数据，因而有最高的频率分辨率，可以看到更低的频带。但是其高频部分的数据波动较大，且波动范围不会随着点数的增加而减小，即不满足所谓的一致性原则。橙色的 Welch 算法由于对数据进行了分段，直接进行 FFT 的数据相对较少，导致频率分辨率降低。但是分段平均使得高频波动的幅值大大减小，可以验证高频波动会随着分段次数的增加而进一步减小。</p>
 <h2 id="lpsd算法" class="headerLink">
     <a href="#lpsd%e7%ae%97%e6%b3%95" class="header-mark" aria-label="Header mark for 'LPSD算法'"></a>LPSD算法</h2><p>LPSD 算法的基本思想是采用对数分布的频率点，由于此时频率点的差值不是定值，即 DFT 的频率分辨率随频率点变化，因而在求取每个频率点对应的功率谱密度时应当对原始数据进行不同的分段。这就是说，LPSD 算法的每个频率点对应于不同分段次数下 Welch 算法中的相应点。</p>
 <h3 id="对数频率的选取" class="headerLink">
     <a href="#%e5%af%b9%e6%95%b0%e9%a2%91%e7%8e%87%e7%9a%84%e9%80%89%e5%8f%96" class="header-mark" aria-label="Header mark for '对数频率的选取'"></a>对数频率的选取</h3><p>记采集到的离散数据为 $x(n),n=0,1,2&hellip;N-1$，采样率为 $f_s$。假设希望计算 $J_{\rm des}$ 个点，其中第 $j$ 个点对应的频率为 $f(j)$、功率谱密度为 $P(j)$ 、频率分辨率为 $r(j)=f(j+1)-f(j)$。应当注意的是，这里的频率分辨率是指计算DFT的频率点之间的间隔，更一般的说法应当是栅栏效应。有限长数据的频率分辨率实际由 DTFT 定义，与数据的时间长度互为倒数，本文中称之为最小分辨率 $r_{\rm min}$。在 LPSD 算法中不能采用 <code>logspace</code> 生成对数分布的频率点，因为数值计算的频率间隔不应当小于最小分辨率，否则这种计算是没有意义的。</p>
-<figure><a class="lightgallery" href="./lpsd03.jpg" title="" data-thumbnail="./lpsd03.jpg" data-sub-html="<h2>对数频率的选取示意图</h2>"><img  loading="lazy" src="./lpsd03.jpg"  sizes="auto"   width="60%"></a><figcaption class="image-caption">对数频率的选取示意图</figcaption>
+<figure><a class="lightgallery" href="./lpsd03.jpg" title="" data-thumbnail="./lpsd03.jpg" data-sub-html="<h2>对数频率的选取示意图</h2>"><img  loading="lazy" src="./lpsd03.jpg"     width="60%"></a><figcaption class="image-caption">对数频率的选取示意图</figcaption>
     </figure>
 <p>为了计算频率点，首先考察严格对数均匀的频率点应当满足</p>
 $$\log f(j + 1) - \log f(j) = C$$
@@ -288,7 +288,7 @@ $$
 <p>综上所述，对数频率的选取算法为：以 $f(1)=r_{\rm min}$ 为起点，根据频率和 $J_{\rm des}$ 求解分辨率 $r_0(j)$ ，并根据要求对分辨率进行调整，得到 $r(j)$，接着利用 $f(j+1)=f(j)+r(j)$ 进行迭代。当计算的频率达到奈奎斯特频率即可停止迭代。值得注意的是，由于对频率分辨率进行了修正，获得的频率点并不是严格的对数分布，同时也会导致实际获得的频率点 $J$ 与期望的点数 $J_{\rm des}$ 并不相等。</p>
 <h3 id="数据的分段处理" class="headerLink">
     <a href="#%e6%95%b0%e6%8d%ae%e7%9a%84%e5%88%86%e6%ae%b5%e5%a4%84%e7%90%86" class="header-mark" aria-label="Header mark for '数据的分段处理'"></a>数据的分段处理</h3><p>对于第 $j$ 个频率点，由前可知其频率分辨率为 $r(j)$，分段后的每段数据长度为 $L(j)$。为了减小窗函数导致的数据不等权，允许分段之间存在一定的重叠率 $\xi$，数据分段如下图所示。</p>
-<figure><a class="lightgallery" href="./lpsd04.jpg" title="" data-thumbnail="./lpsd04.jpg" data-sub-html="<h2>数据分段示意图</h2>"><img  loading="lazy" src="./lpsd04.jpg"  sizes="auto"   width="60%"></a><figcaption class="image-caption">数据分段示意图</figcaption>
+<figure><a class="lightgallery" href="./lpsd04.jpg" title="" data-thumbnail="./lpsd04.jpg" data-sub-html="<h2>数据分段示意图</h2>"><img  loading="lazy" src="./lpsd04.jpg"     width="60%"></a><figcaption class="image-caption">数据分段示意图</figcaption>
     </figure>
 <p>由图可知，每段数据未重叠部分长度为</p>
 $$D(j) = (1 - \xi ) \cdot L(j)$$
@@ -330,10 +330,10 @@ ${\rm V}/\sqrt{ {\rm Hz} }$ 。</p>
 <p>至此，我们依据实现的功率谱的求取，以 $f(j)$ 为横轴， $P(j)$ 为纵轴即可绘制功率谱。</p>
 <h2 id="不同算法的对比" class="headerLink">
     <a href="#%e4%b8%8d%e5%90%8c%e7%ae%97%e6%b3%95%e7%9a%84%e5%af%b9%e6%af%94" class="header-mark" aria-label="Header mark for '不同算法的对比'"></a>不同算法的对比</h2><p>依然以本文开头的数据为例，周期图法、Welch 方法以及 LPSD 算法得到的功率谱如下图所示。</p>
-<figure><a class="lightgallery" href="./lpsd05.jpg" title="" data-thumbnail="./lpsd05.jpg" data-sub-html="<h2>不同谱估计算法对比</h2>"><img  loading="lazy" src="./lpsd05.jpg"  sizes="auto"   width="60%"></a><figcaption class="image-caption">不同谱估计算法对比</figcaption>
+<figure><a class="lightgallery" href="./lpsd05.jpg" title="" data-thumbnail="./lpsd05.jpg" data-sub-html="<h2>不同谱估计算法对比</h2>"><img  loading="lazy" src="./lpsd05.jpg"     width="60%"></a><figcaption class="image-caption">不同谱估计算法对比</figcaption>
     </figure>
 <p>可见，LPSD 算法在低频出有更高的频率分辨率，在高频对谱密度的估计更准确，兼顾了周期图法和 Welch 方法的优点。然而 LPSD 算法牺牲了数值计算的速度，在一次利用400万个数据做谱的测试中，各算法的耗时如下。其中 <code>iParLPSD</code> 是利用了 MATLAB 并行工具包计算的 LPSD 算法。</p>
-<figure><a class="lightgallery" href="./lpsd06.jpg" title="" data-thumbnail="./lpsd06.jpg" data-sub-html="<h2>不同谱估计算法用时对比</h2>"><img  loading="lazy" src="./lpsd06.jpg"  sizes="auto"   width="60%"></a><figcaption class="image-caption">不同谱估计算法用时对比</figcaption>
+<figure><a class="lightgallery" href="./lpsd06.jpg" title="" data-thumbnail="./lpsd06.jpg" data-sub-html="<h2>不同谱估计算法用时对比</h2>"><img  loading="lazy" src="./lpsd06.jpg"     width="60%"></a><figcaption class="image-caption">不同谱估计算法用时对比</figcaption>
     </figure>
 <h2 id="参考文献" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark" aria-label="Header mark for '参考文献'"></a>参考文献</h2><ol>
@@ -664,7 +664,7 @@ ${\rm V}/\sqrt{ {\rm Hz} }$ 。</p>
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.127.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

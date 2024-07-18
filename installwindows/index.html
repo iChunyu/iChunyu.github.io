@@ -229,13 +229,13 @@
 <p>为了制作 PE 盘，需要准备 U 盘。应当注意，制作 PE 盘会格式化 U 盘，因此重要文件不要放在 U 盘里（千万别把前面备份的 U 盘拿来做启动盘）。插入 U 盘，使用管理员权限运行微 PE 工具箱，选择安装进 U 盘后，按照提示选择 U 盘、文件系统（推荐 NTFS）等即可完成安装。PE 盘制作完成后，记得将下载好的系统镜像拷贝到该 U 盘内。</p>
 <h2 id="通过-pe-安装系统" class="headerLink">
     <a href="#%e9%80%9a%e8%bf%87-pe-%e5%ae%89%e8%a3%85%e7%b3%bb%e7%bb%9f" class="header-mark" aria-label="Header mark for '通过 PE 安装系统'"></a>通过 PE 安装系统</h2><p>制作好 PE 盘后，重启系统。一般在电脑出现 LOGO 后立马按 <code>F12</code> 键选择启动盘，但不同电脑的快捷键可能有所不同。操作正常的话，电脑应当会出现硬盘/U 盘列表，选择刚才制作的 U 盘，按回车进入 PE 系统。</p>
-<figure><a class="lightgallery" href="./win01.png" title="" data-thumbnail="./win01.png" data-sub-html="<h2>PE 系统主界面</h2>"><img  loading="lazy" src="./win01.png"  sizes="auto"   width="80%"></a><figcaption class="image-caption">PE 系统主界面</figcaption>
+<figure><a class="lightgallery" href="./win01.png" title="" data-thumbnail="./win01.png" data-sub-html="<h2>PE 系统主界面</h2>"><img  loading="lazy" src="./win01.png"     width="80%"></a><figcaption class="image-caption">PE 系统主界面</figcaption>
     </figure>
 <p>微 PE 工具箱内置了很多工具，这里我们打开 Windows 安装器。在不做任何操作时，右侧 EFI 旁边的灯通常不是绿色，说明分区存在问题。这是先暂时退出 Windows 安装器，打开分区助手重新进行分区（因为涉及到重新分区，所以原硬盘的数据可能会格式化，这也是一再强调备份的主要原因）。</p>
-<figure><a class="lightgallery" href="./win02.png" title="" data-thumbnail="./win02.png" data-sub-html="<h2>Windows 安装器界面</h2>"><img  loading="lazy" src="./win02.png"  sizes="auto"   width="60%"></a><figcaption class="image-caption">Windows 安装器界面</figcaption>
+<figure><a class="lightgallery" href="./win02.png" title="" data-thumbnail="./win02.png" data-sub-html="<h2>Windows 安装器界面</h2>"><img  loading="lazy" src="./win02.png"     width="60%"></a><figcaption class="image-caption">Windows 安装器界面</figcaption>
     </figure>
 <p>从分区助手的硬盘列表可以看到当前的所有硬盘和 U 盘信息，熟悉分区的老手可以自行分区，不熟悉的同学可以直接右键硬盘，选择快速分区，如下图所示。</p>
-<figure><a class="lightgallery" href="./win03.png" title="" data-thumbnail="./win03.png" data-sub-html="<h2>快速分区示例</h2>"><img  loading="lazy" src="./win03.png"  sizes="auto"   width="60%"></a><figcaption class="image-caption">快速分区示例</figcaption>
+<figure><a class="lightgallery" href="./win03.png" title="" data-thumbnail="./win03.png" data-sub-html="<h2>快速分区示例</h2>"><img  loading="lazy" src="./win03.png"     width="60%"></a><figcaption class="image-caption">快速分区示例</figcaption>
     </figure>
 <p>我们来看看分区设置。首先确认下硬盘是我们所选的硬盘，即需要安装系统的硬盘。分区的数量根据个人喜好进行选择。一般我比较推荐单独使用一个分区安装系统和软件，使用额外的分区单独存放数据，例如新建一个数据分区存放个人重要文件，新建一个文件分区存放一般性文件等。这里我使用两个分区进行示意，右侧适当调整分区大小，并起个好听的名字就可以了。</p>
 <p>硬盘的类型可以无脑选择 GPT, 这是一种新的分区表，有兴趣的同学可以自行查阅相关内容。其他选项可以参考我的设置，勾选“重建 MBR”和“创建 ESP 和 MSR 分区”，这是前面 EFI 黄灯的主要原因。对于固态硬盘，应当将分区对齐到 4096 扇区。</p>
@@ -247,7 +247,7 @@
 <li>选择安装驱动器的位置：点击搜索，选择待装系统硬盘上的系统分区，这是分区时手动创建的，盘符一般为 C,但不重要（Windows 安装好了后会重置为 C）；</li>
 <li>选项：选择 Windows 版本。一个系统镜像通常具有多个版本，应当注意选择合适的版本。</li>
 </ul>
-<figure><a class="lightgallery" href="./win04.png" title="" data-thumbnail="./win04.png" data-sub-html="<h2>Windows 安装设置</h2>"><img  loading="lazy" src="./win04.png"  sizes="auto"   width="60%"></a><figcaption class="image-caption">Windows 安装设置</figcaption>
+<figure><a class="lightgallery" href="./win04.png" title="" data-thumbnail="./win04.png" data-sub-html="<h2>Windows 安装设置</h2>"><img  loading="lazy" src="./win04.png"     width="60%"></a><figcaption class="image-caption">Windows 安装设置</figcaption>
     </figure>
 <p>点击安装，等待、重启，就完事了。</p>
 <p>在我写这篇博客时，发现了微 PE 官方提供的 <a href="https://www.wepe.com.cn/ubook/" target="_blank" rel="noopener noreferrer">微 PE 安装系统教程</a>，如果此文无法解决你的问题，不妨参考一下这个教程。</p>
@@ -296,7 +296,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.127.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

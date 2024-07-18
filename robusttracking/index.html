@@ -277,7 +277,7 @@ e \to u + {{K}_x}{\bm{x}}:\quad H(s) =  - \frac{{{K_{e1}}s + {K_{e0}}}}{{{s^2} +
 \end{gathered}
 $$
 <p>利用微分方程的实现手段（传递函数或状态空间的标准实现），根据 $e$ 求解 $u + {{K}_x}{\bm{x}}$ ，然后与 ${{K}_x}{\bm{x}}$ 相减即可得到系统的输入信号 $u$ 。这种方法可以看作是对控制律的扩展，而状态估计器与一般的估计器并无大异，可以将这种方法命名为扩展控制律，其结构如下图所示。</p>
-<figure><a class="lightgallery" href="./tracking1.png" title="" data-thumbnail="./tracking1.png" data-sub-html="<h2>扩展控制律后的系统示意图</h2>"><img  loading="lazy" src="./tracking1.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">扩展控制律后的系统示意图</figcaption>
+<figure><a class="lightgallery" href="./tracking1.png" title="" data-thumbnail="./tracking1.png" data-sub-html="<h2>扩展控制律后的系统示意图</h2>"><img  loading="lazy" src="./tracking1.png"     width="70%"></a><figcaption class="image-caption">扩展控制律后的系统示意图</figcaption>
     </figure>
 <h2 id="扩展状态估计器" class="headerLink">
     <a href="#%e6%89%a9%e5%b1%95%e7%8a%b6%e6%80%81%e4%bc%b0%e8%ae%a1%e5%99%a8" class="header-mark" aria-label="Header mark for '扩展状态估计器'"></a>扩展状态估计器</h2><p>既然控制律可以利用已知的参考信号动态进行扩展，那么状态估计器也应当能够扩展。我们可以这样想：如果系统的输出与参考之间存在误差，说明系统的输入端存在没有被完全抵消的扰动 $\rho$ ，如果能够对这个扰动进行估计，令 $u=-K\bm{x}-\rho$ 就可以在控制器的输出端抵消这个扰动，从而减小跟踪误差。</p>
@@ -307,7 +307,7 @@ $$
 <p>其对应的扩展状态估计器为</p>
 $$\dot{\bm{\hat{z}}} = {{A}_z}{\bm{z}} + {{B}_z}u + {L}_z\left( {y - {{C}_z}{\bm{z}}} \right)$$
 <p>利用 ${{A}_z} - {{L}_z}{{C}_z}$ 的特征值设计使扩展状态估计器稳定，最后用 $u=-K\hat{\bm{x}} - \hat{\rho}$ 即可完成整个控制器设计。本例中的闭环框图如下，状态估计器相对于普通的状态估计器增加了对扰动的建模，因此称为扩展状态估计器。</p>
-<figure><a class="lightgallery" href="./tracking2.png" title="" data-thumbnail="./tracking2.png" data-sub-html="<h2>扩展状态估计器后的系统示意图</h2>"><img  loading="lazy" src="./tracking2.png"  sizes="auto"   width="70%"></a><figcaption class="image-caption">扩展状态估计器后的系统示意图</figcaption>
+<figure><a class="lightgallery" href="./tracking2.png" title="" data-thumbnail="./tracking2.png" data-sub-html="<h2>扩展状态估计器后的系统示意图</h2>"><img  loading="lazy" src="./tracking2.png"     width="70%"></a><figcaption class="image-caption">扩展状态估计器后的系统示意图</figcaption>
     </figure>
 <h2 id="参考文献" class="headerLink">
     <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark" aria-label="Header mark for '参考文献'"></a>参考文献</h2><ol>
@@ -345,7 +345,7 @@ $$\dot{\bm{\hat{z}}} = {{A}_z}{\bm{z}} + {{B}_z}u + {L}_z\left( {y - {{C}_z}{\bm
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.127.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
