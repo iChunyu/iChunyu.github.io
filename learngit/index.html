@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -196,16 +194,17 @@
     </li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">Git 版本控制</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2020-05-30" data-pagefind-body>Git 版本控制</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>好用的软件</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2020-05-30">2020-05-30</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 3391 字&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 7 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 3391 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 15 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -230,12 +229,12 @@
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>Git 是一个专业的版本控制软件，既可以管理个人文档，也可以进行团队协作。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。</p>
+            </div><div class="content" id="content" data-pagefind-body><p>Git 是一个专业的版本控制软件，既可以管理个人文档，也可以进行团队协作。本文尽可能介绍概念性的原理以便理解，以供有需要的同学们快速查阅。</p>
 <h2 id="git-基本概念" class="headerLink">
-    <a href="#git-%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" class="header-mark" aria-label="Header mark for 'Git 基本概念'"></a>Git 基本概念</h2><p>所谓版本控制，实际上就是阶段性备份。习惯比较好的同学，在进行文档修改时会创建副本，这样，当修改后的版本不好，或者出错、误删，都可以用备份好的副本来继续工作，这就是最简单的版本控制。这种&quot;人肉&quot;版本控制的优点显然是简单，只要有好习惯就可以，不需要使用额外的工具。但是缺点也是显而易见的，一方面是随着修改次数的增加，副本会越来越多使得文件夹显得非常凌乱；另一方面，当需要以前的版本时，仅从副本的文件名很难获得足够的信息来精确定位所需的版本。为了更好地进行版本控制，<a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> 是一个非常不错的选择。</p>
+    <a href="#git-%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" class="header-mark"></a>Git 基本概念</h2><p>所谓版本控制，实际上就是阶段性备份。习惯比较好的同学，在进行文档修改时会创建副本，这样，当修改后的版本不好，或者出错、误删，都可以用备份好的副本来继续工作，这就是最简单的版本控制。这种&quot;人肉&quot;版本控制的优点显然是简单，只要有好习惯就可以，不需要使用额外的工具。但是缺点也是显而易见的，一方面是随着修改次数的增加，副本会越来越多使得文件夹显得非常凌乱；另一方面，当需要以前的版本时，仅从副本的文件名很难获得足够的信息来精确定位所需的版本。为了更好地进行版本控制，<a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> 是一个非常不错的选择。</p>
 <p>在使用 Git 之前首先介绍一些基本概念，或许会对理解 Git 的工作流程有所帮助。</p>
 <h3 id="工作区暂存区和版本库" class="headerLink">
-    <a href="#%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%9a%82%e5%ad%98%e5%8c%ba%e5%92%8c%e7%89%88%e6%9c%ac%e5%ba%93" class="header-mark" aria-label="Header mark for '工作区、暂存区和版本库'"></a>工作区、暂存区和版本库</h3><p>在正式介绍 Git 之前，首先简要说明三个相关的概念：</p>
+    <a href="#%e5%b7%a5%e4%bd%9c%e5%8c%ba%e6%9a%82%e5%ad%98%e5%8c%ba%e5%92%8c%e7%89%88%e6%9c%ac%e5%ba%93" class="header-mark"></a>工作区、暂存区和版本库</h3><p>在正式介绍 Git 之前，首先简要说明三个相关的概念：</p>
 <ul>
 <li>工作区：是能够看到的目录，例如 <code>~/LearnGit/</code> ；</li>
 <li>暂存区：用于临时保存工作区的修改，一般不可见；</li>
@@ -244,8 +243,8 @@
 <p>工作区的文件被改动后，需要先提交到暂存区，暂存区所记录的修改通常需要提供一定的注释或说明才能提交到版本库。一旦文件提交到了版本库，Git 就会生成一个哈希值来标识当前版本。这种哈希值由40位16进制的字符组成，形如 <code>78b6157cdbc031530c24b003fd72d283fab30d44</code> 。通常情况下哈希值差异很大，在不引起矛盾的情况下，我们可以只使用哈希值的前几位来表示相应的版本。</p>
 <p>文件提交到版本库后就可以为所欲为了，下面的一系列图片将会帮助理解 Git 的开发流程。</p>
 <h3 id="分支与开发流程" class="headerLink">
-    <a href="#%e5%88%86%e6%94%af%e4%b8%8e%e5%bc%80%e5%8f%91%e6%b5%81%e7%a8%8b" class="header-mark" aria-label="Header mark for '分支与开发流程'"></a>分支与开发流程</h3><p>假设工作过程中对文件进行了各种修改，并提交到仓库，提交历史将如下图所示：</p>
-<figure><a class="lightgallery" href="./git1.png" title="" data-thumbnail="./git1.png" data-sub-html="<h2>Git 提交历史示意图</h2>"><img  loading="lazy" src="./git1.png"     width="70%"></a><figcaption class="image-caption">Git 提交历史示意图</figcaption>
+    <a href="#%e5%88%86%e6%94%af%e4%b8%8e%e5%bc%80%e5%8f%91%e6%b5%81%e7%a8%8b" class="header-mark"></a>分支与开发流程</h3><p>假设工作过程中对文件进行了各种修改，并提交到仓库，提交历史将如下图所示：</p>
+<figure><a class="lightgallery" href="./git1.png" title="" data-thumbnail="./git1.png" data-sub-html="<h2>Git 提交历史示意图</h2>"><img  loading="lazy" src=./git1.png     width="70%"></a><figcaption class="image-caption">Git 提交历史示意图</figcaption>
     </figure>
 <p>其中，蓝色的方块代表一次提交，其值就是该提交的哈希值前几位。由于 Git 储存数据的方式，新的提交会指向旧的提交，因而也将较新的提交称为&quot;上游&quot;，对应将之前的提交称为&quot;下游&quot;，蓝色方块串起来的提交历史就是一个分支。图中标有 <code>master</code> 字样的黄色方块就是分支默认的名字，其实际上是一个指针，指向分支的最新提交。在 Git 中，一个分支就是一个指针，反过来，一个普通的指针就对应一个分支。标有 <code>HEAD</code> 字样的红色方块是一个特殊的指针，它只能指向分支，也就是说，它是指针的指针。<code>HEAD</code> 的位置决定了当前工作目录显示的是哪个提交，也决定了新的提交会在哪个分支。</p>
 <div class="details admonition note open">
@@ -257,24 +256,24 @@
     <div class="details-content">
         <div class="admonition-content">本文初稿形成时 Git 的默认分支名为 <code>master</code> ，这有一定的历史原因。新版本 Git 提倡使用 <code>main</code> 作为默认分支名，一方面其具有跟明确的含义，另一方面也避免 master/slave 这种略有侮辱性的词语。建议大家遵循新的约定。</div></div></div>
 <p>为了进一步说明 <code>HEAD</code> 的影响，假设在 <code>97bbf1b</code> 位置出新建了一个名叫 <code>dev</code> 的指针，并让 <code>HEAD</code> 移动到 <code>dev</code> 的位置，如下图所示。</p>
-<figure><a class="lightgallery" href="./git2.png" title="" data-thumbnail="./git2.png" data-sub-html="<h2>Git 分支切换</h2>"><img  loading="lazy" src="./git2.png"     width="70%"></a><figcaption class="image-caption">Git 分支切换</figcaption>
+<figure><a class="lightgallery" href="./git2.png" title="" data-thumbnail="./git2.png" data-sub-html="<h2>Git 分支切换</h2>"><img  loading="lazy" src=./git2.png     width="70%"></a><figcaption class="image-caption">Git 分支切换</figcaption>
     </figure>
 <p>此时如果你观察工作目录，你会惊奇地发现&quot;穿越&quot;到了过去：工作目录的样子跟当时 <code>97bbf1b</code> 提交时候的样子一模一样，后面新的修改不见了、添加的文件不见了、删除的文件复活了。但是如果把 <code>HEAD</code> 分支重新移动到 <code>master</code> 的位置，工作空间又会变成 <code>1e08a24</code> 的样子，各种修改又回来了。可见，文件提交到版本库后不会丢失，而工作空间显示的文件结构由 <code>HEAD</code> 所指向的分支决定。</p>
 <p><code>HEAD</code> 还决定新的提交的位置。为了理解这个，可以打一个非常有意思的比方：把文件的提交，或者说仓库的向上游的扩展看作是修路，那么 <code>master</code> 就代表一个没有包工头的施工队，而 <code>HEAD</code> 就是包工头。包工头带领哪个施工队，工程就会在那个施工队的后面延续。而当有多个施工队时，其他的施工队就处于窝工状态。考察下面这种情况，当 <code>HEAD</code> 指向 <code>dev</code> 分支时，当修改的文件提交后，仓库是在 <code>A</code> 处延续还是在 <code>B</code> 处呢？</p>
-<figure><a class="lightgallery" href="./git3.png" title="" data-thumbnail="./git3.png" data-sub-html="<h2>Git 提交的延拓</h2>"><img  loading="lazy" src="./git3.png"     width="70%"></a><figcaption class="image-caption">Git 提交的延拓</figcaption>
+<figure><a class="lightgallery" href="./git3.png" title="" data-thumbnail="./git3.png" data-sub-html="<h2>Git 提交的延拓</h2>"><img  loading="lazy" src=./git3.png     width="70%"></a><figcaption class="image-caption">Git 提交的延拓</figcaption>
     </figure>
 <p>答案是在 <code>B</code> 处延续。进一步，由于产生了新的提交，而前面提到代表分支的指针指向最新的提交，又有 <code>HEAD</code> 指向分支的指针，我们就可以得到这样的结论：新的提交产生后，分支指针和 <code>HEAD</code> 指针将同时移动，指向最新的提交。例如在 <code>dev</code> 分支上又做了两次修改，整个历史将如下图所示：</p>
-<figure><a class="lightgallery" href="./git4.png" title="" data-thumbnail="./git4.png" data-sub-html="<h2>不同分支上的提交</h2>"><img  loading="lazy" src="./git4.png"     width="70%"></a><figcaption class="image-caption">不同分支上的提交</figcaption>
+<figure><a class="lightgallery" href="./git4.png" title="" data-thumbnail="./git4.png" data-sub-html="<h2>不同分支上的提交</h2>"><img  loading="lazy" src=./git4.png     width="70%"></a><figcaption class="image-caption">不同分支上的提交</figcaption>
     </figure>
 <p>可以看到开发进程在 <code>97bbf1b</code> 处分叉，这也印证了&quot;分支&quot;名字的由来。</p>
 <p>在不同分支上进行不同的修改，而后将修改以某种方式整合到主分支上，称之为分支的合并。例如，将上述 <code>dev</code> 分支的提交合并到 <code>master</code> 分支后，整个提交历史如下图所示：</p>
-<figure><a class="lightgallery" href="./git5.png" title="" data-thumbnail="./git5.png" data-sub-html="<h2>Git 分支合并</h2>"><img  loading="lazy" src="./git5.png"     width="70%"></a><figcaption class="image-caption">Git 分支合并</figcaption>
+<figure><a class="lightgallery" href="./git5.png" title="" data-thumbnail="./git5.png" data-sub-html="<h2>Git 分支合并</h2>"><img  loading="lazy" src=./git5.png     width="70%"></a><figcaption class="image-caption">Git 分支合并</figcaption>
     </figure>
 <p>刚刚提到&quot;主分支&quot;，实际上 Git 中的分支都是平权的，不存在所谓的主分支，只是习惯上会将默认的 <code>master</code> 分支看作主分支。Git 的分支非常适合团队协作，例如，在 <code>97bbf1b</code> 处新建多个分支分配给团队的各个小组：<code>dev</code> 分支进行进一步开发、<code>doc</code> 分支进行帮助和说明文档的编写、<code>debug</code> 分支进行详细的调试等，一轮进行完成后合并到 <code>master</code> 分支，并由此重新生成各个分支进行下一轮开发。</p>
 <p>下面简要介绍部分常用命令的使用，当然 Git 的使用不局限于命令行，已有很多的图形界面程序可以使 Git 操作通过点击鼠标完成，这里就不作推荐了。</p>
 <h2 id="使用示例" class="headerLink">
-    <a href="#%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b" class="header-mark" aria-label="Header mark for '使用示例'"></a>使用示例</h2><p>对于 Windows 系统，从 Git 官方网站下载安装包之后，直接双击即可实现 Git 的安装，一路基本都采用默认设置即可。在安装过程中会出现下面这样选择默认编辑器的页面，由于默认的 vim 编辑器对新手不友好，可以根据习惯另外选择（可能需要另外安装）。</p>
-<figure><a class="lightgallery" href="./git0.png" title="" data-thumbnail="./git0.png" data-sub-html="<h2>Windows 下 Git 的安装设置</h2>"><img  loading="lazy" src="./git0.png"     width="70%"></a><figcaption class="image-caption">Windows 下 Git 的安装设置</figcaption>
+    <a href="#%e4%bd%bf%e7%94%a8%e7%a4%ba%e4%be%8b" class="header-mark"></a>使用示例</h2><p>对于 Windows 系统，从 Git 官方网站下载安装包之后，直接双击即可实现 Git 的安装，一路基本都采用默认设置即可。在安装过程中会出现下面这样选择默认编辑器的页面，由于默认的 vim 编辑器对新手不友好，可以根据习惯另外选择（可能需要另外安装）。</p>
+<figure><a class="lightgallery" href="./git0.png" title="" data-thumbnail="./git0.png" data-sub-html="<h2>Windows 下 Git 的安装设置</h2>"><img  loading="lazy" src=./git0.png     width="70%"></a><figcaption class="image-caption">Windows 下 Git 的安装设置</figcaption>
     </figure>
 <p>安装完成后，在桌面或者资源浏览器内右键会有 <strong>Git Bash Here</strong> 的选项，我们打开它进行初始化设置。</p>
 <p>初始化设置主要是设置用户名和邮箱，分别运行以下两个命令：</p>
@@ -1160,9 +1159,9 @@
 </div>
 <p>以后就可以用 <code>logs</code> 这个别名查看 Git 最近20次提交的历史。</p>
 <h2 id="git-其他技巧" class="headerLink">
-    <a href="#git-%e5%85%b6%e4%bb%96%e6%8a%80%e5%b7%a7" class="header-mark" aria-label="Header mark for 'Git 其他技巧'"></a>Git 其他技巧</h2><p>收集一些 Git 的使用技巧，看到了就随手记下来，或有用或没用，不定时更新。</p>
+    <a href="#git-%e5%85%b6%e4%bb%96%e6%8a%80%e5%b7%a7" class="header-mark"></a>Git 其他技巧</h2><p>收集一些 Git 的使用技巧，看到了就随手记下来，或有用或没用，不定时更新。</p>
 <h3 id="清空历史提交" class="headerLink">
-    <a href="#%e6%b8%85%e7%a9%ba%e5%8e%86%e5%8f%b2%e6%8f%90%e4%ba%a4" class="header-mark" aria-label="Header mark for '清空历史提交'"></a>清空历史提交</h3><p>随着提交越来越多，仓库体积也会越来越大。对于个人维护的项目，如果想要清理过去所有提交以减小仓库体积，可以使用下面这种 <a href="https://zhuanlan.zhihu.com/p/73029640" target="_blank" rel="noopener noreferrer">简单粗暴的方法</a> ：</p>
+    <a href="#%e6%b8%85%e7%a9%ba%e5%8e%86%e5%8f%b2%e6%8f%90%e4%ba%a4" class="header-mark"></a>清空历史提交</h3><p>随着提交越来越多，仓库体积也会越来越大。对于个人维护的项目，如果想要清理过去所有提交以减小仓库体积，可以使用下面这种 <a href="https://zhuanlan.zhihu.com/p/73029640" target="_blank" rel="noopener noreferrer">简单粗暴的方法</a> ：</p>
 <ol>
 <li>创建孤立分支并将当前提交的文件检出到新分支：<code>git checkout --orphan &lt;newBranch&gt;</code></li>
 <li>添加所有文件：<code>git add .</code></li>
@@ -1180,7 +1179,7 @@
     <div class="details-content">
         <div class="admonition-content">这种方法简单粗暴，会不可恢复地删除过往历史，在执行该操作前请做好备份。</div></div></div>
 <h3 id="提取特定版本的文件" class="headerLink">
-    <a href="#%e6%8f%90%e5%8f%96%e7%89%b9%e5%ae%9a%e7%89%88%e6%9c%ac%e7%9a%84%e6%96%87%e4%bb%b6" class="header-mark" aria-label="Header mark for '提取特定版本的文件'"></a>提取特定版本的文件</h3><p>可以采取下面的命令将特定版本中的某个文件提取出来，并写入到一个新文件中：</p>
+    <a href="#%e6%8f%90%e5%8f%96%e7%89%b9%e5%ae%9a%e7%89%88%e6%9c%ac%e7%9a%84%e6%96%87%e4%bb%b6" class="header-mark"></a>提取特定版本的文件</h3><p>可以采取下面的命令将特定版本中的某个文件提取出来，并写入到一个新文件中：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1280,7 +1279,7 @@
 </div>
 <p>这种方法需要准确知道待提取的文件在对应版本下的名字。对文件夹内的文件，应当以相对路径的形式给出。</p>
 <h3 id="保存-http-帐号密码" class="headerLink">
-    <a href="#%e4%bf%9d%e5%ad%98-http-%e5%b8%90%e5%8f%b7%e5%af%86%e7%a0%81" class="header-mark" aria-label="Header mark for '保存 HTTP 帐号密码'"></a>保存 HTTP 帐号密码</h3><p>如果使用 HTTP 的方式克隆仓库，在每次提交代码到远程仓库时都需要提供帐号和密码，这无疑是个繁琐的操作。为了将密码保存在本地，可以使用 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8" target="_blank" rel="noopener noreferrer">储存凭证</a> 的功能：</p>
+    <a href="#%e4%bf%9d%e5%ad%98-http-%e5%b8%90%e5%8f%b7%e5%af%86%e7%a0%81" class="header-mark"></a>保存 HTTP 帐号密码</h3><p>如果使用 HTTP 的方式克隆仓库，在每次提交代码到远程仓库时都需要提供帐号和密码，这无疑是个繁琐的操作。为了将密码保存在本地，可以使用 <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8" target="_blank" rel="noopener noreferrer">储存凭证</a> 的功能：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1409,7 +1408,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.135.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

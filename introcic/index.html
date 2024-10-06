@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -189,16 +187,17 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">CIC 滤波器简介</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2022-02-13" data-pagefind-body>CIC 滤波器简介</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>数字信号处理</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2022-02-13">2022-02-13</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 2090 字&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 5 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 2090 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 10 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -214,18 +213,18 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>级联积分梳状（CIC, Cascaded Integrator–Comb）滤波器是一种非常“经济”的滤波器。它的实现所需资源少、具有线性相位，同时实现采样率的改变，通常可用于模数转换器（ADC, Analog to Digital Converter）的抗混叠滤波。本文简要介绍 CIC 滤波器的基本原理及其实现方法，分析该滤波器的频率响应，然后给出 CIC 滤波器在降采样（抽取）和升采样（插值）的应用，最后给出降采样倍数的一般设计方法。</p>
+            </div><div class="content" id="content" data-pagefind-body><p>级联积分梳状（CIC, Cascaded Integrator–Comb）滤波器是一种非常“经济”的滤波器。它的实现所需资源少、具有线性相位，同时实现采样率的改变，通常可用于模数转换器（ADC, Analog to Digital Converter）的抗混叠滤波。本文简要介绍 CIC 滤波器的基本原理及其实现方法，分析该滤波器的频率响应，然后给出 CIC 滤波器在降采样（抽取）和升采样（插值）的应用，最后给出降采样倍数的一般设计方法。</p>
 <h2 id="从降采样说起" class="headerLink">
-    <a href="#%e4%bb%8e%e9%99%8d%e9%87%87%e6%a0%b7%e8%af%b4%e8%b5%b7" class="header-mark" aria-label="Header mark for '从降采样说起'"></a>从降采样说起</h2><p>如何将高速采集的数据按照一定的倍数 $R$ 降低采样率？最简单的方法就是从每 $R$ 个数中直接抽取。然而，我们之前在 <a href="https://chunyu.site/introspectrum/" rel="">傅立叶变换与频域分析</a> 讨论过直接抽取所引入的频率混叠问题，为了避免降采样引起的混叠，必须对数据进行滤波处理。考虑到滤波就是一种平均，那么，简单起见，我们只需要对 $R$ 个数取算数平均值作为输出即可。该系统的表达式可以写为：</p>
+    <a href="#%e4%bb%8e%e9%99%8d%e9%87%87%e6%a0%b7%e8%af%b4%e8%b5%b7" class="header-mark"></a>从降采样说起</h2><p>如何将高速采集的数据按照一定的倍数 $R$ 降低采样率？最简单的方法就是从每 $R$ 个数中直接抽取。然而，我们之前在 <a href="https://chunyu.site/introspectrum/" rel="">傅立叶变换与频域分析</a> 讨论过直接抽取所引入的频率混叠问题，为了避免降采样引起的混叠，必须对数据进行滤波处理。考虑到滤波就是一种平均，那么，简单起见，我们只需要对 $R$ 个数取算数平均值作为输出即可。该系统的表达式可以写为：</p>
  $$
 y(i) = \frac{1}{R} \left( x(iR) + x(iR-1) + \cdots + x((i-1)R+1) \right) = \frac{1}{R} \sum_{k=0}^{R-1} x(iR-k)
 $$ 
 <p>如果我们省略掉归一化系数 $R^{-1}$ ，如果直接实现上述过程，需要 $R-1$ 个寄存器进行单位延时，系统如下图所示。</p>
-<figure><a class="lightgallery" href="./CascadedDelay.png" title="" data-thumbnail="./CascadedDelay.png" data-sub-html="<h2>使用串联寄存器实现降采样</h2>"><img  loading="lazy" src="./CascadedDelay.png"     width="80%"></a><figcaption class="image-caption">使用串联寄存器实现降采样</figcaption>
+<figure><a class="lightgallery" href="./CascadedDelay.png" title="" data-thumbnail="./CascadedDelay.png" data-sub-html="<h2>使用串联寄存器实现降采样</h2>"><img  loading="lazy" src=./CascadedDelay.png     width="80%"></a><figcaption class="image-caption">使用串联寄存器实现降采样</figcaption>
     </figure>
 <p>容易想象，当我们需要进行高倍数的降采样时，所需要的寄存器（单位延时）数量会大大增加，这对数字系统设计是非常不“经济”的。下面我们就来讨论 CIC 是如何使用更“经济”的方法实现上述系统。</p>
 <h2 id="cic-滤波器的实现" class="headerLink">
-    <a href="#cic-%e6%bb%a4%e6%b3%a2%e5%99%a8%e7%9a%84%e5%ae%9e%e7%8e%b0" class="header-mark" aria-label="Header mark for 'CIC 滤波器的实现'"></a>CIC 滤波器的实现</h2><p>省略归一化系数，算数平均值（或者说 $R$ 项累加器）的传递函数可以用 $z$ 变换表示为</p>
+    <a href="#cic-%e6%bb%a4%e6%b3%a2%e5%99%a8%e7%9a%84%e5%ae%9e%e7%8e%b0" class="header-mark"></a>CIC 滤波器的实现</h2><p>省略归一化系数，算数平均值（或者说 $R$ 项累加器）的传递函数可以用 $z$ 变换表示为</p>
  $$
 H(z) = \sum_{k=0}^{R-1} z^{-k} 
 = \frac{1-z^{-R}}{1-z^{-1}} 
@@ -250,14 +249,14 @@ H(z) = \left( \frac{1-z^{-RM}}{1-z^{-1}} \right)^N
 $$ 
 <p>工程实践中一般取 $M=1,2$ 。</p>
 <p>CIC 滤波器用于降采样时的系统框图如下</p>
-<figure><a class="lightgallery" href="./CICDecimator.png" title="" data-thumbnail="./CICDecimator.png" data-sub-html="<h2>CIC 抽取器结构示意图</h2>"><img  loading="lazy" src="./CICDecimator.png"     width="80%"></a><figcaption class="image-caption">CIC 抽取器结构示意图</figcaption>
+<figure><a class="lightgallery" href="./CICDecimator.png" title="" data-thumbnail="./CICDecimator.png" data-sub-html="<h2>CIC 抽取器结构示意图</h2>"><img  loading="lazy" src=./CICDecimator.png     width="80%"></a><figcaption class="image-caption">CIC 抽取器结构示意图</figcaption>
     </figure>
 <p>用于升采样时，只需要将梳状部分和积分部分交换即可，如下图所示</p>
-<figure><a class="lightgallery" href="./CICInterpolator.png" title="" data-thumbnail="./CICInterpolator.png" data-sub-html="<h2>CIC 插值器结构示意图</h2>"><img  loading="lazy" src="./CICInterpolator.png"     width="80%"></a><figcaption class="image-caption">CIC 插值器结构示意图</figcaption>
+<figure><a class="lightgallery" href="./CICInterpolator.png" title="" data-thumbnail="./CICInterpolator.png" data-sub-html="<h2>CIC 插值器结构示意图</h2>"><img  loading="lazy" src=./CICInterpolator.png     width="80%"></a><figcaption class="image-caption">CIC 插值器结构示意图</figcaption>
     </figure>
 <p>小结：CIC 滤波器使用高速度累加和低速率差分，使用时根据降/升采样目标调整积分部分和梳状部分的顺序即可。</p>
 <h2 id="cic-滤波器的频率响应" class="headerLink">
-    <a href="#cic-%e6%bb%a4%e6%b3%a2%e5%99%a8%e7%9a%84%e9%a2%91%e7%8e%87%e5%93%8d%e5%ba%94" class="header-mark" aria-label="Header mark for 'CIC 滤波器的频率响应'"></a>CIC 滤波器的频率响应</h2><p>为了得到 CIC 滤波器的频率响应，将 $z=\mathrm{e}^{j\omega}$ 带入传递函数即可。需要注意的是，这里的 $z$ 代表的是高速采样率 $f_s$ 下的算子，数字频率 $\omega$ 与实际频率 $f$ 的关系为</p>
+    <a href="#cic-%e6%bb%a4%e6%b3%a2%e5%99%a8%e7%9a%84%e9%a2%91%e7%8e%87%e5%93%8d%e5%ba%94" class="header-mark"></a>CIC 滤波器的频率响应</h2><p>为了得到 CIC 滤波器的频率响应，将 $z=\mathrm{e}^{j\omega}$ 带入传递函数即可。需要注意的是，这里的 $z$ 代表的是高速采样率 $f_s$ 下的算子，数字频率 $\omega$ 与实际频率 $f$ 的关系为</p>
  $$
 \omega = 2 \pi \frac{f}{f_s}
 $$ 
@@ -296,7 +295,7 @@ $$
 $$ 
 <p>即 CIC 滤波器对信号有 $\tau$ 个采样点的延时，即 $\Delta t = \tau T_s$ 。</p>
 <h2 id="降采样倍数的设计" class="headerLink">
-    <a href="#%e9%99%8d%e9%87%87%e6%a0%b7%e5%80%8d%e6%95%b0%e7%9a%84%e8%ae%be%e8%ae%a1" class="header-mark" aria-label="Header mark for '降采样倍数的设计'"></a>降采样倍数的设计</h2><p>最后我们讨论一下降采样倍数的设计，这实际上是指过采样设计，可以描述为这么一个问题：已知 ADC 的位数 为 $\mu_y$ ，参考电压为 $\pm V_\mathrm{ref}$，记输出的采样率为 $f_s$。为了减小 ADC 的量化误差，通常先进行高速采样（过采样，oversampling）将量化误差分布在更宽的频带从而减小其功率谱密度，然后再降采样。若要求 ADC 量化误差的功率谱密度不超过 $S_{w,\max} \, [\mathrm{V/\sqrt{Hz}}]$，降采样倍数（或者说过采样倍数）$R$ 最小应当取多少？</p>
+    <a href="#%e9%99%8d%e9%87%87%e6%a0%b7%e5%80%8d%e6%95%b0%e7%9a%84%e8%ae%be%e8%ae%a1" class="header-mark"></a>降采样倍数的设计</h2><p>最后我们讨论一下降采样倍数的设计，这实际上是指过采样设计，可以描述为这么一个问题：已知 ADC 的位数 为 $\mu_y$ ，参考电压为 $\pm V_\mathrm{ref}$，记输出的采样率为 $f_s$。为了减小 ADC 的量化误差，通常先进行高速采样（过采样，oversampling）将量化误差分布在更宽的频带从而减小其功率谱密度，然后再降采样。若要求 ADC 量化误差的功率谱密度不超过 $S_{w,\max} \, [\mathrm{V/\sqrt{Hz}}]$，降采样倍数（或者说过采样倍数）$R$ 最小应当取多少？</p>
 <p>首先，ADC 对正负电压进行采样，其量化的电压分辨率为</p>
  $$
 \rho_y = \frac{V_\mathrm{ref}}{2^{\mu_y-1}}
@@ -315,7 +314,7 @@ R \ge R_\mathrm{min} = \left \lceil \frac{2\sigma_w^2}{f_sS_{w,\mathrm{max}}^2 }
 = \left \lceil \frac{1}{6f_s S_{w,\mathrm{max}}^2} \left(\frac{V_\mathrm{ref}}{2^{\mu_y-1}}\right)^2 \right \rceil
 $$ 
 <h2 id="参考文献" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark" aria-label="Header mark for '参考文献'"></a>参考文献</h2><ol>
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
 <li>E. Hogenauer, <a href="https://doi.org/10.1109/TASSP.1981.1163535" target="_blank" rel="noopener noreferrer">An Economical Class of Digital Filters for Decimation and Interpolation</a>, IEEE Transactions on Acoustics, Speech, and Signal Processing. 29 (1981) 155–162.</li>
 </ol></div>
 
@@ -350,7 +349,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.135.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

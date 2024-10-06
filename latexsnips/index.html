@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -192,16 +190,17 @@
     <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">使用代码片段编写 LaTeX 文档</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2022-06-16" data-pagefind-body>使用代码片段编写 LaTeX 文档</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>LaTeX</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2022-06-16">2022-06-16</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-03-07">2023-03-07</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 3114 字&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 7 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 3114 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 14 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -222,50 +221,53 @@
     <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。</p>
+            </div><div class="content" id="content" data-pagefind-body><p>LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。</p>
 <h2 id="插件介绍与使用" class="headerLink">
-    <a href="#%e6%8f%92%e4%bb%b6%e4%bb%8b%e7%bb%8d%e4%b8%8e%e4%bd%bf%e7%94%a8" class="header-mark" aria-label="Header mark for '插件介绍与使用'"></a>插件介绍与使用</h2><p>顾名思义，代码片段就是一小段可以重复利用的代码。使用代码片段本质上类似于复制粘贴并修改的操作，但利用关键字触发可以避免复制代码的过程；不仅如此，通过插件可以对设定的代码片段进行进一步操作，大大提高编程效率。</p>
+    <a href="#%e6%8f%92%e4%bb%b6%e4%bb%8b%e7%bb%8d%e4%b8%8e%e4%bd%bf%e7%94%a8" class="header-mark"></a>插件介绍与使用</h2><p>顾名思义，代码片段就是一小段可以重复利用的代码。使用代码片段本质上类似于复制粘贴并修改的操作，但利用关键字触发可以避免复制代码的过程；不仅如此，通过插件可以对设定的代码片段进行进一步操作，大大提高编程效率。</p>
 <h3 id="插件简介" class="headerLink">
-    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark" aria-label="Header mark for '插件简介'"></a>插件简介</h3><p>对于 Vim 或者 NeoVim 用户，可以使用 <a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreferrer">UltiSnips</a>，我在之前的 <a href="https://chunyu.site/neovim/" rel="">NeoVim 基本配置</a> 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 <a href="https://marketplace.visualstudio.com/items?itemName=draivin.hsnips" target="_blank" rel="noopener noreferrer">HyperSnips</a> 插件。这两款插件之间的对比如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">项目</th>
-<th style="text-align:left">UltiSnips</th>
-<th style="text-align:left">HyperSnips</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">文件路径</td>
-<td style="text-align:left"><code>&lt;vimroot&gt;/UltiSnips/</code></td>
-<td style="text-align:left"><em>HyperSnips: Open Snippets Directory</em></td>
-</tr>
-<tr>
-<td style="text-align:left">文件命名</td>
-<td style="text-align:left"><code>&lt;filetype&gt;.snippets</code></td>
-<td style="text-align:left"><code>&lt;filetype&gt;.hsnips</code></td>
-</tr>
-<tr>
-<td style="text-align:left">刷新插件</td>
-<td style="text-align:left"><code>:call UltiSnips#RefreshSnippets()</code></td>
-<td style="text-align:left"><em>HyperSnips: Reload Snippets</em></td>
-</tr>
-<tr>
-<td style="text-align:left">编程接口</td>
-<td style="text-align:left">Python</td>
-<td style="text-align:left">JavaScript</td>
-</tr>
-<tr>
-<td style="text-align:left">触发片段</td>
-<td style="text-align:left">自动触发或自定义快捷键</td>
-<td style="text-align:left">自动触发或 <code>&lt;Tab&gt;</code> 键</td>
-</tr>
-</tbody>
-</table>
+    <a href="#%e6%8f%92%e4%bb%b6%e7%ae%80%e4%bb%8b" class="header-mark"></a>插件简介</h3><p>对于 Vim 或者 NeoVim 用户，可以使用 <a href="https://github.com/SirVer/ultisnips" target="_blank" rel="noopener noreferrer">UltiSnips</a>，我在之前的 <a href="https://chunyu.site/neovim/" rel="">NeoVim 基本配置</a> 中简要介绍了其安装方法和基本用法；对于 VS Code 用户，可以使用 <a href="https://marketplace.visualstudio.com/items?itemName=draivin.hsnips" target="_blank" rel="noopener noreferrer">HyperSnips</a> 插件。这两款插件之间的对比如下表所示：</p>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+        <tr>
+            <th style="text-align: left">项目</th>
+            <th style="text-align: left">UltiSnips</th>
+            <th style="text-align: left">HyperSnips</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: left">文件路径</td>
+            <td style="text-align: left"><code>&lt;vimroot&gt;/UltiSnips/</code></td>
+            <td style="text-align: left"><em>HyperSnips: Open Snippets Directory</em></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">文件命名</td>
+            <td style="text-align: left"><code>&lt;filetype&gt;.snippets</code></td>
+            <td style="text-align: left"><code>&lt;filetype&gt;.hsnips</code></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">刷新插件</td>
+            <td style="text-align: left"><code>:call UltiSnips#RefreshSnippets()</code></td>
+            <td style="text-align: left"><em>HyperSnips: Reload Snippets</em></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">编程接口</td>
+            <td style="text-align: left">Python</td>
+            <td style="text-align: left">JavaScript</td>
+        </tr>
+        <tr>
+            <td style="text-align: left">触发片段</td>
+            <td style="text-align: left">自动触发或自定义快捷键</td>
+            <td style="text-align: left">自动触发或 <code>&lt;Tab&gt;</code> 键</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
 <p>其中，斜体表示该操作可以通过 VS Code 界面键入 <code>&lt;Ctrl&gt;&lt;Shift&gt;p</code> 打开命令面板搜索得到。</p>
 <h3 id="基本语法" class="headerLink">
-    <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark" aria-label="Header mark for '基本语法'"></a>基本语法</h3><p>在编写代码片段时，两个插件具有非常相似的语法，基本结构如下：</p>
+    <a href="#%e5%9f%ba%e6%9c%ac%e8%af%ad%e6%b3%95" class="header-mark"></a>基本语法</h3><p>在编写代码片段时，两个插件具有非常相似的语法，基本结构如下：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -479,7 +481,7 @@
 </div>
 <p>该片段定义了触发关键字 <code>beg</code> 以开始一个新的 LaTeX 环境，<code>bA</code> 设置该代码片段当且仅当 <code>beg</code> 出现在行首时自动展开。展开后，原本输入的 <code>beg</code> 将被代码片段的内容替换，且 <code>\begin{}</code> 和 <code>\end{}</code> 花括号里的内容将默认填充为 <code>document</code> 并以高亮选中可供替换。按下跳转键后光标将进入环境内部，由于该位置为 <code>$0</code>，该代码片段使用结束。</p>
 <h3 id="依内容触发" class="headerLink">
-    <a href="#%e4%be%9d%e5%86%85%e5%ae%b9%e8%a7%a6%e5%8f%91" class="header-mark" aria-label="Header mark for '依内容触发'"></a>依内容触发</h3><p>除了使用 <code>options</code> 对代码片段的触发条件进行设置，两个插件还提供了 <code>context</code> 功能进一步限定代码片段的触发条件：在 <code>snippet</code> 前一行通过 <code>context</code> 调用 Python （或 JavaScript）函数，只有当该函数返回 <code>True</code> 时，后面的代码片段可以触发。利用这个功能，我们可以检测当前光标位置所处的环境，当处于数学环境中时才启用某些代码片段，以减少误触发的概率。</p>
+    <a href="#%e4%be%9d%e5%86%85%e5%ae%b9%e8%a7%a6%e5%8f%91" class="header-mark"></a>依内容触发</h3><p>除了使用 <code>options</code> 对代码片段的触发条件进行设置，两个插件还提供了 <code>context</code> 功能进一步限定代码片段的触发条件：在 <code>snippet</code> 前一行通过 <code>context</code> 调用 Python （或 JavaScript）函数，只有当该函数返回 <code>True</code> 时，后面的代码片段可以触发。利用这个功能，我们可以检测当前光标位置所处的环境，当处于数学环境中时才启用某些代码片段，以减少误触发的概率。</p>
 <p>对于 Vim/NeoVim 用户，UltiSnips 在处理 LaTeX 文档时需要借用 <a href="https://github.com/lervag/vimtex" target="_blank" rel="noopener noreferrer">vimtex</a> 插件提供的 <code>vimtex#syntax#in_mathzone()</code> 函数；而将其应用于 Markdown 时，还要进一步通过 <a href="https://github.com/preservim/vim-markdown" target="_blank" rel="noopener noreferrer">vim-markdown</a> 插件使该能够判断 Markdown 文件的数学环境。如此做，在代码片段文件的开头做如下函数定义：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -662,7 +664,7 @@
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-4" 
+    id="codeblock-id-1" 
     class="
       chroma 
       !tw-block 
@@ -684,38 +686,41 @@
 </div>
 <p>不同于 UltiSnips 的用法， HyperSnips 在 <code>snippet</code> 的前一行加入的命令为 <code>context math(context)</code>。</p>
 <h3 id="使用编程接口" class="headerLink">
-    <a href="#%e4%bd%bf%e7%94%a8%e7%bc%96%e7%a8%8b%e6%8e%a5%e5%8f%a3" class="header-mark" aria-label="Header mark for '使用编程接口'"></a>使用编程接口</h3><p>如前所述，UltiSnips 和 HyperSnips 分别支持在代码片段内使用 Python 和 JavaScript 作为编程接口。这通常与正则表达式联合使用，可以更加灵活地处理代码片段。UltiSnips 中使用编程接口时，Python 代码需要使用 <code> `!p</code> 和 <code>`</code> 包裹；而 HyperSnips 的 JavaScript 代码需要用 <code>``</code> 在两端包裹。两个插件提供了默认变量用于接口，常用的变量如下表所示（ UltiSnips 提供更多变量，使用 <code>:h UltiSnips-python</code> 查看）</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">关键字内容</th>
-<th style="text-align:left">UltiSnips</th>
-<th style="text-align:left">HyperSnips</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">当前文件路径</td>
-<td style="text-align:left"><code>path</code></td>
-<td style="text-align:left"><code>path</code></td>
-</tr>
-<tr>
-<td style="text-align:left">代码片段各跳点的内容</td>
-<td style="text-align:left"><code>t</code></td>
-<td style="text-align:left"><code>t</code></td>
-</tr>
-<tr>
-<td style="text-align:left">正则表达式各分组匹配的内容</td>
-<td style="text-align:left"><code>match.group</code></td>
-<td style="text-align:left"><code>m</code></td>
-</tr>
-<tr>
-<td style="text-align:left">编程返回的代码片段</td>
-<td style="text-align:left"><code>snip.rv</code></td>
-<td style="text-align:left"><code>rv</code></td>
-</tr>
-</tbody>
-</table>
+    <a href="#%e4%bd%bf%e7%94%a8%e7%bc%96%e7%a8%8b%e6%8e%a5%e5%8f%a3" class="header-mark"></a>使用编程接口</h3><p>如前所述，UltiSnips 和 HyperSnips 分别支持在代码片段内使用 Python 和 JavaScript 作为编程接口。这通常与正则表达式联合使用，可以更加灵活地处理代码片段。UltiSnips 中使用编程接口时，Python 代码需要使用 <code> `!p</code> 和 <code>`</code> 包裹；而 HyperSnips 的 JavaScript 代码需要用 <code>``</code> 在两端包裹。两个插件提供了默认变量用于接口，常用的变量如下表所示（ UltiSnips 提供更多变量，使用 <code>:h UltiSnips-python</code> 查看）</p>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+        <tr>
+            <th style="text-align: left">关键字内容</th>
+            <th style="text-align: left">UltiSnips</th>
+            <th style="text-align: left">HyperSnips</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: left">当前文件路径</td>
+            <td style="text-align: left"><code>path</code></td>
+            <td style="text-align: left"><code>path</code></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">代码片段各跳点的内容</td>
+            <td style="text-align: left"><code>t</code></td>
+            <td style="text-align: left"><code>t</code></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">正则表达式各分组匹配的内容</td>
+            <td style="text-align: left"><code>match.group</code></td>
+            <td style="text-align: left"><code>m</code></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">编程返回的代码片段</td>
+            <td style="text-align: left"><code>snip.rv</code></td>
+            <td style="text-align: left"><code>rv</code></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
 <p>由于本人对 JavaScript 所知甚少，下面用 Python 接口为例进行解释。</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -797,7 +802,7 @@
     </div>
   </div>
   <pre style="counter-reset: codeblock;" class="tw-block tw-m-0 tw-p-0"><code 
-    id="codeblock-id-5" 
+    id="codeblock-id-2" 
     class="
       chroma 
       !tw-block 
@@ -818,231 +823,237 @@
 </div>
 <p>该 UltiSnips 代码片段的第一行约束了该片段只在数学模式下生效。触发关键词使用引号，结合触发选项 <code>r</code> 说明使用了正则表达式：圆括号对字符串做了一个分组，匹配之后该分组的内容可以使用 <code>match.group(1)</code> 获取；分组内的中括号指明该分组匹配的内容为大小写字母，后面的加号表示至少有一个字母；圆括号外的字符表示该关键字必须以 <code>rm</code> 结尾（这就是所谓的“后缀式触发”）。该代码片段实现的效果是：在数学模式下，在字符后面加入 <code>rm</code> 可以将前面的字符变成 <code>\mathrm{}</code> 命令包围的直立字体。更多关于正则表达式的用法可以参考 <a href="https://www.runoob.com/regexp/regexp-metachar.html" target="_blank" rel="noopener noreferrer">菜鸟教程</a> 等技术教程。</p>
 <h2 id="代码片段设计示例" class="headerLink">
-    <a href="#%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5%e8%ae%be%e8%ae%a1%e7%a4%ba%e4%be%8b" class="header-mark" aria-label="Header mark for '代码片段设计示例'"></a>代码片段设计示例</h2><p>为了偷懒，代码片段的关键字应当尽可能少，使用 2～3 个字符较为合理。并且根据 Elijan 的建议，尽可能使用自动展开加快编写速度。</p>
+    <a href="#%e4%bb%a3%e7%a0%81%e7%89%87%e6%ae%b5%e8%ae%be%e8%ae%a1%e7%a4%ba%e4%be%8b" class="header-mark"></a>代码片段设计示例</h2><p>为了偷懒，代码片段的关键字应当尽可能少，使用 2～3 个字符较为合理。并且根据 Elijan 的建议，尽可能使用自动展开加快编写速度。</p>
 <p>为此，我定义了下列关键字用于触发 LaTeX 中的各种环境或命令：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">关键字</th>
-<th style="text-align:left">功能</th>
-<th style="text-align:left">触发条件</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>env</code></td>
-<td style="text-align:left">新建 LaTeX 环境</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>beg</code></td>
-<td style="text-align:left">新建 LaTeX 环境</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>fig</code></td>
-<td style="text-align:left">新建插图环境</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>tabu</code></td>
-<td style="text-align:left">新建普通表格</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>tabx</code></td>
-<td style="text-align:left">新建定宽表格</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>tabl</code></td>
-<td style="text-align:left">插入三线表的横线</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>equ</code></td>
-<td style="text-align:left">单行公式环境</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gat</code></td>
-<td style="text-align:left">居中对齐的多行公式环境</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ali</code></td>
-<td style="text-align:left">手动对齐的多行公式环境</td>
-<td style="text-align:left">行首触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>gad</code></td>
-<td style="text-align:left">居中对齐公式的子环境</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ald</code></td>
-<td style="text-align:left">手动对齐公式的子环境</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>pmat</code></td>
-<td style="text-align:left">圆括号包围的矩阵环境</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>bmat</code></td>
-<td style="text-align:left">方括号包围的矩阵环境</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Bmat</code></td>
-<td style="text-align:left">花括号包围的矩阵环境</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>vmat</code></td>
-<td style="text-align:left">单竖线包围的矩阵环境</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>Vmat</code></td>
-<td style="text-align:left">双竖线包围的矩阵环境</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ff</code></td>
-<td style="text-align:left">插入数学分式</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>lr(</code></td>
-<td style="text-align:left">自动大小的圆括号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>lr[</code></td>
-<td style="text-align:left">自动大小的方括号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>lr{</code></td>
-<td style="text-align:left">自动大小的花括号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>lr&lt;</code></td>
-<td style="text-align:left">自动大小的尖括号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ab|</code></td>
-<td style="text-align:left">自动大小的绝对值符号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>no|</code></td>
-<td style="text-align:left">自动大小的范数符号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>b(</code></td>
-<td style="text-align:left">手动大圆括号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>b2(</code></td>
-<td style="text-align:left">手动更大的圆括号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>b3(</code></td>
-<td style="text-align:left">手动超级大的圆括号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>b4(</code></td>
-<td style="text-align:left">手动究极大的圆括号</td>
-<td style="text-align:left">边界触发</td>
-</tr>
-</tbody>
-</table>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+        <tr>
+            <th style="text-align: left">关键字</th>
+            <th style="text-align: left">功能</th>
+            <th style="text-align: left">触发条件</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: left"><code>env</code></td>
+            <td style="text-align: left">新建 LaTeX 环境</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>beg</code></td>
+            <td style="text-align: left">新建 LaTeX 环境</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>fig</code></td>
+            <td style="text-align: left">新建插图环境</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>tabu</code></td>
+            <td style="text-align: left">新建普通表格</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>tabx</code></td>
+            <td style="text-align: left">新建定宽表格</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>tabl</code></td>
+            <td style="text-align: left">插入三线表的横线</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>equ</code></td>
+            <td style="text-align: left">单行公式环境</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>gat</code></td>
+            <td style="text-align: left">居中对齐的多行公式环境</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>ali</code></td>
+            <td style="text-align: left">手动对齐的多行公式环境</td>
+            <td style="text-align: left">行首触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>gad</code></td>
+            <td style="text-align: left">居中对齐公式的子环境</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>ald</code></td>
+            <td style="text-align: left">手动对齐公式的子环境</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>pmat</code></td>
+            <td style="text-align: left">圆括号包围的矩阵环境</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>bmat</code></td>
+            <td style="text-align: left">方括号包围的矩阵环境</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>Bmat</code></td>
+            <td style="text-align: left">花括号包围的矩阵环境</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>vmat</code></td>
+            <td style="text-align: left">单竖线包围的矩阵环境</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>Vmat</code></td>
+            <td style="text-align: left">双竖线包围的矩阵环境</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>ff</code></td>
+            <td style="text-align: left">插入数学分式</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>lr(</code></td>
+            <td style="text-align: left">自动大小的圆括号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>lr[</code></td>
+            <td style="text-align: left">自动大小的方括号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>lr{</code></td>
+            <td style="text-align: left">自动大小的花括号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>lr&lt;</code></td>
+            <td style="text-align: left">自动大小的尖括号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>ab|</code></td>
+            <td style="text-align: left">自动大小的绝对值符号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>no|</code></td>
+            <td style="text-align: left">自动大小的范数符号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>b(</code></td>
+            <td style="text-align: left">手动大圆括号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>b2(</code></td>
+            <td style="text-align: left">手动更大的圆括号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>b3(</code></td>
+            <td style="text-align: left">手动超级大的圆括号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>b4(</code></td>
+            <td style="text-align: left">手动究极大的圆括号</td>
+            <td style="text-align: left">边界触发</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
 <p>使用正则表达式结合词内触发可以实现更常用的后缀式触发，这在对数学符号进行修饰时非常好用。例如上面演示的触发正体命令。类似地，我做了如下定义（用 <code>X</code> 表示后缀前面的内容，不能出现空格）：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">后缀</th>
-<th style="text-align:left">命令</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>rm</code></td>
-<td style="text-align:left"><code>\mathrm{X}</code></td>
-<td style="text-align:left">将变量变为直立体</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>bf</code></td>
-<td style="text-align:left"><code>\mathbf{X}</code></td>
-<td style="text-align:left">将变量变为粗体</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>fk</code></td>
-<td style="text-align:left"><code>\mathfrak{X}</code></td>
-<td style="text-align:left">将变量变为哥特体</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>bm</code></td>
-<td style="text-align:left"><code>\bm{X}</code></td>
-<td style="text-align:left">使用 <code>bm</code> 宏包加粗变量</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ii</code></td>
-<td style="text-align:left"><code>X^{-1}</code></td>
-<td style="text-align:left">求逆</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>sr</code></td>
-<td style="text-align:left"><code>\sqrt{X}</code></td>
-<td style="text-align:left">开方</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>vec</code></td>
-<td style="text-align:left"><code>\vec{X}</code></td>
-<td style="text-align:left">箭头（矢量符号）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>dot</code></td>
-<td style="text-align:left"><code>\dot{X}</code></td>
-<td style="text-align:left">一个点（一阶导数）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ddo</code></td>
-<td style="text-align:left"><code>\ddot{X}</code></td>
-<td style="text-align:left">两个点（二阶导数）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>hat</code></td>
-<td style="text-align:left"><code>\hat{X}</code></td>
-<td style="text-align:left">尖帽子（估计值）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>bar</code></td>
-<td style="text-align:left"><code>\bar{X}</code></td>
-<td style="text-align:left">横线（平均值）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>bre</code></td>
-<td style="text-align:left"><code>\breve{X}</code></td>
-<td style="text-align:left">圆帽子（测量值）</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>til</code></td>
-<td style="text-align:left"><code>\tilde{X}</code></td>
-<td style="text-align:left">波浪线（误差）</td>
-</tr>
-</tbody>
-</table>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+        <tr>
+            <th style="text-align: left">后缀</th>
+            <th style="text-align: left">命令</th>
+            <th style="text-align: left">说明</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: left"><code>rm</code></td>
+            <td style="text-align: left"><code>\mathrm{X}</code></td>
+            <td style="text-align: left">将变量变为直立体</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>bf</code></td>
+            <td style="text-align: left"><code>\mathbf{X}</code></td>
+            <td style="text-align: left">将变量变为粗体</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>fk</code></td>
+            <td style="text-align: left"><code>\mathfrak{X}</code></td>
+            <td style="text-align: left">将变量变为哥特体</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>bm</code></td>
+            <td style="text-align: left"><code>\bm{X}</code></td>
+            <td style="text-align: left">使用 <code>bm</code> 宏包加粗变量</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>ii</code></td>
+            <td style="text-align: left"><code>X^{-1}</code></td>
+            <td style="text-align: left">求逆</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>sr</code></td>
+            <td style="text-align: left"><code>\sqrt{X}</code></td>
+            <td style="text-align: left">开方</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>vec</code></td>
+            <td style="text-align: left"><code>\vec{X}</code></td>
+            <td style="text-align: left">箭头（矢量符号）</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>dot</code></td>
+            <td style="text-align: left"><code>\dot{X}</code></td>
+            <td style="text-align: left">一个点（一阶导数）</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>ddo</code></td>
+            <td style="text-align: left"><code>\ddot{X}</code></td>
+            <td style="text-align: left">两个点（二阶导数）</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>hat</code></td>
+            <td style="text-align: left"><code>\hat{X}</code></td>
+            <td style="text-align: left">尖帽子（估计值）</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>bar</code></td>
+            <td style="text-align: left"><code>\bar{X}</code></td>
+            <td style="text-align: left">横线（平均值）</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>bre</code></td>
+            <td style="text-align: left"><code>\breve{X}</code></td>
+            <td style="text-align: left">圆帽子（测量值）</td>
+        </tr>
+        <tr>
+            <td style="text-align: left"><code>til</code></td>
+            <td style="text-align: left"><code>\tilde{X}</code></td>
+            <td style="text-align: left">波浪线（误差）</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
 <p>使用后缀触发可以实现更加便利的功能：</p>
 <ul>
 <li><strong>分式自动处理</strong></li>
@@ -1054,7 +1065,7 @@
 <p>数学通常会与角标打交道，为此，我在数学模式下定义了代码片段：<code>任意字符;下标;上标;</code> 。该代码片段在感受第三个封号后会自动处理角标，并且会根据字符长度选择性地添加 <code>{}</code>。下标或上标可以置空，但不允许出现空格。角标中处理特殊符号时可以使用空的花括号分隔命令，例如 <code>\omega{}t</code> 。</p>
 <p>上面讨论的 UltiSnips 和 HyperSnips 代码片段可以分别在我 <a href="https://github.com/iChunyu/nvim/tree/main/UltiSnips/tex" target="_blank" rel="noopener noreferrer">nvim 仓库</a> 和 <a href="https://github.com/iChunyu/LearnLaTeX/tree/main/util" target="_blank" rel="noopener noreferrer">LaTeX 仓库</a> 找到，欢迎使用和分享建议。</p>
 <h2 id="参考资料" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark" aria-label="Header mark for '参考资料'"></a>参考资料</h2><ol>
+    <a href="#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99" class="header-mark"></a>参考资料</h2><ol>
 <li>Gilles Castel. <a href="https://castel.dev/post/lecture-notes-1/" target="_blank" rel="noopener noreferrer">How I&rsquo;m able to take notes in mathematics lectures using LaTeX and Vim</a>.</li>
 <li>Elijan J. Mastnak. <a href="https://ejmastnak.github.io/tutorials/vim-latex/ultisnips.html" target="_blank" rel="noopener noreferrer">An UltiSnips guide for LaTeX workflows</a>.</li>
 </ol></div>
@@ -1090,7 +1101,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.135.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

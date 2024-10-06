@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -208,16 +206,17 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">Vim 简介</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2021-08-10" data-pagefind-body>Vim 简介</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E7%94%9F%E5%91%BD%E5%9C%A8%E4%BA%8E%E6%8A%98%E8%85%BE/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>生命在于折腾</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2021-08-10">2021-08-10</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2022-08-03">2022-08-03</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 5216 字&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 11 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 5216 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 23 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -254,9 +253,9 @@
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>最近有兴趣折腾了一下 Vim，不免对这个上古神器的强大感到震撼。这篇文章简要记录下基本操作，只能说是冰山一角。</p>
+            </div><div class="content" id="content" data-pagefind-body><p>最近有兴趣折腾了一下 Vim，不免对这个上古神器的强大感到震撼。这篇文章简要记录下基本操作，只能说是冰山一角。</p>
 <h2 id="认识-vim-基本模式" class="headerLink">
-    <a href="#%e8%ae%a4%e8%af%86-vim-%e5%9f%ba%e6%9c%ac%e6%a8%a1%e5%bc%8f" class="header-mark" aria-label="Header mark for '认识 Vim 基本模式'"></a>认识 Vim 基本模式</h2><p><a href="https://www.vim.org/" target="_blank" rel="noopener noreferrer">Vim</a> 有三种基本模式：普通模式、插入模式和命令行模式。普通模式是打开 Vim 之后的默认模式，也是进行模式转换的桥梁。在普通模式下，可以进行常规的浏览、替换、删除、粘贴等命令；在普通模式下按 <code>i</code> 即可切换到插入模式，这种模式与常规的文本编辑器相同，可以自由添加、修改、删除文本内容；按 <code>Esc</code> 可以从插入模式切换回普通模式，再次键入 <code>:</code> 会切换到命令行模式。这种模式支持各种命令的使用，在我看来也是 Vim 的强大之处所在。</p>
+    <a href="#%e8%ae%a4%e8%af%86-vim-%e5%9f%ba%e6%9c%ac%e6%a8%a1%e5%bc%8f" class="header-mark"></a>认识 Vim 基本模式</h2><p><a href="https://www.vim.org/" target="_blank" rel="noopener noreferrer">Vim</a> 有三种基本模式：普通模式、插入模式和命令行模式。普通模式是打开 Vim 之后的默认模式，也是进行模式转换的桥梁。在普通模式下，可以进行常规的浏览、替换、删除、粘贴等命令；在普通模式下按 <code>i</code> 即可切换到插入模式，这种模式与常规的文本编辑器相同，可以自由添加、修改、删除文本内容；按 <code>Esc</code> 可以从插入模式切换回普通模式，再次键入 <code>:</code> 会切换到命令行模式。这种模式支持各种命令的使用，在我看来也是 Vim 的强大之处所在。</p>
 <div class="details admonition note open">
     <div class="details-summary admonition-title">
         <span class="icon"><svg class="icon"
@@ -269,7 +268,7 @@
 <p>当本文提及大写的命令如 <code>A</code> 时，实际上是指 <code>Shift</code> + <code>a</code> 的组合键。</p>
 </div></div></div>
 <h2 id="退出-vim" class="headerLink">
-    <a href="#%e9%80%80%e5%87%ba-vim" class="header-mark" aria-label="Header mark for '退出 Vim'"></a>退出 Vim</h2><p>网络上流传有这么一个段子：&ldquo;问：如何产生随机字符串？答：让新手退出 Vim。&rdquo;</p>
+    <a href="#%e9%80%80%e5%87%ba-vim" class="header-mark"></a>退出 Vim</h2><p>网络上流传有这么一个段子：&ldquo;问：如何产生随机字符串？答：让新手退出 Vim。&rdquo;</p>
 <p>退出 Vim 首先要确保处于普通模式，如果不是很确定，可以多按几次 <code>Esc</code>。然后输入 <code>:quit</code> 即可退出 Vim。这个命令可以这样来看，首先键入的 <code>:</code> 使 Vim 进入到命令行模式，而 <code>quit</code> 就是执行的命令。</p>
 <p>可以猜想，如果只是写入文档而不退出（一般编辑器下的&quot;保存&quot;按钮），应当执行 <code>:write</code> ；如果想看某个命令的帮助文档，应该会涉及 <code>:help</code> 命令，实际上的确如此。在普通模式下输入 <code>:help quit</code> 就可以看到相应的帮助文档，其中 <code>:q[uit]</code> 的中括号部分表示可以省略。因此 <code>:quit</code> 可以简写为 <code>:q</code> 。</p>
 <p>如果文档进行了改动，直接运行 <code>:q</code> 会抛出警告，这时需要写入后退出，或者不保存退出。汇总这些相关的命令，如下：</p>
@@ -280,9 +279,9 @@
 <li><code>:q!</code> &mdash; 忽略所有更改并关闭当前文档。</li>
 </ul>
 <h2 id="移动光标" class="headerLink">
-    <a href="#%e7%a7%bb%e5%8a%a8%e5%85%89%e6%a0%87" class="header-mark" aria-label="Header mark for '移动光标'"></a>移动光标</h2><p>移动光标需要在普通模式下进行，用于浏览文档或为编辑做准备。</p>
+    <a href="#%e7%a7%bb%e5%8a%a8%e5%85%89%e6%a0%87" class="header-mark"></a>移动光标</h2><p>移动光标需要在普通模式下进行，用于浏览文档或为编辑做准备。</p>
 <h3 id="基本移动" class="headerLink">
-    <a href="#%e5%9f%ba%e6%9c%ac%e7%a7%bb%e5%8a%a8" class="header-mark" aria-label="Header mark for '基本移动'"></a>基本移动</h3><p>普通模式下，光标移动可以通过以下按键实现：</p>
+    <a href="#%e5%9f%ba%e6%9c%ac%e7%a7%bb%e5%8a%a8" class="header-mark"></a>基本移动</h3><p>普通模式下，光标移动可以通过以下按键实现：</p>
 <ul>
 <li><code>h</code> &mdash; 左移一个字符；</li>
 <li><code>j</code> &mdash; 下移一行；</li>
@@ -403,7 +402,7 @@
 </span></span><span class="line"><span class="cl">nnoremap gj j</span></span></code></pre>
 </div>
 <h3 id="基于单词的移动" class="headerLink">
-    <a href="#%e5%9f%ba%e4%ba%8e%e5%8d%95%e8%af%8d%e7%9a%84%e7%a7%bb%e5%8a%a8" class="header-mark" aria-label="Header mark for '基于单词的移动'"></a>基于单词的移动</h3><p>比普通模式更快地，Vim 可以基于单词进行移动，主要命令如下：</p>
+    <a href="#%e5%9f%ba%e4%ba%8e%e5%8d%95%e8%af%8d%e7%9a%84%e7%a7%bb%e5%8a%a8" class="header-mark"></a>基于单词的移动</h3><p>比普通模式更快地，Vim 可以基于单词进行移动，主要命令如下：</p>
 <ul>
 <li><code>w</code> &mdash; 移动到下一个单词开头（word）；</li>
 <li><code>e</code> &mdash; 移动到当前单词结尾（end）；</li>
@@ -416,7 +415,7 @@
 </ul>
 <p>对比可以发现，小写命令针对单词，而大写命令针对的是字符串，两者的区别在于对特殊字符的处理方式：单词认为 <code>'</code> 是单词之间的分割，而字符串则严格以空格作为分割。例如 <code>let's go</code> 这个短语会被 Vim 解读成 4 个单词或 2个字符串。</p>
 <h3 id="基于查找的移动" class="headerLink">
-    <a href="#%e5%9f%ba%e4%ba%8e%e6%9f%a5%e6%89%be%e7%9a%84%e7%a7%bb%e5%8a%a8" class="header-mark" aria-label="Header mark for '基于查找的移动'"></a>基于查找的移动</h3><p>Vim 可以使用 <code>f</code> 对行内的单个字符进行查找，结合 <code>;</code> 向后继续查找，当跳转过头时使用 <code>,</code> 向前查找。同样，也可以使用 <code>/</code> 对字符串进行查找，使用 <code>n</code> 或 <code>N</code> 分别向后、向前继续查找。</p>
+    <a href="#%e5%9f%ba%e4%ba%8e%e6%9f%a5%e6%89%be%e7%9a%84%e7%a7%bb%e5%8a%a8" class="header-mark"></a>基于查找的移动</h3><p>Vim 可以使用 <code>f</code> 对行内的单个字符进行查找，结合 <code>;</code> 向后继续查找，当跳转过头时使用 <code>,</code> 向前查找。同样，也可以使用 <code>/</code> 对字符串进行查找，使用 <code>n</code> 或 <code>N</code> 分别向后、向前继续查找。</p>
 <p>我们用下面的一个例子来对比各种移动光标的方法：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -524,10 +523,10 @@
 </ul>
 <p>对比这几种方法，第一种最直观，但是当句子特别长时跳转很慢；第二种虽然看起来简单，但数数的功夫容易得不偿失，也很少使用；第三种方法应该说是最常用也是最容易被人接受的，当句子较长时能够获得比较快的跳转速度；第四种是第三种的高阶用法，查找不常出现的字符以提高跳转速度；最后一种单次使用时输入较为复杂，通常结合替换使用。</p>
 <h3 id="其他跳转方法" class="headerLink">
-    <a href="#%e5%85%b6%e4%bb%96%e8%b7%b3%e8%bd%ac%e6%96%b9%e6%b3%95" class="header-mark" aria-label="Header mark for '其他跳转方法'"></a>其他跳转方法</h3><p><code>%</code> 可以用于配对符号之间的跳转，例如在 <code>(</code> 处按 <code>%</code> 可以跳转到相应的 <code>)</code>，这个功能特别适合对代码进行检查。</p>
+    <a href="#%e5%85%b6%e4%bb%96%e8%b7%b3%e8%bd%ac%e6%96%b9%e6%b3%95" class="header-mark"></a>其他跳转方法</h3><p><code>%</code> 可以用于配对符号之间的跳转，例如在 <code>(</code> 处按 <code>%</code> 可以跳转到相应的 <code>)</code>，这个功能特别适合对代码进行检查。</p>
 <p><code>m</code> 和 <code>`</code> 构成标记（mark）&mdash;&mdash;跳转对。例如， <code>ma</code> 将当前位置标记为 <code>a</code> ，普通模式下使用 <code>`a</code> 就可以跳转到刚刚标记的位置。需要说明的是，标记只能是单个字符，并且区分大小写；单个文档可以存在多个标记。</p>
 <h2 id="选定范围" class="headerLink">
-    <a href="#%e9%80%89%e5%ae%9a%e8%8c%83%e5%9b%b4" class="header-mark" aria-label="Header mark for '选定范围'"></a>选定范围</h2><p>类比于英语中动词可以分为及物动词和不及物动词，Vim 中有些命令可以直接执行，例如 <code>j</code> 就是下移一行；也有些命令需要指定作用范围，这里我们以删除命令 <code>d</code>
+    <a href="#%e9%80%89%e5%ae%9a%e8%8c%83%e5%9b%b4" class="header-mark"></a>选定范围</h2><p>类比于英语中动词可以分为及物动词和不及物动词，Vim 中有些命令可以直接执行，例如 <code>j</code> 就是下移一行；也有些命令需要指定作用范围，这里我们以删除命令 <code>d</code>
 （delete）为例进行说明。</p>
 <p>为了执行删除操作，按下 <code>d</code> 之后还应当给定删除范围。前面介绍跳转的时候说过 <code>w</code> 是从当前位置到下一个单词开头，确切地表明了范围。因此 <code>dw</code> 就是从当前位置删除到下一个单词的开头。类似地， <code>d2w</code> 就是从当前位置删除到后面第三个单词的开头（删除两个单词）、 <code>d$</code> 从当前位置删除到本行结尾。</p>
 <p>如果光标处于某个想删除的单词的中间，而使用 <code>dw</code> 删除时，光标之前部分不会被删除。为此，Vim 还提供了 <code>a</code> 和 <code>i</code> 这两个修饰词（可以理解为 around 和 inside）来进一步修饰范围， <code>a</code> 可以将选区扩展到光标两边，包括限定词； <code>i</code> 将选区扩展到两边，但是不包括限定词。例如， <code>daw</code> 将删除整个单词以及后面的一个空格，不管光标处于单词的哪个位置。使用 <code>a</code> 或 <code>i</code> 进行修饰时，除了使用 <code>w</code> 设定范围外，还可以使用配对符号进行扩展。例如，当光标处于某一对括号内部任意位置，使用 <code>da)</code> 可以删除整个括号内的内容，并连同括号一起删除。</p>
@@ -535,8 +534,8 @@
 <p>除了使用命令划定范围外，与普通编辑器相同，可以先选定范围再执行操作。按 <code>v</code> 进入 Vim 的可视模式（visual mode），然后再利用前面介绍的各种跳转命令，可以发现光标遍历的位置高亮，这时候再执行 <code>d</code> 即可删除高亮选区。特别地， <code>V</code> 直接对整行进行选取。</p>
 <p>组合键 <code>Ctrl</code> + <code>v</code> 在 Vim 中不再是粘贴，在普通模式下使用该组合键可以进入 Vim 的块选取模式，对应通常编辑器的列编辑功能，能够同时对多行进行相同的修改。</p>
 <h2 id="编辑文档" class="headerLink">
-    <a href="#%e7%bc%96%e8%be%91%e6%96%87%e6%a1%a3" class="header-mark" aria-label="Header mark for '编辑文档'"></a>编辑文档</h2><h3 id="在普通模式进行少量修改" class="headerLink">
-    <a href="#%e5%9c%a8%e6%99%ae%e9%80%9a%e6%a8%a1%e5%bc%8f%e8%bf%9b%e8%a1%8c%e5%b0%91%e9%87%8f%e4%bf%ae%e6%94%b9" class="header-mark" aria-label="Header mark for '在普通模式进行少量修改'"></a>在普通模式进行少量修改</h3><p>在普通模式下可以对文档进行部分删除和简单的替换工作，常用有：</p>
+    <a href="#%e7%bc%96%e8%be%91%e6%96%87%e6%a1%a3" class="header-mark"></a>编辑文档</h2><h3 id="在普通模式进行少量修改" class="headerLink">
+    <a href="#%e5%9c%a8%e6%99%ae%e9%80%9a%e6%a8%a1%e5%bc%8f%e8%bf%9b%e8%a1%8c%e5%b0%91%e9%87%8f%e4%bf%ae%e6%94%b9" class="header-mark"></a>在普通模式进行少量修改</h3><p>在普通模式下可以对文档进行部分删除和简单的替换工作，常用有：</p>
 <ul>
 <li><code>x</code> &mdash; 删除当前字符；</li>
 <li><code>r</code> &mdash; 使用另一个字符替换当前字符（replace），例如 <code>re</code> 是将光标下的字符替换为 <code>e</code> ；</li>
@@ -544,7 +543,7 @@
 <li><code>.</code> &mdash; 重复上一次操作。</li>
 </ul>
 <h3 id="从插入模式编辑文档" class="headerLink">
-    <a href="#%e4%bb%8e%e6%8f%92%e5%85%a5%e6%a8%a1%e5%bc%8f%e7%bc%96%e8%be%91%e6%96%87%e6%a1%a3" class="header-mark" aria-label="Header mark for '从插入模式编辑文档'"></a>从插入模式编辑文档</h3><p>编辑文档最主要的方式是进入编辑模式，像普通编辑器一样编辑文档。Vim 提供以下基本的方式进入插入模式：</p>
+    <a href="#%e4%bb%8e%e6%8f%92%e5%85%a5%e6%a8%a1%e5%bc%8f%e7%bc%96%e8%be%91%e6%96%87%e6%a1%a3" class="header-mark"></a>从插入模式编辑文档</h3><p>编辑文档最主要的方式是进入编辑模式，像普通编辑器一样编辑文档。Vim 提供以下基本的方式进入插入模式：</p>
 <ul>
 <li><code>i</code> &mdash; 从当前光标之前进入插入模式（insert）；</li>
 <li><code>I</code> &mdash; 从当前行（或可选模式下的选区）之前进入插入模式；</li>
@@ -557,7 +556,7 @@
 </ul>
 <p>Vim 还可以使用 <code>c</code> 命令进行更改（change），例如 <code>caw</code> 表示删除当前的单词并进入插入模式。这种方法在修改程序时非常有效，例如修改字符串变量 <code>sys_name = &quot;Windows 10&quot;</code> 时，将光标移至双引号内部任意位置，使用 <code>ci&quot;</code> 即可删除字符串变量的值并进行修改。</p>
 <h3 id="搜索与替换" class="headerLink">
-    <a href="#%e6%90%9c%e7%b4%a2%e4%b8%8e%e6%9b%bf%e6%8d%a2" class="header-mark" aria-label="Header mark for '搜索与替换'"></a>搜索与替换</h3><p>前面介绍了 <code>/</code> 进行搜索，而替换则需要结合命令行 <code>:s</code> 实现（substitute）,例如将 <code>old</code> 替换为 <code>new</code> ，有以下几种不同的方式：</p>
+    <a href="#%e6%90%9c%e7%b4%a2%e4%b8%8e%e6%9b%bf%e6%8d%a2" class="header-mark"></a>搜索与替换</h3><p>前面介绍了 <code>/</code> 进行搜索，而替换则需要结合命令行 <code>:s</code> 实现（substitute）,例如将 <code>old</code> 替换为 <code>new</code> ，有以下几种不同的方式：</p>
 <ul>
 <li><code>:s/old/new</code> &mdash; 从光标之后对当前行进行搜索，将第一个 <code>old</code> 替换为 <code>new</code>；</li>
 <li><code>:s/old/new/g</code> &mdash; 从光标之后对当前行进行搜索，将所有 <code>old</code> 替换为 <code>new</code>；</li>
@@ -565,7 +564,7 @@
 <li><code>:%s/old/new/gc</code> &mdash; 对全文进行搜索，将所有 <code>old</code> 替换为 <code>new</code>，并在执行前进行确认。</li>
 </ul>
 <h3 id="进行简单的计算" class="headerLink">
-    <a href="#%e8%bf%9b%e8%a1%8c%e7%ae%80%e5%8d%95%e7%9a%84%e8%ae%a1%e7%ae%97" class="header-mark" aria-label="Header mark for '进行简单的计算'"></a>进行简单的计算</h3><p>在普通模式使用组合键 <code>Ctrl</code> + <code>a</code> 可以对光标下的数字加一，而使用 <code>Ctrl</code> + <code>x</code> 则进行减一操作。当光标不处于数字上，Vim 会自动从光标之后搜索当前行的第一个数字，执行相应操作。同样地，这种方式可以指定次数运行，例如 <code>10&lt;Ctrl&gt;a</code> 是将当前数字加 10 。</p>
+    <a href="#%e8%bf%9b%e8%a1%8c%e7%ae%80%e5%8d%95%e7%9a%84%e8%ae%a1%e7%ae%97" class="header-mark"></a>进行简单的计算</h3><p>在普通模式使用组合键 <code>Ctrl</code> + <code>a</code> 可以对光标下的数字加一，而使用 <code>Ctrl</code> + <code>x</code> 则进行减一操作。当光标不处于数字上，Vim 会自动从光标之后搜索当前行的第一个数字，执行相应操作。同样地，这种方式可以指定次数运行，例如 <code>10&lt;Ctrl&gt;a</code> 是将当前数字加 10 。</p>
 <div class="details admonition note open">
     <div class="details-summary admonition-title">
         <span class="icon"><svg class="icon"
@@ -578,7 +577,7 @@
 </div></div></div>
 <p>在插入模式中，可以使用 <code>Ctrl</code> + <code>r</code> + <code>=</code> 触发计算功能，输入计算表达式后，按 <code>Enter</code> 即可将计算结果输出到当前位置。例如 <code>&lt;Ctrl&gt;r=1+1&lt;Enter&gt;</code> 将会输入 2 。</p>
 <h2 id="寄存器简介" class="headerLink">
-    <a href="#%e5%af%84%e5%ad%98%e5%99%a8%e7%ae%80%e4%bb%8b" class="header-mark" aria-label="Header mark for '寄存器简介'"></a>寄存器简介</h2><p>Vim 提供多种寄存器，用于储存复制或删除的内容。寄存器可以通过 <code>&quot;</code> 进行引用，有以下几种常见寄存器：</p>
+    <a href="#%e5%af%84%e5%ad%98%e5%99%a8%e7%ae%80%e4%bb%8b" class="header-mark"></a>寄存器简介</h2><p>Vim 提供多种寄存器，用于储存复制或删除的内容。寄存器可以通过 <code>&quot;</code> 进行引用，有以下几种常见寄存器：</p>
 <ul>
 <li><code>[a-z]</code> &mdash; 有名寄存器，用于各种自定义内容；</li>
 <li><code>&quot;</code> &mdash; 无名寄存器，不指定寄存器时默认使用该寄存器；</li>
@@ -590,7 +589,7 @@
 </ul>
 <p>还有一些其他寄存器，这里不多赘述。</p>
 <h3 id="复制与粘贴" class="headerLink">
-    <a href="#%e5%a4%8d%e5%88%b6%e4%b8%8e%e7%b2%98%e8%b4%b4" class="header-mark" aria-label="Header mark for '复制与粘贴'"></a>复制与粘贴</h3><p>以复制粘贴这个经典的例子来介绍寄存器的使用。</p>
+    <a href="#%e5%a4%8d%e5%88%b6%e4%b8%8e%e7%b2%98%e8%b4%b4" class="header-mark"></a>复制与粘贴</h3><p>以复制粘贴这个经典的例子来介绍寄存器的使用。</p>
 <p>复制可以使用 <code>y</code> 来实现（yank），而粘贴使用 <code>p</code> 完成（paste）。复制时需要指定范围，可以用限定词来指定，如 <code>yaw</code> 为复制当前单词；也可以用可视模式进行选择。<code>p</code>
 默认将内容粘贴在光标之后（Vim 会自动判断是否换行），也可用 <code>P</code> 粘贴在之前，或使用可视模式进行选择替换。特别地， <code>yy</code> 将对当前行进行复制。</p>
 <p>上面这种直接复制的方法没有指定寄存器，默认使用无名寄存器 <code>&quot;</code>,即 <code>yy</code> 命令等价于 <code>&quot;&quot;yy</code> （第一个 <code>&quot;</code> 表示使用寄存器，第二个 <code>&quot;</code> 表示使用无名寄存器）。使用无名寄存器容易导致复制的内容丢失，我们看下面一个例子：</p>
@@ -698,7 +697,7 @@
 <p>上述的粘贴是在普通模式进行，为了在插入模式直接读取寄存器内容，可以使用 <code>Ctrl</code> + <code>r</code> 组合键，指定寄存器后即可将内容粘贴到正文。</p>
 <p>忘记寄存器内容时，可以使用 <code>:reg</code> 命令进行查看。</p>
 <h3 id="宏的录制与回放" class="headerLink">
-    <a href="#%e5%ae%8f%e7%9a%84%e5%bd%95%e5%88%b6%e4%b8%8e%e5%9b%9e%e6%94%be" class="header-mark" aria-label="Header mark for '宏的录制与回放'"></a>宏的录制与回放</h3><p>寄存器中还可以保存命令（宏），并在特定的时候执行（回放）。普通模式下按 <code>q</code> 并指定寄存器即可开启宏的录制，再次按 <code>q</code> 即停止录制。在使用寄存器内保存的宏时，使用 <code>@</code> 和寄存器名即可。</p>
+    <a href="#%e5%ae%8f%e7%9a%84%e5%bd%95%e5%88%b6%e4%b8%8e%e5%9b%9e%e6%94%be" class="header-mark"></a>宏的录制与回放</h3><p>寄存器中还可以保存命令（宏），并在特定的时候执行（回放）。普通模式下按 <code>q</code> 并指定寄存器即可开启宏的录制，再次按 <code>q</code> 即停止录制。在使用寄存器内保存的宏时，使用 <code>@</code> 和寄存器名即可。</p>
 <p>例如，如果要在 Markdown 中使用 <kbd>Enter</kbd> 这样的键盘样式，需要输入指令 <code>&lt;kbd&gt;Enter&lt;/kbd&gt;</code>，非常麻烦。因此可以录制一个宏，自动在单词两边分别添加 <code>&lt;kbd&gt;</code> 和<code>&lt;/kbd&gt;</code> 。假如我将这个宏录制到寄存器 <code>k</code>，具体步骤如下：</p>
 <ol>
 <li>普通模式下将光标移动到需要添加键盘样式的单词处；</li>
@@ -717,7 +716,7 @@
 </ol>
 <p>当行数不足以满足指定的重复次数时，Vim 会自动停止回放宏，因此无需担心指定次数不准确的问题。</p>
 <h2 id="参考文献" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark" aria-label="Header mark for '参考文献'"></a>参考文献</h2><ol>
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
 <li>Neil D. Vim实用技巧. 杨源, 车文隆, 译. 人民邮电出版社, 2014.</li>
 </ol></div>
 
@@ -752,7 +751,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.135.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

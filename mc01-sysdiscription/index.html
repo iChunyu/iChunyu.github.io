@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -187,16 +185,17 @@
     <li><a href="#三种描述的对比">三种描述的对比</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">现代控制理论（1）：系统的描述</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2020-07-06" data-pagefind-body>现代控制理论（1）：系统的描述</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>控制理论基础</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2020-07-06">2020-07-06</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 1958 字&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 4 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 1958 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 9 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -211,10 +210,10 @@
     <li><a href="#三种描述的对比">三种描述的对比</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。</p>
+            </div><div class="content" id="content" data-pagefind-body><p>系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。</p>
 <h2 id="系统的微分方程" class="headerLink">
-    <a href="#%e7%b3%bb%e7%bb%9f%e7%9a%84%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b" class="header-mark" aria-label="Header mark for '系统的微分方程'"></a>系统的微分方程</h2><p>由于系统是由元件构成的，而元件的特性通常满足一定的（微分）方程，考虑元件之间的约束后，系统的本质就可以看作是微分方程。以经典的弹簧-质量-阻尼系统为例，如下图所示。</p>
-<figure><a class="lightgallery" href="./mc01.png" title="" data-thumbnail="./mc01.png" data-sub-html="<h2>弹簧-质量-阻尼系统示意图</h2>"><img  loading="lazy" src="./mc01.png"     width="40%"></a><figcaption class="image-caption">弹簧-质量-阻尼系统示意图</figcaption>
+    <a href="#%e7%b3%bb%e7%bb%9f%e7%9a%84%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b" class="header-mark"></a>系统的微分方程</h2><p>由于系统是由元件构成的，而元件的特性通常满足一定的（微分）方程，考虑元件之间的约束后，系统的本质就可以看作是微分方程。以经典的弹簧-质量-阻尼系统为例，如下图所示。</p>
+<figure><a class="lightgallery" href="./mc01.png" title="" data-thumbnail="./mc01.png" data-sub-html="<h2>弹簧-质量-阻尼系统示意图</h2>"><img  loading="lazy" src=./mc01.png     width="40%"></a><figcaption class="image-caption">弹簧-质量-阻尼系统示意图</figcaption>
     </figure>
 <p>该系统由弹簧、阻尼器、质量三个元件构成，三个元件的特性分别由以下方程进行描述：</p>
 <ul>
@@ -229,7 +228,7 @@ $$m \ddot{x} + c \dot{x} + k x = F$$
 $$y^{(n)} + a_{n-1} y^{(n-1)} + ...+a_1 y' + a_0 = b_m u^{(m)} + b_{m-1} u^{(m-1)} + ...+b_1 u' + b_0$$
 <p>对于实际的系统，上式通常有 $m \le n$ 。</p>
 <h2 id="系统的传递函数" class="headerLink">
-    <a href="#%e7%b3%bb%e7%bb%9f%e7%9a%84%e4%bc%a0%e9%80%92%e5%87%bd%e6%95%b0" class="header-mark" aria-label="Header mark for '系统的传递函数'"></a>系统的传递函数</h2><p>对于线性微分方程，可以通过所谓的拉普拉斯变换将其转化为频域表达式，拉普拉斯变换的定义为：</p>
+    <a href="#%e7%b3%bb%e7%bb%9f%e7%9a%84%e4%bc%a0%e9%80%92%e5%87%bd%e6%95%b0" class="header-mark"></a>系统的传递函数</h2><p>对于线性微分方程，可以通过所谓的拉普拉斯变换将其转化为频域表达式，拉普拉斯变换的定义为：</p>
 $$X(s) = \int_{-\infty}^{\infty} x(t) \mathrm{e}^{st}\, \mathrm{d}t$$
 <p>根据定义，对系统的微分方程两边同时进行拉普拉斯变换，有：</p>
 $$
@@ -239,7 +238,7 @@ $$
 <p>如此做，系统的微分方程在形式上变成了关于复变量 $s$ 的代数方程，称系统输出的拉普拉斯变换与输入的拉普拉斯变换之比为传递函数，记为 $H(s)$ ，由上式可得：</p>
 $$H(s) = \frac{b_m s^{m} + b_{m-1} s^{m-1} + ...+b_1 s + b_0}{s^{n} + a_{n-1} s^{n-1} + ...+a_1 s + a_0}$$
 <h2 id="系统的状态空间" class="headerLink">
-    <a href="#%e7%b3%bb%e7%bb%9f%e7%9a%84%e7%8a%b6%e6%80%81%e7%a9%ba%e9%97%b4" class="header-mark" aria-label="Header mark for '系统的状态空间'"></a>系统的状态空间</h2><p>系统的微分方程阶数通常较高而不便于分析，状态空间的思想在于引入状态变量，将一个高阶微分方程转化为多个一阶微分方程。对于线性微分方程，状态变量的数量等于输出变量的最高微分阶数 $n$ ，从技巧上通常可以取输出及其 $n-1$ 次导数作为状态变量。以上述弹簧-质量-阻尼系统为例，输出最高阶数为2，因此需要选择两个状态变量。选取第一个状态变量为输出，即 $x_1 = x$ ，第二个状态变量为输出的一阶导数，即 $x_2=\dot{x}$ ，于是有：</p>
+    <a href="#%e7%b3%bb%e7%bb%9f%e7%9a%84%e7%8a%b6%e6%80%81%e7%a9%ba%e9%97%b4" class="header-mark"></a>系统的状态空间</h2><p>系统的微分方程阶数通常较高而不便于分析，状态空间的思想在于引入状态变量，将一个高阶微分方程转化为多个一阶微分方程。对于线性微分方程，状态变量的数量等于输出变量的最高微分阶数 $n$ ，从技巧上通常可以取输出及其 $n-1$ 次导数作为状态变量。以上述弹簧-质量-阻尼系统为例，输出最高阶数为2，因此需要选择两个状态变量。选取第一个状态变量为输出，即 $x_1 = x$ ，第二个状态变量为输出的一阶导数，即 $x_2=\dot{x}$ ，于是有：</p>
 $$
 \left\{
 \begin{aligned}
@@ -316,7 +315,7 @@ $$
     <div class="details-content">
         <div class="admonition-content">最近 3b1b 在 bilibili 上传的 <a href="https://www.bilibili.com/video/BV11y4y1b7c5" target="_blank" rel="noopener noreferrer">e 的矩阵指数</a> 视频对应着状态空间的求解，有兴趣的同学可以作为扩展学习。</div></div></div>
 <h2 id="三种描述的对比" class="headerLink">
-    <a href="#%e4%b8%89%e7%a7%8d%e6%8f%8f%e8%bf%b0%e7%9a%84%e5%af%b9%e6%af%94" class="header-mark" aria-label="Header mark for '三种描述的对比'"></a>三种描述的对比</h2><p>微分方程作为系统的本质，适用于各种系统，且对系统的描述是最为详尽的，但其表达不够直观，通常不利于分析问题；传递函数仅适用于线性时不变系统，但其计算简单，直接在频域建模，能够直观表达系统的频率特性（主要指幅频响应和相频响应），但传递函数没有指明系统的状态变量，在基于传递函数建模的仿真系统中通常不能对初始状态的影响进行分析；状态空间是微分方程的等价表述，因而也可以广泛用于各种系统，由于其引入了状态变量的概念，能够方便地分析系统初始状态带来的影响，线性系统的状态空间由矩阵描述，还能使用线性代数中的各种技巧，便于计算。但状态空间基于时域建模，分析系统频率特性时还需要进行拉普拉斯变换。</p></div>
+    <a href="#%e4%b8%89%e7%a7%8d%e6%8f%8f%e8%bf%b0%e7%9a%84%e5%af%b9%e6%af%94" class="header-mark"></a>三种描述的对比</h2><p>微分方程作为系统的本质，适用于各种系统，且对系统的描述是最为详尽的，但其表达不够直观，通常不利于分析问题；传递函数仅适用于线性时不变系统，但其计算简单，直接在频域建模，能够直观表达系统的频率特性（主要指幅频响应和相频响应），但传递函数没有指明系统的状态变量，在基于传递函数建模的仿真系统中通常不能对初始状态的影响进行分析；状态空间是微分方程的等价表述，因而也可以广泛用于各种系统，由于其引入了状态变量的概念，能够方便地分析系统初始状态带来的影响，线性系统的状态空间由矩阵描述，还能使用线性代数中的各种技巧，便于计算。但状态空间基于时域建模，分析系统频率特性时还需要进行拉普拉斯变换。</p></div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -349,7 +348,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.135.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

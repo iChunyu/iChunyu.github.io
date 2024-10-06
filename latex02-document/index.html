@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -185,16 +183,17 @@
     <li><a href="#文档风格分享">文档风格分享</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">LaTeX 学习记录（2）：编写文档</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2020-10-27" data-pagefind-body>LaTeX 学习记录（2）：编写文档</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>LaTeX</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2020-10-27">2020-10-27</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-06-29">2023-06-29</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 3668 字&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 8 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 3668 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 17 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -209,9 +208,9 @@
     <li><a href="#文档风格分享">文档风格分享</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>这回我们来看看如何用 $\LaTeX$ 编写文档。</p>
+            </div><div class="content" id="content" data-pagefind-body><p>这回我们来看看如何用 $\LaTeX$ 编写文档。</p>
 <h2 id="从示例开始" class="headerLink">
-    <a href="#%e4%bb%8e%e7%a4%ba%e4%be%8b%e5%bc%80%e5%a7%8b" class="header-mark" aria-label="Header mark for '从示例开始'"></a>从示例开始</h2><p>上回在介绍 $\LaTeX$ 的 <a href="https://chunyu.site/latex01-install/" rel="">安装与配置</a> 后给出了一个最小的示例，给出了比较详细的注释，我们就从这个示例开始。</p>
+    <a href="#%e4%bb%8e%e7%a4%ba%e4%be%8b%e5%bc%80%e5%a7%8b" class="header-mark"></a>从示例开始</h2><p>上回在介绍 $\LaTeX$ 的 <a href="https://chunyu.site/latex01-install/" rel="">安装与配置</a> 后给出了一个最小的示例，给出了比较详细的注释，我们就从这个示例开始。</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -333,13 +332,13 @@
 <p>根据注释信息，文档分为导言区和正文区。两者实际上是以 <code>\begin{document}</code> 为分割，在此之前的内容一般都是对文档的格式或属性进行声明，不会直接影响正文内容。正文区则以 <code>\begin{document}</code> 和 <code>\end{document}</code> 包围，是文档的主要内容。</p>
 <p>在语法高亮功能的辅助下，诸位应当能够看到各种以反斜线 <code>\</code> 开头的词语呈现花花绿绿的颜色，这就是 $\LaTeX$ 的命令（也叫做宏），类比为其他编程中的函数。这些命令可以完成丰富的功能，如设置文档信息的 <code>\title</code>，在正文中生成标题的 <code>\maketitle</code> 等。本例中的命令顾名思义即可，并不复杂，其他命令及其使用将在后面详细介绍。</p>
 <h2 id="导言区的设置" class="headerLink">
-    <a href="#%e5%af%bc%e8%a8%80%e5%8c%ba%e7%9a%84%e8%ae%be%e7%bd%ae" class="header-mark" aria-label="Header mark for '导言区的设置'"></a>导言区的设置</h2><p>在导言区内，首先需要使用 <code>\documentclass{}</code> 声明文档类，这一步可以理解成为整个文档初始化，包括设置参数默认值（如行间距）、导入基本的命令。例如，在上面的例子中，<code>article</code> 是 $\LaTeX$ 最基础的文档类，其诞生时并没有考虑到多语言支持，若使用该文档类，正文区使用中文将出现与预期不符的结果。</p>
+    <a href="#%e5%af%bc%e8%a8%80%e5%8c%ba%e7%9a%84%e8%ae%be%e7%bd%ae" class="header-mark"></a>导言区的设置</h2><p>在导言区内，首先需要使用 <code>\documentclass{}</code> 声明文档类，这一步可以理解成为整个文档初始化，包括设置参数默认值（如行间距）、导入基本的命令。例如，在上面的例子中，<code>article</code> 是 $\LaTeX$ 最基础的文档类，其诞生时并没有考虑到多语言支持，若使用该文档类，正文区使用中文将出现与预期不符的结果。</p>
 <p>可见，仅调用文档类并采用其提供的默认设置并不能解决编写文档的需求，这时候我们需要“扩展” $\LaTeX$ 的功能。只需要使用命令 <code>\usepackage{}</code> 调用宏包即可。例如，为了在 <code>article</code> 文档类中使用中文，只需要在导言区补充 <code>\usepackage{ctex}</code> 即可。</p>
 <blockquote>
-<p>碎碎念1：实际上可以使用 CTeX 提供的 <code>ctexart</code> 文档类直接初始化中文支持，这也是最常用的方法。</p>
+  <p>碎碎念1：实际上可以使用 CTeX 提供的 <code>ctexart</code> 文档类直接初始化中文支持，这也是最常用的方法。</p>
 <p>碎碎念2：作为开源软件的优势，有很多优秀的宏包为 $\LaTeX$ 提供了相当高级的功能，例如自动将段落组织成爱心状以方便书写情书；但由开源导致的宏包的多样性会使得寻找期望的宏包需要时间和耐心。好在，常用的宏包并不多，以后会慢慢介绍。</p>
-</blockquote>
-<p>除了声明文档类和调用宏包，导言区还可以定义命令和环境，定义命令的基本方法如下，中括号为可选内容</p>
+
+</blockquote><p>除了声明文档类和调用宏包，导言区还可以定义命令和环境，定义命令的基本方法如下，中括号为可选内容</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -658,7 +657,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\usepackage</span><span class="nb">{</span>gbt7714<span class="nb">}</span>        <span class="err">%</span> 标准参考文献引用</span></span></code></pre>
 </div>
 <h2 id="正文区的编写" class="headerLink">
-    <a href="#%e6%ad%a3%e6%96%87%e5%8c%ba%e7%9a%84%e7%bc%96%e5%86%99" class="header-mark" aria-label="Header mark for '正文区的编写'"></a>正文区的编写</h2><p>在正文区内，只需要按正常的思路编写文档即可。应当注意，$\LaTeX$ 源码内的换行不会引起编译后的文档新起一个段落，这与 Word 有所区别。通过空行（一行或多行）可以实现正文另起段落。</p>
+    <a href="#%e6%ad%a3%e6%96%87%e5%8c%ba%e7%9a%84%e7%bc%96%e5%86%99" class="header-mark"></a>正文区的编写</h2><p>在正文区内，只需要按正常的思路编写文档即可。应当注意，$\LaTeX$ 源码内的换行不会引起编译后的文档新起一个段落，这与 Word 有所区别。通过空行（一行或多行）可以实现正文另起段落。</p>
 <p>利用源代码换行的特性，我们可以一句一行以便修改，这取决于个人的习惯。需要提醒的一个技巧是利用换行和注释对文档进行修改，从而保留修改历史以方便对比，如</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -895,42 +894,45 @@
 </span></span><span class="line"><span class="cl">此处省略若干字</span></span></code></pre>
 </div>
 <p>同样，正文区内包含其他丰富的技巧，一次性也不想写太多，给渴望学习的小伙伴透露一些常用命令。</p>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>相关命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>插入脚注</td>
-<td><code>\footnote{}</code> 或成对使用 <code>\footnotemark</code>、<code>\footnotetext{}</code></td>
-</tr>
-<tr>
-<td>行内数学</td>
-<td><code>$</code> 括起 $\LaTeX$ 表达式</td>
-</tr>
-<tr>
-<td>交叉引用</td>
-<td>使用<code>\label{}</code>插入引用源，使用 <code>\ref{}</code> 引用编号或 <code>\pageref{}</code> 引用页码</td>
-</tr>
-<tr>
-<td>插入图片</td>
-<td><code>\includegraphics</code></td>
-</tr>
-<tr>
-<td>插入表格</td>
-<td><code>tabular</code> 环境</td>
-</tr>
-<tr>
-<td>添加列表</td>
-<td><code>enumerate</code> 或 <code>itemize</code> 环境</td>
-</tr>
-</tbody>
-</table>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+        <tr>
+            <th style="text-align: left">功能</th>
+            <th style="text-align: left">相关命令</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: left">插入脚注</td>
+            <td style="text-align: left"><code>\footnote{}</code> 或成对使用 <code>\footnotemark</code>、<code>\footnotetext{}</code></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">行内数学</td>
+            <td style="text-align: left"><code>$</code> 括起 $\LaTeX$ 表达式</td>
+        </tr>
+        <tr>
+            <td style="text-align: left">交叉引用</td>
+            <td style="text-align: left">使用<code>\label{}</code>插入引用源，使用 <code>\ref{}</code> 引用编号或 <code>\pageref{}</code> 引用页码</td>
+        </tr>
+        <tr>
+            <td style="text-align: left">插入图片</td>
+            <td style="text-align: left"><code>\includegraphics</code></td>
+        </tr>
+        <tr>
+            <td style="text-align: left">插入表格</td>
+            <td style="text-align: left"><code>tabular</code> 环境</td>
+        </tr>
+        <tr>
+            <td style="text-align: left">添加列表</td>
+            <td style="text-align: left"><code>enumerate</code> 或 <code>itemize</code> 环境</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
 <h2 id="文档风格分享" class="headerLink">
-    <a href="#%e6%96%87%e6%a1%a3%e9%a3%8e%e6%a0%bc%e5%88%86%e4%ba%ab" class="header-mark" aria-label="Header mark for '文档风格分享'"></a>文档风格分享</h2><p>作为好习惯的开始，希望大家能够在使用 $\LaTeX$ 的时候形成自己的文件管理风格，这可以利用 <code>\include{}</code> 和 <code>\input{}</code> 命令完成：<code>\include{}</code> 命令将另一个 <code>.tex</code> 文档的内容复制到命令所在的位置，并利用 <code>\clearpage</code> 进行分页；<code>\input{}</code> 命令则相当于仅把目标文档复制到命令所在位置。</p>
+    <a href="#%e6%96%87%e6%a1%a3%e9%a3%8e%e6%a0%bc%e5%88%86%e4%ba%ab" class="header-mark"></a>文档风格分享</h2><p>作为好习惯的开始，希望大家能够在使用 $\LaTeX$ 的时候形成自己的文件管理风格，这可以利用 <code>\include{}</code> 和 <code>\input{}</code> 命令完成：<code>\include{}</code> 命令将另一个 <code>.tex</code> 文档的内容复制到命令所在的位置，并利用 <code>\clearpage</code> 进行分页；<code>\input{}</code> 命令则相当于仅把目标文档复制到命令所在位置。</p>
 <p>最后分享一下我目前的风格，文件结构如下</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
@@ -1209,7 +1211,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.135.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

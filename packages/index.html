@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -195,16 +193,17 @@
     <li><a href="#参考文献相关宏包">参考文献相关宏包</a></li>
   </ul>
 </nav></div>
-    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title">LaTeX 常用宏包简介</h1><div class="post-meta">
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2023-03-24" data-pagefind-body>LaTeX 常用宏包简介</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src="/images/avatar.png"   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>LaTeX</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2023-03-24">2023-03-24</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-04-06">2023-04-06</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 4969 字&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 10 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 4969 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 22 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -228,7 +227,7 @@
     <li><a href="#参考文献相关宏包">参考文献相关宏包</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>
+            </div><div class="content" id="content" data-pagefind-body><p>基于 $\LaTeX$ 编写文档时，使用宏包不仅能够更方便地对文档格式进行调整，还可以方便正文的写作。本文分享部分常用宏包，旨在快速介绍其核心功能和一般用法。</p>
 <div class="details admonition note open">
     <div class="details-summary admonition-title">
         <span class="icon"><svg class="icon"
@@ -485,7 +484,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="k">\allowdisplaybreaks</span><span class="na">[4]</span></span></span></code></pre>
 </div>
 <h2 id="中文支持ctex" class="headerLink">
-    <a href="#%e4%b8%ad%e6%96%87%e6%94%af%e6%8c%81ctex" class="header-mark" aria-label="Header mark for '中文支持：&lt;code&gt;ctex&lt;/code&gt;'"></a>中文支持：<code>ctex</code></h2><p>$\text{C\TeX}$ 宏集为编写 $\LaTeX$ 文档提供了中文支持，其主要功能集中在 <a href="https://www.ctan.org/pkg/ctex" target="_blank" rel="noopener noreferrer"><code>ctex</code></a> 宏包及其相应的文档类（包括 <code>ctexart</code>、<code>ctexrep</code>、<code>ctexbook</code>、<code>ctexbeamer</code>）。在使用宏包和文档类时，常用的选项有：</p>
+    <a href="#%e4%b8%ad%e6%96%87%e6%94%af%e6%8c%81ctex" class="header-mark"></a>中文支持：<code>ctex</code></h2><p>$\text{C\TeX}$ 宏集为编写 $\LaTeX$ 文档提供了中文支持，其主要功能集中在 <a href="https://www.ctan.org/pkg/ctex" target="_blank" rel="noopener noreferrer"><code>ctex</code></a> 宏包及其相应的文档类（包括 <code>ctexart</code>、<code>ctexrep</code>、<code>ctexbook</code>、<code>ctexbeamer</code>）。在使用宏包和文档类时，常用的选项有：</p>
 <ul>
 <li><code>zihao</code>：设置文档的默认字号，可选项有 <code>-4</code>（小四）、<code>5</code>（五号，默认值）；</li>
 <li><code>linespread</code>：行间距的倍数，默认为 <code>1.3</code>；</li>
@@ -507,15 +506,15 @@
 </li>
 </ul>
 <h2 id="排版优化microtype" class="headerLink">
-    <a href="#%e6%8e%92%e7%89%88%e4%bc%98%e5%8c%96microtype" class="header-mark" aria-label="Header mark for '排版优化：&lt;code&gt;microtype&lt;/code&gt;'"></a>排版优化：<code>microtype</code></h2><p>如果你的文档由纯英文编写，简单地加载 <a href="https://www.ctan.org/pkg/microtype" target="_blank" rel="noopener noreferrer"><code>microtype</code></a> 宏包即可以实现排版细节的优化。</p>
+    <a href="#%e6%8e%92%e7%89%88%e4%bc%98%e5%8c%96microtype" class="header-mark"></a>排版优化：<code>microtype</code></h2><p>如果你的文档由纯英文编写，简单地加载 <a href="https://www.ctan.org/pkg/microtype" target="_blank" rel="noopener noreferrer"><code>microtype</code></a> 宏包即可以实现排版细节的优化。</p>
 <h2 id="页面设置geometry" class="headerLink">
-    <a href="#%e9%a1%b5%e9%9d%a2%e8%ae%be%e7%bd%aegeometry" class="header-mark" aria-label="Header mark for '页面设置：&lt;code&gt;geometry&lt;/code&gt;'"></a>页面设置：<code>geometry</code></h2><p><a href="https://www.ctan.org/pkg/geometry" target="_blank" rel="noopener noreferrer"><code>geometry</code></a> 宏包提供了 <code>\geometry</code> 命令可以方便地设置页面布局，常用设置包括：</p>
+    <a href="#%e9%a1%b5%e9%9d%a2%e8%ae%be%e7%bd%aegeometry" class="header-mark"></a>页面设置：<code>geometry</code></h2><p><a href="https://www.ctan.org/pkg/geometry" target="_blank" rel="noopener noreferrer"><code>geometry</code></a> 宏包提供了 <code>\geometry</code> 命令可以方便地设置页面布局，常用设置包括：</p>
 <ul>
 <li><code>paper</code>：指定纸张大小，例如 <code>a4paper</code>。使用时 <code>paper=a4paper</code> 可以直接简写为 <code>a4paper</code>；</li>
 <li><code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>：上、下、左、右的页面边距。</li>
 </ul>
 <h2 id="页眉页脚fancyhdr" class="headerLink">
-    <a href="#%e9%a1%b5%e7%9c%89%e9%a1%b5%e8%84%9afancyhdr" class="header-mark" aria-label="Header mark for '页眉页脚：&lt;code&gt;fancyhdr&lt;/code&gt;'"></a>页眉页脚：<code>fancyhdr</code></h2><p>使用 <a href="https://www.ctan.org/pkg/fancyhdr" target="_blank" rel="noopener noreferrer"><code>fancyhdr</code></a> 宏包可以方便地对页眉、页脚进行设置。在使用 <code>\pagestyle{fancy}</code> 声明页面样式后，<code>\lhead</code>、<code>\chead</code>、<code>\rhead</code> 命令分别用于定义页眉左、中、右部分内容，将命令中的 “head” 改为 “foot” 可以相应地对页脚进行定义。</p>
+    <a href="#%e9%a1%b5%e7%9c%89%e9%a1%b5%e8%84%9afancyhdr" class="header-mark"></a>页眉页脚：<code>fancyhdr</code></h2><p>使用 <a href="https://www.ctan.org/pkg/fancyhdr" target="_blank" rel="noopener noreferrer"><code>fancyhdr</code></a> 宏包可以方便地对页眉、页脚进行设置。在使用 <code>\pagestyle{fancy}</code> 声明页面样式后，<code>\lhead</code>、<code>\chead</code>、<code>\rhead</code> 命令分别用于定义页眉左、中、右部分内容，将命令中的 “head” 改为 “foot” 可以相应地对页脚进行定义。</p>
 <p>在定义页眉页脚时，可以使用 <code>\theXXX</code> 获取 <code>XXX</code> 相应的编号，例如 <code>\thepage</code> 是当前页码、<code>\thesection</code> 是当前节的编号。除此之外，<code>\leftmark</code> 可以读取当前节的标题。</p>
 <p>特别地，对于双面文档，使用 <code>\cleardoublepage</code> 时，可以使用以下设置可以设置留白页面的内容。</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
@@ -629,7 +628,7 @@
 </span></span><span class="line"><span class="cl"><span class="k">\makeatother</span></span></span></code></pre>
 </div>
 <h2 id="超链接hyperref" class="headerLink">
-    <a href="#%e8%b6%85%e9%93%be%e6%8e%a5hyperref" class="header-mark" aria-label="Header mark for '超链接：&lt;code&gt;hyperref&lt;/code&gt;'"></a>超链接：<code>hyperref</code></h2><p><a href="https://www.ctan.org/pkg/hyperref" target="_blank" rel="noopener noreferrer"><code>hyperref</code></a> 扩展了生成的 PDF 文件的超链接功能，通常情况下简单地导入即可，除此之外，可以使用 <code>hypersetup</code> 命令进行个性化设置。例如，该宏包默认使用方框标记超链接，可以使用下面的设置将超链接用颜色标记：</p>
+    <a href="#%e8%b6%85%e9%93%be%e6%8e%a5hyperref" class="header-mark"></a>超链接：<code>hyperref</code></h2><p><a href="https://www.ctan.org/pkg/hyperref" target="_blank" rel="noopener noreferrer"><code>hyperref</code></a> 扩展了生成的 PDF 文件的超链接功能，通常情况下简单地导入即可，除此之外，可以使用 <code>hypersetup</code> 命令进行个性化设置。例如，该宏包默认使用方框标记超链接，可以使用下面的设置将超链接用颜色标记：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -739,7 +738,7 @@
     <div class="details-content">
         <div class="admonition-content">如果使用该宏包时出现问题，尝试在导言区中将该宏包最后导入。</div></div></div>
 <h2 id="交叉引用cleveref" class="headerLink">
-    <a href="#%e4%ba%a4%e5%8f%89%e5%bc%95%e7%94%a8cleveref" class="header-mark" aria-label="Header mark for '交叉引用：&lt;code&gt;cleveref&lt;/code&gt;'"></a>交叉引用：<code>cleveref</code></h2><p><a href="https://www.ctan.org/pkg/cleveref" target="_blank" rel="noopener noreferrer"><code>cleveref</code></a> 宏包简化了交叉引用，使得所有类型的交叉引用都可以使用命令 <code>\cref</code> 完成，并且自动添加形如 “Section”、“Figure” 等前缀（对于英文写作，段落开头的交叉引用可以使用 <code>\Cref</code> 以确保首字母大写且不使用缩写）。</p>
+    <a href="#%e4%ba%a4%e5%8f%89%e5%bc%95%e7%94%a8cleveref" class="header-mark"></a>交叉引用：<code>cleveref</code></h2><p><a href="https://www.ctan.org/pkg/cleveref" target="_blank" rel="noopener noreferrer"><code>cleveref</code></a> 宏包简化了交叉引用，使得所有类型的交叉引用都可以使用命令 <code>\cref</code> 完成，并且自动添加形如 “Section”、“Figure” 等前缀（对于英文写作，段落开头的交叉引用可以使用 <code>\Cref</code> 以确保首字母大写且不使用缩写）。</p>
 <p>该宏包提供以下几个常用选项：</p>
 <ul>
 <li><code>capitalise</code>：设置交叉引用前缀的首字母大写；</li>
@@ -852,9 +851,9 @@
 </span></span><span class="line"><span class="cl"><span class="k">\crefrangeformat</span><span class="nb">{</span>equation<span class="nb">}{</span>#3式~(#1)#4~<span class="k">\~</span><span class="nb">{}</span>~#5式~(#2)#6<span class="nb">}</span></span></span></code></pre>
 </div>
 <h2 id="列表设置enumitem" class="headerLink">
-    <a href="#%e5%88%97%e8%a1%a8%e8%ae%be%e7%bd%aeenumitem" class="header-mark" aria-label="Header mark for '列表设置：enumitem'"></a>列表设置：enumitem</h2><p><a href="https://www.ctan.org/pkg/enumitem" target="_blank" rel="noopener noreferrer"><code>enumitem</code></a> 提供了很多选项以优化列表环境，并可以使用 <code>\setlist</code> 进行全局设置。例如默认的列表之间间距太大，使用 <code>\setlist{nosep}</code> 取消额外间距。</p>
+    <a href="#%e5%88%97%e8%a1%a8%e8%ae%be%e7%bd%aeenumitem" class="header-mark"></a>列表设置：enumitem</h2><p><a href="https://www.ctan.org/pkg/enumitem" target="_blank" rel="noopener noreferrer"><code>enumitem</code></a> 提供了很多选项以优化列表环境，并可以使用 <code>\setlist</code> 进行全局设置。例如默认的列表之间间距太大，使用 <code>\setlist{nosep}</code> 取消额外间距。</p>
 <h2 id="国际单位制sinunitx" class="headerLink">
-    <a href="#%e5%9b%bd%e9%99%85%e5%8d%95%e4%bd%8d%e5%88%b6sinunitx" class="header-mark" aria-label="Header mark for '国际单位制：&lt;code&gt;sinunitx&lt;/code&gt;'"></a>国际单位制：<code>sinunitx</code></h2><p><a href="https://www.ctan.org/pkg/siunitx" target="_blank" rel="noopener noreferrer"><code>siunitx</code></a> 宏包大大方便了带单位数值的编写，最常用的命令有：</p>
+    <a href="#%e5%9b%bd%e9%99%85%e5%8d%95%e4%bd%8d%e5%88%b6sinunitx" class="header-mark"></a>国际单位制：<code>sinunitx</code></h2><p><a href="https://www.ctan.org/pkg/siunitx" target="_blank" rel="noopener noreferrer"><code>siunitx</code></a> 宏包大大方便了带单位数值的编写，最常用的命令有：</p>
 <ul>
 <li><code>\qty{数值}{单位}</code>：（老版本为 <code>\SI</code> 命令）其中数值可以采用程序的写法，例如 <code>3e-15</code> 将渲染为 $3 \times 10^{-15}$；单位部分可以直接采用该宏包定义的多种标准单位及其组合，例如 <code>\kilogram</code>、<code>\metre\per\second</code> 等。单位可以直接使用相应的英文字符，例如 <code>Hz</code>，在这种方法下，表示乘法关系的单位之家通常有一个小空格，为了确保单位正确渲染，应当添加 一个英文句点，例如力矩可以写作：<code>\qty{3.14e-3}{N.m}</code>。</li>
 <li><code>\ang{数值}</code>：角度的表述可以单独使用该命令；</li>
@@ -966,7 +965,7 @@
 </div>
 <p>特别地，改宏包提供了 <code>S</code> 列格式，可以在排版表格时将竖直在小数点对齐，然后整体向在列居中。</p>
 <h2 id="美丽的盒子tcolorbox" class="headerLink">
-    <a href="#%e7%be%8e%e4%b8%bd%e7%9a%84%e7%9b%92%e5%ad%90tcolorbox" class="header-mark" aria-label="Header mark for '美丽的盒子：&lt;code&gt;tcolorbox&lt;/code&gt;'"></a>美丽的盒子：<code>tcolorbox</code></h2><p><a href="https://www.ctan.org/pkg/tcolorbox" target="_blank" rel="noopener noreferrer"><code>tcolorbox</code></a> 宏包提供了 <code>tcolorbox</code> 环境 和 <code>\tcbox</code> 命令用于产生各种彩色的盒子。该宏包的功能非常强大，这里只展示一个简单的示例：论文修订时结合边注提醒审稿人修改内容，部分代码如下：</p>
+    <a href="#%e7%be%8e%e4%b8%bd%e7%9a%84%e7%9b%92%e5%ad%90tcolorbox" class="header-mark"></a>美丽的盒子：<code>tcolorbox</code></h2><p><a href="https://www.ctan.org/pkg/tcolorbox" target="_blank" rel="noopener noreferrer"><code>tcolorbox</code></a> 宏包提供了 <code>tcolorbox</code> 环境 和 <code>\tcbox</code> 命令用于产生各种彩色的盒子。该宏包的功能非常强大，这里只展示一个简单的示例：论文修订时结合边注提醒审稿人修改内容，部分代码如下：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1072,7 +1071,7 @@
 </span></span><span class="line"><span class="cl"><span class="nb">}}}</span></span></span></code></pre>
 </div>
 <h2 id="跟踪修改changes" class="headerLink">
-    <a href="#%e8%b7%9f%e8%b8%aa%e4%bf%ae%e6%94%b9changes" class="header-mark" aria-label="Header mark for '跟踪修改：&lt;code&gt;changes&lt;/code&gt;'"></a>跟踪修改：<code>changes</code></h2><p><a href="https://www.ctan.org/pkg/changes" target="_blank" rel="noopener noreferrer"><code>changes</code></a> 宏包提供了标记修订的接口，可以生成带标记的 PDF 文档。其中常用命令包括：</p>
+    <a href="#%e8%b7%9f%e8%b8%aa%e4%bf%ae%e6%94%b9changes" class="header-mark"></a>跟踪修改：<code>changes</code></h2><p><a href="https://www.ctan.org/pkg/changes" target="_blank" rel="noopener noreferrer"><code>changes</code></a> 宏包提供了标记修订的接口，可以生成带标记的 PDF 文档。其中常用命令包括：</p>
 <ul>
 <li><code>\added{new}</code>：添加；</li>
 <li><code>\deleted{old}</code>：删除；</li>
@@ -1181,7 +1180,7 @@
 <p>使用该宏包提供的 <code>final</code> 选项可以编译出“接受所有修订”之后的文档，可用于终稿的编译。</p>
 <p>通常情况下手动标记修订是比较麻烦的，可以复制 $\LaTeX$ 源码后直接修订，然后使用 <code>latexdiff</code> 命令进行差异对比并自动生成带标记的文档。为了美化，将 <code>latexdiff</code> 输出的文件中的差异标记命令用 <code>changes</code> 宏包重载即可。</p>
 <h2 id="数学相关宏包" class="headerLink">
-    <a href="#%e6%95%b0%e5%ad%a6%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark" aria-label="Header mark for '数学相关宏包'"></a>数学相关宏包</h2><p>编写数学公式时，常用的宏包如下：</p>
+    <a href="#%e6%95%b0%e5%ad%a6%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>数学相关宏包</h2><p>编写数学公式时，常用的宏包如下：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1285,7 +1284,7 @@
 </div>
 <p><a href="https://www.ctan.org/pkg/amsmath" target="_blank" rel="noopener noreferrer"><code>amsmath</code></a> 提供了大量数学环境的支持；<code>amssymb</code> 提供了额外的数学符号；对于矩阵排版，如有特殊需求，可以使用 <a href="https://www.ctan.org/pkg/nicematrix" target="_blank" rel="noopener noreferrer"><code>nicematrix</code></a> 宏包提供的 <code>NiceArray</code> 等环境；<a href="https://www.ctan.org/pkg/newtx" target="_blank" rel="noopener noreferrer"><code>newtxmath</code></a> 宏包将数学字体设置为罗马形式的衬线体，可根据个人喜好选择性使用；<a href="https://www.ctan.org/pkg/bm" target="_blank" rel="noopener noreferrer"><code>bm</code></a> 宏包提供了 <code>\bm</code> 命令专门用于加粗数学符号。上述代码的最后一行将节编号加入到的公式编号中。</p>
 <h2 id="图表相关宏包" class="headerLink">
-    <a href="#%e5%9b%be%e8%a1%a8%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark" aria-label="Header mark for '图表相关宏包'"></a>图表相关宏包</h2><p>常用的图表相关宏包设置如下：</p>
+    <a href="#%e5%9b%be%e8%a1%a8%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>图表相关宏包</h2><p>常用的图表相关宏包设置如下：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1618,7 +1617,7 @@
 <p>使用 <a href="https://www.ctan.org/pkg/caption" target="_blank" rel="noopener noreferrer"><code>caption</code></a> 宏包对图表名称的格式进行设置，例如上面利用 <code>\captionsetup{labelsep=space}</code> 将图表编号与名字之间的间隔设置为了空格（其他的类似还有分号、句点等习惯）。</p>
 <p>类似于公式的编号设置，可以使用 <code>\numberwithin</code> 将节的编号添加到图表编号中。</p>
 <h2 id="参考文献相关宏包" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark" aria-label="Header mark for '参考文献相关宏包'"></a>参考文献相关宏包</h2><p>英文参考文献格式可以由 <a href="https://www.ctan.org/pkg/natbib" target="_blank" rel="noopener noreferrer"><code>natbib</code></a> 宏包手动设置，或使用期刊模板提供的样式。对于中文文献，一般使用 <a href="https://www.ctan.org/pkg/gbt7714" target="_blank" rel="noopener noreferrer"><code>gbt7714</code></a> 自动处理，为了使用数字编号，需要在使用该宏包后采用 <code>\bibliographystyle{gbt7714-numerical}</code> 指定格式。该宏包的默认样式基本可以满足要求，如果需要额外设置，可参考说明文档修改对应的 <code>.bst</code> 样式文件。</p>
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae%e7%9b%b8%e5%85%b3%e5%ae%8f%e5%8c%85" class="header-mark"></a>参考文献相关宏包</h2><p>英文参考文献格式可以由 <a href="https://www.ctan.org/pkg/natbib" target="_blank" rel="noopener noreferrer"><code>natbib</code></a> 宏包手动设置，或使用期刊模板提供的样式。对于中文文献，一般使用 <a href="https://www.ctan.org/pkg/gbt7714" target="_blank" rel="noopener noreferrer"><code>gbt7714</code></a> 自动处理，为了使用数字编号，需要在使用该宏包后采用 <code>\bibliographystyle{gbt7714-numerical}</code> 指定格式。该宏包的默认样式基本可以满足要求，如果需要额外设置，可参考说明文档修改对应的 <code>.bst</code> 样式文件。</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     code-block-title 
@@ -1751,7 +1750,7 @@
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.129.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.135.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
