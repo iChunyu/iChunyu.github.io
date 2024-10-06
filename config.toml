@@ -158,7 +158,7 @@ enableGitInfo = true
     # 网站创立年份
     since = 2021
     # ICP 备案信息, 仅在中国使用 (支持 HTML 格式)
-    icp = '' 
+    icp = ''
     # 许可协议信息 (支持 HTML 格式)
     license = '本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。'
 
@@ -290,7 +290,7 @@ enableGitInfo = true
     QQ = ""
     QQGroup = ""
     Email = ""
-    RSS = false # 
+    RSS = false #
 
   #  文章页面配置
   [params.page]
@@ -404,13 +404,13 @@ enableGitInfo = true
       enable = false
       # Disqus 评论系统设置
       [params.page.comment.disqus]
-        # 
+        #
         enable = false
         # Disqus 的 shortname, 用来在文章中启用 Disqus 评论系统
         shortname = ""
       # Gitalk 评论系统设置
       [params.page.comment.gitalk]
-        # 
+        #
         enable = false
         owner = ""
         repo = ""
@@ -439,7 +439,7 @@ enableGitInfo = true
         emoji = ""
       # Waline 评论系统设置
       [params.page.comment.waline]
-        # 
+        #
         enable = false
         serverURL = ""
         visitor = false
@@ -546,7 +546,7 @@ enableGitInfo = true
     enable = false
     bio = "如果你觉得这篇文章对你有所帮助，欢迎赞赏~"
     link = "https://www.buymeacoffee.com" # 你的赞赏页面的地址
-    custom = "" # 自定义 HTML 
+    custom = "" # 自定义 HTML
 
   #  TypeIt 配置
   [params.typeit]
@@ -657,7 +657,7 @@ enableGitInfo = true
     endLevel = 4
 
 # 作者配置
-[author]
+[params.author]
   name = "大春雨"
   email = "chunyu2018@foxmail.com"
   link = ""
@@ -698,7 +698,6 @@ enableGitInfo = true
 
 # 用于 Hugo 输出文档的设置
 [outputs]
-  # 
   home = ["HTML", "RSS", "JSON"]
   page = ["HTML", "MarkDown"]
   section = ["HTML", "RSS"]
