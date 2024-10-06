@@ -2,66 +2,56 @@
 <html lang="zh-CN">
 
 <head>
-	<meta name="generator" content="Hugo 0.135.0">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>第 9 页 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/">
+    <meta name="robots" content="noodp" /><title>Motion Primitive 简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/motion-primitive/">
   <meta property="og:site_name" content="某春雨的后花园">
-  <meta property="og:title" content="某春雨的后花园">
-  <meta property="og:description" content="Looking to the future...">
+  <meta property="og:title" content="Motion Primitive 简介">
+  <meta property="og:description" content="Motion Primitive（常译为“运动原语”或“运动基元”）是一种简单高效的轨迹规划算法。在已知系统动力学方程和初始状态下，只需要给定目标状态及其到达时间就可以实现轨迹规划。本文将简要介绍这种算法的理论基础，并以一维的刚体运动为例进行推导。">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-10-06T22:54:32+08:00">
+    <meta property="article:modified_time" content="2024-10-07T01:03:06+08:00">
+    <meta property="article:tag" content="Motion Primitive">
+    <meta property="article:tag" content="运动基元">
+    <meta property="article:tag" content="轨迹规划">
     <meta property="og:image" content="https://chunyu.site/images/avatar.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://chunyu.site/images/avatar.png">
-  <meta name="twitter:title" content="某春雨的后花园">
-  <meta name="twitter:description" content="Looking to the future...">
+  <meta name="twitter:title" content="Motion Primitive 简介">
+  <meta name="twitter:description" content="Motion Primitive（常译为“运动原语”或“运动基元”）是一种简单高效的轨迹规划算法。在已知系统动力学方程和初始状态下，只需要给定目标状态及其到达时间就可以实现轨迹规划。本文将简要介绍这种算法的理论基础，并以一维的刚体运动为例进行推导。">
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
-  
-
-<link rel="canonical" href="https://chunyu.site/page/9/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="某春雨的后花园">
-    <link rel="feed" href="/index.xml" type="application/rss+xml" title="某春雨的后花园">
+<link rel="canonical" href="https://chunyu.site/motion-primitive/" /><link rel="prev" href="https://chunyu.site/legend-callback/" />
 <link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
     
-    <script type="application/ld+json">
-        {"@context": "https://schema.org",
-        "@graph": [{"@type": "BlogPosting",
-        "headline": "MATLAB 编写函数",
+    <script type="application/ld+json">{"@context": "https://schema.org","@type": "BlogPosting",
+        "headline": "Motion Primitive 简介",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://chunyu.site/matlab-function/"
-        },"genre": "posts","keywords":["MATLAB","函数"],"wordcount":  2637 ,
-        "url": "https://chunyu.site/matlab-function/","datePublished": "2020-04-29T00:00:00+00:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
+            "@id": "https://chunyu.site/motion-primitive/"
+        },"genre": "posts","keywords":["Motion Primitive","运动基元","轨迹规划"],"wordcount":  1162 ,
+        "url": "https://chunyu.site/motion-primitive/","datePublished": "2024-10-06T22:54:32+08:00","dateModified": "2024-10-07T01:03:06+08:00","publisher": {
             "@type": "Organization",
-            "name": "大春雨"},"author": {
+            "name": "","logo": {
+                    "@type": "ImageObject",
+                    "url": "https://chunyu.site/images/avatar.png",
+                    "width":  1024 ,
+                    "height":  1024 
+                }},"author": {
                 "@type": "Person",
                 "name": "大春雨",
                 "url": "/"
             },"description": ""
-    },{"@type": "BlogPosting",
-        "headline": "LPSD 功率谱估计",
-        "inLanguage": "zh-CN",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://chunyu.site/lpsd/"
-        },"genre": "posts","keywords":["功率谱","LPSD"],"wordcount":  3254 ,
-        "url": "https://chunyu.site/lpsd/","datePublished": "2019-02-23T00:00:00+00:00","dateModified": "2023-07-11T00:05:29+08:00","publisher": {
-            "@type": "Organization",
-            "name": "大春雨"},"author": {
-                "@type": "Person",
-                "name": "大春雨",
-                "url": "/"
-            },"description": ""
-    }]}
-        </script></head>
+    }</script></head>
 
 
 <body data-instant-intensity="viewport" ><script type="text/javascript">
@@ -185,43 +175,149 @@
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
 </div><main class="main">
-            <div class="container"><div class="page home" posts><div class="home-profile"><div class="home-avatar"><a href="/posts/"  title="文章" ><img  loading="eager" src=/images/avatar.png   alt="Home avatar" height="100" width="100"></a></div><h1 class="home-title"><a href="https://us.umami.is/share/UmzABgw0jxUaVuKd/chunyu.site">某春雨的后花园</a></h1><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"></div></div><article class="single summary"><h1 class="single-title">
-        <a href="/matlab-function/">MATLAB 编写函数</a>
-    </h1><div class="post-meta">
-        <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2020-04-29">2020-04-29</time></span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/matlab/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>MATLAB</a></span></div><div class="content"><p>编写程序的时候会经常用到相似的代码片段，为了使代码整洁，可以将这些代码片段封装为函数使用。本文介绍 MATLAB 编写函数的一般方法。</p></div><div class="post-footer">
-        <a href="/matlab-function/">阅读全文</a><div class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/matlab/">MATLAB</a>,&nbsp;<a href="/tags/%E5%87%BD%E6%95%B0/">函数</a></div></div>
-</article>
-<article class="single summary"><h1 class="single-title">
-        <a href="/lpsd/">LPSD 功率谱估计</a>
-    </h1><div class="post-meta">
-        <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2019-02-23">2019-02-23</time></span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>数字信号处理</a></span></div><div class="content"><p>欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 <a href="https://www.elisascience.org/ltpda" target="_blank" rel="noopener noreferrer">LTPDA</a>，该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。</p></div><div class="post-footer">
-        <a href="/lpsd/">阅读全文</a><div class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/%E5%8A%9F%E7%8E%87%E8%B0%B1/">功率谱</a>,&nbsp;<a href="/tags/lpsd/">LPSD</a></div></div>
-</article>
-<ul class="pagination"><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/">1</a>
-                    </span>
-                </li><li class="page-item ">
-                    <span class="page-link" aria-hidden="true">&hellip;</span>
-                </li><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/page/7/">7</a>
-                    </span>
-                </li><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/page/8/">8</a>
-                    </span>
-                </li><li class="page-item active">
-                    <span class="page-link">
-                        <a href="/page/9/">9</a>
-                    </span>
-                </li></ul></div></div>
+            <div class="container"><div class="toc print:!tw-hidden" id="toc-auto">
+        <h2 class="toc-title">目录</h2>
+        <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本理论">基本理论</a></li>
+    <li><a href="#示例">示例</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2024-10-06" data-pagefind-body>Motion Primitive 简介</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>规划算法入门</a></span></div>
+            <div class="post-meta-line"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2024-10-06">2024-10-06</time>&nbsp;<svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2024-10-07">2024-10-07</time>&nbsp;<svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 1162 字&nbsp;
+                    <svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span class="details-icon"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基本理论">基本理论</a></li>
+    <li><a href="#示例">示例</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content" data-pagefind-body><p>Motion Primitive（常译为“运动原语”或“运动基元”）是一种简单高效的轨迹规划算法。在已知系统动力学方程和初始状态下，只需要给定目标状态及其到达时间就可以实现轨迹规划。本文将简要介绍这种算法的理论基础，并以一维的刚体运动为例进行推导。</p>
+<h2 id="基本理论" class="headerLink">
+    <a href="#%e5%9f%ba%e6%9c%ac%e7%90%86%e8%ae%ba" class="header-mark"></a>基本理论</h2><p>假设系统的状态空间方程可以表述为：</p>
+$$
+\dot{\bm{x}(t)} = \bm{f}\bigl( \bm{x}(t), \bm{u}(t) \bigr), \quad \bm{x}(0) = \bm{x}_0
+$$
+<p>其中 $\bm{x}(t)$ 为系统的状态，其初始值 $\bm{x}(0) = \bm{x}_0$ 假设已知，$\bm{u}$ 为系统的控制指令。</p>
+<p>Motion Primitive 的基本思想是：系统状态应当在指定的时间 $T$ 内转移到目标状态 $\bm{x}_t$，并且使控制指令的“能量” 最小。其对应的代价函数用公式表示为：</p>
+$$
+J = \int_0^T L \bigl( \bm{x}(t), \bm{u}(t) \bigr)  \, \mathrm{d}t = \int_0^T \left\lVert \bm{u}(t) \right\rVert^2 \, \mathrm{d}t
+$$
+<p>该问题的求解可以使用庞特里亚金最小值原理（Pontryagin’s minimum principle）：引入时变拉格朗日乘子向量（或称“伴随状态”） $\bm{\lambda}(t)$，构造如下哈密顿量：</p>
+$$
+H\bigl( \bm{x}(t), \bm{u}(t), \bm{\lambda}(t), t \bigr) = \bm{\lambda}^\mathrm{T} \bm{f}(\bm{x}(t), \bm{u}(t)) + L(\bm{x}(t), \bm{u}(t))
+$$
+<p>伴随方程可写为：</p>
+$$
+\dot{\bm{\lambda}}(t) = - \frac{\partial H}{\partial \bm{x}}
+$$
+<p>根据系统状态方程和伴随方程，代入如下最优控制条件即可获得指令的通解，最后根据终值条件定解即可。</p>
+$$
+\frac{\partial H}{\partial \bm{u}} = 0
+$$
+<h2 id="示例" class="headerLink">
+    <a href="#%e7%a4%ba%e4%be%8b" class="header-mark"></a>示例</h2><p>假设被控对象为一维的刚体，其状态变量 $x_1$、$x_2$ 和 $x_3$ 分别对应位置、速度和加速度，控制指令 $u$ 为加加速度（jerk）。则系统的状态空间方程为：</p>
+$$
+\left\{\begin{aligned}
+    \dot{x}_1 &= x_2 \\
+    \dot{x}_2 &= x_3 \\
+    \dot{x}_3 &= u
+\end{aligned}\right.
+, \quad
+\bm{x}(0) = \begin{bmatrix} p_0 \\ v_0 \\ a_0 \end{bmatrix}
+$$
+<p>假设目标是在 $T$ 时间内将系统状态调整到 $\bm{x}_t = [p_t, v_t, a_t]^\mathrm{T}$。Motion Primitive 考虑的代价函数为：</p>
+$$
+J = \int_0^T u^2  \, \mathrm{d}t, \quad \left( L = u^2 \right)
+$$
+<p>设伴随状态为 $\bm{\lambda} = [\lambda_1, \lambda_2, \lambda_3]^\mathrm{T}$，则哈密顿量可以表示为：</p>
+$$
+H = \lambda_1 x_2 + \lambda_2 x_3 + \lambda_3 u + u^2
+$$
+<p>由伴随方程可知：</p>
+$$
+\left\{\begin{aligned}
+    \dot{\lambda}_1 &= - \frac{\partial H}{\partial x_1} = 0 \\
+    \dot{\lambda}_2 &= - \frac{\partial H}{\partial x_2} = -\lambda_1 \\
+    \dot{\lambda}_3 &= - \frac{\partial H}{\partial x_3} = -\lambda_2
+\end{aligned}\right.
+\quad \Rightarrow \quad
+\left\{\begin{aligned}
+    \lambda_1 &= C_1 \\
+    \lambda_2 &= C_1t + C_2 \\
+    \lambda_3 &= \frac{1}{2}C_1 t^2 + C_2 t + C_3
+\end{aligned}\right.
+$$
+<p>其中 $C_1$、$C_2$ 和 $C_3$ 为待定常数。将上述结果代入到最优化条件可得：</p>
+$$
+\frac{\partial H}{\partial u} = \lambda_3 + 2u = 0
+\quad \Rightarrow \quad
+u = - \frac{1}{2} \lambda_3 := \frac{1}{2} \alpha t^2 + \beta t + \gamma
+$$
+<p>上式为了表述的方便，将待定系数转化为了 $\alpha$、$\beta$ 和 $\beta$。将上述指令代入到状态方程，可知 $t$ 时刻的状态为：</p>
+$$
+\bm{x}(t) = \begin{bmatrix}
+\frac{1}{120} \alpha t^5 + \frac{1}{24} \beta t^4 + \frac{1}{6} \gamma t^3 + \frac{1}{2} a_0 t^2 + v_0 t + p_0 \\
+\frac{1}{24} \alpha t^4 + \frac{1}{6} \beta t^3 + \frac{1}{2} \gamma t^2 + a_0 t + v_0 \\
+\frac{1}{6} \alpha t^3 + \frac{1}{2} \beta t^2 + \gamma t + a_0
+\end{bmatrix}
+$$
+<p>代入 $\bm{x}(T) = [p_t, v_t, a_t]^\mathrm{T}$ 即可得到待定系数：</p>
+$$
+\begin{bmatrix} \alpha \\ \beta \\ \gamma \end{bmatrix} =
+\frac{1}{T^5} \begin{bmatrix} 720 & -360T & 60T^2 \\ -360T & 168T^2 & -24T^3 \\ 60T^2 & -24T^3 & 3T^4 \end{bmatrix}
+\begin{bmatrix} p_t - (p_0 + v_0T + \frac{1}{2}a_0T^2) \\ v_t - (v_0 + a_0T) \\ a_t - a_0 \end{bmatrix}
+$$
+<p>最后，将解得的待定系数重新代回指令和状态的表达式，即可得到状态轨迹和相应的控制指令。对于底层控制器而言，规划的状态轨迹可以作为参考状态，由反馈回路进行跟踪；而规划的控制指令可以作为参考指令，以前馈的形式改善系统的动态响应。</p>
+<h2 id="参考文献" class="headerLink">
+    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
+<li>Mueller, M. W., Hehn, M., D’Andrea, R. <a href="https://ieeexplore.ieee.org/document/7299672" target="_blank" rel="noopener noreferrer">A Computationally Efficient Motion Primitive for Quadrocopter Trajectory Generation</a>. IEEE Transactions on Robotics 2015, 31(6), 1294–1310.</li>
+<li>Wikipedia. <a href="https://en.wikipedia.org/wiki/Pontryagin%27s_maximum_principle" target="_blank" rel="noopener noreferrer">Pontryagin&rsquo;s maximum principle</a>.</li>
+</ol></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-10-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line print:!tw-hidden">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/motion-primitive/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                    </span></div>
+            <div class="post-info-share"></div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href=""></a>,&nbsp;<a href="/tags/%E8%BF%90%E5%8A%A8%E5%9F%BA%E5%85%83/">运动基元</a>,&nbsp;<a href="/tags/%E8%BD%A8%E8%BF%B9%E8%A7%84%E5%88%92/">轨迹规划</a></section>
+        <section class="print:!tw-hidden">
+            <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">返回</button></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav print:tw-hidden"><a href="/legend-callback/" class="prev" rel="prev" title="MATLAB 自定义交互式图例"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>MATLAB 自定义交互式图例</a></div>
+</div>
+</article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
                     由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.135.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
@@ -250,7 +346,7 @@
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg>
         </a></div><div id="cookieconsent-container"></div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/lib/katex/copy-tex.min.css">
         <noscript><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css">
-<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","id-1":"Looking to the future...","mobile-header-typeit":"某春雨的后花园"},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"id-1":["id-1"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
+<script>window.config={"autocomplete.min.js":"/lib/autocomplete/autocomplete.min.js","comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"desktop-header-typeit":"某春雨的后花园","mobile-header-typeit":"某春雨的后花园"},"fuse.min.js":"/lib/fuse/fuse.min.js","math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":50,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"desktop-header-typeit":["desktop-header-typeit"],"mobile-header-typeit":["mobile-header-typeit"]},"duration":-1,"speed":100}};</script><script
     src="/lib/typeit/typeit.min.js"
     
   ></script><script
