@@ -4,7 +4,14 @@
         <link>https://chunyu.site/posts/</link>
         <description>所有文章 | 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 06 Oct 2024 22:54:32 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>A* 算法简介</title>
+    <link>https://chunyu.site/astar/</link>
+    <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/astar/</guid>
+    <description><![CDATA[<p>A*（AStar）是一个兼具效率和效果的图搜索算法，可用于目标点之间的路径规划。本文将以广度优先搜索为基础，逐步介绍图搜索的基本方法，最后给出 A* 算法及其 MATLAB 实现示例。</p>]]></description>
+</item><item>
     <title>Motion Primitive 简介</title>
     <link>https://chunyu.site/motion-primitive/</link>
     <pubDate>Sun, 06 Oct 2024 22:54:32 &#43;0800</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://chunyu.site/emc03-uncertainties/</guid>
     <description><![CDATA[<p>被控对象模型的各种不确定性会产生模型误差而影响状态预测，为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性建模。</p>]]></description>
-</item><item>
-    <title>模型嵌入控制（2）：被控对象建模</title>
-    <link>https://chunyu.site/emc02-plant/</link>
-    <pubDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/emc02-plant/</guid>
-    <description><![CDATA[<p>被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。</p>]]></description>
 </item></channel>
 </rss>

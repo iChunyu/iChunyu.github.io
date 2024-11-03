@@ -4,7 +4,28 @@
         <link>https://chunyu.site/tags/</link>
         <description>Tags - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 06 Oct 2024 22:54:32 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>A*</title>
+    <link>https://chunyu.site/tags/a/</link>
+    <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/a/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>AStar</title>
+    <link>https://chunyu.site/tags/astar/</link>
+    <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/astar/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>路径规划</title>
+    <link>https://chunyu.site/tags/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/</link>
+    <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Motion Primitive</title>
     <link>https://chunyu.site/tags/motion-primitive/</link>
     <pubDate>Sun, 06 Oct 2024 22:54:32 &#43;0800</pubDate><author>
@@ -52,27 +73,6 @@
     <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://chunyu.site/tags/%E7%9B%B8%E9%A2%91%E5%93%8D%E5%BA%94/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Lyapunov</title>
-    <link>https://chunyu.site/tags/lyapunov/</link>
-    <pubDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/lyapunov/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>直接法</title>
-    <link>https://chunyu.site/tags/%E7%9B%B4%E6%8E%A5%E6%B3%95/</link>
-    <pubDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/%E7%9B%B4%E6%8E%A5%E6%B3%95/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>参数估计</title>
-    <link>https://chunyu.site/tags/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</link>
-    <pubDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
