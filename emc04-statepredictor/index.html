@@ -43,8 +43,8 @@
             "name": "","logo": {
                     "@type": "ImageObject",
                     "url": "https://chunyu.site/images/avatar.png",
-                    "width":  796 ,
-                    "height":  796 
+                    "width":  1024 ,
+                    "height":  1024 
                 }},"author": {
                 "@type": "Person",
                 "name": "大春雨",
@@ -145,7 +145,7 @@
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
                     </button>
-                    <button class="search-button search-clear" id="search-clear-mobile" title="清空">
+                    <button class="search-button search-clear tw-h-fit" id="search-clear-mobile" title="清空">
                         <svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"/></svg>
                     </button>
@@ -186,8 +186,8 @@
     </div><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2023-07-16" data-pagefind-body>模型嵌入控制（4）：状态预测器设计</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href=""><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg></a></span></div>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/embedded-model-control/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>Embedded Model Control</a></span></div>
             <div class="post-meta-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2023-07-16">2023-07-16</time>&nbsp;<svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2023-07-16">2023-07-16</time>&nbsp;<svg class="icon"
@@ -244,7 +244,7 @@ $$
 $$
 <p>其中，第一项的影响在状态预测误差 $\tilde{\bm{x}}_c$ 收敛时有界，可以并为随机扰动 $\bm{w}$ 的影响；第二项 $\tilde{\bm{h}}(\bm{x}_c)$ 是未知的耦合，后面将按照参数不确定性进行讨论。基于模型的环路设计中可以假设 $\Delta \bm{h} = 0$，即认为模型准确可知。</p>
 <p>分别记可控动态和扰动动态的传递函数矩阵为 $M(z)$ 和 $D(z)$，则状态预测误差的动态可以由下图给出：</p>
-<figure><a class="lightgallery" href="./sp_error.png" title="" data-thumbnail="./sp_error.png" data-sub-html="<h2>状态预测误差动态框图</h2>"><img  loading="lazy" src=./sp_error.png     width="60%"></a><figcaption class="image-caption">状态预测误差动态框图</figcaption>
+<figure><a class="lightgallery" href="/emc04-statepredictor/sp_error.png" title="" data-thumbnail="/emc04-statepredictor/sp_error.png" data-sub-html="<h2>状态预测误差动态框图</h2>"><img  loading="lazy" src=/emc04-statepredictor/sp_error.png    height="599" width="60%"></a><figcaption class="image-caption">状态预测误差动态框图</figcaption>
     </figure>
 <p>为了在随机噪声输入下使状态预测误差有界，必须构成稳定的闭环系统。由上图可知，闭环的关键是利用输出的预测误差 $\tilde{\bm{y}}$ 对驱动噪声 $\bar{\bm{w}} = [\bar{\bm{w}}_c ,\, \bar{\bm{w}}_d]$ 进行估计。不失一般性地，构造噪声估计器为：</p>
 $$
@@ -257,7 +257,7 @@ $$
 $$
 <p>可控动态和扰动动态分别根据被控对象和外部扰动的基本特征建模，具有特定的结构和标称参数，故状态预测器的待调参数集中在噪声估计器。从极点配置上看，噪声估计器的设计原则是引入合适数量的状态和待调参数，确保状态预测环路的总状态数量和待调参数的数量相同，从而可以对极点进行任意配置。</p>
 <p>记噪声估计器的传递函数矩阵为 $N(z)$，并采用 <a href="https://chunyu.site/emc03-uncertainties/" rel="">不确定性建模</a> 中将扰动折合到输出端的表述，被控对象和状态预测器的环路框图如下图所示。在实际应用中，输入到状态预测器的是传感器的测量值 $\breve{\bm{y}}$，因此用于噪声估计的误差由预测误差 $\tilde{\bm{y}}$ 变更为测得的模型误差 $\bm{e}_m$。</p>
-<figure><a class="lightgallery" href="./sp_transfer.png" title="" data-thumbnail="./sp_transfer.png" data-sub-html="<h2>被控对象和状态预测环路</h2>"><img  loading="lazy" src=./sp_transfer.png     width="70%"></a><figcaption class="image-caption">被控对象和状态预测环路</figcaption>
+<figure><a class="lightgallery" href="/emc04-statepredictor/sp_transfer.png" title="" data-thumbnail="/emc04-statepredictor/sp_transfer.png" data-sub-html="<h2>被控对象和状态预测环路</h2>"><img  loading="lazy" src=/emc04-statepredictor/sp_transfer.png    height="849" width="70%"></a><figcaption class="image-caption">被控对象和状态预测环路</figcaption>
     </figure>
 <h2 id="基于不确定行的设计约束" class="headerLink">
     <a href="#%e5%9f%ba%e4%ba%8e%e4%b8%8d%e7%a1%ae%e5%ae%9a%e8%a1%8c%e7%9a%84%e8%ae%be%e8%ae%a1%e7%ba%a6%e6%9d%9f" class="header-mark"></a>基于不确定行的设计约束</h2><p>根据上图给出的环路结构，省略 $z$ 变换后的自变量，被控对象的输出和传感器测量值分别为：</p>
@@ -331,7 +331,7 @@ $$
 \end{aligned}\right.
 $$
 <p>此时状态预测器共有五个状态变量，同时具备五个待调参数 $\{ \beta, \, l_0,\, m_0,\, m_1,\, m_2\}$，可以证明闭环极点任意调整，因而闭环性能可以通过参数调整来满足。该二阶系统的状态预测器环路如下图所示，五个绿色模块为待调参数。</p>
-<figure><a class="lightgallery" href="./sp_demo.png" title="" data-thumbnail="./sp_demo.png" data-sub-html="<h2>二阶系统状态预测器</h2>"><img  loading="lazy" src=./sp_demo.png     width="70%"></a><figcaption class="image-caption">二阶系统状态预测器</figcaption>
+<figure><a class="lightgallery" href="/emc04-statepredictor/sp_demo.png" title="" data-thumbnail="/emc04-statepredictor/sp_demo.png" data-sub-html="<h2>二阶系统状态预测器</h2>"><img  loading="lazy" src=/emc04-statepredictor/sp_demo.png    height="1178" width="70%"></a><figcaption class="image-caption">二阶系统状态预测器</figcaption>
     </figure></div>
 
         <div class="post-footer" id="post-footer">
@@ -365,7 +365,7 @@ $$
 </article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.136.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.140.0">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2024<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

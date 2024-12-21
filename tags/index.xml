@@ -5,13 +5,6 @@
         <description>Tags - 标签 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
             <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>A*</title>
-    <link>https://chunyu.site/tags/a/</link>
-    <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/tags/a/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
     <title>AStar</title>
     <link>https://chunyu.site/tags/astar/</link>
     <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
@@ -73,6 +66,13 @@
     <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
         <name>大春雨</name>
     </author><guid>https://chunyu.site/tags/%E7%9B%B8%E9%A2%91%E5%93%8D%E5%BA%94/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Lyapunov</title>
+    <link>https://chunyu.site/tags/lyapunov/</link>
+    <pubDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/tags/lyapunov/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
