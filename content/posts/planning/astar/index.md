@@ -1,7 +1,7 @@
 ---
 title: "A* 算法简介"
 date: 2024-11-03T16:56:14+08:00
-tags: ["A*", "AStar", "路径规划"]
+tags: ["AStar", "路径规划"]
 categories: ["规划算法入门"]
 draft: false
 ---
