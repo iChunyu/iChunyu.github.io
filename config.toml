@@ -200,7 +200,7 @@ enableGitInfo = true
       # 文件路径是相对于 static 或者 assets 目录的
       avatarURL = "/images/avatar.png"
       #  主页显示的网站标题 (支持 HTML 格式)
-      title = '<a href="https://us.umami.is/share/UmzABgw0jxUaVuKd/chunyu.site">某春雨的后花园</a>'
+      title = '<a href="https://cloud.umami.is/share/UmzABgw0jxUaVuKd/chunyu.site">某春雨的后花园</a>'
       # 主页显示的网站副标题
       subtitle = "Looking to the future..."
       # 是否为副标题显示打字机动画
@@ -595,7 +595,7 @@ enableGitInfo = true
     #  Umami Analytics
     [params.analytics.umami]
       data_website_id = "ce258e61-9ff3-448b-849f-9a0be03eb59b"
-      src = "https://analytics.us.umami.is/script.js"
+      src = "https://cloud.umami.is/script.js"
       data_domains = "chunyu.site"
     #  Plausible Analytics
     [params.analytics.plausible]
