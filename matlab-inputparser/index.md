@@ -106,7 +106,7 @@ p.addParameter('p3',3);
 
 这里应当注意的是，`parse` 函数接受逗号分隔的列表输入，而关键字 `varargin` 是 `cell` 数组，应当使用花括号加 `:` 的形式进行转换。
 
-如前所述，`inputParser` 默认接受结构体输入，而未配对成功的参数将会以结构体的形式存放在 `p.Unmatched` 中，因此可以将其传递给子函数。例如我自编用于画功率谱的 [`iLPSD`](https://ichunyu.github.io/helps/functions/ilpsd/) 函数，内部调用了 `loglog` 画图，为了将绘图选项传递给该函数，我用到了下面的方法：
+如前所述，`inputParser` 默认接受结构体输入，而未配对成功的参数将会以结构体的形式存放在 `p.Unmatched` 中，因此可以将其传递给子函数。例如我自编用于画功率谱的 [`iLPSD`]({{< ref "../../signal/lpsd/index.md" >}}) 函数，内部调用了 `loglog` 画图，为了将绘图选项传递给该函数，我用到了下面的方法：
 
 ``` matlab
 % 外部调用 iLPSD
@@ -132,4 +132,43 @@ p.addRequired('p1',@(x)isnumeric(x));
 `validateattributes(A,classes,attributes)` 用于验证给定参数 `A` 是否在允许的 `class` 类型中，且其属性（例如矩阵的维度）是否满足 `attributes` 中的某个约束。
 
 `matchedStr = validatestring(str,validStrings)` 将字符串 `str` 与选项 `validStrings` 进行对比，当匹配某个选项时将该选项输出。特别地，该函数可以设置忽略大小写，且可以局部匹配，可以避免使用时输入不准确导致程序无法运行。
+
+## 自定义输入提示
+
+可变输入 `varargin` 和 `inputParser` 结合使用可以使函数的扩展更加灵活，但是在使用时默认不会有各个形参的提示。当函数的功能变的更加复杂时，有时候不得不查看帮助文档才能知道有哪些可选的参数配置。为此，可以配合使用一个特殊的 [`functionSignatures.json`](https://www.mathworks.com/help/matlab/matlab_prog/customize-code-suggestions-and-completions.html) 文件来自定义函数的输入提示。
+
+提示文件的编写非常简单，我们直接从一个例子入手：
+
+```json
+{
+    "iLPSD":
+    {
+        "inputs":
+        [
+            {"name": "data", "kind": "required", "type": "numeric"},
+            {"name": "fs", "kind": "required", "type": ["numeric", "scalar"]},
+            {"name": "Jdes", "kind": "namevalue", "type": ["numeric", "scalar"]},
+            {"name": "Kdes", "kind": "namevalue", "type": ["numeric", "scalar"]},
+            {"name": "xi", "kind": "namevalue", "type": ["numeric", "scalar"]},
+            {"name": "window", "kind": "namevalue", "type": "function_handle"},
+            {"name": "parallel", "kind": "namevalue", "type": ["logical", "scalar"]},
+            {"name": "type", "kind": "namevalue", "type": "choices={'PSD', 'RMS', 'Amp'}"}
+        ]
+    }
+}
+```
+
+该文件的第一级字段（本例中的 `"iLPSD"`）为函数的名字；第二级字段可以是 `"inputs"`、`"outputs"`、`"platforms"`，通常情况下我们只考虑对函数的输入进行提示和补全，因此绝大多数场景只需要定义 `"inputs"` 字段即可。
+
+在 `"inputs"` 字段下，将由多个字典构成列表来对输入进行解释，其中可以包括：
+
+- `"name"`：当前形参的名字，一般情况会与源码中的变量名保持一致；
+- `"kind"`：当前形参的类型，通常是 `"required"`、`"ordered"` 或 `"namevalue"` 的一种，分别与 `inputParser` 中的 `addRequired`、`addOptional` 和 `addParameter` 对应；
+- `"type"`：当前形参的数据类型。需要说明的是，这里的类型说明只是在输入阶段给予可能的更好的提示，并不真正对函数输入的形参进行有效性检查；如果没有特比的必要，该字段可以省略；
+- `"repeating"`：当前形参是否可以重复，默认为 `false`。当调用函数并且按 `<Tab>` 键提供补全提示且选择了某个参数后，下一次是否重复提示该参数。一般的参数只需要配置一次，因此可以省略；
+- `"purpose"`：对当前形参的进一步说明，会在键入函数时产生额外的提示，可选。
+
+如此编写 `functionSignatures.json` 文件后，将其放在函数源码相同的文件夹内，通过 MATLAB 命令行输入 `validateFunctionSignaturesJSON` 验证该文件的有效性，而后在编辑器键入自定义函数时就可以出现形参的提示了。如果函数有多种重载，只需进行多次定义即可。
+
+特别地，该方法适用于类和包的代码补全，对于类函数，第一级字段的格式为 `"类名.函数名"`，其他的规则相同。如果类和包采用独立的文件夹管理，`functionSignatures.json` 应当与 `@class` 和 `+package` 放在同一路径下。
 
