@@ -52,7 +52,7 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport"><script type="text/javascript">
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script type="text/javascript">
     function setTheme(theme) {
       document.body.setAttribute('theme', theme); 
       document.documentElement.className = theme;
@@ -171,7 +171,7 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="tw-mx-4"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">目录</h2>
         <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -195,7 +195,7 @@
         </div>
     </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2021-06-02" data-pagefind-body>信号的滤波</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src='/images/avatar.png'   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>数字信号处理</a></span></div>
             <div class="post-meta-line"><svg class="icon"
@@ -228,7 +228,7 @@
 <li>阻带频率 $f_{\rm stop}$：在这个频率范围内，滤波器对信号的衰减达到阻带衰减倍数的需求。</li>
 </ul>
 <p>以低通滤波器为例，上述四个参数可以用下图来表示</p>
-<figure><a class="lightgallery" href="/filterdesign/filter01.png" title="" data-thumbnail="/filterdesign/filter01.png" data-sub-html="<h2>滤波器基本参数示意图</h2>"><img  loading="lazy" src=/filterdesign/filter01.png    height="1534" width="50%"></a><figcaption class="image-caption">滤波器基本参数示意图</figcaption>
+<figure><a class="lightgallery" href="/filterdesign/filter01.png" title="" data-thumbnail="/filterdesign/filter01.png" data-sub-html="<h2>滤波器基本参数示意图</h2>"><img  loading="lazy" src='/filterdesign/filter01.png'    height="1534" width="50%"></a><figcaption class="image-caption">滤波器基本参数示意图</figcaption>
     </figure>
 <p>在对延时比较敏感的实时系统中，还需要讨论滤波器的群延时，其定义为相频响应的负导数，即</p>
 $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
@@ -273,7 +273,7 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 <p>上表中， <code>'s'</code> 选项对应的是模拟滤波器，这时 <code>Wp</code> 和 <code>Ws</code> 的单位都是 $\rm rad/s$ ， <code>Rp</code> 和 <code>Rs</code> 的单位均为 $\rm dB$。对于数字滤波器，调用函数时应当取消 <code>'s'</code> 选项，并且频率采用归一化的数字频率。</p>
 <p>对于 Python 用户， <code>scipy.signal</code> 提供了同名的函数，使用方法基本一致，但 <code>'s'</code> 选项应更换为关键字参数 <code>analog=True</code> 。</p>
 <p>以 <code>Wp=1</code> ， <code>Ws=3</code> ， <code>Rp=1</code> 和 <code>Rs=40</code> 为例设计模拟滤波器，幅频响应如下图所示</p>
-<figure><a class="lightgallery" href="/filterdesign/filter02.png" title="" data-thumbnail="/filterdesign/filter02.png" data-sub-html="<h2>常用滤波器的幅频响应</h2>"><img  loading="lazy" src=/filterdesign/filter02.png    height="2068" width="60%"></a><figcaption class="image-caption">常用滤波器的幅频响应</figcaption>
+<figure><a class="lightgallery" href="/filterdesign/filter02.png" title="" data-thumbnail="/filterdesign/filter02.png" data-sub-html="<h2>常用滤波器的幅频响应</h2>"><img  loading="lazy" src='/filterdesign/filter02.png'    height="2068" width="60%"></a><figcaption class="image-caption">常用滤波器的幅频响应</figcaption>
     </figure>
 <p>可见，在相同参数设置下：</p>
 <ul>
@@ -303,7 +303,7 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 </ol>
 <p>从感性上看，第一次滤波是从前往后滤，因此向后引入了延时；第二次滤波是从后往前滤，向前引入的相同的&quot;延时&quot;。由于采用的是完全相同的滤波器，因而延时可以完全抵消。</p>
 <p>为了使用滤波器，在 MATLAB 中可以使用 <code>filter(b,a,x)</code> 进行滤波，也可以使用 <code>filtfilt(b,a,x)</code> 进行零相位滤波。在Python中，这两个函数分别对应于 <code>scipy.signal</code> 中的 <code>lfilter</code> 和 <code>filtfilt</code>。下图给出同一个滤波器使用两种滤波方法对带噪声的正弦信号滤波后的结果。</p>
-<figure><a class="lightgallery" href="/filterdesign/filter03.png" title="" data-thumbnail="/filterdesign/filter03.png" data-sub-html="<h2>零相位滤波示例</h2>"><img  loading="lazy" src=/filterdesign/filter03.png    height="2062" width="60%"></a><figcaption class="image-caption">零相位滤波示例</figcaption>
+<figure><a class="lightgallery" href="/filterdesign/filter03.png" title="" data-thumbnail="/filterdesign/filter03.png" data-sub-html="<h2>零相位滤波示例</h2>"><img  loading="lazy" src='/filterdesign/filter03.png'    height="2062" width="60%"></a><figcaption class="image-caption">零相位滤波示例</figcaption>
     </figure>
 <p>一般的滤波方法引入了可见的延时，而零相位滤波器没有引入明显延时。此外，相同滤波器下，零相位滤波器的输出结果更光滑，这是因为它对数据进行了两次滤波，其增益特性将是一次滤波的平方。需要注意的是，一般的滤波只在数据的开始阶段存在过渡过程，而零相位滤波在数据两端都有过渡过程。为了消除这些过渡过程，可以使用自适应技术提前对数据进行一定程度的预测。</p>
 <p>零相位滤波是在数据采集完成之后才能进行的操作，不能实时处理，这也就是所谓&quot;非因果系统&quot;的实际含义。对于实时系统，只能通过其他的手段对延时进行补偿。</p></div>
@@ -338,7 +338,7 @@ $$\tau_g = -\frac{\mathrm{d}\varphi(\omega)}{\omega}$$
 </div>
 </article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.144.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.147.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.2"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2025<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

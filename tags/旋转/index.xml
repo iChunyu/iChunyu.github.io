@@ -1,15 +1,21 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>旋转 - 标签 - 某春雨的后花园</title>
-        <link>https://chunyu.site/tags/%E6%97%8B%E8%BD%AC/</link>
-        <description>旋转 - 标签 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 16 Mar 2022 14:32:58 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/%E6%97%8B%E8%BD%AC/" rel="self" type="application/rss+xml" /><item>
-    <title>四元数与三维旋转</title>
-    <link>https://chunyu.site/quaternion/</link>
-    <pubDate>Wed, 16 Mar 2022 14:32:58 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/quaternion/</guid>
-    <description><![CDATA[<p>复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。</p>]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>旋转 on 某春雨的后花园</title>
+    <link>https://chunyu.site/tags/%E6%97%8B%E8%BD%AC/</link>
+    <description>Recent content in 旋转 on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <lastBuildDate>Thu, 29 Jun 2023 11:56:55 +0800</lastBuildDate>
+    <atom:link href="https://chunyu.site/tags/%E6%97%8B%E8%BD%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>四元数与三维旋转</title>
+      <link>https://chunyu.site/quaternion/</link>
+      <pubDate>Wed, 16 Mar 2022 14:32:58 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/quaternion/</guid>
+      <description>&lt;p&gt;复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

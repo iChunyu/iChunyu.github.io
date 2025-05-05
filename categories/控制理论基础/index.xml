@@ -1,78 +1,105 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>控制理论基础 - 分类 - 某春雨的后花园</title>
-        <link>https://chunyu.site/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/</link>
-        <description>控制理论基础 - 分类 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
-    <title>李雅普诺夫稳定性简介</title>
-    <link>https://chunyu.site/lyapunov/</link>
-    <pubDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/lyapunov/</guid>
-    <description><![CDATA[<p>线性时不变系统的稳定性可以通过计算极点、绘制奈奎斯特图或伯德图等多种方式进行判定，对于非线性系统，通常采用李雅普诺夫稳定性判据。本文将简要介绍李雅普诺夫直接法，并介绍实践中常用的引理。</p>]]></description>
-</item><item>
-    <title>使用反步法设计非线性控制器</title>
-    <link>https://chunyu.site/backstepping/</link>
-    <pubDate>Thu, 28 Jul 2022 14:44:56 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/backstepping/</guid>
-    <description><![CDATA[<p>反步法（Backstepping）通过拼凑李雅普诺夫函数得到控制律，可用于非线性被控对象的控制器设计。本文是对 DR_CAN 系列视频的学习，并以一个开环不稳定的非线性系统为例进行设计与仿真。</p>]]></description>
-</item><item>
-    <title>模型预测控制简介</title>
-    <link>https://chunyu.site/modelpreditivecontrol/</link>
-    <pubDate>Fri, 26 Nov 2021 21:39:17 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/modelpreditivecontrol/</guid>
-    <description><![CDATA[<p>最近在 DR_CAN 的视频中学到了模型预测控制，于是打算写篇博客记记笔记，权当公式推导的练习。</p>]]></description>
-</item><item>
-    <title>卡尔曼滤波简介</title>
-    <link>https://chunyu.site/kalmanfilter/</link>
-    <pubDate>Thu, 19 Aug 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/kalmanfilter/</guid>
-    <description><![CDATA[<p>卡尔曼滤波是一种最优滤波器，通过对系统的输入和输出进行数据融合来获得状态的最优估计。本文介绍卡尔曼滤波的基本原理并推导其核心公式。</p>]]></description>
-</item><item>
-    <title>抗饱和积分</title>
-    <link>https://chunyu.site/integratorantiwindup/</link>
-    <pubDate>Sat, 19 Jun 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/integratorantiwindup/</guid>
-    <description><![CDATA[<p>对于实际的系统，控制器的输出应当受到幅度限制，以避免超出执行机的量程。然而，在具有积分的控制器中如果仅对输出进行限幅，将会引起所谓的退饱和现象，使控制器的性能变差甚至导致系统不稳定。这回我们来谈谈抗饱和积分器。</p>]]></description>
-</item><item>
-    <title>感性认识 PID</title>
-    <link>https://chunyu.site/intropid/</link>
-    <pubDate>Tue, 08 Sep 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/intropid/</guid>
-    <description><![CDATA[<p>比例积分微分（PID）控制器是一种经典的控制器，以其简单的结构和较强的鲁棒性广泛适用于各种控制系统。对 PID 的原理有多种解释，今天跟大家分享一些自己的看法。</p>]]></description>
-</item><item>
-    <title>相图与砰砰控制</title>
-    <link>https://chunyu.site/bangbang/</link>
-    <pubDate>Fri, 21 Aug 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/bangbang/</guid>
-    <description><![CDATA[<p>砰砰控制（Bang Bang Control）是一种使误差收敛速度最快的最优控制，对于二阶系统，可以借助相图来完成。本文介绍相图并据此实现砰砰控制。</p>]]></description>
-</item><item>
-    <title>鲁棒跟踪控制</title>
-    <link>https://chunyu.site/robusttracking/</link>
-    <pubDate>Sat, 15 Aug 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/robusttracking/</guid>
-    <description><![CDATA[<p>对于被引入到系统的参考信号，如果其特征是已知的，还可以采用所谓的鲁棒跟踪控制进一步提高系统对该类信号的跟踪能力。本文将介绍这种方法的设计。</p>]]></description>
-</item><item>
-    <title>现代控制理论（5）：参考信号的引入</title>
-    <link>https://chunyu.site/mc05-reference/</link>
-    <pubDate>Sat, 08 Aug 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/mc05-reference/</guid>
-    <description><![CDATA[<p>调节器只能将系统的各状态拉回到零位，而控制系统的根本目的是使被控对象的输出跟随参考信号，因此在调节器设计完成的基础上，还需要正确地引入参考信号。本文介绍三种常用的方式将参考信号引入到控制系统。</p>]]></description>
-</item><item>
-    <title>现代控制理论（4）：调节器设计</title>
-    <link>https://chunyu.site/mc04-regulator/</link>
-    <pubDate>Sun, 02 Aug 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/mc04-regulator/</guid>
-    <description><![CDATA[<p>状态估计器提供了状态的估计值，在分离原理的指导下，利用估计的状态进行状态反馈能够使系统稳定。本文讨论最基本的闭环设计，即调节器设计。</p>]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>控制理论基础 on 某春雨的后花园</title>
+    <link>https://chunyu.site/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/</link>
+    <description>Recent content in 控制理论基础 on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <lastBuildDate>Sat, 03 Feb 2024 21:47:58 +0800</lastBuildDate>
+    <atom:link href="https://chunyu.site/categories/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>李雅普诺夫稳定性简介</title>
+      <link>https://chunyu.site/lyapunov/</link>
+      <pubDate>Sun, 07 Jan 2024 22:36:46 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/lyapunov/</guid>
+      <description>&lt;p&gt;线性时不变系统的稳定性可以通过计算极点、绘制奈奎斯特图或伯德图等多种方式进行判定，对于非线性系统，通常采用李雅普诺夫稳定性判据。本文将简要介绍李雅普诺夫直接法，并介绍实践中常用的引理。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>使用反步法设计非线性控制器</title>
+      <link>https://chunyu.site/backstepping/</link>
+      <pubDate>Thu, 28 Jul 2022 14:44:56 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/backstepping/</guid>
+      <description>&lt;p&gt;反步法（Backstepping）通过拼凑李雅普诺夫函数得到控制律，可用于非线性被控对象的控制器设计。本文是对 DR_CAN 系列视频的学习，并以一个开环不稳定的非线性系统为例进行设计与仿真。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>模型预测控制简介</title>
+      <link>https://chunyu.site/modelpreditivecontrol/</link>
+      <pubDate>Fri, 26 Nov 2021 21:39:17 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/modelpreditivecontrol/</guid>
+      <description>&lt;p&gt;最近在 DR_CAN 的视频中学到了模型预测控制，于是打算写篇博客记记笔记，权当公式推导的练习。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>卡尔曼滤波简介</title>
+      <link>https://chunyu.site/kalmanfilter/</link>
+      <pubDate>Thu, 19 Aug 2021 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/kalmanfilter/</guid>
+      <description>&lt;p&gt;卡尔曼滤波是一种最优滤波器，通过对系统的输入和输出进行数据融合来获得状态的最优估计。本文介绍卡尔曼滤波的基本原理并推导其核心公式。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>抗饱和积分</title>
+      <link>https://chunyu.site/integratorantiwindup/</link>
+      <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/integratorantiwindup/</guid>
+      <description>&lt;p&gt;对于实际的系统，控制器的输出应当受到幅度限制，以避免超出执行机的量程。然而，在具有积分的控制器中如果仅对输出进行限幅，将会引起所谓的退饱和现象，使控制器的性能变差甚至导致系统不稳定。这回我们来谈谈抗饱和积分器。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>感性认识 PID</title>
+      <link>https://chunyu.site/intropid/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/intropid/</guid>
+      <description>&lt;p&gt;比例积分微分（PID）控制器是一种经典的控制器，以其简单的结构和较强的鲁棒性广泛适用于各种控制系统。对 PID 的原理有多种解释，今天跟大家分享一些自己的看法。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>相图与砰砰控制</title>
+      <link>https://chunyu.site/bangbang/</link>
+      <pubDate>Fri, 21 Aug 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/bangbang/</guid>
+      <description>&lt;p&gt;砰砰控制（Bang Bang Control）是一种使误差收敛速度最快的最优控制，对于二阶系统，可以借助相图来完成。本文介绍相图并据此实现砰砰控制。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>鲁棒跟踪控制</title>
+      <link>https://chunyu.site/robusttracking/</link>
+      <pubDate>Sat, 15 Aug 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/robusttracking/</guid>
+      <description>&lt;p&gt;对于被引入到系统的参考信号，如果其特征是已知的，还可以采用所谓的鲁棒跟踪控制进一步提高系统对该类信号的跟踪能力。本文将介绍这种方法的设计。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>现代控制理论（5）：参考信号的引入</title>
+      <link>https://chunyu.site/mc05-reference/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/mc05-reference/</guid>
+      <description>&lt;p&gt;调节器只能将系统的各状态拉回到零位，而控制系统的根本目的是使被控对象的输出跟随参考信号，因此在调节器设计完成的基础上，还需要正确地引入参考信号。本文介绍三种常用的方式将参考信号引入到控制系统。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>现代控制理论（4）：调节器设计</title>
+      <link>https://chunyu.site/mc04-regulator/</link>
+      <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/mc04-regulator/</guid>
+      <description>&lt;p&gt;状态估计器提供了状态的估计值，在分离原理的指导下，利用估计的状态进行状态反馈能够使系统稳定。本文讨论最基本的闭环设计，即调节器设计。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>现代控制理论（3）：状态估计</title>
+      <link>https://chunyu.site/mc03-stateestimator/</link>
+      <pubDate>Sat, 11 Jul 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/mc03-stateestimator/</guid>
+      <description>&lt;p&gt;现代控制讲究状态反馈，然而系统的状态不一定是直接测得的，这就需要用到本文介绍的状态估计器进行状态估计。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>现代控制理论（2）：状态反馈</title>
+      <link>https://chunyu.site/mc02-statefeedback/</link>
+      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/mc02-statefeedback/</guid>
+      <description>&lt;p&gt;状态反馈是现代控制理论的基础，本文分析其基本原理，并介绍主导极点法和 LQR 设计法两种参数设计方法。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>现代控制理论（1）：系统的描述</title>
+      <link>https://chunyu.site/mc01-sysdiscription/</link>
+      <pubDate>Mon, 06 Jul 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/mc01-sysdiscription/</guid>
+      <description>&lt;p&gt;系统本质上由微分方程描述，对于线性系统，可采用拉普拉斯变换获取其传递函数，从而在频域上表达系统的特性。对于高阶的微分方程，还可以将其转化为由一系列一阶微分方程组构成的状态空间描述。本文介绍这三种描述系统的方法。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

@@ -4,9 +4,16 @@
         <link>https://chunyu.site/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</lastBuildDate>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 05 May 2025 00:23:30 &#43;0800</lastBuildDate>
             <atom:link href="https://chunyu.site/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>RRT* 算法简介</title>
+    <link>https://chunyu.site/rrtstar/</link>
+    <pubDate>Mon, 05 May 2025 00:23:30 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://chunyu.site/rrtstar/</guid>
+    <description><![CDATA[<p>快速探索随机树（RRT：Rapidly exploring Random Tree）是一种基于随机采样的路基规划算法，对高维状态空间的路径规划非常高效。本文将从随机游走的思想展开，介绍 RRT 的核心思想，并介绍考虑代价之后的 RRT* 算法。</p>]]></description>
+</item><item>
     <title>A* 算法简介</title>
     <link>https://chunyu.site/astar/</link>
     <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
@@ -69,12 +76,5 @@
         <name>大春雨</name>
     </author><guid>https://chunyu.site/emc04-statepredictor/</guid>
     <description><![CDATA[<p>状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。</p>]]></description>
-</item><item>
-    <title>模型嵌入控制（3）：不确定性建模</title>
-    <link>https://chunyu.site/emc03-uncertainties/</link>
-    <pubDate>Thu, 06 Jul 2023 21:45:19 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/emc03-uncertainties/</guid>
-    <description><![CDATA[<p>被控对象模型的各种不确定性会产生模型误差而影响状态预测，为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性建模。</p>]]></description>
 </item></channel>
 </rss>

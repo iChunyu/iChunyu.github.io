@@ -1,15 +1,21 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>数据类型转换 - 标签 - 某春雨的后花园</title>
-        <link>https://chunyu.site/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
-        <description>数据类型转换 - 标签 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 03 Sep 2022 15:31:40 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="self" type="application/rss+xml" /><item>
-    <title>数据的强制类型转换及其应用</title>
-    <link>https://chunyu.site/typeconvert/</link>
-    <pubDate>Sat, 03 Sep 2022 15:31:40 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/typeconvert/</guid>
-    <description><![CDATA[<p>之前看到过一种快速求解平方根倒数的程序，里面包含了强制类型转换和一个神奇的常数，让人摸不着头脑。最近有兴趣了解了这个算法的细节，不禁叹为观止，以此文作为学习记录。</p>]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据类型转换 on 某春雨的后花园</title>
+    <link>https://chunyu.site/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+    <description>Recent content in 数据类型转换 on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <lastBuildDate>Thu, 29 Jun 2023 11:56:55 +0800</lastBuildDate>
+    <atom:link href="https://chunyu.site/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据的强制类型转换及其应用</title>
+      <link>https://chunyu.site/typeconvert/</link>
+      <pubDate>Sat, 03 Sep 2022 15:31:40 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/typeconvert/</guid>
+      <description>&lt;p&gt;之前看到过一种快速求解平方根倒数的程序，里面包含了强制类型转换和一个神奇的常数，让人摸不着头脑。最近有兴趣了解了这个算法的细节，不禁叹为观止，以此文作为学习记录。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

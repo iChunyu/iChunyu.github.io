@@ -1,15 +1,21 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>正交投影 - 标签 - 某春雨的后花园</title>
-        <link>https://chunyu.site/tags/%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1/</link>
-        <description>正交投影 - 标签 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 16 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1/" rel="self" type="application/rss+xml" /><item>
-    <title>正交投影——极小化问题的解决方案</title>
-    <link>https://chunyu.site/orthogonalprojection/</link>
-    <pubDate>Sun, 16 Aug 2020 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/orthogonalprojection/</guid>
-    <description><![CDATA[<p>“近似”是非常常用的数学手段，其中包括利用多项式来作为其他函数的近似，并使得两个函数之间的某个误差最小，这类极小化问题应当如何求解？本文从一个几何例子开始，以数形结合的思想初步给出极小化问题与正交投影之间的关系；然后介绍多项式的内积定义，给出函数在多项式线性空间的正交投影计算方法；最后以正弦函数的多项式近似给出一个极小化问题的实例。</p>]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>正交投影 on 某春雨的后花园</title>
+    <link>https://chunyu.site/tags/%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1/</link>
+    <description>Recent content in 正交投影 on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <lastBuildDate>Thu, 29 Jun 2023 11:56:55 +0800</lastBuildDate>
+    <atom:link href="https://chunyu.site/tags/%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>正交投影——极小化问题的解决方案</title>
+      <link>https://chunyu.site/orthogonalprojection/</link>
+      <pubDate>Sun, 16 Aug 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/orthogonalprojection/</guid>
+      <description>&lt;p&gt;“近似”是非常常用的数学手段，其中包括利用多项式来作为其他函数的近似，并使得两个函数之间的某个误差最小，这类极小化问题应当如何求解？本文从一个几何例子开始，以数形结合的思想初步给出极小化问题与正交投影之间的关系；然后介绍多项式的内积定义，给出函数在多项式线性空间的正交投影计算方法；最后以正弦函数的多项式近似给出一个极小化问题的实例。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

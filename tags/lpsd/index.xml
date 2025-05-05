@@ -1,15 +1,21 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>LPSD - 标签 - 某春雨的后花园</title>
-        <link>https://chunyu.site/tags/lpsd/</link>
-        <description>LPSD - 标签 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 23 Feb 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://chunyu.site/tags/lpsd/" rel="self" type="application/rss+xml" /><item>
-    <title>LPSD 功率谱估计</title>
-    <link>https://chunyu.site/lpsd/</link>
-    <pubDate>Sat, 23 Feb 2019 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/lpsd/</guid>
-    <description><![CDATA[<p>欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 <a href="https://www.elisascience.org/ltpda" target="_blank" rel="noopener noreferrer">LTPDA</a>，该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。</p>]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LPSD on 某春雨的后花园</title>
+    <link>https://chunyu.site/tags/lpsd/</link>
+    <description>Recent content in LPSD on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <lastBuildDate>Tue, 11 Jul 2023 00:05:29 +0800</lastBuildDate>
+    <atom:link href="https://chunyu.site/tags/lpsd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LPSD 功率谱估计</title>
+      <link>https://chunyu.site/lpsd/</link>
+      <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/lpsd/</guid>
+      <description>&lt;p&gt;欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 &lt;a href=&#34;https://www.elisascience.org/ltpda&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;LTPDA&lt;/a&gt;，该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

@@ -1,8 +1,13 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Authors - 作者 - 某春雨的后花园</title>
-        <link>https://chunyu.site/authors/</link>
-        <description>Authors - 作者 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><atom:link href="https://chunyu.site/authors/" rel="self" type="application/rss+xml" /></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors on 某春雨的后花园</title>
+    <link>https://chunyu.site/authors/</link>
+    <description>Recent content in Authors on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <atom:link href="https://chunyu.site/authors/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
 </rss>

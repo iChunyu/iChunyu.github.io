@@ -1,29 +1,35 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>滤波器 - 标签 - 某春雨的后花园</title>
-        <link>https://chunyu.site/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/</link>
-        <description>滤波器 - 标签 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/" rel="self" type="application/rss+xml" /><item>
-    <title>CIC 滤波器简介</title>
-    <link>https://chunyu.site/introcic/</link>
-    <pubDate>Sun, 13 Feb 2022 13:37:42 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/introcic/</guid>
-    <description><![CDATA[<p>级联积分梳状（CIC, Cascaded Integrator–Comb）滤波器是一种非常“经济”的滤波器。它的实现所需资源少、具有线性相位，同时实现采样率的改变，通常可用于模数转换器（ADC, Analog to Digital Converter）的抗混叠滤波。本文简要介绍 CIC 滤波器的基本原理及其实现方法，分析该滤波器的频率响应，然后给出 CIC 滤波器在降采样（抽取）和升采样（插值）的应用，最后给出降采样倍数的一般设计方法。</p>]]></description>
-</item><item>
-    <title>卡尔曼滤波简介</title>
-    <link>https://chunyu.site/kalmanfilter/</link>
-    <pubDate>Thu, 19 Aug 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/kalmanfilter/</guid>
-    <description><![CDATA[<p>卡尔曼滤波是一种最优滤波器，通过对系统的输入和输出进行数据融合来获得状态的最优估计。本文介绍卡尔曼滤波的基本原理并推导其核心公式。</p>]]></description>
-</item><item>
-    <title>信号的滤波</title>
-    <link>https://chunyu.site/filterdesign/</link>
-    <pubDate>Wed, 02 Jun 2021 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/filterdesign/</guid>
-    <description><![CDATA[<p>线性系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有完善的工具包对常用线性滤波器进行设计，本文简要介绍这些函数及其用法。</p>]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>滤波器 on 某春雨的后花园</title>
+    <link>https://chunyu.site/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/</link>
+    <description>Recent content in 滤波器 on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <lastBuildDate>Thu, 29 Jun 2023 11:56:55 +0800</lastBuildDate>
+    <atom:link href="https://chunyu.site/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CIC 滤波器简介</title>
+      <link>https://chunyu.site/introcic/</link>
+      <pubDate>Sun, 13 Feb 2022 13:37:42 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/introcic/</guid>
+      <description>&lt;p&gt;级联积分梳状（CIC, Cascaded Integrator–Comb）滤波器是一种非常“经济”的滤波器。它的实现所需资源少、具有线性相位，同时实现采样率的改变，通常可用于模数转换器（ADC, Analog to Digital Converter）的抗混叠滤波。本文简要介绍 CIC 滤波器的基本原理及其实现方法，分析该滤波器的频率响应，然后给出 CIC 滤波器在降采样（抽取）和升采样（插值）的应用，最后给出降采样倍数的一般设计方法。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>卡尔曼滤波简介</title>
+      <link>https://chunyu.site/kalmanfilter/</link>
+      <pubDate>Thu, 19 Aug 2021 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/kalmanfilter/</guid>
+      <description>&lt;p&gt;卡尔曼滤波是一种最优滤波器，通过对系统的输入和输出进行数据融合来获得状态的最优估计。本文介绍卡尔曼滤波的基本原理并推导其核心公式。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>信号的滤波</title>
+      <link>https://chunyu.site/filterdesign/</link>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/filterdesign/</guid>
+      <description>&lt;p&gt;线性系统对不同频率信号的幅度和相位有不同的响应，据此可以实现信号在频域上的分离，这就是所谓的滤波，相应的系统称为滤波器。无论是 MATLAB 还是 Python 都具有完善的工具包对常用线性滤波器进行设计，本文简要介绍这些函数及其用法。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

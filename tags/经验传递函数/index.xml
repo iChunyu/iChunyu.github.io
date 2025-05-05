@@ -1,15 +1,21 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>经验传递函数 - 标签 - 某春雨的后花园</title>
-        <link>https://chunyu.site/tags/%E7%BB%8F%E9%AA%8C%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/</link>
-        <description>经验传递函数 - 标签 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/%E7%BB%8F%E9%AA%8C%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/" rel="self" type="application/rss+xml" /><item>
-    <title>系统频率响应估计</title>
-    <link>https://chunyu.site/freqrespest/</link>
-    <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/freqrespest/</guid>
-    <description><![CDATA[<p>系统的频率响应是控制器设计的重要依据之一，在工程上，我们常使用扫频测试来获得系统的幅频响应和相频响应，以构建经验传递函数（Empirical Transfer Functions）。本文将简要讨论系统频率响应的估计算法。</p>]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>经验传递函数 on 某春雨的后花园</title>
+    <link>https://chunyu.site/tags/%E7%BB%8F%E9%AA%8C%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/</link>
+    <description>Recent content in 经验传递函数 on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <lastBuildDate>Sun, 07 Apr 2024 22:45:17 +0800</lastBuildDate>
+    <atom:link href="https://chunyu.site/tags/%E7%BB%8F%E9%AA%8C%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>系统频率响应估计</title>
+      <link>https://chunyu.site/freqrespest/</link>
+      <pubDate>Sat, 06 Apr 2024 19:46:00 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/freqrespest/</guid>
+      <description>&lt;p&gt;系统的频率响应是控制器设计的重要依据之一，在工程上，我们常使用扫频测试来获得系统的幅频响应和相频响应，以构建经验传递函数（Empirical Transfer Functions）。本文将简要讨论系统频率响应的估计算法。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

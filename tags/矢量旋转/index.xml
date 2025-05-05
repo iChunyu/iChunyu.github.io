@@ -1,15 +1,21 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>矢量旋转 - 标签 - 某春雨的后花园</title>
-        <link>https://chunyu.site/tags/%E7%9F%A2%E9%87%8F%E6%97%8B%E8%BD%AC/</link>
-        <description>矢量旋转 - 标签 - 某春雨的后花园</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Tue, 08 Mar 2022 14:48:25 &#43;0800</lastBuildDate><atom:link href="https://chunyu.site/tags/%E7%9F%A2%E9%87%8F%E6%97%8B%E8%BD%AC/" rel="self" type="application/rss+xml" /><item>
-    <title>坐标变换与矢量旋转</title>
-    <link>https://chunyu.site/vectortransform/</link>
-    <pubDate>Tue, 08 Mar 2022 14:48:25 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://chunyu.site/vectortransform/</guid>
-    <description><![CDATA[<p>在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。</p>]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>矢量旋转 on 某春雨的后花园</title>
+    <link>https://chunyu.site/tags/%E7%9F%A2%E9%87%8F%E6%97%8B%E8%BD%AC/</link>
+    <description>Recent content in 矢量旋转 on 某春雨的后花园</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
+    <lastBuildDate>Thu, 29 Jun 2023 11:56:55 +0800</lastBuildDate>
+    <atom:link href="https://chunyu.site/tags/%E7%9F%A2%E9%87%8F%E6%97%8B%E8%BD%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>坐标变换与矢量旋转</title>
+      <link>https://chunyu.site/vectortransform/</link>
+      <pubDate>Tue, 08 Mar 2022 14:48:25 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
+      <guid>https://chunyu.site/vectortransform/</guid>
+      <description>&lt;p&gt;在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。&lt;/p&gt;</description>
+    </item>
+  </channel>
 </rss>

@@ -53,7 +53,7 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport"><script type="text/javascript">
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script type="text/javascript">
     function setTheme(theme) {
       document.body.setAttribute('theme', theme); 
       document.documentElement.className = theme;
@@ -172,7 +172,7 @@
 </div>
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
-</div><main class="tw-mx-4"><div class="toc print:!tw-hidden" id="toc-auto">
+</div><main class="tw-mx-4 tw-flex-1"><div class="toc print:!tw-hidden" id="toc-auto">
         <h2 class="toc-title">目录</h2>
         <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
@@ -198,7 +198,7 @@
         </div>
     </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2022-03-08" data-pagefind-body>坐标变换与矢量旋转</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src=/images/avatar.png   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+                <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src='/images/avatar.png'   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
                 </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E5%A5%87%E5%A6%99%E7%9A%84%E6%95%B0%E5%AD%A6/"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>奇妙的数学</a></span></div>
             <div class="post-meta-line"><svg class="icon"
@@ -225,7 +225,7 @@
             </div><div class="content" id="content" data-pagefind-body><p>在多体动力学建模中，通常会建立多个坐标系，其中会涉及大量的坐标变换。坐标变换是由于参考系的姿态差异导致，因此与旋转存在联系。本文旨在讨论坐标变换与旋转之间的数学关系与区别，并推导坐标变换矩阵的动力学特性。</p>
 <h2 id="矢量的坐标表示" class="headerLink">
     <a href="#%e7%9f%a2%e9%87%8f%e7%9a%84%e5%9d%90%e6%a0%87%e8%a1%a8%e7%a4%ba" class="header-mark"></a>矢量的坐标表示</h2><p>有大小和方向的物理量称为矢量（Vector），通常用带箭头的符号表示，如 $\vec{r}$。为了定量描述与计算，需要选定基矢构成参考系，利用矢量合成原理进行表述。如下图所示，参考系 $\mathscr{A} = \{O,\,\vec{a}_1,\,\vec{a}_2 \}$ 以 $O$ 为原点，$\vec{a}_1$ 和 $\vec{a}_2$ 为基矢。任意矢量 $\vec{r}$ 可以写作</p>
-<figure><a class="lightgallery" href="/vectortransform/coordinate.png" title="" data-thumbnail="/vectortransform/coordinate.png" data-sub-html="<h2>矢量的坐标分解</h2>"><img  loading="lazy" src=/vectortransform/coordinate.png    height="1064" width="25%"></a><figcaption class="image-caption">矢量的坐标分解</figcaption>
+<figure><a class="lightgallery" href="/vectortransform/coordinate.png" title="" data-thumbnail="/vectortransform/coordinate.png" data-sub-html="<h2>矢量的坐标分解</h2>"><img  loading="lazy" src='/vectortransform/coordinate.png'    height="1064" width="25%"></a><figcaption class="image-caption">矢量的坐标分解</figcaption>
     </figure>
 $$
 \vec{r} = r_1^a \vec{a}_1 + r_2^a \vec{a}_2 
@@ -267,7 +267,7 @@ $$
 <p>上式指出，为了获取矢量在给定参考系下的坐标，只需计算矢量与参考各基矢之间的点积即可，即：坐标是矢量在基矢方向的投影。</p>
 <h2 id="坐标变换" class="headerLink">
     <a href="#%e5%9d%90%e6%a0%87%e5%8f%98%e6%8d%a2" class="header-mark"></a>坐标变换</h2><p>选取的参考系不同，相同矢量的坐标不同。参考系之间的平移可以简单地通过矢量加法实现，因此这里的坐标变换重点关注参考系之间的转动，设它们的原点重合（因此后文直接用基矢表示各参考系），如下图所示。</p>
-<figure><a class="lightgallery" href="/vectortransform/coordinateTransform.png" title="" data-thumbnail="/vectortransform/coordinateTransform.png" data-sub-html="<h2>坐标变换示意图</h2>"><img  loading="lazy" src=/vectortransform/coordinateTransform.png    height="1064" width="35%"></a><figcaption class="image-caption">坐标变换示意图</figcaption>
+<figure><a class="lightgallery" href="/vectortransform/coordinateTransform.png" title="" data-thumbnail="/vectortransform/coordinateTransform.png" data-sub-html="<h2>坐标变换示意图</h2>"><img  loading="lazy" src='/vectortransform/coordinateTransform.png'    height="1064" width="35%"></a><figcaption class="image-caption">坐标变换示意图</figcaption>
     </figure>
 <p>矢量 $\vec{r}$ 可以在两个参考系中分别表述为</p>
 $$
@@ -331,7 +331,7 @@ $$
 <p>这说明坐标变换矩阵 $R_a^b$ 为正交矩阵，即 $\left(R_a^b \right)^{-1} = \left(R_a^b \right)^\mathrm{T}$。我们可以令 $R_b^a = \left(R_a^b \right)^{-1}$，则 $R_a^b R_b^a = R_b^a R_a^b = I$ 意味着来回变换之后坐标保持不变（这里可以再次看到角标之间的“抵消”性质）。</p>
 <h2 id="矢量旋转" class="headerLink">
     <a href="#%e7%9f%a2%e9%87%8f%e6%97%8b%e8%bd%ac" class="header-mark"></a>矢量旋转</h2><p>将目光限定在参考系 $\vec{A}$ 中，现在将矢量 $\vec{r}_1$ 进行一定的旋转，得到 $\vec{r}_2$ ，如何得到它们坐标 $\bm{r}_1^a$ 和 $\bm{r}_2^a$ 之间的关系？</p>
-<figure><a class="lightgallery" href="/vectortransform/rotation.png" title="" data-thumbnail="/vectortransform/rotation.png" data-sub-html="<h2>矢量旋转示意图</h2>"><img  loading="lazy" src=/vectortransform/rotation.png    height="970" width="35%"></a><figcaption class="image-caption">矢量旋转示意图</figcaption>
+<figure><a class="lightgallery" href="/vectortransform/rotation.png" title="" data-thumbnail="/vectortransform/rotation.png" data-sub-html="<h2>矢量旋转示意图</h2>"><img  loading="lazy" src='/vectortransform/rotation.png'    height="970" width="35%"></a><figcaption class="image-caption">矢量旋转示意图</figcaption>
     </figure>
 <p>考虑 $\vec{r}_1$ 连同参考系（的基矢） $\vec{A}$ 一起旋转，当 $\vec{r}_1$ 转到 $\vec{r}_2$ 的位置时 $\vec{A}$ 相应地变成 $\vec{B}$。由于是一起旋转，相对关系保持不变，即 $\vec{r}_2$ 在 $\vec{B}$ 的坐标等于 $\vec{r}_1$ 在 $\vec{A}$ 的坐标，即 $\bm{r}_2^b = \bm{r}_1^a$，考虑到坐标变换有 $\bm{r}_2^a = R_b^a \bm{r}_2^b$，可以得到</p>
 $$
@@ -353,7 +353,7 @@ $$
 <p>最终的旋转矩阵 $R_b^a$ 为各次旋转矩阵按顺序右乘的结果。</p>
 <h2 id="转动的描述" class="headerLink">
     <a href="#%e8%bd%ac%e5%8a%a8%e7%9a%84%e6%8f%8f%e8%bf%b0" class="header-mark"></a>转动的描述</h2><p>最后我们来看一下坐标变换矩阵（或者说转动矩阵）的运动学特性。首先如下图所示，假设参考系 $\vec{B}$ （通常为刚体的本体参考系）的角速度为 $\bm{\omega}_b^b = [\omega_1,\omega_2,\omega_3]^\mathrm{T}$（注意角速度都是在本体坐标系下建立的，各分量省略了上标），以基矢 $\vec{b}_1$ 为例，在 $\mathrm{d}t$ 时间内其变化量为</p>
-<figure><a class="lightgallery" href="/vectortransform/rotating.png" title="" data-thumbnail="/vectortransform/rotating.png" data-sub-html="<h2>转动角速度示意图</h2>"><img  loading="lazy" src=/vectortransform/rotating.png    height="1641" width="35%"></a><figcaption class="image-caption">转动角速度示意图</figcaption>
+<figure><a class="lightgallery" href="/vectortransform/rotating.png" title="" data-thumbnail="/vectortransform/rotating.png" data-sub-html="<h2>转动角速度示意图</h2>"><img  loading="lazy" src='/vectortransform/rotating.png'    height="1641" width="35%"></a><figcaption class="image-caption">转动角速度示意图</figcaption>
     </figure>
 $$
 \mathrm{d}\vec{b}_1 =  (\omega_3 \mathrm{d} t) \vec{b}_2 -(\omega_2 \mathrm{d}t)\vec{b}_3 +
@@ -443,7 +443,7 @@ $$
 </div>
 </article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.144.2">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.0"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.147.1">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.2"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2025<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>
