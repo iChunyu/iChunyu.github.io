@@ -1,0 +1,24 @@
+{{/* layouts/shortcodes/video.html */}}
+{{- $src := .Get "src" | default "" -}}
+{{- $caption := .Get "caption" | default "" -}}
+{{- $width := .Get "width" | default "100%" -}}
+{{- $autoplay := .Get "autoplay" | default false -}}
+
+{{- if $src -}}
+    <figure class="video-container" style="text-align: center; margin: 1rem auto;">
+            <video
+                controls
+                {{ if $autoplay }}autoplay{{ end }}
+                {{ if $autoplay }}muted{{ end }}
+                style="width: {{ $width }}; height: auto; max-width: 100%; margin: auto; display: block;"
+            >
+                <source src="{{ $src }}" type="video/mp4">
+                您的浏览器不支持 HTML5 视频。
+            </video>
+        {{- if $caption -}}
+            <figcaption class="image-caption">{{ $caption }}</figcaption>
+        {{- end -}}
+    </figure>
+{{- else -}}
+    {{- errorf "Missing 'src' in video shortcode" -}}
+{{- end -}}
