@@ -2,7 +2,7 @@
 {{- $src := .Get "src" | default "" -}}
 {{- $caption := .Get "caption" | default "" -}}
 {{- $width := .Get "width" | default "100%" -}}
-{{- $autoplay := .Get "autoplay" | default false -}}
+{{- $autoplay := .Get "autoplay" | default true -}}
 
 {{- if $src -}}
     <figure class="video-container" style="text-align: center; margin: 1rem auto;">
