@@ -1,49 +1,43 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>MATLAB on 某春雨的后花园</title>
-    <link>https://chunyu.site/tags/matlab/</link>
-    <description>Recent content in MATLAB on 某春雨的后花园</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
-    <lastBuildDate>Sun, 12 Jan 2025 21:20:30 +0800</lastBuildDate>
-    <atom:link href="https://chunyu.site/tags/matlab/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>MATLAB 自定义交互式图例</title>
-      <link>https://chunyu.site/legend-callback/</link>
-      <pubDate>Mon, 03 Jun 2024 23:33:22 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/legend-callback/</guid>
-      <description>&lt;p&gt;在进行数据分析时，有时我们会将一系列相关的曲线画到一起进行对比，对于数据存在部分重叠的情况，我们希望临时地将某些曲线隐藏。为了在 MATLAB 中实现这个功能，可以使用 &lt;code&gt;legend&lt;/code&gt; 的回调函数。本文将简要讨论这种交互式功能的实现。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>MATLAB 自定义默认绘图样式</title>
-      <link>https://chunyu.site/initplot/</link>
-      <pubDate>Sat, 20 May 2023 18:54:52 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/initplot/</guid>
-      <description>&lt;p&gt;为了让 MATLAB 绘制的曲线好看，通常需要使用各种参数设置绘图样式，这会使得绘图代码重复且冗长。本文将介绍如何自定义 MATLAB 的默认绘图样式以简化绘图命令。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>MATLAB 解析输入参数</title>
-      <link>https://chunyu.site/matlab-inputparser/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/matlab-inputparser/</guid>
-      <description>&lt;p&gt;为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>MATLAB 符号计算</title>
-      <link>https://chunyu.site/matlab-symbolic/</link>
-      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/matlab-symbolic/</guid>
-      <description>&lt;p&gt;理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用 MATLAB 的符号计算工具包辅助完成。本文对此工具包进行简要介绍。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>MATLAB 编写函数</title>
-      <link>https://chunyu.site/matlab-function/</link>
-      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/matlab-function/</guid>
-      <description>&lt;p&gt;编写程序的时候会经常用到相似的代码片段，为了使代码整洁，可以将这些代码片段封装为函数使用。本文介绍 MATLAB 编写函数的一般方法。&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>MATLAB - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/matlab/</link>
+        <description>MATLAB - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 03 Jun 2024 23:33:22 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/matlab/" rel="self" type="application/rss+xml" /><item>
+    <title>MATLAB 自定义交互式图例</title>
+    <link>https://ichunyu.github.io/legend-callback/</link>
+    <pubDate>Mon, 03 Jun 2024 23:33:22 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/legend-callback/</guid>
+    <description><![CDATA[<p>在进行数据分析时，有时我们会将一系列相关的曲线画到一起进行对比，对于数据存在部分重叠的情况，我们希望临时地将某些曲线隐藏。为了在 MATLAB 中实现这个功能，可以使用 <code>legend</code> 的回调函数。本文将简要讨论这种交互式功能的实现。</p>]]></description>
+</item><item>
+    <title>MATLAB 自定义默认绘图样式</title>
+    <link>https://ichunyu.github.io/initplot/</link>
+    <pubDate>Sat, 20 May 2023 18:54:52 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/initplot/</guid>
+    <description><![CDATA[<p>为了让 MATLAB 绘制的曲线好看，通常需要使用各种参数设置绘图样式，这会使得绘图代码重复且冗长。本文将介绍如何自定义 MATLAB 的默认绘图样式以简化绘图命令。</p>]]></description>
+</item><item>
+    <title>MATLAB 解析输入参数</title>
+    <link>https://ichunyu.github.io/matlab-inputparser/</link>
+    <pubDate>Fri, 29 Apr 2022 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/matlab-inputparser/</guid>
+    <description><![CDATA[<p>为了扩展自定义函数的功能，通常会将函数重载。在 MATLAB 中，这可以通过判断输入参数的数量配合条件语句来完成。然而，当可选参数较多时，解析输入参数的条件语句会特别冗长，且这种方法难以解析键值对参数。为此，MATLAB 内置了专用于参数解析的类，本文对该其用法进简要介绍。</p>]]></description>
+</item><item>
+    <title>MATLAB 符号计算</title>
+    <link>https://ichunyu.github.io/matlab-symbolic/</link>
+    <pubDate>Sun, 10 May 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/matlab-symbolic/</guid>
+    <description><![CDATA[<p>理工科研究经常会涉及到各种公式推导，其中又难免涉及变量多、形式复杂的公式。这时可以使用 MATLAB 的符号计算工具包辅助完成。本文对此工具包进行简要介绍。</p>]]></description>
+</item><item>
+    <title>MATLAB 编写函数</title>
+    <link>https://ichunyu.github.io/matlab-function/</link>
+    <pubDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/matlab-function/</guid>
+    <description><![CDATA[<p>编写程序的时候会经常用到相似的代码片段，为了使代码整洁，可以将这些代码片段封装为函数使用。本文介绍 MATLAB 编写函数的一般方法。</p>]]></description>
+</item></channel>
 </rss>

@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>姿态确定 on 某春雨的后花园</title>
-    <link>https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</link>
-    <description>Recent content in 姿态确定 on 某春雨的后花园</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
-    <lastBuildDate>Thu, 29 Jun 2023 11:56:55 +0800</lastBuildDate>
-    <atom:link href="https://chunyu.site/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>航天器姿态测量与确定</title>
-      <link>https://chunyu.site/attitude/</link>
-      <pubDate>Wed, 31 May 2023 12:11:29 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/attitude/</guid>
-      <description>&lt;p&gt;航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>姿态确定 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/</link>
+        <description>姿态确定 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 31 May 2023 12:11:29 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/" rel="self" type="application/rss+xml" /><item>
+    <title>航天器姿态测量与确定</title>
+    <link>https://ichunyu.github.io/attitude/</link>
+    <pubDate>Wed, 31 May 2023 12:11:29 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/attitude/</guid>
+    <description><![CDATA[<p>航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。</p>]]></description>
+</item></channel>
 </rss>

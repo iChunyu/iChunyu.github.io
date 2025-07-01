@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>状态反馈 on 某春雨的后花园</title>
-    <link>https://chunyu.site/tags/%E7%8A%B6%E6%80%81%E5%8F%8D%E9%A6%88/</link>
-    <description>Recent content in 状态反馈 on 某春雨的后花园</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
-    <lastBuildDate>Thu, 29 Jun 2023 11:56:55 +0800</lastBuildDate>
-    <atom:link href="https://chunyu.site/tags/%E7%8A%B6%E6%80%81%E5%8F%8D%E9%A6%88/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>现代控制理论（2）：状态反馈</title>
-      <link>https://chunyu.site/mc02-statefeedback/</link>
-      <pubDate>Wed, 08 Jul 2020 00:00:00 +0000</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/mc02-statefeedback/</guid>
-      <description>&lt;p&gt;状态反馈是现代控制理论的基础，本文分析其基本原理，并介绍主导极点法和 LQR 设计法两种参数设计方法。&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>状态反馈 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E7%8A%B6%E6%80%81%E5%8F%8D%E9%A6%88/</link>
+        <description>状态反馈 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 08 Jul 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E7%8A%B6%E6%80%81%E5%8F%8D%E9%A6%88/" rel="self" type="application/rss+xml" /><item>
+    <title>现代控制理论（2）：状态反馈</title>
+    <link>https://ichunyu.github.io/mc02-statefeedback/</link>
+    <pubDate>Wed, 08 Jul 2020 00:00:00 &#43;0000</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/mc02-statefeedback/</guid>
+    <description><![CDATA[<p>状态反馈是现代控制理论的基础，本文分析其基本原理，并介绍主导极点法和 LQR 设计法两种参数设计方法。</p>]]></description>
+</item></channel>
 </rss>

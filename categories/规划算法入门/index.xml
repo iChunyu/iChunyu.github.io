@@ -1,35 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>规划算法入门 on 某春雨的后花园</title>
-    <link>https://chunyu.site/categories/%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/</link>
-    <description>Recent content in 规划算法入门 on 某春雨的后花园</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
-    <lastBuildDate>Fri, 09 May 2025 01:38:32 +0800</lastBuildDate>
-    <atom:link href="https://chunyu.site/categories/%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>RRT* 算法简介</title>
-      <link>https://chunyu.site/rrtstar/</link>
-      <pubDate>Mon, 05 May 2025 00:23:30 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/rrtstar/</guid>
-      <description>&lt;p&gt;快速探索随机树（RRT：Rapidly exploring Random Tree）是一种基于随机采样的路基规划算法，对高维状态空间的路径规划非常高效。本文将从随机游走的思想展开，介绍 RRT 的核心思想，并介绍考虑代价之后的 RRT* 算法。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>A* 算法简介</title>
-      <link>https://chunyu.site/astar/</link>
-      <pubDate>Sun, 03 Nov 2024 16:56:14 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/astar/</guid>
-      <description>&lt;p&gt;A*（AStar）是一个兼具效率和效果的图搜索算法，可用于目标点之间的路径规划。本文将以广度优先搜索为基础，逐步介绍图搜索的基本方法，最后给出 A* 算法及其 MATLAB 实现示例。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Motion Primitive 简介</title>
-      <link>https://chunyu.site/motion-primitive/</link>
-      <pubDate>Sun, 06 Oct 2024 22:54:32 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/motion-primitive/</guid>
-      <description>&lt;p&gt;Motion Primitive（常译为“运动原语”或“运动基元”）是一种简单高效的轨迹规划算法。在已知系统动力学方程和初始状态下，只需要给定目标状态及其到达时间就可以实现轨迹规划。本文将简要介绍这种算法的理论基础，并以一维的刚体运动为例进行推导。&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>规划算法入门 - 分类 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/categories/%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/</link>
+        <description>规划算法入门 - 分类 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 05 May 2025 00:23:30 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/" rel="self" type="application/rss+xml" /><item>
+    <title>RRT* 算法简介</title>
+    <link>https://ichunyu.github.io/rrtstar/</link>
+    <pubDate>Mon, 05 May 2025 00:23:30 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/rrtstar/</guid>
+    <description><![CDATA[<p>快速探索随机树（RRT：Rapidly exploring Random Tree）是一种基于随机采样的路基规划算法，对高维状态空间的路径规划非常高效。本文将从随机游走的思想展开，介绍 RRT 的核心思想，并介绍考虑代价之后的 RRT* 算法。</p>]]></description>
+</item><item>
+    <title>A* 算法简介</title>
+    <link>https://ichunyu.github.io/astar/</link>
+    <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/astar/</guid>
+    <description><![CDATA[<p>A*（AStar）是一个兼具效率和效果的图搜索算法，可用于目标点之间的路径规划。本文将以广度优先搜索为基础，逐步介绍图搜索的基本方法，最后给出 A* 算法及其 MATLAB 实现示例。</p>]]></description>
+</item><item>
+    <title>Motion Primitive 简介</title>
+    <link>https://ichunyu.github.io/motion-primitive/</link>
+    <pubDate>Sun, 06 Oct 2024 22:54:32 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/motion-primitive/</guid>
+    <description><![CDATA[<p>Motion Primitive（常译为“运动原语”或“运动基元”）是一种简单高效的轨迹规划算法。在已知系统动力学方程和初始状态下，只需要给定目标状态及其到达时间就可以实现轨迹规划。本文将简要介绍这种算法的理论基础，并以一维的刚体运动为例进行推导。</p>]]></description>
+</item></channel>
 </rss>

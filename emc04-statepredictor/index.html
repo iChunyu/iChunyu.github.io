@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>模型嵌入控制（4）：状态预测器设计 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/emc04-statepredictor/">
+    <meta name="robots" content="noodp" /><title>模型嵌入控制（4）：状态预测器设计 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://ichunyu.github.io/emc04-statepredictor/">
   <meta property="og:site_name" content="某春雨的后花园">
   <meta property="og:title" content="模型嵌入控制（4）：状态预测器设计">
   <meta property="og:description" content="状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。">
@@ -15,10 +15,10 @@
     <meta property="article:modified_time" content="2025-02-24T23:18:42+08:00">
     <meta property="article:tag" content="EMC">
     <meta property="article:tag" content="模型嵌入控制">
-    <meta property="og:image" content="https://chunyu.site/images/avatar.png">
+    <meta property="og:image" content="https://ichunyu.github.io/images/avatar.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://chunyu.site/images/avatar.png">
+  <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png">
   <meta name="twitter:title" content="模型嵌入控制（4）：状态预测器设计">
   <meta name="twitter:description" content="状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。">
 <meta name="application-name" content="某春雨的后花园">
@@ -26,7 +26,7 @@
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
-<link rel="canonical" href="https://chunyu.site/emc04-statepredictor/" /><link rel="prev" href="https://chunyu.site/emc03-uncertainties/" /><link rel="next" href="https://chunyu.site/emc05-controllaw/" />
+<link rel="canonical" href="https://ichunyu.github.io/emc04-statepredictor/" /><link rel="prev" href="https://ichunyu.github.io/emc03-uncertainties/" /><link rel="next" href="https://ichunyu.github.io/emc05-controllaw/" />
 <link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
@@ -36,13 +36,13 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://chunyu.site/emc04-statepredictor/"
+            "@id": "https://ichunyu.github.io/emc04-statepredictor/"
         },"genre": "posts","keywords":["EMC","模型嵌入控制"],"wordcount":  2641 ,
-        "url": "https://chunyu.site/emc04-statepredictor/","datePublished": "2023-07-16T21:31:40+08:00","dateModified": "2025-02-24T23:18:42+08:00","publisher": {
+        "url": "https://ichunyu.github.io/emc04-statepredictor/","datePublished": "2023-07-16T21:31:40+08:00","dateModified": "2025-02-24T23:18:42+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
-                    "url": "https://chunyu.site/images/avatar.png",
+                    "url": "https://ichunyu.github.io/images/avatar.png",
                     "width":  1024 ,
                     "height":  1024 
                 }},"author": {
@@ -53,7 +53,7 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script type="text/javascript">
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
     function setTheme(theme) {
       document.body.setAttribute('theme', theme); 
       document.documentElement.className = theme;
@@ -222,7 +222,7 @@
 $$
 \tilde{\bm{x}}_c = \bm{x}_c - \hat{\bm{x}}_c, \quad \tilde{\bm{x}}_d = \bm{x}_d - \hat{\bm{x}}_d
 $$
-<p>根据前面对 <a href="https://chunyu.site/emc02-plant/" rel="">被控对象建模</a> 的讨论，离散时间的被控对象状态方程可以写为：</p>
+<p>根据前面对 <a href="https://ichunyu.github.io/emc02-plant/" rel="">被控对象建模</a> 的讨论，离散时间的被控对象状态方程可以写为：</p>
 $$
 \left\{\begin{aligned}
     & \bm{x}_c(i+1) = A_c \bm{x}_c(i) + B_c \bigl( \bm{u}(i) + \bm{h}(\bm{x}_c(i)) \bigr) + H_c \bm{x}_d(i) + G_c \bm{w}_c(i) \\
@@ -265,7 +265,7 @@ $$
     \right.
 $$
 <p>可控动态和扰动动态分别根据被控对象和外部扰动的基本特征建模，具有特定的结构和标称参数，故状态预测器的待调参数集中在噪声估计器。从极点配置上看，噪声估计器的设计原则是引入合适数量的状态和待调参数，确保状态预测环路的总状态数量和待调参数的数量相同，从而可以对极点进行任意配置。</p>
-<p>记噪声估计器的传递函数矩阵为 $N(z)$，并采用 <a href="https://chunyu.site/emc03-uncertainties/" rel="">不确定性建模</a> 中将扰动折合到输出端的表述，被控对象和状态预测器的环路框图如下图所示。在实际应用中，输入到状态预测器的是传感器的测量值 $\breve{\bm{y}}$，因此用于噪声估计的误差由预测误差 $\tilde{\bm{y}}$ 变更为测得的模型误差 $\bm{e}_m$。</p>
+<p>记噪声估计器的传递函数矩阵为 $N(z)$，并采用 <a href="https://ichunyu.github.io/emc03-uncertainties/" rel="">不确定性建模</a> 中将扰动折合到输出端的表述，被控对象和状态预测器的环路框图如下图所示。在实际应用中，输入到状态预测器的是传感器的测量值 $\breve{\bm{y}}$，因此用于噪声估计的误差由预测误差 $\tilde{\bm{y}}$ 变更为测得的模型误差 $\bm{e}_m$。</p>
 <figure><a class="lightgallery" href="/emc04-statepredictor/sp_transfer.png" title="" data-thumbnail="/emc04-statepredictor/sp_transfer.png" data-sub-html="<h2>被控对象和状态预测环路</h2>"><img  loading="lazy" src='/emc04-statepredictor/sp_transfer.png'    height="849" width="70%"></a><figcaption class="image-caption">被控对象和状态预测环路</figcaption>
     </figure>
 <h2 id="基于不确定性的设计约束" class="headerLink">
@@ -294,7 +294,7 @@ $$
 $$
     \tilde{\bm{y}} = \bm{y} - \hat{\bm{y}} = S_m \bm{d}_y - V_m  \tilde{\bm{y}}_m
 $$
-<p>根据 <a href="https://chunyu.site/emc03-uncertainties/" rel="">不确定性建模</a> 对扰动的简化和上图的示意，代入 $\bm{d}_y$ 和 $\tilde{\bm{y}}_m$ 的具体形式：</p>
+<p>根据 <a href="https://ichunyu.github.io/emc03-uncertainties/" rel="">不确定性建模</a> 对扰动的简化和上图的示意，代入 $\bm{d}_y$ 和 $\tilde{\bm{y}}_m$ 的具体形式：</p>
 $$
 \bm{d}_y = D_y \bm{w} + \partial H \bm{y}, \quad
 \tilde{\bm{y}}_m = \partial P \bm{y} + \bm{w}_m
@@ -308,7 +308,7 @@ $$
 $$
 \bm{y} = \hat{\bm{y}} + \tilde{\bm{y}} = \hat{\bm{y}} - \bm{y}_r + \bm{y}_r + \tilde{\bm{y}} = C_c \bm{e}_r + \bm{y}_r + \tilde{\bm{y}}
 $$
-<p>式中 $\bm{e}_r$ 为测得的跟踪误差，将在 <a href="https://chunyu.site/emc05-controllaw/" rel="">控制律设计</a> 中展开讨论。代入上式，可以得到状态预测器设计方程为：</p>
+<p>式中 $\bm{e}_r$ 为测得的跟踪误差，将在 <a href="https://ichunyu.github.io/emc05-controllaw/" rel="">控制律设计</a> 中展开讨论。代入上式，可以得到状态预测器设计方程为：</p>
 $$
     \left( I - S_m \partial H + V_m \partial P \right) \tilde{\bm{y}} =  \bigl( S_m \partial H - V_m \partial P \bigr) \left( \bm{y}_r + C_c \bm{e}_r \right) + S_m  D_y \bm{w} - V_m \bm{w}_m
 $$
@@ -320,7 +320,7 @@ $$
 <p>从设计方程可知，预测误差 $\tilde{\bm{y}}$ 会受到测得的跟踪误差 $\bm{e}_r$ 的影响，意味着不确定性会导致状态预测器与控制律之间存在弱耦合。一方面，$\partial H C_c \bm{e}_r$ 和 $\partial P C_c \bm{e}_r$ 可以分别看作 $D_y \bm{w}$ 和 $\bm{w}_m$ 的一部分，作为额外的扰动和测量噪声并通过状态预测器的环路设计进行抑制；另一方面，$\bm{e}_r$ 可以被控制律约束在充分小的范围，这就要求理想控制环路的带宽大于状态预测环路带宽，，称之为模型嵌入控制的标准设计（Standard Design）。</p>
 <h2 id="示例二阶系统的状态预测器" class="headerLink">
     <a href="#%e7%a4%ba%e4%be%8b%e4%ba%8c%e9%98%b6%e7%b3%bb%e7%bb%9f%e7%9a%84%e7%8a%b6%e6%80%81%e9%a2%84%e6%b5%8b%e5%99%a8" class="header-mark"></a>示例：二阶系统的状态预测器</h2><p>从上面的推导可以看到，在假设模型准确时，被控对象、嵌入模型和状态预测误差具有相同的状态空间方程，实际设计时通常可以不必再推导状态预测误差的方程，直接基于被控对象模型进行设计。</p>
-<p>继续 <a href="https://chunyu.site/emc02-plant/" rel="">被控对象建模</a> 示例中二阶系统的设计，其状态预测误差的方程为：</p>
+<p>继续 <a href="https://ichunyu.github.io/emc02-plant/" rel="">被控对象建模</a> 示例中二阶系统的设计，其状态预测误差的方程为：</p>
 $$
 \left\{\begin{aligned}
     & \tilde{\bm{x}}_c(i+1) = \begin{bmatrix} 1 & 1 \\ -\omega_0^2 T^2 & 1 \end{bmatrix} \tilde{\bm{x}}_c(i) + \begin{bmatrix} 0 \\ 1 \end{bmatrix} u + \begin{bmatrix} 0 \\ 1 \end{bmatrix}  \bigl( w_c(i) - \bar{w}_c(i) \bigr)  \\
@@ -373,7 +373,7 @@ $$
 </div>
 </article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.147.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.2"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.147.9">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.2"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2025<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

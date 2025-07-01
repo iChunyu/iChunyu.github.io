@@ -1,80 +1,80 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>某春雨的后花园</title>
-        <link>https://chunyu.site/</link>
+        <link>https://ichunyu.github.io/</link>
         <description>Looking to the future...</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
             <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Mon, 05 May 2025 00:23:30 &#43;0800</lastBuildDate>
-            <atom:link href="https://chunyu.site/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="https://ichunyu.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>RRT* 算法简介</title>
-    <link>https://chunyu.site/rrtstar/</link>
+    <link>https://ichunyu.github.io/rrtstar/</link>
     <pubDate>Mon, 05 May 2025 00:23:30 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/rrtstar/</guid>
+    </author><guid>https://ichunyu.github.io/rrtstar/</guid>
     <description><![CDATA[<p>快速探索随机树（RRT：Rapidly exploring Random Tree）是一种基于随机采样的路基规划算法，对高维状态空间的路径规划非常高效。本文将从随机游走的思想展开，介绍 RRT 的核心思想，并介绍考虑代价之后的 RRT* 算法。</p>]]></description>
 </item><item>
     <title>A* 算法简介</title>
-    <link>https://chunyu.site/astar/</link>
+    <link>https://ichunyu.github.io/astar/</link>
     <pubDate>Sun, 03 Nov 2024 16:56:14 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/astar/</guid>
+    </author><guid>https://ichunyu.github.io/astar/</guid>
     <description><![CDATA[<p>A*（AStar）是一个兼具效率和效果的图搜索算法，可用于目标点之间的路径规划。本文将以广度优先搜索为基础，逐步介绍图搜索的基本方法，最后给出 A* 算法及其 MATLAB 实现示例。</p>]]></description>
 </item><item>
     <title>Motion Primitive 简介</title>
-    <link>https://chunyu.site/motion-primitive/</link>
+    <link>https://ichunyu.github.io/motion-primitive/</link>
     <pubDate>Sun, 06 Oct 2024 22:54:32 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/motion-primitive/</guid>
+    </author><guid>https://ichunyu.github.io/motion-primitive/</guid>
     <description><![CDATA[<p>Motion Primitive（常译为“运动原语”或“运动基元”）是一种简单高效的轨迹规划算法。在已知系统动力学方程和初始状态下，只需要给定目标状态及其到达时间就可以实现轨迹规划。本文将简要介绍这种算法的理论基础，并以一维的刚体运动为例进行推导。</p>]]></description>
 </item><item>
     <title>MATLAB 自定义交互式图例</title>
-    <link>https://chunyu.site/legend-callback/</link>
+    <link>https://ichunyu.github.io/legend-callback/</link>
     <pubDate>Mon, 03 Jun 2024 23:33:22 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/legend-callback/</guid>
+    </author><guid>https://ichunyu.github.io/legend-callback/</guid>
     <description><![CDATA[<p>在进行数据分析时，有时我们会将一系列相关的曲线画到一起进行对比，对于数据存在部分重叠的情况，我们希望临时地将某些曲线隐藏。为了在 MATLAB 中实现这个功能，可以使用 <code>legend</code> 的回调函数。本文将简要讨论这种交互式功能的实现。</p>]]></description>
 </item><item>
     <title>系统频率响应估计</title>
-    <link>https://chunyu.site/freqrespest/</link>
+    <link>https://ichunyu.github.io/freqrespest/</link>
     <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/freqrespest/</guid>
+    </author><guid>https://ichunyu.github.io/freqrespest/</guid>
     <description><![CDATA[<p>系统的频率响应是控制器设计的重要依据之一，在工程上，我们常使用扫频测试来获得系统的幅频响应和相频响应，以构建经验传递函数（Empirical Transfer Functions）。本文将简要讨论系统频率响应的估计算法。</p>]]></description>
 </item><item>
     <title>李雅普诺夫稳定性简介</title>
-    <link>https://chunyu.site/lyapunov/</link>
+    <link>https://ichunyu.github.io/lyapunov/</link>
     <pubDate>Sun, 07 Jan 2024 22:36:46 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/lyapunov/</guid>
+    </author><guid>https://ichunyu.github.io/lyapunov/</guid>
     <description><![CDATA[<p>线性时不变系统的稳定性可以通过计算极点、绘制奈奎斯特图或伯德图等多种方式进行判定，对于非线性系统，通常采用李雅普诺夫稳定性判据。本文将简要介绍李雅普诺夫直接法，并介绍实践中常用的引理。</p>]]></description>
 </item><item>
     <title>最小二乘法与参数估计</title>
-    <link>https://chunyu.site/leastsquare/</link>
+    <link>https://ichunyu.github.io/leastsquare/</link>
     <pubDate>Sat, 26 Aug 2023 19:14:16 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/leastsquare/</guid>
+    </author><guid>https://ichunyu.github.io/leastsquare/</guid>
     <description><![CDATA[<p>最小二乘法（Least-Squares Method）是一种常用的参数估计方法，本文将介绍最小二乘法的基本原理，并推导其递归形式，讨论时变参数的估计策略。</p>]]></description>
 </item><item>
     <title>模型嵌入控制（6）：带宽与极点配置</title>
-    <link>https://chunyu.site/emc06-poleplacement/</link>
+    <link>https://ichunyu.github.io/emc06-poleplacement/</link>
     <pubDate>Sat, 22 Jul 2023 22:24:10 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/emc06-poleplacement/</guid>
+    </author><guid>https://ichunyu.github.io/emc06-poleplacement/</guid>
     <description><![CDATA[<p>依据模型完成状态预测器和控制律设计后，控制器结构基本确定，环路性能将由参数决定。在分离原理的加持下，本文首先讨论理想控制环路和状态预测环路的带宽约束，最后给出极点配置的具体实现。</p>]]></description>
 </item><item>
     <title>模型嵌入控制（5）：控制律设计</title>
-    <link>https://chunyu.site/emc05-controllaw/</link>
+    <link>https://ichunyu.github.io/emc05-controllaw/</link>
     <pubDate>Mon, 17 Jul 2023 00:29:04 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/emc05-controllaw/</guid>
+    </author><guid>https://ichunyu.github.io/emc05-controllaw/</guid>
     <description><![CDATA[<p>模型嵌入控制的控制律可以利用预测的状态和扰动实现反馈，此外，利用参考发生器还可以先验地给出前馈指令。本文将对控制律进行具体推导，实现模型嵌入控制的结构设计。</p>]]></description>
 </item><item>
     <title>模型嵌入控制（4）：状态预测器设计</title>
-    <link>https://chunyu.site/emc04-statepredictor/</link>
+    <link>https://ichunyu.github.io/emc04-statepredictor/</link>
     <pubDate>Sun, 16 Jul 2023 21:31:40 &#43;0800</pubDate><author>
         <name>大春雨</name>
-    </author><guid>https://chunyu.site/emc04-statepredictor/</guid>
+    </author><guid>https://ichunyu.github.io/emc04-statepredictor/</guid>
     <description><![CDATA[<p>状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。</p>]]></description>
 </item></channel>
 </rss>

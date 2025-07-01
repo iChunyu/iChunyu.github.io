@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>四元数与三维旋转 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://chunyu.site/quaternion/">
+    <meta name="robots" content="noodp" /><title>四元数与三维旋转 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://ichunyu.github.io/quaternion/">
   <meta property="og:site_name" content="某春雨的后花园">
   <meta property="og:title" content="四元数与三维旋转">
   <meta property="og:description" content="复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。">
@@ -15,10 +15,10 @@
     <meta property="article:modified_time" content="2023-06-29T11:56:55+08:00">
     <meta property="article:tag" content="四元数">
     <meta property="article:tag" content="旋转">
-    <meta property="og:image" content="https://chunyu.site/images/avatar.png">
+    <meta property="og:image" content="https://ichunyu.github.io/images/avatar.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://chunyu.site/images/avatar.png">
+  <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png">
   <meta name="twitter:title" content="四元数与三维旋转">
   <meta name="twitter:description" content="复数在处理平面内旋转时具有很简洁的形式，然而复数只有两个自由度，无法处理三维空间内的旋转。为了将复数用于旋转的思想扩展到三维情况，四元数由此诞生。本文简要介绍四元数及其运算规则，推导四元数处理三维旋转的一般形式。">
 <meta name="application-name" content="某春雨的后花园">
@@ -26,7 +26,7 @@
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
-<link rel="canonical" href="https://chunyu.site/quaternion/" /><link rel="prev" href="https://chunyu.site/vectortransform/" /><link rel="next" href="https://chunyu.site/newton2kepler/" />
+<link rel="canonical" href="https://ichunyu.github.io/quaternion/" /><link rel="prev" href="https://ichunyu.github.io/vectortransform/" /><link rel="next" href="https://ichunyu.github.io/newton2kepler/" />
 <link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
@@ -36,13 +36,13 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://chunyu.site/quaternion/"
+            "@id": "https://ichunyu.github.io/quaternion/"
         },"genre": "posts","keywords":["四元数","旋转"],"wordcount":  3067 ,
-        "url": "https://chunyu.site/quaternion/","datePublished": "2022-03-16T14:32:58+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
+        "url": "https://ichunyu.github.io/quaternion/","datePublished": "2022-03-16T14:32:58+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
-                    "url": "https://chunyu.site/images/avatar.png",
+                    "url": "https://ichunyu.github.io/images/avatar.png",
                     "width":  1024 ,
                     "height":  1024 
                 }},"author": {
@@ -53,7 +53,7 @@
     }</script></head>
 
 
-<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script type="text/javascript">
+<body data-instant-intensity="viewport" class="tw-flex tw-min-h-screen tw-flex-col"><script>
     function setTheme(theme) {
       document.body.setAttribute('theme', theme); 
       document.documentElement.className = theme;
@@ -238,7 +238,7 @@ $$
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></span>
     </div>
     <div class="details-content">
-        <div class="admonition-content">我们之前在 <a href="https://chunyu.site/vectortransform/" target="_blank" rel="noopener noreferrer">坐标变换与矢量旋转</a> 中指出矢量的坐标应当与参考系联系起来，即将参考系作为坐标的上标。在本文的大部分讨论中只涉及一个参考系，故省略上标表示，仅在有必要的情况下显式标记。</div></div></div>
+        <div class="admonition-content">我们之前在 <a href="https://ichunyu.github.io/vectortransform/" target="_blank" rel="noopener noreferrer">坐标变换与矢量旋转</a> 中指出矢量的坐标应当与参考系联系起来，即将参考系作为坐标的上标。在本文的大部分讨论中只涉及一个参考系，故省略上标表示，仅在有必要的情况下显式标记。</div></div></div>
 <p>其中 $a$ 为矢量 $\vec{a}$ 的模长，$\alpha$ 为其与实轴（即 $\vec{e}_1$）的夹角。利用指数的计算规则，将 $\vec{a}$ 逆时针旋转 $\varphi$ 后得到的向量 $\vec{b}$ 在同一参考系下的坐标可以表示为</p>
 $$
 \bm{b} = a \mathrm{e}^{i (\alpha+\varphi)} = \mathrm{e}^{i \varphi} a \mathrm{e}^{i \alpha} = \mathrm{e}^{i \varphi} \bm{a} 
@@ -434,7 +434,7 @@ $$
     <div class="details-content">
         <div class="admonition-content">本文推导的 $R(\mathfrak{q}_b^a)=R_b^a$ 确保了上下脚标的一致性，并且满足矩阵乘法与四元数乘法的等价表述（因此四元数也可以用于坐标变换）。在一些工程应用中，四元数 $\mathfrak{q}^a_b$ 通常只用来描述姿态，而方向余弦矩阵 $\mathrm{DCM} = R^b_a = R^\mathrm{T}(\mathfrak{q}_b^a)$ 只用于坐标变换。因此会出现与上式不同的转换算法（例如 Simulink 中的 <a href="https://ww2.mathworks.cn/help/aeroblks/quaternionstodirectioncosinematrix.html#responsive_offcanvas" target="_blank" rel="noopener noreferrer">四元数转化模块</a>），使用时应当注意。</div></div></div>
 <h2 id="连续旋转的讨论" class="headerLink">
-    <a href="#%e8%bf%9e%e7%bb%ad%e6%97%8b%e8%bd%ac%e7%9a%84%e8%ae%a8%e8%ae%ba" class="header-mark"></a>连续旋转的讨论</h2><p>一个物体多次旋转，旋转矩阵（或四元数）应当是左乘还是右乘？在 <a href="https://chunyu.site/vectortransform/" rel="">坐标变换与矢量旋转</a> 中我们给出的结论是右乘（同参考资料1），而按照这次推导的逻辑：$\bm{v}_0$ 旋转一次得到 $\bm{v}_1 = R_1 \bm{v}_0$，再将 $\bm{v}_1$ 旋转得到 $\bm{v}_2 = R_2 \bm{v}_1 = R_2 R_1 \bm{v}_0$……以此类推，连续转动时似乎应当左乘（同参考资料2），与之前的结论相反。这应当作何解释？</p>
+    <a href="#%e8%bf%9e%e7%bb%ad%e6%97%8b%e8%bd%ac%e7%9a%84%e8%ae%a8%e8%ae%ba" class="header-mark"></a>连续旋转的讨论</h2><p>一个物体多次旋转，旋转矩阵（或四元数）应当是左乘还是右乘？在 <a href="https://ichunyu.github.io/vectortransform/" rel="">坐标变换与矢量旋转</a> 中我们给出的结论是右乘（同参考资料1），而按照这次推导的逻辑：$\bm{v}_0$ 旋转一次得到 $\bm{v}_1 = R_1 \bm{v}_0$，再将 $\bm{v}_1$ 旋转得到 $\bm{v}_2 = R_2 \bm{v}_1 = R_2 R_1 \bm{v}_0$……以此类推，连续转动时似乎应当左乘（同参考资料2），与之前的结论相反。这应当作何解释？</p>
 <ul>
 <li>两者的关注点不同</li>
 </ul>
@@ -483,7 +483,7 @@ $$
 </div>
 </article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.147.5">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.2"><svg class="icon"
+                    由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.147.9">Hugo</a> 强力驱动&nbsp;|&nbsp;主题 - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.4.2"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg> DoIt</a>
                 </div><div class="footer-line"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 448c-110.532 0-200-89.451-200-200 0-110.531 89.451-200 200-200 110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200zm107.351-101.064c-9.614 9.712-45.53 41.396-104.065 41.396-82.43 0-140.484-61.425-140.484-141.567 0-79.152 60.275-139.401 139.762-139.401 55.531 0 88.738 26.62 97.593 34.779a11.965 11.965 0 0 1 1.936 15.322l-18.155 28.113c-3.841 5.95-11.966 7.282-17.499 2.921-8.595-6.776-31.814-22.538-61.708-22.538-48.303 0-77.916 35.33-77.916 80.082 0 41.589 26.888 83.692 78.277 83.692 32.657 0 56.843-19.039 65.726-27.225 5.27-4.857 13.596-4.039 17.82 1.738l19.865 27.17a11.947 11.947 0 0 1-1.152 15.518z"/></svg>2021 - 2025<span class="author">&nbsp;<a href="/" target="_blank" rel="noopener noreferrer">大春雨</a></span>&nbsp;|&nbsp;<span class="license">本博客所有文章除特別声明外，均采用 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"> CC BY-SA 4.0 </a> 许可协议，转载请注明出处。</span></div>

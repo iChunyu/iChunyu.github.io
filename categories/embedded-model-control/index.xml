@@ -1,56 +1,50 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Embedded Model Control on 某春雨的后花园</title>
-    <link>https://chunyu.site/categories/embedded-model-control/</link>
-    <description>Recent content in Embedded Model Control on 某春雨的后花园</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
-    <lastBuildDate>Mon, 24 Feb 2025 23:18:42 +0800</lastBuildDate>
-    <atom:link href="https://chunyu.site/categories/embedded-model-control/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>模型嵌入控制（6）：带宽与极点配置</title>
-      <link>https://chunyu.site/emc06-poleplacement/</link>
-      <pubDate>Sat, 22 Jul 2023 22:24:10 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/emc06-poleplacement/</guid>
-      <description>&lt;p&gt;依据模型完成状态预测器和控制律设计后，控制器结构基本确定，环路性能将由参数决定。在分离原理的加持下，本文首先讨论理想控制环路和状态预测环路的带宽约束，最后给出极点配置的具体实现。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>模型嵌入控制（5）：控制律设计</title>
-      <link>https://chunyu.site/emc05-controllaw/</link>
-      <pubDate>Mon, 17 Jul 2023 00:29:04 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/emc05-controllaw/</guid>
-      <description>&lt;p&gt;模型嵌入控制的控制律可以利用预测的状态和扰动实现反馈，此外，利用参考发生器还可以先验地给出前馈指令。本文将对控制律进行具体推导，实现模型嵌入控制的结构设计。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>模型嵌入控制（4）：状态预测器设计</title>
-      <link>https://chunyu.site/emc04-statepredictor/</link>
-      <pubDate>Sun, 16 Jul 2023 21:31:40 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/emc04-statepredictor/</guid>
-      <description>&lt;p&gt;状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>模型嵌入控制（3）：不确定性建模</title>
-      <link>https://chunyu.site/emc03-uncertainties/</link>
-      <pubDate>Thu, 06 Jul 2023 21:45:19 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/emc03-uncertainties/</guid>
-      <description>&lt;p&gt;被控对象模型的各种不确定性会产生模型误差而影响状态预测，为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性建模。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>模型嵌入控制（2）：被控对象建模</title>
-      <link>https://chunyu.site/emc02-plant/</link>
-      <pubDate>Mon, 03 Jul 2023 13:43:36 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/emc02-plant/</guid>
-      <description>&lt;p&gt;被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>模型嵌入控制（1）：简介与符号约定</title>
-      <link>https://chunyu.site/emc01-introduction/</link>
-      <pubDate>Sun, 02 Jul 2023 22:40:00 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/emc01-introduction/</guid>
-      <description>&lt;p&gt;模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Embedded Model Control - 分类 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/categories/embedded-model-control/</link>
+        <description>Embedded Model Control - 分类 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 22 Jul 2023 22:24:10 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/embedded-model-control/" rel="self" type="application/rss+xml" /><item>
+    <title>模型嵌入控制（6）：带宽与极点配置</title>
+    <link>https://ichunyu.github.io/emc06-poleplacement/</link>
+    <pubDate>Sat, 22 Jul 2023 22:24:10 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc06-poleplacement/</guid>
+    <description><![CDATA[<p>依据模型完成状态预测器和控制律设计后，控制器结构基本确定，环路性能将由参数决定。在分离原理的加持下，本文首先讨论理想控制环路和状态预测环路的带宽约束，最后给出极点配置的具体实现。</p>]]></description>
+</item><item>
+    <title>模型嵌入控制（5）：控制律设计</title>
+    <link>https://ichunyu.github.io/emc05-controllaw/</link>
+    <pubDate>Mon, 17 Jul 2023 00:29:04 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc05-controllaw/</guid>
+    <description><![CDATA[<p>模型嵌入控制的控制律可以利用预测的状态和扰动实现反馈，此外，利用参考发生器还可以先验地给出前馈指令。本文将对控制律进行具体推导，实现模型嵌入控制的结构设计。</p>]]></description>
+</item><item>
+    <title>模型嵌入控制（4）：状态预测器设计</title>
+    <link>https://ichunyu.github.io/emc04-statepredictor/</link>
+    <pubDate>Sun, 16 Jul 2023 21:31:40 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc04-statepredictor/</guid>
+    <description><![CDATA[<p>状态预测器由可控动态、扰动动态和噪声估计器组成，能够对可控动态的状态和扰动进行一步预测。本文将讨论状态预测器的结构设计，并推导不确定性影响下的设计方程。</p>]]></description>
+</item><item>
+    <title>模型嵌入控制（3）：不确定性建模</title>
+    <link>https://ichunyu.github.io/emc03-uncertainties/</link>
+    <pubDate>Thu, 06 Jul 2023 21:45:19 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc03-uncertainties/</guid>
+    <description><![CDATA[<p>被控对象模型的各种不确定性会产生模型误差而影响状态预测，为了在设计中考虑不确定性的影响，本文简要介绍鲁棒控制的核心结论，并讨论被控对象的不确定性建模。</p>]]></description>
+</item><item>
+    <title>模型嵌入控制（2）：被控对象建模</title>
+    <link>https://ichunyu.github.io/emc02-plant/</link>
+    <pubDate>Mon, 03 Jul 2023 13:43:36 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc02-plant/</guid>
+    <description><![CDATA[<p>被控对象以可控动态为核心，进一步引入了扰动动态，其数值实现称为嵌入模型（Embedded Model），是模型嵌入控制设计的基础。本文针对线性时不变（LTI：Linear Time-Invariant）系统建模，给出可控动态和扰动动态离散时间的状态空间表述。</p>]]></description>
+</item><item>
+    <title>模型嵌入控制（1）：简介与符号约定</title>
+    <link>https://ichunyu.github.io/emc01-introduction/</link>
+    <pubDate>Sun, 02 Jul 2023 22:40:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/emc01-introduction/</guid>
+    <description><![CDATA[<p>模型嵌入控制（EMC：Embedded Model Control）是一种基于模型的数字控制器，能够对未知的扰动进行预测与补偿，并使被控对象收敛于控制器内部的嵌入模型，因而具有很好的鲁棒性。本文将简要介绍模型嵌入控制的结构及基本原理，并对常用的符号定义进行归纳。</p>]]></description>
+</item></channel>
 </rss>

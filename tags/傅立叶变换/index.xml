@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>傅立叶变换 on 某春雨的后花园</title>
-    <link>https://chunyu.site/tags/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2/</link>
-    <description>Recent content in 傅立叶变换 on 某春雨的后花园</description>
-    <generator>Hugo</generator>
-    <language>zh-CN</language>
-    <managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-    <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster>
-    <lastBuildDate>Thu, 29 Jun 2023 11:56:55 +0800</lastBuildDate>
-    <atom:link href="https://chunyu.site/tags/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>傅立叶变换与频域分析简介</title>
-      <link>https://chunyu.site/introspectrum/</link>
-      <pubDate>Thu, 02 Dec 2021 14:36:16 +0800</pubDate><author>chunyu2018@foxmail.com (大春雨)</author>
-      <guid>https://chunyu.site/introspectrum/</guid>
-      <description>&lt;p&gt;广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。&lt;/p&gt;</description>
-    </item>
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>傅立叶变换 - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2/</link>
+        <description>傅立叶变换 - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Thu, 02 Dec 2021 14:36:16 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2/" rel="self" type="application/rss+xml" /><item>
+    <title>傅立叶变换与频域分析简介</title>
+    <link>https://ichunyu.github.io/introspectrum/</link>
+    <pubDate>Thu, 02 Dec 2021 14:36:16 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/introspectrum/</guid>
+    <description><![CDATA[<p>广义的傅立叶变换是指时域信号在频域内的分解，具体包括周期信号的傅立叶级数、非周期信号的傅立叶变换、离散信号的离散时间傅立叶变换和离散傅立叶变换。本文介绍这几种变换，旨在梳理其中的关系并简要讨论信号离散化带来的的问题。</p>]]></description>
+</item></channel>
 </rss>
