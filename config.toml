@@ -1,6 +1,6 @@
 # Configuration copied from: https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/
 
-baseURL = "https://chunyu.site/"
+baseURL = "https://ichunyu.github.io/"
 # [en, zh-cn, fr, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
 # 网站语言, 仅在这里 CN 大写
@@ -200,7 +200,7 @@ enableGitInfo = true
       # 文件路径是相对于 static 或者 assets 目录的
       avatarURL = "/images/avatar.png"
       #  主页显示的网站标题 (支持 HTML 格式)
-      title = '<a href="https://cloud.umami.is/share/UmzABgw0jxUaVuKd/chunyu.site">某春雨的后花园</a>'
+      title = '<a href="https://cloud.umami.is/share/7uD2m7yAu7WSsGAm/ichunyu.github.io">某春雨的后花园</a>'
       # 主页显示的网站副标题
       subtitle = "Looking to the future..."
       # 是否为副标题显示打字机动画
