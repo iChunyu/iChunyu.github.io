@@ -354,7 +354,7 @@
     <a href="#rrt-%e6%9c%80%e4%bc%98%e8%b7%af%e5%be%84" class="header-mark"></a>RRT* 最优路径</h2><p>敏锐的读者可能已经意识到，RRT 算法虽然是从”最近节点“向样本点生长新的节点，但是新生长的节点周围可能存在很多其他的”相距并不远“的节点，忽略这样的路径可能会错失更优的路径。因此，RRT* 首先要做的就是设置一定的”半径“，在生长出新的可行节点后检查该半径范围内是否有其他已知的节点，如果有则尝试构建两者之间的路径。</p>
 <p>为了定义最优路径，应当设置一定的代价函数，以代价小的路径为优。从上层的需求来看，（节点对应的）状态之间的”距离“可以设置为状态误差加权后的模长，而状态之间转移的”代价“可以设置成另一组不同的权重。RRT* 以”最近距离“ 生长出来的节点并不是代价最小的路径，因此有必要在设定的半径范围内检查是否存在代价更小的父节点。</p>
 <p>此外，生长出新的节点后，对以一定范围内的其他节点，可能出现”从新节点过来的代价更小“的情况，因此还要进一步考虑重写路径。</p>
-<figure><a class="lightgallery" href="RRTStarCore.gif" title="" data-thumbnail="RRTStarCore.gif" data-sub-html="<h2>RRT* 核心思路</h2>"><img  loading="lazy" src='RRTStarCore.gif'     width="70%"></a><figcaption class="image-caption">RRT* 核心思路</figcaption>
+<figure><a class="lightgallery" href="/rrtstar/RRTStarCore.gif" title="" data-thumbnail="/rrtstar/RRTStarCore.gif" data-sub-html="<h2>RRT* 核心思路</h2>"><img  loading="lazy" src='/rrtstar/RRTStarCore.gif'    height="720" width="70%"></a><figcaption class="image-caption">RRT* 核心思路</figcaption>
     </figure>
 <p>综合上面的三方面考量，RRT* 算法的伪代码为：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
