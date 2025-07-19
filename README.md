@@ -1,16 +1,8 @@
-# 某春雨的后花园
+<h1> <img src="https://emojis.slackmojis.com/emojis/images/1613285697/12806/meow_attention.png?1613285697" width="30" />  嗨，欢迎光临我的博客～</h1>
 
+我平日喜欢进行各种折腾，常常对一些浅尝辄止的知识感到有趣却又不想忘记，为了记录自己的理解并在一定程度上锻炼写作能力，这个博客就诞生了。
 
-<h1> <img src="https://emojis.slackmojis.com/emojis/images/1613285697/12806/meow_attention.png?1613285697" width="30" /> 嗨，你好~ </h1>
+由于博客由我个人主宰，写作风格反而逐渐放肆了起来。如果你在阅读中遇到困难或者发现错误，尽可以把锅甩给作者。当然，我也希望能够在 [邮件](mailto:chunyu.hust@gmail.com) 中收到你的反馈。
 
-欢迎光临我的博客，这是它的源码仓库。
+如果这个博客的部分内容能够得到你的认可，请在 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) 共享协议下自由分享。
 
-这个博客主要是我自己学习的一些记录，或者是瞎捣腾一些东西的记录。为了使用数学公式，最先是用 Sphinx + reStructuredText 搭建的。后来看到了 HUGO 下 [DoIt](https://hugodoit.pages.dev) 主题，不禁让我眼前一亮，于是就换了过来。非常感谢大佬 [@PCloud](https://github.com/HEIGE-PCloud) 的精心设计！
-
-
-博客内的所有文章除了特殊声明外，如你喜欢，请自由分享，但同时也请遵守 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) 共享协议。
-
-当然，我可能会犯一些愚蠢的错误。如果你发现了这些错误，或者你有更好的想法，欢迎与我讨论：
-
-- Email: [chunyu.hust@gmail.com](mailto:chunyu.hust@gmail.com)
-- GitHub: [https://github.com/iChunyu/iChunyu.github.io](https://github.com/iChunyu/iChunyu.github.io)
