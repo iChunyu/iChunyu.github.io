@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="70.142082mm"
+   height="38.267681mm"
+   viewBox="0 0 70.142082 38.267681"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="direct_form2.svg"
+   inkscape:export-filename="direct_form2.png"
+   inkscape:export-xdpi="500"
+   inkscape:export-ydpi="500"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.0774691"
+     inkscape:cx="67.871046"
+     inkscape:cy="87.36592"
+     inkscape:window-width="1440"
+     inkscape:window-height="828"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#ffffffff" />
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="ConcaveTriangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Concave triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path7" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-53.027816,-143.55944)">
+    <g
+       id="g5"
+       transform="translate(-0.31519619)">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.25"
+         id="rect1"
+         width="5.6125021"
+         height="5.6125021"
+         x="85.643303"
+         y="153.99585" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="86.880074"
+         y="158.15497"
+         id="text1"><tspan
+           sodipodi:role="line"
+           id="tspan1"
+           style="fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="86.880074"
+           y="158.15497">z<tspan
+   style="font-size:65%;baseline-shift:super;fill:#000000;stroke:#000000;stroke-width:0.1"
+   id="tspan2">-1</tspan></tspan></text>
+    </g>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 88.134358,159.66938 v 6.57409"
+       id="path4" />
+    <g
+       id="g6"
+       transform="translate(-0.31519597,13.94762)">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.25"
+         id="rect5"
+         width="5.6125021"
+         height="5.6125021"
+         x="85.643303"
+         y="153.99585" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="86.880074"
+         y="158.15497"
+         id="text6"><tspan
+           sodipodi:role="line"
+           id="tspan6"
+           style="fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="86.880074"
+           y="158.15497">z<tspan
+   style="font-size:65%;baseline-shift:super;fill:#000000;stroke:#000000;stroke-width:0.1"
+   id="tspan5">-1</tspan></tspan></text>
+    </g>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 88.134358,147.77116 v 4.52469"
+       id="path6" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="88.834358"
+       y="150.7585"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="88.834358"
+         y="150.7585">e<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan10">0</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="88.965683"
+       y="161.87517"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="88.965683"
+         y="161.87517">e<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan11">1</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="88.761185"
+       y="176.4536"
+       id="text14"><tspan
+         sodipodi:role="line"
+         id="tspan14"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="88.761185"
+         y="176.4536">e<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan13">2</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="56.040764"
+       y="146.0294"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="56.040764"
+         y="146.0294">u</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="118.25657"
+       y="145.14613"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="118.25657"
+         y="145.14613">y</tspan></text>
+    <g
+       id="g20"
+       transform="translate(-6.3336134,8.8669399)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:2.46944px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="70.551292"
+         y="154.97836"
+         id="text18"><tspan
+           sodipodi:role="line"
+           id="tspan18"
+           style="font-size:2.46944px;fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="70.551292"
+           y="154.97836">+</tspan></text>
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:round"
+         id="path19"
+         cx="70.028381"
+         cy="154.37088"
+         r="2.3062251" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:2.46944px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="69.290016"
+         y="156.24399"
+         id="text20"><tspan
+           sodipodi:role="line"
+           id="tspan20"
+           style="font-size:2.46944px;fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="69.290016"
+           y="156.24399">+</tspan></text>
+    </g>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 88.134358,163.28287 h -6.57409"
+       id="path20" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round"
+       d="m 88.134358,173.55597 v 4.94269"
+       id="path21" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 88.134358,178.49867 h -6.57409"
+       id="path22" />
+    <g
+       id="g23"
+       transform="matrix(-1,0,0,1,182.74456,-6.6447701)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:2.46944px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="70.551292"
+         y="154.97836"
+         id="text22"><tspan
+           sodipodi:role="line"
+           id="tspan22"
+           style="font-size:2.46944px;fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="70.551292"
+           y="154.97836">+</tspan></text>
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:round"
+         id="circle22"
+         cx="70.028381"
+         cy="154.37088"
+         r="2.3062251" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:2.46944px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="69.290016"
+         y="156.24399"
+         id="text23"><tspan
+           sodipodi:role="line"
+           id="tspan23"
+           style="font-size:2.46944px;fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="69.290016"
+           y="156.24399">+</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="96.674057"
+       y="148.24384"
+       id="text25"><tspan
+         sodipodi:role="line"
+         id="tspan25"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="96.674057"
+         y="148.24384">b<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan24">0</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="96.773514"
+       y="163.73357"
+       id="text27"><tspan
+         sodipodi:role="line"
+         id="tspan27"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="96.773514"
+         y="163.73357">b<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan26">1</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="96.718185"
+       y="178.90698"
+       id="text29"><tspan
+         sodipodi:role="line"
+         id="tspan29"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="96.718185"
+         y="178.90698">b<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan28">2</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="76.574928"
+       y="163.78242"
+       id="text31"><tspan
+         sodipodi:role="line"
+         id="tspan31"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="76.574928"
+         y="163.78242">a<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan30">1</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+       x="76.381966"
+       y="179.00751"
+       id="text33"><tspan
+         sodipodi:role="line"
+         id="tspan33"
+         style="fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="76.381966"
+         y="179.00751">a<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan32">2</tspan></tspan></text>
+    <path
+       sodipodi:type="star"
+       style="fill:none;stroke:#000000;stroke-width:0.187236;stroke-linecap:round;stroke-linejoin:round"
+       id="path33"
+       inkscape:flatsided="false"
+       sodipodi:sides="3"
+       sodipodi:cx="68.955391"
+       sodipodi:cy="180.74249"
+       sodipodi:r1="2.7731235"
+       sodipodi:r2="1.3872482"
+       sodipodi:arg1="-0.0081187373"
+       sodipodi:arg2="1.0390788"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 71.728423,180.71998 -2.069677,1.21823 -2.070373,1.21706 -0.02018,-2.40151 -0.01881,-2.40153 2.089861,1.18328 z"
+       inkscape:transform-center-x="0.87438924"
+       inkscape:transform-center-y="-0.06005815"
+       transform="matrix(-1.3364459,0,0,1.3339789,170.13624,-62.623018)" />
+    <path
+       sodipodi:type="star"
+       style="fill:none;stroke:#000000;stroke-width:0.187236;stroke-linecap:round;stroke-linejoin:round"
+       id="path34"
+       inkscape:flatsided="false"
+       sodipodi:sides="3"
+       sodipodi:cx="68.955391"
+       sodipodi:cy="180.74249"
+       sodipodi:r1="2.7731235"
+       sodipodi:r2="1.3872482"
+       sodipodi:arg1="-0.0081187373"
+       sodipodi:arg2="1.0390788"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 71.728423,180.71998 -2.069677,1.21823 -2.070373,1.21706 -0.02018,-2.40151 -0.01881,-2.40153 2.089861,1.18328 z"
+       inkscape:transform-center-x="0.87438924"
+       inkscape:transform-center-y="-0.06005815"
+       transform="matrix(-1.3364459,0,0,1.3339789,170.13624,-77.838818)" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 88.134358,163.28287 h 6.57409"
+       id="path35" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 88.134358,178.49866 h 6.57409"
+       id="path36" />
+    <path
+       sodipodi:type="star"
+       style="fill:none;stroke:#000000;stroke-width:0.187236;stroke-linecap:round;stroke-linejoin:round"
+       id="path37"
+       inkscape:flatsided="false"
+       sodipodi:sides="3"
+       sodipodi:cx="68.955391"
+       sodipodi:cy="180.74249"
+       sodipodi:r1="2.7731235"
+       sodipodi:r2="1.3872482"
+       sodipodi:arg1="-0.0081187373"
+       sodipodi:arg2="1.0390788"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 71.728423,180.71998 -2.069677,1.21823 -2.070373,1.21706 -0.02018,-2.40151 -0.01881,-2.40153 2.089861,1.18328 z"
+       inkscape:transform-center-x="-0.87438881"
+       inkscape:transform-center-y="-0.06005815"
+       transform="matrix(1.3364459,0,0,1.3339789,6.1324751,-62.623028)" />
+    <path
+       sodipodi:type="star"
+       style="fill:none;stroke:#000000;stroke-width:0.187236;stroke-linecap:round;stroke-linejoin:round"
+       id="path38"
+       inkscape:flatsided="false"
+       sodipodi:sides="3"
+       sodipodi:cx="68.955391"
+       sodipodi:cy="180.74249"
+       sodipodi:r1="2.7731235"
+       sodipodi:r2="1.3872482"
+       sodipodi:arg1="-0.0081187373"
+       sodipodi:arg2="1.0390788"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 71.728423,180.71998 -2.069677,1.21823 -2.070373,1.21706 -0.02018,-2.40151 -0.01881,-2.40153 2.089861,1.18328 z"
+       inkscape:transform-center-x="-0.87438881"
+       inkscape:transform-center-y="-0.06005815"
+       transform="matrix(1.3364459,0,0,1.3339789,6.1324751,-77.838818)" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 88.134358,147.77116 h 6.57409"
+       id="path39" />
+    <path
+       sodipodi:type="star"
+       style="fill:none;stroke:#000000;stroke-width:0.187236;stroke-linecap:round;stroke-linejoin:round"
+       id="path40"
+       inkscape:flatsided="false"
+       sodipodi:sides="3"
+       sodipodi:cx="68.955391"
+       sodipodi:cy="180.74249"
+       sodipodi:r1="2.7731235"
+       sodipodi:r2="1.3872482"
+       sodipodi:arg1="-0.0081187373"
+       sodipodi:arg2="1.0390788"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 71.728423,180.71998 -2.069677,1.21823 -2.070373,1.21706 -0.02018,-2.40151 -0.01881,-2.40153 2.089861,1.18328 z"
+       inkscape:transform-center-x="-0.87438881"
+       inkscape:transform-center-y="-0.06005815"
+       transform="matrix(1.3364459,0,0,1.3339789,6.1324751,-93.350528)" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 74.275083,163.23782 h -6.57409"
+       id="path42" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round"
+       d="M 74.203988,178.45362 H 63.694767"
+       id="path44" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.250001;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="M 63.694769,178.45431 V 167.23578"
+       id="path45" />
+    <g
+       id="g47">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:3.175px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="63.174328"
+         y="150.12686"
+         id="text19"><tspan
+           sodipodi:role="line"
+           id="tspan19"
+           style="fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="63.174328"
+           y="150.12686">-</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:2.46944px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="64.256042"
+         y="148.37865"
+         id="text45"><tspan
+           sodipodi:role="line"
+           id="tspan45"
+           style="font-size:2.46944px;fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="64.256042"
+           y="148.37865">+</tspan></text>
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:round"
+         id="circle45"
+         cx="63.733131"
+         cy="147.77116"
+         r="2.3062251" />
+    </g>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.250001;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 63.694768,160.9316 v -9.15935"
+       id="path46" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round"
+       d="M 88.134356,147.77116 H 66.039357"
+       id="path47" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 53.152816,147.77116 h 6.57409"
+       id="path48" />
+    <g
+       id="g49"
+       transform="matrix(-1,0,0,1,182.78133,8.7869833)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:2.46944px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="70.551292"
+         y="154.97836"
+         id="text48"><tspan
+           sodipodi:role="line"
+           id="tspan48"
+           style="font-size:2.46944px;fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="70.551292"
+           y="154.97836">+</tspan></text>
+      <circle
+         style="fill:none;stroke:#000000;stroke-width:0.25;stroke-linecap:round"
+         id="circle48"
+         cx="70.028381"
+         cy="154.37088"
+         r="2.3062251" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:2.46944px;font-family:'LXGW WenKai';-inkscape-font-specification:'LXGW WenKai Light';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.1"
+         x="69.290016"
+         y="156.24399"
+         id="text49"><tspan
+           sodipodi:role="line"
+           id="tspan49"
+           style="font-size:2.46944px;fill:#000000;stroke:#000000;stroke-width:0.1"
+           x="69.290016"
+           y="156.24399">+</tspan></text>
+    </g>
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 101.99633,163.23781 h 6.71632"
+       id="path49" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round"
+       d="m 101.99064,178.45361 h 10.75045"
+       id="path50" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.250001;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="M 112.75295,178.45284 V 167.16548"
+       id="path51" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.250001;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 112.75295,160.85164 v -9.15935"
+       id="path52" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 115.02081,147.69121 h 6.57409"
+       id="path53" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.25;stroke-linecap:round;marker-end:url(#ConcaveTriangle)"
+       d="m 101.99363,147.72611 h 6.71632"
+       id="path54" />
+  </g>
+</svg>
