@@ -4,7 +4,14 @@
         <link>https://ichunyu.github.io/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/</link>
         <description>数字信号处理 - 分类 - 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 19 Jul 2025 13:21:33 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+    <title>从零构建数字滤波器</title>
+    <link>https://ichunyu.github.io/iir-design/</link>
+    <pubDate>Sat, 19 Jul 2025 13:21:33 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/iir-design/</guid>
+    <description><![CDATA[<p>滤波器在信号处理、控制系统等领域起着十分重要的作用。然而，在实际的数字信号处理中，过于简单的 IIR（Infinite Impulse Response）滤波器结构会引入数值精度的影响，甚至可能导致滤波器发散。为了便于构造稳定的滤波器，本文将具体梳理 数字滤波器的实现步骤，并给出简单的推导和必要的伪代码步骤。</p>]]></description>
+</item><item>
     <title>系统频率响应估计</title>
     <link>https://ichunyu.github.io/freqrespest/</link>
     <pubDate>Sat, 06 Apr 2024 19:46:00 &#43;0800</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/diffsignal/</guid>
     <description><![CDATA[<p>数字信号处理中经常会用到微分，典型的例子就是数字 PID 控制器中的微分环节。然而理想的微分是不存在的，即使存在，其对高频噪声的放大也约束了它的实际应用。这篇文章我们将讨论并对比一些常见的微分算法。</p>]]></description>
-</item><item>
-    <title>LPSD 功率谱估计</title>
-    <link>https://ichunyu.github.io/lpsd/</link>
-    <pubDate>Sat, 23 Feb 2019 00:00:00 &#43;0000</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/lpsd/</guid>
-    <description><![CDATA[<p>欧洲航空局（ESA）为LISA计划设计了完整的数据处理工具包 <a href="https://www.elisascience.org/ltpda" target="_blank" rel="noopener noreferrer">LTPDA</a>，该工具包中内置一种对数频率点功率谱估计算法，即 LPSD 算法。本文介绍该算法的基本原理，并基于 MATLAB 进行复现。</p>]]></description>
 </item></channel>
 </rss>

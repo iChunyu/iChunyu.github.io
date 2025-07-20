@@ -4,41 +4,41 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noodp" /><title>RRT* 算法简介 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://ichunyu.github.io/rrtstar/">
+    <meta name="robots" content="noodp" /><title>从零构建数字滤波器 - 某春雨的后花园</title><meta name="Description" content="Looking to the future..."><meta property="og:url" content="https://ichunyu.github.io/iir-design/">
   <meta property="og:site_name" content="某春雨的后花园">
-  <meta property="og:title" content="RRT* 算法简介">
-  <meta property="og:description" content="快速探索随机树（RRT：Rapidly exploring Random Tree）是一种基于随机采样的路基规划算法，对高维状态空间的路径规划非常高效。本文将从随机游走的思想展开，介绍 RRT 的核心思想，并介绍考虑代价之后的 RRT* 算法。">
+  <meta property="og:title" content="从零构建数字滤波器">
+  <meta property="og:description" content="滤波器在信号处理、控制系统等领域起着十分重要的作用。然而，在实际的数字信号处理中，过于简单的 IIR（Infinite Impulse Response）滤波器结构会引入数值精度的影响，甚至可能导致滤波器发散。为了便于构造稳定的滤波器，本文将具体梳理 数字滤波器的实现步骤，并给出简单的推导和必要的伪代码步骤。">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-05-05T00:23:30+08:00">
-    <meta property="article:modified_time" content="2025-07-01T23:46:31+08:00">
-    <meta property="article:tag" content="RRT">
-    <meta property="article:tag" content="路径规划">
+    <meta property="article:published_time" content="2025-07-19T13:21:33+08:00">
+    <meta property="article:modified_time" content="2025-07-20T15:38:17+08:00">
+    <meta property="article:tag" content="IIR">
+    <meta property="article:tag" content="滤波器">
     <meta property="og:image" content="https://ichunyu.github.io/images/avatar.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://ichunyu.github.io/images/avatar.png">
-  <meta name="twitter:title" content="RRT* 算法简介">
-  <meta name="twitter:description" content="快速探索随机树（RRT：Rapidly exploring Random Tree）是一种基于随机采样的路基规划算法，对高维状态空间的路径规划非常高效。本文将从随机游走的思想展开，介绍 RRT 的核心思想，并介绍考虑代价之后的 RRT* 算法。">
+  <meta name="twitter:title" content="从零构建数字滤波器">
+  <meta name="twitter:description" content="滤波器在信号处理、控制系统等领域起着十分重要的作用。然而，在实际的数字信号处理中，过于简单的 IIR（Infinite Impulse Response）滤波器结构会引入数值精度的影响，甚至可能导致滤波器发散。为了便于构造稳定的滤波器，本文将具体梳理 数字滤波器的实现步骤，并给出简单的推导和必要的伪代码步骤。">
 <meta name="application-name" content="某春雨的后花园">
 <meta name="apple-mobile-web-app-title" content="某春雨的后花园">
 
 <meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/avatar.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest">
 
-<link rel="canonical" href="https://ichunyu.github.io/rrtstar/" /><link rel="prev" href="https://ichunyu.github.io/astar/" /><link rel="next" href="https://ichunyu.github.io/iir-design/" />
+<link rel="canonical" href="https://ichunyu.github.io/iir-design/" /><link rel="prev" href="https://ichunyu.github.io/rrtstar/" />
 <link rel="stylesheet" href="/css/main.min.css"><link rel="stylesheet" href="/css/style.min.css">
     
     
     
     <script type="application/ld+json">{"@context": "https://schema.org","@type": "BlogPosting",
-        "headline": "RRT* 算法简介",
+        "headline": "从零构建数字滤波器",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://ichunyu.github.io/rrtstar/"
-        },"genre": "posts","keywords":["RRT","路径规划"],"wordcount":  1892 ,
-        "url": "https://ichunyu.github.io/rrtstar/","datePublished": "2025-05-05T00:23:30+08:00","dateModified": "2025-07-01T23:46:31+08:00","publisher": {
+            "@id": "https://ichunyu.github.io/iir-design/"
+        },"genre": "posts","keywords":["IIR","滤波器"],"wordcount":  4598 ,
+        "url": "https://ichunyu.github.io/iir-design/","datePublished": "2025-07-19T13:21:33+08:00","dateModified": "2025-07-20T15:38:17+08:00","publisher": {
             "@type": "Organization",
             "name": "","logo": {
                     "@type": "ImageObject",
@@ -176,10 +176,30 @@
         <h2 class="toc-title">目录</h2>
         <div class="toc-content always-active" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#随机游走简介">随机游走简介</a></li>
-    <li><a href="#rrt-基本原理">RRT 基本原理</a></li>
-    <li><a href="#rrt-最优路径">RRT* 最优路径</a></li>
-    <li><a href="#参考文献">参考文献</a></li>
+    <li><a href="#基本思路">基本思路</a></li>
+    <li><a href="#常用滤波器原型">常用滤波器原型</a>
+      <ul>
+        <li><a href="#巴特沃斯滤波器">巴特沃斯滤波器</a></li>
+        <li><a href="#切比雪夫-i-型滤波器">切比雪夫 I 型滤波器</a></li>
+        <li><a href="#切比雪夫-ii-型滤波器">切比雪夫 II 型滤波器</a></li>
+      </ul>
+    </li>
+    <li><a href="#滤波器原型变换">滤波器原型变换</a>
+      <ul>
+        <li><a href="#低通变换">低通变换</a></li>
+        <li><a href="#高通变换">高通变换</a></li>
+        <li><a href="#带通变换">带通变换</a></li>
+        <li><a href="#带阻变换">带阻变换</a></li>
+      </ul>
+    </li>
+    <li><a href="#滤波器离散化">滤波器离散化</a></li>
+    <li><a href="#数字滤波器集成">数字滤波器集成</a>
+      <ul>
+        <li><a href="#二阶节转换">二阶节转换</a></li>
+        <li><a href="#数据滤波">数据滤波</a></li>
+        <li><a href="#稳态重置">稳态重置</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div><dialog id="toc-dialog" class="tw-max-w-full tw-w-full tw-max-h-full tw-h-full tw-ml-16">
@@ -187,24 +207,44 @@
             <h2 class="tw-mx-0 tw-my-6 tw-uppercase tw-text-2xl">目录</h2>
             <div class="toc-content"><nav id="TableOfContents">
   <ul>
-    <li><a href="#随机游走简介">随机游走简介</a></li>
-    <li><a href="#rrt-基本原理">RRT 基本原理</a></li>
-    <li><a href="#rrt-最优路径">RRT* 最优路径</a></li>
-    <li><a href="#参考文献">参考文献</a></li>
+    <li><a href="#基本思路">基本思路</a></li>
+    <li><a href="#常用滤波器原型">常用滤波器原型</a>
+      <ul>
+        <li><a href="#巴特沃斯滤波器">巴特沃斯滤波器</a></li>
+        <li><a href="#切比雪夫-i-型滤波器">切比雪夫 I 型滤波器</a></li>
+        <li><a href="#切比雪夫-ii-型滤波器">切比雪夫 II 型滤波器</a></li>
+      </ul>
+    </li>
+    <li><a href="#滤波器原型变换">滤波器原型变换</a>
+      <ul>
+        <li><a href="#低通变换">低通变换</a></li>
+        <li><a href="#高通变换">高通变换</a></li>
+        <li><a href="#带通变换">带通变换</a></li>
+        <li><a href="#带阻变换">带阻变换</a></li>
+      </ul>
+    </li>
+    <li><a href="#滤波器离散化">滤波器离散化</a></li>
+    <li><a href="#数字滤波器集成">数字滤波器集成</a>
+      <ul>
+        <li><a href="#二阶节转换">二阶节转换</a></li>
+        <li><a href="#数据滤波">数据滤波</a></li>
+        <li><a href="#稳态重置">稳态重置</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
         </div>
-    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2025-05-05" data-pagefind-body>RRT* 算法简介</h1><div class="post-meta">
+    </dialog><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single print:!tw-w-full print:!tw-max-w-none print:!tw-m-0 print:!tw-p-0"><h1 class="single-title" data-pagefind-meta="date:2025-07-19" data-pagefind-body>从零构建数字滤波器</h1><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src='/images/avatar.png'   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>规划算法入门</a></span></div>
+                </span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>数字信号处理</a></span></div>
             <div class="post-meta-line"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2025-05-05">2025-05-05</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2025-07-01">2025-07-01</time>&nbsp;<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 1892 字&nbsp;
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/></svg>&nbsp;<time datetime="2025-07-19">2025-07-19</time>&nbsp;<svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/></svg>&nbsp;<time datetime="2025-07-20">2025-07-20</time>&nbsp;<svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;约 4598 字&nbsp;
                     <svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 9 分钟&nbsp;</div>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;预计阅读 21 分钟&nbsp;</div>
         </div><div class="details toc print:!tw-block" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -213,35 +253,233 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#随机游走简介">随机游走简介</a></li>
-    <li><a href="#rrt-基本原理">RRT 基本原理</a></li>
-    <li><a href="#rrt-最优路径">RRT* 最优路径</a></li>
-    <li><a href="#参考文献">参考文献</a></li>
+    <li><a href="#基本思路">基本思路</a></li>
+    <li><a href="#常用滤波器原型">常用滤波器原型</a>
+      <ul>
+        <li><a href="#巴特沃斯滤波器">巴特沃斯滤波器</a></li>
+        <li><a href="#切比雪夫-i-型滤波器">切比雪夫 I 型滤波器</a></li>
+        <li><a href="#切比雪夫-ii-型滤波器">切比雪夫 II 型滤波器</a></li>
+      </ul>
+    </li>
+    <li><a href="#滤波器原型变换">滤波器原型变换</a>
+      <ul>
+        <li><a href="#低通变换">低通变换</a></li>
+        <li><a href="#高通变换">高通变换</a></li>
+        <li><a href="#带通变换">带通变换</a></li>
+        <li><a href="#带阻变换">带阻变换</a></li>
+      </ul>
+    </li>
+    <li><a href="#滤波器离散化">滤波器离散化</a></li>
+    <li><a href="#数字滤波器集成">数字滤波器集成</a>
+      <ul>
+        <li><a href="#二阶节转换">二阶节转换</a></li>
+        <li><a href="#数据滤波">数据滤波</a></li>
+        <li><a href="#稳态重置">稳态重置</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content" data-pagefind-body><p>快速探索随机树（RRT：Rapidly exploring Random Tree）是一种基于随机采样的路基规划算法，对高维状态空间的路径规划非常高效。本文将从随机游走的思想展开，介绍 RRT 的核心思想，并介绍考虑代价之后的 RRT* 算法。</p>
-<h2 id="随机游走简介" class="headerLink">
-    <a href="#%e9%9a%8f%e6%9c%ba%e6%b8%b8%e8%b5%b0%e7%ae%80%e4%bb%8b" class="header-mark"></a>随机游走简介</h2><p>假想你身处一片迷雾之中，视线范围有限，如何对周边进行探索？直觉可能会诱导你进行&quot;随机游走“，即每次任意选择一个方向移动一个单位的距离。用程序模拟 66 次随机移动，走过的路线可能如下所示：</p>
-<figure><a class="lightgallery" href="/rrtstar/RandomWalk.gif" title="" data-thumbnail="/rrtstar/RandomWalk.gif" data-sub-html="<h2>随机游走示例</h2>"><img  loading="lazy" src='/rrtstar/RandomWalk.gif'    height="720" width="70%"></a><figcaption class="image-caption">随机游走示例</figcaption>
-    </figure>
-<p>显然随机游走能够对周边的环境进行探索，但存在两个比较严重的问题：</p>
+            </div><div class="content" id="content" data-pagefind-body><p>滤波器在信号处理、控制系统等领域起着十分重要的作用。然而，在实际的数字信号处理中，过于简单的 IIR（Infinite Impulse Response）滤波器结构会引入数值精度的影响，甚至可能导致滤波器发散。为了便于构造稳定的滤波器，本文将具体梳理 数字滤波器的实现步骤，并给出简单的推导和必要的伪代码步骤。</p>
+<h2 id="基本思路" class="headerLink">
+    <a href="#%e5%9f%ba%e6%9c%ac%e6%80%9d%e8%b7%af" class="header-mark"></a>基本思路</h2><p>从线性系统理论层面讲，拉普拉斯变换可以更方便地分析系统的频率响应，因此我们首先会在 $s$ 域完成模拟滤波器（Analog Filter）的设计。特别地，得益于 $s$ 域的变换，我们可以根据滤波器原型变换得到各种形式的滤波器。然后进行一定的离散化变换即可得到数字滤波器（Digital Filter）。</p>
+<p>从稳定性上来看，滤波器是否稳定取决于极点分布，因此模拟滤波器可用零极点（Zero-Pole-Gain，通常简称 zpk）的形式表示，以减少数值误差的影响。而在数值计算上看，数字滤波器的阶数不易太高，以避免状态量之间存在量级差异而引入计算误差，所以实际会将高阶滤波器拆解为串联的二阶节（SOS：Second-Order Sections）形式。</p>
+<p>简言之，数字滤波器的实现可以分为以下几个步骤：</p>
 <ol>
-<li>游走的随机性可能导致局部范围内的反复横跳，导致相同的移动次数下探索的范围较小，即图中的路径没有“充分膨胀”；</li>
-<li>随机游走每次都是基于上一步，只能形成一条路径，没有生成分支从而看不到实际存在的捷径。</li>
+<li>设计模拟滤波器的原型，得到 $s$ 域的零极点分布；</li>
+<li>根据频域变换，将滤波器原型变换为符合需求的模拟滤波器；</li>
+<li>根据采样率对滤波器参数离散化，得到 $z$ 域的零极点分布；</li>
+<li>将 $z$ 域的零极点匹配，拆解为多个二阶节并排序；</li>
+<li>按照二阶系统的处理方法依次处理二阶节即可实现滤波。</li>
 </ol>
-<h2 id="rrt-基本原理" class="headerLink">
-    <a href="#rrt-%e5%9f%ba%e6%9c%ac%e5%8e%9f%e7%90%86" class="header-mark"></a>RRT 基本原理</h2><p>考虑这么一个问题：给定已经探索到的路径，对于随机生成的目标点，如何移动能够更容易接近目标点？RRT 算法的核心步骤如下：</p>
-<ol>
-<li>在给定的范围内随机生成一个样本点，如图中绿色圆点；</li>
-<li>在已经探索到的地图中找到离这个样本点最近的节点，为图中蓝色圆点；</li>
-<li>从上述找到的最近点向样本点进行扩展。</li>
-</ol>
-<figure><a class="lightgallery" href="/rrtstar/SlowRRT.gif" title="" data-thumbnail="/rrtstar/SlowRRT.gif" data-sub-html="<h2>RRT 节点扩展</h2>"><img  loading="lazy" src='/rrtstar/SlowRRT.gif'    height="720" width="70%"></a><figcaption class="image-caption">RRT 节点扩展</figcaption>
-    </figure>
-<p>重复上述步骤，同样地进行 66 次随机采样，可以看到 RRT 探索到的地图更广，分支更多，对指定区域的探索更充分。</p>
-<figure><a class="lightgallery" href="/rrtstar/RRT.gif" title="" data-thumbnail="/rrtstar/RRT.gif" data-sub-html="<h2>RRT 算法对比示例</h2>"><img  loading="lazy" src='/rrtstar/RRT.gif'    height="720" width="70%"></a><figcaption class="image-caption">RRT 算法对比示例</figcaption>
-    </figure>
-<p>上述示例和动图以二维空间的路径搜索为例，实际上 RRT 可以引入更高阶、更复杂的动态模型，并能够对障碍物进行规避。完整的 RRT 算法伪代码如下：</p>
+<p>需要注意的是，离散化通常采用 <strong>双线性变换</strong>，因此在上述第二步进行 $s$ 域的变换前需要对频率进行 <strong>预畸</strong>。</p>
+<h2 id="常用滤波器原型" class="headerLink">
+    <a href="#%e5%b8%b8%e7%94%a8%e6%bb%a4%e6%b3%a2%e5%99%a8%e5%8e%9f%e5%9e%8b" class="header-mark"></a>常用滤波器原型</h2><p>我们在 <a href="https://ichunyu.github.io/filterdesign/" rel="">信号的滤波</a> 讨论过滤波器的基本参数和四种常见的滤波器，此处不再赘述。模拟滤波器的零极点形式为：</p>
+$$
+H(s) = g \frac{(s-z_1)(s-z_2)\cdots(s-z_m)}{(s-p_1)(s-p_2)\cdots(s-p_n)} = g \frac{\prod_{k=1}^m (s - z_k)}{\prod_{k=1}^n (s - p_k)} ,\quad g > 0
+$$
+<p>其中 $z_k \; (k = 1,2,\dots,m)$ 为零点，$p_k \; (k = 1,2,\dots,n)$ 为极点。稳定的、非最小相位系统零极点的实部均小于零；进一步，适定系统的分子的阶次不超过分母，即 $m \le n$。特别地，如果系统不存在有限的零点（零点在无穷远），此时传递函数的分子为常数。</p>
+<p>滤波器原型通常是指转折频率为 $1\,\mathrm{rad/s}$ 的低通滤波器，下面我们将归纳几种常见滤波器原型的零极点分布。</p>
+<h3 id="巴特沃斯滤波器" class="headerLink">
+    <a href="#%e5%b7%b4%e7%89%b9%e6%b2%83%e6%96%af%e6%bb%a4%e6%b3%a2%e5%99%a8" class="header-mark"></a>巴特沃斯滤波器</h3><p>巴特沃斯滤波器（<a href="https://en.wikipedia.org/wiki/Butterworth_filter" target="_blank" rel="noopener noreferrer">Butterworth Filter</a>）是通带最平坦的滤波器。能量衰减一半（幅值衰减 $\sqrt{2}/2$）对应的频率为转折频率，也是我们常说的 $-3 \,\mathrm{dB}$ 带宽。</p>
+<p>巴特沃斯滤波器原型不存在有限零点，$N$ 阶滤波器原型的极点均匀分布在复平面单位圆左侧，即：</p>
+$$
+\bar{p}_k = \mathrm{e}^{-j\frac{2k + N - 1}{2N} \pi}, \quad
+k = 1,2,\dots, N
+$$
+<p>巴特沃斯滤波器原型直流增益为 $1$，无须再进行修正，因而 $\bar{g} = 1$。</p>
+<p>为了与一般滤波器的零极点进行区分，本文将使用上横线表示滤波器原型的零极点。进一步，记滤波器原型的零极点数量分别为 $\bar{m} \le \bar{n}$，</p>
+<h3 id="切比雪夫-i-型滤波器" class="headerLink">
+    <a href="#%e5%88%87%e6%af%94%e9%9b%aa%e5%a4%ab-i-%e5%9e%8b%e6%bb%a4%e6%b3%a2%e5%99%a8" class="header-mark"></a>切比雪夫 I 型滤波器</h3><p>切比雪夫 I 型滤波器（<a href="https://en.wikipedia.org/wiki/Chebyshev_filter#Type_I_Chebyshev_filters_%28Chebyshev_filters%29" target="_blank" rel="noopener noreferrer">Type I Chebyshev Filter</a>）允许在转折频率表示的带宽以内，滤波器的增益在 $[1/\sqrt{1 + \varepsilon^2}, \, 1]$ 之间波动。</p>
+<p>切比雪夫 I 型滤波器同样没有零点，指定通带纹波系数 $\varepsilon > 0$，$ N $ 阶滤波器原型的极点按照辐角均匀分布在复平面椭圆左侧，可以根据下式计算：</p>
+$$
+\bar{p}_k = - \sinh \mu \sin \theta_k + j \cosh \mu \cos \theta_k , \quad
+\mu = \frac{1}{N} \mathrm{arsinh} \frac{1}{\varepsilon} , \quad
+\theta_k = \frac{2k - 1}{2N} \pi , \quad
+k = 1,2,\dots, N
+$$
+<p>为了将直流增益修正到 $1$，需要补充增益：</p>
+$$
+\bar{g} =  \frac{1}{2^{N-1} \varepsilon}
+$$
+<h3 id="切比雪夫-ii-型滤波器" class="headerLink">
+    <a href="#%e5%88%87%e6%af%94%e9%9b%aa%e5%a4%ab-ii-%e5%9e%8b%e6%bb%a4%e6%b3%a2%e5%99%a8" class="header-mark"></a>切比雪夫 II 型滤波器</h3><p>切比雪夫 II 型滤波器（<a href="https://en.wikipedia.org/wiki/Chebyshev_filter#Type_II_Chebyshev_filters_%28inverse_Chebyshev_filters%29" target="_blank" rel="noopener noreferrer">Type II Chebyshev Filter</a>）具有平坦的通带和波动的阻带，阻带增益不高于 $\varepsilon / \sqrt{1 + \varepsilon^2}$，转折频率定义为幅频响应第一次低于阻带增益的频率。</p>
+<p>$N$ 阶切比雪夫 II 型滤波器的极点与 I 型滤波器的极点互为倒数，为：</p>
+$$
+\bar{p}_k = \frac{1}{- \sinh \mu \sin \theta_k + j \cosh \mu \cos \theta_k} , \quad
+\mu = \frac{1}{N} \mathrm{arsinh} \frac{1}{\varepsilon} , \quad
+\theta_k = \frac{2k - 1}{2N} \pi , \quad
+k = 1,2,\dots, N
+$$
+<p>此外，切比雪夫 II 型滤波器还有 $N$ 个零点：</p>
+$$
+\bar{z}_k = \frac{j}{\cos\theta_k}, \quad
+\theta_k = \frac{2k - 1}{2N} \pi , \quad
+k = 1,2,\dots, N
+$$
+<p>特别注意的是，当 $N$ 为奇数时，存在一个无穷远处的极点（分母为 0），在显式的零极点表述中可以忽略。</p>
+<p>直流增益的补偿需要引入增益：</p>
+$$
+\bar{g} = \prod_{k=1}^N \frac{\bar{p}_k}{\bar{z}_k}
+$$
+<p>同样注意，实数系数滤波器的零极点都是以实数或共轭复数对的形式存在，因此上述增益一定是实数。在程序设计中由于数值误差的存在，需要额外取结果的实部。</p>
+<!-- TODO -->
+<!-- ### 椭圆滤波器 -->
+<h2 id="滤波器原型变换" class="headerLink">
+    <a href="#%e6%bb%a4%e6%b3%a2%e5%99%a8%e5%8e%9f%e5%9e%8b%e5%8f%98%e6%8d%a2" class="header-mark"></a>滤波器原型变换</h2><p>在拉普拉斯变换下，通过对 $s$ 进行一定的替换，可以将模拟滤波器原型转化为各种其他形式，下面我们将讨论对应零极点的变换。</p>
+<p>注意，为了与后面双线性变换的离散化方法对应，滤波器原型变换前需要对目标频率进行预畸。假设最终的数字滤波器的转折频率为 $f_d < f_s / 2$（对应的角频率为 $\omega_d = 2 \pi f_d$），其中 $f_s$ 为采样率。那么在设计模拟滤波器时，转折频率应当取：</p>
+$$
+f_c = \frac{f_s}{\pi} \tan \left( \frac{f_d}{f_s} \pi \right)
+$$
+<h3 id="低通变换" class="headerLink">
+    <a href="#%e4%bd%8e%e9%80%9a%e5%8f%98%e6%8d%a2" class="header-mark"></a>低通变换</h3><p>为了将低通滤波器原型转化为任意截止频率 $\omega_c$ 的低通滤波器，只需要将 $s$ 替换为 $s/\omega_c$ 即可。以极点变换为例：</p>
+$$
+\prod_{k=1}^N (s - \bar{p}_{k}) \; \rightarrow \; \prod_{k=1}^N \left(\frac{s}{\omega_c} - \bar{p}_k \right)
+$$
+<p>因此对应的极点只需要进行线性变换：</p>
+$$
+p_k = \bar{p}_k \omega_c
+$$
+<p>零点的变换与极点相同，但需要注意滤波器原型的零极点数量不一定相等，对应的索引 $k$ 的范围不一定相同。此时还应当根据相对阶数对增益进行调整，为：</p>
+$$
+g = \bar{g} \omega_c^{\bar{n} - \bar{m}}
+$$
+<h3 id="高通变换" class="headerLink">
+    <a href="#%e9%ab%98%e9%80%9a%e5%8f%98%e6%8d%a2" class="header-mark"></a>高通变换</h3><p>类似地，为了得到转折频率为 $\omega_c$ 的高通滤波器，需要将 $s$ 替换为 $\omega_c/s$。同样以极点为例：</p>
+$$
+\prod_{k=1}^N (s - \bar{p}_{k}) \; \rightarrow \; \prod_{k=1}^N \left(\frac{\omega_c}{s} - \bar{p}_k \right)
+$$
+<p>因此极点变换与滤波器原型极点的倒数相关，为：</p>
+$$
+p_k = \frac{\omega_c}{\bar{p}_k}
+$$
+<p>零点的变换相同。需要特别注意的是，我们在记录零点时并没有显式地记录无穷处的零点，而上述倒数变换会将无穷远出的零点映射到原点处的零点（成为有限值），因此还需要根据滤波器原型的相对阶数补充 $\gamma$ 个 $z = 0$ 的零点。</p>
+<p>考虑无穷大频率处的增益归一，上述变换后取 $s \to \infty$，可见需要将增益修正为：</p>
+$$
+g = \bar{g} \frac{\prod_{k=1}^{\bar{m}}\bar{z}_k}{\prod_{k=1}^{\bar{n}}\bar{p}_k}
+$$
+<h3 id="带通变换" class="headerLink">
+    <a href="#%e5%b8%a6%e9%80%9a%e5%8f%98%e6%8d%a2" class="header-mark"></a>带通变换</h3><p>带通变换通常是将 $s$ 替换为 $(s^2 + \omega_0^2) / (\xi s)$ 来实现，注意到滤波器的阶次将会翻倍。考虑到：</p>
+$$
+s - \bar{p}_k = 0 \; \rightarrow \; \frac{s^2 + \omega_0^2}{\xi s} - \bar{p}_k = 0
+$$
+<p>可知滤波器原型的每个极点将分裂为两个，分别为：</p>
+$$
+p_{k, k'} = \frac{1}{2} \left( \bar{p}_k \xi \pm \sqrt{(\bar{p}_k \xi)^2 - 4 \omega_0^2} \right)
+$$
+<p>零点的变换完全相同。最后根据滤波器原型的相对阶数对增益修正为：</p>
+$$
+g = \bar{g} \xi^{\bar{n}-\bar{m}}
+$$
+<p>上述变换中的中心频率 $\omega_0$ 和带宽系数 $\xi$ 不够直观，实际应用一般使用通带频率 $\omega_1 &lt; \omega_2$ 来表示，考虑在通带边缘对应滤波器原型的截止频率，在变换前后分别代入 $s = j$ 和 $s = j\omega_{1,2}$，有：</p>
+$$
+\left\lvert\frac{(j\omega_{1,2})^2 + \omega_0^2}{j \xi \omega_{1,2}}\right\rvert = \lvert j \rvert
+$$
+<p>考虑 $\omega_1 < \omega_0 < \omega2$，则有：</p>
+$$
+\left\{
+\begin{aligned}
+\omega_0^2 - \omega_1^2 = \xi \omega_1 \\
+\omega_2^2 - \omega_0^2 = \xi \omega_2 \\
+\end{aligned}
+\right.
+$$
+<p>解得：</p>
+$$
+\omega_0 = \sqrt{\omega_1 \omega_2} ,\quad
+\xi = \omega_2 - \omega_1
+$$
+<h3 id="带阻变换" class="headerLink">
+    <a href="#%e5%b8%a6%e9%98%bb%e5%8f%98%e6%8d%a2" class="header-mark"></a>带阻变换</h3><p>与带通变换相反，将 $s$ 替换为 $\xi s / (s^2 + \omega_0^2)$ 即可。类似地，有：</p>
+$$
+s - \bar{p}_k = 0 \; \rightarrow \; \frac{\xi s}{s^2 + \omega_0^2} - \bar{p}_k = 0
+$$
+<p>极点的变换为：</p>
+$$
+p_k = \frac{1}{2\bar{p}_k} \left( \xi \pm \sqrt{\xi^2 - 4 \bar{p}_k^2 \omega_0^2} \right)
+$$
+<p>零点变换相似。特别地，如果滤波器原型的相对阶次 $\bar{n} > \bar{m}$，即原型存在无穷远处的零点，应当相应地补充 $\bar{n} - \bar{m}$ 个 $\pm j\omega_0$ 的零点对。</p>
+<p>增益修正为：</p>
+$$
+g = \bar{g} \frac{\prod_{k=1}^{\bar{m}}\bar{z}_k}{\prod_{k=1}^{\bar{n}}\bar{p}_k}
+$$
+<p>与带通滤波器相似，如果用带阻滤波器的阻带频率 $\omega_{1,2}$ 表示，中心频率和带宽系数与阻带起止频率的关系为：</p>
+$$
+\omega_0 = \sqrt{\omega_1 \omega_2} ,\quad
+\xi = \omega_2 - \omega_1
+$$
+<h2 id="滤波器离散化" class="headerLink">
+    <a href="#%e6%bb%a4%e6%b3%a2%e5%99%a8%e7%a6%bb%e6%95%a3%e5%8c%96" class="header-mark"></a>滤波器离散化</h2><p>数字滤波器离散化通常采用双线性变换的方法，其基本原理可以看作是连续时间的积分按照相邻两个时刻数据的梯形面积近似。为了避免画图示意，这里给出数学来源，考虑 $z$ 变换与拉普拉斯变换之间的关系：</p>
+$$
+z = \mathrm{e}^{T_ss} = \frac{\mathrm{e}^{ \frac{T_s}{2}s}}{\mathrm{e}^{ -\frac{Ts}{2}s}} \approx \frac{1 + \frac{T_s}{2} s}{1 -  \frac{T_s}{2} s} = \frac{2f_s + s}{2f_s -s}
+$$
+<p>其中 $T_s = 1/ f_s$ 为采样时间。将上式最后的 $s$ 替换为模拟器滤波器的零极点，就分别得到了离散化的零极点。</p>
+<p>需要注意的是，当模拟滤波器传递函数分母的阶次比分子高时，意味着有 $n-m$ 个零点分布在无穷远处，根据上式变换后将会被映射为 $-1$。由于无穷远处的零点没有显式地记录下来，因此离散化变换后需要手动补充 $n-m$ 个位于 $-1$ 处的零点，此时数字系统的零极点数量相同。</p>
+<p>离散化变换后应当注意对增益进行修正：</p>
+$$
+g \rightarrow g \frac{\prod_{k=1}^{m}(2f_s - z_k)}{\prod_{k=1}^{n}(2 f_s + p_k)}
+$$
+<p>箭头右侧的参数均为模拟滤波器的零极点和增益。</p>
+<p>下面我们补充一点双线性变换的频率映射，反解上面的双线性变换对应，得到对应的 $s$ 显式替换策略：</p>
+$$
+s \rightarrow \frac{2}{T_s} \frac{z-1}{z+1}
+$$
+<p>记 $\omega_c$ 为模拟滤波器的频率，$\omega_d$ 为离散化后数字滤波器的频率，根据双线性变换的规则可知：</p>
+$$
+j\omega_c \rightarrow \frac{2}{T_s} \frac{\mathrm{e}^{jT_s \omega_d} -1}{\mathrm{e}^{jT_s \omega_d}+1}
+= \frac{2}{T_s} \frac{\mathrm{e}^{jT_s \omega_d/2} -\mathrm{e}^{-jT_s \omega_d/2}}{\mathrm{e}^{jT_s \omega_d/2}+\mathrm{e}^{-jT_s \omega_d/2}}
+= j \frac{2}{T_s} \tan \frac{T_s \omega_d}{2}
+$$
+<p>化简即可得到自然频率之间的关系为：</p>
+$$
+f_c = \frac{f_s}{\pi} \tan \left( \frac{f_d}{f_s} \pi \right)
+$$
+<p>这就是我们前面提到的预畸公式。为了正确预畸，数字滤波器的截止频率必须小于奈奎斯特频率，即 $f_c < f_s / 2$。相反，双线性变换可以将模拟滤波器的全频段通过反正切函数映射到 $[0, f_s/2)$ 范围内，可以避免由于频率映射导致的 “离散化混叠”。</p>
+<h2 id="数字滤波器集成" class="headerLink">
+    <a href="#%e6%95%b0%e5%ad%97%e6%bb%a4%e6%b3%a2%e5%99%a8%e9%9b%86%e6%88%90" class="header-mark"></a>数字滤波器集成</h2><p>至此，我们得到了数字滤波器的零极点，且零极点的数量相同，以实数或共轭复数对的形式存在。为了减少数值计算误差，我们将把高阶滤波器拆解为多个二阶数字滤波器，每个数字滤波器的传递函数为：</p>
+$$
+H(s) = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2}}{1 + a_1 z^{-1} + a_2 z^{-2}}
+$$
+<p>注意我们以 $z^{-1}$ 为变量，一方面便于数字滤波器的实现；另一方面指出通过令 $b_2 = a_2 = 0$ 也能兼容一阶系统。当数字滤波器的阶次为奇数时将会产生一个一阶环节。</p>
+<p>将拆解出来的多个二阶滤波器系数组合为矩阵，即构成所谓的 SOS 矩阵：</p>
+$$
+\mathrm{SOS} =
+\begin{bmatrix}
+b_{00} & b_{01} & b_{02} & 1 & a_{01} & a_{02} \\
+b_{10} & b_{11} & b_{12} & 1 & a_{11} & a_{12} \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+b_{n0} & b_{n1} & b_{n2} & 1 & a_{n1} & a_{n2} \\
+\end{bmatrix}
+$$
+<h3 id="二阶节转换" class="headerLink">
+    <a href="#%e4%ba%8c%e9%98%b6%e8%8a%82%e8%bd%ac%e6%8d%a2" class="header-mark"></a>二阶节转换</h3><p>将数字滤波器的零极点转化二阶节需要把握以下基本原则：</p>
+<ul>
+<li>复数极点必须成对匹配后构成一个二阶系统，以确保滤波器系数为实数；零点同理；</li>
+<li>如果存在多个实数极点，应当匹配两个实数极点，零点同理；</li>
+<li>如果只有一个实数极点，一定与实数零点进行匹配；</li>
+<li>二阶系统的零极点尽可能接近，以避免出现较大的增益变化。</li>
+</ul>
+<p>此外，二阶系统的排序稍有讲究，一般对应大带宽的快速极点构成的二阶系统靠前，小带宽的慢速极点（靠近单位圆，最不利极点）的慢速极点靠后。实际滤波时表现为“滤波带宽逐渐减小”的形式。通常会先从最慢的极点查找，零极点匹配构成二阶系统后之后再反向排序。</p>
+<p>二阶节转换的算法可以用伪代码表示如下：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
@@ -331,32 +569,39 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span class="line"><span class="cl">设定起始状态 x_start 和目标状态 x_goal
-</span></span><span class="line"><span class="cl">初始化地图 T，将起点放入地图（数据结构图可采用树）
-</span></span><span class="line"><span class="cl">直到达成终止条件，重复执行：
-</span></span><span class="line"><span class="cl">    随机生成一个样本点 x_rand
-</span></span><span class="line"><span class="cl">    找到地图中离样本点最近的节点 x_nearest
-</span></span><span class="line"><span class="cl">    如果从 x_nearest 到 x_rand 存在碰撞：
-</span></span><span class="line"><span class="cl">        进入下一次循环
+      "><span class="line"><span class="cl">初始化 sos 矩阵为空
+</span></span><span class="line"><span class="cl">如果剩余极点数量不为零，重复执行以下操作：
+</span></span><span class="line"><span class="cl">    # 首先查找极点
+</span></span><span class="line"><span class="cl">    从极点列表中弹出一个最不利极点，记为 p1
+</span></span><span class="line"><span class="cl">    如果 p1 是实数：
+</span></span><span class="line"><span class="cl">        如果剩余的极点列表中还有实数极点：
+</span></span><span class="line"><span class="cl">            从极点列表中弹出一个最接近 p1 的实数极点，记为 p2
+</span></span><span class="line"><span class="cl">        否则（没有其他实数极点，意味着这次零极点匹配为一阶系统）：
+</span></span><span class="line"><span class="cl">            从零点列表中弹出一个最接近 p1 的实数零点，记为 z1
+</span></span><span class="line"><span class="cl">            根据 p1、z1 计算一阶系统的传递函数系数，并追加到 sos 矩阵中
+</span></span><span class="line"><span class="cl">            执行下一次循环
+</span></span><span class="line"><span class="cl">    否则（p1 为复数）：
+</span></span><span class="line"><span class="cl">        取 p2 为 p1 的共轭，并从极点列表中删除 p2
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    从 x_nearest 向 x_rand 生成新状态 x_new
-</span></span><span class="line"><span class="cl">    如果从 x_nearest 到 x_new 不存在碰撞：
-</span></span><span class="line"><span class="cl">        将从 x_nearest 到 x_new 的路径添加到地图</span></span></code></pre>
+</span></span><span class="line"><span class="cl">    # 然后匹配零点：由于一阶系统提前退出循环，这里一定是找两个零点
+</span></span><span class="line"><span class="cl">    从零点列表中找到最接近 p1 的零点，记为 z1，先不要删除
+</span></span><span class="line"><span class="cl">    如果 z1 是实数：
+</span></span><span class="line"><span class="cl">        如果零点列表中除了 z1 还有其他实数零点：
+</span></span><span class="line"><span class="cl">            从零点列表中删除 z1
+</span></span><span class="line"><span class="cl">            从零点列表中弹出最接近 p1 的另一个实数零点，记为 z2
+</span></span><span class="line"><span class="cl">        如果零点列表中没有其他实数零点（那么这个 z1 必须保留给最后的一阶环节）：
+</span></span><span class="line"><span class="cl">            从零点列表中弹出最接近 p1 的复数零点，记为 z1
+</span></span><span class="line"><span class="cl">            取 z2 为 z1 的共轭，并从零点列表中删除 z2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    根据 p1、p2、z1、z2 计算二阶系统传递函数系数，并追加到 sos 矩阵中
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">将 sos 矩阵按行逆序即可</span></span></code></pre>
 </div>
-<p>注意到伪代码将示例中的“位置”泛化成了“状态”，因此 RRT 适用于状态空间描述的动态系统，使用时有必要注意以下几点：</p>
-<ul>
-<li>如何生成随机的样本点：一般来说只需要在关注的状态空间范围内随机生成即可，如有必要，可以在目标点附近的空间设置较大的概率分布密度，从而以较高的概率牵引随机树向目标点附近生长；</li>
-<li>如何定义节点之间的距离：数学上通常可以直接取状态向量的模长，但考虑实际的信息，可以只取部分分量（例如在考虑位置和速度的状态空间中，只考虑位置的差距），也可以对状态进行加权（对应后面 RRT* 中的代价设置）；</li>
-<li>如何生长新的状态：可以直接使用状态空间方程；</li>
-<li>终止条件是什么：理想情况下为“达到目标状态”，实际上应当考虑随机采样的误差，认为距离目标状态在“一定范围内“且向目标状态直接转移不会发生碰撞；在算法的实现上，还应当设置最大迭代次数或者超时保护，避免进入死循环。</li>
-</ul>
-<h2 id="rrt-最优路径" class="headerLink">
-    <a href="#rrt-%e6%9c%80%e4%bc%98%e8%b7%af%e5%be%84" class="header-mark"></a>RRT* 最优路径</h2><p>敏锐的读者可能已经意识到，RRT 算法虽然是从”最近节点“向样本点生长新的节点，但是新生长的节点周围可能存在很多其他的”相距并不远“的节点，忽略这样的路径可能会错失更优的路径。因此，RRT* 首先要做的就是设置一定的”半径“，在生长出新的可行节点后检查该半径范围内是否有其他已知的节点，如果有则尝试构建两者之间的路径。</p>
-<p>为了定义最优路径，应当设置一定的代价函数，以代价小的路径为优。从上层的需求来看，（节点对应的）状态之间的”距离“可以设置为状态误差加权后的模长，而状态之间转移的”代价“可以设置成另一组不同的权重。RRT* 以”最近距离“ 生长出来的节点并不是代价最小的路径，因此有必要在设定的半径范围内检查是否存在代价更小的父节点。</p>
-<p>此外，生长出新的节点后，对以一定范围内的其他节点，可能出现”从新节点过来的代价更小“的情况，因此还要进一步考虑重写路径。</p>
-<figure><a class="lightgallery" href="/rrtstar/RRTStarCore.gif" title="" data-thumbnail="/rrtstar/RRTStarCore.gif" data-sub-html="<h2>RRT* 核心思路</h2>"><img  loading="lazy" src='/rrtstar/RRTStarCore.gif'    height="720" width="70%"></a><figcaption class="image-caption">RRT* 核心思路</figcaption>
+<h3 id="数据滤波" class="headerLink">
+    <a href="#%e6%95%b0%e6%8d%ae%e6%bb%a4%e6%b3%a2" class="header-mark"></a>数据滤波</h3><p>基于 SOS 矩阵对输入进行滤波时，只需要按照二阶系统依次滤波即可。每个二阶系统可以按照 <a href="https://en.wikipedia.org/wiki/Digital_biquad_filter#Direct_form_2" target="_blank" rel="noopener noreferrer">Direct Form II</a> 的形式进行滤波。</p>
+<figure><a class="lightgallery" href="/iir-design/direct_form2.png" title="" data-thumbnail="/iir-design/direct_form2.png" data-sub-html="<h2>Direct Form II</h2>"><img  loading="lazy" src='/iir-design/direct_form2.png'    height="753" width="60%"></a><figcaption class="image-caption">Direct Form II</figcaption>
     </figure>
-<p>综合上面的三方面考量，RRT* 算法的伪代码为：</p>
+<p>二阶系统的滤波以 Python 代码为例：</p>
 <div class="code-block highlight is-open show-line-numbers  tw-group tw-my-2">
   <div class="
     
@@ -376,7 +621,7 @@
       aria-hidden="true">
           <div class="group-[.is-open]:tw-rotate-90 tw-transition-[transform] tw-duration-500 tw-ease-in-out print:!tw-hidden tw-w-min tw-h-min tw-my-1 tw-mx-1"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></div>
-          <p class="tw-select-none !tw-my-1">伪代码</p>
+          <p class="tw-select-none !tw-my-1">python</p>
       </button>
 
    <div class="tw-flex">
@@ -446,48 +691,27 @@
       tw-overflow-y-hidden
       tw-overflow-x-auto
       tw-scrollbar-thin
-      "><span class="line"><span class="cl">设定起始状态 x_start 和目标状态 x_goal
-</span></span><span class="line"><span class="cl">初始化地图 T，将起点放入地图（数据结构图可采用树）
-</span></span><span class="line"><span class="cl">直到达成终止条件，重复执行：
-</span></span><span class="line"><span class="cl">    随机生成一个样本点 x_rand
-</span></span><span class="line"><span class="cl">    找到地图中离样本点最近的节点 x_nearest
-</span></span><span class="line"><span class="cl">    如果从 x_nearest 到 x_rand 存在碰撞：
-</span></span><span class="line"><span class="cl">        进入下一次循环
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    从 x_nearest 向 x_rand 生成新状态 x_new
-</span></span><span class="line"><span class="cl">    如果从 x_nearest 到 x_new 存在碰撞：
-</span></span><span class="line"><span class="cl">        进入下一次循环
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    # 检查更优的父节点
-</span></span><span class="line"><span class="cl">    暂时记录 x_new 的最优父节点 x_min = x_nearest
-</span></span><span class="line"><span class="cl">    找到已有地图在 x_new 一定半径范围内的所有节点 x_neighbors
-</span></span><span class="line"><span class="cl">    对于 x_neighbors 内的每个节点 x_neighbor：
-</span></span><span class="line"><span class="cl">        检查 x_neighbor 到 x_new 是否存在碰撞，是则跳过
-</span></span><span class="line"><span class="cl">        如果从 x_neighbor 到 x_new 的累计代价小于 x_min 到 x_new 的代价，则将 x_min 设置为当前节点
-</span></span><span class="line"><span class="cl">    向地图中添加从 x_min 到 x_new 的路径
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    # 考虑更换周围节点的父节点
-</span></span><span class="line"><span class="cl">    对于 x_neighbors 内的每个节点 x_neighbor（除了 x_min）：
-</span></span><span class="line"><span class="cl">        检查 x_new 到 x_neighbor 是否存在碰撞，是则跳过
-</span></span><span class="line"><span class="cl">        如果从 x_new 到 x_neighbor 的累计代价小于 x_neighbor 目前的累计代价，则将 x_neighbor 的父节点设置为 x_new
-</span></span><span class="line"><span class="cl">        更新 x_neighbor 及其子节点的代价</span></span></code></pre>
+      "><span class="line"><span class="cl"><span class="n">e2</span> <span class="o">=</span> <span class="n">e1</span>
+</span></span><span class="line"><span class="cl"><span class="n">e1</span> <span class="o">=</span> <span class="n">e0</span>
+</span></span><span class="line"><span class="cl"><span class="n">e0</span> <span class="o">=</span> <span class="n">u</span> <span class="o">-</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">e1</span> <span class="o">-</span> <span class="n">a2</span> <span class="o">*</span> <span class="n">e2</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">e0</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">e1</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">e2</span></span></span></code></pre>
 </div>
-<h2 id="参考文献" class="headerLink">
-    <a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-mark"></a>参考文献</h2><ol>
-<li>S. M. LaValle and J. J. Kuffner, <a href="https://ieeexplore.ieee.org/document/770022" target="_blank" rel="noopener noreferrer">Randomized kinodynamic planning</a>. Proceedings 1999 IEEE International Conference on Robotics and Automation. 1999. 473-479(1).</li>
-<li>S. Karaman, E. Frazzoli. <a href="https://www.roboticsproceedings.org/rss06/p34.pdf" target="_blank" rel="noopener noreferrer">Incremental sampling-based algorithms for optimal motion planning</a>.</li>
-</ol></div>
+<h3 id="稳态重置" class="headerLink">
+    <a href="#%e7%a8%b3%e6%80%81%e9%87%8d%e7%bd%ae" class="header-mark"></a>稳态重置</h3><p>为了避免滤波器初始状态引入的收敛过程，我们会希望将滤波器的状态按照给定的数据重置内部状态，表现为 “一直输入固定值直到滤波器达到稳态” 的效果。从上述 Direct From II 的结构可以看到，滤波器内部的状态只与传递函数的分母多项式相关。当达到稳态时，有：</p>
+$$
+e_0 = e_1 = e_2 = \frac{u}{1 + a_1 + a_2}
+$$</div>
 
         <div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2025-07-01</span>
+                <span>更新于 2025-07-20</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line print:!tw-hidden">
-            <div class="post-info-md"><span><a class="link-to-mardown" href=/rrtstar/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/iir-design/index.md target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                     </span></div>
             <div class="post-info-share"></div>
         </div>
@@ -495,16 +719,14 @@
 
     <div class="post-info-more">
         <section class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/rrt/">RRT</a>,&nbsp;<a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92/">路径规划</a></section>
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/iir/">IIR</a>,&nbsp;<a href="/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/">滤波器</a></section>
         <section class="print:!tw-hidden">
             <span><button class="tw-text-fgColor-link-muted hover:tw-text-fgColor-link-muted-hover" onclick="window.history.back();">返回</button></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav print:tw-hidden"><a href="/astar/" class="prev" rel="prev" title="A* 算法简介"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>A* 算法简介</a>
-            <a href="/iir-design/" class="next" rel="next" title="从零构建数字滤波器">从零构建数字滤波器<svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg></a></div>
+    <div class="post-nav print:tw-hidden"><a href="/rrtstar/" class="prev" rel="prev" title="RRT* 算法简介"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>RRT* 算法简介</a></div>
 </div>
 </article></main><footer class="footer">
         <div class="footer-container"><div class="footer-line">

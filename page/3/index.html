@@ -33,6 +33,20 @@
     <script type="application/ld+json">
         {"@context": "https://schema.org",
         "@graph": [{"@type": "BlogPosting",
+        "headline": "航天器姿态测量与确定",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://ichunyu.github.io/attitude/"
+        },"genre": "posts","keywords":["航天器","传感器","姿态测量","姿态确定"],"wordcount":  3971 ,
+        "url": "https://ichunyu.github.io/attitude/","datePublished": "2023-05-31T12:11:29+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
+            "@type": "Organization",
+            "name": "大春雨"},"author": {
+                "@type": "Person",
+                "name": "大春雨",
+                "url": "/"
+            },"description": ""
+    },{"@type": "BlogPosting",
         "headline": "MATLAB 自定义默认绘图样式",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
@@ -110,20 +124,6 @@
             "@id": "https://ichunyu.github.io/backstepping/"
         },"genre": "posts","keywords":["反步法","非线性控制"],"wordcount":  1819 ,
         "url": "https://ichunyu.github.io/backstepping/","datePublished": "2022-07-28T14:44:56+08:00","dateModified": "2023-06-29T11:56:55+08:00","publisher": {
-            "@type": "Organization",
-            "name": "大春雨"},"author": {
-                "@type": "Person",
-                "name": "大春雨",
-                "url": "/"
-            },"description": ""
-    },{"@type": "BlogPosting",
-        "headline": "使用代码片段编写 LaTeX 文档",
-        "inLanguage": "zh-CN",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://ichunyu.github.io/latexsnips/"
-        },"genre": "posts","keywords":["LaTeX","代码片段"],"wordcount":  3114 ,
-        "url": "https://ichunyu.github.io/latexsnips/","datePublished": "2022-06-16T08:43:47+08:00","dateModified": "2023-03-07T19:31:26+08:00","publisher": {
             "@type": "Organization",
             "name": "大春雨"},"author": {
                 "@type": "Person",
@@ -254,6 +254,15 @@
 <div class="search-dropdown mobile">
     <div id="search-dropdown-mobile"></div>
 </div><main class="tw-mx-4 tw-flex-1"><div class="page home" posts><div class="home-profile"><div class="home-avatar"><a href="/posts/"  title="文章" ><img  loading="eager" src='/images/avatar.png'   alt="Home avatar" height="100" width="100"></a></div><h1 class="home-title"><a href="https://cloud.umami.is/share/7uD2m7yAu7WSsGAm/ichunyu.github.io">某春雨的后花园</a></h1><h2 class="home-subtitle"><div id="id-3" class="typeit"></div></h2><div class="links"></div></div><article class="single summary"><h1 class="single-title">
+        <a href="/attitude/">航天器姿态测量与确定</a>
+    </h1><div class="post-meta">
+        <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src='/images/avatar.png'   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
+        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2023-05-31">2023-05-31</time></span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>数字信号处理</a></span></div><div class="content"><p>航天器的姿态在变轨、通讯、充电等阶段起着十分重要的作用。姿态控制系统由传感器、姿态确定算法和控制律构成。本文将首先介绍几种常用姿态传感器的基本原理，然后对常用的定姿算法进行简要推导。</p></div><div class="post-footer">
+        <a href="/attitude/">阅读全文</a><div class="post-tags"><svg class="icon"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/%E8%88%AA%E5%A4%A9%E5%99%A8/">航天器</a>,&nbsp;<a href="/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/">传感器</a>,&nbsp;<a href="/tags/%E5%A7%BF%E6%80%81%E6%B5%8B%E9%87%8F/">姿态测量</a>,&nbsp;<a href="/tags/%E5%A7%BF%E6%80%81%E7%A1%AE%E5%AE%9A/">姿态确定</a></div></div>
+</article>
+<article class="single summary"><h1 class="single-title">
         <a href="/initplot/">MATLAB 自定义默认绘图样式</a>
     </h1><div class="post-meta">
         <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src='/images/avatar.png'   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
@@ -306,15 +315,6 @@
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>控制理论基础</a></span></div><div class="content"><p>反步法（Backstepping）通过拼凑李雅普诺夫函数得到控制律，可用于非线性被控对象的控制器设计。本文是对 DR_CAN 系列视频的学习，并以一个开环不稳定的非线性系统为例进行设计与仿真。</p></div><div class="post-footer">
         <a href="/backstepping/">阅读全文</a><div class="post-tags"><svg class="icon"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/%E5%8F%8D%E6%AD%A5%E6%B3%95/">反步法</a>,&nbsp;<a href="/tags/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%8E%A7%E5%88%B6/">非线性控制</a></div></div>
-</article>
-<article class="single summary"><h1 class="single-title">
-        <a href="/latexsnips/">使用代码片段编写 LaTeX 文档</a>
-    </h1><div class="post-meta">
-        <span class="post-author"><img class="tw-inline-block tw-max-h-4 tw-rounded-full tw-translate-y-[-2px] tw-mr-1"  src='/images/avatar.png'   alt="大春雨 avatar" height="16" width="16"><a href="/" title="Author" rel=" author" class="author">大春雨</a>
-        </span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-06-16">2022-06-16</time></span>&nbsp;<span class="post-category">收录于 </span>&nbsp;<span class="post-category">类别 <a href="/categories/latex/"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>LaTeX</a></span></div><div class="content"><p>LaTeX 文档的源码有很多格式化语法，例如插图、表格等环境。使用代码片段可以很容易地插入这种结构化代码，加快文档的编写。本文介绍代码片段插件的使用方法，并介绍我自己的设计思路。</p></div><div class="post-footer">
-        <a href="/latexsnips/">阅读全文</a><div class="post-tags"><svg class="icon"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"/></svg>&nbsp;<a href="/tags/latex/">LaTeX</a>,&nbsp;<a href="/tags/%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">代码片段</a></div></div>
 </article>
 <ul class="pagination"><li class="page-item ">
                     <span class="page-link">

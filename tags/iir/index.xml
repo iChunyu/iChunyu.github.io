@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>IIR - 标签 - 某春雨的后花园</title>
+        <link>https://ichunyu.github.io/tags/iir/</link>
+        <description>IIR - 标签 - 某春雨的后花园</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 19 Jul 2025 13:21:33 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/tags/iir/" rel="self" type="application/rss+xml" /><item>
+    <title>从零构建数字滤波器</title>
+    <link>https://ichunyu.github.io/iir-design/</link>
+    <pubDate>Sat, 19 Jul 2025 13:21:33 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/iir-design/</guid>
+    <description><![CDATA[<p>滤波器在信号处理、控制系统等领域起着十分重要的作用。然而，在实际的数字信号处理中，过于简单的 IIR（Infinite Impulse Response）滤波器结构会引入数值精度的影响，甚至可能导致滤波器发散。为了便于构造稳定的滤波器，本文将具体梳理 数字滤波器的实现步骤，并给出简单的推导和必要的伪代码步骤。</p>]]></description>
+</item></channel>
+</rss>
