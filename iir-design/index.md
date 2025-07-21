@@ -183,7 +183,7 @@ $${{< /math >}}
 \left\lvert\frac{(j\omega_{1,2})^2 + \omega_0^2}{j \xi \omega_{1,2}}\right\rvert = \lvert j \rvert
 $${{< /math >}}
 
-考虑 {{< math >}}$\omega_1 < \omega_0 < \omega2${{< /math >}}，则有：
+考虑 {{< math >}}$\omega_1 < \omega_0 < \omega_2${{< /math >}}，则有：
 
 {{< math >}}$$
 \left\{
