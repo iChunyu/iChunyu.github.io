@@ -174,7 +174,9 @@ $${{< /math >}}
 p_{k, k'} = \frac{1}{2} \left( \bar{p}_k \xi \pm \sqrt{(\bar{p}_k \xi)^2 - 4 \omega_0^2} \right)
 $${{< /math >}}
 
-零点的变换完全相同。最后根据滤波器原型的相对阶数对增益修正为：
+零点的变换相似，但当极点阶数比零点高时，每个无穷远处的零点会分裂成一个原点处的零点和无穷远的零点。因此还要根据相对阶数追加 {{< math >}}$n - m${{< /math >}} 个原点处的零点。
+
+最后根据滤波器原型的相对阶数对增益修正为：
 
 {{< math >}}$$
 g = \bar{g} \xi^{\bar{n}-\bar{m}}
@@ -186,7 +188,7 @@ $${{< /math >}}
 \left\lvert\frac{(j\omega_{1,2})^2 + \omega_0^2}{j \xi \omega_{1,2}}\right\rvert = \lvert j \rvert
 $${{< /math >}}
 
-考虑 {{< math >}}$\omega_1 < \omega_0 < \omega2${{< /math >}}，则有：
+考虑 {{< math >}}$\omega_1 < \omega_0 < \omega_2${{< /math >}}，则有：
 
 {{< math >}}$$
 \left\{
