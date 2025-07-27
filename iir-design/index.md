@@ -41,7 +41,8 @@ $${{< /math >}}
 巴特沃斯滤波器原型不存在有限零点，{{< math >}}$N${{< /math >}} 阶滤波器原型的极点均匀分布在复平面单位圆左侧，即：
 
 {{< math >}}$$
-\bar{p}_k = \mathrm{e}^{-j\frac{2k + N - 1}{2N} \pi}, \quad
+\bar{p}_k = \mathrm{e}^{-j\theta_k}, \quad
+\theta_k = \frac{2k + N - 1}{2N} \pi , \quad
 k = 1,2,\dots, N
 $${{< /math >}}
 
@@ -56,9 +57,9 @@ $${{< /math >}}
 切比雪夫 I 型滤波器同样没有零点，指定通带纹波系数 {{< math >}}$\varepsilon > 0${{< /math >}}，{{< math >}}$ N ${{< /math >}} 阶滤波器原型的极点按照辐角均匀分布在复平面椭圆左侧，可以根据下式计算：
 
 {{< math >}}$$
-\bar{p}_k = - \sinh \mu \sin \theta_k + j \cosh \mu \cos \theta_k , \quad
+\bar{p}_k = \sinh \mu \cos \theta_k + j \cosh \mu \sin \theta_k , \quad
 \mu = \frac{1}{N} \mathrm{arsinh} \frac{1}{\varepsilon} , \quad
-\theta_k = \frac{2k - 1}{2N} \pi , \quad
+\theta_k = \frac{2k + N - 1}{2N} \pi , \quad
 k = 1,2,\dots, N
 $${{< /math >}}
 
@@ -75,21 +76,21 @@ $${{< /math >}}
 {{< math >}}$N${{< /math >}} 阶切比雪夫 II 型滤波器的极点与 I 型滤波器的极点互为倒数，为：
 
 {{< math >}}$$
-\bar{p}_k = \frac{1}{- \sinh \mu \sin \theta_k + j \cosh \mu \cos \theta_k} , \quad
+\bar{p}_k = \frac{1}{\sinh \mu \cos \theta_k + j \cosh \mu \sin \theta_k} , \quad
 \mu = \frac{1}{N} \mathrm{arsinh} \frac{1}{\varepsilon} , \quad
-\theta_k = \frac{2k - 1}{2N} \pi , \quad
+\theta_k = \frac{2k + N - 1}{2N} \pi , \quad
 k = 1,2,\dots, N
 $${{< /math >}}
 
 此外，切比雪夫 II 型滤波器还有 {{< math >}}$N${{< /math >}} 个零点：
 
 {{< math >}}$$
-\bar{z}_k = \frac{j}{\cos\theta_k}, \quad
-\theta_k = \frac{2k - 1}{2N} \pi , \quad
+\bar{z}_k = \frac{j}{\sin\theta_k}, \quad
+\theta_k = \frac{2k + N - 1}{2N} \pi, \quad
 k = 1,2,\dots, N
 $${{< /math >}}
 
-特别注意的是，当 {{< math >}}$N${{< /math >}} 为奇数时，存在一个无穷远处的极点（分母为 0），在显式的零极点表述中可以忽略。
+特别注意的是，当 {{< math >}}$N${{< /math >}} 为奇数时，存在一个无穷远处的零点（分母为 0），在显式的零极点表述中可以忽略。
 
 直流增益的补偿需要引入增益：
 
