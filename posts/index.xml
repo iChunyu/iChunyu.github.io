@@ -4,7 +4,14 @@
         <link>https://ichunyu.github.io/posts/</link>
         <description>所有文章 | 某春雨的后花园</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chunyu2018@foxmail.com (大春雨)</managingEditor>
-            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Sat, 19 Jul 2025 13:21:33 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chunyu2018@foxmail.com (大春雨)</webMaster><lastBuildDate>Wed, 04 Feb 2026 00:20:00 &#43;0800</lastBuildDate><atom:link href="https://ichunyu.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>周期系统稳定性与 Floquet 理论简介</title>
+    <link>https://ichunyu.github.io/floquet/</link>
+    <pubDate>Wed, 04 Feb 2026 00:20:00 &#43;0800</pubDate><author>
+        <name>大春雨</name>
+    </author><guid>https://ichunyu.github.io/floquet/</guid>
+    <description><![CDATA[<p>周期系统是指系统参数随着时间以某一固定周期变化的动态系统，Floquet 理论为我们提供了一种有效的方法来研究这类系统的稳定性。本文将简要介绍 Floquet 理论的基本概念，并给出一个简单的示例来说明其应用。</p>]]></description>
+</item><item>
     <title>从零构建数字滤波器</title>
     <link>https://ichunyu.github.io/iir-design/</link>
     <pubDate>Sat, 19 Jul 2025 13:21:33 &#43;0800</pubDate><author>
@@ -67,12 +74,5 @@
         <name>大春雨</name>
     </author><guid>https://ichunyu.github.io/emc06-poleplacement/</guid>
     <description><![CDATA[<p>依据模型完成状态预测器和控制律设计后，控制器结构基本确定，环路性能将由参数决定。在分离原理的加持下，本文首先讨论理想控制环路和状态预测环路的带宽约束，最后给出极点配置的具体实现。</p>]]></description>
-</item><item>
-    <title>模型嵌入控制（5）：控制律设计</title>
-    <link>https://ichunyu.github.io/emc05-controllaw/</link>
-    <pubDate>Mon, 17 Jul 2023 00:29:04 &#43;0800</pubDate><author>
-        <name>大春雨</name>
-    </author><guid>https://ichunyu.github.io/emc05-controllaw/</guid>
-    <description><![CDATA[<p>模型嵌入控制的控制律可以利用预测的状态和扰动实现反馈，此外，利用参考发生器还可以先验地给出前馈指令。本文将对控制律进行具体推导，实现模型嵌入控制的结构设计。</p>]]></description>
 </item></channel>
 </rss>
